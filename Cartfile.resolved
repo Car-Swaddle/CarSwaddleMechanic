@@ -1,4 +1,5 @@
 git "https://kkendall33@bitbucket.org/kkendall33/authentication.git" "1.04"
+git "https://kkendall33@bitbucket.org/kkendall33/carswaddledata.git" "1.02"
 git "https://kkendall33@bitbucket.org/kkendall33/carswaddlenetworkrequest.git" "1.09"
 git "https://kkendall33@bitbucket.org/kkendall33/carswaddlestore.git" "1.02"
 git "https://kkendall33@bitbucket.org/kkendall33/carswaddleui.git" "1.051"
