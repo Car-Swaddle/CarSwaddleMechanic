@@ -27,7 +27,6 @@
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
 		9992764121673BCA0032D7F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992764021673BCA0032D7F7 /* ViewController.swift */; };
 		9992764421673BCA0032D7F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764221673BCA0032D7F7 /* Main.storyboard */; };
-		9992764721673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9992764521673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodeld */; };
 		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
@@ -97,7 +96,6 @@
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9992764021673BCA0032D7F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9992764321673BCA0032D7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9992764621673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarSwaddleMechanic.xcdatamodel; sourceTree = "<group>"; };
 		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9992764B21673BCC0032D7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9992764D21673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +168,31 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		9912CD9F216C7D720006FDDF /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9912CD9E216C7B1D0006FDDF /* CarSwaddleMechanic.entitlements */,
+				9992764D21673BCC0032D7F7 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		9912CDA0216C7E220006FDDF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9992764821673BCC0032D7F7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9912CDA1216C7E350006FDDF /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				9992763E21673BCA0032D7F7 /* AppDelegate.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		9992763221673BCA0032D7F7 = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +217,9 @@
 		9992763D21673BCA0032D7F7 /* CarSwaddleMechanic */ = {
 			isa = PBXGroup;
 			children = (
-				9912CD9E216C7B1D0006FDDF /* CarSwaddleMechanic.entitlements */,
+				9912CD9F216C7D720006FDDF /* Support */,
 				9912CD95216C75CC0006FDDF /* Extensions */,
-				9992763E21673BCA0032D7F7 /* AppDelegate.swift */,
+				9912CDA1216C7E350006FDDF /* Launch */,
 				9992764021673BCA0032D7F7 /* ViewController.swift */,
 				9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */,
 				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
@@ -204,10 +227,8 @@
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9912CD92216C74B10006FDDF /* Login */,
 				9992764221673BCA0032D7F7 /* Main.storyboard */,
-				9992764821673BCC0032D7F7 /* Assets.xcassets */,
+				9912CDA0216C7E220006FDDF /* Resources */,
 				9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */,
-				9992764D21673BCC0032D7F7 /* Info.plist */,
-				9992764521673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodeld */,
 			);
 			path = CarSwaddleMechanic;
 			sourceTree = "<group>";
@@ -409,7 +430,6 @@
 				9992764121673BCA0032D7F7 /* ViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
-				9992764721673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodeld in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,
@@ -588,7 +608,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/CarSwaddleMechanic.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -596,7 +616,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CarSwaddleMechanic/Info.plist;
+				INFOPLIST_FILE = CarSwaddleMechanic/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,7 +633,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/CarSwaddleMechanic.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -621,7 +641,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CarSwaddleMechanic/Info.plist;
+				INFOPLIST_FILE = CarSwaddleMechanic/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,19 +775,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9992764521673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9992764621673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodel */,
-			);
-			currentVersion = 9992764621673BCA0032D7F7 /* CarSwaddleMechanic.xcdatamodel */;
-			path = CarSwaddleMechanic.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9992763321673BCA0032D7F7 /* Project object */;
 }
