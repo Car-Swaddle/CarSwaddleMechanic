@@ -1,0 +1,11 @@
+framework module CarSwaddleData {
+  umbrella header "CarSwaddleData.h"
+
+  export *
+  module * { export * }
+}
+
+module CarSwaddleData.Swift {
+    header "CarSwaddleData-Swift.h"
+    requires objc
+}
