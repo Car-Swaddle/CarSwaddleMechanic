@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias JSONObject = [String: Any]
+public typealias JSONObject = [String: Any]
 
 public extension NetworkRequestError {
     public static let invalidJSON = NetworkRequestError(rawValue: "invalidJSON")

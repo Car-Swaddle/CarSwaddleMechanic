@@ -17,6 +17,7 @@ extension Mechanic {
     }
 
     @NSManaged public var identifier: String
+    @NSManaged public var isActive: Bool
     @NSManaged public var user: User?
     @NSManaged public var scheduleTimeSpans: Set<TemplateTimeSpan>
     @NSManaged public var services: Set<AutoService>

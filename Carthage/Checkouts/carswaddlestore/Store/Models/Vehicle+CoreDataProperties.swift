@@ -13,7 +13,7 @@ import CoreData
 extension Vehicle {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Vehicle> {
-        return NSFetchRequest<Vehicle>(entityName: "Vehicle")
+        return NSFetchRequest<Vehicle>(entityName: Vehicle.entityName)
     }
 
     @NSManaged public var creationDate: Date

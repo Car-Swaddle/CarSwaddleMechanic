@@ -9,6 +9,7 @@
 import UIKit
 import Authentication
 import CarSwaddleUI
+import Store
 
 extension Navigator {
     
@@ -37,22 +38,56 @@ let navigator = Navigator()
 
 final class Navigator: NSObject {
     
+    public override init() {
+        self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    }
+    
+    public func setupWindow() {
+        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+        appDelegate.window?.rootViewController = navigator.initialViewController()
+        appDelegate.window?.makeKeyAndVisible()
+        showRequiredScreensIfNeeded()
+    }
+    
+    private func showRequiredScreensIfNeeded() {
+        guard let userID = User.currentUserID else { return }
+        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
+        // TODO: Uncomment this before release
+//            mechanic.scheduleTimeSpans.count == 0 else { return
+        let availabilityViewController = AvailabilityViewController.viewControllerFromStoryboard()
+        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
+    }
+    
+    private var appDelegate: AppDelegate
+    
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
-            return signUp
+            return signUp.inNavigationController()
         } else {
-            return rootViewController
+            return loggedInViewController
         }
     }
     
-    lazy var rootViewController: UIViewController = {
-        return rootNavigationController()
-    }()
+    public var loggedInViewController: UIViewController {
+        return tabBarController
+    }
     
-    private var tabBarController: UITabBarController?
+    public func navigateToLoggedInViewController() {
+        guard let window = appDelegate.window,
+            let rootViewController = window.rootViewController else { return }
+        let newViewController = loggedInViewController
+        newViewController.view.frame = rootViewController.view.frame
+        newViewController.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = newViewController
+        }) { completed in
+            self.showRequiredScreensIfNeeded()
+        }
+    }
     
-    private func rootNavigationController() -> UIViewController {
+    lazy private var tabBarController: UITabBarController = {
         var viewControllers: [UIViewController] = []
         
         for tab in Tab.all {
@@ -68,10 +103,8 @@ final class Navigator: NSObject {
 //        tabController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
         tabController.view.backgroundColor = .white
         
-        self.tabBarController = tabController
-        
         return tabController
-    }
+    }()
     
     private lazy var servicesViewController: ScheduleViewController = {
         let servicesViewController = ScheduleViewController.viewControllerFromStoryboard()
@@ -102,7 +135,7 @@ final class Navigator: NSObject {
             let navRoot = navigationController.viewControllers.first {
             root = navRoot
         } else {
-            root = rootViewController
+            root = loggedInViewController
         }
         
         if root == self.servicesViewController {

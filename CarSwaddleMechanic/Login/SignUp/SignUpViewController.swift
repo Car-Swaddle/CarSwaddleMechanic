@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  CarSwaddleMechanic
 //
 //  Created by Kyle Kendall on 10/8/18.
@@ -9,10 +9,8 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Authentication
-import Store
 
-final class LoginViewController: UIViewController, StoryboardInstantiating {
+final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -25,20 +23,20 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         
     }
     
-    @IBAction func didTapLogin() {
+    @IBAction private func didTapSignUp() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         store.privateContext { [weak self] context in
-            self?.auth.login(email: email, password: password, context: context) { error in
+            self?.auth.signUp(email: email, password: password, context: context) { error in
+//                print("logged in: \(String(describing: error))")
                 DispatchQueue.main.async {
-                    if let currentUserID = User.currentUserID {
-                        let mechanic = Mechanic(context: store.mainContext)
-                        mechanic.identifier = currentUserID
-                        store.mainContext.persist()
-                    }
                     navigator.navigateToLoggedInViewController()
                 }
             }
         }
     }
     
+    @IBAction func didTapLogin() {
+        let login = LoginViewController.viewControllerFromStoryboard()
+        navigationController?.show(login, sender: self)
+    }
 }

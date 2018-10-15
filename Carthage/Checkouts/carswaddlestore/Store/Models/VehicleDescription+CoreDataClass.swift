@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(VehicleDescription)
-public class VehicleDescription: NSManagedObject {
+public final class VehicleDescription: NSManagedObject {
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9913759A217080D900F15BEC /* CarSwaddleStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99137598217080D800F15BEC /* CarSwaddleStore.xcdatamodeld */; };
 		991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4015216ADC5C00D7644D /* VehicleDescription+CoreDataClass.swift */; };
 		991B402A216ADC5D00D7644D /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4016216ADC5C00D7644D /* Location+CoreDataProperties.swift */; };
 		991B402B216ADC5D00D7644D /* PricePart+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4017216ADC5C00D7644D /* PricePart+CoreDataClass.swift */; };
@@ -28,7 +29,6 @@
 		991B403B216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4027216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift */; };
 		991B403C216ADC5D00D7644D /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4028216ADC5D00D7644D /* User+CoreDataProperties.swift */; };
 		9942545621576DFA0075EDCA /* NSManagedObjectFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942545521576DFA0075EDCA /* NSManagedObjectFetchable.swift */; };
-		9991FE14214B835D00F58F42 /* CarSwaddleStore.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 9991FE11214B835800F58F42 /* CarSwaddleStore.xcdatamodeld */; };
 		999E9194214B81C100FF894B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9193214B81C100FF894B /* Store.swift */; };
 		99D156CA214F73D500BFA435 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */; };
 		99DED725214B80D40061CFE0 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DED71B214B80D30061CFE0 /* Store.framework */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99137599217080D800F15BEC /* CarSwaddleStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarSwaddleStore.xcdatamodel; sourceTree = "<group>"; };
 		991B4015216ADC5C00D7644D /* VehicleDescription+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VehicleDescription+CoreDataClass.swift"; sourceTree = "<group>"; };
 		991B4016216ADC5C00D7644D /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		991B4017216ADC5C00D7644D /* PricePart+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PricePart+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		991B4027216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateTimeSpan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		991B4028216ADC5D00D7644D /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9942545521576DFA0075EDCA /* NSManagedObjectFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchable.swift; sourceTree = "<group>"; };
-		9991FE10214B835800F58F42 /* CarSwaddle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarSwaddle.xcdatamodel; sourceTree = "<group>"; };
 		999E9193214B81C100FF894B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		99DED71B214B80D30061CFE0 /* Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +167,7 @@
 			children = (
 				999E9193214B81C100FF894B /* Store.swift */,
 				9942545521576DFA0075EDCA /* NSManagedObjectFetchable.swift */,
-				9991FE11214B835800F58F42 /* CarSwaddleStore.xcdatamodeld */,
+				99137598217080D800F15BEC /* CarSwaddleStore.xcdatamodeld */,
 				99D156C8214F73C500BFA435 /* Extensions */,
 				9991FE1C214B873F00F58F42 /* Models */,
 				9991FE1B214B872100F58F42 /* Support */,
@@ -284,7 +284,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9991FE14214B835D00F58F42 /* CarSwaddleStore.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +304,7 @@
 				991B403B216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift in Sources */,
 				991B4031216ADC5D00D7644D /* Location+CoreDataClass.swift in Sources */,
 				999E9194214B81C100FF894B /* Store.swift in Sources */,
+				9913759A217080D900F15BEC /* CarSwaddleStore.xcdatamodeld in Sources */,
 				991B4036216ADC5D00D7644D /* VehicleDescription+CoreDataProperties.swift in Sources */,
 				991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */,
 				991B4032216ADC5D00D7644D /* User+CoreDataClass.swift in Sources */,
@@ -486,7 +486,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.Store;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -515,7 +515,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.Store;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -595,14 +595,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9991FE11214B835800F58F42 /* CarSwaddleStore.xcdatamodeld */ = {
+		99137598217080D800F15BEC /* CarSwaddleStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9991FE10214B835800F58F42 /* CarSwaddle.xcdatamodel */,
+				99137599217080D800F15BEC /* CarSwaddleStore.xcdatamodel */,
 			);
-			currentVersion = 9991FE10214B835800F58F42 /* CarSwaddle.xcdatamodel */;
+			currentVersion = 99137599217080D800F15BEC /* CarSwaddleStore.xcdatamodel */;
 			path = CarSwaddleStore.xcdatamodeld;
 			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};

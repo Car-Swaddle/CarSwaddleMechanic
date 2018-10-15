@@ -12,18 +12,14 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    public var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // TODO: Take this out when things are stable
         store.mainContext.persist()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let initialViewController = navigator.rootViewController
-        
-        window?.rootViewController = initialViewController
-        window?.makeKeyAndVisible()
+        navigator.setupWindow()
         
         return true
     }

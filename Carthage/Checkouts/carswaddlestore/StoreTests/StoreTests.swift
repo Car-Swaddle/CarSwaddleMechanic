@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import Store
 
 class StoreTests: XCTestCase {
@@ -21,9 +22,25 @@ class StoreTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSetupStore() {
+        let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+        store.mainContext.persist()
+    }
+    
+    func testInsertTemplateTimespan() {
+        let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+        
+        let mechanic = Mechanic(context: store.mainContext)
+        mechanic.identifier = "someid"
+        
+        let template = TemplateTimeSpan(context: store.mainContext)
+        template.weekday = .wednesday
+        template.duration = 60*60
+        template.mechanic = mechanic
+        template.startTime = 0
+        store.mainContext.persist()
+        
+        _ = template.weekday
     }
     
     func testPerformanceExample() {

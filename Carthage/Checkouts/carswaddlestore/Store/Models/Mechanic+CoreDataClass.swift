@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(Mechanic)
-public class Mechanic: NSManagedObject {
+public final class Mechanic: NSManagedObject, NSManagedObjectFetchable {
 
 }

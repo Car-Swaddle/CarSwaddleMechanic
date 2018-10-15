@@ -17,7 +17,7 @@ public class AuthService {
     
     public init() {}
     
-    public func signUp(email: String, password: String, completion: @escaping (_ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func signUp(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let task = authTask(email: email, password: password, endpoint: .signup) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
         }
@@ -25,7 +25,7 @@ public class AuthService {
         return task
     }
     
-    public func login(email: String, password: String, completion: @escaping (_ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func login(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let task = authTask(email: email, password: password, endpoint: .login) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
         }
@@ -38,18 +38,20 @@ public class AuthService {
         return nil
     }
     
-    private func complete(data: Data?, error: Error?, completion: @escaping (_ token: String?, _ error: Error?) -> Void) {
+    private func complete(data: Data?, error: Error?, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) {
+        var json: JSONObject?
         var error: Error?
         var token: String?
         defer {
-            completion(token, error)
+            completion(json, token, error)
         }
         guard let data = data,
-            let tokenJSON = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+            let responseJSON = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
                 error = NetworkRequestError.invalidJSON
                 return
         }
-        token = tokenJSON["token"] as? String
+        token = responseJSON["token"] as? String
+        json = responseJSON["user"] as? JSONObject
     }
     
     private func authTask(email: String, password: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jOc-3d-GWZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up View Controller-->
+        <scene sceneID="1BM-dj-19s">
+            <objects>
+                <viewController id="jOc-3d-GWZ" customClass="SignUpViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="68y-ES-K6x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGg-Ll-4kk">
+                                <rect key="frame" x="16" y="152" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xen-V2-WvJ">
+                                <rect key="frame" x="16" y="190" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-0m-x8e">
+                                <rect key="frame" x="161.5" y="228" width="52" height="30"/>
+                                <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="didTapSignUp" destination="jOc-3d-GWZ" eventType="touchUpInside" id="wKI-no-qVg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aka-dH-y7h">
+                                <rect key="frame" x="168.5" y="577" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="didTapLogin" destination="jOc-3d-GWZ" eventType="touchUpInside" id="kbn-z5-ZAi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bcy-0m-x8e" firstAttribute="centerX" secondItem="68y-ES-K6x" secondAttribute="centerX" id="2dr-Vu-Z3d"/>
+                            <constraint firstItem="3Zq-bM-kd2" firstAttribute="trailing" secondItem="wGg-Ll-4kk" secondAttribute="trailing" constant="16" id="74A-ZZ-9vK"/>
+                            <constraint firstItem="wGg-Ll-4kk" firstAttribute="top" secondItem="3Zq-bM-kd2" secondAttribute="top" constant="132" id="8dh-6d-iGM"/>
+                            <constraint firstItem="3Zq-bM-kd2" firstAttribute="trailing" secondItem="xen-V2-WvJ" secondAttribute="trailing" constant="16" id="F24-bV-kVj"/>
+                            <constraint firstItem="3Zq-bM-kd2" firstAttribute="bottom" secondItem="aka-dH-y7h" secondAttribute="bottom" constant="60" id="FcI-Y1-vdP"/>
+                            <constraint firstItem="wGg-Ll-4kk" firstAttribute="leading" secondItem="3Zq-bM-kd2" secondAttribute="leading" constant="16" id="RIE-7Q-6yk"/>
+                            <constraint firstItem="xen-V2-WvJ" firstAttribute="top" secondItem="wGg-Ll-4kk" secondAttribute="bottom" constant="8" id="X1u-f7-k3v"/>
+                            <constraint firstItem="bcy-0m-x8e" firstAttribute="top" secondItem="xen-V2-WvJ" secondAttribute="bottom" constant="8" id="Z8Y-P4-ud3"/>
+                            <constraint firstItem="aka-dH-y7h" firstAttribute="centerX" secondItem="3Zq-bM-kd2" secondAttribute="centerX" id="nNR-s9-RqG"/>
+                            <constraint firstItem="xen-V2-WvJ" firstAttribute="leading" secondItem="3Zq-bM-kd2" secondAttribute="leading" constant="16" id="ppU-ad-FqA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Zq-bM-kd2"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="wGg-Ll-4kk" id="mDJ-5w-P57"/>
+                        <outlet property="passwordTextField" destination="xen-V2-WvJ" id="DyL-Ea-STt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QfD-4N-IpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.599999999999994" y="58.920539730134934"/>
+        </scene>
+    </scenes>
+</document>
