@@ -20,27 +20,49 @@ public class Auth {
     
     @discardableResult
     public func signUp(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
-        return authService.signUp(email: email, password: password) { [weak self] userJSON, token, error in
-            self?.complete(userJSON: userJSON, token: token, error: error, context: context, completion: completion)
+        return authService.signUp(email: email, password: password) { [weak self] json, token, error in
+            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
         }
     }
     
     @discardableResult
     public func login(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
-        return authService.login(email: email, password: password) { [weak self] userJSON, token, error in
-            self?.complete(userJSON: userJSON, token: token, error: error, context: context, completion: completion)
+        return authService.login(email: email, password: password) { [weak self] json, token, error in
+            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
         }
     }
     
-    private func complete(userJSON: JSONObject?, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
+    @discardableResult
+    public func mechanicSignUp(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        return authService.mechanicSignUp(email: email, password: password) { [weak self] json, token, error in
+            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func mechanicLogin(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        return authService.mechanicLogin(email: email, password: password) { [weak self] json, token, error in
+            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
+        }
+    }
+    
+    private func complete(json: JSONObject?, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
         context.perform { [weak self] in
             var error: Error?
             defer {
                 completion(error)
             }
-            if let userJSON = userJSON, let userID = userJSON["id"] as? String {
-                _ = User(json: userJSON, context: context)
+            if let json = json, let userJSON = json["user"] as? JSONObject,
+                let userID = userJSON["id"] as? String {
+                let user = User(json: userJSON, context: context)
                 User.setCurrentUserID(userID)
+                if let mechanicJSON = json["mechanic"] as? JSONObject,
+                    let mechanicID = mechanicJSON["id"] as? String {
+                    let mechanic = Mechanic(context: context)
+                    mechanic.identifier = mechanicID
+                    mechanic.isActive = true
+                    mechanic.user = user
+                }
                 context.persist()
             }
             if let token = token {

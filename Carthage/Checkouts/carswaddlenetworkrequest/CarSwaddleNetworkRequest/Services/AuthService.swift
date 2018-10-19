@@ -18,7 +18,15 @@ public class AuthService {
     public init() {}
     
     public func signUp(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = authTask(email: email, password: password, endpoint: .signup) { [weak self] data, error in
+        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .signup) { [weak self] data, error in
+            self?.complete(data: data, error: error, completion: completion)
+        }
+        task?.resume()
+        return task
+    }
+    
+    public func mechanicSignUp(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .signup) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
         }
         task?.resume()
@@ -26,7 +34,15 @@ public class AuthService {
     }
     
     public func login(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = authTask(email: email, password: password, endpoint: .login) { [weak self] data, error in
+        let task = authTask(email: email, password: password, isMechanic: false, endpoint: .login) { [weak self] data, error in
+            self?.complete(data: data, error: error, completion: completion)
+        }
+        task?.resume()
+        return task
+    }
+    
+    public func mechanicLogin(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(email: email, password: password, isMechanic: true, endpoint: .login) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
         }
         task?.resume()
@@ -51,11 +67,17 @@ public class AuthService {
                 return
         }
         token = responseJSON["token"] as? String
-        json = responseJSON["user"] as? JSONObject
+        json = [:]
+        if let userJSON = responseJSON["user"] as? JSONObject {
+            json?["user"] = userJSON
+        }
+        if let mechanicJSON = responseJSON["mechanic"] as? JSONObject {
+            json?["mechanic"] = mechanicJSON
+        }
     }
     
-    private func authTask(email: String, password: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        guard let body = serielizedData(from: email, password: password) else {
+    private func authTask(email: String, password: String, isMechanic: Bool, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = serielizedData(from: email, password: password, isMechanic: isMechanic) else {
             return nil
         }
         
@@ -64,8 +86,8 @@ public class AuthService {
         return request?.send(completion: completion)
     }
     
-    private func serielizedData(from email: String, password: String) -> Data? {
-        let bodyString = "email=\(email.urlEscaped())&password=\(password)"
+    private func serielizedData(from email: String, password: String, isMechanic: Bool) -> Data? {
+        let bodyString = "email=\(email.urlEscaped())&password=\(password)&isMechanic=\(isMechanic)"
         return bodyString.data(using: .utf8)
     }
     

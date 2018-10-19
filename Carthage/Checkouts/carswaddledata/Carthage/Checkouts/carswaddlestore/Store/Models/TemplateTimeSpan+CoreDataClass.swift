@@ -22,17 +22,17 @@ public enum Weekday: Int16, CaseIterable {
 @objc(TemplateTimeSpan)
 public final class TemplateTimeSpan: NSManagedObject {
     
-    @NSManaged public var primitiveWeekday: Int16
     private let weekdayKey = "weekday"
     
     public var weekday: Weekday {
         set {
             willChangeValue(forKey: weekdayKey)
-            primitiveWeekday = newValue.rawValue
+            setPrimitiveValue(newValue.rawValue, forKey: weekdayKey)
             didChangeValue(forKey: weekdayKey)
         }
         get {
             willAccessValue(forKey: weekdayKey)
+            let primitiveWeekday = primitiveValue(forKey: weekdayKey) as! Int16
             let value = Weekday(rawValue: primitiveWeekday)!
             didAccessValue(forKey: weekdayKey)
             return value

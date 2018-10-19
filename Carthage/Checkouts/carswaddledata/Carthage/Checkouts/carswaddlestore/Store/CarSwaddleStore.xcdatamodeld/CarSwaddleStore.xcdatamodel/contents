@@ -44,8 +44,8 @@
     </entity>
     <entity name="TemplateTimeSpan" representedClassName="TemplateTimeSpan" syncable="YES">
         <attribute name="duration" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="startTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="weekday" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startTime" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weekday" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="scheduleTimeSpans" inverseEntity="Mechanic" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">

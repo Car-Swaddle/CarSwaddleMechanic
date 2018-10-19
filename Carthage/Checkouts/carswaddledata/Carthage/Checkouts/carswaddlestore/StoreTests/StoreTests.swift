@@ -22,18 +22,25 @@ class StoreTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testSetupStore() {
+        let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+        store.mainContext.persist()
+    }
+    
+    func testInsertTemplateTimespan() {
         let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
         
-        store.mainContext.persist()
-    
-//        let bundle = Bundle(for: Store.self)
-//        let d = bundle.url(forResource: "NewModel", withExtension: "momd")!
-//
-//        let model = NSManagedObjectModel(contentsOf: d)!
-//
-//        let container = NSPersistentContainer(name: "some name", managedObjectModel: model)
+        let mechanic = Mechanic(context: store.mainContext)
+        mechanic.identifier = "someid"
         
+        let template = TemplateTimeSpan(context: store.mainContext)
+        template.weekday = .wednesday
+        template.duration = 60*60
+        template.mechanic = mechanic
+        template.startTime = 0
+        store.mainContext.persist()
+        
+        _ = template.weekday
     }
     
     func testPerformanceExample() {

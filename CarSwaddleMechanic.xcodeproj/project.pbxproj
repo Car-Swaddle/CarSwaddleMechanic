@@ -33,7 +33,6 @@
 		9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9913756F21706CC500F15BEC /* ProfileViewController.storyboard */; };
 		9913759E2171BE1800F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
 		9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		991375A82171D80600F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375B4217314A800F15BEC /* NSManagedObjectFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991375B3217314A800F15BEC /* NSManagedObjectFetchable.swift */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
@@ -42,6 +41,9 @@
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
 		9992766221673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */; };
 		9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */; };
+		99FF1E4521787360006A4315 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
+		99FF1E4721787755006A4315 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; };
+		99FF1E4821787769006A4315 /* CarSwaddleData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				99FF1E4821787769006A4315 /* CarSwaddleData.framework in CopyFiles */,
 				991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */,
 				9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */,
 				9912CD82216C6B2E0006FDDF /* KeychainAccess.framework in CopyFiles */,
@@ -126,6 +129,7 @@
 		9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicUITests.swift; sourceTree = "<group>"; };
 		9992766321673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicStore.swift; sourceTree = "<group>"; };
+		99FF1E4621787755006A4315 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912CD7B216C6AF00006FDDF /* Authentication.framework in Frameworks */,
-				991375A82171D80600F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */,
 				9912CD81216C6AFA0006FDDF /* KeychainAccess.framework in Frameworks */,
+				99FF1E4721787755006A4315 /* CarSwaddleData.framework in Frameworks */,
 				9913759E2171BE1800F15BEC /* Store.framework in Frameworks */,
+				99FF1E4521787360006A4315 /* CarSwaddleNetworkRequest.framework in Frameworks */,
 				9912CD7E216C6AF00006FDDF /* CarSwaddleUI.framework in Frameworks */,
 				9912CD7F216C6AF00006FDDF /* NetworkRequest.framework in Frameworks */,
 			);
@@ -162,6 +167,7 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99FF1E4621787755006A4315 /* CarSwaddleData.framework */,
 				991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */,
 				9913759D2171BE1800F15BEC /* Store.framework */,
 				9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */,

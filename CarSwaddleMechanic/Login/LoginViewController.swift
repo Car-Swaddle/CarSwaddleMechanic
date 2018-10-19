@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Authentication
+//import Authentication
 import Store
 
 final class LoginViewController: UIViewController, StoryboardInstantiating {
@@ -28,13 +28,13 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     @IBAction func didTapLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         store.privateContext { [weak self] context in
-            self?.auth.login(email: email, password: password, context: context) { error in
+            self?.auth.mechanicLogin(email: email, password: password, context: context) { error in
                 DispatchQueue.main.async {
-                    if let currentUserID = User.currentUserID {
-                        let mechanic = Mechanic(context: store.mainContext)
-                        mechanic.identifier = currentUserID
-                        store.mainContext.persist()
-                    }
+//                    if let currentUserID = User.currentUserID {
+//                        let mechanic = Mechanic(context: store.mainContext)
+//                        mechanic.identifier = currentUserID
+//                        store.mainContext.persist()
+//                    }
                     navigator.navigateToLoggedInViewController()
                 }
             }
