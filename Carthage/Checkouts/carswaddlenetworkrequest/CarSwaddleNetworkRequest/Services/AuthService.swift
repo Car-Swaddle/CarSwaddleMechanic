@@ -84,7 +84,7 @@ public class AuthService: Service {
             return nil
         }
         
-        let queryItems: [URLQueryItem] = [URLQueryItem(name: "isMechanic", value: true.stringValue)]
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "isMechanic", value: isMechanic.stringValue)]
         let request = serverRequest.post(with: endpoint, queryItems: queryItems, body: body)
         
         return request?.send(completion: completion)

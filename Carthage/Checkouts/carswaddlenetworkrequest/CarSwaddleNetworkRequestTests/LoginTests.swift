@@ -50,19 +50,20 @@ class LoginTests: XCTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
-    func testSignUp() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let newEmail = UUID().uuidString
-        authService.signUp(email: newEmail + "@k.com", password: password) { json, token, error in
-            XCTAssert(token != nil, "Should have logged in")
-            XCTAssert(json?["mechanic"] == nil, "Should have mechanic")
-            XCTAssert(json?["user"] != nil, "Should have user")
-            exp.fulfill()
-        }
-        
-        waitForExpectations(timeout: 40, handler: nil)
-    }
+    /// Keep this here, but only uncomment if you want to create a new user
+//    func testSignUp() {
+//        let exp = expectation(description: "\(#function)\(#line)")
+//
+//        let newEmail = UUID().uuidString
+//        authService.signUp(email: newEmail + "@k.com", password: password) { json, token, error in
+//            XCTAssert(token != nil, "Should have logged in")
+//            XCTAssert(json?["mechanic"] == nil, "Should have mechanic")
+//            XCTAssert(json?["user"] != nil, "Should have user")
+//            exp.fulfill()
+//        }
+//
+//        waitForExpectations(timeout: 40, handler: nil)
+//    }
     
     func testSignUpExistingEmailFails() {
         let exp = expectation(description: "\(#function)\(#line)")
@@ -112,18 +113,19 @@ class LoginTests: XCTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
-    func testMechanicSignUp() {
-        let exp = expectation(description: "\(#function)\(#line)")
-        
-        let newEmail = UUID().uuidString
-        authService.mechanicSignUp(email: newEmail + "@k.com", password: password) { json, token, error in
-            XCTAssert(token != nil, "Should have logged in")
-            XCTAssert(json?["mechanic"] != nil, "Should have mechanic")
-            XCTAssert(json?["user"] != nil, "Should have user")
-            exp.fulfill()
-        }
-        
-        waitForExpectations(timeout: 40, handler: nil)
-    }
+    /// Keep this here, but only uncomment if you want to create a new user
+//    func testMechanicSignUp() {
+//        let exp = expectation(description: "\(#function)\(#line)")
+//
+//        let newEmail = UUID().uuidString
+//        authService.mechanicSignUp(email: newEmail + "@k.com", password: password) { json, token, error in
+//            XCTAssert(token != nil, "Should have logged in")
+//            XCTAssert(json?["mechanic"] != nil, "Should have mechanic")
+//            XCTAssert(json?["user"] != nil, "Should have user")
+//            exp.fulfill()
+//        }
+//
+//        waitForExpectations(timeout: 40, handler: nil)
+//    }
     
 }
