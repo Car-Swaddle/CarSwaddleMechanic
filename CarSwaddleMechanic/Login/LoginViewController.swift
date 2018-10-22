@@ -30,11 +30,6 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         store.privateContext { [weak self] context in
             self?.auth.mechanicLogin(email: email, password: password, context: context) { error in
                 DispatchQueue.main.async {
-//                    if let currentUserID = User.currentUserID {
-//                        let mechanic = Mechanic(context: store.mainContext)
-//                        mechanic.identifier = currentUserID
-//                        store.mainContext.persist()
-//                    }
                     navigator.navigateToLoggedInViewController()
                 }
             }

@@ -225,7 +225,6 @@
 			children = (
 				9912CD8A216C6E590006FDDF /* SignUpViewController.swift */,
 				9912CDDE216DC5200006FDDF /* SignUpViewController.storyboard */,
-				9912CDE5216DC8480006FDDF /* Availability */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 				9913756F21706CC500F15BEC /* ProfileViewController.storyboard */,
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				9912CDE5216DC8480006FDDF /* Availability */,
 				9912CD92216C74B10006FDDF /* Login */,
 				9912CDA0216C7E220006FDDF /* Resources */,
 				9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */,

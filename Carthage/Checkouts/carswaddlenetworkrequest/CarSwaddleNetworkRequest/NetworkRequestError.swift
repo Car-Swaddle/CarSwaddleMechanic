@@ -8,14 +8,11 @@
 
 import Foundation
 
-public typealias JSONObject = [String: Any]
-
 public extension NetworkRequestError {
     public static let invalidJSON = NetworkRequestError(rawValue: "invalidJSON")
 }
 
 public struct NetworkRequestError: Error {
     public var rawValue: String
-    
 }
 

@@ -56,13 +56,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CarSwaddleMechanic/Login/LoginViewController.swift"
-            timestampString = "561542721.827739"
+            filePath = "CarSwaddleMechanic/Login/SignUp/Availability/AvailabilityViewController.swift"
+            timestampString = "561279576.534057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "didTapLogin()"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "createDefaultTimespans()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
