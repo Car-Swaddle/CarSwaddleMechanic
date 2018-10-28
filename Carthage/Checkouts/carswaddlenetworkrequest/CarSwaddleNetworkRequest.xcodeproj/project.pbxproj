@@ -32,6 +32,8 @@
 		99F026AE217CC97D005FEFC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F026AC217CC97D005FEFC7 /* Main.storyboard */; };
 		99F026B0217CC97E005FEFC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F026AF217CC97E005FEFC7 /* Assets.xcassets */; };
 		99F026B3217CC97E005FEFC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F026B1217CC97E005FEFC7 /* LaunchScreen.storyboard */; };
+		99F0278021852A42005FEFC7 /* RegionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277F21852A42005FEFC7 /* RegionService.swift */; };
+		99F0278221852BE4005FEFC7 /* RegionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */; };
 		99F36C5F216AD5B300CE4564 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		99F026B2217CC97E005FEFC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99F026B4217CC97E005FEFC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F026BA217CC99E005FEFC7 /* CarSwaddleNetworkRequestTestHostApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarSwaddleNetworkRequestTestHostApp.entitlements; sourceTree = "<group>"; };
+		99F0277F21852A42005FEFC7 /* RegionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionService.swift; sourceTree = "<group>"; };
+		99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 			children = (
 				992C53CB2150C59B0076949C /* CarSwaddleLoginTestCase.swift */,
 				99F026A0217BD01B005FEFC7 /* AvailabilityTests.swift */,
+				99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */,
 				99F0269E217BAB3B005FEFC7 /* LoginTests.swift */,
 				992C53CD2150C59B0076949C /* Info.plist */,
 			);
@@ -192,6 +197,7 @@
 				995B9F2C2154BB180030A7CA /* AuthService.swift */,
 				9955BC172154E646008DAF8E /* UserService.swift */,
 				99F02696217B9FB8005FEFC7 /* AvailabilityService.swift */,
+				99F0277F21852A42005FEFC7 /* RegionService.swift */,
 				99F02698217BA048005FEFC7 /* Service.swift */,
 			);
 			path = Services;
@@ -388,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99C791C72150CBA4000167CB /* AutoServiceService.swift in Sources */,
+				99F0278021852A42005FEFC7 /* RegionService.swift in Sources */,
 				99F0269D217BAA18005FEFC7 /* BoolExtension.swift in Sources */,
 				99F02699217BA048005FEFC7 /* Service.swift in Sources */,
 				995B9F2B2154B4DB0030A7CA /* GlobalImports.swift in Sources */,
@@ -407,6 +414,7 @@
 				992C53CC2150C59B0076949C /* CarSwaddleLoginTestCase.swift in Sources */,
 				99F026A1217BD01B005FEFC7 /* AvailabilityTests.swift in Sources */,
 				99F0269F217BAB3B005FEFC7 /* LoginTests.swift in Sources */,
+				99F0278221852BE4005FEFC7 /* RegionServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +659,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = CarSwaddleNetworkRequestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,6 +680,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = CarSwaddleNetworkRequestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

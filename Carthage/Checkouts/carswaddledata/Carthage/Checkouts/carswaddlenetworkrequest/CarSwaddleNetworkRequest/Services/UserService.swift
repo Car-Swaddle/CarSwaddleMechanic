@@ -14,12 +14,10 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let currentUser = Request.Endpoint(rawValue: "/api/current-user")
 }
 
-public class UserService {
-    
-    public init() { }
+public class UserService: Service {
     
     @discardableResult
-    public func getUsers(offset: Int, limit: Int, completion: @escaping (_ json: [[String: Any]]?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func getUsers(offset: Int, limit: Int, completion: @escaping (_ json: [JSONObject]?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let offsetItem = URLQueryItem(name: "offset", value: String(offset))
         let limitItem = URLQueryItem(name: "limit", value: String(limit))
         var urlRequest = serverRequest.get(with: .users, queryItems: [offsetItem, limitItem])
@@ -28,7 +26,7 @@ public class UserService {
         
         return urlRequest?.send { data, error in
             guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [[String: Any]] else {
+                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
                     completion(nil, error)
                     return
             }
@@ -37,14 +35,14 @@ public class UserService {
     }
     
     @discardableResult
-    public func getCurrentUser( completion: @escaping (_ json: [String: Any]?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func getCurrentUser( completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         var urlRequest = serverRequest.get(with: .currentUser)
         
         try? urlRequest?.authenticate()
         
         return urlRequest?.send { data, error in
             guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
                     completion(nil, error)
                     return
             }

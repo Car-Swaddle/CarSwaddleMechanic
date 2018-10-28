@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AutoService" representedClassName="AutoService" syncable="YES">
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
@@ -23,7 +23,8 @@
     <entity name="Mechanic" representedClassName="Mechanic" syncable="YES">
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="scheduleTimeSpans" toMany="YES" deletionRule="Nullify" destinationEntity="TemplateTimeSpan" inverseName="mechanic" inverseEntity="TemplateTimeSpan" syncable="YES"/>
+        <relationship name="scheduleTimeSpans" toMany="YES" deletionRule="Cascade" destinationEntity="TemplateTimeSpan" inverseName="mechanic" inverseEntity="TemplateTimeSpan" syncable="YES"/>
+        <relationship name="serviceRegion" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Region" inverseName="mechanic" inverseEntity="Region" syncable="YES"/>
         <relationship name="services" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="mechanic" inverseEntity="AutoService" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="mechanic" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -42,8 +43,16 @@
         <attribute name="value" attributeType="Decimal" syncable="YES"/>
         <relationship name="price" maxCount="1" deletionRule="Nullify" destinationEntity="Price" inverseName="parts" inverseEntity="Price" syncable="YES"/>
     </entity>
+    <entity name="Region" representedClassName="Region" syncable="YES">
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Float" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Float" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="radius" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="serviceRegion" inverseEntity="Mechanic" syncable="YES"/>
+    </entity>
     <entity name="TemplateTimeSpan" representedClassName="TemplateTimeSpan" syncable="YES">
         <attribute name="duration" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="startTime" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="weekday" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="scheduleTimeSpans" inverseEntity="Mechanic" syncable="YES"/>
@@ -78,13 +87,14 @@
     <elements>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="225"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="105"/>
-        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="120"/>
+        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="135"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="90"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
-        <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="105"/>
+        <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="150"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
+        <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
     </elements>
 </model>

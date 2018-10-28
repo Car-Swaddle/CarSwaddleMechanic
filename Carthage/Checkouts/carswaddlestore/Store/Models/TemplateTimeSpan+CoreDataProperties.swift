@@ -16,8 +16,10 @@ extension TemplateTimeSpan {
         return NSFetchRequest<TemplateTimeSpan>(entityName: TemplateTimeSpan.entityName)
     }
 
-    /// The minute of the day 
+    @NSManaged public var identifier: String
+    /// The second of the day
     @NSManaged public var startTime: Int64
+    /// The number of seconds
     @NSManaged public var duration: Double
     @NSManaged public var mechanic: Mechanic
 

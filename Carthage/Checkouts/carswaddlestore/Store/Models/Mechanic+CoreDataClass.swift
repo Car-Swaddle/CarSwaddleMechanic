@@ -12,4 +12,8 @@ import CoreData
 @objc(Mechanic)
 public final class Mechanic: NSManagedObject, NSManagedObjectFetchable {
 
+    public static func currentLoggedInMechanic(in context: NSManagedObjectContext) -> Mechanic? {
+        return User.currentUser(context: context)?.mechanic
+    }
+    
 }

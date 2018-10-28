@@ -1,0 +1,40 @@
+//
+//  RegionTests.swift
+//  CarSwaddleDataTests
+//
+//  Created by Kyle Kendall on 10/28/18.
+//  Copyright © 2018 CarSwaddle. All rights reserved.
+//
+
+import XCTest
+@testable import CarSwaddleData
+import CoreData
+import Store
+
+class RegionTests: LoginTestCase {
+    
+    let regionNetwork = RegionNetwork()
+    
+    func testRegion() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let context = store.mainContext
+        let latitude: CGFloat = 11.3
+        let longitude: CGFloat = -89.37
+        let radius: Double = 360
+        regionNetwork.postRegion(latitude: latitude, longitude: longitude, radius: radius, in: context) { objectID, error in
+            guard let objectID = objectID else {
+                XCTAssert(false, "Should have object ID")
+                exp.fulfill()
+                return
+            }
+            context.perform {
+                let region = context.object(with: objectID) as? Region
+                XCTAssert(region != nil, "Should have region here")
+                XCTAssert(region?.radius == radius, "Should have \(radius) got \(String(describing: region?.radius))")
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+}

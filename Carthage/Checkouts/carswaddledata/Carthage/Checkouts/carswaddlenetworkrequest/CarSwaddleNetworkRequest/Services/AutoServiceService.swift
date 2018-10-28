@@ -15,9 +15,7 @@ extension NetworkRequest.Request.Endpoint {
 }
 
 /// The service used to make requests to the server
-public final class AutoServiceService {
-    
-    public init() {}
+public final class AutoServiceService: Service {
     
 //    @discardableResult
 //    public func getServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {

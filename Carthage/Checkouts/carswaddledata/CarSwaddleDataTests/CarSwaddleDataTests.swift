@@ -8,12 +8,23 @@
 
 import XCTest
 @testable import CarSwaddleData
+import CoreData
+import Store
+
+let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
 
 class CarSwaddleDataTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+//    override func setUp() {
+//        let exp = expectation(description: "The ex")
+//        store.privateContext { context in
+//            Auth().login(email: "k@k.com", password: "password", context: context) { error in
+//                print("in")
+//                exp.fulfill()
+//            }
+//        }
+//        waitForExpectations(timeout: 40, handler: nil)
+//    }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+
+
 public enum Weekday: Int16, CaseIterable {
     case sunday
     case monday
@@ -20,7 +22,26 @@ public enum Weekday: Int16, CaseIterable {
 }
 
 @objc(TemplateTimeSpan)
-public final class TemplateTimeSpan: NSManagedObject {
+public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable {
+    
+    public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let identifier = json["id"] as? String,
+            let duration = json["duration"] as? Double,
+            let weekdayInt = json["weekDay"] as? Int16,
+            let mechanicID = json["mechanicID"] as? String,
+            let mechanic = Mechanic.fetch(with: mechanicID, in: context),
+            let weekday = Weekday(rawValue: weekdayInt),
+            let dateString = json["startTime"] as? String,
+            let date = TemplateTimeSpan.dateFormatter.date(from: dateString) else { return nil }
+        
+        self.init(context: context)
+        self.identifier = identifier
+        self.duration = duration
+        self.startTime = Int64(date.secondsSinceMidnight())
+        self.weekday = weekday
+        self.mechanic = mechanic
+    }
+    
     
     private let weekdayKey = "weekday"
     
@@ -38,5 +59,11 @@ public final class TemplateTimeSpan: NSManagedObject {
             return value
         }
     }
+    
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
 
 }

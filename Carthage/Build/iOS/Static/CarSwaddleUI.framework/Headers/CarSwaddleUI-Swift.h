@@ -163,6 +163,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_OBJC(Msg) SWIFT_DEPRECATED_MSG(Msg)
 #endif
 #if __has_feature(modules)
+@import CoreLocation;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -183,6 +184,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+
 @protocol UIViewControllerContextTransitioning;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI25HorizontalSlideTransition")
@@ -192,6 +195,24 @@ SWIFT_CLASS("_TtC12CarSwaddleUI25HorizontalSlideTransition")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
+
+
+/// Thin layer around CLLocationManager providing a simpler API and caching.
+SWIFT_CLASS("_TtC12CarSwaddleUI15LocationManager")
+@interface LocationManager : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class CLLocationManager;
+@class CLLocation;
+
+@interface LocationManager (SWIFT_EXTENSION(CarSwaddleUI)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
+
 
 
 

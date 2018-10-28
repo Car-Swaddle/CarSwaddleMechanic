@@ -10,6 +10,8 @@ import XCTest
 import CoreData
 @testable import Store
 
+let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+
 class StoreTests: XCTestCase {
     
     override func setUp() {
@@ -28,7 +30,6 @@ class StoreTests: XCTestCase {
     }
     
     func testInsertTemplateTimespan() {
-        let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
         
         let mechanic = Mechanic(context: store.mainContext)
         mechanic.identifier = "someid"

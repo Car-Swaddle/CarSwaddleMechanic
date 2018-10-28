@@ -9,6 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import Store
+import CarSwaddleData
 
 private let numberOfDays = 7
 
@@ -23,7 +24,6 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
     }
     
     private var timespans: [TemplateTimeSpan]!
-    
 
     @IBOutlet private weak var tableView: UITableView!
     
@@ -34,6 +34,7 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
         
         setupTable()
         updateTimespanIfNeeded()
+        
     }
     
     private func updateTimespanIfNeeded() {

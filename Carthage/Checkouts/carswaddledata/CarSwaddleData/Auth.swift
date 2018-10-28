@@ -77,4 +77,8 @@ public class Auth {
         return authService.logout(completion: completion)
     }
     
+    public var isLoggedIn: Bool {
+        return authentication.token != nil
+    }
+    
 }

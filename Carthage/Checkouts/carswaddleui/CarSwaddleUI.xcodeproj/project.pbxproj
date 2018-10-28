@@ -16,6 +16,7 @@
 		9970121B2154B14200D547C5 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997012112154B14200D547C5 /* CarSwaddleUI.framework */; };
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99F027752184533D005FEFC7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F027742184533D005FEFC7 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		9970121A2154B14200D547C5 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
 		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99F027742184533D005FEFC7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */,
 				995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */,
 				9912CD8E216C6F3A0006FDDF /* HorizontalSlideTransition.swift */,
+				99F027742184533D005FEFC7 /* LocationManager.swift */,
 				9912CD96216C75E80006FDDF /* Extensions */,
 				997012142154B14200D547C5 /* CarSwaddleUI.h */,
 				997012152154B14200D547C5 /* Info.plist */,
@@ -223,6 +226,7 @@
 				9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */,
 				995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */,
 				995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */,
+				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
 				9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */,
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,

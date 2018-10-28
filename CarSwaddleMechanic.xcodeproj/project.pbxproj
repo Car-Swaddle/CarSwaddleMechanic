@@ -34,13 +34,14 @@
 		9913759E2171BE1800F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
 		9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		991375B4217314A800F15BEC /* NSManagedObjectFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991375B3217314A800F15BEC /* NSManagedObjectFetchable.swift */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
 		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
 		9992766221673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */; };
 		9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */; };
+		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
+		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99FF1E4521787360006A4315 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99FF1E4721787755006A4315 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; };
 		99FF1E4821787769006A4315 /* CarSwaddleData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -116,7 +117,6 @@
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9913759D2171BE1800F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
-		991375B3217314A800F15BEC /* NSManagedObjectFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchable.swift; sourceTree = "<group>"; };
 		9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +129,8 @@
 		9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicUITests.swift; sourceTree = "<group>"; };
 		9992766321673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicStore.swift; sourceTree = "<group>"; };
+		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
+		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99FF1E4621787755006A4315 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,11 +274,12 @@
 				9912CDA1216C7E350006FDDF /* Launch */,
 				9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */,
 				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
-				991375B3217314A800F15BEC /* NSManagedObjectFetchable.swift */,
 				9912CD90216C703D0006FDDF /* ProfileViewController.swift */,
 				9913756F21706CC500F15BEC /* ProfileViewController.storyboard */,
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */,
+				99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */,
 				9912CDE5216DC8480006FDDF /* Availability */,
 				9912CD92216C74B10006FDDF /* Login */,
 				9912CDA0216C7E220006FDDF /* Resources */,
@@ -423,6 +426,7 @@
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
+				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
@@ -489,11 +493,11 @@
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
-				991375B4217314A800F15BEC /* NSManagedObjectFetchable.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
+				99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,

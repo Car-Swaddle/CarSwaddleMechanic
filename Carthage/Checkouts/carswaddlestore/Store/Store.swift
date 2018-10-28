@@ -8,6 +8,8 @@
 
 import CoreData
 
+public typealias JSONObject = [String: Any]
+
 private let modelFileExtension = "momd"
 
 public class Store {
@@ -76,7 +78,7 @@ public class Store {
 public extension NSManagedObjectContext {
     
     public func persist() {
-        guard  hasChanges else { return }
+        guard hasChanges else { return }
         do {
             try save()
         } catch {

@@ -9,14 +9,12 @@
 import Foundation
 import CoreData
 
-//typealias JSONObject = [String: Any?]
-
 private let currentUserIDKey = "currentUserIDKey"
 
 @objc(User)
 public final class User: NSManagedObject, NSManagedObjectFetchable {
     
-    public convenience init?(json: [String: Any?], context: NSManagedObjectContext) {
+    public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let id = json["id"] as? String else {
                 return nil
         }
@@ -28,8 +26,7 @@ public final class User: NSManagedObject, NSManagedObjectFetchable {
     }
     
     public static func currentUser(context: NSManagedObjectContext) -> User? {
-        guard let userID = currentUserID,
-            let user = User.fetch(with: userID, in: context) else {
+        guard let userID = currentUserID, let user = User.fetch(with: userID, in: context) else {
                 return nil
         }
         return user

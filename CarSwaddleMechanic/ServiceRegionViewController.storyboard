@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Service Region View Controller-->
+        <scene sceneID="jvZ-zx-XpB">
+            <objects>
+                <viewController id="bU7-jb-ZMg" customClass="ServiceRegionViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3H1-hZ-Kzm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="meu-B5-g6E">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="meu-B5-g6E" firstAttribute="leading" secondItem="3H1-hZ-Kzm" secondAttribute="leading" id="FuL-P4-OIW"/>
+                            <constraint firstItem="meu-B5-g6E" firstAttribute="bottom" secondItem="3H1-hZ-Kzm" secondAttribute="bottom" id="K24-o7-Gi1"/>
+                            <constraint firstItem="meu-B5-g6E" firstAttribute="top" secondItem="3H1-hZ-Kzm" secondAttribute="top" id="MPY-Sp-hUT"/>
+                            <constraint firstAttribute="trailing" secondItem="meu-B5-g6E" secondAttribute="trailing" id="f12-wz-NFY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Swx-Qc-J3f"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="meu-B5-g6E" id="uPN-R8-Qvh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="npy-JS-DP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="184"/>
+        </scene>
+    </scenes>
+</document>
