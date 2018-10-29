@@ -164,7 +164,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import CoreData;
-@import CoreGraphics;
 @import Foundation;
 #endif
 
@@ -324,9 +323,9 @@ SWIFT_CLASS_NAMED("Region")
 
 
 @interface Region (SWIFT_EXTENSION(Store))
-@property (nonatomic) CGFloat latitude;
-@property (nonatomic) CGFloat longitude;
 @property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) double longitude;
+@property (nonatomic) double latitude;
 @property (nonatomic) double radius;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @end

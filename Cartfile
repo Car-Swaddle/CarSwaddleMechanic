@@ -1,5 +1,5 @@
-git "https://kkendall33@bitbucket.org/kkendall33/carswaddleui.git"
-git "https://kkendall33@bitbucket.org/kkendall33/carswaddlenetworkrequest.git"
-git "https://kkendall33@bitbucket.org/kkendall33/authentication.git"
-git "https://kkendall33@bitbucket.org/kkendall33/carswaddledata.git"
+git "git@bitbucket.org:kkendall33/carswaddleui.git"
+git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git"
+git "git@bitbucket.org:kkendall33/authentication.git"
+git "git@bitbucket.org:kkendall33/carswaddledata.git"
 

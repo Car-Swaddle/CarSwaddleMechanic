@@ -45,8 +45,8 @@
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
         <attribute name="identifier" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" attributeType="Float" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longitude" attributeType="Float" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="radius" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="serviceRegion" inverseEntity="Mechanic" syncable="YES"/>
     </entity>

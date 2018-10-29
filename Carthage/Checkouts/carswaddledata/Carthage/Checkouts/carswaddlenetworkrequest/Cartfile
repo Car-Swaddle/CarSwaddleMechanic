@@ -1,2 +1,2 @@
-git "https://kkendall33@bitbucket.org/kkendall33/networkrequest.git"
-git "https://kkendall33@bitbucket.org/kkendall33/authentication.git"
+git "git@bitbucket.org:kkendall33/networkrequest.git"
+git "git@bitbucket.org:kkendall33/authentication.git"

@@ -13,10 +13,17 @@ import CarSwaddleNetworkRequest
 
 public final class RegionNetwork {
     
+    public init() { }
+    
     let regionService = RegionService()
     
     @discardableResult
-    public func postRegion(latitude: CGFloat, longitude: CGFloat, radius: Double, in context: NSManagedObjectContext, completion: @escaping (_ regionID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func postRegion(region: Region, in context: NSManagedObjectContext, completion: @escaping (_ regionID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return postRegion(latitude: region.latitude, longitude: region.longitude, radius: region.radius, in: context, completion: completion)
+    }
+    
+    @discardableResult
+    public func postRegion(latitude: Double, longitude: Double, radius: Double, in context: NSManagedObjectContext, completion: @escaping (_ regionID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return regionService.postRegion(latitude: latitude, longitude: longitude, radius: radius) { json, error in
             context.perform {
                 var regionID: NSManagedObjectID?

@@ -32,8 +32,8 @@ class RegionTests: XCTestCase {
 }
 
 private let regionJSON: [String: Any] = [
-    "latitude": CGFloat(12.0),
-    "longitude": CGFloat(-19.0),
+    "latitude": Double(12.0),
+    "longitude": Double(-19.0),
     "radius": Double(203.0),
     "id": "234567-5678765434567-98734"
 ]

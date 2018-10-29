@@ -274,7 +274,7 @@ extension LocationManager: CLLocationManagerDelegate {
 extension CLAuthorizationStatus {
     
     /// Simpler way of knowing if the current location is able to be fetched.
-    fileprivate var locationCanBeFetched: Bool? {
+    public var locationCanBeFetched: Bool? {
         switch self {
         case .notDetermined:
             return nil
