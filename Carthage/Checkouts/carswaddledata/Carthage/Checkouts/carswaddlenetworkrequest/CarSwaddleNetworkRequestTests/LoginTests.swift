@@ -13,7 +13,7 @@ private let password = "password"
 
 class LoginTests: XCTestCase {
     
-    private let authService = AuthService()
+    private let authService = AuthService(serviceRequest: serviceRequest)
     
     func testLogin() {
         let exp = expectation(description: "\(#function)\(#line)")

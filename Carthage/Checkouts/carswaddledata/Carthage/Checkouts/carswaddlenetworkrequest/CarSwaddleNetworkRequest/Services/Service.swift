@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import NetworkRequest
 
 public class Service {
     
-    public init() {}
+    public private(set) var serviceRequest: Request
+    
+    public init(serviceRequest: Request) {
+        self.serviceRequest = serviceRequest
+    }
     
 }

@@ -15,7 +15,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    private let auth = Auth()
+    private let auth = Auth(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         store.privateContext { [weak self] context in
             self?.auth.mechanicSignUp(email: email, password: password, context: context) { error in
 //                print("logged in: \(String(describing: error))")
+                guard error == nil && self?.auth.isLoggedIn == true else { return }
                 DispatchQueue.main.async {
                     navigator.navigateToLoggedInViewController()
                 }

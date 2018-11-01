@@ -39,6 +39,7 @@
 		99F0278B21858611005FEFC7 /* Region+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278921858611005FEFC7 /* Region+CoreDataClass.swift */; };
 		99F0278C21858611005FEFC7 /* Region+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */; };
 		99F0279021859E29005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278F21859E29005FEFC7 /* RegionTests.swift */; };
+		99F027A0218AE51B005FEFC7 /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		99F0278921858611005FEFC7 /* Region+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+CoreDataClass.swift"; sourceTree = "<group>"; };
 		99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99F0278F21859E29005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
+		99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
 		99F78F2D214BA53600D1BD28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 			children = (
 				99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */,
 				99F02785218581E5005FEFC7 /* DateExtension.swift */,
+				99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				991B403B216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift in Sources */,
 				991B4031216ADC5D00D7644D /* Location+CoreDataClass.swift in Sources */,
+				99F027A0218AE51B005FEFC7 /* PrimitiveExtensions.swift in Sources */,
 				999E9194214B81C100FF894B /* Store.swift in Sources */,
 				99F0278C21858611005FEFC7 /* Region+CoreDataProperties.swift in Sources */,
 				9913759A217080D900F15BEC /* CarSwaddleStore.xcdatamodeld in Sources */,

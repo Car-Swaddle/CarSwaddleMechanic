@@ -28,7 +28,7 @@ public final class Region: NSManagedObject, NSManagedObjectFetchable {
         self.radius = radius
     }
     
-    public var coordinate: CLLocationCoordinate2D {
+    public var centerCoordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
     }
     

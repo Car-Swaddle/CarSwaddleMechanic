@@ -20,11 +20,11 @@ public class UserService: Service {
     public func getUsers(offset: Int, limit: Int, completion: @escaping (_ json: [JSONObject]?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let offsetItem = URLQueryItem(name: "offset", value: String(offset))
         let limitItem = URLQueryItem(name: "limit", value: String(limit))
-        var urlRequest = serverRequest.get(with: .users, queryItems: [offsetItem, limitItem])
+        guard var urlRequest = serviceRequest.get(with: .users, queryItems: [offsetItem, limitItem]) else { return nil }
         
-        try? urlRequest?.authenticate()
+        try? urlRequest.authenticate()
         
-        return urlRequest?.send { data, error in
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
             guard let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
                     completion(nil, error)
@@ -36,11 +36,11 @@ public class UserService: Service {
     
     @discardableResult
     public func getCurrentUser( completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        var urlRequest = serverRequest.get(with: .currentUser)
+        guard var urlRequest = serviceRequest.get(with: .currentUser) else { return nil }
         
-        try? urlRequest?.authenticate()
+        try? urlRequest.authenticate()
         
-        return urlRequest?.send { data, error in
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
             guard let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
                     completion(nil, error)

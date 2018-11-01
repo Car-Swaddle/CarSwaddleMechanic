@@ -13,10 +13,14 @@ import Store
 
 public class Auth {
     
-    private let authService = AuthService()
+    public let serviceRequest: Request
+    
+    lazy private var authService = AuthService(serviceRequest: serviceRequest)
     private let authentication = AuthController()
     
-    public init() { }
+    public init(serviceRequest: Request) {
+        self.serviceRequest = serviceRequest
+    }
     
     @discardableResult
     public func signUp(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {

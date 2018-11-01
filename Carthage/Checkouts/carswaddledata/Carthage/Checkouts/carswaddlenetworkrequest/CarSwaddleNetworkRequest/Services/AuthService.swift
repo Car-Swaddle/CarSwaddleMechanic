@@ -85,9 +85,8 @@ public class AuthService: Service {
         }
         
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "isMechanic", value: isMechanic.stringValue)]
-        let request = serverRequest.post(with: endpoint, queryItems: queryItems, body: body)
-        
-        return request?.send(completion: completion)
+        guard let request = serviceRequest.post(with: endpoint, queryItems: queryItems, body: body) else { return nil }
+        return serviceRequest.send(urlRequest: request, completion: completion)
     }
     
     private func serielizedData(from email: String, password: String) -> Data? {

@@ -21,11 +21,12 @@ final public class AvailabilityService: Service {
     public func postAvailability(jsonArray: [JSONObject], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
         let json: JSONObject = ["spans": jsonArray]
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
-        var urlRequest = serverRequest.post(with: .availability, body: body, contentType: .applicationJSON)
+        guard var urlRequest = serviceRequest.post(with: .availability, body: body, contentType: .applicationJSON) else { return nil }
         do {
-            try urlRequest?.authenticate()
+            try urlRequest.authenticate()
         } catch { print("couldn't authenticate") }
-        return urlRequest?.send { data, error in
+//        return urlRequest?.send { data, error in
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
             guard let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
                     completion(nil, error)
@@ -37,11 +38,11 @@ final public class AvailabilityService: Service {
     
     @discardableResult
     public func getAvailability(completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
-        var urlRequest = serverRequest.get(with: .availability)
+        guard var urlRequest = serviceRequest.get(with: .availability) else { return nil }
         do {
-            try urlRequest?.authenticate()
+            try urlRequest.authenticate()
         } catch { print("couldn't authenticate") }
-        return urlRequest?.send { data, error in
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
             guard let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
                     completion(nil, error)

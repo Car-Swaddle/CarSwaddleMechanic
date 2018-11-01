@@ -41,5 +41,31 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>192.168.0.255</key>
+			<true/>
+			<key>192.168.0.20</key>
+			<true/>
+			<key>Kyles-MacBook-Pro.local</key>
+			<true/>
+			<key>kkenda2-ml.local</key>
+			<true/>
+			<key>169.254.184.119</key>
+			<true/>
+			<key>192.168.0.48</key>
+			<true/>
+			<key>127.0.0.1</key>
+			<true/>
+			<key>199.192.98.106</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

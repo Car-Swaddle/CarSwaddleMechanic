@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import MapKit
 
 extension CLLocationDistance {
     
@@ -18,5 +19,37 @@ extension CLLocationDistance {
     static let kilometer: CLLocationDistance = 1000
     static let centimeter: CLLocationDistance = 0.01
     static let millimeter: CLLocationDistance = 0.001
+    
+    var kilometersToMeters: CLLocationDistance {
+        return self * 1000
+    }
+    
+}
+
+extension CLLocationDegrees {
+    static let kilometersPerLongitudinalDegree: Double = 111
+}
+
+extension MKCoordinateRegion {
+    
+    var longitudinalDistance: CLLocationDistance {
+        let northLocation = CLLocation(latitude: center.latitude, longitude: center.longitude - span.longitudeDelta * 0.5)
+        let southLocation = CLLocation(latitude: center.latitude, longitude: center.longitude + span.longitudeDelta * 0.5)
+        return northLocation.distance(from: southLocation)
+    }
+    
+    var latitudinalDistance: CLLocationDistance {
+        let eastLocation = CLLocation(latitude: center.latitude - span.latitudeDelta * 0.5, longitude: center.longitude)
+        let westLocation = CLLocation(latitude: center.latitude + span.latitudeDelta * 0.5, longitude: center.longitude)
+        return eastLocation.distance(from: westLocation)
+    }
+    
+}
+
+extension MKCoordinateSpan {
+    
+    var longitudinalKilometers: CLLocationDistance {
+        return longitudeDelta * .kilometersPerLongitudinalDegree
+    }
     
 }

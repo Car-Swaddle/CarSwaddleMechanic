@@ -65,5 +65,15 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable {
         formatter.dateFormat = "HH:mm:ss"
         return formatter
     }()
+    
+    public var toJSON: JSONObject {
+        return ["startTime": startTime, "duration": duration, "weekDay": weekday.rawValue]
+    }
+    
+    public var startTimeStringFormat: String {
+        return startTime.timeOfDayFormattedString
+    }
 
 }
+
+

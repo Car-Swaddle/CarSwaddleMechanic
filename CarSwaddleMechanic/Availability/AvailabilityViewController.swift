@@ -15,12 +15,18 @@ private let numberOfDays = 7
 
 final class AvailabilityViewController: UIViewController, StoryboardInstantiating {
     
-    class func create(with timespans: [TemplateTimeSpan]? = nil) -> AvailabilityViewController {
+    class func create() -> AvailabilityViewController {
         let viewController = AvailabilityViewController.viewControllerFromStoryboard()
         if let timespans = timespans {
             viewController.timespans = timespans
+        } else {
+            
         }
         return viewController
+    }
+    
+    private func requestTimeSpans() {
+        let s = TemplateTimeSpanNetwork()
     }
     
     private var timespans: [TemplateTimeSpan]!

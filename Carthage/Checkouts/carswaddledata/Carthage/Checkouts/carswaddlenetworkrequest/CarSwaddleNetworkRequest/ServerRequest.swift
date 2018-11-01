@@ -10,24 +10,24 @@ import Foundation
 import Authentication
 
 
-#if targetEnvironment(simulator)
-    private let domain = "127.0.0.1"
-#else
-    private let domain = "kkenda2-ml.local"
-#endif
+//#if targetEnvironment(simulator)
+//    private let domain = "127.0.0.1"
+//#else
+//    private let domain = "Kyles-MacBook-Pro.local"
+//#endif
 
-public let serverRequest: Request = {
-    let request = Request(domain: domain)
-    request.port = 3000
-//    request.port = 20125
-    request.timeout = 15
-    request.defaultScheme = .http
-    return request
-}()
+//public let serverRequest: Request = {
+//    let request = Request(domain: domain)
+//    request.port = 3000
+////    request.port = 20125
+//    request.timeout = 15
+//    request.defaultScheme = .http
+//    return request
+//}()
 
-let authentication = AuthController()
+private let authentication = AuthController()
 
-enum RequestError: Error {
+public enum RequestError: Error {
     case couldNotAuthenticate
 }
 
@@ -42,35 +42,33 @@ extension URLRequest {
         setValue("Bearer \(token)", forHTTPHeaderField: authenticationHeader)
     }
     
-    func send(completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return send { data, response, error in
+}
+
+
+extension Request {
+    
+    func send(urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return send(urlRequest: urlRequest) { data, response, error in
             completion(data, error)
         }
     }
     
-    func send(completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = serverRequest.dataTask(with: self, completion: completion)
+    func send(urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = self.dataTask(with: urlRequest, completion: completion)
         task?.resume()
         return task
     }
     
-    func download(completion: @escaping (_ url: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
-        return download { url, response, error in
+    func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+        return download(urlRequest: urlRequest) { url, response, error in
             completion(url, error)
         }
     }
     
-    func download(completion: @escaping (_ url: URL?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
-        let task = serverRequest.downloadTask(with: self, completion: completion)
+    func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+        let task = self.downloadTask(with: urlRequest, completion: completion)
         task?.resume()
         return task
     }
     
 }
-
-//extension URLSessionDataTask {
-//
-//    func sendWithAuth() {
-//    }
-//
-//}

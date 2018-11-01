@@ -13,8 +13,8 @@ private let defaultDuration: Double = 60 * 60
 
 class AvailabilityTests: CarSwaddleLoginTestCase {
     
-    private let availabilityService = AvailabilityService()
-    private let authService = AuthService()
+    private let availabilityService = AvailabilityService(serviceRequest: serviceRequest)
+    private let authService = AuthService(serviceRequest: serviceRequest)
     
     private var templatesJSON: [JSONObject] = []
     
