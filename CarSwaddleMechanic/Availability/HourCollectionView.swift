@@ -24,8 +24,6 @@ class Hour {
     }
 }
 
-private let numberOfHours: Int = 24
-
 final class HourCollectionView: UICollectionView {
     
     weak var hourDelegate: HourCollectionViewDelegate?

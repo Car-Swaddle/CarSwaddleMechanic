@@ -10,7 +10,7 @@ import Foundation
 
 extension Date {
     
-    func secondsSinceMidnight() -> Int {
+    public func secondsSinceMidnight() -> Int {
         let units: Set<Calendar.Component>  = [.hour, .minute, .second]
         let components = Calendar.current.dateComponents(units, from: self)
         let hoursInSeconds = 60 * 60 * (components.hour ?? 0)

@@ -130,6 +130,19 @@ public extension NSManagedObjectFetchable where Self: NSManagedObject {
         return performFetch(with: fetchRequest, in: context)
     }
     
+    /// Fetch objects from their object ids.
+    ///
+    /// - Parameters:
+    ///   - objectIDs: <#objectIDs description#>
+    ///   - context: <#context description#>
+    /// - Returns: <#return value description#>
+    static func fetchObjects(with objectIDs: [NSManagedObjectID], in context: NSManagedObjectContext) -> [Self] {
+        let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: Self.entityName)
+        fetchRequest.predicate = NSPredicate(format: "Self in %@", objectIDs)
+        
+        return performFetch(with: fetchRequest, in: context)
+    }
+    
     
     /// Given a context, holding managed objects, you can pass a subset of managed objects belonging to the given context
     /// and this function will `delete` any managed objects that is not part of the passed in subset of managed objects.

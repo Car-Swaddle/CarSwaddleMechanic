@@ -29,7 +29,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
     
     private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23]
     
-    private var timespans: Set<TemplateTimeSpan> = []
+    private var timespans: [TemplateTimeSpan] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +38,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
     
     func configure(day: Weekday, timespans: [TemplateTimeSpan]) {
         self.weekday = day
-        self.timespans = Set<TemplateTimeSpan>(timespans)
+        self.timespans = timespans
         collectionView.hourDelegate = self
         collectionView.hours = self.hours(from: timespans)
         layoutIfNeeded()
@@ -47,13 +47,13 @@ final class DayCell: UITableViewCell, NibRegisterable {
         collectionViewHeightConstraint.constant = collectionView.contentSize.height
     }
     
-    private var calendar = Calendar(identifier: .gregorian)
+//    private static var calendar = Calendar(identifier: .gregorian)
     
     private func hours(from timespans: [TemplateTimeSpan]) -> [Hour] {
         var hours: [Hour] = []
         for slot in timeSlots {
             let isThere = timespans.contains { timespan -> Bool in
-                let hour = timespan.startTime / 60
+                let hour = timespan.startTime / 3600
                 return hour == slot
             }
             let hour = Hour(value: slot, isSelected: isThere)
@@ -77,26 +77,29 @@ final class DayCell: UITableViewCell, NibRegisterable {
 extension DayCell: HourCollectionViewDelegate {
     
     func didSelectHour(hour: Hour, collectionView: HourCollectionView) {
-        guard let weekday = weekday, let currentUserID = User.currentUserID else { return }
+        guard let weekday = weekday, let mechanicID = User.currentUser(context: store.mainContext)?.mechanic?.identifier else { return }
         
-        if let timespan = TemplateTimeSpan.fetch(from: hour, weekday: weekday, mechanicID: currentUserID) {
-            timespans.remove(timespan)
+        if let timespan = TemplateTimeSpan.fetch(from: hour, weekday: weekday, mechanicID: mechanicID) {
+            timespans.removeAll { loopTimespan -> Bool in
+                return loopTimespan.identifier == timespan.identifier
+            }
             store.mainContext.delete(timespan)
             store.mainContext.persist()
             delegate?.didDeleteTemplateTimeSpan(timespan, dayCell: self)
         } else {
             let timespan = TemplateTimeSpan(context: store.mainContext)
-            timespan.duration = 60 * 60
-            timespan.startTime = Int64(hour.value * 60)
+            timespan.identifier = UUID().uuidString
+            timespan.duration = .hour
+            timespan.startTime = Int64(hour.value * 3600)
             timespan.weekday = weekday
-            if let mechanic = Mechanic.fetch(with: currentUserID, in: store.mainContext) {
+            if let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext) {
                 timespan.mechanic = mechanic
             }
-            timespans.insert(timespan)
+            timespans.append(timespan)
             store.mainContext.persist()
             delegate?.didAddTimeSpan(timespan, dayCell: self)
         }
-        collectionView.hours = self.hours(from: Array(timespans))
+        collectionView.hours = self.hours(from: timespans)
     }
     
 }
@@ -106,7 +109,7 @@ extension DayCell: HourCollectionViewDelegate {
 extension TemplateTimeSpan {
     
     static func fetch(from hour: Hour, weekday: Weekday, mechanicID: String) -> TemplateTimeSpan? {
-        let predicate = NSPredicate(format: "%K == %@ && weekday == %i && %K == %i", #keyPath(TemplateTimeSpan.mechanic.identifier), mechanicID, weekday.rawValue, #keyPath(TemplateTimeSpan.startTime), hour.value * 60)
+        let predicate = NSPredicate(format: "%K == %@ && weekday == %i && %K == %i", #keyPath(TemplateTimeSpan.mechanic.identifier), mechanicID, weekday.rawValue, #keyPath(TemplateTimeSpan.startTime), hour.value * 3600)
         let fetchRequest: NSFetchRequest<TemplateTimeSpan> = TemplateTimeSpan.fetchRequest()
         fetchRequest.predicate = predicate
         

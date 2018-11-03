@@ -9,48 +9,64 @@
 import UIKit
 import CarSwaddleUI
 import Store
+import CoreData
 import CarSwaddleData
 
-private let numberOfDays = 7
 
 final class AvailabilityViewController: UIViewController, StoryboardInstantiating {
     
-    class func create() -> AvailabilityViewController {
+    let network = TemplateTimeSpanNetwork(serviceRequest: serviceRequest)
+    
+    class func create(shouldCreateDefaultTimeSpans: Bool = false) -> AvailabilityViewController {
         let viewController = AvailabilityViewController.viewControllerFromStoryboard()
-        if let timespans = timespans {
-            viewController.timespans = timespans
-        } else {
-            
-        }
+        viewController.shouldCreateDefaultTimeSpans = shouldCreateDefaultTimeSpans
         return viewController
     }
     
-    private func requestTimeSpans() {
-        let s = TemplateTimeSpanNetwork()
+    private func requestTimeSpans(completion: @escaping () -> Void) {
+        store.privateContext { [weak self] context in
+            self?.network.getTimeSpans(in: context) { objectIDs, error in
+                if objectIDs.count > 0 {
+                    store.mainContext { mainContext in
+                        let timespans = TemplateTimeSpan.fetchObjects(with: objectIDs, in: mainContext)
+                        self?.timespans = timespans
+                    }
+                } else {
+                    completion()
+                }
+            }
+        }
     }
     
-    private var timespans: [TemplateTimeSpan]!
-
     @IBOutlet private weak var tableView: UITableView!
-    
+    private var shouldCreateDefaultTimeSpans: Bool = false
     private var days: [Weekday] = Weekday.allCases
+    private var timespans: [TemplateTimeSpan] = [] {
+        didSet { tableView.reloadData() }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTable()
-        updateTimespanIfNeeded()
+        requestTimeSpans { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateTimespansIfNeeded()
+            }
+        }
         
+        updateTimespansIfNeeded()
     }
     
-    private func updateTimespanIfNeeded() {
-        guard timespans == nil else { return }
+    private func updateTimespansIfNeeded() {
+        guard shouldCreateDefaultTimeSpans else { return }
         timespans = createDefaultTimespans()
     }
     
     private func setupTable() {
         tableView.register(DayCell.self)
         tableView.allowsSelection = false
+        tableView.tableFooterView = UIView()
     }
     
     private var defaultHours: [Int] = [9,10,11,12,13,14,15,16,17]
@@ -65,11 +81,9 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
         for weekday in Weekday.allCases {
             for hour in defaultHours {
                 let timespan = TemplateTimeSpan(context: store.mainContext)
-//                let components = DateComponents(day: Int(weekday.rawValue), hour: hour)
-//                guard let date = Calendar(identifier: .gregorian).date(from: components) else { continue }
-//                timespan.startTime = date
+                timespan.identifier = UUID().uuidString
                 timespan.startTime = Int64(hour * 60)
-                timespan.duration = 60 * 60
+                timespan.duration = .hour
                 timespan.mechanic = mechanic
                 timespan.weekday = weekday
                 timespans.append(timespan)
@@ -81,6 +95,20 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
     
     @IBAction func didSelectSave() {
         
+        let previousButton = navigationItem.rightBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem.activityBarButtonItem(with: .gray)
+        
+        let timeSpanObjectIDs = timespans.map { $0.objectID }
+        store.privateContext { [weak self] context in
+            let privateFetchedSpans = TemplateTimeSpan.fetchObjects(with: timeSpanObjectIDs, in: context)
+            self?.network.postTimeSpans(templateTimeSpans: privateFetchedSpans, in: context) { objectIDs, error in
+                store.mainContext { mainContext in
+                    self?.navigationItem.rightBarButtonItem = previousButton
+                    let newSpans = TemplateTimeSpan.fetchObjects(with: objectIDs, in: mainContext)
+                    self?.timespans = newSpans
+                }
+            }
+        }
     }
     
 }
@@ -88,12 +116,11 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
 extension AvailabilityViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfDays
+        return days.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: DayCell = tableView.dequeueCell()
-//        cell.configure(day: days[indexPath.row], hours: )
         cell.delegate = self
         let day = days[indexPath.row]
         cell.configure(day: day, timespans: timespans(for: day))
@@ -121,7 +148,7 @@ extension AvailabilityViewController: DayCellDelegate {
     
     func didDeleteTemplateTimeSpan(_ timespan: TemplateTimeSpan, dayCell: DayCell) {
         timespans.removeAll { existingTimeSpan -> Bool in
-            return existingTimeSpan == timespan
+            return existingTimeSpan.identifier == timespan.identifier
         }
     }
     

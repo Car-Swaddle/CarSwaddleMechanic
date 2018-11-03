@@ -16,6 +16,7 @@
 		9970121B2154B14200D547C5 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997012112154B14200D547C5 /* CarSwaddleUI.framework */; };
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */; };
 		99F027752184533D005FEFC7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F027742184533D005FEFC7 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		9970121A2154B14200D547C5 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
 		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		99F027742184533D005FEFC7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				9912CD97216C75F70006FDDF /* UIAlertControllerExtensions.swift */,
 				9912CD99216C76260006FDDF /* UIViewControllerExtension.swift */,
 				9912CD9B216C76310006FDDF /* UIViewExtension.swift */,
+				99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
 				9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */,
+				99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */,
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

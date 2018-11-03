@@ -16,4 +16,10 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable {
         return User.currentUser(context: context)?.mechanic
     }
     
+    public func deleteAllCurrentScheduleTimeSpans() {
+        for timespan in scheduleTimeSpans {
+            managedObjectContext?.delete(timespan)
+        }
+    }
+    
 }

@@ -29,6 +29,7 @@
 		991B403B216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4027216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift */; };
 		991B403C216ADC5D00D7644D /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4028216ADC5D00D7644D /* User+CoreDataProperties.swift */; };
 		9942545621576DFA0075EDCA /* NSManagedObjectFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9942545521576DFA0075EDCA /* NSManagedObjectFetchable.swift */; };
+		999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */; };
 		999E9194214B81C100FF894B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9193214B81C100FF894B /* Store.swift */; };
 		99D156CA214F73D500BFA435 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */; };
 		99DED725214B80D40061CFE0 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DED71B214B80D30061CFE0 /* Store.framework */; };
@@ -75,6 +76,7 @@
 		991B4027216ADC5D00D7644D /* TemplateTimeSpan+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateTimeSpan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		991B4028216ADC5D00D7644D /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9942545521576DFA0075EDCA /* NSManagedObjectFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchable.swift; sourceTree = "<group>"; };
+		999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchableTests.swift; sourceTree = "<group>"; };
 		999E9193214B81C100FF894B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		99DED71B214B80D30061CFE0 /* Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 				99F027872185820F005FEFC7 /* DateExtensionTests.swift */,
 				99F0278F21859E29005FEFC7 /* RegionTests.swift */,
 				99DED72B214B80D40061CFE0 /* Info.plist */,
+				999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */,
 			);
 			path = StoreTests;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */,
 				99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */,
 				99F027882185820F005FEFC7 /* DateExtensionTests.swift in Sources */,
 				99F0279021859E29005FEFC7 /* RegionTests.swift in Sources */,

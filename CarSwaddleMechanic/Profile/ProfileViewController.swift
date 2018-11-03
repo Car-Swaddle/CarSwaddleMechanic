@@ -35,7 +35,8 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction func didSelectEditSchedule() {
-        let availability = AvailabilityViewController.create(with: <#T##[TemplateTimeSpan]?#>)
+        let availability = AvailabilityViewController.create()
+        show(availability, sender: true)
     }
     
     /*

@@ -60,9 +60,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     
     @objc private func didTapSave() {
         let previousButton = navigationItem.rightBarButtonItem
-        let activityView = UIActivityIndicatorView(style: .gray)
-        activityView.startAnimating()
-        let animatingButton = UIBarButtonItem(customView: activityView)
+        let animatingButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
         navigationItem.rightBarButtonItem = animatingButton
         saveCurrentServiceRegionToServer { [weak self] error in
             DispatchQueue.main.async {
@@ -180,10 +178,10 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     
     private func updateMapView(to region: Region, animated: Bool) {
         let mapViewSpan: CLLocationDistance = region.radius*5
-        let thatThing = MKCoordinateRegion(center: region.coordinate, latitudinalMeters: mapViewSpan, longitudinalMeters: mapViewSpan)
+        let thatThing = MKCoordinateRegion(center: region.centerCoordinate, latitudinalMeters: mapViewSpan, longitudinalMeters: mapViewSpan)
         mapView.setRegion(thatThing, animated: animated)
         mapView.layoutIfNeeded()
-        let circleCoordinateRegion = MKCoordinateRegion(center: region.coordinate, latitudinalMeters: 100, longitudinalMeters: region.radius*2)
+        let circleCoordinateRegion = MKCoordinateRegion(center: region.centerCoordinate, latitudinalMeters: 100, longitudinalMeters: region.radius*2)
         let value = mapView.convert(circleCoordinateRegion, toRectTo: view)
         circleHeightConstraint.constant = value.width
     }
@@ -200,7 +198,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
                 
                 self.serviceRegion = region
                 store.mainContext.persist()
-                self.mapView.setRegion(self.coordinateRegion(with: region.coordinate), animated: false)
+                self.mapView.setRegion(self.coordinateRegion(with: region.centerCoordinate), animated: false)
             }
         }
     }
