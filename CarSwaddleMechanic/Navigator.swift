@@ -50,12 +50,12 @@ final class Navigator: NSObject {
     }
     
     private func showRequiredScreensIfNeeded() {
-        guard let userID = User.currentUserID else { return }
-        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
+//        guard let userID = User.currentUserID else { return }
+//        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
         // TODO: Uncomment this before release
 //            mechanic.scheduleTimeSpans.count == 0 else { return
-        let availabilityViewController = AvailabilityViewController.create(shouldCreateDefaultTimeSpans: true)
-        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
+//        let availabilityViewController = AvailabilityViewController.create(shouldCreateDefaultTimeSpans: true)
+//        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
     }
     
     private var appDelegate: AppDelegate
