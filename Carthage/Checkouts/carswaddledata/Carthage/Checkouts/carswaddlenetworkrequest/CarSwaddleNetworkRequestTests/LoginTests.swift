@@ -69,6 +69,7 @@ class LoginTests: XCTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         
         authService.signUp(email: "k@k.com", password: password) { json, token, error in
+            XCTAssert(error != nil, "Should have not logged in")
             XCTAssert(token == nil, "Should have not logged in")
             XCTAssert(json?["mechanic"] == nil, "Should have mechanic")
             XCTAssert(json?["user"] == nil, "Should have user")
@@ -128,5 +129,5 @@ class LoginTests: XCTestCase {
 //
 //        waitForExpectations(timeout: 40, handler: nil)
 //    }
-    
+
 }

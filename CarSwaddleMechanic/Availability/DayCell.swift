@@ -26,9 +26,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
     weak var delegate: DayCellDelegate?
     
     private var weekday: Weekday?
-    
-    private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23]
-    
+    private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
     private var timespans: [TemplateTimeSpan] = []
     
     override func awakeFromNib() {
@@ -46,9 +44,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
         button.setTitle(day.localizedString, for: .normal)
         collectionViewHeightConstraint.constant = collectionView.contentSize.height
     }
-    
-//    private static var calendar = Calendar(identifier: .gregorian)
-    
+        
     private func hours(from timespans: [TemplateTimeSpan]) -> [Hour] {
         var hours: [Hour] = []
         for slot in timeSlots {
@@ -77,7 +73,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
 extension DayCell: HourCollectionViewDelegate {
     
     func didSelectHour(hour: Hour, collectionView: HourCollectionView) {
-        guard let weekday = weekday, let mechanicID = User.currentUser(context: store.mainContext)?.mechanic?.identifier else { return }
+        guard let weekday = weekday, let mechanicID = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier else { return }
         
         if let timespan = TemplateTimeSpan.fetch(from: hour, weekday: weekday, mechanicID: mechanicID) {
             timespans.removeAll { loopTimespan -> Bool in

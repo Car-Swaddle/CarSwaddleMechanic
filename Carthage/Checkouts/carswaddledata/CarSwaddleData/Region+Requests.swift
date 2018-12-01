@@ -11,13 +11,7 @@ import Store
 import CarSwaddleNetworkRequest
 
 
-public final class RegionNetwork {
-    
-    public let serviceRequest: Request
-    
-    public init(serviceRequest: Request) {
-        self.serviceRequest = serviceRequest
-    }
+public final class RegionNetwork: Network {
     
     private lazy var regionService = RegionService(serviceRequest: serviceRequest)
     
@@ -30,19 +24,22 @@ public final class RegionNetwork {
     public func postRegion(latitude: Double, longitude: Double, radius: Double, in context: NSManagedObjectContext, completion: @escaping (_ regionID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return regionService.postRegion(latitude: latitude, longitude: longitude, radius: radius) { json, error in
             context.perform {
-                var regionID: NSManagedObjectID?
+                var regionObjectID: NSManagedObjectID?
                 defer {
-                    completion(regionID, error)
+                    DispatchQueue.global().async {
+                        completion(regionObjectID, error)
+                    }
                 }
-                guard let json = json, let regionJSON = json["region"] as? JSONObject else { return }
-                let region = Region(json: regionJSON, in: context)
+                guard let json = json,
+                    let regionJSON = json["region"] as? JSONObject else { return }
+                let region = Region.fetchOrCreate(json: regionJSON, context: context)
                 let mechanic = Mechanic.currentLoggedInMechanic(in: context)
                 if let previousRegion = mechanic?.serviceRegion {
                     context.delete(previousRegion)
                 }
-                region?.mechanic = Mechanic.currentLoggedInMechanic(in: context)
+                region?.mechanic = mechanic
                 context.persist()
-                regionID = region?.objectID
+                regionObjectID = region?.objectID
             }
         }
     }
@@ -52,14 +49,16 @@ public final class RegionNetwork {
     public func getRegion(in context: NSManagedObjectContext, completion: @escaping (_ regionID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return regionService.getRegion { json, error in
             context.perform {
-                var regionID: NSManagedObjectID?
+                var regionObjectID: NSManagedObjectID?
                 defer {
-                    completion(regionID, error)
+                    DispatchQueue.global().async {
+                        completion(regionObjectID, error)
+                    }
                 }
                 guard let json = json else { return }
-                let region = Region(json: json, in: context)
+                let region = Region.fetchOrCreate(json: json, context: context)
                 context.persist()
-                regionID = region?.objectID
+                regionObjectID = region?.objectID
             }
         }
     }

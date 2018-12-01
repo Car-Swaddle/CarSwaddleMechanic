@@ -11,33 +11,42 @@ import CarSwaddleNetworkRequest
 import CoreData
 
 
-public class TemplateTimeSpanNetwork {
-    
-    public let serviceRequest: Request
-    
-    public init(serviceRequest: Request) {
-        self.serviceRequest = serviceRequest
-    }
+public final class TemplateTimeSpanNetwork: Network {
     
     private lazy var availabilityService = AvailabilityService(serviceRequest: serviceRequest)
     
     @discardableResult
-    public func getTimeSpans(in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return availabilityService.getAvailability { jsonArray, error in
+    public func getTimeSpans(ofMechanicWithID mechanicID: String? = nil, in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return availabilityService.getAvailability(ofMechanicWithID: mechanicID) { jsonArray, error in
             context.perform {
-                var timeSpans: [NSManagedObjectID] = []
+                var timeSpanObjectIDs: [NSManagedObjectID] = []
                 defer {
-                    completion(timeSpans, error)
+                    DispatchQueue.global().async {
+                        completion(timeSpanObjectIDs, error)
+                    }
                 }
                 
-                let mechanic = Mechanic.currentLoggedInMechanic(in: context)
-                mechanic?.deleteAllCurrentScheduleTimeSpans()
+                let mechanic: Mechanic?
+                if let mechanicID = mechanicID {
+                    mechanic = Mechanic.fetch(with: mechanicID, in: context)
+                } else {
+                    mechanic = Mechanic.currentLoggedInMechanic(in: context)
+                }
+                var previousTimeSpans = mechanic?.scheduleTimeSpans
                 
                 for json in jsonArray ?? [] {
-                    guard let span = TemplateTimeSpan(json: json, context: context) else { continue }
-                    (try? context.obtainPermanentIDs(for: [span]))
-                    timeSpans.append(span.objectID)
+                    guard let span = TemplateTimeSpan.fetchOrCreate(json: json, context: context) else { continue }
+                    if span.objectID.isTemporaryID {
+                        (try? context.obtainPermanentIDs(for: [span]))
+                    }
+                    previousTimeSpans?.remove(span)
+                    timeSpanObjectIDs.append(span.objectID)
                 }
+                
+                for timeSpan in previousTimeSpans ?? [] {
+                    context.delete(timeSpan)
+                }
+                
                 context.persist()
             }
         }
@@ -53,19 +62,29 @@ public class TemplateTimeSpanNetwork {
         
         return availabilityService.postAvailability(jsonArray: jsonArray) { jsonArray, error in
             context.perform {
-                var timeSpans: [NSManagedObjectID] = []
+                var timeSpanObjectIDs: [NSManagedObjectID] = []
                 defer {
-                    completion(timeSpans, error)
+                    DispatchQueue.global().async {
+                        completion(timeSpanObjectIDs, error)
+                    }
                 }
                 
                 let mechanic = Mechanic.currentLoggedInMechanic(in: context)
-                mechanic?.deleteAllCurrentScheduleTimeSpans()
+                var previousTimeSpans = mechanic?.scheduleTimeSpans
                 
                 for json in jsonArray ?? [] {
-                    guard let span = TemplateTimeSpan(json: json, context: context) else { continue }
-                    (try? context.obtainPermanentIDs(for: [span]))
-                    timeSpans.append(span.objectID)
+                    guard let span = TemplateTimeSpan.fetchOrCreate(json: json, context: context) else { continue }
+                    if span.objectID.isTemporaryID {
+                        (try? context.obtainPermanentIDs(for: [span]))
+                    }
+                    previousTimeSpans?.remove(span)
+                    timeSpanObjectIDs.append(span.objectID)
                 }
+                
+                for timeSpan in previousTimeSpans ?? [] {
+                    context.delete(timeSpan)
+                }
+                
                 context.persist()
             }
         }

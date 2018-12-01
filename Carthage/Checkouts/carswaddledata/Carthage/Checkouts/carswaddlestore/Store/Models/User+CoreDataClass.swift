@@ -12,7 +12,7 @@ import CoreData
 private let currentUserIDKey = "currentUserIDKey"
 
 @objc(User)
-public final class User: NSManagedObject, NSManagedObjectFetchable {
+public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let id = json["id"] as? String else {
@@ -38,6 +38,18 @@ public final class User: NSManagedObject, NSManagedObjectFetchable {
     
     public static var currentUserID: String? {
         return UserDefaults.standard.value(forKey: currentUserIDKey) as? String
+    }
+    
+    public var displayName: String {
+        var name: String = ""
+        if let firstName = firstName {
+            name += firstName
+            name += " "
+        }
+        if let lastName = lastName {
+            name += lastName
+        }
+        return name
     }
     
 }

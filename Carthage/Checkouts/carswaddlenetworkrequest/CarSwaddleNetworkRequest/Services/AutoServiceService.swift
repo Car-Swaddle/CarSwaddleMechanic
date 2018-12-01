@@ -9,13 +9,61 @@
 import Foundation
 
 extension NetworkRequest.Request.Endpoint {
-    fileprivate static let services = Request.Endpoint(rawValue: "/hello")
-    fileprivate static let user = Request.Endpoint(rawValue: "/user")
-    fileprivate static let autoService = Request.Endpoint(rawValue: "/auto-service")
+    fileprivate static let autoService = Request.Endpoint(rawValue: "/api/auto-service")
 }
+
+let serverDateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    return dateFormatter
+}()
 
 /// The service used to make requests to the server
 public final class AutoServiceService: Service {
+    
+    @discardableResult
+    public func createAutoService(autoServiceJSON: JSONObject, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        guard let body = (try? JSONSerialization.data(withJSONObject: autoServiceJSON, options: [])),
+            var urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
+        do {
+            try urlRequest.authenticate()
+        } catch { print("couldn't authenticate") }
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                    completion(nil, error)
+                    return
+            }
+            completion(json, error)
+        }
+    }
+    
+    @discardableResult
+    public func getAutoServices(mechanicID: String, startDate: Date, endDate: Date, status: [String], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
+        var queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "mechanicID", value: mechanicID),
+            URLQueryItem(name: "startDate", value: serverDateFormatter.string(from: startDate)),
+            URLQueryItem(name: "endDate", value: serverDateFormatter.string(from: endDate)),
+        ]
+        
+        for singleStatus in status {
+            let queryItem = URLQueryItem(name: "status", value: singleStatus)
+            queryItems.append(queryItem)
+        }
+        
+        guard var urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
+        do {
+            try urlRequest.authenticate()
+        } catch { print("couldn't authenticate") }
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
+                    completion(nil, error)
+                    return
+            }
+            completion(jsonArray, error)
+        }
+    }
     
 //    @discardableResult
 //    public func getServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {

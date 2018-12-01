@@ -9,22 +9,64 @@
 import UIKit
 import CarSwaddleUI
 import Store
+import CarSwaddleData
+import Authentication
 
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
-    enum Row: CaseIterable {
+    private enum Row: CaseIterable {
+        case firstName
+        case lastName
         case serviceRegion
-        
     }
     
-    private var rows: [Row] = Row.allCases
-
     @IBOutlet private weak var tableView: UITableView!
+    private var rows: [Row] = Row.allCases
+    private var user: User? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    private var userNetwork = UserNetwork(serviceRequest: serviceRequest)
+    private let auth = Auth(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTableView()
+        
+        user = User.currentUser(context: store.mainContext)
+        
+        store.privateContext { [weak self] context in
+            self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
+                store.mainContext { mainContext in
+                    if let userObjectID = userObjectID {
+                        self?.user = mainContext.object(with: userObjectID) as? User
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func didSelectOptions(_ sender: Any) {
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let title = NSLocalizedString("Logout", comment: "title of button to logout")
+        let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
+            self?.auth.logout { error in
+                DispatchQueue.main.async {
+                    finishTasksAndInvalidate()
+                    try? store.destroyAllData()
+                    AuthController().removeToken()
+                    navigator.navigateToLoggedOutViewController()
+                }
+            }
+        }
+        
+        actionController.addAction(logoutAction)
+        actionController.addCancelAction()
+        
+        present(actionController, animated: true, completion: nil)
     }
     
     private func setupTableView() {
@@ -32,6 +74,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileServiceRegionCell.self)
+        tableView.register(NameCell.self)
     }
     
     @IBAction func didSelectEditSchedule() {
@@ -39,16 +82,6 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         show(availability, sender: true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ProfileViewController: UITableViewDelegate {
@@ -58,6 +91,8 @@ extension ProfileViewController: UITableViewDelegate {
         let row = rows[indexPath.row]
         
         switch row {
+        case .firstName: break
+        case .lastName: break
         case .serviceRegion:
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
@@ -72,12 +107,23 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ProfileServiceRegionCell = tableView.dequeueCell()
-        if let region = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.serviceRegion {
-            cell.configure(with: region)
+        let row = rows[indexPath.row]
+        switch row {
+        case .firstName:
+            let cell: NameCell = tableView.dequeueCell()
+            cell.textLabel?.text = user?.firstName
+            return cell
+        case .lastName:
+            let cell: NameCell = tableView.dequeueCell()
+            cell.textLabel?.text = user?.lastName
+            return cell
+        case .serviceRegion:
+            let cell: ProfileServiceRegionCell = tableView.dequeueCell()
+            if let region = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.serviceRegion {
+                cell.configure(with: region)
+            }
+            return cell
         }
-        return cell
     }
-    
     
 }

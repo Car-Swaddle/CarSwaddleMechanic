@@ -11,5 +11,5 @@ import CoreData
 
 @objc(Price)
 public final  class Price: NSManagedObject, NSManagedObjectFetchable {
-
+    
 }

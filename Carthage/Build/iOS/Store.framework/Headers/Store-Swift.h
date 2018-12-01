@@ -187,6 +187,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS_NAMED("AutoService")
 @interface AutoService : NSManagedObject
+- (void)awakeFromInsert;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -196,22 +197,22 @@ SWIFT_CLASS_NAMED("AutoService")
 
 @class User;
 @class Mechanic;
-@class OilChange;
 @class Location;
 @class Price;
 @class Vehicle;
+@class ServiceEntity;
 
 @interface AutoService (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, copy) NSString * _Nullable notes;
 @property (nonatomic, copy) NSDate * _Nullable scheduledDate;
 @property (nonatomic, copy) NSDate * _Nonnull creationDate;
-@property (nonatomic, strong) User * _Nonnull creator;
+@property (nonatomic, strong) User * _Nullable creator;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
-@property (nonatomic, strong) OilChange * _Nullable oilChange;
 @property (nonatomic, strong) Location * _Nullable location;
 @property (nonatomic, strong) Price * _Nullable price;
 @property (nonatomic, strong) Vehicle * _Nullable vehicle;
+@property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
 @end
 
 
@@ -222,6 +223,7 @@ SWIFT_CLASS_NAMED("Location")
 
 
 @interface Location (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nullable identifier;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic, copy) NSString * _Nullable streetAddress;
@@ -270,13 +272,14 @@ SWIFT_CLASS_NAMED("Mechanic")
 
 SWIFT_CLASS_NAMED("OilChange")
 @interface OilChange : NSManagedObject
+- (void)awakeFromInsert;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 @interface OilChange (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) AutoService * _Nonnull autoService;
+@property (nonatomic, strong) ServiceEntity * _Nonnull serviceEntity;
 @end
 
 
@@ -331,6 +334,22 @@ SWIFT_CLASS_NAMED("Region")
 @end
 
 
+SWIFT_CLASS_NAMED("ServiceEntity")
+@interface ServiceEntity : NSManagedObject
+- (void)awakeFromInsert;
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface ServiceEntity (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic, strong) AutoService * _Nonnull autoService;
+/// Optional relationships to only one service type.
+/// Only one of these should exist. It should be whatever the entityType is.
+@property (nonatomic, strong) OilChange * _Nullable oilChange;
+@end
+
+
 SWIFT_CLASS_NAMED("TemplateTimeSpan")
 @interface TemplateTimeSpan : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -354,18 +373,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 
@@ -393,10 +412,10 @@ SWIFT_CLASS_NAMED("Vehicle")
 @property (nonatomic, copy) NSDate * _Nonnull creationDate;
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, copy) NSString * _Nonnull name;
-@property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, strong) User * _Nonnull user;
 @property (nonatomic, copy) NSSet<AutoService *> * _Nonnull autoServices;
-/// At least one of licensePlate or vehicleDescription must not be nil.
+/// At least one of licensePlate or vin or vehicleDescription must not be nil.
+@property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, copy) NSString * _Nullable licensePlate;
 @property (nonatomic, strong) VehicleDescription * _Nullable vehicleDescription;
 @end

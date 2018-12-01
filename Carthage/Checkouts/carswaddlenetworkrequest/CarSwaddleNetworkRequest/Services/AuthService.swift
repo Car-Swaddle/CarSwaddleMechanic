@@ -54,12 +54,13 @@ public class AuthService: Service {
     @discardableResult
     public func logout(completion: (_ error: Error?) -> Void) -> URLSessionDataTask? {
         // TODO: Logout on server
+        completion(nil)
         return nil
     }
     
     private func complete(data: Data?, error: Error?, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) {
         var json: JSONObject?
-        var error: Error?
+        var error: Error? = error
         var token: String?
         defer {
             completion(json, token, error)

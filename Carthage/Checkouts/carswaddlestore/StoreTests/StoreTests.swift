@@ -14,16 +14,6 @@ let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddl
 
 class StoreTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     func testSetupStore() {
         let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
         store.mainContext.persist()
@@ -44,11 +34,45 @@ class StoreTests: XCTestCase {
         _ = template.weekday
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testDestroy() {
+        
+        let identifier = "qwertyuiasdfghjk-1234567sdfghjk-nbvcxzasdf"
+        
+        let c = store.mainContext
+        
+        let user = User.fetch(with: identifier, in: c) ?? User(context: c)
+        user.identifier = identifier
+        
+        c.persist()
+        
+        let fetchedUser = User.fetch(with: identifier, in: c)
+        
+        XCTAssert(fetchedUser != nil, "User should exist, test not valid")
+        
+        do {
+            try store.destroyAllData()
+        } catch {
+            XCTAssert(false, "Couldn't delete all data on store, \(error)")
+            return
         }
+        
+        let secondFetchedUser = User.fetch(with: identifier, in: store.mainContext)
+        XCTAssert(secondFetchedUser == nil, "Should not have gotten any user")
+        
+        let newUser = User(context: store.mainContext)
+        newUser.identifier = identifier
+        
+        store.mainContext.persist()
+        
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { privateContext in
+            let fetchedExist = User.fetch(with: identifier, in: privateContext)
+            XCTAssert(fetchedExist != nil, "Should not have gotten any user")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
     }
     
 }

@@ -10,6 +10,7 @@ import Foundation
 
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let users = Request.Endpoint(rawValue: "/api/users")
+    fileprivate static let updateUser = Request.Endpoint(rawValue: "/api/update-user")
     fileprivate static let user = Request.Endpoint(rawValue: "/api/user")
     fileprivate static let currentUser = Request.Endpoint(rawValue: "/api/current-user")
 }
@@ -30,7 +31,7 @@ public class UserService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -46,9 +47,40 @@ public class UserService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
+    }
+    
+    @discardableResult
+    public func updateCurrentUser(firstName: String?, lastName: String?, phoneNumber: String?, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        var json: JSONObject = [:]
+        if let firstName = firstName {
+            json["firstName"] = firstName
+        }
+        if let lastName = lastName {
+            json["lastName"] = lastName
+        }
+        if let phoneNumber = phoneNumber {
+            json["phoneNumber"] = phoneNumber
+        }
+        return updateCurrentUser(json: json, completion: completion)
+    }
+    
+    @discardableResult
+    public func updateCurrentUser(json: JSONObject, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
+        guard var urlRequest = serviceRequest.patch(with: .updateUser, body: body, contentType: .applicationJSON) else { return nil }
         
+        try? urlRequest.authenticate()
+        
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                    completion(nil, error)
+                    return
+            }
+            completion(json, error)
+        }
     }
     
 }

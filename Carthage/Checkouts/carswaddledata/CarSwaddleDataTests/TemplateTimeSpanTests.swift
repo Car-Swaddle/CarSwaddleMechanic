@@ -18,6 +18,12 @@ class TemplateTimeSpanTests: LoginTestCase {
     override func setUp() {
         super.setUp()
         let context = store.mainContext
+        let allMech = Mechanic.fetchAllObjects(with: [NSSortDescriptor(key: "identifier", ascending: true)], in: context)
+        
+        for m in allMech {
+            context.delete(m)
+        }
+        
         let user = User.fetch(with: userID, in: context) ?? User(json: userJSON, context: context)
         let mechanic = Mechanic.fetch(with: mechanicID, in: context) ?? Mechanic(context: context)
         mechanic.identifier = mechanicID
@@ -32,17 +38,47 @@ class TemplateTimeSpanTests: LoginTestCase {
         context.persist()
     }
     
-    func testSavingTemplateTimeSpans() {
+    func testGettingTemplateTimeSpans() {
         let exp = expectation(description: "\(#function)\(#line)")
         let context = store.mainContext
-        network.getTimeSpans(in: context) { ids, error in
+        
+        let mechanic = Mechanic.fetch(with: mechanicID, in: context)
+        
+        store.privateContext { [weak self] pCtx in
+            self?.network.getTimeSpans(in: pCtx) { ids, error in
+                context.perform {
+                    let object = context.object(with: ids[0]) as! TemplateTimeSpan
+                    
+                    XCTAssert(object.duration != 0, "Should have ids")
+                    XCTAssert(object.identifier != "", "Should have ids")
+                    XCTAssert(object.startTime != 0, "Should have ids")
+                    //            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+                    XCTAssert(object.mechanic.identifier == mechanic?.identifier, "Should have same mechanic object IDS")
+                    XCTAssert(object.mechanic == mechanic, "Should have same mechanic")
+                    XCTAssert(ids.count > 0, "Should have ids")
+                    exp.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGettingTemplateTimeSpansWithID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let context = store.mainContext
+        network.getTimeSpans(ofMechanicWithID: "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f", in: context) { ids, error in
             
-            let object = context.object(with: ids[0]) as! TemplateTimeSpan
+            guard let id = ids.first, let object = context.object(with: id) as? TemplateTimeSpan else {
+                XCTAssert(false, "No object")
+                exp.fulfill()
+                return
+            }
             
             XCTAssert(object.duration != 0, "Should have ids")
             XCTAssert(object.identifier != "", "Should have ids")
             XCTAssert(object.startTime != 0, "Should have ids")
-            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+//            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
             XCTAssert(ids.count > 0, "Should have ids")
             exp.fulfill()
         }
@@ -69,7 +105,7 @@ class TemplateTimeSpanTests: LoginTestCase {
             XCTAssert(object.duration != 0, "Should have ids")
             XCTAssert(object.identifier != "", "Should have ids")
             XCTAssert(object.startTime != 0, "Should have ids")
-            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
+//            XCTAssert(object.weekday.rawValue != 0, "Should have ids")
             XCTAssert(ids.count > 0, "Should have ids")
             
             XCTAssert(ids.count == originalCount, "Should have ids")

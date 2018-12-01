@@ -11,6 +11,13 @@ import CarSwaddleNetworkRequest
 import CoreData
 import Store
 
+extension Notification.Name {
+    static let willLogout = Notification.Name(rawValue: "CarSwaddleData.Auth.willLogout")
+    static let didLogout = Notification.Name(rawValue: "CarSwaddleData.Auth.didLogout")
+    
+    static let didLogin = Notification.Name(rawValue: "CarSwaddleData.Auth.didLogin")
+}
+
 public class Auth {
     
     public let serviceRequest: Request
@@ -39,7 +46,7 @@ public class Auth {
     @discardableResult
     public func mechanicSignUp(email: String, password: String, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
         return authService.mechanicSignUp(email: email, password: password) { [weak self] json, token, error in
-            self?.complete(json: json, token: token, error: error, context: context, completion: completion)
+            self?.complete(json: json, isActive: true, token: token, error: error, context: context, completion: completion)
         }
     }
     
@@ -50,7 +57,7 @@ public class Auth {
         }
     }
     
-    private func complete(json: JSONObject?, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
+    private func complete(json: JSONObject?, isActive: Bool? = nil, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
         context.perform { [weak self] in
             var error: Error?
             defer {
@@ -58,27 +65,35 @@ public class Auth {
             }
             if let json = json, let userJSON = json["user"] as? JSONObject,
                 let userID = userJSON["id"] as? String {
-                let user = User(json: userJSON, context: context)
+                let user = User.fetchOrCreate(json: userJSON, context: context)
                 User.setCurrentUserID(userID)
                 if let mechanicJSON = json["mechanic"] as? JSONObject,
                     let mechanicID = mechanicJSON["id"] as? String {
-                    let mechanic = Mechanic(context: context)
+                    let mechanic = Mechanic.fetch(with: mechanicID, in: context) ?? Mechanic(context: context)
                     mechanic.identifier = mechanicID
-                    mechanic.isActive = true
+                    if let isActive = isActive {
+                        mechanic.isActive = isActive
+                    }
                     mechanic.user = user
                 }
                 context.persist()
             }
             if let token = token {
                 self?.authentication.setToken(token)
+                NotificationCenter.default.post(name: .didLogin, object: nil)
             }
         }
     }
     
     @discardableResult
     public func logout(completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        NotificationCenter.default.post(name: .willLogout, object: nil)
+        let token = authentication.token
         authentication.removeToken()
-        return authService.logout(completion: completion)
+        return authService.logout { error in
+            NotificationCenter.default.post(name: .didLogout, object: ["previousToken": token])
+            completion(error)
+        }
     }
     
     public var isLoggedIn: Bool {

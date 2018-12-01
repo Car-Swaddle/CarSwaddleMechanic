@@ -24,24 +24,52 @@ public class Store {
         self.containerName = containerName
     }
     
+    public func destroyAllData() throws {
+        guard let url = persistentContainer.persistentStoreCoordinator.persistentStores.first?.url else {
+            // TODO: throw
+            return
+        }
+        try persistentContainer.persistentStoreCoordinator.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType, options: nil)
+        _persistentContainer = nil
+        updatePersistentContainer()
+    }
+    
     // MARK: - Core Data stack
     
+    private var modelURL: URL {
+        return bundle.url(forResource: storeName, withExtension: modelFileExtension)!
+    }
+    
     lazy private var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = bundle.url(forResource: storeName, withExtension: modelFileExtension)!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
-    lazy private var persistentContainer: NSPersistentContainer = {
+    private func updatePersistentContainer() {
+        _ = persistentContainer
+    }
+    
+    private var _persistentContainer: NSPersistentContainer?
+    
+    private var persistentContainer: NSPersistentContainer {
+        if let persistentContainer = _persistentContainer {
+            return persistentContainer
+        }
+        let newPersistentContainer = createPersistentContainer()
+        self._persistentContainer = newPersistentContainer
+        return newPersistentContainer
+    }
+    
+    private func createPersistentContainer() -> NSPersistentContainer {
         let container = NSPersistentContainer(name: containerName, managedObjectModel: managedObjectModel)
         
-        container.loadPersistentStores(completionHandler: { storeDescription, error in
+        container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
             }
-        })
+        }
         container.viewContext.automaticallyMergesChangesFromParent = true
         return container
-    }()
+    }
     
     public var mainContext: NSManagedObjectContext {
         assert(Thread.isMainThread, "Must be on main")

@@ -34,6 +34,9 @@
 		9913759E2171BE1800F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
 		9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997DBC5F2197B5160080F42C /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5D2197B5160080F42C /* NameCell.swift */; };
+		997DBC602197B5160080F42C /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC5E2197B5160080F42C /* NameCell.xib */; };
+		997DBC642198FBE20080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC632198FBE20080F42C /* lehi.gpx */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
 		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
@@ -123,6 +126,9 @@
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9913759D2171BE1800F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
+		997DBC5D2197B5160080F42C /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		997DBC5E2197B5160080F42C /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
+		997DBC632198FBE20080F42C /* lehi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lehi.gpx; sourceTree = "<group>"; };
 		9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		9912CDA0216C7E220006FDDF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				997DBC632198FBE20080F42C /* lehi.gpx */,
 				9992764821673BCC0032D7F7 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -328,6 +335,8 @@
 				9913756F21706CC500F15BEC /* ProfileViewController.storyboard */,
 				99F0279721867816005FEFC7 /* ProfileServiceRegionCell.swift */,
 				99F0279821867816005FEFC7 /* ProfileServiceRegionCell.xib */,
+				997DBC5D2197B5160080F42C /* NameCell.swift */,
+				997DBC5E2197B5160080F42C /* NameCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -450,6 +459,7 @@
 				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
+				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
@@ -457,6 +467,7 @@
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
+				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
 				9912CDDF216DC5200006FDDF /* SignUpViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,

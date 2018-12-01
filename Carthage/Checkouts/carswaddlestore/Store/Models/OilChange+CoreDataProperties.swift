@@ -11,9 +11,9 @@ import CoreData
 
 
 public enum OilType: String, CaseIterable {
-    case conventional
-    case blend
-    case synthetic
+    case conventional = "CONVENTIONAL"
+    case blend = "BLEND"
+    case synthetic = "SYNTHETIC"
     
     public var localizedString: String {
         switch self {
@@ -35,6 +35,6 @@ extension OilChange {
     }
     
     @NSManaged public var identifier: String
-    @NSManaged public var autoService: AutoService
+    @NSManaged public var serviceEntity: ServiceEntity
 
 }

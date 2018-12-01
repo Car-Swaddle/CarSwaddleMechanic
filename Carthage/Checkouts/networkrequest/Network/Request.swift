@@ -10,9 +10,13 @@ import Foundation
 
 extension Request {
     
+    /// The method used to make network request
     public enum Method: String {
         case get = "GET"
         case post = "POST"
+        case put = "PUT"
+        case patch = "PATCH"
+        case delete = "DELETE"
     }
     
 }
@@ -20,7 +24,7 @@ extension Request {
 
 public extension Request {
     
-    /// The scheme/protocol to make the network request. Expand as required.
+    /// The scheme/protocol to make the network request
     public enum Scheme {
         case http
         case https
@@ -79,12 +83,16 @@ final public class Request {
         self.domain = domain
     }
     
-    public func dataTask(with request: URLRequest, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return urlSession.dataTask(with: request, completionHandler: completion)
+    public func dataTask(with request: URLRequest, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return urlSession.dataTask(with: request) { data, urlResponse, error in
+            completion(data, urlResponse as? HTTPURLResponse, error)
+        }
     }
     
-    public func downloadTask(with request: URLRequest, completion: @escaping (_ data: URL?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
-        return urlSession.downloadTask(with: request, completionHandler: completion)
+    public func downloadTask(with request: URLRequest, completion: @escaping (_ data: URL?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+        return urlSession.downloadTask(with: request) { data, urlResponse, error in
+            completion(data, urlResponse as? HTTPURLResponse, error)
+        }
     }
     
     /// Create a url session data task to make a network call.
@@ -101,7 +109,40 @@ final public class Request {
         request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
         
         return request
-//        return urlSession.dataTask(with: request, completionHandler: completion)
+    }
+    
+    /// Create a url session data task to make a PATCH network call.
+    ///
+    /// - Parameters:
+    ///   - path: path to the resource(s) requested
+    ///   - queryItems: queryItems used to specify resource
+    ///   - completion: closure called when request returns
+    /// - Returns: Data task used to make request
+    public func patch(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
+        guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = Method.patch.rawValue
+        request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
+        request.httpBody = body
+        
+        return request
+    }
+    
+    /// Create a url session data task to make a PATCH network call.
+    ///
+    /// - Parameters:
+    ///   - path: path to the resource(s) requested
+    ///   - queryItems: queryItems used to specify resource
+    ///   - completion: closure called when request returns
+    /// - Returns: Data task used to make request
+    public func put(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
+        guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = Method.put.rawValue
+        request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
+        request.httpBody = body
+        
+        return request
     }
     
     
@@ -113,7 +154,7 @@ final public class Request {
     ///   - body: POST body
     ///   - completion: closure called when request returns
     /// - Returns: Task used to make network request
-    public func post(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data, contentType: ContentType = .applicationJSON) -> URLRequest? {
+    public func post(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
         guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
         request.httpMethod = Method.post.rawValue
@@ -121,8 +162,16 @@ final public class Request {
         request.httpBody = body
         
         return request
+    }
+    
+    public func delete(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
+        guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = Method.delete.rawValue
+        request.setValue(contentType.rawValue, forHTTPHeaderField: ContentType.headerKey)
+        request.httpBody = body
         
-//        return urlSession.dataTask(with: request, completionHandler: completion)
+        return request
     }
     
     /// Download a file from another server via network
@@ -137,9 +186,7 @@ final public class Request {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
         request.httpMethod = Method.get.rawValue
         
-        return request
-        
-//        return urlSession.downloadTask(with: request, completionHandler: completion)
+        return request        
     }
     
     private func url(with path: String, queryItems: [URLQueryItem], scheme: Scheme? = nil) -> URL? {

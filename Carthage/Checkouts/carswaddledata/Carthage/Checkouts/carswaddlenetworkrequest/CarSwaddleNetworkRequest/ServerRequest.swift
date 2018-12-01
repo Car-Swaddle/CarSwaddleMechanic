@@ -31,6 +31,11 @@ public enum RequestError: Error {
     case couldNotAuthenticate
 }
 
+public struct UnsuccessfulStatusCode: Error {
+    public let statusCode: Int
+    public let localizedDescription: String
+}
+
 private let authenticationHeader = "Authorization"
 
 extension URLRequest {
@@ -49,11 +54,20 @@ extension Request {
     
     func send(urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return send(urlRequest: urlRequest) { data, response, error in
-            completion(data, error)
+            guard let response = response else {
+                completion(data, error)
+                return
+            }
+            if response.statusCode >= 200 && response.statusCode < 300 {
+                completion(data, error)
+            } else {
+                let statusCodeError = UnsuccessfulStatusCode(statusCode: response.statusCode, localizedDescription: "Error status code: \(response.statusCode)")
+                completion(data, error ?? statusCodeError)
+            }
         }
     }
     
-    func send(urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    func send(urlRequest: URLRequest, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let task = self.dataTask(with: urlRequest, completion: completion)
         task?.resume()
         return task
@@ -61,11 +75,20 @@ extension Request {
     
     func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         return download(urlRequest: urlRequest) { url, response, error in
-            completion(url, error)
+            guard let response = response else {
+                completion(url, error)
+                return
+            }
+            if response.statusCode >= 200 && response.statusCode < 300 {
+                completion(url, error)
+            } else {
+                let statusCodeError = UnsuccessfulStatusCode(statusCode: response.statusCode, localizedDescription: "Error status code: \(response.statusCode)")
+                completion(url, error ?? statusCodeError)
+            }
         }
     }
     
-    func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ response: URLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+    func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         let task = self.downloadTask(with: urlRequest, completion: completion)
         task?.resume()
         return task

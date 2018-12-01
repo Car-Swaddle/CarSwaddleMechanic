@@ -87,6 +87,19 @@ final class Navigator: NSObject {
         }
     }
     
+    public func navigateToLoggedOutViewController() {
+        guard let window = appDelegate.window,
+            let rootViewController = window.rootViewController else { return }
+        let signUp = SignUpViewController.viewControllerFromStoryboard()
+        let newViewController = signUp.inNavigationController()
+        newViewController.view.frame = rootViewController.view.frame
+        newViewController.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = newViewController
+        }) { completed in }
+    }
+    
     lazy private var tabBarController: UITabBarController = {
         var viewControllers: [UIViewController] = []
         

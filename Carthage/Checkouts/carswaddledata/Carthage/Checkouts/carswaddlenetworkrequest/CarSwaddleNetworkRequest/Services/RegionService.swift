@@ -29,7 +29,7 @@ final public class RegionService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     
@@ -45,7 +45,7 @@ final public class RegionService: Service {
                     completion(nil, error)
                     return
             }
-            completion(json, nil)
+            completion(json, error)
         }
     }
     

@@ -20,7 +20,7 @@ extension TemplateTimeSpan {
     /// The second of the day
     @NSManaged public var startTime: Int64
     /// The number of seconds
-    @NSManaged public var duration: Double
+    @NSManaged public var duration: TimeInterval
     @NSManaged public var mechanic: Mechanic
 
 }
