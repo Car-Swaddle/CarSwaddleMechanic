@@ -59,7 +59,7 @@ public class Auth {
     
     private func complete(json: JSONObject?, isActive: Bool? = nil, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
         context.perform { [weak self] in
-            var error: Error?
+            var error: Error? = error
             defer {
                 completion(error)
             }

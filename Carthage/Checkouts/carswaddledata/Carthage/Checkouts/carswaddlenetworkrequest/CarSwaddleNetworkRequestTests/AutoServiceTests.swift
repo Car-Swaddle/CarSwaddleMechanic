@@ -74,9 +74,26 @@ class AutoServiceTests: CarSwaddleLoginTestCase {
     func testGetAutoServices() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        autoServiceService.getAutoServices(mechanicID: "10aaf8a0-ea9f-11e8-a56c-2953c4831dcb", startDate: startDate, endDate: endDate, status: ["inProgress", "scheduled", "finished"]) { jsonArray, error in
+        autoServiceService.getAutoServices(mechanicID: "10aaf8a0-ea9f-11e8-a56c-2953c4831dcb", startDate: startDate, endDate: endDate, status: ["inProgress", "scheduled", "completed"]) { jsonArray, error in
             guard let jsonArray = jsonArray else {
                 XCTAssert(false, "Should have json")
+                exp.fulfill()
+                return
+            }
+            XCTAssert(jsonArray.count > 0, "Should have auto service")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetAutoServicesLimit() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        autoServiceService.getAutoServices(limit: 10, offset: 0, sortStatus: ["inProgress", "scheduled", "completed"]) { jsonArray, error in
+            guard let jsonArray = jsonArray else {
+                XCTAssert(false, "Should have json")
+                exp.fulfill()
                 return
             }
             XCTAssert(jsonArray.count > 0, "Should have auto service")

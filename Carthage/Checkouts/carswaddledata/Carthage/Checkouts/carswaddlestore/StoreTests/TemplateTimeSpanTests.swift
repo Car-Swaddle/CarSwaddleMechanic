@@ -16,10 +16,9 @@ class TemplateTimeSpanTests: XCTestCase {
         super.setUp()
         let context = store.mainContext
         let user = User.fetchOrCreate(json: userJSON, context: context)
-        let mechanic = Mechanic.fetch(with: mechanicID, in: context) ?? Mechanic(context: context)
-        mechanic.identifier = mechanicID
-        mechanic.isActive = true
-        mechanic.user = user
+//        let mechanic = Mechanic.fetch(with: mechanicID, in: context) ?? Mechanic(context: context)
+        let mechanic = Mechanic.fetchOrCreate(json: mechanicJSON, context: context)
+        mechanic?.user = user
         
         let allTTS = TemplateTimeSpan.fetchAllObjects(with: [NSSortDescriptor(key: #keyPath(TemplateTimeSpan.identifier), ascending: true)], in: context)
         for tts in allTTS {
@@ -136,4 +135,9 @@ let userJSON: [String: Any] = [
     "lastName": "Rupertarious",
     "phoneNumber": "928-273-8726",
     "id": userID
+]
+
+let mechanicJSON: [String: Any] = [
+    "id": mechanicID,
+    "isActive": true
 ]

@@ -33,6 +33,8 @@
 		997DBC83219FF4FC0080F42C /* ServiceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC81219FF4FC0080F42C /* ServiceEntity+CoreDataClass.swift */; };
 		997DBC84219FF4FC0080F42C /* ServiceEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC82219FF4FC0080F42C /* ServiceEntity+CoreDataProperties.swift */; };
 		997DBC9621A23BC30080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9521A23BC30080F42C /* AutoServiceTests.swift */; };
+		997DBCA421B8FD180080F42C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA321B8FD180080F42C /* UserTests.swift */; };
+		997DBCA621B8FD710080F42C /* MechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBCA521B8FD710080F42C /* MechanicTests.swift */; };
 		999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */; };
 		999E9194214B81C100FF894B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9193214B81C100FF894B /* Store.swift */; };
 		99D156CA214F73D500BFA435 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */; };
@@ -84,6 +86,8 @@
 		997DBC81219FF4FC0080F42C /* ServiceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		997DBC82219FF4FC0080F42C /* ServiceEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		997DBC9521A23BC30080F42C /* AutoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceTests.swift; sourceTree = "<group>"; };
+		997DBCA321B8FD180080F42C /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		997DBCA521B8FD710080F42C /* MechanicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicTests.swift; sourceTree = "<group>"; };
 		999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectFetchableTests.swift; sourceTree = "<group>"; };
 		999E9193214B81C100FF894B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				99DED729214B80D40061CFE0 /* StoreTests.swift */,
 				997DBC9521A23BC30080F42C /* AutoServiceTests.swift */,
 				997DBC77219BE5D00080F42C /* TemplateTimeSpanTests.swift */,
+				997DBCA321B8FD180080F42C /* UserTests.swift */,
+				997DBCA521B8FD710080F42C /* MechanicTests.swift */,
 				99F027872185820F005FEFC7 /* DateExtensionTests.swift */,
 				99F0278F21859E29005FEFC7 /* RegionTests.swift */,
 				99DED72B214B80D40061CFE0 /* Info.plist */,
@@ -373,8 +379,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				997DBC9621A23BC30080F42C /* AutoServiceTests.swift in Sources */,
+				997DBCA621B8FD710080F42C /* MechanicTests.swift in Sources */,
 				997DBC78219BE5D00080F42C /* TemplateTimeSpanTests.swift in Sources */,
 				999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */,
+				997DBCA421B8FD180080F42C /* UserTests.swift in Sources */,
 				99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */,
 				99F027882185820F005FEFC7 /* DateExtensionTests.swift in Sources */,
 				99F0279021859E29005FEFC7 /* RegionTests.swift in Sources */,

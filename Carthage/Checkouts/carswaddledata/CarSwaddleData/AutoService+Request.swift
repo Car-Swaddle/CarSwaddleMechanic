@@ -38,24 +38,36 @@ public final class AutoServiceNetwork: Network {
     
     @discardableResult
     public func getAutoServices(mechanicID: String, startDate: Date, endDate: Date, status: [AutoService.Status], in context: NSManagedObjectContext, completion: @escaping (_ autoServices: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return autoServiceService.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, status: status.rawValues) { jsonArray, error in
-            context.perform {
-                var autoServices: [NSManagedObjectID] = []
-                defer {
-                    DispatchQueue.global().async {
-                        completion(autoServices, error)
-                    }
+        return autoServiceService.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, status: status.rawValues) { [weak self] jsonArray, error in
+            self?.complete(error: error, jsonArray: jsonArray, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getAutoServices(limit: Int, offset: Int, sortStatus: [AutoService.Status], in context: NSManagedObjectContext, completion: @escaping (_ autoServices: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return autoServiceService.getAutoServices(limit: limit, offset: offset, sortStatus: sortStatus.rawValues) { [weak self] jsonArray, error in
+            self?.complete(error: error, jsonArray: jsonArray, in: context, completion: completion)
+        }
+    }
+    
+    
+    private func complete(error: Error?, jsonArray: [JSONObject]?, in context: NSManagedObjectContext, completion: @escaping (_ autoServices: [NSManagedObjectID], _ error: Error?) -> Void) {
+        context.perform {
+            var autoServices: [NSManagedObjectID] = []
+            defer {
+                DispatchQueue.global().async {
+                    completion(autoServices, error)
                 }
-                
-                for json in jsonArray ?? [] {
-                    guard let autoService = AutoService(json: json, context: context) else { continue }
-                    if autoService.objectID.isTemporaryID {
-                        try? context.obtainPermanentIDs(for: [autoService])
-                    }
-                    autoServices.append(autoService.objectID)
-                }
-                context.persist()
             }
+            
+            for json in jsonArray ?? [] {
+                guard let autoService = AutoService.fetchOrCreate(json: json, context: context) else { continue }
+                if autoService.objectID.isTemporaryID {
+                    try? context.obtainPermanentIDs(for: [autoService])
+                }
+                autoServices.append(autoService.objectID)
+            }
+            context.persist()
         }
     }
     

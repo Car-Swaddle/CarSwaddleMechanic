@@ -65,6 +65,34 @@ public final class AutoServiceService: Service {
         }
     }
     
+    
+    // offset=0&limit=10&status=inProgress
+    @discardableResult
+    public func getAutoServices(limit: Int, offset: Int, sortStatus: [String], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
+        var queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "limit", value: "\(limit)"),
+            URLQueryItem(name: "offset", value: "\(offset)")
+            ]
+        
+        for singleStatus in sortStatus {
+            let queryItem = URLQueryItem(name: "status", value: singleStatus)
+            queryItems.append(queryItem)
+        }
+        
+        guard var urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
+        do {
+            try urlRequest.authenticate()
+        } catch { print("couldn't authenticate") }
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
+                    completion(nil, error)
+                    return
+            }
+            completion(jsonArray, error)
+        }
+    }
+    
 //    @discardableResult
 //    public func getServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {
 //        let request = serverRequest.get(with: .services) { data, response, error in

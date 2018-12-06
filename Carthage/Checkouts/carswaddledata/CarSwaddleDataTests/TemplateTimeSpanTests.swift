@@ -46,8 +46,8 @@ class TemplateTimeSpanTests: LoginTestCase {
         
         store.privateContext { [weak self] pCtx in
             self?.network.getTimeSpans(in: pCtx) { ids, error in
-                context.perform {
-                    let object = context.object(with: ids[0]) as! TemplateTimeSpan
+                store.mainContext { mainContext in
+                    let object = mainContext.object(with: ids[0]) as! TemplateTimeSpan
                     
                     XCTAssert(object.duration != 0, "Should have ids")
                     XCTAssert(object.identifier != "", "Should have ids")
@@ -67,7 +67,7 @@ class TemplateTimeSpanTests: LoginTestCase {
     func testGettingTemplateTimeSpansWithID() {
         let exp = expectation(description: "\(#function)\(#line)")
         let context = store.mainContext
-        network.getTimeSpans(ofMechanicWithID: "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f", in: context) { ids, error in
+        network.getTimeSpans(ofMechanicWithID: mechanicID, in: context) { ids, error in
             
             guard let id = ids.first, let object = context.object(with: id) as? TemplateTimeSpan else {
                 XCTAssert(false, "No object")
@@ -145,7 +145,7 @@ class TemplateTimeSpanTests: LoginTestCase {
 
 
 let userID = "3456-1234567876543-34567"
-let mechanicID = "3456-1234567876543-987654"
+let mechanicID = "4d1548d0-f20c-11e8-a92a-ff0a2130b6c6"
 
 
 private func createTemplateTimeSpans(in context: NSManagedObjectContext) -> [TemplateTimeSpan] {

@@ -15,7 +15,7 @@ private let currentUserIDKey = "currentUserIDKey"
 public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
-        guard let id = json["id"] as? String else {
+        guard let id = json.identifier else {
                 return nil
         }
         self.init(context: context)
@@ -23,11 +23,19 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
         self.firstName = json["firstName"] as? String
         self.lastName = json["lastName"] as? String
         self.phoneNumber = json["phoneNumber"] as? String
+        
+        if let mechanicJSON = json["mechanic"] as? JSONObject,
+            let mechanic = Mechanic.fetchOrCreate(json: mechanicJSON, context: context) {
+            self.mechanic = mechanic
+        } else if let mechanicID = json["mechanicID"] as? String,
+            let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+            self.mechanic = mechanic
+        }
     }
     
     public static func currentUser(context: NSManagedObjectContext) -> User? {
         guard let userID = currentUserID, let user = User.fetch(with: userID, in: context) else {
-                return nil
+            return nil
         }
         return user
     }

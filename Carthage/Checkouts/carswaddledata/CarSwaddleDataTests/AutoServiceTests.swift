@@ -11,7 +11,7 @@ import XCTest
 import CoreData
 import Store
 
-private let defaultMechanicID = "10aaf8a0-ea9f-11e8-a56c-2953c4831dcb"
+private let defaultMechanicID = "94730b50-f526-11e8-9f93-5502267c81e6"
 
 class AutoServiceTests: LoginTestCase {
     
@@ -28,7 +28,7 @@ class AutoServiceTests: LoginTestCase {
     }
     
     private var endDate: Date {
-        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2018, month: 11, day: 22, hour: 20)
+        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2018, month: 12, day: 22, hour: 20)
         return dateComponents.date ?? Date()
     }
     
@@ -65,6 +65,28 @@ class AutoServiceTests: LoginTestCase {
         
         waitForExpectations(timeout: 40, handler: nil)
     }
+    
+    func testGetAutoServicesSorted() {
+        let exp = expectation(description: "\(#function)\(#line)")
+//        let context = store.mainContext
+        
+        store.privateContext { pCtx in
+//            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            
+//        autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
+            self.autoServiceNetwork.getAutoServices(limit: 10, offset: 0, sortStatus: [.completed, .inProgress], in: pCtx) { autoServiceIDs, error in
+                store.mainContext { mCtx in
+                    let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mCtx)
+                    
+                    XCTAssert(autoServices.count > 0, "Should have auto services")
+                    exp.fulfill()
+                }
+            }
+//        }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
 
     func testCreateAutoServicePerformance() {
         // This is an example of a performance test case.
@@ -89,7 +111,7 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     let autoService = AutoService(context: context)
     
     let location = Location(context: context)
-    location.identifier = "9849c390-eb67-11e8-8d83-876032d55422"
+//    location.identifier = "9849c390-eb67-11e8-8d83-876032d55422"
     location.latitude = 40.89
     location.longitude = 23.3525
     
@@ -114,7 +136,7 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     
     let vehicle = Vehicle(context: context)
     vehicle.creationDate = Date()
-    vehicle.identifier = "bbb8c060-eaa9-11e8-a56c-2953c4831dcb"
+    vehicle.identifier = "9d8c53a0-f91c-11e8-b2ab-8533c1c85021"
     vehicle.licensePlate = "123 HYG"
     vehicle.name = "That name"
     

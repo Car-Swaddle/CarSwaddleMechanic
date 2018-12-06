@@ -77,14 +77,24 @@ public class Store {
     }
     
     public func mainContext(_ closure: @escaping (NSManagedObjectContext) -> Void) {
-        mainContext.perform {
-            closure(self.mainContext)
+        DispatchQueue.main.async {
+            self.mainContext.perform {
+                closure(self.mainContext)
+            }
         }
     }
     
     public func mainContextAndWait(_ closure: @escaping (NSManagedObjectContext) -> Void) {
-        mainContext.performAndWait {
-            closure(self.mainContext)
+        if Thread.isMainThread {
+            mainContext.performAndWait {
+                closure(self.mainContext)
+            }
+        } else {
+            DispatchQueue.main.sync {
+                self.mainContext.performAndWait {
+                    closure(self.mainContext)
+                }
+            }
         }
     }
     
