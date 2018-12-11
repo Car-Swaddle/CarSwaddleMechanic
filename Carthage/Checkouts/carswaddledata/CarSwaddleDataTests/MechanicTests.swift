@@ -39,6 +39,50 @@ class MechanicTests: LoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testUpdateCurrentMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        let isActive = true
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.update(isActive: isActive, token: "SomeKey", in: context) { mechanicID, error in
+                guard let mechanicID = mechanicID else {
+                    XCTAssert(false, "Should have mechanicID")
+                    return
+                }
+                
+                let mechanic = context.object(with: mechanicID) as? Mechanic
+                XCTAssert(mechanic != nil, "Mechanic is nil, should have gotten a mechanic")
+                XCTAssert(mechanic?.isActive == isActive, "Should be isActive. is \(mechanic!.isActive) should be \(isActive)")
+//                XCTAssert(mechanic?.user != nil, "User is nil, should have gotten a user")
+                
+                exp.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetCurrentMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.getCurrentMechanic(in: context) { mechanicID, error in
+                guard let mechanicID = mechanicID else {
+                    XCTAssert(false, "Should have mechanicID")
+                    return
+                }
+                
+                let mechanic = context.object(with: mechanicID) as? Mechanic
+                XCTAssert(mechanic != nil, "Mechanic is nil, should have gotten a mechanic")
+                XCTAssert(mechanic?.isActive != nil, "Should have isActive.)")
+                
+                exp.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
     func testGetNearestMechanicsAtlantic() {
         let exp = expectation(description: "\(#function)\(#line)")
         

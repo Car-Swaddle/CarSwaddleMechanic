@@ -12,10 +12,19 @@ import CarSwaddleNetworkRequest
 
 open class Network {
     
-    public let serviceRequest: Request
+//    public var serviceRequest: Request
     
     public init(serviceRequest: Request) {
-        self.serviceRequest = serviceRequest
+//        fatalError("subclass must override")
+//        self.serviceRequest = serviceRequest
+//        NotificationCenter.default.addObserver(self, selector: #selector(Network.updateServiceRequest(_:)), name: .serviceRequestDidChange, object: nil)
     }
+    
+//    @objc private func updateServiceRequest(_ notification: Notification) {
+//        guard let newServiceRequest = notification.userInfo?[Service.newServiceRequestKey] as? Request else {
+//            return
+//        }
+//        self.serviceRequest = newServiceRequest
+//    }
     
 }

@@ -63,7 +63,6 @@ extension HourCollectionView: UICollectionViewDelegate, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let hour = hours[indexPath.row]
         hourDelegate?.didSelectHour(hour: hour, collectionView: self)
-//        print("selected item: \(indexPath)")
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

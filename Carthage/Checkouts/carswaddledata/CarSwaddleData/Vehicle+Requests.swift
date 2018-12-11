@@ -17,7 +17,12 @@ public typealias VehicleCompletion = (_ vehicleObjectID: NSManagedObjectID?, _ e
 
 public class VehicleNetwork: Network {
     
-    private lazy var vehicleService = VehicleService(serviceRequest: self.serviceRequest)
+    private var vehicleService: VehicleService
+    
+    override public init(serviceRequest: Request) {
+        self.vehicleService = VehicleService(serviceRequest: serviceRequest)
+        super.init(serviceRequest: serviceRequest)
+    }
     
     @discardableResult
     public func requestVehicles(limit: Int = 100, offset: Int = 0, in context: NSManagedObjectContext, completion: @escaping (_ vehicleObjectIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {

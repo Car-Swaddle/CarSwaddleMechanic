@@ -14,11 +14,54 @@ import CoreLocation
 
 public final class MechanicNetwork: Network {
     
-    private lazy var mechanicService = MechanicService(serviceRequest: self.serviceRequest)
+    private var mechanicService: MechanicService
+    
+    override public init(serviceRequest: Request) {
+        self.mechanicService = MechanicService(serviceRequest: serviceRequest)
+        super.init(serviceRequest: serviceRequest)
+    }
     
     @discardableResult
     public func getNearestMechanics(limit: Int, coordinate: CLLocationCoordinate2D, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping (_ mechanicIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return getNearestMechanics(limit: limit, latitude: coordinate.latitude, longitude: coordinate.longitude, maxDistance: maxDistance, in: context, completion: completion)
+    }
+    
+    @discardableResult
+    public func update(isActive: Bool?, token: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return mechanicService.updateCurrentMechanic(isActive: isActive, token: token) { json, error in
+            context.perform {
+                var mechanicObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(mechanicObjectID, error)
+                    }
+                }
+                
+                guard let json = json else { return }
+                let mechanic = Mechanic.fetchOrCreate(json: json, context: context)
+                context.persist()
+                mechanicObjectID = mechanic?.objectID
+            }
+        }
+    }
+    
+    @discardableResult
+    public func getCurrentMechanic(in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return mechanicService.getCurrentMechanic { json, error in
+            context.perform {
+                var mechanicObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(mechanicObjectID, error)
+                    }
+                }
+                
+                guard let json = json else { return }
+                let mechanic = Mechanic.fetchOrCreate(json: json, context: context)
+                context.persist()
+                mechanicObjectID = mechanic?.objectID
+            }
+        }
     }
     
     @discardableResult

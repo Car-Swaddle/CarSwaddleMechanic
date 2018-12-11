@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+typealias OilChangeValues = (identifier: String, oilType: OilType)
+
 @objc(OilChange)
 public final class OilChange: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
@@ -18,12 +20,26 @@ public final class OilChange: NSManagedObject, NSManagedObjectFetchable, JSONIni
     
     /// Must set ServiceEntity on your own. This does not set it and does not require it.
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let values = OilChange.values(from: json) else { return nil }
+        self.init(context: context)
+        configure(with: values, json: json)
+    }
+    
+    public func configure(with json: JSONObject) throws {
+        guard let values = OilChange.values(from: json) else { throw StoreError.invalidJSON }
+        configure(with: values, json: json)
+    }
+    
+    private static func values(from json: JSONObject) -> OilChangeValues? {
         guard let id = json.identifier,
             let oilTypeString = json["oilType"] as? String,
             let oilType = OilType(rawValue: oilTypeString) else { return nil }
-        self.init(context: context)
-        self.identifier = id
-        self.oilType = oilType
+        return (id, oilType)
+    }
+    
+    private func configure(with values: OilChangeValues, json: JSONObject) {
+        self.identifier = values.identifier
+        self.oilType = values.oilType
     }
     
     public static func createWithDefaults(context: NSManagedObjectContext) -> OilChange {

@@ -27,7 +27,6 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         store.privateContext { [weak self] context in
             self?.auth.mechanicSignUp(email: email, password: password, context: context) { error in
-//                print("logged in: \(String(describing: error))")
                 guard error == nil && self?.auth.isLoggedIn == true else { return }
                 DispatchQueue.main.async {
                     navigator.navigateToLoggedInViewController()

@@ -13,17 +13,22 @@ import Store
 
 public final class UserNetwork: Network {
     
-    private lazy var userService = UserService(serviceRequest: self.serviceRequest)
+    private var userService: UserService
+    
+    override public init(serviceRequest: Request) {
+        self.userService = UserService(serviceRequest: serviceRequest)
+        super.init(serviceRequest: serviceRequest)
+    }
     
     
     @discardableResult
     public func update(user: User, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return update(firstName: user.firstName, lastName: user.lastName, phoneNumber: user.phoneNumber, in: context, completion: completion)
+        return update(firstName: user.firstName, lastName: user.lastName, phoneNumber: user.phoneNumber, token: nil, in: context, completion: completion)
     }
     
     @discardableResult
-    public func update(firstName: String?, lastName: String?, phoneNumber: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) { json, error in
+    public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token) { json, error in
             context.perform {
                 var userObjectID: NSManagedObjectID?
                 defer {
@@ -57,32 +62,5 @@ public final class UserNetwork: Network {
             }
         }
     }
-    
-    /*
-     @discardableResult
-     public func getNearestMechanics(limit: Int, latitude: Double, longitude: Double, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping (_ mechanicIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
-     return mechanicService.getNearestMechanics(limit: limit, latitude: latitude, longitude: longitude, maxDistance: maxDistance) { [weak self] jsonArray, error in
-     context.perform {
-     var mechanicIDs: [NSManagedObjectID] = []
-     defer {
-     DispatchQueue.global().async {
-     completion(mechanicIDs, error)
-     }
-     }
-     guard let jsonArray = jsonArray else { return }
-     
-     for json in jsonArray {
-     guard let mechanic = self?.createModel(from: json, in: context) else { continue }
-     do {
-     try context.obtainPermanentIDs(for: [mechanic])
-     mechanicIDs.append(mechanic.objectID)
-     } catch { print("unable to obtain permanent id") }
-     }
-     
-     context.persist()
-     }
-     }
-     }
-     */
     
 }

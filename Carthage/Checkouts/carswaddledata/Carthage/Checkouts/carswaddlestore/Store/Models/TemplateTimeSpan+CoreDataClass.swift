@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+typealias TemplateTimeSpanValues = (identifier: String, duration: TimeInterval, weekday: Weekday, date: Date)
 
 public enum Weekday: Int16, CaseIterable {
     case sunday
@@ -25,22 +25,37 @@ public enum Weekday: Int16, CaseIterable {
 public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let values = TemplateTimeSpan.values(from: json) else { return nil }
+        self.init(context: context)
+        configure(with: values, json: json)
+    }
+    
+    public func configure(with json: JSONObject) throws {
+        guard let values = TemplateTimeSpan.values(from: json) else { throw StoreError.invalidJSON }
+        configure(with: values, json: json)
+    }
+    
+    
+    private func configure(with values: TemplateTimeSpanValues, json: JSONObject) {
+        self.identifier = values.identifier
+        self.duration = values.duration
+        self.startTime = Int64(values.date.secondsSinceMidnight())
+        self.weekday = values.weekday
+        if let mechanicID = json["mechanicID"] as? String,
+            let context = managedObjectContext,
+            let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+            self.mechanic = mechanic
+        }
+    }
+    
+    private static func values(from json: JSONObject) -> TemplateTimeSpanValues? {
         guard let identifier = json["id"] as? String,
             let duration = json["duration"] as? Double,
             let weekdayInt = json["weekDay"] as? Int16,
             let weekday = Weekday(rawValue: weekdayInt),
             let dateString = json["startTime"] as? String,
             let date = TemplateTimeSpan.dateFormatter.date(from: dateString) else { return nil }
-        
-        self.init(context: context)
-        self.identifier = identifier
-        self.duration = duration
-        self.startTime = Int64(date.secondsSinceMidnight())
-        self.weekday = weekday
-        if let mechanicID = json["mechanicID"] as? String,
-            let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
-            self.mechanic = mechanic
-        }
+        return (identifier, duration, weekday, date)
     }
     
     

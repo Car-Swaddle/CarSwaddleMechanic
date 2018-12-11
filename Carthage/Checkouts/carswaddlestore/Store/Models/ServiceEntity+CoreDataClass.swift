@@ -10,6 +10,8 @@
 import Foundation
 import CoreData
 
+typealias ServiceEntityValues = (identifier: String, entityType: ServiceEntity.EntityType)
+
 @objc(ServiceEntity)
 final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
@@ -28,13 +30,28 @@ final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSO
     
     /// Must set actual eneity relationship on your own. It is not set here and does not require it.
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
-        guard let id = json.identifier,
-            let entityTypeString = json["entityType"] as? String,
-            let entityType = EntityType(rawValue: entityTypeString) else { return nil }
-        
+        guard let values = ServiceEntity.values(from: json) else { return nil }
         self.init(context: context)
-        self.identifier = id
-        self.entityType = entityType
+        configure(with: values, json: json)
+    }
+    
+    public convenience init(autoService: AutoService, oilChange: OilChange, context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.autoService = autoService
+        self.oilChange = oilChange
+        self.entityType = .oilChange
+    }
+    
+    public func configure(with json: JSONObject) throws {
+        guard let values = ServiceEntity.values(from: json) else { throw StoreError.invalidJSON }
+        configure(with: values, json: json)
+    }
+    
+    private func configure(with values: ServiceEntityValues, json: JSONObject) {
+        self.identifier = values.identifier
+        self.entityType = values.entityType
+        
+        guard let context = managedObjectContext else { return }
         
         if let autoServiceID = json["autoServiceID"] as? String,
             let autoService = AutoService.fetch(with: autoServiceID, in: context) {
@@ -44,18 +61,10 @@ final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSO
         switch entityType {
         case .oilChange:
             if let oilChangeJSON = json["oilChange"] as? JSONObject,
-                let oilChange = OilChange(json: oilChangeJSON, context: context) {
+                let oilChange = OilChange.fetchOrCreate(json: oilChangeJSON, context: context) {
                 self.oilChange = oilChange
             }
         }
-    }
-    
-    
-    public convenience init(autoService: AutoService, oilChange: OilChange, context: NSManagedObjectContext) {
-        self.init(context: context)
-        self.autoService = autoService
-        self.oilChange = oilChange
-        self.entityType = .oilChange
     }
     
     private let entityTypeKey = "entityType"
@@ -90,6 +99,14 @@ final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSO
         }
         
         return entityJSON
+    }
+    
+    
+    private static func values(from json: JSONObject) -> ServiceEntityValues? {
+        guard let id = json.identifier,
+            let entityTypeString = json["entityType"] as? String,
+            let entityType = EntityType(rawValue: entityTypeString) else { return nil }
+        return (id, entityType)
     }
     
 }

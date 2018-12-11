@@ -7,6 +7,7 @@
 //
 
 import NetworkRequest
+import CarSwaddleNetworkRequest
 
 #if targetEnvironment(simulator)
 private let domain = "127.0.0.1"
@@ -26,7 +27,17 @@ public func createServiceRequest() -> Request {
     return request
 }
 
-public func finishTasksAndInvalidate() {
-    serviceRequest.urlSession.finishTasksAndInvalidate()
-    serviceRequest = createServiceRequest()
+public func finishTasksAndInvalidate(completion: @escaping () -> Void) {
+    serviceRequest.urlSession.getTasksWithCompletionHandler { dataTask, uploadTask, downloadTask in
+        for task in dataTask {
+            task.cancel()
+        }
+        for task in uploadTask {
+            task.cancel()
+        }
+        for task in downloadTask {
+            task.cancel()
+        }
+        completion()
+    }
 }

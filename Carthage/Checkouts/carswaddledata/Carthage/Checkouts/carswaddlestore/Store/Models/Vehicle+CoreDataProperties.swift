@@ -19,7 +19,7 @@ extension Vehicle {
     @NSManaged public var creationDate: Date
     @NSManaged public var identifier: String
     @NSManaged public var name: String
-    @NSManaged public var user: User
+    @NSManaged public var user: User?
     @NSManaged public var autoServices: Set<AutoService>
     
     /// At least one of licensePlate or vin or vehicleDescription must not be nil.

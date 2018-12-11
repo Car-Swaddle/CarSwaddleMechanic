@@ -412,7 +412,7 @@ SWIFT_CLASS_NAMED("Vehicle")
 @property (nonatomic, copy) NSDate * _Nonnull creationDate;
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, copy) NSString * _Nonnull name;
-@property (nonatomic, strong) User * _Nonnull user;
+@property (nonatomic, strong) User * _Nullable user;
 @property (nonatomic, copy) NSSet<AutoService *> * _Nonnull autoServices;
 /// At least one of licensePlate or vin or vehicleDescription must not be nil.
 @property (nonatomic, copy) NSString * _Nullable vin;

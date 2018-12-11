@@ -28,6 +28,21 @@ class MechanicTests: XCTestCase {
         XCTAssert(mechanic?.user != nil, "Should have mechanic")
     }
     
+    func testExistingMechanicFetchOrCreateChanges() {
+        let context = store.mainContext
+        let oldMechanic = Mechanic.fetchOrCreate(json: ["id": mechanicID, "isActive": true], context: context)
+        context.persist()
+        
+        let newMechanic = Mechanic.fetchOrCreate(json: ["id": mechanicID, "isActive": false], context: context)
+        context.persist()
+        
+        
+        
+        XCTAssert(oldMechanic != nil, "Should have oldMech")
+        XCTAssert(newMechanic != nil, "Should have newMech")
+        XCTAssert(oldMechanic?.isActive == false, "Should be the latest changes")
+    }
+    
 }
 
 let mechanicJSONWithUser: JSONObject = [

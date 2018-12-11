@@ -88,16 +88,18 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
             guard let region = context.object(with: regionObjectID) as? Region else { return }
             self?.regionNetwork.postRegion(region: region, in: context) { newRegionID, error in
                 if let error = error {
-                    print("Error: \(error)")
+                    completion(error)
                 } else if let newRegionID = newRegionID {
                     context.perform {
                         guard let region = context.object(with: newRegionID) as? Region,
                             let mechanic = Mechanic.currentLoggedInMechanic(in: context) else { return }
                         mechanic.serviceRegion = region
                         context.persist()
+                        completion(error)
                     }
+                } else {
+                    completion(error)
                 }
-                completion(error)
             }
         }
     }
@@ -140,10 +142,6 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
         serviceRegion?.longitude = coordinate.center.longitude
         serviceRegion?.radius = coordinate.span.longitudinalKilometers.kilometersToMeters/2
         serviceRegion?.managedObjectContext?.persist()
-        
-        if let serviceRegion = serviceRegion {
-            print("serviceRegin: \(serviceRegion)")
-        }
     }
     
     private func registerForNotifications() {
@@ -212,7 +210,6 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
 extension ServiceRegionViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("region changed")
         if hasFetchedRegion {
             saveLocalServiceRegion()
         }

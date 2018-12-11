@@ -30,11 +30,23 @@ private let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String)
 
 @objc(AutoService)
 public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let values = AutoService.values(from: json) else { return nil }
+        self.init(context: context)
+        configure(with: values, json: json)
+    }
+    
+    public func configure(with json: JSONObject) throws {
+        guard let values = AutoService.values(from: json) else { throw StoreError.invalidJSON }
+        configure(with: values, json: json)
+    }
+    
+    private static func values(from json: JSONObject) -> AutoServiceValues? {
         guard let id = json.identifier,
             let scheduledDateString = json["scheduledDate"] as? String,
             let scheduledDate = serverDateFormatter.date(from: scheduledDateString),
@@ -42,12 +54,16 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             let status = AutoService.Status(rawValue: statusString),
             let userID = json["userID"] as? String,
             let mechanicID = json["mechanicID"] as? String else { return nil }
-        
-        self.init(context: context)
-        self.identifier = id
-        self.scheduledDate = scheduledDate
-        self.status = status
+        return (id, scheduledDate, status, userID, mechanicID)
+    }
+    
+    private func configure(with values: AutoServiceValues, json: JSONObject) {
+        self.identifier = values.identifier
+        self.scheduledDate = values.scheduledDate
+        self.status = values.status
         self.notes = json["notes"] as? String
+        
+        guard let context = managedObjectContext else { return }
         
         if let vehicleJSON = json["vehicle"] as? JSONObject {
             self.vehicle = Vehicle.fetchOrCreate(json: vehicleJSON, context: context)
@@ -66,17 +82,18 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         if let mechanicJSON = json["mechanic"] as? JSONObject,
             let mechanic = Mechanic.fetchOrCreate(json: mechanicJSON, context: context) {
             self.mechanic = mechanic
-        } else if let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+        } else if let mechanic = Mechanic.fetch(with: values.mechanicID, in: context) {
             self.mechanic = mechanic
         }
         
         if let userJSON = json["user"] as? JSONObject,
             let user = User.fetchOrCreate(json: userJSON, context: context) {
             self.creator = user
-        } else if let user = User.fetch(with: userID, in: context) {
+        } else if let user = User.fetch(with: values.userID, in: context) {
             creator = user
         }
     }
+    
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()

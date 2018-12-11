@@ -16,13 +16,16 @@ private let identifierKey: String = "identifier"
 public protocol JSONInitable {
     init?(json: JSONObject, context: NSManagedObjectContext)
     static func fetchOrCreate(json: JSONObject, context: NSManagedObjectContext) -> Self?
+    func configure(with json: JSONObject) throws
 }
 
 extension JSONInitable where Self: NSManagedObjectFetchable, Self: NSManagedObject {
     
     public static func fetchOrCreate(json: JSONObject, context: NSManagedObjectContext) -> Self? {
-        if let identifier = json["id"] as? ID {
-            return fetch(with: identifier, in: context) ?? Self(json: json, context: context)
+        if let identifier = (json["id"] as? ID) ?? (json["identifier"] as? ID),
+            let fetchedObject = fetch(with: identifier, in: context) {
+            try? fetchedObject.configure(with: json)
+            return fetchedObject
         } else {
             return Self(json: json, context: context)
         }
@@ -215,7 +218,7 @@ public extension NSManagedObjectFetchable where Self: NSManagedObject, ID == Int
 extension Dictionary where Key == String, Value == Any {
     
     var identifier: String? {
-        return self["id"] as? String
+        return (self["id"] as? String) ?? self["identifier"] as? String
     }
     
 }

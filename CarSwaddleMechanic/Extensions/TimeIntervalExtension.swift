@@ -16,3 +16,15 @@ extension TimeInterval {
     static let week: TimeInterval = .day*7
     
 }
+
+extension Date {
+    
+    var dayAfter: Date? {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self, wrappingComponents: false)
+    }
+    
+    var dayBefore: Date? {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self, wrappingComponents: false)
+    }
+    
+}

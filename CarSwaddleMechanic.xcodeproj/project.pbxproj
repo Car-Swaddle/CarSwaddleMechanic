@@ -34,6 +34,13 @@
 		9913759E2171BE1800F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
 		9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0821BC6F5C002D099A /* PushNotificationController.swift */; };
+		9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */; };
+		9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */; };
+		9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0F21BE5908002D099A /* AutoServiceCell.swift */; };
+		9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1021BE5908002D099A /* AutoServiceCell.xib */; };
+		9953AE1421BFBF8A002D099A /* AutoServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */; };
+		9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */; };
 		997DBC5F2197B5160080F42C /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5D2197B5160080F42C /* NameCell.swift */; };
 		997DBC602197B5160080F42C /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC5E2197B5160080F42C /* NameCell.xib */; };
 		997DBC642198FBE20080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC632198FBE20080F42C /* lehi.gpx */; };
@@ -126,6 +133,13 @@
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9913759D2171BE1800F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
+		9953AE0821BC6F5C002D099A /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
+		9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicActiveCell.swift; sourceTree = "<group>"; };
+		9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicActiveCell.xib; sourceTree = "<group>"; };
+		9953AE0F21BE5908002D099A /* AutoServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceCell.swift; sourceTree = "<group>"; };
+		9953AE1021BE5908002D099A /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
+		9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceDetailsViewController.swift; sourceTree = "<group>"; };
+		9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceDetailsViewController.storyboard; sourceTree = "<group>"; };
 		997DBC5D2197B5160080F42C /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		997DBC5E2197B5160080F42C /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
 		997DBC632198FBE20080F42C /* lehi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lehi.gpx; sourceTree = "<group>"; };
@@ -257,6 +271,19 @@
 			path = Availability;
 			sourceTree = "<group>";
 		};
+		9953AE0E21BE58E8002D099A /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
+				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
+				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
+				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
+				9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		9992763221673BCA0032D7F7 = {
 			isa = PBXGroup;
 			children = (
@@ -285,12 +312,12 @@
 				9912CDA1216C7E350006FDDF /* Launch */,
 				99F0279321866B49005FEFC7 /* Extensions */,
 				9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */,
+				9953AE0821BC6F5C002D099A /* PushNotificationController.swift */,
 				99F0279D2188321D005FEFC7 /* ServiceRequest.swift */,
 				99F02791218663BB005FEFC7 /* Location.swift */,
 				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
 				99F02796218677EE005FEFC7 /* Profile */,
-				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
-				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				9953AE0E21BE58E8002D099A /* Schedule */,
 				99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */,
 				99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */,
 				9912CDE5216DC8480006FDDF /* Availability */,
@@ -337,6 +364,8 @@
 				99F0279821867816005FEFC7 /* ProfileServiceRegionCell.xib */,
 				997DBC5D2197B5160080F42C /* NameCell.swift */,
 				997DBC5E2197B5160080F42C /* NameCell.xib */,
+				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
+				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -419,6 +448,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					9992765121673BCC0032D7F7 = {
@@ -457,12 +489,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
+				9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
+				9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
+				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
@@ -529,11 +564,15 @@
 			files = (
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
+				9953AE1421BFBF8A002D099A /* AutoServiceDetailsViewController.swift in Sources */,
+				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
+				9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */,
 				99F0279C218680A6005FEFC7 /* CLLocationDistanceExtension.swift in Sources */,
+				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,

@@ -11,10 +11,24 @@ import CoreData
 
 private let tempID = "vehicleTempID"
 
+typealias VehicleValues = (identifier: String, name: String, licensePlate: String?, vin: String?)
+
 @objc(Vehicle)
 public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
+        guard let values = Vehicle.values(from: json) else { return nil }
+        self.init(context: context)
+        configure(with: values, json: json)
+    }
+    
+    public func configure(with json: JSONObject) throws {
+        guard let values = Vehicle.values(from: json) else { throw StoreError.invalidJSON }
+        configure(with: values, json: json)
+    }
+    
+    
+    private static func values(from json: JSONObject) -> VehicleValues? {
         guard let identifier = json.identifier,
             let name = json["name"] as? String else { return nil }
         
@@ -25,14 +39,17 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
             return nil
         }
         
-        self.init(context: context)
-        
-        self.identifier = identifier
+        return (identifier, name, licensePlate, vin)
+    }
+    
+    private func configure(with values: VehicleValues, json: JSONObject) {
+        self.identifier = values.identifier
         self.creationDate = json["creationDate"] as? Date ?? Date()
-        self.name = name
-        self.licensePlate = licensePlate
-        self.vin = vin
+        self.name = values.name
+        self.licensePlate = values.licensePlate
+        self.vin = values.vin
         if let userID = json["userID"] as? String,
+            let context = managedObjectContext,
             let user = User.fetch(with: userID, in: context) {
             self.user = user
         }

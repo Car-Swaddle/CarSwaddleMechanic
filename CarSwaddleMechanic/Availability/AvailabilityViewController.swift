@@ -139,7 +139,7 @@ extension AvailabilityViewController: UITableViewDataSource {
 extension AvailabilityViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row")
+        
     }
     
 }

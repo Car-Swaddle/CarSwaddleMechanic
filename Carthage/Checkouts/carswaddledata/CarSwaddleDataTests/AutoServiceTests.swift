@@ -11,14 +11,14 @@ import XCTest
 import CoreData
 import Store
 
-private let defaultMechanicID = "94730b50-f526-11e8-9f93-5502267c81e6"
+private let defaultMechanicID = "78b58a90-fab8-11e8-93aa-8b803499fdeb"
 
 class AutoServiceTests: LoginTestCase {
     
     private let autoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     private var startDate: Date {
-        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2018, month: 11, day: 22, hour: 0)
+        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2017, month: 11, day: 22, hour: 0)
         return dateComponents.date ?? Date()
     }
     
@@ -28,7 +28,7 @@ class AutoServiceTests: LoginTestCase {
     }
     
     private var endDate: Date {
-        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2018, month: 12, day: 22, hour: 20)
+        let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2020, month: 12, day: 22, hour: 20)
         return dateComponents.date ?? Date()
     }
     
@@ -53,7 +53,7 @@ class AutoServiceTests: LoginTestCase {
         let autoService = createAutoService(scheduledDate: scheduledDate, in: context)
         
         autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
-            self.autoServiceNetwork.getAutoServices(mechanicID: defaultMechanicID, startDate: self.startDate, endDate: self.endDate, status: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
+            self.autoServiceNetwork.getAutoServices(mechanicID: defaultMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
                 context.perform {
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: context)
                     
@@ -117,13 +117,13 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     
     autoService.location = location
     
-    let user = User(context: context)
+    let user = User.fetch(with: "SomeID", in: context) ?? User(context: context)
     user.identifier = "SomeID"
     user.firstName = "Roopert"
     
     autoService.creator = user
     
-    let mechanic = Mechanic(context: context)
+    let mechanic = Mechanic.fetch(with: defaultMechanicID, in: context) ?? Mechanic(context: context)
     mechanic.identifier = defaultMechanicID
     
     autoService.mechanic = mechanic

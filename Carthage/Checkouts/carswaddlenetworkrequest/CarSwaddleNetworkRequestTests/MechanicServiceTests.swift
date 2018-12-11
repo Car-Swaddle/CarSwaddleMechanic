@@ -51,8 +51,40 @@ class MechanicServiceTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
-    func testPerformanceNearestMechanics() {
+    func testUpdateMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let token = "The token"
+        let isActive = true
+        service.updateCurrentMechanic(isActive: isActive, token: token) { json, error in
+            if let json = json {
+                XCTAssert(json["isActive"] as? Bool == isActive, "Should have gotten at least one mechanic")
+            } else {
+                XCTAssert(false, "Should have gotten jsonArray")
+            }
+            
+            exp.fulfill()
+        }
         
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        service.getCurrentMechanic { json, error in
+            if let json = json {
+                XCTAssert(json["isActive"] as? Bool != nil, "Should have gotten at least one mechanic")
+                XCTAssert(json["id"] as? String != nil, "Should have gotten at least one mechanic")
+            } else {
+                XCTAssert(false, "Should have gotten jsonArray")
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testPerformanceNearestMechanics() {
         measure {
             let exp = expectation(description: "\(#function)\(#line)")
             service.getNearestMechanics(limit: 10, latitude: closeLatitude, longitude: closeLongitude, maxDistance: 1000) { jsonArray, error in

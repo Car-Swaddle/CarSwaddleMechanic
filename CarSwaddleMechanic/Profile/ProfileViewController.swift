@@ -18,14 +18,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         case firstName
         case lastName
         case serviceRegion
+        case mechanicActive
     }
     
     @IBOutlet private weak var tableView: UITableView!
     private var rows: [Row] = Row.allCases
     private var user: User? {
-        didSet {
-            tableView.reloadData()
-        }
+        didSet { tableView.reloadData() }
     }
     private var userNetwork = UserNetwork(serviceRequest: serviceRequest)
     private let auth = Auth(serviceRequest: serviceRequest)
@@ -55,10 +54,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
             self?.auth.logout { error in
                 DispatchQueue.main.async {
-                    finishTasksAndInvalidate()
-                    try? store.destroyAllData()
-                    AuthController().removeToken()
-                    navigator.navigateToLoggedOutViewController()
+                    finishTasksAndInvalidate {
+                        try? store.destroyAllData()
+                        AuthController().removeToken()
+                        DispatchQueue.main.async {
+                            navigator.navigateToLoggedOutViewController()
+                        }
+                    }
                 }
             }
         }
@@ -75,6 +77,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.dataSource = self
         tableView.register(ProfileServiceRegionCell.self)
         tableView.register(NameCell.self)
+        tableView.register(MechanicActiveCell.self)
     }
     
     @IBAction func didSelectEditSchedule() {
@@ -96,6 +99,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .serviceRegion:
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
+        case .mechanicActive: break
         }
     }
     
@@ -122,6 +126,9 @@ extension ProfileViewController: UITableViewDataSource {
             if let region = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.serviceRegion {
                 cell.configure(with: region)
             }
+            return cell
+        case .mechanicActive:
+            let cell: MechanicActiveCell = tableView.dequeueCell()
             return cell
         }
     }

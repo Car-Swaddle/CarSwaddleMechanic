@@ -9,6 +9,14 @@
 import XCTest
 import Store
 @testable import CarSwaddleData
+import CarSwaddleNetworkRequest
+
+
+#if targetEnvironment(simulator)
+private let domain = "127.0.0.1"
+#else
+private let domain = "Kyles-MacBook-Pro.local"
+#endif
 
 class UserTests: LoginTestCase {
     
@@ -23,7 +31,7 @@ class UserTests: LoginTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, in: context) { objectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: nil, in: context) { objectID, error in
                 store.mainContext { mainContext in
                     guard let objectID = objectID else {
                         XCTAssert(false, "Didn't get objectID")
@@ -61,5 +69,59 @@ class UserTests: LoginTestCase {
         
         waitForExpectations(timeout: 40, handler: nil)
     }
+    
+    func testResetRequest() {
+        
+        let u = self.userNetwork
+        
+        let request = Request(domain: domain)
+        request.port = 3000
+        request.timeout = 15
+        request.defaultScheme = .http
+        
+        NotificationCenter.default.post(name: .serviceRequestDidChange, object: nil, userInfo: [Service.newServiceRequestKey: request])
+        
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { [weak self] context in
+            u.requestCurrentUser(in: context) { userObjectID, error in
+                store.mainContext{ mainContext in
+                    guard let userObjectID = userObjectID else {
+                        XCTAssert(false, "userID doesn't exist")
+                        return
+                    }
+                    let user = mainContext.object(with: userObjectID) as? User
+                    XCTAssert(user != nil, "User doesn't exist")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+//    func testResetRequestBadDomain() {
+//
+//        let request = Request(domain: "domain")
+//        request.port = 3000
+//        request.timeout = 15
+//        request.defaultScheme = .http
+//
+//        NotificationCenter.default.post(name: .serviceRequestDidChange, object: nil, userInfo: [Service.newServiceRequestKey: request])
+//
+//        let exp = expectation(description: "\(#function)\(#line)")
+//        store.privateContext { [weak self] context in
+//            self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
+//                store.mainContext{ mainContext in
+//                    guard let userObjectID = userObjectID else {
+//                        XCTAssert(false, "userID doesn't exist")
+//                        return
+//                    }
+//                    let user = mainContext.object(with: userObjectID) as? User
+//                    XCTAssert(user != nil, "User doesn't exist")
+//                    exp.fulfill()
+//                }
+//            }
+//        }
+//        waitForExpectations(timeout: 40, handler: nil)
+//    }
     
 }

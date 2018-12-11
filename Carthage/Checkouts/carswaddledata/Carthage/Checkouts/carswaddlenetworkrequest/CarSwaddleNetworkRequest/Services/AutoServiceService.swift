@@ -39,15 +39,15 @@ public final class AutoServiceService: Service {
     }
     
     @discardableResult
-    public func getAutoServices(mechanicID: String, startDate: Date, endDate: Date, status: [String], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
+    public func getAutoServices(mechanicID: String, startDate: Date, endDate: Date, filterStatus: [String], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
         var queryItems: [URLQueryItem] = [
             URLQueryItem(name: "mechanicID", value: mechanicID),
             URLQueryItem(name: "startDate", value: serverDateFormatter.string(from: startDate)),
             URLQueryItem(name: "endDate", value: serverDateFormatter.string(from: endDate)),
         ]
         
-        for singleStatus in status {
-            let queryItem = URLQueryItem(name: "status", value: singleStatus)
+        for singleStatus in filterStatus {
+            let queryItem = URLQueryItem(name: "filterStatus", value: singleStatus)
             queryItems.append(queryItem)
         }
         
@@ -65,8 +65,6 @@ public final class AutoServiceService: Service {
         }
     }
     
-    
-    // offset=0&limit=10&status=inProgress
     @discardableResult
     public func getAutoServices(limit: Int, offset: Int, sortStatus: [String], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
         var queryItems: [URLQueryItem] = [
@@ -75,7 +73,7 @@ public final class AutoServiceService: Service {
             ]
         
         for singleStatus in sortStatus {
-            let queryItem = URLQueryItem(name: "status", value: singleStatus)
+            let queryItem = URLQueryItem(name: "sortStatus", value: singleStatus)
             queryItems.append(queryItem)
         }
         

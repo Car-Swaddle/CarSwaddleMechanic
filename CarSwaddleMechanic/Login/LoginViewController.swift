@@ -29,7 +29,6 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         store.privateContext { [weak self] context in
             self?.auth.mechanicLogin(email: email, password: password, context: context) { [weak self] error in
                 guard error == nil && self?.auth.isLoggedIn == true else {
-                    print("error: \(String(describing: error))")
                     return
                 }
                 DispatchQueue.main.async {

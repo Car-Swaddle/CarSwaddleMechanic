@@ -13,7 +13,12 @@ import CoreData
 
 public final class TemplateTimeSpanNetwork: Network {
     
-    private lazy var availabilityService = AvailabilityService(serviceRequest: serviceRequest)
+    private var availabilityService: AvailabilityService
+    
+    override public init(serviceRequest: Request) {
+        self.availabilityService = AvailabilityService(serviceRequest: serviceRequest)
+        super.init(serviceRequest: serviceRequest)
+    }
     
     @discardableResult
     public func getTimeSpans(ofMechanicWithID mechanicID: String? = nil, in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {

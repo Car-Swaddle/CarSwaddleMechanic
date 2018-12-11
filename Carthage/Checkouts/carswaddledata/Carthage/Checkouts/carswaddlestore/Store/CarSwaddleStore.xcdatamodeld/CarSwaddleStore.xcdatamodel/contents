@@ -79,7 +79,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="vin" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="autoServices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="vehicle" inverseEntity="AutoService" syncable="YES"/>
-        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="vehicles" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="vehicles" inverseEntity="User" syncable="YES"/>
         <relationship name="vehicleDescription" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="VehicleDescription" inverseName="vehicle" inverseEntity="VehicleDescription" syncable="YES"/>
     </entity>
     <entity name="VehicleDescription" representedClassName="VehicleDescription" syncable="YES">
@@ -98,10 +98,10 @@
         <element name="Price" positionX="-9" positionY="90" width="128" height="90"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
         <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
+        <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="150"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
-        <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
     </elements>
 </model>
