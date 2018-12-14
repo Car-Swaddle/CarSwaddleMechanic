@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="KGk-i7-Jjw" customClass="AutoServiceStatusCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="96.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X12-ta-AIB">
+                        <rect key="frame" x="16" y="25.5" width="335" height="46"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-EX-J8F">
+                                <rect key="frame" x="8" y="8" width="319" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2p-nj-hMS">
+                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="scheduled"/>
+                                        <connections>
+                                            <action selector="didSelectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8HG-A6-6wz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSf-y9-3FN">
+                                        <rect key="frame" x="80.5" y="0.0" width="77.5" height="30"/>
+                                        <state key="normal" title="inProgress"/>
+                                        <connections>
+                                            <action selector="didSelectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2t8-28-Evj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVK-bw-jig">
+                                        <rect key="frame" x="161" y="0.0" width="77.5" height="30"/>
+                                        <state key="normal" title="completed"/>
+                                        <connections>
+                                            <action selector="didSelectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o5Z-X4-aEC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vi-Sf-YAs">
+                                        <rect key="frame" x="241.5" y="0.0" width="77.5" height="30"/>
+                                        <state key="normal" title="canceled"/>
+                                        <connections>
+                                            <action selector="didSelectButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RYH-vH-yVj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Q1C-EX-J8F" firstAttribute="trailing" secondItem="X12-ta-AIB" secondAttribute="trailingMargin" id="V1G-jN-O9e"/>
+                            <constraint firstItem="Q1C-EX-J8F" firstAttribute="bottom" secondItem="X12-ta-AIB" secondAttribute="bottomMargin" id="ZFB-b3-u3L"/>
+                            <constraint firstItem="Q1C-EX-J8F" firstAttribute="top" secondItem="X12-ta-AIB" secondAttribute="topMargin" id="dt8-vd-xcr"/>
+                            <constraint firstItem="Q1C-EX-J8F" firstAttribute="leading" secondItem="X12-ta-AIB" secondAttribute="leadingMargin" id="qXl-Ux-8i5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="X12-ta-AIB" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="5m6-Ln-oLp"/>
+                    <constraint firstItem="X12-ta-AIB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Sw5-MG-orV"/>
+                    <constraint firstItem="X12-ta-AIB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="htZ-rA-EKh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="canceledButton" destination="1vi-Sf-YAs" id="ajB-O9-UWT"/>
+                <outlet property="completedButton" destination="eVK-bw-jig" id="rP5-tA-oab"/>
+                <outlet property="inProgressButton" destination="tSf-y9-3FN" id="9ys-Uo-6WM"/>
+                <outlet property="scheduledButton" destination="p2p-nj-hMS" id="09c-rg-dTm"/>
+            </connections>
+            <point key="canvasLocation" x="175.19999999999999" y="135.38230884557723"/>
+        </tableViewCell>
+    </objects>
+</document>

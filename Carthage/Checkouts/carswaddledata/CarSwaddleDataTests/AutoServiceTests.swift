@@ -10,8 +10,9 @@ import XCTest
 @testable import CarSwaddleData
 import CoreData
 import Store
+import MapKit
 
-private let defaultMechanicID = "78b58a90-fab8-11e8-93aa-8b803499fdeb"
+private let defaultMechanicID = "8ba0ded0-febd-11e8-9811-059afcb3ba5e"
 
 class AutoServiceTests: LoginTestCase {
     
@@ -30,6 +31,11 @@ class AutoServiceTests: LoginTestCase {
     private var endDate: Date {
         let dateComponents = DateComponents(calendar: Calendar.current, timeZone: nil, year: 2020, month: 12, day: 22, hour: 20)
         return dateComponents.date ?? Date()
+    }
+    
+    override func setUp() {
+        super.setUp()
+        try? store.destroyAllData()
     }
     
     func testCreateAutoService() {
@@ -87,6 +93,181 @@ class AutoServiceTests: LoginTestCase {
         
         waitForExpectations(timeout: 40, handler: nil)
     }
+    
+    func testUpdateAutoServiceStatus() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, status: .canceled, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                            XCTAssert(false, "Should have Auto serviec")
+                            return
+                        }
+                        XCTAssert(auto.status == .canceled, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateAutoServiceNotes() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+                let newNote = "Here dat there note"
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, notes: newNote, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                                XCTAssert(false, "Should have Auto serviec")
+                                return
+                        }
+                        XCTAssert(auto.notes == newNote, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateAutoServiceVehicleID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+                let vehicleID = "b1fa6010-febd-11e8-9811-059afcb3ba5e"
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, vehicleID: vehicleID, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                                XCTAssert(false, "Should have Auto serviec")
+                                return
+                        }
+                        XCTAssert(auto.vehicle?.identifier == vehicleID, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateAutoServiceScheduledDate() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+//                let vehicleID = "b1fa6010-febd-11e8-9811-059afcb3ba5e"
+//                let location = CLLocationCoordinate2D(latitude: -12.234, longitude: 12.456)
+                let scheduledDate = Date(timeIntervalSince1970: 4567)
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, scheduledDate: scheduledDate, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                                XCTAssert(false, "Should have Auto serviec")
+                                return
+                        }
+                        XCTAssert(auto.scheduledDate == scheduledDate, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateAutoServiceLocation() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+                let location = CLLocationCoordinate2D(latitude: -12.234, longitude: 12.456)
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, location: location, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                                XCTAssert(false, "Should have Auto serviec")
+                                return
+                        }
+                        XCTAssert(auto.location?.coordinate.latitude == location.latitude && auto.location?.coordinate.longitude == location.longitude, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateAutoServiceMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
+            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+                guard let objectID = objectID,
+                    let cAuto = pCtx.object(with: objectID) as? AutoService else {
+                        XCTAssert(false, "Should have Auto serviec")
+                        return
+                }
+                self.autoServiceNetwork.updateAutoService(autoServiceID: cAuto.identifier, mechanicID: secondMechanicID, in: pCtx) { objectID, error in
+                    store.mainContext { mCtx in
+                        guard let objectID = objectID,
+                            let auto = mCtx.object(with: objectID) as? AutoService else {
+                                XCTAssert(false, "Should have Auto serviec")
+                                return
+                        }
+                        XCTAssert(auto.mechanic?.identifier == secondMechanicID, "Should have it yall")
+                        XCTAssert(auto.mechanic?.identifier != mechanicID, "Should have it yall")
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
 
     func testCreateAutoServicePerformance() {
         // This is an example of a performance test case.
@@ -106,6 +287,9 @@ class AutoServiceTests: LoginTestCase {
 
 }
 
+private let secondUserID = "ec9a7db0-ff7e-11e8-bd6b-cfe654f39af6"
+private let secondMechanicID = "eca37e60-ff7e-11e8-bd6b-cfe654f39af6"
+
 
 private func createAutoService(scheduledDate: Date = Date(), in context: NSManagedObjectContext) -> AutoService {
     let autoService = AutoService(context: context)
@@ -118,7 +302,7 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     autoService.location = location
     
     let user = User.fetch(with: "SomeID", in: context) ?? User(context: context)
-    user.identifier = "SomeID"
+    user.identifier = "6d6a30b0-febd-11e8-9811-059afcb3ba5e"
     user.firstName = "Roopert"
     
     autoService.creator = user
@@ -129,14 +313,14 @@ private func createAutoService(scheduledDate: Date = Date(), in context: NSManag
     autoService.mechanic = mechanic
     
     let oilChange = OilChange(context: context)
-    oilChange.identifier = "oil cha"
+    oilChange.identifier = UUID().uuidString
     oilChange.oilType = .blend
     
     _ = ServiceEntity(autoService: autoService, oilChange: oilChange, context: context)
     
-    let vehicle = Vehicle(context: context)
+    let vehicle = Vehicle.fetch(with: "ae222ef0-febd-11e8-9811-059afcb3ba5e", in: context) ?? Vehicle(context: context)
     vehicle.creationDate = Date()
-    vehicle.identifier = "9d8c53a0-f91c-11e8-b2ab-8533c1c85021"
+    vehicle.identifier = "ae222ef0-febd-11e8-9811-059afcb3ba5e"
     vehicle.licensePlate = "123 HYG"
     vehicle.name = "That name"
     

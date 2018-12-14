@@ -91,6 +91,24 @@ public final class AutoServiceService: Service {
         }
     }
     
+    @discardableResult
+    public func updateAutoService(autoServiceID: String, json: JSONObject, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
+        let query = URLQueryItem(name: "autoServiceID", value: autoServiceID)
+        guard var urlRequest = serviceRequest.patch(with: .autoService, queryItems: [query], body: body, contentType: .applicationJSON) else { return nil }
+        
+        try? urlRequest.authenticate()
+        
+        return serviceRequest.send(urlRequest: urlRequest) { data, error in
+            guard let data = data,
+                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                    completion(nil, error)
+                    return
+            }
+            completion(json, error)
+        }
+    }
+    
 //    @discardableResult
 //    public func getServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {
 //        let request = serverRequest.get(with: .services) { data, response, error in

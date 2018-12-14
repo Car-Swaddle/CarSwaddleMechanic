@@ -41,6 +41,12 @@
 		9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1021BE5908002D099A /* AutoServiceCell.xib */; };
 		9953AE1421BFBF8A002D099A /* AutoServiceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */; };
 		9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */; };
+		9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1721C0EC3E002D099A /* AutoServiceItemCell.swift */; };
+		9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1821C0EC3E002D099A /* AutoServiceItemCell.xib */; };
+		9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1B21C0F14D002D099A /* AutoServiceLocationCell.swift */; };
+		9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */; };
+		9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */; };
+		9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */; };
 		997DBC5F2197B5160080F42C /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5D2197B5160080F42C /* NameCell.swift */; };
 		997DBC602197B5160080F42C /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC5E2197B5160080F42C /* NameCell.xib */; };
 		997DBC642198FBE20080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC632198FBE20080F42C /* lehi.gpx */; };
@@ -140,6 +146,12 @@
 		9953AE1021BE5908002D099A /* AutoServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceCell.xib; sourceTree = "<group>"; };
 		9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceDetailsViewController.swift; sourceTree = "<group>"; };
 		9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServiceDetailsViewController.storyboard; sourceTree = "<group>"; };
+		9953AE1721C0EC3E002D099A /* AutoServiceItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceItemCell.swift; sourceTree = "<group>"; };
+		9953AE1821C0EC3E002D099A /* AutoServiceItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceItemCell.xib; sourceTree = "<group>"; };
+		9953AE1B21C0F14D002D099A /* AutoServiceLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceLocationCell.swift; sourceTree = "<group>"; };
+		9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
+		9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceStatusCell.swift; sourceTree = "<group>"; };
+		9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceStatusCell.xib; sourceTree = "<group>"; };
 		997DBC5D2197B5160080F42C /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		997DBC5E2197B5160080F42C /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
 		997DBC632198FBE20080F42C /* lehi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lehi.gpx; sourceTree = "<group>"; };
@@ -280,6 +292,12 @@
 				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
 				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
 				9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */,
+				9953AE1721C0EC3E002D099A /* AutoServiceItemCell.swift */,
+				9953AE1821C0EC3E002D099A /* AutoServiceItemCell.xib */,
+				9953AE1B21C0F14D002D099A /* AutoServiceLocationCell.swift */,
+				9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */,
+				9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */,
+				9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -489,8 +507,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
+				9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */,
 				9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
+				9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
@@ -500,6 +520,7 @@
 				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
+				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
 				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
@@ -573,6 +594,8 @@
 				9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */,
 				99F0279C218680A6005FEFC7 /* CLLocationDistanceExtension.swift in Sources */,
 				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
+				9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */,
+				9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
@@ -583,6 +606,7 @@
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
 				99F0279921867816005FEFC7 /* ProfileServiceRegionCell.swift in Sources */,
+				9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

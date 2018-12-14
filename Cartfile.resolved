@@ -1,6 +1,6 @@
 git "git@bitbucket.org:kkendall33/authentication.git" "1.05"
-git "git@bitbucket.org:kkendall33/carswaddledata.git" "1.075"
-git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "1.957"
+git "git@bitbucket.org:kkendall33/carswaddledata.git" "1.076"
+git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "1.958"
 git "git@bitbucket.org:kkendall33/carswaddlestore.git" "1.127"
 git "git@bitbucket.org:kkendall33/carswaddleui.git" "1.056"
 git "git@bitbucket.org:kkendall33/networkrequest.git" "1.038"

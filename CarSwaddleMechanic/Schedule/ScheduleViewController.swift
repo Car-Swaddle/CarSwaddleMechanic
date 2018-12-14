@@ -34,6 +34,8 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
     
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
+    private var task: URLSessionDataTask?
+    
     lazy private var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl(frame: .zero)
         refresh.addTarget(self, action: #selector(ScheduleViewController.didRefresh), for: .valueChanged)
@@ -103,8 +105,9 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
                 completion()
                 return
         }
+        task?.cancel()
         store.privateContext { [weak self] privateContext in
-            self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [], in: privateContext) { autoServiceIDs, error in
+            self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [], in: privateContext) { autoServiceIDs, error in
                 DispatchQueue.main.async {
                     store.mainContext { mainContext in
                         self?.autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
@@ -132,5 +135,9 @@ extension ScheduleViewController: UITableViewDataSource {
 
 extension ScheduleViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: autoServices[indexPath.row])
+        show(autoServiceViewController, sender: self)
+    }
     
 }
