@@ -19,9 +19,28 @@ class CarSwaddleUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCreateView() {        
+        let v = CustomAlertContentView.view(withTitle: "Title", message: "Message")
+        v.addCancelAction()
+        
+        let confirmAction = CustomAlertAction(title: "Confirm") { [weak self] action in
+            print("confirm dat")
+        }
+        v.addCustomView { view in
+            view.heightAnchor.constraint(equalToConstant: 130).isActive = true
+            let blackView = UIView()
+            blackView.backgroundColor = .black
+            blackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            view.addSubview(blackView)
+            
+            blackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+            blackView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            blackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            blackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        }
+        
+        v.addAction(confirmAction)
     }
 
     func testPerformanceExample() {

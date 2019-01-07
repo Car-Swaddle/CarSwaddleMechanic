@@ -17,8 +17,9 @@ extension Price {
     }
     
     @NSManaged public var identifier: String
+    @NSManaged public var totalPrice: NSDecimalNumber
     @NSManaged public var parts: Set<PricePart>
-    @NSManaged public var autoService: AutoService
+    @NSManaged public var autoService: AutoService?
 
 }
 

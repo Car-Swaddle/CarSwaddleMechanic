@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1hj-hw-beP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="1Pg-j2-DlQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Z3-qc-VQm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LBI-1H-vb7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1hj-hw-beP" kind="relationship" relationship="rootViewController" id="fHX-l9-cWd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5L4-kx-BPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213.59999999999999" y="-686.80659670164926"/>
+        </scene>
+        <!--Bank Account View Controller-->
+        <scene sceneID="xd0-GU-DsC">
+            <objects>
+                <viewController id="1hj-hw-beP" customClass="BankAccountViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cOC-m2-3wd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-jV-QNH">
+                                <rect key="frame" x="16" y="123" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="bankAccountNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="9n7-k7-PTi"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Routing Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-th-diW">
+                                <rect key="frame" x="16" y="85" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="routingNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="i8G-vH-NeC"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Holder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVZ-wb-E35">
+                                <rect key="frame" x="16" y="161" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="bankAccountNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="e2j-3n-E56"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="DSg-th-diW" secondAttribute="trailing" constant="24" id="BXc-93-PWH"/>
+                            <constraint firstItem="DSg-th-diW" firstAttribute="top" secondItem="LNh-q7-mNZ" secondAttribute="top" constant="21" id="GsJ-On-Arj"/>
+                            <constraint firstItem="IVZ-wb-E35" firstAttribute="top" secondItem="Yae-jV-QNH" secondAttribute="bottom" constant="8" id="I0K-7j-aXj"/>
+                            <constraint firstItem="Yae-jV-QNH" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="LG0-lb-o9X"/>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="IVZ-wb-E35" secondAttribute="trailing" constant="24" id="UEp-Bu-zN3"/>
+                            <constraint firstItem="IVZ-wb-E35" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="aVy-yA-9tq"/>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="Yae-jV-QNH" secondAttribute="trailing" constant="24" id="j0s-uc-ZFe"/>
+                            <constraint firstItem="DSg-th-diW" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="l4z-Kh-kh9"/>
+                            <constraint firstItem="Yae-jV-QNH" firstAttribute="top" secondItem="DSg-th-diW" secondAttribute="bottom" constant="8" id="vh3-vb-Tfb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LNh-q7-mNZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="M6v-bM-0nk">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="82f-F8-FVI">
+                            <connections>
+                                <action selector="didTapSave" destination="1hj-hw-beP" id="nQt-Kp-0tF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="accountHolderNameTextField" destination="IVZ-wb-E35" id="07c-BV-SnS"/>
+                        <outlet property="bankAccountNumberTextField" destination="Yae-jV-QNH" id="9i9-id-wxi"/>
+                        <outlet property="routingNumberTextField" destination="DSg-th-diW" id="xSw-ju-Bla"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJA-iE-dUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936.79999999999995" y="-687.7061469265368"/>
+        </scene>
+    </scenes>
+</document>

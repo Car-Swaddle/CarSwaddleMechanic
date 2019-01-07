@@ -25,7 +25,7 @@ public class PushNotificationController: NSObject {
     public func didRegister(withDeviceToken deviceToken: Data) {
         let deviceToken = self.deviceTokenString(fromDeviceTokenData: deviceToken)
         store.privateContext { [weak self] context in
-            self?.mechanicNetwork.update(isActive: nil, token: deviceToken, in: context) { mechanicObjectID, error in
+            self?.mechanicNetwork.update(isActive: nil, token: deviceToken, dateOfBirth: nil, address: nil, in: context) { mechanicObjectID, error in
                 print("mechanic updated")
             }
         }

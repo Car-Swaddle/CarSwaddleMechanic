@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupLibraries()
         
         _ = pushNotificationController
         
@@ -24,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigator.setupWindow()
         
         return true
+    }
+    
+    private func setupLibraries() {
+        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

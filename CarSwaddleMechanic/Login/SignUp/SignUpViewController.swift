@@ -9,8 +9,17 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
+import SafariServices
+
+
+private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
+// TODO: Change this to your service agreement
+private let carSwaddleAgreementURLString = "https://stripe.com/us/connect-account/legal"
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
+    
+    public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
+    public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -39,4 +48,22 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         let login = LoginViewController.viewControllerFromStoryboard()
         navigationController?.show(login, sender: self)
     }
+    
+    
+    private var safariConfiguration: SFSafariViewController.Configuration {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = true
+        return configuration
+    }
+    
+    @IBAction func didTapCarSwaddleAgreement() {
+        let stripeSafariViewController = SFSafariViewController(url: SignUpViewController.carSwaddleAgreementURL, configuration: safariConfiguration)
+        present(stripeSafariViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapStripeAgreement() {
+        let stripeSafariViewController = SFSafariViewController(url: SignUpViewController.stripeAgreementURL, configuration: safariConfiguration)
+        present(stripeSafariViewController, animated: true, completion: nil)
+    }
+    
 }

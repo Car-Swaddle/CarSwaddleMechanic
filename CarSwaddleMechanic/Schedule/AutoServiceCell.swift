@@ -23,6 +23,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var vehicleLabel: UILabel!
     @IBOutlet private weak var serviceTypeLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +38,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         locationLabel.text = ""
         vehicleLabel.text = ""
         serviceTypeLabel.text = ""
+        statusLabel.text = ""
     }
     
     func configure(with autoService: AutoService) {
@@ -48,6 +50,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         locationLabel.text = autoService.location?.streetAddress ?? "location"
         vehicleLabel.text = autoService.vehicle?.name
         serviceTypeLabel.text = autoService.serviceEntities.first?.entityType.localizedString
+        statusLabel.text = autoService.status.localizedString
     }
     
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jOc-3d-GWZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jOc-3d-GWZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,6 +43,38 @@
                                     <action selector="didTapLogin" destination="jOc-3d-GWZ" eventType="touchUpInside" id="kbn-z5-ZAi"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="p8C-Fn-gVm">
+                                <rect key="frame" x="16" y="282" width="343" height="113.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By registering your account, you agree to our Services Agreement and the Stripe Connected Account Agreement." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql7-Le-AEv">
+                                        <rect key="frame" x="20" y="0.0" width="303.5" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.36348364640000003" green="0.36348364640000003" blue="0.36348364640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wbG-oZ-vaT">
+                                        <rect key="frame" x="64" y="57.5" width="215" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0x-Yn-2kQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="215" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Car Swaddle Services Agreement"/>
+                                                <connections>
+                                                    <action selector="didTapCarSwaddleAgreement" destination="jOc-3d-GWZ" eventType="touchUpInside" id="5qc-ci-9JV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqR-hS-PVk">
+                                                <rect key="frame" x="0.0" y="29" width="215" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Stripe Connected Account Agreement"/>
+                                                <connections>
+                                                    <action selector="didTapStripeAgreement" destination="jOc-3d-GWZ" eventType="touchUpInside" id="xHI-9r-nyf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -54,8 +86,11 @@
                             <constraint firstItem="wGg-Ll-4kk" firstAttribute="leading" secondItem="3Zq-bM-kd2" secondAttribute="leading" constant="16" id="RIE-7Q-6yk"/>
                             <constraint firstItem="xen-V2-WvJ" firstAttribute="top" secondItem="wGg-Ll-4kk" secondAttribute="bottom" constant="8" id="X1u-f7-k3v"/>
                             <constraint firstItem="bcy-0m-x8e" firstAttribute="top" secondItem="xen-V2-WvJ" secondAttribute="bottom" constant="8" id="Z8Y-P4-ud3"/>
+                            <constraint firstItem="p8C-Fn-gVm" firstAttribute="top" secondItem="bcy-0m-x8e" secondAttribute="bottom" constant="24" id="iGa-YA-rRv"/>
                             <constraint firstItem="aka-dH-y7h" firstAttribute="centerX" secondItem="3Zq-bM-kd2" secondAttribute="centerX" id="nNR-s9-RqG"/>
                             <constraint firstItem="xen-V2-WvJ" firstAttribute="leading" secondItem="3Zq-bM-kd2" secondAttribute="leading" constant="16" id="ppU-ad-FqA"/>
+                            <constraint firstAttribute="trailing" secondItem="p8C-Fn-gVm" secondAttribute="trailing" constant="16" id="tfR-fU-ko7"/>
+                            <constraint firstItem="p8C-Fn-gVm" firstAttribute="leading" secondItem="3Zq-bM-kd2" secondAttribute="leading" constant="16" id="vNF-Zl-WVv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Zq-bM-kd2"/>
                     </view>

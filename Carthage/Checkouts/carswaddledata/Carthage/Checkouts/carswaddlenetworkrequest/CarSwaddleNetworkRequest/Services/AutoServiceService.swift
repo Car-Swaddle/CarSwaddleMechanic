@@ -24,17 +24,9 @@ public final class AutoServiceService: Service {
     @discardableResult
     public func createAutoService(autoServiceJSON: JSONObject, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         guard let body = (try? JSONSerialization.data(withJSONObject: autoServiceJSON, options: [])),
-            var urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
-        do {
-            try urlRequest.authenticate()
-        } catch { print("couldn't authenticate") }
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+            let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
         }
     }
     
@@ -51,17 +43,9 @@ public final class AutoServiceService: Service {
             queryItems.append(queryItem)
         }
         
-        guard var urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
-        do {
-            try urlRequest.authenticate()
-        } catch { print("couldn't authenticate") }
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
-                    completion(nil, error)
-                    return
-            }
-            completion(jsonArray, error)
+        guard let urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSONArray(data: data, error: error, completion: completion)
         }
     }
     
@@ -77,17 +61,9 @@ public final class AutoServiceService: Service {
             queryItems.append(queryItem)
         }
         
-        guard var urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
-        do {
-            try urlRequest.authenticate()
-        } catch { print("couldn't authenticate") }
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let jsonArray = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
-                    completion(nil, error)
-                    return
-            }
-            completion(jsonArray, error)
+        guard let urlRequest = serviceRequest.get(with: .autoService, queryItems: queryItems, contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSONArray(data: data, error: error, completion: completion)
         }
     }
     
@@ -95,17 +71,9 @@ public final class AutoServiceService: Service {
     public func updateAutoService(autoServiceID: String, json: JSONObject, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
         let query = URLQueryItem(name: "autoServiceID", value: autoServiceID)
-        guard var urlRequest = serviceRequest.patch(with: .autoService, queryItems: [query], body: body, contentType: .applicationJSON) else { return nil }
-        
-        try? urlRequest.authenticate()
-        
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+        guard let urlRequest = serviceRequest.patch(with: .autoService, queryItems: [query], body: body, contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
         }
     }
     

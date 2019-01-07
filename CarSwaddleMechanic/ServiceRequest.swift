@@ -9,11 +9,18 @@
 import NetworkRequest
 import CarSwaddleNetworkRequest
 
-#if targetEnvironment(simulator)
-private let domain = "127.0.0.1"
+//#if targetEnvironment(simulator)
+//private let domain = "127.0.0.1"
+//#else
+//private let domain = "Kyles-MacBook-Pro.local"
+//#endif
+
+#if DEBUG
+private let domain = "car-swaddle.herokuapp.com"
 #else
-private let domain = "Kyles-MacBook-Pro.local"
+private let domain = "car-swaddle.herokuapp.com"
 #endif
+
 
 public var serviceRequest: Request = {
     return createServiceRequest()
@@ -21,9 +28,9 @@ public var serviceRequest: Request = {
 
 public func createServiceRequest() -> Request {
     let request = Request(domain: domain)
-    request.port = 3000
+//    request.port = 3000
     request.timeout = 15
-    request.defaultScheme = .http
+    request.defaultScheme = .https
     return request
 }
 

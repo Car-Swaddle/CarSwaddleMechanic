@@ -73,6 +73,19 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         }
     }
     
+    private func detailsText(for row: Row) -> String? {
+        switch row {
+        case .date: return nil
+        case .user: return nil
+        case .mechanic: return nil
+        case .location: return nil
+        case .vehicle: return autoService.vehicle?.licensePlate
+        case .serviceType: return nil
+        case .oilType: return nil
+        case .autoServiceStatus: return nil
+        }
+    }
+    
 }
 
 extension AutoServiceDetailsViewController: UITableViewDataSource {
@@ -96,7 +109,9 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
             return cell
         case .date, .mechanic, .serviceType, .user, .vehicle, .oilType:
             let cell: AutoServiceItemCell = tableView.dequeueCell()
-            cell.textLabel?.text = self.text(for: rows[indexPath.row])
+            let autoService = rows[indexPath.row]
+            cell.titleText = self.text(for: autoService)
+            cell.subtitleText = self.detailsText(for: autoService)
             return cell
         }
     }

@@ -22,6 +22,8 @@ final class AutoServiceStatusCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var completedButton: UIButton!
     @IBOutlet private weak var canceledButton: UIButton!
     
+    private var autoServiceID: String?
+    
     lazy private var buttons: [UIButton] = [scheduledButton, inProgressButton, completedButton, canceledButton]
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
@@ -32,6 +34,7 @@ final class AutoServiceStatusCell: UITableViewCell, NibRegisterable {
     
     func configure(with autoService: AutoService) {
         setButtonSelected(self.button(for: autoService.status))
+        autoServiceID = autoService.identifier
     }
     
     private func setButtonSelected(_ button: UIButton) {
@@ -70,6 +73,13 @@ final class AutoServiceStatusCell: UITableViewCell, NibRegisterable {
     
     @IBAction private func didSelectButton(_ button: UIButton) {
         setButtonSelected(button)
+        guard let serviceID = autoServiceID else { return }
+        let newStatus = self.status(for: button)
+        store.privateContext { [weak self] context in
+            self?.autoServiceNetwork.updateAutoService(autoServiceID: serviceID, status: newStatus, in: context) { objectID, error in
+                print("object")
+            }
+        }
     }
     
 }

@@ -27,4 +27,8 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: self, wrappingComponents: false)
     }
     
+    func dateByAdding(years: Int) -> Date? {
+        return Calendar.current.date(byAdding: .year, value: years, to: self, wrappingComponents: false)
+    }
+    
 }

@@ -33,6 +33,10 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
         self.identifier = identifier
         self.isActive = json["isActive"] as? Bool ?? false
         
+        if let dateOfBirthString = json["dateOfBirth"] as? String {
+            self.dateOfBirth = serverDateFormatter.date(from: dateOfBirthString)
+        }
+        
         guard let context = managedObjectContext else { return }
         
         if let userJSON = json["user"] as? JSONObject,
@@ -41,6 +45,11 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
         } else if let userID = json["userID"] as? String,
             let user = User.fetch(with: userID, in: context) {
             self.user = user
+        }
+        
+        if let addressJSON = json["address"] as? JSONObject {
+            let address = Address.fetchOrCreate(json: addressJSON, context: context)
+            self.address = address
         }
     }
     

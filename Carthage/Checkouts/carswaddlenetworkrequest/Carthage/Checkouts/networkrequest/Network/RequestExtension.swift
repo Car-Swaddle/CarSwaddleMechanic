@@ -71,6 +71,10 @@ public extension NetworkRequest.Request {
         return self.post(withPath: endpoint.rawValue, queryItems: queryItems, scheme: scheme, body: body, contentType: contentType)
     }
     
+    public func multipartFormDataPost(with endpoint: Endpoint, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil) -> NSMutableURLRequest? {
+        return self.multipartFormDataPost(withPath: endpoint.rawValue, queryItems: queryItems, scheme: scheme)
+    }
+    
     /// Download a file from another server via network
     ///
     /// - Parameters:
@@ -80,6 +84,15 @@ public extension NetworkRequest.Request {
     /// - Returns: Download task used to make request.
     public func download(with endpoint: Endpoint, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil) -> URLRequest? {
         return self.download(withPath: endpoint.rawValue, queryItems: queryItems, scheme: scheme)
+    }
+    
+}
+
+
+public extension Path {
+    
+    public convenience init(endpoint: Request.Endpoint, pathArguments: [String: String]) throws {
+        try self.init(originalPath: endpoint.rawValue, pathArguments: pathArguments)
     }
     
 }

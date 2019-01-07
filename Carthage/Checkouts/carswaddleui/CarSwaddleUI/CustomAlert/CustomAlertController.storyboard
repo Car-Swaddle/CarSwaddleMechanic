@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wwu-1T-ovH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Alert Controller-->
+        <scene sceneID="9T3-0T-OY0">
+            <objects>
+                <viewController id="wwu-1T-ovH" customClass="CustomAlertController" customModule="CarSwaddleUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="snG-t0-9do">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80H-aD-zHe">
+                                <rect key="frame" x="46.5" y="269.5" width="282" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WQu-81-txL">
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="0.0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="umQ-00-fkk"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRM-gG-ZlG">
+                                        <rect key="frame" x="16" y="32" width="250" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" constant="100000" id="dAc-hA-QYf"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ct-Y9-HOb">
+                                        <rect key="frame" x="242" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6M0-cV-09L"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="BTo-Vw-jQS"/>
+                                            <constraint firstAttribute="width" constant="40" id="fKp-Cm-hTh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" image="xButton">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didSelectExit" destination="wwu-1T-ovH" eventType="touchUpInside" id="uvU-ws-PjT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dRM-gG-ZlG" secondAttribute="trailing" constant="16" id="2GI-sZ-7mS"/>
+                                    <constraint firstAttribute="width" constant="282" id="6eF-xy-bQm"/>
+                                    <constraint firstAttribute="height" constant="128" placeholder="YES" id="8AT-Oe-YtH"/>
+                                    <constraint firstItem="WQu-81-txL" firstAttribute="leading" secondItem="80H-aD-zHe" secondAttribute="leading" id="Ci8-L8-949"/>
+                                    <constraint firstItem="dRM-gG-ZlG" firstAttribute="top" secondItem="WQu-81-txL" secondAttribute="bottom" constant="32" id="Cwi-0b-Xix"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ct-Y9-HOb" secondAttribute="trailing" id="DSX-ek-YdC"/>
+                                    <constraint firstAttribute="trailing" secondItem="WQu-81-txL" secondAttribute="trailing" id="LuG-Km-AmX"/>
+                                    <constraint firstItem="dRM-gG-ZlG" firstAttribute="leading" secondItem="80H-aD-zHe" secondAttribute="leading" constant="16" id="XSI-h4-OHO"/>
+                                    <constraint firstItem="6Ct-Y9-HOb" firstAttribute="top" secondItem="80H-aD-zHe" secondAttribute="top" id="aQG-kR-k9x"/>
+                                    <constraint firstAttribute="bottom" secondItem="dRM-gG-ZlG" secondAttribute="bottom" constant="16" id="cIH-wa-DGA"/>
+                                    <constraint firstItem="WQu-81-txL" firstAttribute="top" secondItem="80H-aD-zHe" secondAttribute="top" id="m8V-Zd-Vfe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="80H-aD-zHe" firstAttribute="centerY" secondItem="snG-t0-9do" secondAttribute="centerY" id="9Yi-GB-5C7"/>
+                            <constraint firstItem="yb7-Sc-5QV" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="80H-aD-zHe" secondAttribute="bottom" constant="46" id="D7G-hV-IL4"/>
+                            <constraint firstItem="80H-aD-zHe" firstAttribute="centerX" secondItem="snG-t0-9do" secondAttribute="centerX" id="DWG-DN-iDn"/>
+                            <constraint firstItem="80H-aD-zHe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yb7-Sc-5QV" secondAttribute="top" constant="46" id="JWk-q0-E4F">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="yb7-Sc-5QV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="80H-aD-zHe" secondAttribute="trailing" constant="46" id="mZT-JA-47B"/>
+                            <constraint firstItem="80H-aD-zHe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yb7-Sc-5QV" secondAttribute="leading" constant="46" id="zaS-1a-tWt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yb7-Sc-5QV"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3SK-Dq-Dnt" appends="YES" id="G61-aG-nuN"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="80H-aD-zHe" id="7Nm-F1-Yvi"/>
+                        <outlet property="alertViewWidthConstraint" destination="6eF-xy-bQm" id="Wtc-PQ-6x2"/>
+                        <outlet property="bottomConstraint" destination="D7G-hV-IL4" id="sLh-ak-MU2"/>
+                        <outlet property="bottomContentConstraint" destination="cIH-wa-DGA" id="keR-go-uZd"/>
+                        <outlet property="contentContainerView" destination="dRM-gG-ZlG" id="4aj-dK-Dqc"/>
+                        <outlet property="dismissButton" destination="6Ct-Y9-HOb" id="A0x-Mw-Xyz"/>
+                        <outlet property="minHeightFromBottom" destination="D7G-hV-IL4" id="UPc-2O-NwF"/>
+                        <outlet property="topConstraint" destination="JWk-q0-E4F" id="BLJ-yH-7og"/>
+                        <outlet property="topContentConstraint" destination="Cwi-0b-Xix" id="7cr-UF-cNp"/>
+                        <outlet property="topImageView" destination="WQu-81-txL" id="tTv-I2-jCg"/>
+                        <outlet property="topImageViewHeightConstraint" destination="umQ-00-fkk" id="yWf-tR-WKB"/>
+                        <outlet property="verticalCenterConstraint" destination="9Yi-GB-5C7" id="ec6-yp-8xE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WUj-uz-Lt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3SK-Dq-Dnt">
+                    <connections>
+                        <action selector="didTapBackgroundView:" destination="wwu-1T-ovH" id="AxS-s7-A1C"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="129.98500749625188"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xButton" width="24" height="24"/>
+    </resources>
+</document>

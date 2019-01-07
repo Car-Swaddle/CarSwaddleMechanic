@@ -11,6 +11,23 @@ import CarSwaddleUI
 
 final class AutoServiceItemCell: UITableViewCell, NibRegisterable {
 
+    var titleText: String? {
+        didSet {
+            titleLabel.text = titleText
+        }
+    }
+    
+    var subtitleText: String? {
+        didSet {
+            subtitleLabel.text = subtitleText
+            subtitleLabel.isHidden = subtitleText == nil
+        }
+    }
+    
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

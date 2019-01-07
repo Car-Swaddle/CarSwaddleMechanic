@@ -10,6 +10,10 @@ import XCTest
 @testable import CarSwaddleData
 import CarSwaddleNetworkRequest
 import Authentication
+import Store
+
+
+public var currentMechanicID: String = ""
 
 class LoginTestCase: XCTestCase {
 
@@ -31,9 +35,11 @@ class LoginTestCase: XCTestCase {
         let context = store.mainContext
         auth.mechanicLogin(email: "k@k.com", password: "password", context: context) { [weak self] error in
             if error == nil {
+                currentMechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier ?? ""
                 exp.fulfill()
             } else {
                 self?.auth.mechanicSignUp(email: "k@k.com", password: "password", context: context) { error in
+                    currentMechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier ?? ""
                     exp.fulfill()
                 }
             }
@@ -50,6 +56,8 @@ private let domain = "127.0.0.1"
 #else
 private let domain = "Kyles-MacBook-Pro.local"
 #endif
+
+//private let domain = "car-swaddle.herokuapp.com"
 
 public let serviceRequest: Request = {
     let request = Request(domain: domain)

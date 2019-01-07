@@ -24,7 +24,7 @@ public extension AutoService {
 private let statusKey = "status"
 private let typeKey = "type"
 
-private let serverDateFormatter: DateFormatter = {
+let serverDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     return dateFormatter
@@ -91,6 +91,14 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             self.creator = user
         } else if let user = User.fetch(with: values.userID, in: context) {
             creator = user
+        }
+        
+        if let reviewFromUserJSON = json["reviewFromUser"] as? JSONObject {
+            self.reviewFromUser = Review(json: reviewFromUserJSON, context: context)
+        }
+        
+        if let reviewFromMechanic = json["reviewFromMechanic"] as? JSONObject {
+            self.reviewFromMechanic = Review(json: reviewFromMechanic, context: context)
         }
     }
     
@@ -198,6 +206,10 @@ extension AutoService {
         return serviceEntities.first(where: { entity -> Bool in
             return entity.entityType == .oilChange
         })?.oilChange
+    }
+    
+    public var canConvertToJSON: Bool {
+        return (try? toJSON()) != nil
     }
     
 }

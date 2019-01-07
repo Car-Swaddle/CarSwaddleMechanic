@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Request {
     
@@ -46,8 +47,8 @@ public extension Request {
 
 public extension Request {
     
-    struct ContentType {
-        var rawValue: String
+    public struct ContentType {
+        public var rawValue: String
         
         public static let headerKey = "Content-Type"
         
@@ -60,7 +61,13 @@ public extension Request {
         public static let textHTML = ContentType(rawValue: "text/html;charset=utf-8")
         public static let any = ContentType(rawValue: "*/*")
         
+        public static func multipartFormContentType(boundary: String) -> ContentType {
+            return ContentType(rawValue: "multipart/form-data; boundary=\(boundary)")
+        }
+        
     }
+    
+    public static let contentLengthHeaderKey = "Content-Length"
     
 }
 
@@ -89,8 +96,26 @@ final public class Request {
         }
     }
     
-    public func downloadTask(with request: URLRequest, completion: @escaping (_ data: URL?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+    public func downloadTask(with request: URLRequest, completion: @escaping (_ url: URL?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         return urlSession.downloadTask(with: request) { data, urlResponse, error in
+            completion(data, urlResponse as? HTTPURLResponse, error)
+        }
+    }
+    
+    public func uploadTask(with request: URLRequest, file: URL, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionUploadTask? {
+        return urlSession.uploadTask(with: request, fromFile: file) { (data, urlResponse, error) in
+            completion(data, urlResponse as? HTTPURLResponse, error)
+        }
+    }
+    
+    private var multipartFormBuilder = MultipartFormBuilder(boundary: "XXX")
+    
+    public func uploadMultipartFormDataTask(with mutableRequest: NSMutableURLRequest, fileURL: URL, contentType: String, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        do {
+            try multipartFormBuilder.configure(request: mutableRequest, withFileURL: fileURL, contentType: contentType)
+        } catch { return nil }
+        
+        return urlSession.dataTask(with: mutableRequest as URLRequest) { data, urlResponse, error in
             completion(data, urlResponse as? HTTPURLResponse, error)
         }
     }
@@ -164,6 +189,14 @@ final public class Request {
         return request
     }
     
+    public func multipartFormDataPost(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil) -> NSMutableURLRequest? {
+        guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
+        let request = NSMutableURLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = Method.post.rawValue
+        
+        return request
+    }
+    
     public func delete(withPath path: String, queryItems: [URLQueryItem] = [], scheme: Scheme? = nil, body: Data?, contentType: ContentType = .applicationJSON) -> URLRequest? {
         guard let url = self.url(with: path, queryItems: queryItems, scheme: scheme) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
@@ -199,6 +232,98 @@ final public class Request {
         }
         components.port = self.port
         return components.url
+    }
+    
+}
+
+
+final public class MultipartFormBuilder {
+    
+    enum MultipartFormBuilderError: Error {
+        case unableToCreateData
+        case invalidFilePath
+    }
+    
+    public static let defaultBoundary = "MultipartFormBuilderBoundary"
+    public static let defaultParameterName = "image"
+    
+    private let marker = "--"
+    private let endLine = "\r\n"
+    
+    public init(boundary: String = MultipartFormBuilder.defaultBoundary, parameterName: String = MultipartFormBuilder.defaultParameterName) {
+        self.boundary = boundary
+        self.parameterName = parameterName
+    }
+    
+    public func configure(request: NSMutableURLRequest, withFileURL url: URL, contentType: String) throws {
+        let data = try self.data(fromURL: url, contentType: contentType)
+        
+        let contentType = Request.ContentType.multipartFormContentType(boundary: boundary)
+        
+        request.setValue(contentType.rawValue, forHTTPHeaderField: Request.ContentType.headerKey)
+        request.setValue(String(data.count), forHTTPHeaderField: Request.contentLengthHeaderKey)
+        request.setValue("gzip, deflate", forHTTPHeaderField: "accept-encoding")
+        request.setValue("*/*", forHTTPHeaderField: "Accept")
+        
+        request.httpBody = data
+        request.httpShouldHandleCookies = false
+    }
+    
+    public let boundary: String
+    public let parameterName: String
+    
+    private var endBoundaryError: Error {
+        return MultipartFormBuilderError.unableToCreateData
+    }
+    
+    public func data(fromURL url: URL, contentType: String) throws -> Data {
+//        guard let img = UIImage(contentsOfFile: url.path),
+//            let fileData = img.jpegData(compressionQuality: 1) else { throw MultipartFormBuilderError.invalidFilePath }
+        
+        let fileData = try Data(contentsOf: url)
+        
+        let fileName = url.lastPathComponent
+        let fullData = NSMutableData()
+        
+        try fullData.appendEncodedString(startLine)
+        try fullData.appendEncodedString(contentDisposition(fileName: fileName))
+        try fullData.appendEncodedString(contentTypeLine(contentType: contentType))
+        fullData.append(fileData)
+        try fullData.appendEncodedString(endLine)
+        try fullData.appendEncodedString(endBoundary)
+        
+        return fullData as Data
+    }
+    
+    private var startLine: String {
+        return marker + boundary + endLine
+    }
+    
+    private func contentDisposition(fileName: String) -> String {
+        return "Content-Disposition: form-data; name=\"\(parameterName)\"; filename=\"\(fileName)\"\(endLine)"
+    }
+    
+    private func contentTypeLine(contentType: String) -> String {
+        return "Content-Type: \(contentType)\(endLine)\(endLine)"
+    }
+    
+    private var endBoundary: String {
+        return marker + boundary + marker + endLine
+    }
+    
+}
+
+
+
+public extension NSMutableData {
+    
+    public struct EncodingError: Error {
+        static let error = EncodingError()
+    }
+    
+    public func appendEncodedString(_ string: String) throws {
+        guard let data = string.data(using: .utf8, allowLossyConversion: true) else { throw EncodingError.error }
+        append(data)
     }
     
 }

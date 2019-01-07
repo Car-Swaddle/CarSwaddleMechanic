@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="233" id="KGk-i7-Jjw" customClass="DateOfBirthCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="229.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6t-BX-Kvz">
+                        <rect key="frame" x="0.0" y="60" width="320" height="170"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="170" id="AsX-KV-8HF"/>
+                        </constraints>
+                        <date key="date" timeIntervalSinceReferenceDate="567339309.430866">
+                            <!--2018-12-24 10:15:09 +0000-->
+                        </date>
+                    </datePicker>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwO-GR-osP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JNl-Jz-iy5">
+                                <rect key="frame" x="8" y="15" width="304" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 10, 1990" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-9C-i8s">
+                                        <rect key="frame" x="0.0" y="0.0" width="259" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="400" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbR-Vd-mak">
+                                        <rect key="frame" x="267" y="0.0" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="didTapDone" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NUi-DU-lSf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="37K-3L-0Ko"/>
+                            <constraint firstItem="JNl-Jz-iy5" firstAttribute="centerY" secondItem="JwO-GR-osP" secondAttribute="centerY" id="I7C-ZO-fHQ"/>
+                            <constraint firstItem="JNl-Jz-iy5" firstAttribute="leading" secondItem="JwO-GR-osP" secondAttribute="leading" constant="8" id="Nrq-5m-Bdd"/>
+                            <constraint firstAttribute="trailing" secondItem="JNl-Jz-iy5" secondAttribute="trailing" constant="8" id="p1V-5M-NAh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JwO-GR-osP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1eJ-TF-nm1"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JwO-GR-osP" secondAttribute="bottom" id="2pS-Kd-Sai"/>
+                    <constraint firstItem="JwO-GR-osP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="72C-1G-N5e"/>
+                    <constraint firstAttribute="trailing" secondItem="Z6t-BX-Kvz" secondAttribute="trailing" id="Emb-6r-UcE"/>
+                    <constraint firstItem="Z6t-BX-Kvz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="baL-4t-udP"/>
+                    <constraint firstAttribute="bottom" secondItem="Z6t-BX-Kvz" secondAttribute="bottom" priority="750" id="nbl-Aj-Jll"/>
+                    <constraint firstAttribute="trailing" secondItem="JwO-GR-osP" secondAttribute="trailing" id="oXe-T7-IyK"/>
+                    <constraint firstItem="Z6t-BX-Kvz" firstAttribute="top" secondItem="JwO-GR-osP" secondAttribute="bottom" priority="999" id="rTR-s5-QCI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerViewToContentViewBottomConstraint" destination="2pS-Kd-Sai" id="GfJ-rl-UKz"/>
+                <outlet property="dateLabel" destination="exJ-9C-i8s" id="NDF-b2-ayI"/>
+                <outlet property="dateLabelContentView" destination="JwO-GR-osP" id="tP2-Ql-kBv"/>
+                <outlet property="datePicker" destination="Z6t-BX-Kvz" id="MAW-Bw-hrN"/>
+                <outlet property="datePickerToViewBottomConstraint" destination="nbl-Aj-Jll" id="qIl-yC-43L"/>
+                <outlet property="doneButton" destination="jbR-Vd-mak" id="F4m-Ig-BGn"/>
+            </connections>
+            <point key="canvasLocation" x="140.80000000000001" y="238.38080959520241"/>
+        </tableViewCell>
+    </objects>
+</document>

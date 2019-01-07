@@ -40,6 +40,8 @@ extension AutoService {
     @NSManaged public var location: Location?
     @NSManaged public var price: Price?
     @NSManaged public var vehicle: Vehicle?
+    @NSManaged public var reviewFromUser: Review?
+    @NSManaged public var reviewFromMechanic: Review?
     @NSManaged public var serviceEntities: Set<ServiceEntity>
 
 }

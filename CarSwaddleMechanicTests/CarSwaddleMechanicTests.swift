@@ -12,6 +12,9 @@ import Authentication
 
 class CarSwaddleMechanicTests: XCTestCase {
     
-    
+    func testSafariURLS() {
+        XCTAssert(SignUpViewController.safariAgreementURL != nil, "Agreement url is nil")
+        XCTAssert(SignUpViewController.safariAgreementURL != nil, "Agreement url is nil")
+    }
     
 }

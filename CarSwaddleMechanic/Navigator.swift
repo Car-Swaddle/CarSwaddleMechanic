@@ -13,13 +13,10 @@ import Store
 
 extension Navigator {
     
-    enum Tab: Int {
+    enum Tab: Int, CaseIterable {
         case schedule
+        case earnings
         case profile
-        
-        static var all: [Tab] {
-            return [.schedule, .profile]
-        }
         
         fileprivate var name: String {
             switch self {
@@ -27,6 +24,8 @@ extension Navigator {
                 return "Schedule"
             case .profile:
                 return "Profile"
+            case .earnings:
+                return "Earnings"
             }
         }
         
@@ -58,7 +57,21 @@ final class Navigator: NSObject {
 //        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
 //            mechanic.scheduleTimeSpans.count == 0 else { return
 //        let availabilityViewController = AvailabilityViewController.create(shouldCreateDefaultTimeSpans: true)
-//        appDelegate.window?.rootViewController?.present(availabilityViewController.inNavigationController(), animated: true, completion: nil)
+        
+        guard let viewController = currentRequiredViewController() else { return }
+        appDelegate.window?.rootViewController?.present(viewController.inNavigationController(), animated: true, completion: nil)
+    }
+    
+    private func currentRequiredViewController() -> UIViewController? {
+        // TODO: If Mechanic doesn't have personalInformation
+        return nil
+//        return BankAccountViewController.viewControllerFromStoryboard()
+        if Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address == nil {
+            return BankAccountViewController.viewControllerFromStoryboard()
+//            return PersonalInformationViewController.viewControllerFromStoryboard()
+        } else {
+            return nil
+        }
     }
     
     private var appDelegate: AppDelegate
@@ -113,7 +126,7 @@ final class Navigator: NSObject {
         }
         var viewControllers: [UIViewController] = []
         
-        for tab in Tab.all {
+        for tab in Tab.allCases {
             let viewController = self.viewController(for: tab)
             viewControllers.append(viewController.inNavigationController())
         }
@@ -154,6 +167,18 @@ final class Navigator: NSObject {
         return profileViewController
     }
     
+    private var _earningsViewController: PaymentViewController?
+    private var earningsViewController: PaymentViewController {
+        if let _earningsViewController = _earningsViewController {
+            return _earningsViewController
+        }
+        let earningsViewController = PaymentViewController.viewControllerFromStoryboard()
+        let title = NSLocalizedString("Earnings", comment: "Title of tab item.")
+        earningsViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        _earningsViewController = earningsViewController
+        return earningsViewController
+    }
+    
     private func removeUI() {
         _tabBarController = nil
         _servicesViewController = nil
@@ -166,6 +191,8 @@ final class Navigator: NSObject {
             return servicesViewController
         case .profile:
             return profileViewController
+        case .earnings:
+            return earningsViewController
         }
     }
     
@@ -182,6 +209,8 @@ final class Navigator: NSObject {
             return .schedule
         } else if root == self.profileViewController {
             return .profile
+        } else if root == self.earningsViewController {
+            return .earnings
         }
         return nil
     }

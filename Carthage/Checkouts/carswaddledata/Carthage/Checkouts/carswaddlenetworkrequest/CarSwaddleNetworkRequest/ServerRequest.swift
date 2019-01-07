@@ -38,13 +38,28 @@ public struct UnsuccessfulStatusCode: Error {
 
 private let authenticationHeader = "Authorization"
 
+private func bearerAuthentication(token: String) -> String {
+    return "Bearer \(token)"
+}
+
 extension URLRequest {
     
     mutating func authenticate() throws {
         guard let token = authentication.token else {
             throw RequestError.couldNotAuthenticate
         }
-        setValue("Bearer \(token)", forHTTPHeaderField: authenticationHeader)
+        setValue(bearerAuthentication(token: token), forHTTPHeaderField: authenticationHeader)
+    }
+    
+}
+
+extension NSMutableURLRequest {
+    
+    func authenticate() throws {
+        guard let token = authentication.token else {
+            throw RequestError.couldNotAuthenticate
+        }
+        setValue(bearerAuthentication(token: token), forHTTPHeaderField: authenticationHeader)
     }
     
 }
@@ -90,6 +105,18 @@ extension Request {
     
     func download(urlRequest: URLRequest, completion: @escaping (_ url: URL?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         let task = self.downloadTask(with: urlRequest, completion: completion)
+        task?.resume()
+        return task
+    }
+    
+    func upload(urlRequest: URLRequest, fileURL: URL, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionUploadTask? {
+        let task = self.uploadTask(with: urlRequest, file: fileURL, completion: completion)
+        task?.resume()
+        return task
+    }
+    
+    func uploadMultipartFormData(urlRequest: NSMutableURLRequest, fileURL: URL, contentType: String, completion: @escaping (_ data: Data?, _ response: HTTPURLResponse?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = self.uploadMultipartFormDataTask(with: urlRequest, fileURL: fileURL, contentType: contentType, completion: completion)
         task?.resume()
         return task
     }

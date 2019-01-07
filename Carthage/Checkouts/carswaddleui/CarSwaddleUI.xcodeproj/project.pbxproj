@@ -17,6 +17,23 @@
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */; };
+		99E66CAA21DDDC7600C6E3E1 /* CustomAlertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA521DDDC7600C6E3E1 /* CustomAlertContentView.swift */; };
+		99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA621DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift */; };
+		99E66CAD21DDDC7600C6E3E1 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA821DDDC7600C6E3E1 /* CustomAlertController.swift */; };
+		99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CAE21DDDDB700C6E3E1 /* UIFontExtension.swift */; };
+		99E66CB121DDDEE600C6E3E1 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CB021DDDEE600C6E3E1 /* UIColorExtension.swift */; };
+		99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CB221DDDFD100C6E3E1 /* ArrayExtension.swift */; };
+		99E66CB521DDE1D900C6E3E1 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CB421DDE1D900C6E3E1 /* UIImageExtension.swift */; };
+		99E66CB721DDE41000C6E3E1 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CB621DDE41000C6E3E1 /* CGSizeExtension.swift */; };
+		99E66CBE21DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CB921DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift */; };
+		99E66CBF21DDE4B100C6E3E1 /* AnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CBA21DDE4B100C6E3E1 /* AnimatedTransition.swift */; };
+		99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CBB21DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift */; };
+		99E66CC121DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CBC21DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift */; };
+		99E66CC421DDE60900C6E3E1 /* UITraitCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CC321DDE60900C6E3E1 /* UITraitCollectionExtension.swift */; };
+		99E66D1021DDF33400C6E3E1 /* CustomAlertController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E66CA421DDDC7500C6E3E1 /* CustomAlertController.storyboard */; };
+		99E66D1221DDF97900C6E3E1 /* CustomAlertContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66CA721DDDC7600C6E3E1 /* CustomAlertContentView.xib */; };
+		99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D9F21E28F0100C6E3E1 /* TextCell.swift */; };
+		99E66DA221E28F0100C6E3E1 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA021E28F0100C6E3E1 /* TextCell.xib */; };
 		99F027752184533D005FEFC7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F027742184533D005FEFC7 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +61,23 @@
 		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
 		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		99E66CA421DDDC7500C6E3E1 /* CustomAlertController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomAlertController.storyboard; sourceTree = "<group>"; };
+		99E66CA521DDDC7600C6E3E1 /* CustomAlertContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertContentView.swift; sourceTree = "<group>"; };
+		99E66CA621DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertControllerExtension.swift; sourceTree = "<group>"; };
+		99E66CA721DDDC7600C6E3E1 /* CustomAlertContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertContentView.xib; sourceTree = "<group>"; };
+		99E66CA821DDDC7600C6E3E1 /* CustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		99E66CAE21DDDDB700C6E3E1 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		99E66CB021DDDEE600C6E3E1 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		99E66CB221DDDFD100C6E3E1 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		99E66CB421DDE1D900C6E3E1 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		99E66CB621DDE41000C6E3E1 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
+		99E66CB921DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatingAnimatedTransition.swift; sourceTree = "<group>"; };
+		99E66CBA21DDE4B100C6E3E1 /* AnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTransition.swift; sourceTree = "<group>"; };
+		99E66CBB21DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslucentAnimatedTransition.swift; sourceTree = "<group>"; };
+		99E66CBC21DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransition.swift; sourceTree = "<group>"; };
+		99E66CC321DDE60900C6E3E1 /* UITraitCollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtension.swift; sourceTree = "<group>"; };
+		99E66D9F21E28F0100C6E3E1 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		99E66DA021E28F0100C6E3E1 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		99F027742184533D005FEFC7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +107,12 @@
 				9912CD99216C76260006FDDF /* UIViewControllerExtension.swift */,
 				9912CD9B216C76310006FDDF /* UIViewExtension.swift */,
 				99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */,
+				99E66CAE21DDDDB700C6E3E1 /* UIFontExtension.swift */,
+				99E66CB021DDDEE600C6E3E1 /* UIColorExtension.swift */,
+				99E66CB221DDDFD100C6E3E1 /* ArrayExtension.swift */,
+				99E66CB421DDE1D900C6E3E1 /* UIImageExtension.swift */,
+				99E66CB621DDE41000C6E3E1 /* CGSizeExtension.swift */,
+				99E66CC321DDE60900C6E3E1 /* UITraitCollectionExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -98,10 +138,10 @@
 		997012132154B14200D547C5 /* CarSwaddleUI */ = {
 			isa = PBXGroup;
 			children = (
-				995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */,
-				995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */,
-				9912CD8E216C6F3A0006FDDF /* HorizontalSlideTransition.swift */,
-				99F027742184533D005FEFC7 /* LocationManager.swift */,
+				99E66D9E21E28EEB00C6E3E1 /* Location */,
+				99E66D9D21E28ED000C6E3E1 /* Generic UI */,
+				99E66CB821DDE4A000C6E3E1 /* Transition */,
+				99E66CA321DDDC4C00C6E3E1 /* CustomAlert */,
 				9912CD96216C75E80006FDDF /* Extensions */,
 				997012142154B14200D547C5 /* CarSwaddleUI.h */,
 				997012152154B14200D547C5 /* Info.plist */,
@@ -116,6 +156,49 @@
 				997012212154B14200D547C5 /* Info.plist */,
 			);
 			path = CarSwaddleUITests;
+			sourceTree = "<group>";
+		};
+		99E66CA321DDDC4C00C6E3E1 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				99E66CA521DDDC7600C6E3E1 /* CustomAlertContentView.swift */,
+				99E66CA721DDDC7600C6E3E1 /* CustomAlertContentView.xib */,
+				99E66CA421DDDC7500C6E3E1 /* CustomAlertController.storyboard */,
+				99E66CA821DDDC7600C6E3E1 /* CustomAlertController.swift */,
+				99E66CA621DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		99E66CB821DDE4A000C6E3E1 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				9912CD8E216C6F3A0006FDDF /* HorizontalSlideTransition.swift */,
+				99E66CBA21DDE4B100C6E3E1 /* AnimatedTransition.swift */,
+				99E66CB921DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift */,
+				99E66CBB21DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift */,
+				99E66CBC21DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		99E66D9D21E28ED000C6E3E1 /* Generic UI */ = {
+			isa = PBXGroup;
+			children = (
+				995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */,
+				995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */,
+				99E66D9F21E28F0100C6E3E1 /* TextCell.swift */,
+				99E66DA021E28F0100C6E3E1 /* TextCell.xib */,
+			);
+			path = "Generic UI";
+			sourceTree = "<group>";
+		};
+		99E66D9E21E28EEB00C6E3E1 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				99F027742184533D005FEFC7 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +292,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E66DA221E28F0100C6E3E1 /* TextCell.xib in Resources */,
+				99E66D1221DDF97900C6E3E1 /* CustomAlertContentView.xib in Resources */,
+				99E66D1021DDF33400C6E3E1 /* CustomAlertController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,14 +312,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E66CC421DDE60900C6E3E1 /* UITraitCollectionExtension.swift in Sources */,
+				99E66CBE21DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift in Sources */,
 				9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */,
 				995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */,
+				99E66CBF21DDE4B100C6E3E1 /* AnimatedTransition.swift in Sources */,
+				99E66CB721DDE41000C6E3E1 /* CGSizeExtension.swift in Sources */,
 				995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */,
+				99E66CAD21DDDC7600C6E3E1 /* CustomAlertController.swift in Sources */,
 				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
+				99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */,
+				99E66CB121DDDEE600C6E3E1 /* UIColorExtension.swift in Sources */,
+				99E66CC121DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift in Sources */,
 				9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */,
+				99E66CB521DDE1D900C6E3E1 /* UIImageExtension.swift in Sources */,
+				99E66CAA21DDDC7600C6E3E1 /* CustomAlertContentView.swift in Sources */,
 				99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */,
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
+				99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */,
+				99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */,
+				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
+				99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +496,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -424,7 +524,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

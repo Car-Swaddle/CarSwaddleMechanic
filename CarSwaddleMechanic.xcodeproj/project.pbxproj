@@ -8,13 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9912CD7B216C6AF00006FDDF /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD76216C6AF00006FDDF /* Authentication.framework */; };
-		9912CD7E216C6AF00006FDDF /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD79216C6AF00006FDDF /* CarSwaddleUI.framework */; };
-		9912CD7F216C6AF00006FDDF /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD7A216C6AF00006FDDF /* NetworkRequest.framework */; };
 		9912CD81216C6AFA0006FDDF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */; };
 		9912CD82216C6B2E0006FDDF /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD83216C6B2E0006FDDF /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD76216C6AF00006FDDF /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9912CD85216C6B2E0006FDDF /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD79216C6AF00006FDDF /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9912CD86216C6B2E0006FDDF /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CD7A216C6AF00006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD88216C6DEF0006FDDF /* Navigator.swift */; };
 		9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8A216C6E590006FDDF /* SignUpViewController.swift */; };
 		9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8C216C6EB50006FDDF /* LoginViewController.swift */; };
@@ -47,15 +43,45 @@
 		9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */; };
 		9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */; };
 		9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */; };
+		997714D021D0DADE00E54F5B /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */; };
+		997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */; };
+		997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */; };
+		997714D621D0DE2C00E54F5B /* PersonalInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714D421D0DE2C00E54F5B /* PersonalInformationCell.xib */; };
+		997714D921D0E85100E54F5B /* DateOfBirthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D721D0E85100E54F5B /* DateOfBirthCell.swift */; };
+		997714DA21D0E85100E54F5B /* DateOfBirthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714D821D0E85100E54F5B /* DateOfBirthCell.xib */; };
 		997DBC5F2197B5160080F42C /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5D2197B5160080F42C /* NameCell.swift */; };
 		997DBC602197B5160080F42C /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC5E2197B5160080F42C /* NameCell.xib */; };
 		997DBC642198FBE20080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC632198FBE20080F42C /* lehi.gpx */; };
+		998D3AB721D755F0003DD717 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D3AB621D755F0003DD717 /* Stripe.framework */; };
+		998D3AB821D7562B003DD717 /* Stripe.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 998D3AB621D755F0003DD717 /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AB921D75A8B003DD717 /* Stripe.swift */; };
+		998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */; };
+		998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */; };
+		998D3AC021D959CF003DD717 /* ProfileDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */; };
+		998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC121DA07EB003DD717 /* CreateCardViewController.swift */; };
+		998D3AC421DA07F5003DD717 /* CreateCardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC321DA07F5003DD717 /* CreateCardViewController.storyboard */; };
+		998D3AC721DA963F003DD717 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC621DA963F003DD717 /* PaymentViewController.swift */; };
+		998D3AC921DA9648003DD717 /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
 		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
 		9992766221673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */; };
 		9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */; };
+		99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A87B21D56F1E009A1AD9 /* IdentificationInfoViewController.swift */; };
+		99A3A87E21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A87D21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard */; };
+		99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A87F21D57ACA009A1AD9 /* BankAccountViewController.swift */; };
+		99A3A88321D57B2F009A1AD9 /* BankAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88021D57ACB009A1AD9 /* BankAccountViewController.storyboard */; };
+		99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A88421D57BE8009A1AD9 /* NameViewController.swift */; };
+		99A3A88721D57BF1009A1AD9 /* NameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88621D57BF1009A1AD9 /* NameViewController.storyboard */; };
+		99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A88821D583F0009A1AD9 /* FilePickerViewController.swift */; };
+		99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */; };
+		99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */; };
+		99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */; };
+		99E66D2421DE086F00C6E3E1 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; };
+		99E66D2521DE086F00C6E3E1 /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E66DB421E306C100C6E3E1 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */; };
+		99E66DB521E306C100C6E3E1 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
 		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99F02792218663BB005FEFC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02791218663BB005FEFC7 /* Location.swift */; };
@@ -93,32 +119,21 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				998D3AB821D7562B003DD717 /* Stripe.framework in CopyFiles */,
 				99FF1E4821787769006A4315 /* CarSwaddleData.framework in CopyFiles */,
+				99E66D2521DE086F00C6E3E1 /* CarSwaddleUI.framework in CopyFiles */,
 				991375A92171D80F00F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */,
 				9913759F2171BE2100F15BEC /* Store.framework in CopyFiles */,
 				9912CD82216C6B2E0006FDDF /* KeychainAccess.framework in CopyFiles */,
 				9912CD83216C6B2E0006FDDF /* Authentication.framework in CopyFiles */,
-				9912CD85216C6B2E0006FDDF /* CarSwaddleUI.framework in CopyFiles */,
-				9912CD86216C6B2E0006FDDF /* NetworkRequest.framework in CopyFiles */,
+				99E66DB521E306C100C6E3E1 /* NetworkRequest.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-		};
-		999276A7216742300032D7F7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9912CD76216C6AF00006FDDF /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Static/Authentication.framework; sourceTree = "<group>"; };
-		9912CD79216C6AF00006FDDF /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/Static/CarSwaddleUI.framework; sourceTree = "<group>"; };
-		9912CD7A216C6AF00006FDDF /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/Static/NetworkRequest.framework; sourceTree = "<group>"; };
 		9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9912CD88216C6DEF0006FDDF /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9912CD8A216C6E590006FDDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +167,24 @@
 		9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
 		9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceStatusCell.swift; sourceTree = "<group>"; };
 		9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceStatusCell.xib; sourceTree = "<group>"; };
+		997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
+		997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
+		997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationCell.swift; sourceTree = "<group>"; };
+		997714D421D0DE2C00E54F5B /* PersonalInformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInformationCell.xib; sourceTree = "<group>"; };
+		997714D721D0E85100E54F5B /* DateOfBirthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthCell.swift; sourceTree = "<group>"; };
+		997714D821D0E85100E54F5B /* DateOfBirthCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateOfBirthCell.xib; sourceTree = "<group>"; };
 		997DBC5D2197B5160080F42C /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		997DBC5E2197B5160080F42C /* NameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameCell.xib; sourceTree = "<group>"; };
 		997DBC632198FBE20080F42C /* lehi.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lehi.gpx; sourceTree = "<group>"; };
+		998D3AB621D755F0003DD717 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		998D3AB921D75A8B003DD717 /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
+		998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshControlExtension.swift; sourceTree = "<group>"; };
+		998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataCell.swift; sourceTree = "<group>"; };
+		998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileDataCell.xib; sourceTree = "<group>"; };
+		998D3AC121DA07EB003DD717 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
+		998D3AC321DA07F5003DD717 /* CreateCardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCardViewController.storyboard; sourceTree = "<group>"; };
+		998D3AC621DA963F003DD717 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
 		9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +197,18 @@
 		9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicUITests.swift; sourceTree = "<group>"; };
 		9992766321673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicStore.swift; sourceTree = "<group>"; };
+		99A3A87B21D56F1E009A1AD9 /* IdentificationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInfoViewController.swift; sourceTree = "<group>"; };
+		99A3A87D21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IdentificationInfoViewController.storyboard; sourceTree = "<group>"; };
+		99A3A87F21D57ACA009A1AD9 /* BankAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountViewController.swift; sourceTree = "<group>"; };
+		99A3A88021D57ACB009A1AD9 /* BankAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankAccountViewController.storyboard; sourceTree = "<group>"; };
+		99A3A88421D57BE8009A1AD9 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		99A3A88621D57BF1009A1AD9 /* NameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NameViewController.storyboard; sourceTree = "<group>"; };
+		99A3A88821D583F0009A1AD9 /* FilePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerViewController.swift; sourceTree = "<group>"; };
+		99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilePickerViewController.storyboard; sourceTree = "<group>"; };
+		99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
+		99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthViewController.storyboard; sourceTree = "<group>"; };
+		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
+		99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetworkRequest.framework; sourceTree = "<group>"; };
 		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
 		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99F02791218663BB005FEFC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -185,11 +227,12 @@
 			files = (
 				9912CD7B216C6AF00006FDDF /* Authentication.framework in Frameworks */,
 				9912CD81216C6AFA0006FDDF /* KeychainAccess.framework in Frameworks */,
+				99E66D2421DE086F00C6E3E1 /* CarSwaddleUI.framework in Frameworks */,
 				99FF1E4721787755006A4315 /* CarSwaddleData.framework in Frameworks */,
+				998D3AB721D755F0003DD717 /* Stripe.framework in Frameworks */,
 				9913759E2171BE1800F15BEC /* Store.framework in Frameworks */,
 				99FF1E4521787360006A4315 /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				9912CD7E216C6AF00006FDDF /* CarSwaddleUI.framework in Frameworks */,
-				9912CD7F216C6AF00006FDDF /* NetworkRequest.framework in Frameworks */,
+				99E66DB421E306C100C6E3E1 /* NetworkRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,13 +256,14 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */,
+				99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */,
+				998D3AB621D755F0003DD717 /* Stripe.framework */,
 				99FF1E4621787755006A4315 /* CarSwaddleData.framework */,
 				991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */,
 				9913759D2171BE1800F15BEC /* Store.framework */,
 				9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */,
 				9912CD76216C6AF00006FDDF /* Authentication.framework */,
-				9912CD79216C6AF00006FDDF /* CarSwaddleUI.framework */,
-				9912CD7A216C6AF00006FDDF /* NetworkRequest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,6 +309,21 @@
 			children = (
 				9912CD8A216C6E590006FDDF /* SignUpViewController.swift */,
 				9912CDDE216DC5200006FDDF /* SignUpViewController.storyboard */,
+				997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */,
+				997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */,
+				99A3A87B21D56F1E009A1AD9 /* IdentificationInfoViewController.swift */,
+				99A3A87D21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard */,
+				99A3A87F21D57ACA009A1AD9 /* BankAccountViewController.swift */,
+				99A3A88021D57ACB009A1AD9 /* BankAccountViewController.storyboard */,
+				998D3AC121DA07EB003DD717 /* CreateCardViewController.swift */,
+				998D3AC321DA07F5003DD717 /* CreateCardViewController.storyboard */,
+				99A3A88421D57BE8009A1AD9 /* NameViewController.swift */,
+				99A3A88621D57BF1009A1AD9 /* NameViewController.storyboard */,
+				99A3A88821D583F0009A1AD9 /* FilePickerViewController.swift */,
+				99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */,
+				99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */,
+				99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */,
+				997714DB21D0E85700E54F5B /* Cells */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -302,6 +361,26 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		997714DB21D0E85700E54F5B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */,
+				997714D421D0DE2C00E54F5B /* PersonalInformationCell.xib */,
+				997714D721D0E85100E54F5B /* DateOfBirthCell.swift */,
+				997714D821D0E85100E54F5B /* DateOfBirthCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		998D3AC521DA961A003DD717 /* Payouts */ = {
+			isa = PBXGroup;
+			children = (
+				998D3AC621DA963F003DD717 /* PaymentViewController.swift */,
+				998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */,
+			);
+			path = Payouts;
+			sourceTree = "<group>";
+		};
 		9992763221673BCA0032D7F7 = {
 			isa = PBXGroup;
 			children = (
@@ -331,9 +410,11 @@
 				99F0279321866B49005FEFC7 /* Extensions */,
 				9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */,
 				9953AE0821BC6F5C002D099A /* PushNotificationController.swift */,
+				998D3AB921D75A8B003DD717 /* Stripe.swift */,
 				99F0279D2188321D005FEFC7 /* ServiceRequest.swift */,
 				99F02791218663BB005FEFC7 /* Location.swift */,
 				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
+				998D3AC521DA961A003DD717 /* Payouts */,
 				99F02796218677EE005FEFC7 /* Profile */,
 				9953AE0E21BE58E8002D099A /* Schedule */,
 				99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */,
@@ -369,6 +450,7 @@
 			children = (
 				99F0279421866B55005FEFC7 /* TimeIntervalExtension.swift */,
 				99F0279B218680A6005FEFC7 /* CLLocationDistanceExtension.swift */,
+				998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -384,6 +466,8 @@
 				997DBC5E2197B5160080F42C /* NameCell.xib */,
 				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
 				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
+				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
+				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -398,7 +482,6 @@
 				9992763721673BCA0032D7F7 /* Sources */,
 				9992763821673BCA0032D7F7 /* Frameworks */,
 				9992763921673BCA0032D7F7 /* Resources */,
-				999276A7216742300032D7F7 /* Embed Frameworks */,
 				991B4065216B4E5500D7644D /* ShellScript */,
 				991B4066216B554E00D7644D /* CopyFiles */,
 			);
@@ -469,6 +552,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					9992765121673BCC0032D7F7 = {
@@ -507,23 +593,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
+				99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */,
 				9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */,
+				998D3AC021D959CF003DD717 /* ProfileDataCell.xib in Resources */,
 				9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
 				9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */,
+				99A3A88721D57BF1009A1AD9 /* NameViewController.storyboard in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
+				998D3AC921DA9648003DD717 /* PaymentViewController.storyboard in Resources */,
+				997714D621D0DE2C00E54F5B /* PersonalInformationCell.xib in Resources */,
+				997714DA21D0E85100E54F5B /* DateOfBirthCell.xib in Resources */,
+				99A3A88321D57B2F009A1AD9 /* BankAccountViewController.storyboard in Resources */,
 				9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
 				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
+				997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
+				99A3A87E21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
+				99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */,
 				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
 				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
+				998D3AC421DA07F5003DD717 /* CreateCardViewController.storyboard in Resources */,
 				9912CDDF216DC5200006FDDF /* SignUpViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,24 +650,26 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Static/NetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Static/Authentication.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Store.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Static/CarSwaddleUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleData.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/NetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/Authentication.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Store.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/CarSwaddleUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleData.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -584,27 +683,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
+				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
 				9953AE1421BFBF8A002D099A /* AutoServiceDetailsViewController.swift in Sources */,
+				997714D021D0DADE00E54F5B /* PersonalInformationViewController.swift in Sources */,
 				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
+				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
+				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,
+				99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
 				9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */,
 				99F0279C218680A6005FEFC7 /* CLLocationDistanceExtension.swift in Sources */,
 				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
+				997714D921D0E85100E54F5B /* DateOfBirthCell.swift in Sources */,
 				9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */,
 				9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
+				998D3AC721DA963F003DD717 /* PaymentViewController.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
+				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,
+				99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */,
+				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
+				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
 				99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
+				998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
+				998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */,
 				99F0279921867816005FEFC7 /* ProfileServiceRegionCell.swift in Sources */,
 				9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,
@@ -773,7 +885,6 @@
 		9992766721673BCC0032D7F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -783,6 +894,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddleMechanic/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -800,7 +912,6 @@
 		9992766821673BCC0032D7F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -810,6 +921,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddleMechanic/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

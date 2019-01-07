@@ -11,16 +11,16 @@
 		9912CDBB216C81760006FDDF /* CarSwaddleDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */; };
 		9912CDBD216C81760006FDDF /* CarSwaddleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9912CDAF216C81760006FDDF /* CarSwaddleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDC6216C81AE0006FDDF /* Auth.swift */; };
-		9912CDCC216C84290006FDDF /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDC9216C84290006FDDF /* NetworkRequest.framework */; };
 		9912CDCE216C84290006FDDF /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDCB216C84290006FDDF /* Authentication.framework */; };
 		9912CDD0216C842D0006FDDF /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDCF216C842D0006FDDF /* KeychainAccess.framework */; };
 		9912CDD3216C85540006FDDF /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDCF216C842D0006FDDF /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9912CDD4216C85540006FDDF /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDCB216C84290006FDDF /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9912CDD6216C85540006FDDF /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDC9216C84290006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375A52171D48500F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		991375A62171D49000F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		991375B1217266EF00F15BEC /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375B0217266EF00F15BEC /* Store.framework */; };
 		991375B2217266F600F15BEC /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375B0217266EF00F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		997714BD21CC5A5000E54F5B /* Price+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714BC21CC5A5000E54F5B /* Price+Request.swift */; };
+		997714C121CC9B8100E54F5B /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C021CC9B8100E54F5B /* PriceTests.swift */; };
 		997DBC49219418830080F42C /* Mechanic+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC48219418830080F42C /* Mechanic+Requests.swift */; };
 		997DBC4B219418F70080F42C /* CarSwaddleNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */; };
 		997DBC4D21969F910080F42C /* JSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC4C21969F910080F42C /* JSONExtension.swift */; };
@@ -32,6 +32,17 @@
 		997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9921A536BE0080F42C /* AutoServiceTests.swift */; };
 		997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9B21A537390080F42C /* AutoService+Request.swift */; };
 		997DBC9E21B24CF00080F42C /* AuthTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9D21B24CF00080F42C /* AuthTestCase.swift */; };
+		998D3AD921DC9B72003DD717 /* Review+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AD821DC9B72003DD717 /* Review+Requests.swift */; };
+		998D3AE121DD51DB003DD717 /* ReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AE021DD51DB003DD717 /* ReviewTests.swift */; };
+		99A3A88D21D58E85009A1AD9 /* Stripe+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */; };
+		99A3A88F21D5964E009A1AD9 /* StripeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A88E21D5964E009A1AD9 /* StripeTests.swift */; };
+		99E66D8E21E1890A00C6E3E1 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D8D21E1890A00C6E3E1 /* FileStore.swift */; };
+		99E66D9121E1934A00C6E3E1 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E66D9221E1935F00C6E3E1 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */; };
+		99E66D9521E1964900C6E3E1 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E66D9621E1968E00C6E3E1 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */; };
+		99E66D9B21E19C3800C6E3E1 /* smallMoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D9821E196EE00C6E3E1 /* smallMoreIcon.png */; };
+		99E66D9C21E19C3C00C6E3E1 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D9921E196F900C6E3E1 /* image.png */; };
 		99F026BC217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */; };
 		99F026BE217F061A005FEFC7 /* TemplateTimeSpanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */; };
 		99F026C621802131005FEFC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026C521802131005FEFC7 /* AppDelegate.swift */; };
@@ -43,12 +54,10 @@
 		99F026D8218025B0005FEFC7 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDCF216C842D0006FDDF /* KeychainAccess.framework */; };
 		99F026D9218025B2005FEFC7 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375B0217266EF00F15BEC /* Store.framework */; };
 		99F026DA218025B7005FEFC7 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDCB216C84290006FDDF /* Authentication.framework */; };
-		99F026DB218025BB005FEFC7 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CDC9216C84290006FDDF /* NetworkRequest.framework */; };
 		99F026DE218026BA005FEFC7 /* Store.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375B0217266EF00F15BEC /* Store.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99F026DF218026BB005FEFC7 /* CarSwaddleNetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99F026E0218026BB005FEFC7 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDCF216C842D0006FDDF /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99F026E1218026BB005FEFC7 /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDCB216C84290006FDDF /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		99F026E2218026BB005FEFC7 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9912CDC9216C84290006FDDF /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */; };
 		99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02783218580C0005FEFC7 /* Region+Requests.swift */; };
 		99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278D21858983005FEFC7 /* RegionTests.swift */; };
@@ -78,11 +87,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				99E66D9121E1934A00C6E3E1 /* NetworkRequest.framework in CopyFiles */,
 				991375B2217266F600F15BEC /* Store.framework in CopyFiles */,
 				991375A62171D49000F15BEC /* CarSwaddleNetworkRequest.framework in CopyFiles */,
 				9912CDD3216C85540006FDDF /* KeychainAccess.framework in CopyFiles */,
 				9912CDD4216C85540006FDDF /* Authentication.framework in CopyFiles */,
-				9912CDD6216C85540006FDDF /* NetworkRequest.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -93,10 +102,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				99F026DE218026BA005FEFC7 /* Store.framework in CopyFiles */,
+				99E66D9521E1964900C6E3E1 /* NetworkRequest.framework in CopyFiles */,
 				99F026DF218026BB005FEFC7 /* CarSwaddleNetworkRequest.framework in CopyFiles */,
 				99F026E0218026BB005FEFC7 /* KeychainAccess.framework in CopyFiles */,
 				99F026E1218026BB005FEFC7 /* Authentication.framework in CopyFiles */,
-				99F026E2218026BB005FEFC7 /* NetworkRequest.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -110,11 +119,12 @@
 		9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleDataTests.swift; sourceTree = "<group>"; };
 		9912CDBC216C81760006FDDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9912CDC6216C81AE0006FDDF /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		9912CDC9216C84290006FDDF /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/Static/NetworkRequest.framework; sourceTree = "<group>"; };
 		9912CDCB216C84290006FDDF /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Static/Authentication.framework; sourceTree = "<group>"; };
 		9912CDCF216C842D0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
 		991375B0217266EF00F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
+		997714BC21CC5A5000E54F5B /* Price+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Price+Request.swift"; sourceTree = "<group>"; };
+		997714C021CC9B8100E54F5B /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
 		997DBC48219418830080F42C /* Mechanic+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mechanic+Requests.swift"; sourceTree = "<group>"; };
 		997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleNetwork.swift; sourceTree = "<group>"; };
 		997DBC4C21969F910080F42C /* JSONExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONExtension.swift; sourceTree = "<group>"; };
@@ -126,6 +136,14 @@
 		997DBC9921A536BE0080F42C /* AutoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceTests.swift; sourceTree = "<group>"; };
 		997DBC9B21A537390080F42C /* AutoService+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoService+Request.swift"; sourceTree = "<group>"; };
 		997DBC9D21B24CF00080F42C /* AuthTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestCase.swift; sourceTree = "<group>"; };
+		998D3AD821DC9B72003DD717 /* Review+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+Requests.swift"; sourceTree = "<group>"; };
+		998D3AE021DD51DB003DD717 /* ReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTests.swift; sourceTree = "<group>"; };
+		99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stripe+Requests.swift"; sourceTree = "<group>"; };
+		99A3A88E21D5964E009A1AD9 /* StripeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeTests.swift; sourceTree = "<group>"; };
+		99E66D8D21E1890A00C6E3E1 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
+		99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/NetworkRequest.framework; sourceTree = "<group>"; };
+		99E66D9821E196EE00C6E3E1 /* smallMoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallMoreIcon.png; sourceTree = "<group>"; };
+		99E66D9921E196F900C6E3E1 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemplateTimeSpan+Requests.swift"; sourceTree = "<group>"; };
 		99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTimeSpanTests.swift; sourceTree = "<group>"; };
 		99F026C321802130005FEFC7 /* CarSwaddleDataHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleDataHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,8 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912CDD0216C842D0006FDDF /* KeychainAccess.framework in Frameworks */,
+				99E66D9221E1935F00C6E3E1 /* NetworkRequest.framework in Frameworks */,
 				991375A52171D48500F15BEC /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				9912CDCC216C84290006FDDF /* NetworkRequest.framework in Frameworks */,
 				991375B1217266EF00F15BEC /* Store.framework in Frameworks */,
 				9912CDCE216C84290006FDDF /* Authentication.framework in Frameworks */,
 			);
@@ -167,8 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				99F026D7218025AC005FEFC7 /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				99F026DB218025BB005FEFC7 /* NetworkRequest.framework in Frameworks */,
 				99F026D8218025B0005FEFC7 /* KeychainAccess.framework in Frameworks */,
+				99E66D9621E1968E00C6E3E1 /* NetworkRequest.framework in Frameworks */,
 				99F026DA218025B7005FEFC7 /* Authentication.framework in Frameworks */,
 				99F026D9218025B2005FEFC7 /* Store.framework in Frameworks */,
 			);
@@ -205,11 +223,15 @@
 				997DBC9B21A537390080F42C /* AutoService+Request.swift */,
 				99F026BB217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift */,
 				99F02783218580C0005FEFC7 /* Region+Requests.swift */,
+				998D3AD821DC9B72003DD717 /* Review+Requests.swift */,
 				997DBC48219418830080F42C /* Mechanic+Requests.swift */,
 				997DBC5921977A310080F42C /* User+Requests.swift */,
 				997DBC7D219E84510080F42C /* Vehicle+Requests.swift */,
+				997714BC21CC5A5000E54F5B /* Price+Request.swift */,
+				99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */,
 				997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */,
 				997DBC4C21969F910080F42C /* JSONExtension.swift */,
+				99E66D8D21E1890A00C6E3E1 /* FileStore.swift */,
 				9912CDC6216C81AE0006FDDF /* Auth.swift */,
 				9912CDB0216C81760006FDDF /* Info.plist */,
 			);
@@ -221,13 +243,17 @@
 			children = (
 				9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */,
 				997DBC9921A536BE0080F42C /* AutoServiceTests.swift */,
+				997714C021CC9B8100E54F5B /* PriceTests.swift */,
+				99A3A88E21D5964E009A1AD9 /* StripeTests.swift */,
 				99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */,
 				997DBC7F219E8BB70080F42C /* VehicleTests.swift */,
 				997DBC4E2196B8640080F42C /* MechanicTests.swift */,
 				997DBC5B21977ED20080F42C /* UserTests.swift */,
 				99F0278D21858983005FEFC7 /* RegionTests.swift */,
+				998D3AE021DD51DB003DD717 /* ReviewTests.swift */,
 				99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */,
 				997DBC9D21B24CF00080F42C /* AuthTestCase.swift */,
+				99E66D9721E196DD00C6E3E1 /* Resources */,
 				9912CDBC216C81760006FDDF /* Info.plist */,
 			);
 			path = CarSwaddleDataTests;
@@ -236,13 +262,22 @@
 		9912CDC8216C84280006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */,
 				991375B0217266EF00F15BEC /* Store.framework */,
 				991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */,
 				9912CDCF216C842D0006FDDF /* KeychainAccess.framework */,
 				9912CDCB216C84290006FDDF /* Authentication.framework */,
-				9912CDC9216C84290006FDDF /* NetworkRequest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99E66D9721E196DD00C6E3E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				99E66D9921E196F900C6E3E1 /* image.png */,
+				99E66D9821E196EE00C6E3E1 /* smallMoreIcon.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		99F026C421802131005FEFC7 /* CarSwaddleDataHostApp */ = {
@@ -391,6 +426,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E66D9B21E19C3800C6E3E1 /* smallMoreIcon.png in Resources */,
+				99E66D9C21E19C3C00C6E3E1 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +453,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Static/Authentication.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Static/NetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Store.framework",
@@ -424,7 +461,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/NetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/Authentication.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
@@ -442,7 +479,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Static/NetworkRequest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Static/Authentication.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
@@ -451,7 +488,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/NetworkRequest.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Static/Authentication.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
@@ -469,12 +506,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				997DBC7E219E84510080F42C /* Vehicle+Requests.swift in Sources */,
+				997714BD21CC5A5000E54F5B /* Price+Request.swift in Sources */,
 				997DBC4B219418F70080F42C /* CarSwaddleNetwork.swift in Sources */,
+				99E66D8E21E1890A00C6E3E1 /* FileStore.swift in Sources */,
 				997DBC4D21969F910080F42C /* JSONExtension.swift in Sources */,
 				99F026BC217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift in Sources */,
+				998D3AD921DC9B72003DD717 /* Review+Requests.swift in Sources */,
 				997DBC49219418830080F42C /* Mechanic+Requests.swift in Sources */,
 				997DBC5A21977A310080F42C /* User+Requests.swift in Sources */,
 				9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */,
+				99A3A88D21D58E85009A1AD9 /* Stripe+Requests.swift in Sources */,
 				99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */,
 				997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */,
 			);
@@ -487,11 +528,14 @@
 				997DBC5C21977ED20080F42C /* UserTests.swift in Sources */,
 				997DBC4F2196B8640080F42C /* MechanicTests.swift in Sources */,
 				99F026BE217F061A005FEFC7 /* TemplateTimeSpanTests.swift in Sources */,
+				997714C121CC9B8100E54F5B /* PriceTests.swift in Sources */,
 				99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */,
+				998D3AE121DD51DB003DD717 /* ReviewTests.swift in Sources */,
 				997DBC80219E8BB70080F42C /* VehicleTests.swift in Sources */,
 				9912CDBB216C81760006FDDF /* CarSwaddleDataTests.swift in Sources */,
 				997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */,
 				99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */,
+				99A3A88F21D5964E009A1AD9 /* StripeTests.swift in Sources */,
 				997DBC9E21B24CF00080F42C /* AuthTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

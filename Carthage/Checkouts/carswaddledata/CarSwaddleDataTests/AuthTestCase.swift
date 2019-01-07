@@ -17,7 +17,7 @@ class AuthTestCase: XCTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         
         store.privateContext { pCtx in
-            self.authService.login(email: "k@k.com", password: "password", context: pCtx) { error in
+            self.authService.login(email: "user@carswaddle.com", password: "password", context: pCtx) { error in
                 XCTAssert(error == nil, "Should not have gotten an error")
                 exp.fulfill()
             }

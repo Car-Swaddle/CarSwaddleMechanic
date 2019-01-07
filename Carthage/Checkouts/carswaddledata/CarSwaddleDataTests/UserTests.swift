@@ -74,13 +74,6 @@ class UserTests: LoginTestCase {
         
         let u = self.userNetwork
         
-        let request = Request(domain: domain)
-        request.port = 3000
-        request.timeout = 15
-        request.defaultScheme = .http
-        
-        NotificationCenter.default.post(name: .serviceRequestDidChange, object: nil, userInfo: [Service.newServiceRequestKey: request])
-        
         let exp = expectation(description: "\(#function)\(#line)")
         store.privateContext { [weak self] context in
             u.requestCurrentUser(in: context) { userObjectID, error in
@@ -98,30 +91,47 @@ class UserTests: LoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
-//    func testResetRequestBadDomain() {
-//
-//        let request = Request(domain: "domain")
-//        request.port = 3000
-//        request.timeout = 15
-//        request.defaultScheme = .http
-//
-//        NotificationCenter.default.post(name: .serviceRequestDidChange, object: nil, userInfo: [Service.newServiceRequestKey: request])
-//
-//        let exp = expectation(description: "\(#function)\(#line)")
-//        store.privateContext { [weak self] context in
-//            self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
-//                store.mainContext{ mainContext in
-//                    guard let userObjectID = userObjectID else {
-//                        XCTAssert(false, "userID doesn't exist")
-//                        return
-//                    }
-//                    let user = mainContext.object(with: userObjectID) as? User
-//                    XCTAssert(user != nil, "User doesn't exist")
-//                    exp.fulfill()
-//                }
-//            }
-//        }
-//        waitForExpectations(timeout: 40, handler: nil)
-//    }
+    
+    func testUploadUserImage() {
+        
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "png") else {
+            XCTAssert(false, "Should have file: image.png in test bundle")
+            return
+        }
+        
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { [weak self] context in
+            self?.userNetwork.setProfileImage(fileURL: fileURL, in: context) { userObjectID, error in
+                store.mainContext { mainContext in
+                    guard let userObjectID = userObjectID else {
+                        XCTAssert(false, "userID doesn't exist")
+                        return
+                    }
+                    let image = profileImageStore.getImage(forUserWithID: userID)
+                    XCTAssert(image != nil, "Should have that image yall")
+                    let user = mainContext.object(with: userObjectID) as? User
+                    XCTAssert(user != nil, "User doesn't exist")
+                    XCTAssert(user?.profileImageID != nil, "profileImageID doesn't exist")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetProfileImage() {
+        guard let userID = User.currentUserID else { return }
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { [weak self] context in
+            self?.userNetwork.getProfileImage(userID: userID) { url, error in
+                store.mainContext { mainContext in
+                    let image = profileImageStore.getImage(forUserWithID: userID)
+                    XCTAssert(image != nil, "Should have that image yall")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
     
 }

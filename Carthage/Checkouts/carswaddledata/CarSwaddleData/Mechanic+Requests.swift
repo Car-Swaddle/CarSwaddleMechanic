@@ -11,6 +11,9 @@ import Store
 import CarSwaddleNetworkRequest
 import CoreLocation
 
+public typealias ObjectIDCompletion = (_ objectID: NSManagedObjectID?, _ error: Error?) -> Void
+public typealias ObjectIDArrayCompletion = (_ objectIDs: [NSManagedObjectID], _ error: Error?) -> Void
+
 
 public final class MechanicNetwork: Network {
     
@@ -22,13 +25,21 @@ public final class MechanicNetwork: Network {
     }
     
     @discardableResult
-    public func getNearestMechanics(limit: Int, coordinate: CLLocationCoordinate2D, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping (_ mechanicIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func getNearestMechanics(limit: Int, coordinate: CLLocationCoordinate2D, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping ObjectIDArrayCompletion) -> URLSessionDataTask? {
         return getNearestMechanics(limit: limit, latitude: coordinate.latitude, longitude: coordinate.longitude, maxDistance: maxDistance, in: context, completion: completion)
     }
     
     @discardableResult
-    public func update(isActive: Bool?, token: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return mechanicService.updateCurrentMechanic(isActive: isActive, token: token) { json, error in
+    public func update(isActive: Bool? = nil, token: String? = nil, dateOfBirth: Date? = nil, address: Address? = nil, externalAccount: String? = nil, socialSecurityNumberLast4: String? = nil, personalIDNumber: String? = nil, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        let addressJSON: JSONObject? = address?.toJSON
+        return mechanicService.updateCurrentMechanic(isActive: isActive, token: token, dateOfBirth: dateOfBirth, addressJSON: addressJSON, externalAccount: externalAccount, socialSecurityNumberLast4: socialSecurityNumberLast4, personalIDNumber: personalIDNumber) { [weak self] json, error in
+            self?.completeMechanic(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getStats(mechanicID: String, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        return mechanicService.getStats(forMechanicWithID: mechanicID) { json, error in
             context.perform {
                 var mechanicObjectID: NSManagedObjectID?
                 defer {
@@ -37,35 +48,42 @@ public final class MechanicNetwork: Network {
                     }
                 }
                 
-                guard let json = json else { return }
-                let mechanic = Mechanic.fetchOrCreate(json: json, context: context)
-                context.persist()
-                mechanicObjectID = mechanic?.objectID
-            }
-        }
-    }
-    
-    @discardableResult
-    public func getCurrentMechanic(in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return mechanicService.getCurrentMechanic { json, error in
-            context.perform {
-                var mechanicObjectID: NSManagedObjectID?
-                defer {
-                    DispatchQueue.global().async {
-                        completion(mechanicObjectID, error)
-                    }
+                guard let json = json?[mechanicID] as? JSONObject else { return }
+                if let previousStats = Mechanic.fetch(with: mechanicID, in: context) {
+                    context.delete(previousStats)
                 }
-                
-                guard let json = json else { return }
-                let mechanic = Mechanic.fetchOrCreate(json: json, context: context)
+                let stats = Stats(json: json, mechanicID: mechanicID, context: context)
                 context.persist()
-                mechanicObjectID = mechanic?.objectID
+                mechanicObjectID = stats?.mechanic?.objectID
             }
         }
     }
     
+    private func completeMechanic(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) {
+        context.perform {
+            var mechanicObjectID: NSManagedObjectID?
+            defer {
+                DispatchQueue.global().async {
+                    completion(mechanicObjectID, error)
+                }
+            }
+            
+            guard let json = json else { return }
+            let mechanic = Mechanic.fetchOrCreate(json: json, context: context)
+            context.persist()
+            mechanicObjectID = mechanic?.objectID
+        }
+    }
+    
     @discardableResult
-    public func getNearestMechanics(limit: Int, latitude: Double, longitude: Double, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping (_ mechanicIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func getCurrentMechanic(in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        return mechanicService.getCurrentMechanic { [weak self] json, error in
+            self?.completeMechanic(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getNearestMechanics(limit: Int, latitude: Double, longitude: Double, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping ObjectIDArrayCompletion) -> URLSessionDataTask? {
         return mechanicService.getNearestMechanics(limit: limit, latitude: latitude, longitude: longitude, maxDistance: maxDistance) { [weak self] jsonArray, error in
             context.perform {
                 var mechanicIDs: [NSManagedObjectID] = []

@@ -21,17 +21,9 @@ final public class AvailabilityService: Service {
     public func postAvailability(jsonArray: [JSONObject], completion: @escaping JSONArrayCompletion) -> URLSessionDataTask? {
         let json: JSONObject = ["spans": jsonArray]
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
-        guard var urlRequest = serviceRequest.post(with: .availability, body: body, contentType: .applicationJSON) else { return nil }
-        do {
-            try urlRequest.authenticate()
-        } catch { print("couldn't authenticate") }
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+        guard let urlRequest = serviceRequest.post(with: .availability, body: body, contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSONArray(data: data, error: error, completion: completion)
         }
     }
     
@@ -43,17 +35,9 @@ final public class AvailabilityService: Service {
             queryItems.append(URLQueryItem(name: "mechanicID", value: mechanicID))
         }
         
-        guard var urlRequest = serviceRequest.get(with: .availability, queryItems: queryItems) else { return nil }
-        do {
-            try urlRequest.authenticate()
-        } catch { print("couldn't authenticate") }
-        return serviceRequest.send(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [JSONObject] else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+        guard let urlRequest = serviceRequest.get(with: .availability, queryItems: queryItems) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSONArray(data: data, error: error, completion: completion)
         }
     }
     

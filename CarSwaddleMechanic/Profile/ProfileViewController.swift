@@ -19,6 +19,12 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         case lastName
         case serviceRegion
         case mechanicActive
+        case fullSocialSecurityNumber
+        case last4OfSocialSecurityNumber
+        case address
+        case bankAccount
+        case documents
+        case dateOfBirth
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -29,6 +35,12 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private var userNetwork = UserNetwork(serviceRequest: serviceRequest)
     private let auth = Auth(serviceRequest: serviceRequest)
     
+    lazy private var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addRefreshTarget(target: self, action: #selector(ProfileViewController.didRefresh))
+        return refresh
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +48,28 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         
         user = User.currentUser(context: store.mainContext)
         
+        updateData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    @objc private func didRefresh() {
+        updateData { [weak self] error in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func updateData(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         store.privateContext { [weak self] context in
             self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
                 store.mainContext { mainContext in
                     if let userObjectID = userObjectID {
                         self?.user = mainContext.object(with: userObjectID) as? User
                     }
+                    completion(error)
                 }
             }
         }
@@ -72,12 +100,14 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     }
     
     private func setupTableView() {
+        tableView.refreshControl = refreshControl
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileServiceRegionCell.self)
         tableView.register(NameCell.self)
         tableView.register(MechanicActiveCell.self)
+        tableView.register(ProfileDataCell.self)
     }
     
     @IBAction func didSelectEditSchedule() {
@@ -94,12 +124,33 @@ extension ProfileViewController: UITableViewDelegate {
         let row = rows[indexPath.row]
         
         switch row {
-        case .firstName: break
-        case .lastName: break
+        case .firstName, .lastName:
+            let viewController = NameViewController.viewControllerFromStoryboard()
+            navigationController?.show(viewController, sender: nil)
         case .serviceRegion:
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
         case .mechanicActive: break
+        case .address:
+            let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
+            show(viewController, sender: self)
+        case .fullSocialSecurityNumber:
+            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
+            viewController.isFullSocialSecurityNumberRequired = true
+            show(viewController, sender: self)
+        case .last4OfSocialSecurityNumber:
+            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
+            viewController.isFullSocialSecurityNumberRequired = false
+            show(viewController, sender: self)
+        case .bankAccount:
+            let viewController = BankAccountViewController.viewControllerFromStoryboard()
+            show(viewController, sender: self)
+        case .documents:
+            let viewController = FilePickerViewController.viewControllerFromStoryboard()
+            show(viewController, sender: self)
+        case .dateOfBirth:
+            let viewController = DateOfBirthViewController.viewControllerFromStoryboard()
+            show(viewController, sender: self)
         }
     }
     
@@ -130,7 +181,58 @@ extension ProfileViewController: UITableViewDataSource {
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()
             return cell
+        case .address:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.descriptionLabel.text = NSLocalizedString("Address", comment: "Description of row")
+            cell.valueLabel.text = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
+            return cell
+        case .fullSocialSecurityNumber:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueLabel.text = NSLocalizedString("Full social", comment: "Description of row")
+            cell.descriptionLabel.text = ""
+            return cell
+        case .last4OfSocialSecurityNumber:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueLabel.text = NSLocalizedString("Last 4 of social", comment: "Description of row")
+            cell.descriptionLabel.text = ""
+            return cell
+        case .bankAccount:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueLabel.text = NSLocalizedString("Bank Account", comment: "Description of row")
+            cell.descriptionLabel.text = ""
+            return cell
+        case .documents:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueLabel.text = NSLocalizedString("Documents", comment: "Description of row")
+            cell.descriptionLabel.text = ""
+            return cell
+        case .dateOfBirth:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            if let dateOfBirth = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth {
+                cell.descriptionLabel.text = NSLocalizedString("Date of Birth", comment: "Description of row")
+                cell.valueLabel.text = dateOfBirthFormatter.string(from: dateOfBirth)
+            } else {
+                cell.descriptionLabel.text = nil
+                cell.valueLabel.text = NSLocalizedString("Date of Birth", comment: "Description of row")
+            }
+            return cell
         }
     }
+    
+//    private func description(for row: Row) -> String? {
+//        switch row {
+//        case .firstName: return nil
+//        case .lastName: return nil
+//        case .serviceRegion: return nil
+//        case .mechanicActive: return nil
+//        case .identification: return NSLocalizedString("Identification", comment: "Description of row")
+//        case .bankAccount:
+//            return NSLocalizedString("Bank Account", comment: "Description of row")
+//        case .documents:
+//            return NSLocalizedString("Documents", comment: "Description of row")
+//        case .dateOfBirth:
+//            return NSLocalizedString("Date of Birth", comment: "Description of row")
+//        }
+//    }
     
 }

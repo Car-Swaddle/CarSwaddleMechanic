@@ -52,7 +52,7 @@ final class MechanicActiveCell: UITableViewCell, NibRegisterable {
     @objc private func switchDidChange(_ activeSwitch: UISwitch) {
         let isActive = activeSwitch.isOn
         store.privateContext { [weak self] context in
-            self?.mechanicNetwork.update(isActive: isActive, token: nil, in: context) { mechanicID, error in
+            self?.mechanicNetwork.update(isActive: isActive, token: nil, dateOfBirth: nil, address: nil, in: context) { mechanicID, error in
                 DispatchQueue.main.async {
                     if error == nil {
                     } else {

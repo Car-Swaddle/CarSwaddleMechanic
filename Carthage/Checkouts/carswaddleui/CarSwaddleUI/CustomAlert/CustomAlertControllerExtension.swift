@@ -1,0 +1,52 @@
+
+import UIKit
+
+public extension CustomAlertAction {
+    
+    private static let cancelTitle = NSLocalizedString("CANCEL", comment: "Action to cancel on an alert")
+    
+    /// CustomAlertAction configured for `cancel`.
+    ///
+    /// - Parameter handler: Closure called on button tap.
+    /// - Returns: CustomAlertAction configured for `cancel`.
+    public static func cancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+        let action = CustomAlertAction(title: cancelTitle, handler: handler)
+        return action
+    }
+    
+    private static let okayTitle = NSLocalizedString("OKAY", comment: "Action to cancel on an alert")
+    
+    /// CustomAlertAction configured for `okay`.
+    ///
+    /// - Parameter handler: Closure called on button tap.
+    /// - Returns: CustomAlertAction configured for `okay`.
+    public static func okayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+        let action = CustomAlertAction(title: okayTitle, handler: handler)
+        return action
+    }
+    
+}
+
+public extension CustomAlertContentView {
+    
+    /// Adds an action to the content view that is configured for `cancel`.
+    ///
+    /// - Parameter handler: Closure called on button tap.
+    @discardableResult
+    public func addCancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+        let action = CustomAlertAction.cancelAction(handler)
+        addAction(action)
+        return action
+    }
+    
+    /// Adds an action to the content view that is configured for `okay`.
+    ///
+    /// - Parameter handler: Closure called on button tap.
+    @discardableResult
+    public func addOkayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+        let action = CustomAlertAction.okayAction(handler)
+        addAction(action)
+        return action
+    }
+    
+}

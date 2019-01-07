@@ -22,31 +22,37 @@
                         <rect key="frame" x="20" y="11" width="366" height="141"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduled Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqW-Ka-c7q">
-                                <rect key="frame" x="0.0" y="0.0" width="366" height="28"/>
+                                <rect key="frame" x="0.0" y="0.0" width="366" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanic name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIC-Ux-3gK">
-                                <rect key="frame" x="0.0" y="28" width="366" height="28.5"/>
+                                <rect key="frame" x="0.0" y="23.5" width="366" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5Q-Qb-wC7">
-                                <rect key="frame" x="0.0" y="56.5" width="366" height="28"/>
+                                <rect key="frame" x="0.0" y="47" width="366" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-h3-SdO">
-                                <rect key="frame" x="0.0" y="84.5" width="366" height="28.5"/>
+                                <rect key="frame" x="0.0" y="70.5" width="366" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uL2-Pf-Gfy">
-                                <rect key="frame" x="0.0" y="113" width="366" height="28"/>
+                                <rect key="frame" x="0.0" y="94" width="366" height="23.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnT-Jl-Wm9">
+                                <rect key="frame" x="0.0" y="117.5" width="366" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,6 +72,7 @@
                 <outlet property="locationLabel" destination="x5Q-Qb-wC7" id="Pep-Ng-mMY"/>
                 <outlet property="scheduledDateLabel" destination="CqW-Ka-c7q" id="ngd-Ko-lk3"/>
                 <outlet property="serviceTypeLabel" destination="uL2-Pf-Gfy" id="WAE-Vo-zGV"/>
+                <outlet property="statusLabel" destination="fnT-Jl-Wm9" id="iFa-zH-05B"/>
                 <outlet property="userLabel" destination="GIC-Ux-3gK" id="HcA-Gn-anz"/>
                 <outlet property="vehicleLabel" destination="YHY-h3-SdO" id="bYs-uQ-S7d"/>
             </connections>

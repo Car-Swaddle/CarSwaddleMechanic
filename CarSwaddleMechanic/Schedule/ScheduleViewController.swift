@@ -38,7 +38,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
     
     lazy private var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl(frame: .zero)
-        refresh.addTarget(self, action: #selector(ScheduleViewController.didRefresh), for: .valueChanged)
+        refresh.addRefreshTarget(target: self, action: #selector(ScheduleViewController.didRefresh))
         return refresh
     }()
     
