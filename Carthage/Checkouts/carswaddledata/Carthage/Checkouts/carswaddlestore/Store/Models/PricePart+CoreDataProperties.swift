@@ -17,7 +17,7 @@ extension PricePart {
     }
 
     @NSManaged public var key: String
-    @NSManaged public var value: NSDecimalNumber
+    @NSManaged public var value: Int
     @NSManaged public var price: Price
 
 }

@@ -14,13 +14,6 @@ import CarSwaddleNetworkRequest
 import Store
 
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "EEE MMM d"
-    return formatter
-}()
-
-
 final class ScheduleViewController: UIViewController, StoryboardInstantiating {
     
     public class func scheduleViewController(for date: Date) -> ScheduleViewController {

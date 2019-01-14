@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import CarSwaddleData
+import Store
 
 class AuthTestCase: XCTestCase {
     
@@ -17,8 +18,22 @@ class AuthTestCase: XCTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         
         store.privateContext { pCtx in
-            self.authService.login(email: "user@carswaddle.com", password: "password", context: pCtx) { error in
+            self.authService.login(email: "kyle@carswaddle.com", password: "password", context: pCtx) { error in
                 XCTAssert(error == nil, "Should not have gotten an error")
+                XCTAssert(User.currentUserID != nil, "No current mechanicID")
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testMechanicLogin() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { pCtx in
+            self.authService.mechanicLogin(email: "kyle@carswaddle.com", password: "password", context: pCtx) { error in
+                XCTAssert(error == nil, "Should not have gotten an error")
+                XCTAssert(Mechanic.currentMechanicID != nil, "No current mechanicID")
                 exp.fulfill()
             }
         }

@@ -14,6 +14,10 @@ import Store
 
 
 public var currentMechanicID: String = ""
+public var currentUserID: String = ""
+
+private let email = "mechanic@carswaddle.com"
+private let password = "password"
 
 class LoginTestCase: XCTestCase {
 
@@ -22,6 +26,7 @@ class LoginTestCase: XCTestCase {
     override func setUp() {
         
         DispatchQueue.once(token: "SomeString") {
+            try? store.destroyAllData()
             auth.logout {_ in }
         }
         
@@ -33,13 +38,15 @@ class LoginTestCase: XCTestCase {
         let exp = expectation(description: "The exp")
         
         let context = store.mainContext
-        auth.mechanicLogin(email: "k@k.com", password: "password", context: context) { [weak self] error in
+        auth.mechanicLogin(email: email, password: password, context: context) { [weak self] error in
             if error == nil {
-                currentMechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier ?? ""
+                currentMechanicID = Mechanic.currentMechanicID ?? ""
+                currentUserID = User.currentUserID ?? ""
                 exp.fulfill()
             } else {
-                self?.auth.mechanicSignUp(email: "k@k.com", password: "password", context: context) { error in
-                    currentMechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier ?? ""
+                self?.auth.mechanicSignUp(email: email, password: password, context: context) { error in
+                    currentMechanicID = Mechanic.currentMechanicID ?? ""
+                    currentUserID = User.currentUserID ?? ""
                     exp.fulfill()
                 }
             }

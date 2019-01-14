@@ -76,7 +76,7 @@ public final class UserNetwork: Network {
                 }
                 
                 if let currentUserID = User.currentUserID {
-                    try? profileImageStore.storeFile(url: fileURL, fileName: currentUserID)
+                    _ = try? profileImageStore.storeFile(url: fileURL, fileName: currentUserID)
                 }
                 
                 guard let currentUser = User.currentUser(context: context), error == nil else { return }
@@ -86,8 +86,6 @@ public final class UserNetwork: Network {
             }
         }
     }
-    
-    
     
     @discardableResult
     public func getProfileImage(userID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {

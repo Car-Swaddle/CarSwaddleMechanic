@@ -32,6 +32,7 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
         self.firstName = json["firstName"] as? String
         self.lastName = json["lastName"] as? String
         self.phoneNumber = json["phoneNumber"] as? String
+        self.profileImageID = json["profileImageID"] as? String
         
         guard let context = managedObjectContext else { return }
         
@@ -54,9 +55,6 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
         }
         return user
     }
-    
-    
-    
     
     public static func setCurrentUserID(_ identifier: String) {
         UserDefaults.standard.set(identifier, forKey: currentUserIDKey)

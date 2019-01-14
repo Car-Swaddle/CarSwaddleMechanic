@@ -32,6 +32,95 @@ final public class StripeNetwork: Network {
         }
     }
     
+    @discardableResult
+    public func requestBalance(in context: NSManagedObjectContext, completion: @escaping (_ balanceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getBalance { json, error in
+            context.perform {
+                var objectID: NSManagedObjectID?
+                defer {
+                    completion(objectID, error)
+                }
+                guard let json = json else { return }
+                
+                let mechanic = Mechanic.currentLoggedInMechanic(in: context)
+                
+                if let previous = mechanic?.balance {
+                    context.delete(previous)
+                }
+                
+                guard let balance = Balance(json: json, context: context) else { return }
+                mechanic?.balance = balance
+                context.persist()
+                objectID = balance.objectID
+            }
+        }
+    }
+    
+    @discardableResult
+    public func requestTransaction(startingAfterID: String? = nil, payoutID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getTransactions(startingAfterID: startingAfterID, payoutID: payoutID, limit: limit) { json, error in
+            context.perform {
+                var objectIDs: [NSManagedObjectID] = []
+                var lastID: String?
+                var hasMore: Bool = false
+                defer {
+                    completion(objectIDs, lastID, hasMore, error)
+                }
+                guard let json = json else { return }
+                
+                hasMore = (json["has_more"] as? Bool) ?? false
+                
+                let mechanic = Mechanic.currentLoggedInMechanic(in: context)
+                var payout: Payout?
+                if let payoutID = payoutID, let fetchedPayout = Payout.fetch(with: payoutID, in: context) {
+                    payout = fetchedPayout
+                }
+                for transactionJSON in json["data"] as? [JSONObject] ?? [] {
+                    guard let transaction = Transaction.fetchOrCreate(json: transactionJSON, context: context) else { continue }
+                    transaction.mechanic = mechanic
+                    if transaction.objectID.isTemporaryID == true {
+                        try? context.obtainPermanentIDs(for: [transaction])
+                    }
+                    
+                    transaction.payout = payout
+                    
+                    objectIDs.append(transaction.objectID)
+                    lastID = transaction.identifier
+                }
+                context.persist()
+            }
+        }
+    }
+    
+    @discardableResult
+    public func requestPayouts(startingAfterID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getPayouts(startingAfterID: startingAfterID, limit: limit) { json, error in
+            context.perform {
+                var objectIDs: [NSManagedObjectID] = []
+                var lastID: String?
+                var hasMore: Bool = false
+                defer {
+                    completion(objectIDs, lastID, hasMore, error)
+                }
+                guard let json = json else { return }
+                
+                hasMore = (json["has_more"] as? Bool) ?? false
+                
+                let mechanic = Mechanic.currentLoggedInMechanic(in: context)
+                for payoutJSON in json["data"] as? [JSONObject] ?? [] {
+                    guard let payout = Payout.fetchOrCreate(json: payoutJSON, context: context) else { continue }
+                    payout.mechanic = mechanic
+                    if payout.objectID.isTemporaryID == true {
+                        try? context.obtainPermanentIDs(for: [payout])
+                    }
+                    objectIDs.append(payout.objectID)
+                    lastID = payout.identifier
+                }
+                context.persist()
+            }
+        }
+    }
+    
 }
 
 

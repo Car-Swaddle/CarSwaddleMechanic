@@ -24,7 +24,7 @@ public class FileStore {
     public let folderName: String
     
     public func getFile(name: String) throws -> Data? {
-        let fileURL = try directory().appendingPathComponent(name).appendingPathExtension("png")
+        let fileURL = try directory().appendingPathComponent(name).appendingPathExtension("jpeg")
         let data = try Data(contentsOf: fileURL)
         return data
     }
@@ -39,7 +39,7 @@ public class FileStore {
     
     @discardableResult
     public func storeFile(data: Data, fileName: String) throws -> URL {
-        let newFileURL = try directory().appendingPathComponent(fileName).appendingPathExtension("png")
+        let newFileURL = try directory().appendingPathComponent(fileName).appendingPathExtension("jpeg")
         fileManager.createFile(atPath: newFileURL.path, contents: data, attributes: nil)
         try data.write(to: newFileURL)
         return newFileURL
@@ -70,12 +70,12 @@ public class ProfileImageStore: FileStore {
         return UIImage(data: file)
     }
     
-    public func getImage(forProfileID profileID: String) -> UIImage? {
-        return getImage(withName: profileID)
-    }
-    
     public func getImage(forUserWithID userID: String) -> UIImage? {
         return getImage(withName: userID)
+    }
+    
+    public func getImage(forMechanicWithID mechanicID: String) -> UIImage? {
+        return getImage(withName: mechanicID)
     }
     
     @discardableResult
@@ -83,11 +83,26 @@ public class ProfileImageStore: FileStore {
         return try storeFile(url: url, fileName: userID)
     }
     
+    @discardableResult
+    public func storeFile(data: Data, userID: String) throws -> URL {
+        return try storeFile(data: data, fileName: userID)
+    }
+    
+    @discardableResult
+    public func storeFile(url: URL, mechanicID: String) throws -> URL {
+        return try storeFile(url: url, fileName: mechanicID)
+    }
+    
+    @discardableResult
+    public func storeFile(data: Data, mechanicID: String) throws -> URL {
+        return try storeFile(data: data, fileName: mechanicID)
+    }
+    
 }
 
 extension User {
     
-    public func setProfileImag(withFileURL url: URL) throws {
+    public func setProfileImage(withFileURL url: URL) throws {
         try profileImageStore.storeFile(url: url, userID: identifier)
     }
     

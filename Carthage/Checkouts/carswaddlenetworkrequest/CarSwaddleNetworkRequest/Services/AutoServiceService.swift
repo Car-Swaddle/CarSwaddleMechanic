@@ -22,8 +22,10 @@ let serverDateFormatter: DateFormatter = {
 public final class AutoServiceService: Service {
     
     @discardableResult
-    public func createAutoService(autoServiceJSON: JSONObject, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        guard let body = (try? JSONSerialization.data(withJSONObject: autoServiceJSON, options: [])),
+    public func createAutoService(autoServiceJSON: JSONObject, sourceID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        var json = autoServiceJSON
+        json["sourceID"] = sourceID
+        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
             let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)

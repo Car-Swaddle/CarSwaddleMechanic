@@ -33,6 +33,8 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         didSet { tableView.reloadData() }
     }
     private var userNetwork = UserNetwork(serviceRequest: serviceRequest)
+    private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    
     private let auth = Auth(serviceRequest: serviceRequest)
     
     lazy private var refreshControl: UIRefreshControl = {
@@ -41,13 +43,18 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         return refresh
     }()
     
+    private lazy var headerView: ProfileHeaderView = {
+        let view = ProfileHeaderView.viewFromNib()
+        view.delegate = self
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 130)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        
         user = User.currentUser(context: store.mainContext)
-        
         updateData()
     }
     
@@ -84,6 +91,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
                 DispatchQueue.main.async {
                     finishTasksAndInvalidate {
                         try? store.destroyAllData()
+                        try? profileImageStore.destroy()
                         AuthController().removeToken()
                         DispatchQueue.main.async {
                             navigator.navigateToLoggedOutViewController()
@@ -104,10 +112,16 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.register(ProfileServiceRegionCell.self)
         tableView.register(NameCell.self)
         tableView.register(MechanicActiveCell.self)
         tableView.register(ProfileDataCell.self)
+        
+        tableView.tableHeaderView = headerView
+        if let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext) {
+            headerView.configure(with: mechanic)
+        }
     }
     
     @IBAction func didSelectEditSchedule() {
@@ -183,37 +197,37 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .address:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.descriptionLabel.text = NSLocalizedString("Address", comment: "Description of row")
-            cell.valueLabel.text = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
+            cell.descriptionText = NSLocalizedString("Address", comment: "Description of row")
+            cell.valueText = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
             return cell
         case .fullSocialSecurityNumber:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueLabel.text = NSLocalizedString("Full social", comment: "Description of row")
-            cell.descriptionLabel.text = ""
+            cell.valueText = NSLocalizedString("Full social", comment: "Description of row")
+            cell.descriptionText = ""
             return cell
         case .last4OfSocialSecurityNumber:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueLabel.text = NSLocalizedString("Last 4 of social", comment: "Description of row")
-            cell.descriptionLabel.text = ""
+            cell.valueText = NSLocalizedString("Last 4 of social", comment: "Description of row")
+            cell.descriptionText = ""
             return cell
         case .bankAccount:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueLabel.text = NSLocalizedString("Bank Account", comment: "Description of row")
-            cell.descriptionLabel.text = ""
+            cell.valueText = NSLocalizedString("Bank Account", comment: "Description of row")
+            cell.descriptionText = ""
             return cell
         case .documents:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueLabel.text = NSLocalizedString("Documents", comment: "Description of row")
-            cell.descriptionLabel.text = ""
+            cell.valueText = NSLocalizedString("Documents", comment: "Description of row")
+            cell.descriptionText = ""
             return cell
         case .dateOfBirth:
             let cell: ProfileDataCell = tableView.dequeueCell()
             if let dateOfBirth = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth {
-                cell.descriptionLabel.text = NSLocalizedString("Date of Birth", comment: "Description of row")
-                cell.valueLabel.text = dateOfBirthFormatter.string(from: dateOfBirth)
+                cell.descriptionText = NSLocalizedString("Date of Birth", comment: "Description of row")
+                cell.valueText = dateOfBirthFormatter.string(from: dateOfBirth)
             } else {
-                cell.descriptionLabel.text = nil
-                cell.valueLabel.text = NSLocalizedString("Date of Birth", comment: "Description of row")
+                cell.descriptionText = nil
+                cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
             }
             return cell
         }
@@ -234,5 +248,59 @@ extension ProfileViewController: UITableViewDataSource {
 //            return NSLocalizedString("Date of Birth", comment: "Description of row")
 //        }
 //    }
+    
+}
+
+
+extension ProfileViewController: ProfileHeaderViewDelegate {
+    
+    func didSelectCamera(headerView: ProfileHeaderView) {
+        let imagePicker = self.imagePicker(source: .camera)
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func didSelectCameraRoll(headerView: ProfileHeaderView) {
+        let imagePicker = self.imagePicker(source: .photoLibrary)
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func presentAlert(alert: UIAlertController, headerView: ProfileHeaderView) {
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func imagePicker(source: UIImagePickerController.SourceType) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = source
+        imagePicker.allowsEditing = false
+        return imagePicker
+    }
+    
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        defer {
+            picker.dismiss(animated: true, completion: nil)
+        }
+        guard let image = info[.originalImage] as? UIImage else { return }
+        let orientedImage = UIImage.imageWithCorrectedOrientation(image)
+        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.pngData() else {
+            return
+        }
+        guard let url = try? profileImageStore.storeFile(data: imageData, fileName: Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier ?? "profileImage") else {
+            return
+        }
+        store.privateContext { [weak self] privateContext in
+            self?.mechanicNetwork.setProfileImage(fileURL: url, in: privateContext) { mechanicObjectID, error in
+                store.mainContext { mainContext in
+                    guard let mechanicObjectID = mechanicObjectID else { return }
+                    guard let mechanic = mainContext.object(with: mechanicObjectID) as? Mechanic else { return }
+                    self?.headerView.configure(with: mechanic)
+                }
+            }
+        }
+    }
     
 }

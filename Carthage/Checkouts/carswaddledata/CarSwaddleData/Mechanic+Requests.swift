@@ -18,9 +18,11 @@ public typealias ObjectIDArrayCompletion = (_ objectIDs: [NSManagedObjectID], _ 
 public final class MechanicNetwork: Network {
     
     private var mechanicService: MechanicService
+    private var fileService: FileService
     
     override public init(serviceRequest: Request) {
         self.mechanicService = MechanicService(serviceRequest: serviceRequest)
+        self.fileService = FileService(serviceRequest: serviceRequest)
         super.init(serviceRequest: serviceRequest)
     }
     
@@ -49,7 +51,7 @@ public final class MechanicNetwork: Network {
                 }
                 
                 guard let json = json?[mechanicID] as? JSONObject else { return }
-                if let previousStats = Mechanic.fetch(with: mechanicID, in: context) {
+                if let previousStats = Mechanic.fetch(with: mechanicID, in: context)?.stats {
                     context.delete(previousStats)
                 }
                 let stats = Stats(json: json, mechanicID: mechanicID, context: context)
@@ -106,6 +108,47 @@ public final class MechanicNetwork: Network {
             }
         }
     }
+    
+    @discardableResult
+    public func setProfileImage(fileURL: URL
+        , in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return fileService.uploadMechanicProfileImage(fileURL: fileURL) { json, error in
+            context.perform {
+                var mechanicObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(mechanicObjectID, error)
+                    }
+                }
+                
+                if let mechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier {
+                    _ = try? profileImageStore.storeFile(url: fileURL, mechanicID: mechanicID)
+                }
+                
+                guard let currentMechanic = Mechanic.currentLoggedInMechanic(in: context), error == nil else { return }
+                currentMechanic.profileImageID = json?["profileImageID"] as? String
+                context.persist()
+                mechanicObjectID = currentMechanic.objectID
+            }
+        }
+    }
+    
+    @discardableResult
+    public func getProfileImage(mechanicID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+        return fileService.getMechanicProfileImage(mechanicID: mechanicID) { url, responseError in
+            var completionError: Error? = responseError
+            var permanentURL: URL?
+            defer {
+                completion(permanentURL, completionError)
+            }
+            guard let url = url else { return }
+            do {
+                permanentURL = try profileImageStore.storeFile(url: url, mechanicID: mechanicID)
+            } catch { completionError = error }
+        }
+    }
+    
+    
     
     private func createModel(from json: JSONObject, in context: NSManagedObjectContext) -> Mechanic? {
         var regionJSON: JSONObject = json

@@ -25,5 +25,33 @@ public extension UIImage {
         return image
     }
     
+    public static func imageWithCorrectedOrientation(_ image: UIImage) -> UIImage {
+        if image.imageOrientation == .up { return image }
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale);
+        let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        image.draw(in: rect)
+        
+        guard let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() else { return image }
+        UIGraphicsEndImageContext()
+        return normalizedImage
+    }
+    
+    public func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    public func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
 }
 

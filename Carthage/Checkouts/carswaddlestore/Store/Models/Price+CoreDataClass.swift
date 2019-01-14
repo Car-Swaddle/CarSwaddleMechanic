@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-typealias PriceValues = (identifier: String, totalPrice: NSDecimalNumber)
+typealias PriceValues = (identifier: String, totalPrice: Int)
 
 @objc(Price)
 public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -27,8 +27,8 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
     
     private static func values(from json: JSONObject) -> PriceValues? {
         guard let id = json.identifier,
-            let totalPriceString = json["totalPrice"] as? String else { return nil }
-        let totalPrice = NSDecimalNumber(string: totalPriceString)
+            let totalPriceString = json["totalPrice"] as? String,
+            let totalPrice = Int(totalPriceString) else { return nil }
         return (id, totalPrice)
     }
     

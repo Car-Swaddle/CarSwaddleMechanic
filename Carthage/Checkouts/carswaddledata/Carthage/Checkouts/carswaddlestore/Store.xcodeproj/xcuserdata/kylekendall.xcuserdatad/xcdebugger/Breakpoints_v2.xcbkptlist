@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoreTests/PriceTests.swift"
-            timestampString = "567070290.605732"
+            filePath = "Store/Models/Payout+CoreDataClass.swift"
+            timestampString = "569117896.74077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "testCreatePrice()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "values(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

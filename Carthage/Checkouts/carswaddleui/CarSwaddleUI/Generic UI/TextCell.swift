@@ -9,4 +9,3 @@
 import UIKit
 
 public final class TextCell: UITableViewCell, NibRegisterable {  }
-

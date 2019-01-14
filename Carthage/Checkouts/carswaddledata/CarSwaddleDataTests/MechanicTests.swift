@@ -235,4 +235,45 @@ class MechanicTests: LoginTestCase {
         }
     }
     
+    func testUploadUserImage() {
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "png") else {
+            XCTAssert(false, "Should have file: image.png in test bundle")
+            return
+        }
+        
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.setProfileImage(fileURL: fileURL, in: context) { mechanicObjectID, error in
+                store.mainContext { mainContext in
+                    guard let mechanicObjectID = mechanicObjectID else {
+                        XCTAssert(false, "mechanicObjectID doesn't exist")
+                        return
+                    }
+                    let image = profileImageStore.getImage(forMechanicWithID: currentMechanicID)
+                    XCTAssert(image != nil, "Should have that image yall")
+                    let mechanic = mainContext.object(with: mechanicObjectID) as? Mechanic
+                    XCTAssert(mechanic != nil, "User doesn't exist")
+                    XCTAssert(mechanic?.profileImageID != nil, "profileImageID doesn't exist")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetProfileImage() {
+        let mechanicID = currentMechanicID
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.getProfileImage(mechanicID: mechanicID) { url, error in
+                store.mainContext { mainContext in
+                    let image = profileImageStore.getImage(forMechanicWithID: mechanicID)
+                    XCTAssert(image != nil, "Should have that image yall")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }

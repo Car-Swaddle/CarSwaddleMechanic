@@ -28,9 +28,9 @@ public final class AutoServiceNetwork: Network {
     }
     
     @discardableResult
-    public func createAutoService(autoService originalAutoService: AutoService, in context: NSManagedObjectContext, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func createAutoService(autoService originalAutoService: AutoService, sourceID: String, in context: NSManagedObjectContext, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let json = try? originalAutoService.toJSON() else { return nil }
-        return autoServiceService.createAutoService(autoServiceJSON: json) { [weak self] autoServiceJSON, error in
+        return autoServiceService.createAutoService(autoServiceJSON: json, sourceID: sourceID) { [weak self] autoServiceJSON, error in
             self?.complete(originalAutoService: originalAutoService, error: error, autoServiceJSON: autoServiceJSON, in: context, completion: completion)
         }
     }

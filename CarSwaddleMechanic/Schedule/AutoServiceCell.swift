@@ -10,7 +10,7 @@ import UIKit
 import CarSwaddleUI
 import Store
 
-private let dateFormatter: DateFormatter = {
+let hourMinuteDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "EEE MMM d h:mm a"
     return formatter
@@ -43,7 +43,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     
     func configure(with autoService: AutoService) {
         if let date = autoService.scheduledDate {
-            scheduledDateLabel.text = dateFormatter.string(from: date)
+            scheduledDateLabel.text = hourMinuteDateFormatter.string(from: date)
         }
         
         userLabel.text = autoService.creator?.displayName

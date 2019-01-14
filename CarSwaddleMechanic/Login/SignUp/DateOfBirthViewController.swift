@@ -16,10 +16,12 @@ public var dateOfBirthFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-final class DateOfBirthViewController: UIViewController, StoryboardInstantiating {
+final class DateOfBirthViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
 
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var datePicker: UIDatePicker!
+    
+    weak var navigationDelegate: NavigationDelegate?
     
     private let mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
@@ -46,9 +48,13 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.update(dateOfBirth: newDate, in: privateContext) { mechanicID, error in
                 DispatchQueue.main.async {
-                    self?.navigationItem.rightBarButtonItem = previousButton
-                    if error == nil {
-                        self?.navigationController?.popViewController(animated: true)
+                    if let navigationDelegate = self?.navigationDelegate, let self = self {
+                        navigationDelegate.didFinish(navigationDelegatingViewController: self)
+                    } else {
+                        self?.navigationItem.rightBarButtonItem = previousButton
+                        if error == nil {
+                            self?.navigationController?.popViewController(animated: true)
+                        }
                     }
                 }
             }

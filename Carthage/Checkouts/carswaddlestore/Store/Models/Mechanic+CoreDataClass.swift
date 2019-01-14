@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-//typealias MechanicValues = identifier: String
+private let currentMechanicIDKey = "currentMechanicIDKey"
 
 @objc(Mechanic)
 public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -47,12 +47,21 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
             self.user = user
         }
         
+        profileImageID = json["profileImageID"] as? String
+        
         if let addressJSON = json["address"] as? JSONObject {
             let address = Address.fetchOrCreate(json: addressJSON, context: context)
             self.address = address
         }
     }
     
+    public static func setCurrentMechanicID(_ identifier: String) {
+        UserDefaults.standard.set(identifier, forKey: currentMechanicIDKey)
+    }
+    
+    public static var currentMechanicID: String? {
+        return UserDefaults.standard.value(forKey: currentMechanicIDKey) as? String
+    }
 
     public static func currentLoggedInMechanic(in context: NSManagedObjectContext) -> Mechanic? {
         return User.currentUser(context: context)?.mechanic

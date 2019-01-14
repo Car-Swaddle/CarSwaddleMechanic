@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-typealias TemplateTimeSpanValues = (identifier: String, duration: TimeInterval, weekday: Weekday, date: Date)
+typealias TemplateTimeSpanValues = (identifier: String, duration: TimeInterval, weekday: Weekday, date: Date, mechanicID: String)
 
 public enum Weekday: Int16, CaseIterable {
     case sunday
@@ -41,9 +41,8 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, 
         self.duration = values.duration
         self.startTime = Int64(values.date.secondsSinceMidnight())
         self.weekday = values.weekday
-        if let mechanicID = json["mechanicID"] as? String,
-            let context = managedObjectContext,
-            let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+        if let context = managedObjectContext,
+            let mechanic = Mechanic.fetch(with: values.mechanicID, in: context) {
             self.mechanic = mechanic
         }
     }
@@ -54,8 +53,9 @@ public final class TemplateTimeSpan: NSManagedObject, NSManagedObjectFetchable, 
             let weekdayInt = json["weekDay"] as? Int16,
             let weekday = Weekday(rawValue: weekdayInt),
             let dateString = json["startTime"] as? String,
-            let date = TemplateTimeSpan.dateFormatter.date(from: dateString) else { return nil }
-        return (identifier, duration, weekday, date)
+            let date = TemplateTimeSpan.dateFormatter.date(from: dateString),
+            let mechanicID = json["mechanicID"] as? String else { return nil }
+        return (identifier, duration, weekday, date, mechanicID)
     }
     
     

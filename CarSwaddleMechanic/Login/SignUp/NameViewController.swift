@@ -11,10 +11,12 @@ import CarSwaddleUI
 import Store
 import CarSwaddleData
 
-final class NameViewController: UIViewController, StoryboardInstantiating {
+final class NameViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
 
     @IBOutlet private weak var firstNameTextField: UITextField!
     @IBOutlet private weak var lastNameTextField: UITextField!
+    
+    weak var navigationDelegate: NavigationDelegate?
     
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
     
@@ -45,10 +47,15 @@ final class NameViewController: UIViewController, StoryboardInstantiating {
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
-                    if error == nil {
-                        self?.navigationController?.popViewController(animated: true)
+                    guard error == nil else { return }
+                    if let self = self, let navigationDelegate = self.navigationDelegate {
+                        navigationDelegate.didFinish(navigationDelegatingViewController: self)
+                    } else {
+                        if error == nil {
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                        self?.navigationItem.rightBarButtonItem = previousBarButtonItem
                     }
-                    self?.navigationItem.rightBarButtonItem = previousBarButtonItem
                 }
             }
         }

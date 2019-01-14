@@ -16,8 +16,8 @@ class FileServiceTests: CarSwaddleLoginTestCase {
     
     func testUploadFile() {
         let exp = expectation(description: "\(#function)\(#line)")
-        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "png") else {
-            XCTAssert(false, "Should have file: image.png in test bundle")
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "jpeg") else {
+            XCTAssert(false, "Should have file: image.jpeg in test bundle")
             return
         }
         
@@ -65,6 +65,71 @@ class FileServiceTests: CarSwaddleLoginTestCase {
             }
             
             self.fileService.getProfileImage(userID: currentUserID) { downloadFileURL, error in
+                XCTAssert(error == nil, "Should have no error")
+                if let downloadFileURL = downloadFileURL {
+                    let file = try? Data(contentsOf: downloadFileURL)
+                    XCTAssert(file != nil, "Should have file")
+                } else {
+                    XCTAssert(false, "Should have fileURL")
+                }
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+
+    
+    func testUploadMechanicFile() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "png") else {
+            XCTAssert(false, "Should have file: image.png in test bundle")
+            return
+        }
+        
+        fileService.uploadMechanicProfileImage(fileURL: fileURL) { json, error in
+            XCTAssert(error == nil, "Should have no error")
+            if let json = json {
+                XCTAssert((json["profileImageID"] as? String) != nil, "Should have name from json")
+            } else {
+                XCTAssert(false, "Should have json")
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetProfileImageMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        fileService.getMechanicProfileImage(mechanicID: currentMechanicID) { fileURL, error in
+            XCTAssert(error == nil, "Should have no error")
+            if let fileURL = fileURL {
+                let file = try? Data(contentsOf: fileURL)
+                XCTAssert(file != nil, "Should have file")
+            } else {
+                XCTAssert(false, "Should have fileURL")
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUploadAndDownloadFileMechanic() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "smallImage", withExtension: "png") else {
+            XCTAssert(false, "Should have file: image.png in test bundle")
+            return
+        }
+        
+        fileService.uploadMechanicProfileImage(fileURL: fileURL) { json, error in
+            XCTAssert(error == nil, "Should have no error")
+            if let json = json {
+                XCTAssert((json["profileImageID"] as? String) != nil, "Should have name from json")
+            } else {
+                XCTAssert(false, "Should have json")
+            }
+            
+            self.fileService.getMechanicProfileImage(mechanicID: currentMechanicID) { downloadFileURL, error in
                 XCTAssert(error == nil, "Should have no error")
                 if let downloadFileURL = downloadFileURL {
                     let file = try? Data(contentsOf: downloadFileURL)

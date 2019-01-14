@@ -1,5 +1,5 @@
 git "git@bitbucket.org:kkendall33/authentication.git" "1.05"
-git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "1.970"
-git "git@bitbucket.org:kkendall33/carswaddlestore.git" "1.140"
+git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "1.978"
+git "git@bitbucket.org:kkendall33/carswaddlestore.git" "1.164"
 git "git@bitbucket.org:kkendall33/networkrequest.git" "1.064"
 github "kishikawakatsumi/KeychainAccess" "v3.1.2"

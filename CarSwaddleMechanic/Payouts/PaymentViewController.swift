@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 
-final class PaymentViewController: UIViewController, StoryboardInstantiating {
+final class EarningsViewController: UIViewController, StoryboardInstantiating {
 
     override func viewDidLoad() {
         super.viewDidLoad()

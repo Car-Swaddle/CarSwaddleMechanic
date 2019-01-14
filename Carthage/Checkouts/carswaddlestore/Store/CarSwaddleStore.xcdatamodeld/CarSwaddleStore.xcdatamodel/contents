@@ -2,11 +2,19 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Address" representedClassName="Address" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="line1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="address" inverseEntity="Mechanic" syncable="YES"/>
+    </entity>
+    <entity name="Amount" representedClassName="Amount" syncable="YES">
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="value" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="balanceForAvailable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="available" inverseEntity="Balance" syncable="YES"/>
+        <relationship name="balanceForPending" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="pending" inverseEntity="Balance" syncable="YES"/>
+        <relationship name="balanceForReserved" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="reserved" inverseEntity="Balance" syncable="YES"/>
     </entity>
     <entity name="AutoService" representedClassName="AutoService" syncable="YES">
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
@@ -23,6 +31,12 @@
         <relationship name="serviceEntities" toMany="YES" deletionRule="Cascade" destinationEntity="ServiceEntity" inverseName="autoService" inverseEntity="ServiceEntity" syncable="YES"/>
         <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="autoServices" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
+    <entity name="Balance" representedClassName="Balance" syncable="YES">
+        <relationship name="available" maxCount="1" deletionRule="Cascade" destinationEntity="Amount" inverseName="balanceForAvailable" inverseEntity="Amount" syncable="YES"/>
+        <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="balance" inverseEntity="Mechanic" syncable="YES"/>
+        <relationship name="pending" maxCount="1" deletionRule="Cascade" destinationEntity="Amount" inverseName="balanceForPending" inverseEntity="Amount" syncable="YES"/>
+        <relationship name="reserved" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Amount" inverseName="balanceForReserved" inverseEntity="Amount" syncable="YES"/>
+    </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
@@ -34,12 +48,17 @@
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="profileImageID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pushDeviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="mechanic" inverseEntity="Address" syncable="YES"/>
+        <relationship name="balance" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Balance" inverseName="mechanic" inverseEntity="Balance" syncable="YES"/>
+        <relationship name="payouts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payout" inverseName="mechanic" inverseEntity="Payout" syncable="YES"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="mechanic" inverseEntity="Review" syncable="YES"/>
         <relationship name="scheduleTimeSpans" toMany="YES" deletionRule="Cascade" destinationEntity="TemplateTimeSpan" inverseName="mechanic" inverseEntity="TemplateTimeSpan" syncable="YES"/>
         <relationship name="serviceRegion" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Region" inverseName="mechanic" inverseEntity="Region" syncable="YES"/>
         <relationship name="services" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="mechanic" inverseEntity="AutoService" syncable="YES"/>
         <relationship name="stats" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Stats" inverseName="mechanic" inverseEntity="Stats" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="mechanic" inverseEntity="Transaction" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="mechanic" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="OilChange" representedClassName="OilChange" syncable="YES">
@@ -47,15 +66,34 @@
         <attribute name="oilType" attributeType="String" syncable="YES"/>
         <relationship name="serviceEntity" maxCount="1" deletionRule="Nullify" destinationEntity="ServiceEntity" inverseName="oilChange" inverseEntity="ServiceEntity" syncable="YES"/>
     </entity>
+    <entity name="Payout" representedClassName="Payout" syncable="YES">
+        <attribute name="amount" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="arrivalDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="destination" attributeType="String" syncable="YES"/>
+        <attribute name="failureBalanceTransaction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="failureCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="failureMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="method" attributeType="String" syncable="YES"/>
+        <attribute name="payoutDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceType" attributeType="String" syncable="YES"/>
+        <attribute name="statementDescriptor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="payouts" inverseEntity="Mechanic" syncable="YES"/>
+        <relationship name="transactions" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="payout" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
     <entity name="Price" representedClassName="Price" syncable="YES">
         <attribute name="identifier" attributeType="String" syncable="YES"/>
-        <attribute name="totalPrice" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalPrice" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="autoService" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AutoService" inverseName="price" inverseEntity="AutoService" syncable="YES"/>
         <relationship name="parts" toMany="YES" deletionRule="Cascade" destinationEntity="PricePart" inverseName="price" inverseEntity="PricePart" syncable="YES"/>
     </entity>
     <entity name="PricePart" representedClassName="PricePart" syncable="YES">
         <attribute name="key" attributeType="String" syncable="YES"/>
-        <attribute name="value" attributeType="Decimal" syncable="YES"/>
+        <attribute name="value" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="price" maxCount="1" deletionRule="Nullify" destinationEntity="Price" inverseName="parts" inverseEntity="Price" syncable="YES"/>
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
@@ -95,13 +133,32 @@
         <attribute name="weekday" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="scheduleTimeSpans" inverseEntity="Mechanic" syncable="YES"/>
     </entity>
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="amount" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="availableOn" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="exchangeRate" optional="YES" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fee" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="net" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="source" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="transactionDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="transactions" inverseEntity="Mechanic" syncable="YES"/>
+        <relationship name="payout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payout" inverseName="transactions" inverseEntity="Payout" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="averageRating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="isEmailVerified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPhoneNumberVerified" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileImageID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pushDeviceToken" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="user" inverseEntity="Mechanic" syncable="YES"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="user" inverseEntity="Review" syncable="YES"/>
         <relationship name="services" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="creator" inverseEntity="AutoService" syncable="YES"/>
@@ -126,11 +183,14 @@
         <relationship name="vehicle" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="vehicleDescription" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="-27" positionY="99" width="128" height="135"/>
+        <element name="Address" positionX="-27" positionY="99" width="128" height="150"/>
+        <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
-        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="195"/>
+        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="270"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
+        <element name="Payout" positionX="-27" positionY="135" width="128" height="300"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="105"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
         <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
@@ -138,7 +198,8 @@
         <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
-        <element name="User" positionX="-27" positionY="72" width="128" height="195"/>
+        <element name="Transaction" positionX="-9" positionY="153" width="128" height="255"/>
+        <element name="User" positionX="-27" positionY="72" width="128" height="240"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
     </elements>

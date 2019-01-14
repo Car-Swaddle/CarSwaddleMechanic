@@ -73,6 +73,14 @@ class StoreTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 40, handler: nil)
+        
+        print("before")
+        store.privateContextAndWait { privateContext in
+            let fetchedExist = User.fetch(with: identifier, in: privateContext)
+            XCTAssert(fetchedExist != nil, "Should not have gotten any user")
+            print("inside")
+        }
+        print("after")
     }
     
 }

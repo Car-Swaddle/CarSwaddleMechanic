@@ -10,6 +10,7 @@ import Foundation
 
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let login = Request.Endpoint(rawValue: "/login")
+    fileprivate static let logout = Request.Endpoint(rawValue: "/logout")
     fileprivate static let signup = Request.Endpoint(rawValue: "/signup")
 }
 
@@ -37,6 +38,17 @@ public class AuthService: Service {
     public func login(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let task = authTask(email: email, password: password, isMechanic: false, endpoint: .login) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
+        }
+        task?.resume()
+        return task
+    }
+    
+    @discardableResult
+    public func logout(deviceToken: String, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = (try? JSONSerialization.data(withJSONObject: ["deviceToken": deviceToken], options: [])),
+            let urlRequest = serviceRequest.post(with: .logout, body: body) else { return nil }
+        let task = self.sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            completion(error)
         }
         task?.resume()
         return task

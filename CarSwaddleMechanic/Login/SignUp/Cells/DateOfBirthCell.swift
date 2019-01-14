@@ -8,7 +8,7 @@
 
 import CarSwaddleUI
 
-private var dateFormatter: DateFormatter = {
+let monthDayYearDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM dd, yyyy"
     return dateFormatter
@@ -70,7 +70,7 @@ final class DateOfBirthCell: UITableViewCell, NibRegisterable {
     }
     
     private func updateDateLabelWithDate() {
-        dateLabel.text = dateFormatter.string(from: date)
+        dateLabel.text = monthDayYearDateFormatter.string(from: date)
     }
     
     

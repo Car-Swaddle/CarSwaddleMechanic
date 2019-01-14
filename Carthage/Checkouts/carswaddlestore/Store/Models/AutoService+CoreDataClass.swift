@@ -135,6 +135,7 @@ struct StoreError: Error {
     let rawValue: String
     
     static let invalidJSON = StoreError(rawValue: "invalidJSON")
+    static let noPathToPersistentStore = StoreError(rawValue: "noPathToPersistentStore")
 }
 
 extension AutoService {
@@ -192,6 +193,12 @@ extension AutoService {
         
         if let vehicleID = vehicle?.identifier {
             json["vehicleID"] = vehicleID
+        } else {
+            throw StoreError.invalidJSON
+        }
+        
+        if let priceID = price?.identifier {
+            json["priceID"] = priceID
         } else {
             throw StoreError.invalidJSON
         }

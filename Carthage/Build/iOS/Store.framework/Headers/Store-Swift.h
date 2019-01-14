@@ -204,6 +204,22 @@ SWIFT_CLASS_NAMED("Address")
 @end
 
 
+SWIFT_CLASS_NAMED("Amount")
+@interface Amount : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class Balance;
+
+@interface Amount (SWIFT_EXTENSION(Store))
+@property (nonatomic) NSInteger value;
+@property (nonatomic, copy) NSString * _Nonnull currency;
+@property (nonatomic, strong) Balance * _Nullable balanceForAvailable;
+@property (nonatomic, strong) Balance * _Nullable balanceForPending;
+@property (nonatomic, strong) Balance * _Nullable balanceForReserved;
+@end
+
+
 SWIFT_CLASS_NAMED("AutoService")
 @interface AutoService : NSManagedObject
 - (void)awakeFromInsert;
@@ -237,6 +253,20 @@ SWIFT_CLASS_NAMED("AutoService")
 @end
 
 
+SWIFT_CLASS_NAMED("Balance")
+@interface Balance : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Balance (SWIFT_EXTENSION(Store))
+@property (nonatomic, strong) Amount * _Nonnull available;
+@property (nonatomic, strong) Amount * _Nonnull pending;
+@property (nonatomic, strong) Amount * _Nullable reserved;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@end
+
+
 SWIFT_CLASS_NAMED("Location")
 @interface Location : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -257,8 +287,17 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TemplateTimeSpan;
+@class Transaction;
 @class NSSet;
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addTransactionsObject:(Transaction * _Nonnull)value;
+- (void)removeTransactionsObject:(Transaction * _Nonnull)value;
+- (void)addTransactions:(NSSet * _Nonnull)values;
+- (void)removeTransactions:(NSSet * _Nonnull)values;
+@end
+
+@class TemplateTimeSpan;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
@@ -277,6 +316,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 
 @class Region;
 @class Stats;
+@class Payout;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -289,6 +329,11 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic, copy) NSDate * _Nullable dateOfBirth;
 @property (nonatomic, strong) Address * _Nullable address;
 @property (nonatomic, strong) Stats * _Nullable stats;
+@property (nonatomic, copy) NSString * _Nullable profileImageID;
+@property (nonatomic, copy) NSString * _Nullable pushDeviceToken;
+@property (nonatomic, strong) Balance * _Nullable balance;
+@property (nonatomic, copy) NSSet<Transaction *> * _Nonnull transactions;
+@property (nonatomic, copy) NSSet<Payout *> * _Nonnull payouts;
 @end
 
 
@@ -309,6 +354,33 @@ SWIFT_CLASS_NAMED("OilChange")
 @end
 
 
+SWIFT_CLASS_NAMED("Payout")
+@interface Payout : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Payout (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) NSInteger amount;
+@property (nonatomic, copy) NSDate * _Nonnull arrivalDate;
+@property (nonatomic, copy) NSDate * _Nonnull created;
+@property (nonatomic, copy) NSString * _Nonnull currency;
+@property (nonatomic, copy) NSString * _Nullable payoutDescription;
+@property (nonatomic, copy) NSString * _Nullable destination;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic, copy) NSString * _Nonnull status;
+@property (nonatomic, copy) NSString * _Nonnull method;
+@property (nonatomic, copy) NSString * _Nonnull sourceType;
+@property (nonatomic, copy) NSString * _Nullable statementDescriptor;
+@property (nonatomic, copy) NSString * _Nullable failureMessage;
+@property (nonatomic, copy) NSString * _Nullable failureCode;
+@property (nonatomic, copy) NSString * _Nullable failureBalanceTransaction;
+@property (nonatomic, copy) NSSet<Transaction *> * _Nonnull transactions;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@end
+
+
 SWIFT_CLASS_NAMED("Price")
 @interface Price : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -323,11 +395,10 @@ SWIFT_CLASS_NAMED("Price")
 - (void)removeParts:(NSSet * _Nonnull)values;
 @end
 
-@class NSDecimalNumber;
 
 @interface Price (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) NSDecimalNumber * _Nonnull totalPrice;
+@property (nonatomic) NSInteger totalPrice;
 @property (nonatomic, copy) NSSet<PricePart *> * _Nonnull parts;
 @property (nonatomic, strong) AutoService * _Nullable autoService;
 @end
@@ -341,7 +412,7 @@ SWIFT_CLASS_NAMED("PricePart")
 
 @interface PricePart (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull key;
-@property (nonatomic, strong) NSDecimalNumber * _Nonnull value;
+@property (nonatomic) NSInteger value;
 @property (nonatomic, strong) Price * _Nonnull price;
 @end
 
@@ -426,17 +497,33 @@ SWIFT_CLASS_NAMED("TemplateTimeSpan")
 @end
 
 
-SWIFT_CLASS_NAMED("User")
-@interface User : NSManagedObject
+SWIFT_CLASS_NAMED("Transaction")
+@interface Transaction : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSNumber;
 
-@interface User (SWIFT_EXTENSION(Store))
-- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)addVehicles:(NSSet * _Nonnull)values;
-- (void)removeVehicles:(NSSet * _Nonnull)values;
+@interface Transaction (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic) NSInteger amount;
+@property (nonatomic, copy) NSDate * _Nonnull availableOn;
+@property (nonatomic, copy) NSDate * _Nonnull created;
+@property (nonatomic, copy) NSString * _Nonnull currency;
+@property (nonatomic, copy) NSString * _Nullable transactionDescription;
+@property (nonatomic, strong) NSNumber * _Nullable exchangeRate;
+@property (nonatomic) NSInteger fee;
+@property (nonatomic) NSInteger net;
+@property (nonatomic, copy) NSString * _Nonnull source;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@property (nonatomic, strong) Payout * _Nullable payout;
+@end
+
+
+SWIFT_CLASS_NAMED("User")
+@interface User : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -445,6 +532,14 @@ SWIFT_CLASS_NAMED("User")
 - (void)removeServicesObject:(AutoService * _Nonnull)value;
 - (void)addServices:(NSSet * _Nonnull)values;
 - (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)addVehicles:(NSSet * _Nonnull)values;
+- (void)removeVehicles:(NSSet * _Nonnull)values;
 @end
 
 
@@ -459,6 +554,9 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic, copy) NSSet<Review *> * _Nonnull reviews;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @property (nonatomic, copy) NSString * _Nullable profileImageID;
+@property (nonatomic) BOOL isPhoneNumberVerified;
+@property (nonatomic) BOOL isEmailVerified;
+@property (nonatomic, copy) NSString * _Nullable pushDeviceToken;
 @end
 
 

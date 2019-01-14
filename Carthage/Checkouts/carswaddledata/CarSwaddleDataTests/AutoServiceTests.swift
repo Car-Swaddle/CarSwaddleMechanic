@@ -44,7 +44,7 @@ class AutoServiceTests: LoginTestCase {
         let context = store.mainContext
         let autoService = createAutoService(in: context)
 
-        autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
+        autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: context) { newAutoService, error in
             XCTAssert(newAutoService != nil, "Should have auto service")
             XCTAssert(error == nil, "Should not have error")
             exp.fulfill()
@@ -58,7 +58,7 @@ class AutoServiceTests: LoginTestCase {
         let context = store.mainContext
         let autoService = createAutoService(scheduledDate: scheduledDate, in: context)
         
-        autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
+        autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: context) { newAutoService, error in
             self.autoServiceNetwork.getAutoServices(mechanicID: defaultMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
                 context.perform {
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: context)
@@ -99,7 +99,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -127,7 +127,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -156,7 +156,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -185,7 +185,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -216,7 +216,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -245,7 +245,7 @@ class AutoServiceTests: LoginTestCase {
         
         store.privateContext { pCtx in
             let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            self.autoServiceNetwork.createAutoService(autoService: autoService, in: pCtx) { objectID, error in
+            self.autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: pCtx) { objectID, error in
                 guard let objectID = objectID,
                     let cAuto = pCtx.object(with: objectID) as? AutoService else {
                         XCTAssert(false, "Should have Auto serviec")
@@ -275,7 +275,7 @@ class AutoServiceTests: LoginTestCase {
             let exp = expectation(description: "\(#function)\(#line)")
             let context = store.mainContext
             let autoService = createAutoService(in: context)
-            autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
+            autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: context) { newAutoService, error in
                 XCTAssert(newAutoService != nil, "Should have auto service")
                 XCTAssert(error == nil, "Should not have error")
                 exp.fulfill()

@@ -43,6 +43,19 @@
 		9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */; };
 		9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */; };
 		9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */; };
+		99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */; };
+		99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */; };
+		99675CB021E9F1FF003C9D70 /* EarningsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */; };
+		99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */; };
+		99675CB421E9F324003C9D70 /* BalanceAmountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CB221E9F2E6003C9D70 /* BalanceAmountView.xib */; };
+		99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CBA21EB249D003C9D70 /* PayoutsViewController.swift */; };
+		99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99675CBC21EB24A8003C9D70 /* PayoutsViewController.storyboard */; };
+		99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CBE21EBB8DB003C9D70 /* TransactionsViewController.swift */; };
+		99675CC121EBB8E8003C9D70 /* TransactionsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC021EBB8E8003C9D70 /* TransactionsViewController.storyboard */; };
+		99675CC621EBBB36003C9D70 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CC421EBBB36003C9D70 /* TransactionCell.swift */; };
+		99675CC721EBBB36003C9D70 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC521EBBB36003C9D70 /* TransactionCell.xib */; };
+		99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CC821EBBC7A003C9D70 /* PayoutCell.swift */; };
+		99675CCB21EBBC7A003C9D70 /* PayoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC921EBBC7A003C9D70 /* PayoutCell.xib */; };
 		997714D021D0DADE00E54F5B /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */; };
 		997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */; };
 		997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */; };
@@ -60,8 +73,8 @@
 		998D3AC021D959CF003DD717 /* ProfileDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */; };
 		998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC121DA07EB003DD717 /* CreateCardViewController.swift */; };
 		998D3AC421DA07F5003DD717 /* CreateCardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC321DA07F5003DD717 /* CreateCardViewController.storyboard */; };
-		998D3AC721DA963F003DD717 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC621DA963F003DD717 /* PaymentViewController.swift */; };
-		998D3AC921DA9648003DD717 /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */; };
+		998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC621DA963F003DD717 /* EarningsViewController.swift */; };
+		998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC821DA9648003DD717 /* EarningsViewController.storyboard */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
 		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
@@ -82,6 +95,10 @@
 		99E66D2521DE086F00C6E3E1 /* CarSwaddleUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99E66DB421E306C100C6E3E1 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */; };
 		99E66DB521E306C100C6E3E1 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DB721E469A000C6E3E1 /* UserImageView.swift */; };
+		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
+		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
+		99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */; };
 		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
 		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99F02792218663BB005FEFC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02791218663BB005FEFC7 /* Location.swift */; };
@@ -167,6 +184,19 @@
 		9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
 		9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceStatusCell.swift; sourceTree = "<group>"; };
 		9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceStatusCell.xib; sourceTree = "<group>"; };
+		99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegateViewController.swift; sourceTree = "<group>"; };
+		99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsHeaderView.swift; sourceTree = "<group>"; };
+		99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningsHeaderView.xib; sourceTree = "<group>"; };
+		99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceAmountView.swift; sourceTree = "<group>"; };
+		99675CB221E9F2E6003C9D70 /* BalanceAmountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceAmountView.xib; sourceTree = "<group>"; };
+		99675CBA21EB249D003C9D70 /* PayoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutsViewController.swift; sourceTree = "<group>"; };
+		99675CBC21EB24A8003C9D70 /* PayoutsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PayoutsViewController.storyboard; sourceTree = "<group>"; };
+		99675CBE21EBB8DB003C9D70 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		99675CC021EBB8E8003C9D70 /* TransactionsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionsViewController.storyboard; sourceTree = "<group>"; };
+		99675CC421EBBB36003C9D70 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		99675CC521EBBB36003C9D70 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
+		99675CC821EBBC7A003C9D70 /* PayoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutCell.swift; sourceTree = "<group>"; };
+		99675CC921EBBC7A003C9D70 /* PayoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayoutCell.xib; sourceTree = "<group>"; };
 		997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
 		997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationCell.swift; sourceTree = "<group>"; };
@@ -183,8 +213,8 @@
 		998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileDataCell.xib; sourceTree = "<group>"; };
 		998D3AC121DA07EB003DD717 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
 		998D3AC321DA07F5003DD717 /* CreateCardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCardViewController.storyboard; sourceTree = "<group>"; };
-		998D3AC621DA963F003DD717 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
+		998D3AC621DA963F003DD717 /* EarningsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsViewController.swift; sourceTree = "<group>"; };
+		998D3AC821DA9648003DD717 /* EarningsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarningsViewController.storyboard; sourceTree = "<group>"; };
 		9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +239,10 @@
 		99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthViewController.storyboard; sourceTree = "<group>"; };
 		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		99E66DA921E3055900C6E3E1 /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetworkRequest.framework; sourceTree = "<group>"; };
+		99E66DB721E469A000C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
+		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
+		99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
 		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99F02791218663BB005FEFC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -361,6 +395,46 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		99675C9E21E717C3003C9D70 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
+				99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		99675CB921EB2489003C9D70 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				99675CC321EBBB1C003C9D70 /* Payouts */,
+				99675CC221EBBB03003C9D70 /* Transactions */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		99675CC221EBBB03003C9D70 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				99675CBE21EBB8DB003C9D70 /* TransactionsViewController.swift */,
+				99675CC021EBB8E8003C9D70 /* TransactionsViewController.storyboard */,
+				99675CC421EBBB36003C9D70 /* TransactionCell.swift */,
+				99675CC521EBBB36003C9D70 /* TransactionCell.xib */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		99675CC321EBBB1C003C9D70 /* Payouts */ = {
+			isa = PBXGroup;
+			children = (
+				99675CBA21EB249D003C9D70 /* PayoutsViewController.swift */,
+				99675CBC21EB24A8003C9D70 /* PayoutsViewController.storyboard */,
+				99675CC821EBBC7A003C9D70 /* PayoutCell.swift */,
+				99675CC921EBBC7A003C9D70 /* PayoutCell.xib */,
+			);
+			path = Payouts;
+			sourceTree = "<group>";
+		};
 		997714DB21D0E85700E54F5B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,8 +449,13 @@
 		998D3AC521DA961A003DD717 /* Payouts */ = {
 			isa = PBXGroup;
 			children = (
-				998D3AC621DA963F003DD717 /* PaymentViewController.swift */,
-				998D3AC821DA9648003DD717 /* PaymentViewController.storyboard */,
+				998D3AC621DA963F003DD717 /* EarningsViewController.swift */,
+				998D3AC821DA9648003DD717 /* EarningsViewController.storyboard */,
+				99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */,
+				99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */,
+				99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */,
+				99675CB221E9F2E6003C9D70 /* BalanceAmountView.xib */,
+				99675CB921EB2489003C9D70 /* ViewControllers */,
 			);
 			path = Payouts;
 			sourceTree = "<group>";
@@ -413,7 +492,8 @@
 				998D3AB921D75A8B003DD717 /* Stripe.swift */,
 				99F0279D2188321D005FEFC7 /* ServiceRequest.swift */,
 				99F02791218663BB005FEFC7 /* Location.swift */,
-				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
+				99675C9E21E717C3003C9D70 /* Navigation */,
+				99E66DB621E4698A00C6E3E1 /* Reuseable UI */,
 				998D3AC521DA961A003DD717 /* Payouts */,
 				99F02796218677EE005FEFC7 /* Profile */,
 				9953AE0E21BE58E8002D099A /* Schedule */,
@@ -445,6 +525,30 @@
 			path = CarSwaddleMechanicUITests;
 			sourceTree = "<group>";
 		};
+		99E66DB621E4698A00C6E3E1 /* Reuseable UI */ = {
+			isa = PBXGroup;
+			children = (
+				99E66DB721E469A000C6E3E1 /* UserImageView.swift */,
+				99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */,
+			);
+			path = "Reuseable UI";
+			sourceTree = "<group>";
+		};
+		99E66DBD21E46B3400C6E3E1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				99F0279721867816005FEFC7 /* ProfileServiceRegionCell.swift */,
+				99F0279821867816005FEFC7 /* ProfileServiceRegionCell.xib */,
+				997DBC5D2197B5160080F42C /* NameCell.swift */,
+				997DBC5E2197B5160080F42C /* NameCell.xib */,
+				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
+				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
+				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
+				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		99F0279321866B49005FEFC7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,14 +564,9 @@
 			children = (
 				9912CD90216C703D0006FDDF /* ProfileViewController.swift */,
 				9913756F21706CC500F15BEC /* ProfileViewController.storyboard */,
-				99F0279721867816005FEFC7 /* ProfileServiceRegionCell.swift */,
-				99F0279821867816005FEFC7 /* ProfileServiceRegionCell.xib */,
-				997DBC5D2197B5160080F42C /* NameCell.swift */,
-				997DBC5E2197B5160080F42C /* NameCell.xib */,
-				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
-				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
-				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
-				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
+				99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */,
+				99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */,
+				99E66DBD21E46B3400C6E3E1 /* Cell */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -594,17 +693,23 @@
 			files = (
 				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
 				99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */,
+				99675CC721EBBB36003C9D70 /* TransactionCell.xib in Resources */,
+				99675CB021E9F1FF003C9D70 /* EarningsHeaderView.xib in Resources */,
+				99675CB421E9F324003C9D70 /* BalanceAmountView.xib in Resources */,
 				9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */,
 				998D3AC021D959CF003DD717 /* ProfileDataCell.xib in Resources */,
+				99675CCB21EBBC7A003C9D70 /* PayoutCell.xib in Resources */,
 				9953AE1621BFBF96002D099A /* AutoServiceDetailsViewController.storyboard in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
+				99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */,
 				9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */,
 				99A3A88721D57BF1009A1AD9 /* NameViewController.storyboard in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
-				998D3AC921DA9648003DD717 /* PaymentViewController.storyboard in Resources */,
+				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
+				99675CC121EBB8E8003C9D70 /* TransactionsViewController.storyboard in Resources */,
 				997714D621D0DE2C00E54F5B /* PersonalInformationCell.xib in Resources */,
 				997714DA21D0E85100E54F5B /* DateOfBirthCell.xib in Resources */,
 				99A3A88321D57B2F009A1AD9 /* BankAccountViewController.storyboard in Resources */,
@@ -619,6 +724,7 @@
 				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
+				99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */,
 				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
 				998D3AC421DA07F5003DD717 /* CreateCardViewController.storyboard in Resources */,
 				9912CDDF216DC5200006FDDF /* SignUpViewController.storyboard in Resources */,
@@ -682,6 +788,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */,
+				99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */,
+				99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */,
+				99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */,
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
@@ -691,10 +801,12 @@
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
+				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
 				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,
 				99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
+				99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */,
 				9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */,
 				99F0279C218680A6005FEFC7 /* CLLocationDistanceExtension.swift in Sources */,
 				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
@@ -703,13 +815,16 @@
 				9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
-				998D3AC721DA963F003DD717 /* PaymentViewController.swift in Sources */,
+				998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
+				99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
+				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,
 				99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */,
 				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
+				99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
 				99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */,
@@ -717,6 +832,7 @@
 				998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
 				998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */,
+				99675CC621EBBB36003C9D70 /* TransactionCell.swift in Sources */,
 				99F0279921867816005FEFC7 /* ProfileServiceRegionCell.swift in Sources */,
 				9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,

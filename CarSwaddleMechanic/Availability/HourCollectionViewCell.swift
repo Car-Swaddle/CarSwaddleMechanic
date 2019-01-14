@@ -10,7 +10,7 @@ import UIKit
 import CarSwaddleUI
 import Store
 
-private let dateFormatter: DateFormatter = {
+private let hourDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "h a"
     return dateFormatter
@@ -42,7 +42,7 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
     func configure(with hour: Hour) {
         dateComponents.hour = hour.value
         if let date = calendar.date(from: dateComponents) {
-            hourLabel.text = dateFormatter.string(from: date).lowercased()
+            hourLabel.text = hourDateFormatter.string(from: date).lowercased()
         }
         hourLabel.backgroundColor = hour.isSelected ? .lightGray : .white
     }

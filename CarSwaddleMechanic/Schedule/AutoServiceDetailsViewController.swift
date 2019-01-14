@@ -11,12 +11,6 @@ import CarSwaddleUI
 import Store
 
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "EEE MMM d h:mm a"
-    return formatter
-}()
-
 final class AutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
     public static func create(autoService: AutoService) -> AutoServiceDetailsViewController {
@@ -60,7 +54,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         switch row {
         case .date:
             if let scheduledDate = autoService.scheduledDate {
-                return dateFormatter.string(from: scheduledDate)
+                return hourMinuteDateFormatter.string(from: scheduledDate)
             }
             return nil
         case .user: return autoService.creator?.displayName

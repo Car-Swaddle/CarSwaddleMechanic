@@ -13,7 +13,7 @@ import SafariServices
 
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
-// TODO: Change this to your service agreement
+// TODO: Change this to CarSwaddle's service agreement
 private let carSwaddleAgreementURLString = "https://stripe.com/us/connect-account/legal"
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
@@ -24,7 +24,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    private let auth = Auth(serviceRequest: serviceRequest)
+    private var auth = Auth(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
