@@ -51,10 +51,13 @@ public final class MechanicNetwork: Network {
                 }
                 
                 guard let json = json?[mechanicID] as? JSONObject else { return }
+                var stats: Stats?
                 if let previousStats = Mechanic.fetch(with: mechanicID, in: context)?.stats {
-                    context.delete(previousStats)
+                    try? previousStats.configure(with: json, mechanicID: mechanicID)
+                    stats = previousStats
+                } else {
+                    stats = Stats(json: json, mechanicID: mechanicID, context: context)
                 }
-                let stats = Stats(json: json, mechanicID: mechanicID, context: context)
                 context.persist()
                 mechanicObjectID = stats?.mechanic?.objectID
             }

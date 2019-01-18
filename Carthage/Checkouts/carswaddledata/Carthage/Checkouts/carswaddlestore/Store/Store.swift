@@ -15,6 +15,8 @@ private let modelFileExtension = "momd"
 
 private let privateContextQueue = DispatchQueue(label: "privateContextQueue", qos: .background)
 
+private let importQueue = DispatchQueue(label: "importQueue", qos: .background)
+
 public class Store {
     
     public let bundle: Bundle
@@ -104,7 +106,7 @@ public class Store {
         DispatchQueue.global(qos: .background).async { [weak self] in
             privateContextQueue.async {
                 guard let context = self?.createPrivateContext() else { return }
-                context.perform {
+                context.performAndWait {
                     closure(context)
                 }
             }
@@ -140,6 +142,14 @@ public extension NSManagedObjectContext {
         } catch {
             let nserror = error as NSError
             print("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    public func performOnImportQueue(_ closure: @escaping () -> Void) {
+        importQueue.async {
+            self.performAndWait {
+                closure()
+            }
         }
     }
     

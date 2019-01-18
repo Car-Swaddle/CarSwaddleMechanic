@@ -18,7 +18,7 @@ class LoginTests: XCTestCase {
     func testLogin() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        authService.login(email: "k@k.com", password: password) { json, token, error in
+        authService.login(email: "user@carswaddle.com", password: password) { json, token, error in
             XCTAssert(token != nil, "Should have logged in")
             XCTAssert(json?["mechanic"] == nil, "Should not have mechanic")
             XCTAssert(json?["user"] != nil, "Should have user")
@@ -31,7 +31,7 @@ class LoginTests: XCTestCase {
     func testLoginIncorrectPass() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        authService.login(email: "k@k.com", password: "some incorrect pass") { json, token, error in
+        authService.login(email: "user@carswaddle.com", password: "some incorrect pass") { json, token, error in
             XCTAssert(token == nil, "Should not have logged in incorrect pass")
             exp.fulfill()
         }
@@ -68,7 +68,7 @@ class LoginTests: XCTestCase {
     func testSignUpExistingEmailFails() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        authService.signUp(email: "k@k.com", password: password) { json, token, error in
+        authService.signUp(email: "user@carswaddle.com", password: password) { json, token, error in
             XCTAssert(error != nil, "Should have not logged in")
             XCTAssert(token == nil, "Should have not logged in")
             XCTAssert(json?["mechanic"] == nil, "Should have mechanic")

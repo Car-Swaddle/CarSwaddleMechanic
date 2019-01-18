@@ -82,7 +82,9 @@ final public class StripeNetwork: Network {
                         try? context.obtainPermanentIDs(for: [transaction])
                     }
                     
-                    transaction.payout = payout
+                    if let payout = payout {
+                        transaction.payout = payout
+                    }
                     
                     objectIDs.append(transaction.objectID)
                     lastID = transaction.identifier
@@ -93,8 +95,8 @@ final public class StripeNetwork: Network {
     }
     
     @discardableResult
-    public func requestPayouts(startingAfterID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return stripeService.getPayouts(startingAfterID: startingAfterID, limit: limit) { json, error in
+    public func requestPayouts(startingAfterID: String? = nil, status: Payout.Status? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getPayouts(startingAfterID: startingAfterID, status: status?.rawValue, limit: limit) { json, error in
             context.perform {
                 var objectIDs: [NSManagedObjectID] = []
                 var lastID: String?
@@ -118,6 +120,13 @@ final public class StripeNetwork: Network {
                 }
                 context.persist()
             }
+        }
+    }
+    
+    @discardableResult
+    public func requestPayoutsPendingForBalance(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return requestPayouts(status: .pending, limit: 300, in: context) { objectIDs, lastID, hasMore, error in
+            completion(objectIDs, error)
         }
     }
     

@@ -19,18 +19,69 @@ typealias PayoutValues = (
     payoutDescription: String,
     destination: String?,
     type: String,
-    status: String,
+    status: Payout.Status,
     method: String,
     sourceType: String,
     statementDescriptor: String?,
     failureMessage: String?,
     failureCode: String?,
-    failureBalanceTransaction: String?
+    failureBalanceTransaction: String?,
+    balanceTransactionID: String?
 )
 
 
 @objc(Payout)
 final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchable {
+    
+    
+    @NSManaged private var primitiveStatus: String
+    
+    private let statusKey = "status"
+    public var status: Status {
+        get {
+            willAccessValue(forKey: statusKey)
+            guard let status = Status(rawValue: primitiveStatus) else { return .pending }
+            didAccessValue(forKey: statusKey)
+            return status
+        }
+        set {
+            willChangeValue(forKey: statusKey)
+            primitiveStatus = newValue.rawValue
+            didChangeValue(forKey: statusKey)
+        }
+    }
+    
+    public enum Status: String {
+        case inTransit = "in_transit"
+        case paid
+        case pending
+        case canceled
+        case failed
+        
+        public var localizedString: String {
+            switch self {
+            case .inTransit:
+                return NSLocalizedString("In transit", comment: "Localized string for payout status")
+            case .paid:
+                return NSLocalizedString("Paid", comment: "Localized string for payout status")
+            case .pending:
+                return NSLocalizedString("Pending", comment: "Localized string for payout status")
+            case .canceled:
+                return NSLocalizedString("Canceled", comment: "Localized string for payout status")
+            case .failed:
+                return NSLocalizedString("Failed", comment: "Localized string for payout status")
+            }
+        }
+        
+    }
+    
+    public static var arrivalDateSortDescriptor: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(Payout.arrivalDate), ascending: false)
+    }
+    
+    public static var currentMechanicPredicate: NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(Payout.mechanic.identifier), Mechanic.currentMechanicID ?? "")
+    }
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let values = Payout.values(from: json) else { return nil }
@@ -51,7 +102,7 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
             let createdInt = json["created"] as? Int,
             let currency = json["currency"] as? String,
             let type = json["type"] as? String,
-            let status = json["status"] as? String,
+            let status = Status(rawValue: json["status"] as? String ?? ""),
             let method = json["method"] as? String,
             let payoutDescription = json["description"] as? String,
             let sourceType = json["source_type"] as? String else { return nil }
@@ -62,10 +113,12 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
         let failureCode = json["failure_code"] as? String
         let failureBalanceTransaction = json["failure_balance_transaction"] as? String
         
+        let balanceTransactionID = json["balance_transaction"] as? String
+        
         let arrivalDate = Date(timeIntervalSince1970: TimeInterval(arrivalInt))
         let createdDate = Date(timeIntervalSince1970: TimeInterval(createdInt))
         
-        return (identifier: identifier, amount: amount, arrivalDate: arrivalDate, created: createdDate, currency: currency, payoutDescription: payoutDescription, destination: destination, type: type, status: status, method: method, sourceType: sourceType, statementDescriptor: statementDescriptor, failureMessage: failureMessage, failureCode: failureCode, failureBalanceTransaction: failureBalanceTransaction)
+        return (identifier: identifier, amount: amount, arrivalDate: arrivalDate, created: createdDate, currency: currency, payoutDescription: payoutDescription, destination: destination, type: type, status: status, method: method, sourceType: sourceType, statementDescriptor: statementDescriptor, failureMessage: failureMessage, failureCode: failureCode, failureBalanceTransaction: failureBalanceTransaction, balanceTransactionID)
     }
     
     private func configure(with values: PayoutValues, in context: NSManagedObjectContext) {
@@ -84,6 +137,7 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
         failureMessage = values.failureMessage
         failureCode = values.failureCode
         failureBalanceTransaction = values.failureBalanceTransaction
+        balanceTransactionID = values.balanceTransactionID
     }
     
 }

@@ -65,11 +65,14 @@ final public class StripeService: Service {
     }
     
     @discardableResult
-    public func getPayouts(startingAfterID: String? = nil, limit: Int? = nil, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+    public func getPayouts(startingAfterID: String? = nil, status: String? = nil, limit: Int? = nil, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         var queryItems: [URLQueryItem] = []
         
         if let startingAfterID = startingAfterID {
             queryItems.append(URLQueryItem(name: "startingAfterID", value: startingAfterID))
+        }
+        if let status = status {
+            queryItems.append(URLQueryItem(name: "status", value: status))
         }
         if let limit = limit {
             queryItems.append(URLQueryItem(name: "limit", value: String(limit)))

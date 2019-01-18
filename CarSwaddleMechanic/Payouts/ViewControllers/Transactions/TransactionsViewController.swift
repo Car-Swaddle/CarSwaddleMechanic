@@ -12,7 +12,7 @@ import CarSwaddleData
 import Store
 import CoreData
 
-private let transactionRequestLimit = 3
+private let transactionRequestLimit = 40
 
 final class TransactionsViewController: UIViewController, StoryboardInstantiating {
     
@@ -66,16 +66,25 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
     private func createFetchedResultsController() -> NSFetchedResultsController<Transaction> {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         fetchRequest.sortDescriptors = [Transaction.createdSortDescriptor]
-        fetchRequest.predicate = Transaction.currentMechanicPredicate
+        var predicates: [NSPredicate] = [Transaction.currentMechanicPredicate]
+        if let payoutID = payoutID {
+            let payoutPredicate = Transaction.predicate(forPayoutID: payoutID)
+            predicates.append(payoutPredicate)
+            if let payoutTransactionID = Payout.fetch(with: payoutID, in: store.mainContext)?.balanceTransactionID {
+                predicates.append(Transaction.predicateExcluding(identifier: payoutTransactionID))
+            }
+        }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
     }
     
     private func reload() {
-        tableView.reloadData()
         resetData()
+        tableView.reloadData()
     }
     
     private func resetData() {
@@ -90,7 +99,6 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
                 DispatchQueue.main.async {
                     guard error == nil else { return }
                     self?.lastID = hasMore ? lastID : nil
-                    self?.reload()
                     self?.task = nil
                     completion()
                 }
@@ -104,7 +112,6 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
 extension TransactionsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -120,7 +127,7 @@ extension TransactionsViewController: UITableViewDelegate {
     
 }
 
-extension TransactionsViewController: UITableViewDataSource {
+extension TransactionsViewController: UITableViewDataSource, TransactionCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = fetchedResultsController.fetchedObjects?.count ?? 0
@@ -130,10 +137,15 @@ extension TransactionsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TransactionCell = tableView.dequeueCell()
-        
+        cell.delegate = self
         let transaction = fetchedResultsController.object(at: indexPath)
         cell.configure(with: transaction)
         return cell
+    }
+    
+    func didUpdateHeight(cell: TransactionCell) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
 }
@@ -174,6 +186,18 @@ extension TransactionsViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+}
+
+public extension Transaction {
+    
+    public static func predicate(forPayoutID payoutID: String) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(Transaction.payout.identifier), payoutID)
+    }
+    
+    public static func predicateExcluding(identifier: String) -> NSPredicate {
+        return NSPredicate(format: "%K != %@", #keyPath(Transaction.identifier), identifier)
     }
     
 }

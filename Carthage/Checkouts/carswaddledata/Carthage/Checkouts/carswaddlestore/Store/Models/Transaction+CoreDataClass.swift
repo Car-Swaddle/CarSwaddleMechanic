@@ -33,7 +33,7 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         }
         set {
             willChangeValue(forKey: statusKey)
-            primitiveStatus = status.rawValue
+            primitiveStatus = newValue.rawValue
             didChangeValue(forKey: statusKey)
         }
     }

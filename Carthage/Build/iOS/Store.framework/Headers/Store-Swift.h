@@ -369,7 +369,6 @@ SWIFT_CLASS_NAMED("Payout")
 @property (nonatomic, copy) NSString * _Nullable payoutDescription;
 @property (nonatomic, copy) NSString * _Nullable destination;
 @property (nonatomic, copy) NSString * _Nonnull type;
-@property (nonatomic, copy) NSString * _Nonnull status;
 @property (nonatomic, copy) NSString * _Nonnull method;
 @property (nonatomic, copy) NSString * _Nonnull sourceType;
 @property (nonatomic, copy) NSString * _Nullable statementDescriptor;
@@ -378,6 +377,7 @@ SWIFT_CLASS_NAMED("Payout")
 @property (nonatomic, copy) NSString * _Nullable failureBalanceTransaction;
 @property (nonatomic, copy) NSSet<Transaction *> * _Nonnull transactions;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
 @end
 
 

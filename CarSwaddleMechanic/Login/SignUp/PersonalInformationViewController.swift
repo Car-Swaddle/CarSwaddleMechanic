@@ -75,11 +75,12 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     }
     
     @IBAction private func didTapLogout() {
-        auth.logout { error in
+        auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
             DispatchQueue.main.async {
                 finishTasksAndInvalidate {
                     try? store.destroyAllData()
                     AuthController().removeToken()
+                    pushNotificationController.deleteDeviceToken()
                     DispatchQueue.main.async {
                         navigator.navigateToLoggedOutViewController()
                     }

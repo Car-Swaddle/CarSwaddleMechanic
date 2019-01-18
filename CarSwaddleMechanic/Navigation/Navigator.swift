@@ -145,6 +145,7 @@ final class Navigator: NSObject {
             window.rootViewController = newViewController
         }) { [weak self] completed in
             self?.removeUI()
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     
@@ -212,6 +213,7 @@ final class Navigator: NSObject {
         _tabBarController = nil
         _servicesViewController = nil
         _profileViewController = nil
+        _earningsViewController = nil
     }
     
     private func viewController(for tab: Tab) -> UIViewController {

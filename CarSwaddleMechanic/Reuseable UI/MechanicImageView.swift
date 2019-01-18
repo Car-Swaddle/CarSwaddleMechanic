@@ -15,7 +15,8 @@ final class MechanicImageView: UIImageView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        image = UIImage.from(color: .gray3)
+//        image = UIImage.from(color: .gray3)
+        backgroundColor = .gray3
         layer.cornerRadius = 8
         layer.masksToBounds = true
         contentMode = .scaleAspectFill

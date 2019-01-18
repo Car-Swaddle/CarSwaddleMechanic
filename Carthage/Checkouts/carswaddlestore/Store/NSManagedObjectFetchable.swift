@@ -82,7 +82,7 @@ public extension NSManagedObjectFetchable where Self: NSManagedObject {
     fileprivate static func performFetch(with fetchRequest: NSFetchRequest<Self>, in context: NSManagedObjectContext) -> Self? {
         do {
             let objects = try context.fetch(fetchRequest)
-            assert(objects.count < 2, "\(Self.self) should be unique to identifier.")
+//            assert(objects.count < 2, "\(Self.self) should be unique to identifier.")
             return objects.first
         } catch {
             return nil

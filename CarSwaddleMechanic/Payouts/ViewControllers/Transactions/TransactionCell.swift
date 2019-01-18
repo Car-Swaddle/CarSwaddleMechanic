@@ -17,6 +17,10 @@ let dateFormatter: DateFormatter = {
 }()
 
 
+protocol TransactionCellDelegate: AnyObject {
+    func didUpdateHeight(cell: TransactionCell)
+}
+
 final class TransactionCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet private weak var netLabel: UILabel!
@@ -28,6 +32,8 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var bottomView: UIView!
     
+    weak var delegate: TransactionCellDelegate?
+    
     func configure(with transaction: Transaction) {
         netLabel.text = currencyFormatter.string(from: transaction.net.dollarValue)
         feeLabel.text = currencyFormatter.string(from: transaction.fee.dollarValue)
@@ -36,6 +42,8 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         statusLabel.text = transaction.status.localizedString
         
         bottomView.isHiddenInStackView = transaction.fee == 0
+        
+        delegate?.didUpdateHeight(cell: self)
     }
     
     override func awakeFromNib() {

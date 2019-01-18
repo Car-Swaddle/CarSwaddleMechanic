@@ -25,7 +25,6 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
     
     private lazy var header: EarningsHeaderView = {
         let view = EarningsHeaderView.viewFromNib()
-        view.configureForEmpty()
         return view
     }()
     
@@ -50,26 +49,17 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
     
     private func setupTableView() {
         tableView.tableHeaderView = header
-        if let balance = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.balance {
-            header.configure(with: balance)
-        }
+//        if let balance = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.balance {
+//            header.configure(with: balance)
+//        }
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refresh
         tableView.register(TextCell.self)
     }
     
     private func updateBalance(completion: @escaping () -> Void = {}) {
-        store.privateContext { [weak self] privateContext in
-            self?.stripeNetwork.requestBalance(in: privateContext) { balanceID, error in
-                store.mainContext { mainContext in
-                    defer {
-                        completion()
-                    }
-                    guard let balanceID = balanceID,
-                        let balance = mainContext.object(with: balanceID) as? Balance else { return }
-                    self?.header.configure(with: balance)
-                }
-            }
+        header.updateBalance {
+            completion()
         }
     }
 

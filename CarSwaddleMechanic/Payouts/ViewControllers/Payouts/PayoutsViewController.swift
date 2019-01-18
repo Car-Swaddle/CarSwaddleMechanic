@@ -52,10 +52,11 @@ final class PayoutsViewController: UIViewController, StoryboardInstantiating {
     
     private func createFetchedResultsController() -> NSFetchedResultsController<Payout> {
         let fetchRequest: NSFetchRequest<Payout> = Payout.fetchRequest()
-        fetchRequest.sortDescriptors = [Payout.sortDescriptor]
-        fetchRequest.predicate = Payout.predicate
+        fetchRequest.sortDescriptors = [Payout.arrivalDateSortDescriptor]
+        fetchRequest.predicate = Payout.currentMechanicPredicate
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
     }
@@ -74,7 +75,6 @@ final class PayoutsViewController: UIViewController, StoryboardInstantiating {
             self?.stripeNetwork.requestPayouts(startingAfterID: self?.lastID, limit: requestLimit, in: context) { objectIDs, lastID, hasMore, error in
                 DispatchQueue.main.async {
                     self?.lastID = hasMore ? lastID : nil
-                    self?.reload()
                     self?.task = nil
                     completion()
                 }
@@ -163,13 +163,13 @@ extension PayoutsViewController: NSFetchedResultsControllerDelegate {
 
 
 
-extension Payout {
+public extension Payout {
     
-    public static var sortDescriptor: NSSortDescriptor {
+    public static var arrivalDateSortDescriptor: NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(Payout.arrivalDate), ascending: false)
     }
     
-    public static var predicate: NSPredicate {
+    public static var currentMechanicPredicate: NSPredicate {
         return NSPredicate(format: "%K == %@", #keyPath(Payout.mechanic.identifier), Mechanic.currentMechanicID ?? "")
     }
     

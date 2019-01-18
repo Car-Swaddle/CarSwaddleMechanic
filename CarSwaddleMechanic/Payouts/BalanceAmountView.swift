@@ -21,6 +21,15 @@ final class BalanceAmountView: UIView, NibInstantiating {
     
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var inTransitLabel: UILabel!
+    
+    @IBOutlet private weak var inTransitTextLabel: UILabel!
+    
+    var inTransitAmount: Int? {
+        didSet {
+            inTransitLabel.text = currencyFormatter.string(from: inTransitAmount?.dollarValue ?? 0)
+        }
+    }
     
     func configure(with amount: Amount, amountType: Balance.AmountType) {
         amountLabel.text = currencyFormatter.string(from: amount.totalDollarValue)
@@ -34,7 +43,8 @@ final class BalanceAmountView: UIView, NibInstantiating {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        inTransitLabel.text = "--"
+        inTransitTextLabel.text = NSLocalizedString("In transit", comment: "Label text with a label above indicating how much money is in transit")
     }
     
     private func text(from type: Balance.AmountType) -> String {

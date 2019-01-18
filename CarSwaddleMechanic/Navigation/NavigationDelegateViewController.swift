@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import CarSwaddleData
+import Authentication
 
 public typealias NavigationDelegatingViewController = (UIViewController & NavigationDelegating)
 
@@ -30,7 +31,16 @@ public final class NavigationDelegateViewController: UINavigationController, Nav
     }
 
     @objc private func viewControllerDidSelectLogout() {
-        navigator.navigateToLoggedOutViewController()
+        DispatchQueue.main.async {
+            finishTasksAndInvalidate {
+                try? store.destroyAllData()
+                try? profileImageStore.destroy()
+                AuthController().removeToken()
+                DispatchQueue.main.async {
+                    navigator.navigateToLoggedOutViewController()
+                }
+            }
+        }
     }
     
     init(navigationDelegatingViewControllers: [NavigationDelegatingViewController]) {

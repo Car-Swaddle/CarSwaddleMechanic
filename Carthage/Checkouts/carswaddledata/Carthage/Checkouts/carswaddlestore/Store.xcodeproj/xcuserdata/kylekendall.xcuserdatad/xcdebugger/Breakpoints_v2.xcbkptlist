@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Store/Models/Payout+CoreDataClass.swift"
-            timestampString = "569117896.74077"
+            filePath = "StoreTests/StripeTests.swift"
+            timestampString = "569401094.787163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "values(from:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "testPayoutTransaction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StoreTests/StripeTests.swift"
+            timestampString = "569401094.7872339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "testPaidPayout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

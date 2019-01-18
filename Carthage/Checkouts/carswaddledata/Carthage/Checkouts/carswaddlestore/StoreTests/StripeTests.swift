@@ -41,12 +41,30 @@ class StripeTests: XCTestCase {
         XCTAssert(transaction != nil, "Must have transaction from: \(json)")
     }
     
+    func testPayoutTransaction() {
+        let context = store.mainContext
+        let json = payoutTransaction
+        let transaction = Transaction(json: json, context: context)
+        transaction?.mechanic = Mechanic(json: mechanicJSON, context: context)
+        context.persist()
+        XCTAssert(transaction != nil, "Must have transaction from: \(json)")
+    }
+    
     func testPayout() {
         let context = store.mainContext
         let json = singlePayoutJSON
         let transaction = Payout(json: json, context: context)
         context.persist()
         XCTAssert(transaction != nil, "Must have transaction from: \(json)")
+    }
+    
+    func testPaidPayout() {
+        let context = store.mainContext
+        let json = paidPayout
+        let payout = Payout(json: json, context: context)
+        context.persist()
+        print(payout)
+        XCTAssert(payout != nil, "Must have transaction from: \(json)")
     }
     
 }
@@ -137,4 +155,45 @@ private let payoutJSON: [String: Any] = [
     "url": "/v1/payouts",
     "has_more": false,
     "data": [singlePayoutJSON],
+]
+
+
+private let payoutTransaction: [String: Any] = [
+    "id": "txn_1Dt2vhFJ56E8lSb9u4JFpEkN",
+    "object": "balance_transaction",
+    "amount": -14194,
+    "available_on": 1547683200,
+    "created": 1547601053,
+    "currency": "usd",
+    "description": "STRIPE PAYOUT",
+    "exchange_rate": NSNull(),
+    "fee": 0,
+    "fee_details": [],
+    "net": -14194,
+    "source": "po_1Dt2vhFJ56E8lSb9Err8HxqR",
+    "status": "pending",
+    "type": "payout"
+]
+
+private let paidPayout: [String: Any] = [
+    "id": "po_1DsgRZFJ56E8lSb9gAVqUVtr",
+    "object": "payout",
+    "amount": 13822,
+    "arrival_date": 1547596800,
+    "automatic": true,
+    "balance_transaction": "txn_1DsgRZFJ56E8lSb9WLgQy6Ap",
+    "created": 1547514617,
+    "currency": "usd",
+    "description": "STRIPE PAYOUT",
+    "destination": "ba_1DqdBoFJ56E8lSb9I1RpATDg",
+    "failure_balance_transaction": NSNull(),
+    "failure_code": NSNull(),
+    "failure_message": NSNull(),
+    "livemode": false,
+    "metadata": [],
+    "method": "standard",
+    "source_type": "card",
+    "statement_descriptor": NSNull(),
+    "status": "paid",
+    "type": "bank_account"
 ]
