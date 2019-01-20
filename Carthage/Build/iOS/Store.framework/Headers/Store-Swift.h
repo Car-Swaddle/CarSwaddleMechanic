@@ -334,6 +334,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic, strong) Balance * _Nullable balance;
 @property (nonatomic, copy) NSSet<Transaction *> * _Nonnull transactions;
 @property (nonatomic, copy) NSSet<Payout *> * _Nonnull payouts;
+@property (nonatomic, copy) NSString * _Nullable identityDocumentID;
 @end
 
 

@@ -53,6 +53,8 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
             let address = Address.fetchOrCreate(json: addressJSON, context: context)
             self.address = address
         }
+        
+        identityDocumentID = json["identityDocumentID"] as? String
     }
     
     public static func setCurrentMechanicID(_ identifier: String) {

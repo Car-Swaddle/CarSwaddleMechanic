@@ -27,7 +27,7 @@ class LoginTestCase: XCTestCase {
         
         DispatchQueue.once(token: "SomeString") {
             try? store.destroyAllData()
-            auth.logout {_ in }
+            auth.logout(deviceToken: nil) {_ in }
         }
         
         loginOrSignUpIfNeeded()

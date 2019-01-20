@@ -25,61 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-            timestampString = "569311252.323825"
+            filePath = "CarSwaddleNetworkRequest/Services/FileService.swift"
+            timestampString = "569583235.712595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "testGetProfileImageMechanic()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CarSwaddleNetworkRequestTests.FileServiceTests.testGetProfileImageMechanic() -&gt; ()"
-                  moduleName = "CarSwaddleNetworkRequestTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-                  timestampString = "569311253.3155251"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "456">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.URL&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CarSwaddleNetworkRequestTests.FileServiceTests.testGetProfileImageMechanic() -&gt; ()"
-                  moduleName = "CarSwaddleNetworkRequestTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-                  timestampString = "569311253.3180079"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "184">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-            timestampString = "569311252.324409"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "testGetProfileImageMechanic()"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "upload(fileURL:endpoint:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

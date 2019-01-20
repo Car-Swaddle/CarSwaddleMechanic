@@ -11,6 +11,7 @@ import Foundation
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let upload = Request.Endpoint(rawValue: "/api/data/profile-picture")
     fileprivate static let uploadMechanic = Request.Endpoint(rawValue: "/api/data/mechanic/profile-picture")
+    fileprivate static let uploadIdentityDocument = Request.Endpoint(rawValue: "/api/data/mechanic/identity-document")
     fileprivate static let getImage = Request.Endpoint(rawValue: "/api/data/image/{imageName}")
     fileprivate static let getUserImage = Request.Endpoint(rawValue: "/api/data/profile-picture/{id}")
     fileprivate static let getMechanicImage = Request.Endpoint(rawValue: "/api/data/mechanic/profile-picture/{id}")
@@ -35,6 +36,11 @@ final public class FileService: Service {
     @discardableResult
     public func uploadMechanicProfileImage(fileURL: URL, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         return upload(fileURL: fileURL, endpoint: .uploadMechanic, completion: completion)
+    }
+    
+    @discardableResult
+    public func uploadMechanicIdentityDocument(fileURL: URL, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        return upload(fileURL: fileURL, endpoint: .uploadIdentityDocument, completion: completion)
     }
     
     @discardableResult

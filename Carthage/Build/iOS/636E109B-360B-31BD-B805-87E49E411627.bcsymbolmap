@@ -1,0 +1,53 @@
+BCSymbolMap Version: 2.0
+_globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_func0
+_$S14Authentication19authKeychainService33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvau
+_globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_func1
+_$S14Authentication8tokenKey33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvau
+_$Ss5Error_pMa
+_globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_token0
+_$S14Authentication19authKeychainService33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvp
+_globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_token1
+_$S14Authentication8tokenKey33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvp
+_$Ss5Error_pML
+_$S14Authentication14AuthControllerC8keychain33_2C506BB7F4B44EB9B54092BA650CC7D8LL14KeychainAccess0N0CvpWvd
+_$S14AuthenticationMXM
+_$S14Authentication14AuthControllerCML
+_$S14Authentication14AuthControllerCMf
+_symbolic ____ 14Authentication14AuthControllerC
+_symbolic 14KeychainAccess0A0C
+_$S14Authentication14AuthControllerCMF
+__swift_FORCE_LOAD_$_swiftDarwin_$_Authentication
+__swift_FORCE_LOAD_$_swiftCoreFoundation_$_Authentication
+__swift_FORCE_LOAD_$_swiftDispatch_$_Authentication
+__swift_FORCE_LOAD_$_swiftObjectiveC_$_Authentication
+__swift_FORCE_LOAD_$_swiftFoundation_$_Authentication
+__swift_FORCE_LOAD_$_swiftCoreGraphics_$_Authentication
+__swift_FORCE_LOAD_$_swiftUIKit_$_Authentication
+__swift_FORCE_LOAD_$_swiftCoreImage_$_Authentication
+__swift_FORCE_LOAD_$_swiftMetal_$_Authentication
+__swift_FORCE_LOAD_$_swiftQuartzCore_$_Authentication
+___swift_reflection_version
+_objc_classes
+Apple LLVM version 10.0.0 (clang-1000.11.45.1)
+-emit-bc -primary-file /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication/Authentication/AuthController.swift -emit-module-path /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Objects-normal/arm64/AuthController~partial.swiftmodule -emit-module-doc-path /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Objects-normal/arm64/AuthController~partial.swiftdoc -serialize-diagnostics-path /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Objects-normal/arm64/AuthController.dia -emit-dependencies-path /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Objects-normal/arm64/AuthController.d -target arm64-apple-ios11.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk -I /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/BuildProductsPath/Debug-iphoneos -F /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/BuildProductsPath/Debug-iphoneos -F /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication/Carthage/Build/iOS -enable-testing -g -import-underlying-module -module-cache-path /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/ModuleCache.noindex -swift-version 4.2 -enforce-exclusivity=checked -Onone -D DEBUG -serialize-debugging-options -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Authentication-generated-files.hmap -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Authentication-own-target-headers.hmap -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Authentication-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Authentication-project-headers.hmap -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/BuildProductsPath/Debug-iphoneos/include -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/DerivedSources/arm64 -Xcc -I/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/DerivedSources -Xcc -DDEBUG=1 -Xcc -ivfsoverlay -Xcc /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/unextended-module-overlay.yaml -Xcc -working-directory/Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication -parse-as-library -module-name Authentication -o /Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/Objects-normal/arm64/AuthController.bc -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -private-discriminator _2C506BB7F4B44EB9B54092BA650CC7D8
+<swift-imported-modules>
+/Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication
+Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)
+/Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication/Authentication/AuthController.swift
+deinit
+AuthController.swift
+/Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/authentication/Authentication
+$Ss5Error_pMa
+<compiler-generated>
+token.get
+removeToken
+setToken
+$S14Authentication14AuthControllerC8keychain33_2C506BB7F4B44EB9B54092BA650CC7D8LL14KeychainAccess0N0Cvpfi
+init
+$S14Authentication14AuthControllerCMa
+$S14Authentication8tokenKey33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvau
+globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_func1
+$S14Authentication19authKeychainService33_2C506BB7F4B44EB9B54092BA650CC7D8LLSSvau
+globalinit_33_2C506BB7F4B44EB9B54092BA650CC7D8_func0
+Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+/Users/kylekendall/Library/Caches/org.carthage.CarthageKit/DerivedData/10.1_10B61/authentication/1.06/Build/Intermediates.noindex/ArchiveIntermediates/Authentication/IntermediateBuildFilesPath/Authentication.build/Debug-iphoneos/Authentication.build/DerivedSources/Authentication_vers.c

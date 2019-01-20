@@ -113,8 +113,7 @@ public final class MechanicNetwork: Network {
     }
     
     @discardableResult
-    public func setProfileImage(fileURL: URL
-        , in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func setProfileImage(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return fileService.uploadMechanicProfileImage(fileURL: fileURL) { json, error in
             context.perform {
                 var mechanicObjectID: NSManagedObjectID?
@@ -135,6 +134,26 @@ public final class MechanicNetwork: Network {
             }
         }
     }
+    
+    @discardableResult
+    public func uploadIdentityDocument(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return fileService.uploadMechanicIdentityDocument(fileURL: fileURL) { json, error in
+            context.perform {
+                var mechanicObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(mechanicObjectID, error)
+                    }
+                }
+                
+                guard let currentMechanic = Mechanic.currentLoggedInMechanic(in: context), error == nil else { return }
+                currentMechanic.identityDocumentID = json?["identityDocumentID"] as? String
+                context.persist()
+                mechanicObjectID = currentMechanic.objectID
+            }
+        }
+    }
+    
     
     @discardableResult
     public func getProfileImage(mechanicID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {

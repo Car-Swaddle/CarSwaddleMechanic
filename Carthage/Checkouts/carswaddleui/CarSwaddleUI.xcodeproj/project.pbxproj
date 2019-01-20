@@ -13,6 +13,7 @@
 		9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD9B216C76310006FDDF /* UIViewExtension.swift */; };
 		995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */; };
 		995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */; };
+		99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */; };
 		9970121B2154B14200D547C5 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997012112154B14200D547C5 /* CarSwaddleUI.framework */; };
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,6 +55,7 @@
 		9912CD9B216C76310006FDDF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibStoryboardInstantiating.swift; sourceTree = "<group>"; };
 		995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
+		99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegateViewController.swift; sourceTree = "<group>"; };
 		997012112154B14200D547C5 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CarSwaddleUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		997012142154B14200D547C5 /* CarSwaddleUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarSwaddleUI.h; sourceTree = "<group>"; };
 		997012152154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */,
 				99E66D9F21E28F0100C6E3E1 /* TextCell.swift */,
 				99E66DA021E28F0100C6E3E1 /* TextCell.xib */,
+				99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */,
 			);
 			path = "Generic UI";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
 				99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */,
 				99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */,
+				99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
 				99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */,
 			);
