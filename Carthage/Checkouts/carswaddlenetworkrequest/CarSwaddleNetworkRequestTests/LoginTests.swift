@@ -82,7 +82,7 @@ class LoginTests: XCTestCase {
     func testMechanicLogin() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        authService.mechanicLogin(email: "k@k.com", password: password) { json, token, error in
+        authService.mechanicLogin(email: "user@carswaddle.com", password: password) { json, token, error in
             XCTAssert(token != nil, "Should have logged in")
             XCTAssert(json?["mechanic"] != nil, "Should have mechanic")
             XCTAssert(json?["user"] != nil, "Should have user")

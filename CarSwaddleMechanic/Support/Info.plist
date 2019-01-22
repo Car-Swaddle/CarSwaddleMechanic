@@ -2,16 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow Car Swaddle to use your camera so you can take a picture for your profile</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Car Swaddle will use your location to let you easily set your service region</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>CS - Mechanic</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,11 +17,45 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.001</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>127.0.0.1</key>
+			<true/>
+			<key>169.254.184.119</key>
+			<true/>
+			<key>192.168.0.20</key>
+			<true/>
+			<key>192.168.0.255</key>
+			<true/>
+			<key>192.168.0.48</key>
+			<true/>
+			<key>199.192.98.106</key>
+			<true/>
+			<key>Kyles-MacBook-Pro.local</key>
+			<true/>
+			<key>kkenda2-ml.local</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow Car Swaddle to use your camera so you can take a picture for your profile</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Car Swaddle will use your location to let you easily set your service region</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -47,31 +75,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>192.168.0.255</key>
-			<true/>
-			<key>192.168.0.20</key>
-			<true/>
-			<key>Kyles-MacBook-Pro.local</key>
-			<true/>
-			<key>kkenda2-ml.local</key>
-			<true/>
-			<key>169.254.184.119</key>
-			<true/>
-			<key>192.168.0.48</key>
-			<true/>
-			<key>127.0.0.1</key>
-			<true/>
-			<key>199.192.98.106</key>
-			<true/>
-		</dict>
-	</dict>
 </dict>
 </plist>

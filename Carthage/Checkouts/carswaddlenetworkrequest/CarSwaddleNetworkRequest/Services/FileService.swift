@@ -28,7 +28,7 @@ final public class FileService: Service {
     
     @discardableResult
     public func getProfileImage(userID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
-        return getProfileImage(id: userID, endpoint: .upload, completion: completion)
+        return getProfileImage(id: userID, endpoint: .getUserImage, completion: completion)
     }
     
     // Mark: Mechanic
@@ -80,8 +80,13 @@ final public class FileService: Service {
         guard let path = try? Path(endpoint: endpoint, pathArguments: ["id": id]) else { return nil }
         guard var urlRequest = serviceRequest.download(withPath: path.path) else { return nil }
         try? urlRequest.authenticate()
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         return serviceRequest.download(urlRequest: urlRequest) { downloadedFileURL, response, error in
-            completion(downloadedFileURL, error)
+            if let response = response, response.statusCode >= 200 && response.statusCode < 300 {
+                completion(downloadedFileURL, error)
+            } else {
+                completion(nil, NetworkRequestError.invalidResponse)
+            }
         }
     }
     

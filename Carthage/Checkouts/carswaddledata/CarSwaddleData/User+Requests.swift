@@ -76,7 +76,7 @@ public final class UserNetwork: Network {
                 }
                 
                 if let currentUserID = User.currentUserID {
-                    _ = try? profileImageStore.storeFile(url: fileURL, fileName: currentUserID)
+                    _ = try? profileImageStore.storeFile(url: fileURL, userID: currentUserID)
                 }
                 
                 guard let currentUser = User.currentUser(context: context), error == nil else { return }
@@ -94,7 +94,6 @@ public final class UserNetwork: Network {
             var permanentURL: URL?
             defer {
                 completion(permanentURL, completionError)
-                
             }
             guard let url = url else { return }
             do {

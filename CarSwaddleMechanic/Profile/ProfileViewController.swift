@@ -287,11 +287,14 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         guard let image = info[.originalImage] as? UIImage else { return }
         let orientedImage = UIImage.imageWithCorrectedOrientation(image)
-        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.pngData() else {
+        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.jpegData(compressionQuality: 1.0) else {
             return
         }
         guard let url = try? profileImageStore.storeFile(data: imageData, fileName: Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier ?? "profileImage") else {
             return
+        }
+        if let mechanic = user?.mechanic {
+            headerView.configure(with: mechanic)
         }
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.setProfileImage(fileURL: url, in: privateContext) { mechanicObjectID, error in

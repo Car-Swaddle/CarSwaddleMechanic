@@ -10,6 +10,7 @@ import Foundation
 
 public extension NetworkRequestError {
     public static let invalidJSON = NetworkRequestError(rawValue: "invalidJSON")
+    public static let invalidResponse = NetworkRequestError(rawValue: "invalidResponse")
 }
 
 public struct NetworkRequestError: Error {

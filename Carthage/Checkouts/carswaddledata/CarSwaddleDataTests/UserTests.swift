@@ -93,8 +93,7 @@ class UserTests: LoginTestCase {
     
     
     func testUploadUserImage() {
-        
-        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "png") else {
+        guard let fileURL = Bundle(for: type(of: self)).url(forResource: "image", withExtension: "jpeg") else {
             XCTAssert(false, "Should have file: image.png in test bundle")
             return
         }
@@ -107,7 +106,8 @@ class UserTests: LoginTestCase {
                         XCTAssert(false, "userID doesn't exist")
                         return
                     }
-                    let image = profileImageStore.getImage(forUserWithID: userID)
+                    
+                    let image = profileImageStore.getImage(forUserWithID: currentUserID)
                     XCTAssert(image != nil, "Should have that image yall")
                     let user = mainContext.object(with: userObjectID) as? User
                     XCTAssert(user != nil, "User doesn't exist")
@@ -120,12 +120,11 @@ class UserTests: LoginTestCase {
     }
     
     func testGetProfileImage() {
-        guard let userID = User.currentUserID else { return }
         let exp = expectation(description: "\(#function)\(#line)")
         store.privateContext { [weak self] context in
-            self?.userNetwork.getProfileImage(userID: userID) { url, error in
+            self?.userNetwork.getProfileImage(userID: currentUserID) { url, error in
                 store.mainContext { mainContext in
-                    let image = profileImageStore.getImage(forUserWithID: userID)
+                    let image = profileImageStore.getImage(forUserWithID: currentUserID)
                     XCTAssert(image != nil, "Should have that image yall")
                     exp.fulfill()
                 }

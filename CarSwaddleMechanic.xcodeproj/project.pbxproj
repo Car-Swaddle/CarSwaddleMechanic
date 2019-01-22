@@ -58,8 +58,6 @@
 		997DBC5F2197B5160080F42C /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC5D2197B5160080F42C /* NameCell.swift */; };
 		997DBC602197B5160080F42C /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC5E2197B5160080F42C /* NameCell.xib */; };
 		997DBC642198FBE20080F42C /* lehi.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 997DBC632198FBE20080F42C /* lehi.gpx */; };
-		998D03DE21F42BBB00546C58 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03DD21F42BBB00546C58 /* Authentication.framework */; };
-		998D03E321F42CDC00546C58 /* Cosmos.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03E121F42CDC00546C58 /* Cosmos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AB921D75A8B003DD717 /* Stripe.swift */; };
 		998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */; };
 		998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */; };
@@ -84,6 +82,14 @@
 		99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */; };
 		99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */; };
 		99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */; };
+		99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03E121F42CDC00546C58 /* Cosmos.framework */; };
+		99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03DD21F42BBB00546C58 /* Authentication.framework */; };
+		99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; };
+		99D5D9FF21F648E400E6A511 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D3AB621D755F0003DD717 /* Stripe.framework */; };
+		99D5DA0021F648E400E6A511 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; };
+		99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
+		99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
+		99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */; };
 		99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DB721E469A000C6E3E1 /* UserImageView.swift */; };
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
@@ -114,20 +120,6 @@
 			remoteInfo = CarSwaddleMechanic;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		998D03E421F42CDC00546C58 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				998D03E321F42CDC00546C58 /* Cosmos.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
@@ -239,7 +231,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998D03DE21F42BBB00546C58 /* Authentication.framework in Frameworks */,
+				99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */,
+				99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */,
+				99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */,
+				99D5D9FF21F648E400E6A511 /* Stripe.framework in Frameworks */,
+				99D5DA0021F648E400E6A511 /* CarSwaddleData.framework in Frameworks */,
+				99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
+				99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */,
+				99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +554,6 @@
 				9992763821673BCA0032D7F7 /* Frameworks */,
 				9992763921673BCA0032D7F7 /* Resources */,
 				991B4065216B4E5500D7644D /* ShellScript */,
-				998D03E421F42CDC00546C58 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -737,6 +735,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleData.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -749,6 +748,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleData.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

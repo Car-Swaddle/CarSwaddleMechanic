@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		991B4069216B557E00D7644D /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		992C53C72150C59B0076949C /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */; };
 		992C53CC2150C59B0076949C /* CarSwaddleLoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C53CB2150C59B0076949C /* CarSwaddleLoginTestCase.swift */; };
 		992C53CE2150C59B0076949C /* CarSwaddleNetworkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 992C53C02150C59B0076949C /* CarSwaddleNetworkRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		992C53D82150C5B10076949C /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C53D72150C5B10076949C /* ServerRequest.swift */; };
 		9943BCEA21F4146100D553F6 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; };
-		9943BCEF21F4167400D553F6 /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9955BC182154E646008DAF8E /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955BC172154E646008DAF8E /* UserService.swift */; };
 		995B9F2B2154B4DB0030A7CA /* GlobalImports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F2A2154B4DB0030A7CA /* GlobalImports.swift */; };
 		995B9F2D2154BB180030A7CA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F2C2154BB180030A7CA /* AuthService.swift */; };
@@ -28,25 +26,24 @@
 		997DBC7A219D70540080F42C /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC79219D70540080F42C /* VehicleService.swift */; };
 		997DBC7C219D77750080F42C /* VehicleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC7B219D77750080F42C /* VehicleTests.swift */; };
 		997DBC9821A3F3DB0080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9721A3F3DB0080F42C /* AutoServiceTests.swift */; };
-		998D03C421F41D2F00546C58 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; };
-		998D03C521F41D3100546C58 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; };
-		998D03C621F41D3300546C58 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; };
-		998D03C821F41DCF00546C58 /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		998D03C921F41DD300546C58 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		998D03CA21F41DD800546C58 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		998D3AD521DC86E9003DD717 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AD421DC86E9003DD717 /* ReviewService.swift */; };
 		998D3AD721DC8CDE003DD717 /* ReviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AD621DC8CDE003DD717 /* ReviewServiceTests.swift */; };
 		99C791C72150CBA4000167CB /* AutoServiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C791C62150CBA4000167CB /* AutoServiceService.swift */; };
+		99D5D9C321F5A33400E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; };
+		99D5D9C421F5A33400E6A511 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; };
+		99D5D9C521F5A33400E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; };
+		99D5D9C721F5A34300E6A511 /* Authentication.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9943BCE921F4146100D553F6 /* Authentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99D5D9C821F5A34300E6A511 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99D5D9C921F5A34300E6A511 /* KeychainAccess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99D5DA1021F6F87F00E6A511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA0F21F6F87F00E6A511 /* AppDelegate.swift */; };
+		99D5DA1221F6F87F00E6A511 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA1121F6F87F00E6A511 /* ViewController.swift */; };
+		99D5DA1521F6F87F00E6A511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA1321F6F87F00E6A511 /* Main.storyboard */; };
+		99D5DA1721F6F88100E6A511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA1621F6F88100E6A511 /* Assets.xcassets */; };
+		99D5DA1A21F6F88100E6A511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA1821F6F88100E6A511 /* LaunchScreen.storyboard */; };
 		99E66D2B21E0915400C6E3E1 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D2A21E0915400C6E3E1 /* FileService.swift */; };
 		99E66D2D21E0A41D00C6E3E1 /* FileServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D2C21E0A41D00C6E3E1 /* FileServiceTests.swift */; };
-		99E66D3021E0A73300C6E3E1 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2E21E0A5EB00C6E3E1 /* image.png */; };
+		99E66D3021E0A73300C6E3E1 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D2E21E0A5EB00C6E3E1 /* image.jpeg */; };
 		99E66D3221E136BE00C6E3E1 /* NetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; };
-		99E66D3321E1370800C6E3E1 /* NetworkRequest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		99E66D7121E13BE100C6E3E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D7021E13BE100C6E3E1 /* AppDelegate.swift */; };
-		99E66D7321E13BE100C6E3E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D7221E13BE100C6E3E1 /* ViewController.swift */; };
-		99E66D7621E13BE100C6E3E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D7421E13BE100C6E3E1 /* Main.storyboard */; };
-		99E66D7821E13BE200C6E3E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D7721E13BE200C6E3E1 /* Assets.xcassets */; };
-		99E66D7B21E13BE200C6E3E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D7921E13BE200C6E3E1 /* LaunchScreen.storyboard */; };
 		99E66D8C21E14DFE00C6E3E1 /* smallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E66D8B21E14DFE00C6E3E1 /* smallImage.png */; };
 		99F02697217B9FB8005FEFC7 /* AvailabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02696217B9FB8005FEFC7 /* AvailabilityService.swift */; };
 		99F02699217BA048005FEFC7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02698217BA048005FEFC7 /* Service.swift */; };
@@ -67,49 +64,36 @@
 			remoteGlobalIDString = 992C53BC2150C59B0076949C;
 			remoteInfo = CarSwaddleNetworkRequest;
 		};
-		99E66D8021E13C1200C6E3E1 /* PBXContainerItemProxy */ = {
+		99D5DA1F21F6F88C00E6A511 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 992C53B42150C59B0076949C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 99E66D6D21E13BE100C6E3E1;
-			remoteInfo = HostTestApp;
+			remoteGlobalIDString = 99D5DA0C21F6F87F00E6A511;
+			remoteInfo = TestHostApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		991B4067216B557000D7644D /* CopyFiles */ = {
+		99D5D9C621F5A33B00E6A511 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9943BCEF21F4167400D553F6 /* Authentication.framework in CopyFiles */,
-				99E66D3321E1370800C6E3E1 /* NetworkRequest.framework in CopyFiles */,
-				991B4069216B557E00D7644D /* KeychainAccess.framework in CopyFiles */,
+				99D5D9C721F5A34300E6A511 /* Authentication.framework in CopyFiles */,
+				99D5D9C821F5A34300E6A511 /* NetworkRequest.framework in CopyFiles */,
+				99D5D9C921F5A34300E6A511 /* KeychainAccess.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		998D03C321F41C3100546C58 /* Embed Frameworks */ = {
+		99D5D9EF21F6343800E6A511 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
-		};
-		998D03C721F41DC400546C58 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				998D03CA21F41DD800546C58 /* KeychainAccess.framework in CopyFiles */,
-				998D03C921F41DD300546C58 /* NetworkRequest.framework in CopyFiles */,
-				998D03C821F41DCF00546C58 /* Authentication.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -140,17 +124,18 @@
 		998D3AD621DC8CDE003DD717 /* ReviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewServiceTests.swift; sourceTree = "<group>"; };
 		99C791C62150CBA4000167CB /* AutoServiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceService.swift; sourceTree = "<group>"; };
 		99C8DD87216AD59C00627E8A /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		99D5DA0D21F6F87F00E6A511 /* TestHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99D5DA0F21F6F87F00E6A511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99D5DA1121F6F87F00E6A511 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99D5DA1421F6F87F00E6A511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		99D5DA1621F6F88100E6A511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99D5DA1921F6F88100E6A511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99D5DA1B21F6F88100E6A511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99D5DA2121F6F89B00E6A511 /* TestHostApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestHostApp.entitlements; sourceTree = "<group>"; };
 		99E66D2A21E0915400C6E3E1 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		99E66D2C21E0A41D00C6E3E1 /* FileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServiceTests.swift; sourceTree = "<group>"; };
-		99E66D2E21E0A5EB00C6E3E1 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		99E66D2E21E0A5EB00C6E3E1 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		99E66D3121E136BE00C6E3E1 /* NetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkRequest.framework; path = Carthage/Build/iOS/NetworkRequest.framework; sourceTree = "<group>"; };
-		99E66D6E21E13BE100C6E3E1 /* HostTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		99E66D7021E13BE100C6E3E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99E66D7221E13BE100C6E3E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		99E66D7521E13BE100C6E3E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		99E66D7721E13BE200C6E3E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		99E66D7A21E13BE200C6E3E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		99E66D7C21E13BE200C6E3E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E66D8B21E14DFE00C6E3E1 /* smallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallImage.png; sourceTree = "<group>"; };
 		99F02696217B9FB8005FEFC7 /* AvailabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityService.swift; sourceTree = "<group>"; };
 		99F02698217BA048005FEFC7 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -177,17 +162,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D5D9C421F5A33400E6A511 /* NetworkRequest.framework in Frameworks */,
+				99D5D9C321F5A33400E6A511 /* Authentication.framework in Frameworks */,
+				99D5D9C521F5A33400E6A511 /* KeychainAccess.framework in Frameworks */,
 				992C53C72150C59B0076949C /* CarSwaddleNetworkRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99E66D6B21E13BE100C6E3E1 /* Frameworks */ = {
+		99D5DA0A21F6F87F00E6A511 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998D03C621F41D3300546C58 /* KeychainAccess.framework in Frameworks */,
-				998D03C421F41D2F00546C58 /* Authentication.framework in Frameworks */,
-				998D03C521F41D3100546C58 /* NetworkRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +184,7 @@
 			children = (
 				992C53BF2150C59B0076949C /* CarSwaddleNetworkRequest */,
 				992C53CA2150C59B0076949C /* CarSwaddleNetworkRequestTests */,
-				99E66D6F21E13BE100C6E3E1 /* HostTestApp */,
+				99D5DA0E21F6F87F00E6A511 /* TestHostApp */,
 				992C53BE2150C59B0076949C /* Products */,
 				99C791BA2150C5E5000167CB /* Frameworks */,
 			);
@@ -210,7 +195,7 @@
 			children = (
 				992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */,
 				992C53C62150C59B0076949C /* CarSwaddleNetworkRequestTests.xctest */,
-				99E66D6E21E13BE100C6E3E1 /* HostTestApp.app */,
+				99D5DA0D21F6F87F00E6A511 /* TestHostApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,26 +265,27 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		99D5DA0E21F6F87F00E6A511 /* TestHostApp */ = {
+			isa = PBXGroup;
+			children = (
+				99D5DA2121F6F89B00E6A511 /* TestHostApp.entitlements */,
+				99D5DA0F21F6F87F00E6A511 /* AppDelegate.swift */,
+				99D5DA1121F6F87F00E6A511 /* ViewController.swift */,
+				99D5DA1321F6F87F00E6A511 /* Main.storyboard */,
+				99D5DA1621F6F88100E6A511 /* Assets.xcassets */,
+				99D5DA1821F6F88100E6A511 /* LaunchScreen.storyboard */,
+				99D5DA1B21F6F88100E6A511 /* Info.plist */,
+			);
+			path = TestHostApp;
+			sourceTree = "<group>";
+		};
 		99E66D2F21E0A5F000C6E3E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				99E66D8B21E14DFE00C6E3E1 /* smallImage.png */,
-				99E66D2E21E0A5EB00C6E3E1 /* image.png */,
+				99E66D2E21E0A5EB00C6E3E1 /* image.jpeg */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		99E66D6F21E13BE100C6E3E1 /* HostTestApp */ = {
-			isa = PBXGroup;
-			children = (
-				99E66D7021E13BE100C6E3E1 /* AppDelegate.swift */,
-				99E66D7221E13BE100C6E3E1 /* ViewController.swift */,
-				99E66D7421E13BE100C6E3E1 /* Main.storyboard */,
-				99E66D7721E13BE200C6E3E1 /* Assets.xcassets */,
-				99E66D7921E13BE200C6E3E1 /* LaunchScreen.storyboard */,
-				99E66D7C21E13BE200C6E3E1 /* Info.plist */,
-			);
-			path = HostTestApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,8 +310,7 @@
 				992C53B92150C59B0076949C /* Sources */,
 				992C53BA2150C59B0076949C /* Frameworks */,
 				992C53BB2150C59B0076949C /* Resources */,
-				99C8DD82216ACD6200627E8A /* ShellScript */,
-				991B4067216B557000D7644D /* CopyFiles */,
+				99D5D9EF21F6343800E6A511 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -343,35 +328,34 @@
 				992C53C22150C59B0076949C /* Sources */,
 				992C53C32150C59B0076949C /* Frameworks */,
 				992C53C42150C59B0076949C /* Resources */,
+				99D5D9C621F5A33B00E6A511 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				992C53C92150C59B0076949C /* PBXTargetDependency */,
-				99E66D8121E13C1200C6E3E1 /* PBXTargetDependency */,
+				99D5DA2021F6F88C00E6A511 /* PBXTargetDependency */,
 			);
 			name = CarSwaddleNetworkRequestTests;
 			productName = CarSwaddleNetworkRequestTests;
 			productReference = 992C53C62150C59B0076949C /* CarSwaddleNetworkRequestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		99E66D6D21E13BE100C6E3E1 /* HostTestApp */ = {
+		99D5DA0C21F6F87F00E6A511 /* TestHostApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99E66D7D21E13BE200C6E3E1 /* Build configuration list for PBXNativeTarget "HostTestApp" */;
+			buildConfigurationList = 99D5DA1C21F6F88100E6A511 /* Build configuration list for PBXNativeTarget "TestHostApp" */;
 			buildPhases = (
-				99E66D6A21E13BE100C6E3E1 /* Sources */,
-				99E66D6B21E13BE100C6E3E1 /* Frameworks */,
-				99E66D6C21E13BE100C6E3E1 /* Resources */,
-				998D03C321F41C3100546C58 /* Embed Frameworks */,
-				998D03C721F41DC400546C58 /* CopyFiles */,
+				99D5DA0921F6F87F00E6A511 /* Sources */,
+				99D5DA0A21F6F87F00E6A511 /* Frameworks */,
+				99D5DA0B21F6F87F00E6A511 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HostTestApp;
-			productName = HostTestApp;
-			productReference = 99E66D6E21E13BE100C6E3E1 /* HostTestApp.app */;
+			name = TestHostApp;
+			productName = TestHostApp;
+			productReference = 99D5DA0D21F6F87F00E6A511 /* TestHostApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -390,12 +374,13 @@
 					};
 					992C53C52150C59B0076949C = {
 						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 99D5DA0C21F6F87F00E6A511;
 					};
-					99E66D6D21E13BE100C6E3E1 = {
+					99D5DA0C21F6F87F00E6A511 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -416,7 +401,7 @@
 			targets = (
 				992C53BC2150C59B0076949C /* CarSwaddleNetworkRequest */,
 				992C53C52150C59B0076949C /* CarSwaddleNetworkRequestTests */,
-				99E66D6D21E13BE100C6E3E1 /* HostTestApp */,
+				99D5DA0C21F6F87F00E6A511 /* TestHostApp */,
 			);
 		};
 /* End PBXProject section */
@@ -434,47 +419,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				99E66D8C21E14DFE00C6E3E1 /* smallImage.png in Resources */,
-				99E66D3021E0A73300C6E3E1 /* image.png in Resources */,
+				99E66D3021E0A73300C6E3E1 /* image.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99E66D6C21E13BE100C6E3E1 /* Resources */ = {
+		99D5DA0B21F6F87F00E6A511 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99E66D7B21E13BE200C6E3E1 /* LaunchScreen.storyboard in Resources */,
-				99E66D7821E13BE200C6E3E1 /* Assets.xcassets in Resources */,
-				99E66D7621E13BE100C6E3E1 /* Main.storyboard in Resources */,
+				99D5DA1A21F6F88100E6A511 /* LaunchScreen.storyboard in Resources */,
+				99D5DA1721F6F88100E6A511 /* Assets.xcassets in Resources */,
+				99D5DA1521F6F87F00E6A511 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		99C8DD82216ACD6200627E8A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Authentication.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Authentication.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		992C53B92150C59B0076949C /* Sources */ = {
@@ -520,12 +479,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99E66D6A21E13BE100C6E3E1 /* Sources */ = {
+		99D5DA0921F6F87F00E6A511 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99E66D7321E13BE100C6E3E1 /* ViewController.swift in Sources */,
-				99E66D7121E13BE100C6E3E1 /* AppDelegate.swift in Sources */,
+				99D5DA1221F6F87F00E6A511 /* ViewController.swift in Sources */,
+				99D5DA1021F6F87F00E6A511 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,26 +496,26 @@
 			target = 992C53BC2150C59B0076949C /* CarSwaddleNetworkRequest */;
 			targetProxy = 992C53C82150C59B0076949C /* PBXContainerItemProxy */;
 		};
-		99E66D8121E13C1200C6E3E1 /* PBXTargetDependency */ = {
+		99D5DA2021F6F88C00E6A511 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 99E66D6D21E13BE100C6E3E1 /* HostTestApp */;
-			targetProxy = 99E66D8021E13C1200C6E3E1 /* PBXContainerItemProxy */;
+			target = 99D5DA0C21F6F87F00E6A511 /* TestHostApp */;
+			targetProxy = 99D5DA1F21F6F88C00E6A511 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		99E66D7421E13BE100C6E3E1 /* Main.storyboard */ = {
+		99D5DA1321F6F87F00E6A511 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				99E66D7521E13BE100C6E3E1 /* Base */,
+				99D5DA1421F6F87F00E6A511 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		99E66D7921E13BE200C6E3E1 /* LaunchScreen.storyboard */ = {
+		99D5DA1821F6F88100E6A511 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				99E66D7A21E13BE200C6E3E1 /* Base */,
+				99D5DA1921F6F88100E6A511 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -690,10 +649,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -725,10 +684,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -759,9 +718,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CarSwaddleNetworkRequestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -771,8 +734,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHostApp.app/TestHostApp";
 			};
 			name = Debug;
 		};
@@ -780,9 +745,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CarSwaddleNetworkRequestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -792,53 +761,47 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHostApp.app/TestHostApp";
 			};
 			name = Release;
 		};
-		99E66D7E21E13BE200C6E3E1 /* Debug */ = {
+		99D5DA1D21F6F88100E6A511 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestHostApp/TestHostApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = HostTestApp/Info.plist;
+				INFOPLIST_FILE = TestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACH_O_TYPE = mh_dylib;
-				PRODUCT_BUNDLE_IDENTIFIER = CS.HostTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS.TestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		99E66D7F21E13BE200C6E3E1 /* Release */ = {
+		99D5DA1E21F6F88100E6A511 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TestHostApp/TestHostApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = HostTestApp/Info.plist;
+				INFOPLIST_FILE = TestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACH_O_TYPE = mh_dylib;
-				PRODUCT_BUNDLE_IDENTIFIER = CS.HostTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS.TestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -875,11 +838,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		99E66D7D21E13BE200C6E3E1 /* Build configuration list for PBXNativeTarget "HostTestApp" */ = {
+		99D5DA1C21F6F88100E6A511 /* Build configuration list for PBXNativeTarget "TestHostApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				99E66D7E21E13BE200C6E3E1 /* Debug */,
-				99E66D7F21E13BE200C6E3E1 /* Release */,
+				99D5DA1D21F6F88100E6A511 /* Debug */,
+				99D5DA1E21F6F88100E6A511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
