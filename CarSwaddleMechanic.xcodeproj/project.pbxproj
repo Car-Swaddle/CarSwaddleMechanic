@@ -90,6 +90,10 @@
 		99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
 		99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
 		99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */; };
+		99D5DA3D21F8371D00E6A511 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA3C21F8371D00E6A511 /* ReviewsViewController.swift */; };
+		99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */; };
+		99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */; };
+		99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */; };
 		99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DB721E469A000C6E3E1 /* UserImageView.swift */; };
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
@@ -210,6 +214,10 @@
 		99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilePickerViewController.storyboard; sourceTree = "<group>"; };
 		99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthViewController.storyboard; sourceTree = "<group>"; };
+		99D5DA3C21F8371D00E6A511 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewsViewController.storyboard; sourceTree = "<group>"; };
+		99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListCell.swift; sourceTree = "<group>"; };
+		99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewListCell.xib; sourceTree = "<group>"; };
 		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		99E66DB721E469A000C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
@@ -469,6 +477,7 @@
 				998D3AC521DA961A003DD717 /* Payouts */,
 				99F02796218677EE005FEFC7 /* Profile */,
 				9953AE0E21BE58E8002D099A /* Schedule */,
+				99D5DA3B21F8370800E6A511 /* Reviews */,
 				99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */,
 				99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */,
 				9912CDE5216DC8480006FDDF /* Availability */,
@@ -495,6 +504,17 @@
 				9992766321673BCC0032D7F7 /* Info.plist */,
 			);
 			path = CarSwaddleMechanicUITests;
+			sourceTree = "<group>";
+		};
+		99D5DA3B21F8370800E6A511 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				99D5DA3C21F8371D00E6A511 /* ReviewsViewController.swift */,
+				99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */,
+				99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */,
+				99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */,
+			);
+			path = Reviews;
 			sourceTree = "<group>";
 		};
 		99E66DB621E4698A00C6E3E1 /* Reuseable UI */ = {
@@ -690,10 +710,12 @@
 				997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				99A3A87E21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard in Resources */,
+				99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
 				99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */,
 				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
+				99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
 				99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */,
 				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
@@ -800,7 +822,9 @@
 				99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
+				99D5DA3D21F8371D00E6A511 /* ReviewsViewController.swift in Sources */,
 				99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */,
+				99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
 				998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,

@@ -106,6 +106,7 @@
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="serviceRegion" inverseEntity="Mechanic" syncable="YES"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="rating" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="revieweeID" attributeType="String" syncable="YES"/>
@@ -196,7 +197,7 @@
         <element name="Price" positionX="-9" positionY="90" width="128" height="105"/>
         <element name="PricePart" positionX="0" positionY="108" width="128" height="90"/>
         <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
-        <element name="Review" positionX="-27" positionY="108" width="128" height="180"/>
+        <element name="Review" positionX="-27" positionY="108" width="128" height="195"/>
         <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>

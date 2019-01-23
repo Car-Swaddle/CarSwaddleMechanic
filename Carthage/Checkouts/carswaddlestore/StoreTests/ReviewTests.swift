@@ -26,7 +26,7 @@ class ReviewTests: XCTestCase {
 }
 
 
-private let regionWeirdJSON: [String: Any] = ["longitude": -111.827039492261, "createdAt": "2018-11-13T07:14:14.453Z", "firstName": "Rupert", "radius": 360, "isActive": 1, "updatedAt": "2018-11-13T07:14:14.460Z", "distance": 0, "lastName": "Rolph", "latitude": 40.38754862123388, "id": "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f", "userID": "2e8ec720-e702-11e8-9a16-6dd8a1b37c0f", "phoneNumber": "801-111-1111", "regionID": "28114f80-e716-11e8-bfed-87ccb8fe8373"]
+private let regionWeirdJSON: [String: Any] = ["longitude": -111.827039492261, "createdAt": "2018-11-13T07:14:14.453Z", "firstName": "Rupert", "radius": 360, "isActive": 1, "updatedAt": "2018-11-13T07:14:14.460Z", "distance": 0, "lastName": "Rolph", "latitude": 40.38754862123388, "id": "5c00fe80-e702-11e8-9a16-6dd8a1b37c0f", "userID": "2e8ec720-e702-11e8-9a16-6dd8a1b37c0f", "phoneNumber": "801-111-1111", "regionID": "28114f80-e716-11e8-bfed-87ccb8fe8373", ]
 
 private let reviewJSON: [String: Any] = [
     "id": "45f279e0-0e42-11e9-834e-458588e04d18",

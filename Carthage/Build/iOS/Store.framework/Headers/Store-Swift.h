@@ -449,6 +449,7 @@ SWIFT_CLASS_NAMED("Review")
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @property (nonatomic, strong) AutoService * _Nullable autoServiceFromMechanic;
 @property (nonatomic, strong) AutoService * _Nullable autoServiceFromUser;
+@property (nonatomic, copy) NSDate * _Nonnull creationDate;
 @end
 
 

@@ -25,6 +25,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         case bankAccount
         case documents
         case dateOfBirth
+        case reviews
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -71,13 +72,30 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private func updateData(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         store.privateContext { [weak self] context in
+            var completionError: Error?
+            let group = DispatchGroup()
+            group.enter()
             self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
                 store.mainContext { mainContext in
                     if let userObjectID = userObjectID {
                         self?.user = mainContext.object(with: userObjectID) as? User
                     }
-                    completion(error)
+                    completionError = error
+                    group.leave()
                 }
+            }
+            
+            group.enter()
+            self?.mechanicNetwork.getCurrentMechanic(in: context) { mechanicObjectID, error in
+                completionError = error
+                group.leave()
+            }
+            
+            group.notify(queue: DispatchQueue.main) {
+                if let mechanic = self?.user?.mechanic {
+                    self?.headerView.configure(with: mechanic)
+                }
+                completion(completionError)
             }
         }
     }
@@ -141,7 +159,7 @@ extension ProfileViewController: UITableViewDelegate {
         switch row {
         case .firstName, .lastName:
             let viewController = NameViewController.viewControllerFromStoryboard()
-            navigationController?.show(viewController, sender: nil)
+            show(viewController, sender: nil)
         case .serviceRegion:
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
@@ -165,6 +183,9 @@ extension ProfileViewController: UITableViewDelegate {
             show(viewController, sender: self)
         case .dateOfBirth:
             let viewController = DateOfBirthViewController.viewControllerFromStoryboard()
+            show(viewController, sender: self)
+        case .reviews:
+            let viewController = ReviewsViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
         }
     }
@@ -230,6 +251,11 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.descriptionText = nil
                 cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
             }
+            return cell
+        case .reviews:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueText = NSLocalizedString("Reviews", comment: "Description of row")
+            cell.descriptionText = nil
             return cell
         }
     }

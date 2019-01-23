@@ -26,6 +26,7 @@ extension Review {
     @NSManaged public var mechanic: Mechanic?
     @NSManaged public var autoServiceFromMechanic: AutoService?
     @NSManaged public var autoServiceFromUser: AutoService?
+    @NSManaged public var creationDate: Date
     
     public var autoService: AutoService? {
         return autoServiceFromMechanic ?? autoServiceFromUser
