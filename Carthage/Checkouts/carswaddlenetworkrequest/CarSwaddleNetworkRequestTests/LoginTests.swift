@@ -131,3 +131,25 @@ class LoginTests: XCTestCase {
 //    }
 
 }
+
+class LogoutTests: CarSwaddleLoginTestCase {
+    
+    private let authService = AuthService(serviceRequest: serviceRequest)
+    
+    func testLogout() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        //        authService.mechanicLogin(email: "kasdofi37@kasdfopi7.com", password: password) { json, token, error in
+//        authService.login(email: "user@carswaddle.com", password: "password") { json, token, error in
+//            XCTAssert(token != nil, "Token nil")authService.logout(deviceToken: "some string") { error in
+                //            XCTAssert(token == nil, "Should not have logged in incorrect email")
+        authService.logout(deviceToken: "some token") { error in
+                XCTAssert(error == nil, "Should not have error")
+                exp.fulfill()
+            }
+//        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+}

@@ -87,11 +87,12 @@ public class Auth {
     public func logout(deviceToken: String?, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
         NotificationCenter.default.post(name: .willLogout, object: nil)
         let token = authentication.token
-        authentication.removeToken()
-        return authService.logout(deviceToken: deviceToken) { error in
+        let logoutService = authService.logout(deviceToken: deviceToken) { [weak self] error in
+            self?.authentication.removeToken()
             NotificationCenter.default.post(name: .didLogout, object: ["previousToken": token])
             completion(error)
         }
+        return logoutService
     }
     
     public var isLoggedIn: Bool {

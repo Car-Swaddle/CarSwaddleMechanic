@@ -104,6 +104,7 @@ extension PersonalInformationViewController: UITableViewDataSource {
             let cell: PersonalInformationCell = tableView.dequeueCell()
             cell.label.text = self.title(for: row)
             cell.textField.text = valueText(for: row)
+            
             cell.didChangeText = { [weak self] text in
                 switch row {
                 case .addressLine1: self?.address?.line1 = text

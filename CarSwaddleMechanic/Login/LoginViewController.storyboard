@@ -17,17 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yaW-ne-adL">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yaW-ne-adL">
                                 <rect key="frame" x="16" y="196" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDE-Gt-fuK">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDE-Gt-fuK">
                                 <rect key="frame" x="16" y="242" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartQuotesType="no" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4r-Aw-I5N">
                                 <rect key="frame" x="168.5" y="292" width="38" height="30"/>
@@ -36,26 +36,6 @@
                                     <action selector="didTapLogin" destination="UcH-pF-gFQ" eventType="touchUpInside" id="8Gn-rM-6Zb"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fTQ-TD-kNT">
-                                <rect key="frame" x="99" y="616" width="177" height="31"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="768" text="use local server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giK-XW-2vm">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="31"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cm-WI-WZB">
-                                        <rect key="frame" x="128" y="0.0" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="didSwitch:" destination="UcH-pF-gFQ" eventType="valueChanged" id="BEE-TY-EjF"/>
-                                        </connections>
-                                    </switch>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="sZY-U6-wHE"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -63,9 +43,7 @@
                             <constraint firstItem="yaW-ne-adL" firstAttribute="leading" secondItem="Ycq-zV-y3T" secondAttribute="leading" constant="16" id="60J-5q-xaI"/>
                             <constraint firstItem="Ycq-zV-y3T" firstAttribute="trailing" secondItem="yaW-ne-adL" secondAttribute="trailing" constant="16" id="Fph-jC-Tjp"/>
                             <constraint firstItem="Ycq-zV-y3T" firstAttribute="trailing" secondItem="IDE-Gt-fuK" secondAttribute="trailing" constant="16" id="GuC-M0-Rfu"/>
-                            <constraint firstItem="fTQ-TD-kNT" firstAttribute="centerX" secondItem="Ycq-zV-y3T" secondAttribute="centerX" id="Jku-Up-fll"/>
                             <constraint firstItem="IDE-Gt-fuK" firstAttribute="top" secondItem="yaW-ne-adL" secondAttribute="bottom" constant="16" id="WZ8-Od-E2d"/>
-                            <constraint firstItem="Ycq-zV-y3T" firstAttribute="bottom" secondItem="fTQ-TD-kNT" secondAttribute="bottom" constant="20" id="cLe-tL-vap"/>
                             <constraint firstItem="i4r-Aw-I5N" firstAttribute="centerX" secondItem="Ycq-zV-y3T" secondAttribute="centerX" id="dUc-Yj-3tJ"/>
                             <constraint firstItem="IDE-Gt-fuK" firstAttribute="leading" secondItem="Ycq-zV-y3T" secondAttribute="leading" constant="16" id="fHh-Ku-h3d"/>
                             <constraint firstItem="i4r-Aw-I5N" firstAttribute="top" secondItem="IDE-Gt-fuK" secondAttribute="bottom" constant="20" id="qEq-Uf-vEn"/>
@@ -75,7 +53,6 @@
                     <connections>
                         <outlet property="emailTextField" destination="yaW-ne-adL" id="9aF-0J-jDc"/>
                         <outlet property="passwordTextField" destination="IDE-Gt-fuK" id="Y37-AG-H9f"/>
-                        <outlet property="testServerSwitch" destination="1Cm-WI-WZB" id="eXk-GC-ZYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gou-wS-56y" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -46,11 +46,29 @@ final class Navigator: NSObject {
         appDelegate.window?.rootViewController = navigator.initialViewController()
         appDelegate.window?.makeKeyAndVisible()
         
+        #if DEBUG
+        let tripleTap = UITapGestureRecognizer(target: self, action: #selector(Navigator.didTripleTap))
+        tripleTap.numberOfTapsRequired = 3
+//        tripleTap.numberOfTouchesRequired = 2
+        appDelegate.window?.addGestureRecognizer(tripleTap)
+        #endif
+        
         if AuthController().token != nil {
             pushNotificationController.requestPermission()
             showRequiredScreensIfNeeded()
         }
     }
+    
+    #if DEBUG
+    
+    @objc private func didTripleTap() {
+        let tweakViewController = TweakViewController.viewControllerFromStoryboard()
+        let navigationController = tweakViewController.inNavigationController()
+        
+        appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
+    }
+    
+    #endif
     
     private func showRequiredScreensIfNeeded() {
 //        guard let userID = User.currentUserID else { return }
@@ -131,7 +149,7 @@ final class Navigator: NSObject {
         }
     }
     
-    public func navigateToLoggedOutViewController() {
+    public func navigateToLoggedOutViewController(animated: Bool = true) {
         guard let window = appDelegate.window,
             let rootViewController = window.rootViewController else { return }
         let signUp = SignUpViewController.viewControllerFromStoryboard()
@@ -139,12 +157,16 @@ final class Navigator: NSObject {
         newViewController.view.frame = rootViewController.view.frame
         newViewController.view.layoutIfNeeded()
         
-        // TODO: Remove token
-        
-        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+        if animated {
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = newViewController
+            }) { [weak self] completed in
+                self?.removeUI()
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            }
+        } else {
             window.rootViewController = newViewController
-        }) { [weak self] completed in
-            self?.removeUI()
+            removeUI()
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }

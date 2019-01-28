@@ -38,9 +38,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         mechanicImageView.configure(withMechanicID: mechanic.identifier)
         self.nameLabel.text = mechanic.user?.displayName
         let mechanicID = mechanic.identifier
-        if let stats = mechanic.stats {
-            configure(with: stats)
-        }
+        configure(with: mechanic.stats)
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.getStats(mechanicID: mechanicID, in: privateContext) { mechanicObjectID, error in
                 store.mainContext { mainContext in
@@ -75,6 +73,14 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         delegate?.presentAlert(alert: alert, headerView: self)
     }
     
+    private func configure(with stats: Stats?) {
+        if let stats = stats {
+            configure(with: stats)
+        } else {
+            configureForEmpty()
+        }
+    }
+    
     private func configure(with stats: Stats) {
         let averageRating = stats.averageRating
         self.starRatingView.rating = averageRating
@@ -84,6 +90,18 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         ratingsLabel.text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
         
         servicesProvidedLabel.text = String(format: formatServicesString, stats.autoServicesProvided)
+    }
+    
+    private func configureForEmpty() {
+        let averageRating = 0.0
+        self.starRatingView.rating = averageRating
+        
+        let numberOfRatings = 0
+        let averageRatingString = ratingFormatter.string(from: NSNumber(value: averageRating)) ?? ""
+        ratingsLabel.text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
+        
+        let autoServicesProvided = 0
+        servicesProvidedLabel.text = String(format: formatServicesString, autoServicesProvided)
     }
     
     private var cameraAction: UIAlertAction {

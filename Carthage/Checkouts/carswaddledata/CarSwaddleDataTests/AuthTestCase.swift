@@ -39,5 +39,21 @@ class AuthTestCase: XCTestCase {
         }
         waitForExpectations(timeout: 40, handler: nil)
     }
+    
+}
 
+
+class LogoutTests: LoginTestCase {
+    
+    let authService = Auth(serviceRequest: serviceRequest)
+    
+    func testLogout() {
+        let exp = expectation(description: "The exp")
+        authService.logout(deviceToken: "deviceToken") { error in
+            XCTAssert(error == nil, "Should have no error: \(String(describing: error))")
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }

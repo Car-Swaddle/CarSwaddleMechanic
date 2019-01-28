@@ -94,6 +94,18 @@
 		99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */; };
 		99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */; };
 		99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */; };
+		99D5DA4521FD15BD00E6A511 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */; };
+		99D5DA4C21FE661900E6A511 /* TweakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4B21FE661900E6A511 /* TweakViewController.swift */; };
+		99D5DA4E21FE662400E6A511 /* TweakViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA4D21FE662400E6A511 /* TweakViewController.storyboard */; };
+		99D5DA5021FE669700E6A511 /* Tweak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4F21FE669700E6A511 /* Tweak.swift */; };
+		99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5121FE689400E6A511 /* TweakValues.swift */; };
+		99D5DA5621FE6AE300E6A511 /* TweakStringValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5421FE6AE300E6A511 /* TweakStringValueCell.swift */; };
+		99D5DA5721FE6AE300E6A511 /* TweakStringValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA5521FE6AE300E6A511 /* TweakStringValueCell.xib */; };
+		99D5DA5921FE741600E6A511 /* TweakSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5821FE741600E6A511 /* TweakSelectViewController.swift */; };
+		99D5DA5B21FE742000E6A511 /* TweakSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA5A21FE742000E6A511 /* TweakSelectViewController.storyboard */; };
+		99D5DA5F21FE74B000E6A511 /* TweakSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5D21FE74B000E6A511 /* TweakSelectCell.swift */; };
+		99D5DA6021FE74B000E6A511 /* TweakSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA5E21FE74B000E6A511 /* TweakSelectCell.xib */; };
+		99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA6121FE87F200E6A511 /* Logout.swift */; };
 		99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DB721E469A000C6E3E1 /* UserImageView.swift */; };
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
@@ -218,6 +230,18 @@
 		99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewsViewController.storyboard; sourceTree = "<group>"; };
 		99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListCell.swift; sourceTree = "<group>"; };
 		99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewListCell.xib; sourceTree = "<group>"; };
+		99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		99D5DA4B21FE661900E6A511 /* TweakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakViewController.swift; sourceTree = "<group>"; };
+		99D5DA4D21FE662400E6A511 /* TweakViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TweakViewController.storyboard; sourceTree = "<group>"; };
+		99D5DA4F21FE669700E6A511 /* Tweak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweak.swift; sourceTree = "<group>"; };
+		99D5DA5121FE689400E6A511 /* TweakValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakValues.swift; sourceTree = "<group>"; };
+		99D5DA5421FE6AE300E6A511 /* TweakStringValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakStringValueCell.swift; sourceTree = "<group>"; };
+		99D5DA5521FE6AE300E6A511 /* TweakStringValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweakStringValueCell.xib; sourceTree = "<group>"; };
+		99D5DA5821FE741600E6A511 /* TweakSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakSelectViewController.swift; sourceTree = "<group>"; };
+		99D5DA5A21FE742000E6A511 /* TweakSelectViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TweakSelectViewController.storyboard; sourceTree = "<group>"; };
+		99D5DA5D21FE74B000E6A511 /* TweakSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakSelectCell.swift; sourceTree = "<group>"; };
+		99D5DA5E21FE74B000E6A511 /* TweakSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweakSelectCell.xib; sourceTree = "<group>"; };
+		99D5DA6121FE87F200E6A511 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		99E66DB721E469A000C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
@@ -239,6 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D5DA4521FD15BD00E6A511 /* AuthenticationServices.framework in Frameworks */,
 				99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */,
 				99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */,
 				99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */,
@@ -270,6 +295,7 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */,
 				998D03E121F42CDC00546C58 /* Cosmos.framework */,
 				998D03DD21F42BBB00546C58 /* Authentication.framework */,
 				99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */,
@@ -472,6 +498,8 @@
 				998D3AB921D75A8B003DD717 /* Stripe.swift */,
 				99F0279D2188321D005FEFC7 /* ServiceRequest.swift */,
 				99F02791218663BB005FEFC7 /* Location.swift */,
+				99D5DA6121FE87F200E6A511 /* Logout.swift */,
+				99D5DA4A21FE660600E6A511 /* Tweaks */,
 				99675C9E21E717C3003C9D70 /* Navigation */,
 				99E66DB621E4698A00C6E3E1 /* Reuseable UI */,
 				998D3AC521DA961A003DD717 /* Payouts */,
@@ -515,6 +543,39 @@
 				99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */,
 			);
 			path = Reviews;
+			sourceTree = "<group>";
+		};
+		99D5DA4A21FE660600E6A511 /* Tweaks */ = {
+			isa = PBXGroup;
+			children = (
+				99D5DA4B21FE661900E6A511 /* TweakViewController.swift */,
+				99D5DA4D21FE662400E6A511 /* TweakViewController.storyboard */,
+				99D5DA5421FE6AE300E6A511 /* TweakStringValueCell.swift */,
+				99D5DA5521FE6AE300E6A511 /* TweakStringValueCell.xib */,
+				99D5DA5C21FE749900E6A511 /* Tweak Select */,
+				99D5DA5321FE69F200E6A511 /* Model */,
+			);
+			path = Tweaks;
+			sourceTree = "<group>";
+		};
+		99D5DA5321FE69F200E6A511 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99D5DA4F21FE669700E6A511 /* Tweak.swift */,
+				99D5DA5121FE689400E6A511 /* TweakValues.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99D5DA5C21FE749900E6A511 /* Tweak Select */ = {
+			isa = PBXGroup;
+			children = (
+				99D5DA5821FE741600E6A511 /* TweakSelectViewController.swift */,
+				99D5DA5A21FE742000E6A511 /* TweakSelectViewController.storyboard */,
+				99D5DA5D21FE74B000E6A511 /* TweakSelectCell.swift */,
+				99D5DA5E21FE74B000E6A511 /* TweakSelectCell.xib */,
+			);
+			path = "Tweak Select";
 			sourceTree = "<group>";
 		};
 		99E66DB621E4698A00C6E3E1 /* Reuseable UI */ = {
@@ -636,10 +697,16 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.AutoFillCredentialProvider = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
@@ -695,21 +762,25 @@
 				99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */,
 				9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */,
 				99A3A88721D57BF1009A1AD9 /* NameViewController.storyboard in Resources */,
+				99D5DA5721FE6AE300E6A511 /* TweakStringValueCell.xib in Resources */,
 				99F0279A21867816005FEFC7 /* ProfileServiceRegionCell.xib in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
+				99D5DA4E21FE662400E6A511 /* TweakViewController.storyboard in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
 				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
 				99675CC121EBB8E8003C9D70 /* TransactionsViewController.storyboard in Resources */,
 				997714D621D0DE2C00E54F5B /* PersonalInformationCell.xib in Resources */,
 				997714DA21D0E85100E54F5B /* DateOfBirthCell.xib in Resources */,
 				99A3A88321D57B2F009A1AD9 /* BankAccountViewController.storyboard in Resources */,
+				99D5DA5B21FE742000E6A511 /* TweakSelectViewController.storyboard in Resources */,
 				9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
 				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
 				997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				99A3A87E21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard in Resources */,
+				99D5DA6021FE74B000E6A511 /* TweakSelectCell.xib in Resources */,
 				99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */,
 				9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */,
 				99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */,
@@ -787,6 +858,7 @@
 				99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */,
 				99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */,
 				99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */,
+				99D5DA5F21FE74B000E6A511 /* TweakSelectCell.swift in Sources */,
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
@@ -800,18 +872,23 @@
 				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,
 				99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
+				99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
 				99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */,
 				9953AE1121BE5908002D099A /* AutoServiceCell.swift in Sources */,
+				99D5DA5621FE6AE300E6A511 /* TweakStringValueCell.swift in Sources */,
 				99F0279C218680A6005FEFC7 /* CLLocationDistanceExtension.swift in Sources */,
 				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
 				997714D921D0E85100E54F5B /* DateOfBirthCell.swift in Sources */,
+				99D5DA4C21FE661900E6A511 /* TweakViewController.swift in Sources */,
 				9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */,
 				9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
+				99D5DA5921FE741600E6A511 /* TweakSelectViewController.swift in Sources */,
 				998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
+				99D5DA5021FE669700E6A511 /* Tweak.swift in Sources */,
 				99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
 				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
@@ -820,6 +897,7 @@
 				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
 				99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */,
+				99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
 				99D5DA3D21F8371D00E6A511 /* ReviewsViewController.swift in Sources */,

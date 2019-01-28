@@ -105,19 +105,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         
         let title = NSLocalizedString("Logout", comment: "title of button to logout")
         let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
-            self?.auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
-                DispatchQueue.main.async {
-                    finishTasksAndInvalidate {
-                        try? store.destroyAllData()
-                        try? profileImageStore.destroy()
-                        AuthController().removeToken()
-                        pushNotificationController.deleteDeviceToken()
-                        DispatchQueue.main.async {
-                            navigator.navigateToLoggedOutViewController()
-                        }
-                    }
-                }
-            }
+            logout.logout()
         }
         
         actionController.addAction(logoutAction)

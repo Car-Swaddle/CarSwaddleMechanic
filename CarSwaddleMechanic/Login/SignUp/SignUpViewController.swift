@@ -29,7 +29,13 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.didTapScreen))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func didTapScreen() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     @IBAction private func didTapSignUp() {

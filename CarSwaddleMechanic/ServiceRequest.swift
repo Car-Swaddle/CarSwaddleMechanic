@@ -16,23 +16,38 @@ private let localDomain = "127.0.0.1"
 private let localDomain = "Kyles-MacBook-Pro.local"
 #endif
 
-private let hostedDomain = "car-swaddle.herokuapp.com"
+//private let hostedDomain = "car-swaddle.herokuapp.com"
+private let hostedDomain = "www.carswaddle.com"
 
 
 private let useLocalServerKey = "useLocalServer"
 
-public var useLocalServer: Bool {
-    get {
-        return UserDefaults.standard.bool(forKey: useLocalServerKey)
-    }
-    set {
-        UserDefaults.standard.set(newValue, forKey: useLocalServerKey)
-    }
+private let domainUserDefaultsKey = "domain"
+
+extension Tweak {
+    
+    private static let domainOptions = Tweak.Options.string(values: [localDomain, hostedDomain])
+    static let domain: Tweak = {
+        let valueDidChange: (_ tweak: Tweak) -> Void = { tweak in
+            _serviceRequest = nil
+        }
+        let domain = Tweak(label: "Domain", options: Tweak.domainOptions, userDefaultsKey: domainUserDefaultsKey, valueDidChange: valueDidChange, defaultValue: hostedDomain, requiresAppReset: true)
+        return domain
+    }()
+    
 }
 
 
+//public var domain: String {
+//    get {
+//        return UserDefaults.standard.string(forKey: domainUserDefaultsKey) ?? localDomain
+//    }
+//    set {
+//        UserDefaults.standard.set(newValue, forKey: domainUserDefaultsKey)
+//    }
+//}
 
-var _serviceRequest: Request?
+fileprivate var _serviceRequest: Request?
 public var serviceRequest: Request {
     if let _serviceRequest = _serviceRequest {
         return _serviceRequest
@@ -43,14 +58,15 @@ public var serviceRequest: Request {
 }
 
 public func createServiceRequest() -> Request {
-    if useLocalServer {
-        let request = Request(domain: localDomain)
+    let domain = (Tweak.domain.value as? String) ?? hostedDomain
+    if domain == localDomain {
+        let request = Request(domain: domain)
         request.port = 3000
         request.timeout = 15
         request.defaultScheme = .http
         return request
     } else {
-        let request = Request(domain: hostedDomain)
+        let request = Request(domain: domain)
         request.timeout = 15
         request.defaultScheme = .https
         return request

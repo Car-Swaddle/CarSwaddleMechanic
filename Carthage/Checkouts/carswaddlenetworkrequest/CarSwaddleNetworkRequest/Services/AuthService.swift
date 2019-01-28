@@ -10,7 +10,7 @@ import Foundation
 
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let login = Request.Endpoint(rawValue: "/login")
-    fileprivate static let logout = Request.Endpoint(rawValue: "/logout")
+    fileprivate static let logout = Request.Endpoint(rawValue: "/api/logout")
     fileprivate static let signup = Request.Endpoint(rawValue: "/signup")
 }
 
@@ -50,7 +50,7 @@ public class AuthService: Service {
             json["deviceToken"] = deviceToken
         }
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
-            let urlRequest = serviceRequest.post(with: .logout, body: body) else { return nil }
+            let urlRequest = serviceRequest.post(with: .logout, body: body, contentType: .applicationJSON) else { return nil }
         let task = self.sendWithAuthentication(urlRequest: urlRequest) { data, error in
             completion(error)
         }
