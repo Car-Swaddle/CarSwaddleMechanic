@@ -33,7 +33,7 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     private let stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
     private var rows: [Row] = Row.allCases
     
-    private var verification: Verification? {
+    private var verification: Verification? = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.verification {
         didSet {
             tableView.reloadData()
         }
@@ -57,6 +57,7 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     private func setupTableView() {
         tableView.register(ProfileDataCell.self)
         tableView.tableFooterView = UIView()
+        tableView.refreshControl = refreshControl
     }
     
     private func requestData(completion: @escaping () -> Void = {}) {
