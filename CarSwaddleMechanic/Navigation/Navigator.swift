@@ -95,7 +95,7 @@ final class Navigator: NSObject {
         }
         
         if currentMechanic?.dateOfBirth == nil {
-            let dateOfBirth = DateOfBirthViewController.viewControllerFromStoryboard()
+            let dateOfBirth = DateOfBirthViewController.create(with: currentMechanic?.dateOfBirth)
             viewControllers.append(dateOfBirth)
         }
         

@@ -39,7 +39,7 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        accessoryType = .disclosureIndicator
     }
     
 }

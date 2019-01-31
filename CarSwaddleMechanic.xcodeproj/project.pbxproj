@@ -49,8 +49,8 @@
 		99675CC721EBBB36003C9D70 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC521EBBB36003C9D70 /* TransactionCell.xib */; };
 		99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CC821EBBC7A003C9D70 /* PayoutCell.swift */; };
 		99675CCB21EBBC7A003C9D70 /* PayoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC921EBBC7A003C9D70 /* PayoutCell.xib */; };
-		997714D021D0DADE00E54F5B /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */; };
-		997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */; };
+		997714D021D0DADE00E54F5B /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714CF21D0DADE00E54F5B /* AddressViewController.swift */; };
+		997714D221D0DAE900E54F5B /* AddressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997714D121D0DAE900E54F5B /* AddressViewController.storyboard */; };
 		997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */; };
 		997714D621D0DE2C00E54F5B /* PersonalInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997714D421D0DE2C00E54F5B /* PersonalInformationCell.xib */; };
 		997714D921D0E85100E54F5B /* DateOfBirthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D721D0E85100E54F5B /* DateOfBirthCell.swift */; };
@@ -82,6 +82,10 @@
 		99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */; };
 		99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */; };
 		99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */; };
+		99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */; };
+		99B3FA7C2202C97F00D9887F /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */; };
+		99B3FA7F2202CF3600D9887F /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA7D2202CF3600D9887F /* LogoutCell.swift */; };
+		99B3FA802202CF3600D9887F /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99B3FA7E2202CF3600D9887F /* LogoutCell.xib */; };
 		99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03E121F42CDC00546C58 /* Cosmos.framework */; };
 		99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03DD21F42BBB00546C58 /* Authentication.framework */; };
 		99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; };
@@ -184,8 +188,8 @@
 		99675CC521EBBB36003C9D70 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
 		99675CC821EBBC7A003C9D70 /* PayoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayoutCell.swift; sourceTree = "<group>"; };
 		99675CC921EBBC7A003C9D70 /* PayoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayoutCell.xib; sourceTree = "<group>"; };
-		997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
-		997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
+		997714CF21D0DADE00E54F5B /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
+		997714D121D0DAE900E54F5B /* AddressViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressViewController.storyboard; sourceTree = "<group>"; };
 		997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationCell.swift; sourceTree = "<group>"; };
 		997714D421D0DE2C00E54F5B /* PersonalInformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInformationCell.xib; sourceTree = "<group>"; };
 		997714D721D0E85100E54F5B /* DateOfBirthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthCell.swift; sourceTree = "<group>"; };
@@ -226,6 +230,10 @@
 		99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilePickerViewController.storyboard; sourceTree = "<group>"; };
 		99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthViewController.storyboard; sourceTree = "<group>"; };
+		99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
+		99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
+		99B3FA7D2202CF3600D9887F /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		99B3FA7E2202CF3600D9887F /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		99D5DA3C21F8371D00E6A511 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewsViewController.storyboard; sourceTree = "<group>"; };
 		99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListCell.swift; sourceTree = "<group>"; };
@@ -349,8 +357,8 @@
 			children = (
 				9912CD8A216C6E590006FDDF /* SignUpViewController.swift */,
 				9912CDDE216DC5200006FDDF /* SignUpViewController.storyboard */,
-				997714CF21D0DADE00E54F5B /* PersonalInformationViewController.swift */,
-				997714D121D0DAE900E54F5B /* PersonalInformationViewController.storyboard */,
+				997714CF21D0DADE00E54F5B /* AddressViewController.swift */,
+				997714D121D0DAE900E54F5B /* AddressViewController.storyboard */,
 				99A3A87B21D56F1E009A1AD9 /* IdentificationInfoViewController.swift */,
 				99A3A87D21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard */,
 				99A3A87F21D57ACA009A1AD9 /* BankAccountViewController.swift */,
@@ -598,6 +606,8 @@
 				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
 				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
 				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
+				99B3FA7D2202CF3600D9887F /* LogoutCell.swift */,
+				99B3FA7E2202CF3600D9887F /* LogoutCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -619,6 +629,8 @@
 				9913756F21706CC500F15BEC /* ProfileViewController.storyboard */,
 				99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */,
 				99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */,
+				99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */,
+				99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */,
 				99E66DBD21E46B3400C6E3E1 /* Cell */,
 			);
 			path = Profile;
@@ -701,7 +713,7 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -710,7 +722,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -777,7 +789,7 @@
 				9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
 				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
-				997714D221D0DAE900E54F5B /* PersonalInformationViewController.storyboard in Resources */,
+				997714D221D0DAE900E54F5B /* AddressViewController.storyboard in Resources */,
 				99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */,
 				99A3A87E21D56F2B009A1AD9 /* IdentificationInfoViewController.storyboard in Resources */,
 				99D5DA6021FE74B000E6A511 /* TweakSelectCell.xib in Resources */,
@@ -787,8 +799,10 @@
 				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */,
+				99B3FA802202CF3600D9887F /* LogoutCell.xib in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
 				99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */,
+				99B3FA7C2202C97F00D9887F /* PersonalInformationViewController.storyboard in Resources */,
 				997DBC602197B5160080F42C /* NameCell.xib in Resources */,
 				998D3AC421DA07F5003DD717 /* CreateCardViewController.storyboard in Resources */,
 				9912CDDF216DC5200006FDDF /* SignUpViewController.storyboard in Resources */,
@@ -854,6 +868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B3FA7F2202CF3600D9887F /* LogoutCell.swift in Sources */,
 				99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */,
 				99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */,
 				99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */,
@@ -863,10 +878,11 @@
 				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
 				9953AE1421BFBF8A002D099A /* AutoServiceDetailsViewController.swift in Sources */,
-				997714D021D0DADE00E54F5B /* PersonalInformationViewController.swift in Sources */,
+				997714D021D0DADE00E54F5B /* AddressViewController.swift in Sources */,
 				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
+				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
 				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
 				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,

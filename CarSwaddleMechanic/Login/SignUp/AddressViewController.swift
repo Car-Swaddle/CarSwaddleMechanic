@@ -15,7 +15,7 @@ import CarSwaddleData
 
 private let localAddressID = "localAddressID"
 
-final class PersonalInformationViewController: UIViewController, StoryboardInstantiating {
+final class AddressViewController: UIViewController, StoryboardInstantiating {
 
     @IBOutlet private weak var tableView: UITableView!
     
@@ -53,6 +53,12 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     @IBAction private func didTapSave() {
         guard let address = address else { return }
         
+        address.city = address.city?.trimmingCharacters(in: [" "])
+        address.postalCode = address.postalCode?.trimmingCharacters(in: [" "])
+        address.state = address.state?.trimmingCharacters(in: [" "])
+        address.line1 = address.line1?.trimmingCharacters(in: [" "])
+        address.managedObjectContext?.persist()
+        
         let previousButton = navigationItem.rightBarButtonItem
         let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
         navigationItem.rightBarButtonItem = spinButton
@@ -74,24 +80,24 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
         }
     }
     
-    @IBAction private func didTapLogout() {
-        auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
-            DispatchQueue.main.async {
-                finishTasksAndInvalidate {
-                    try? store.destroyAllData()
-                    AuthController().removeToken()
-                    pushNotificationController.deleteDeviceToken()
-                    DispatchQueue.main.async {
-                        navigator.navigateToLoggedOutViewController()
-                    }
-                }
-            }
-        }
-    }
+//    @IBAction private func didTapLogout() {
+//        auth.logout(deviceToken: pushNotificationController.getDeviceToken()) { error in
+//            DispatchQueue.main.async {
+//                finishTasksAndInvalidate {
+//                    try? store.destroyAllData()
+//                    AuthController().removeToken()
+//                    pushNotificationController.deleteDeviceToken()
+//                    DispatchQueue.main.async {
+//                        navigator.navigateToLoggedOutViewController()
+//                    }
+//                }
+//            }
+//        }
+//    }
     
 }
 
-extension PersonalInformationViewController: UITableViewDataSource {
+extension AddressViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rows.count
@@ -104,6 +110,7 @@ extension PersonalInformationViewController: UITableViewDataSource {
             let cell: PersonalInformationCell = tableView.dequeueCell()
             cell.label.text = self.title(for: row)
             cell.textField.text = valueText(for: row)
+            configure(for: cell.textField, row: row)
             
             cell.didChangeText = { [weak self] text in
                 switch row {
@@ -136,9 +143,32 @@ extension PersonalInformationViewController: UITableViewDataSource {
         }
     }
     
+    private func configure(for textField: UITextField, row: Row) {
+        switch row {
+        case .addressLine1:
+            textField.autocapitalizationType = .words
+            textField.autocorrectionType = .no
+            textField.textContentType = .streetAddressLine1
+        case .city:
+            textField.autocapitalizationType = .words
+            textField.autocorrectionType = .no
+            textField.textContentType = .addressCity
+        case .postalCode:
+            textField.autocapitalizationType = .none
+            textField.keyboardType = .asciiCapableNumberPad
+            textField.autocorrectionType = .no
+            textField.textContentType = .postalCode
+        case .state:
+            textField.autocapitalizationType = .words
+            textField.autocorrectionType = .yes
+            textField.textContentType = .addressState
+        }
+        textField.smartInsertDeleteType = .yes
+    }
+    
 }
 
-extension PersonalInformationViewController: UITableViewDelegate {
+extension AddressViewController: UITableViewDelegate {
     
     
     

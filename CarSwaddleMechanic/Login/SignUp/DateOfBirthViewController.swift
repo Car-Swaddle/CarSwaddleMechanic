@@ -25,14 +25,31 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
     
     private let mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
+    static func create(with date: Date?) -> DateOfBirthViewController {
+        let viewController = DateOfBirthViewController.viewControllerFromStoryboard()
+        viewController.date = date
+        return viewController
+    }
+    
+    private var date: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let date = Date().dateByAdding(years: -18) ?? Date()
+        let pickerDate: Date
+        if let date = date {
+            pickerDate = date
+        } else {
+            pickerDate = maxDate
+        }
         
-        datePicker.maximumDate = Date().dateByAdding(years: -18)
-        datePicker.date = date
-        dateLabel.text = dateOfBirthFormatter.string(from: date)
+        datePicker.maximumDate = maxDate
+        datePicker.date = pickerDate
+        dateLabel.text = dateOfBirthFormatter.string(from: pickerDate)
+    }
+    
+    private var maxDate: Date {
+        return Date().dateByAdding(years: -18) ?? Date()
     }
 
     @IBAction private func dateDidChange(_ datePicker: UIDatePicker) {

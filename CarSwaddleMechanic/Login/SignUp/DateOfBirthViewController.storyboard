@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Date Of Birth View Controller-->
+        <!--Date of Birth-->
         <scene sceneID="RHQ-Eq-kQR">
             <objects>
                 <viewController id="IJq-bT-Byo" customClass="DateOfBirthViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wxj-z9-eTp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vfY-zw-FWf">
+                    <navigationItem key="navigationItem" title="Date of Birth" id="vfY-zw-FWf">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="N3i-1N-vQM">
                             <connections>
                                 <action selector="didTapSave" destination="IJq-bT-Byo" id="cia-wL-sM6"/>

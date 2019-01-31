@@ -39,6 +39,10 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBAction private func didTapSignUp() {
+        signUpIfPossible()
+    }
+    
+    private func signUpIfPossible() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         store.privateContext { [weak self] context in
             self?.auth.mechanicSignUp(email: email, password: password, context: context) { error in
@@ -70,6 +74,24 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     @IBAction func didTapStripeAgreement() {
         let stripeSafariViewController = SFSafariViewController(url: SignUpViewController.stripeAgreementURL, configuration: safariConfiguration)
         present(stripeSafariViewController, animated: true, completion: nil)
+    }
+    
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            signUpIfPossible()
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("called should change")
+        return true
     }
     
 }

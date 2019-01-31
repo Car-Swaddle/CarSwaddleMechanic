@@ -31,18 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xe0-Us-4zf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="h2d-rH-QPw">
-                        <barButtonItem key="leftBarButtonItem" title="Edit Schedule" id="hsr-Nl-TNt">
-                            <connections>
-                                <action selector="didSelectEditSchedule" destination="bFI-q9-vZy" id="xJg-V7-fOS"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Options" id="Hja-gA-oqx">
-                            <connections>
-                                <action selector="didSelectOptions:" destination="bFI-q9-vZy" id="PT0-Hw-y6U"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="h2d-rH-QPw"/>
                     <connections>
                         <outlet property="tableView" destination="mtM-ux-htM" id="Wp9-L2-OOU"/>
                     </connections>

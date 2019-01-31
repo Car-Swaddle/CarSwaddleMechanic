@@ -15,17 +15,20 @@ import Authentication
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private enum Row: CaseIterable {
-        case firstName
-        case lastName
-        case serviceRegion
+//        case firstName
+//        case lastName
         case mechanicActive
-        case fullSocialSecurityNumber
-        case last4OfSocialSecurityNumber
-        case address
-        case bankAccount
-        case documents
-        case dateOfBirth
+        case serviceRegion
+//        case fullSocialSecurityNumber
+//        case last4OfSocialSecurityNumber
+//        case address
+//        case bankAccount
+//        case documents
+//        case dateOfBirth
+        case schedule
+        case personalInformation
         case reviews
+        case logout
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -47,7 +50,9 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView.viewFromNib()
         view.delegate = self
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 130)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        view.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -100,11 +105,26 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         }
     }
     
-    @IBAction func didSelectOptions(_ sender: Any) {
-        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//    @IBAction func didSelectOptions(_ sender: Any) {
+//        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//
+//        let title = NSLocalizedString("Logout", comment: "title of button to logout")
+//        let logoutAction = UIAlertAction(title: title, style: .destructive) { action in
+//            logout.logout()
+//        }
+//
+//        actionController.addAction(logoutAction)
+//        actionController.addCancelAction()
+//
+//        present(actionController, animated: true, completion: nil)
+//    }
+    
+    private func didSelectLogout() {
+        let actionTitle = NSLocalizedString("Are you sure you want to logout?", comment: "String shown after user selects logout and before they actually logout")
+        let actionController = UIAlertController(title: actionTitle, message: nil, preferredStyle: .actionSheet)
         
         let title = NSLocalizedString("Logout", comment: "title of button to logout")
-        let logoutAction = UIAlertAction(title: title, style: .destructive) { [weak self] action in
+        let logoutAction = UIAlertAction(title: title, style: .destructive) { action in
             logout.logout()
         }
         
@@ -124,16 +144,13 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(NameCell.self)
         tableView.register(MechanicActiveCell.self)
         tableView.register(ProfileDataCell.self)
+        tableView.register(LogoutCell.self)
         
         tableView.tableHeaderView = headerView
+//        headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         if let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext) {
             headerView.configure(with: mechanic)
         }
-    }
-    
-    @IBAction func didSelectEditSchedule() {
-        let availability = AvailabilityViewController.create()
-        show(availability, sender: true)
     }
     
 }
@@ -145,36 +162,46 @@ extension ProfileViewController: UITableViewDelegate {
         let row = rows[indexPath.row]
         
         switch row {
-        case .firstName, .lastName:
-            let viewController = NameViewController.viewControllerFromStoryboard()
-            show(viewController, sender: nil)
+//        case .firstName, .lastName:
+//            let viewController = NameViewController.viewControllerFromStoryboard()
+//            show(viewController, sender: nil)
         case .serviceRegion:
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
         case .mechanicActive: break
-        case .address:
+        case .personalInformation:
             let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
-        case .fullSocialSecurityNumber:
-            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
-            viewController.isFullSocialSecurityNumberRequired = true
-            show(viewController, sender: self)
-        case .last4OfSocialSecurityNumber:
-            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
-            viewController.isFullSocialSecurityNumberRequired = false
-            show(viewController, sender: self)
-        case .bankAccount:
-            let viewController = BankAccountViewController.viewControllerFromStoryboard()
-            show(viewController, sender: self)
-        case .documents:
-            let viewController = FilePickerViewController.viewControllerFromStoryboard()
-            show(viewController, sender: self)
-        case .dateOfBirth:
-            let viewController = DateOfBirthViewController.viewControllerFromStoryboard()
-            show(viewController, sender: self)
+        case .schedule:
+            let availability = AvailabilityViewController.create()
+            show(availability, sender: true)
+//        case .address:
+//            let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
+//            show(viewController, sender: self)
+//        case .fullSocialSecurityNumber:
+//            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
+//            viewController.isFullSocialSecurityNumberRequired = true
+//            show(viewController, sender: self)
+//        case .last4OfSocialSecurityNumber:
+//            let viewController = IdentificationInfoViewController.viewControllerFromStoryboard()
+//            viewController.isFullSocialSecurityNumberRequired = false
+//            show(viewController, sender: self)
+//        case .bankAccount:
+//            let viewController = BankAccountViewController.viewControllerFromStoryboard()
+//            show(viewController, sender: self)
+//        case .documents:
+//            let viewController = FilePickerViewController.viewControllerFromStoryboard()
+//            show(viewController, sender: self)
+//        case .dateOfBirth:
+//            let date = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth
+//            let viewController = DateOfBirthViewController.create(with: date)
+//            show(viewController, sender: self)
         case .reviews:
             let viewController = ReviewsViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
+            
+        case .logout:
+            didSelectLogout()
         }
     }
     
@@ -188,14 +215,6 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = rows[indexPath.row]
         switch row {
-        case .firstName:
-            let cell: NameCell = tableView.dequeueCell()
-            cell.textLabel?.text = user?.firstName
-            return cell
-        case .lastName:
-            let cell: NameCell = tableView.dequeueCell()
-            cell.textLabel?.text = user?.lastName
-            return cell
         case .serviceRegion:
             let cell: ProfileServiceRegionCell = tableView.dequeueCell()
             if let region = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.serviceRegion {
@@ -205,45 +224,25 @@ extension ProfileViewController: UITableViewDataSource {
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()
             return cell
-        case .address:
+        case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.descriptionText = NSLocalizedString("Address", comment: "Description of row")
-            cell.valueText = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
-            return cell
-        case .fullSocialSecurityNumber:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Full social", comment: "Description of row")
-            cell.descriptionText = ""
-            return cell
-        case .last4OfSocialSecurityNumber:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Last 4 of social", comment: "Description of row")
-            cell.descriptionText = ""
-            return cell
-        case .bankAccount:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Bank Account", comment: "Description of row")
-            cell.descriptionText = ""
-            return cell
-        case .documents:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Documents", comment: "Description of row")
-            cell.descriptionText = ""
-            return cell
-        case .dateOfBirth:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            if let dateOfBirth = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth {
-                cell.descriptionText = NSLocalizedString("Date of Birth", comment: "Description of row")
-                cell.valueText = dateOfBirthFormatter.string(from: dateOfBirth)
-            } else {
-                cell.descriptionText = nil
-                cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
-            }
+            cell.valueText = NSLocalizedString("Schedule", comment: "Description of row")
+            cell.descriptionText = nil
             return cell
         case .reviews:
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Reviews", comment: "Description of row")
             cell.descriptionText = nil
+            return cell
+        case .personalInformation:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.valueText = NSLocalizedString("Personal Information", comment: "Description of row")
+            cell.descriptionText = nil
+            return cell
+        case .logout:
+            let cell: LogoutCell = tableView.dequeueCell()
+//            cell.valueText = NSLocalizedString("Personal Information", comment: "Description of row")
+//            cell.descriptionText = nil
             return cell
         }
     }

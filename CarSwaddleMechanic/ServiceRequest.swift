@@ -20,8 +20,6 @@ private let localDomain = "Kyles-MacBook-Pro.local"
 private let hostedDomain = "www.carswaddle.com"
 
 
-private let useLocalServerKey = "useLocalServer"
-
 private let domainUserDefaultsKey = "domain"
 
 extension Tweak {
