@@ -11,6 +11,12 @@ import CarSwaddleUI
 
 final class ProfileDataCell: UITableViewCell, NibRegisterable {
 
+    var errorViewIsHidden: Bool = true {
+        didSet {
+            updateErrorViewHiddenStatus()
+        }
+    }
+    
     var descriptionText: String? {
         didSet {
             updateText()
@@ -34,12 +40,30 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
         }
     }
     
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        updateErrorViewCornerRadius()
+    }
+    
+    private func updateErrorViewHiddenStatus() {
+        errorView.isHiddenInStackView = errorViewIsHidden
+    }
+    
+    private func updateErrorViewCornerRadius() {
+        errorView.layer.cornerRadius = errorView.frame.height / 2
+    }
+    
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var errorView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         accessoryType = .disclosureIndicator
+        updateErrorViewCornerRadius()
+        updateErrorViewHiddenStatus()
     }
+    
+    
     
 }

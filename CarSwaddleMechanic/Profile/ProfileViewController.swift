@@ -36,8 +36,10 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private var user: User? {
         didSet { tableView.reloadData() }
     }
-    private var userNetwork = UserNetwork(serviceRequest: serviceRequest)
-    private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    
+    private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
+    private let mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    private let stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
     
     private let auth = Auth(serviceRequest: serviceRequest)
     
@@ -78,6 +80,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private func updateData(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         store.privateContext { [weak self] context in
             var completionError: Error?
+            
             let group = DispatchGroup()
             group.enter()
             self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
@@ -96,10 +99,17 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
                 group.leave()
             }
             
+            group.enter()
+            self?.stripeNetwork.updateCurrentUserVerification(in: context) { verificationObjectID, error in
+                completionError = error
+                group.leave()
+            }
+            
             group.notify(queue: DispatchQueue.main) {
                 if let mechanic = self?.user?.mechanic {
                     self?.headerView.configure(with: mechanic)
                 }
+                self?.tableView.reloadData()
                 completion(completionError)
             }
         }
@@ -145,6 +155,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(MechanicActiveCell.self)
         tableView.register(ProfileDataCell.self)
         tableView.register(LogoutCell.self)
+        tableView.register(PersonalInformationStatusCell.self)
         
         tableView.tableHeaderView = headerView
 //        headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -235,9 +246,7 @@ extension ProfileViewController: UITableViewDataSource {
             cell.descriptionText = nil
             return cell
         case .personalInformation:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Personal Information", comment: "Description of row")
-            cell.descriptionText = nil
+            let cell: PersonalInformationStatusCell = tableView.dequeueCell()
             return cell
         case .logout:
             let cell: LogoutCell = tableView.dequeueCell()

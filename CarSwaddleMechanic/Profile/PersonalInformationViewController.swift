@@ -9,6 +9,7 @@
 import CarSwaddleUI
 import CoreData
 import Store
+import CarSwaddleData
 
 final class PersonalInformationViewController: UIViewController, StoryboardInstantiating {
 
@@ -23,7 +24,20 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     
     @IBOutlet private weak var tableView: UITableView!
     
+    lazy private var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(PersonalInformationViewController.didRefresh), for: .valueChanged)
+        return refresh
+    }()
+    
+    private let stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
     private var rows: [Row] = Row.allCases
+    
+    private var verification: Verification? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +45,30 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestData()
+    }
+    
+    @objc private func didRefresh() {
+        requestData()
+    }
 
     private func setupTableView() {
         tableView.register(ProfileDataCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    private func requestData(completion: @escaping () -> Void = {}) {
+        store.privateContext { [weak self] privateContext in
+            self?.stripeNetwork.updateCurrentUserVerification(in: privateContext) { verificationObjectID, error in
+                DispatchQueue.main.async {
+                    if let verificationObjectID = verificationObjectID, let verification = store.mainContext.object(with: verificationObjectID) as? Verification {
+                        self?.verification = verification
+                    }
+                }
+            }
+        }
     }
     
 }
@@ -47,34 +81,28 @@ extension PersonalInformationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch rows[indexPath.row] {
+        let cell: ProfileDataCell = tableView.dequeueCell()
+        
+        let row = rows[indexPath.row]
+        cell.errorViewIsHidden = self.shouldShowError(for: row)
+        
+        switch row {
         case .address:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             cell.descriptionText = NSLocalizedString("Address", comment: "Description of row")
             cell.valueText = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
-            return cell
         case .fullSocialSecurityNumber:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Full social", comment: "Description of row")
             cell.descriptionText = ""
-            return cell
         case .last4OfSocialSecurityNumber:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Last 4 of social", comment: "Description of row")
             cell.descriptionText = ""
-            return cell
         case .bankAccount:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Bank Account", comment: "Description of row")
             cell.descriptionText = ""
-            return cell
         case .documents:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Documents", comment: "Description of row")
             cell.descriptionText = ""
-            return cell
         case .dateOfBirth:
-            let cell: ProfileDataCell = tableView.dequeueCell()
             if let dateOfBirth = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth {
                 cell.descriptionText = NSLocalizedString("Date of Birth", comment: "Description of row")
                 cell.valueText = dateOfBirthFormatter.string(from: dateOfBirth)
@@ -82,7 +110,42 @@ extension PersonalInformationViewController: UITableViewDataSource {
                 cell.descriptionText = nil
                 cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
             }
-            return cell
+        }
+        return cell
+    }
+    
+    
+    private func shouldShowError(for row: Row) -> Bool {
+        guard let verification = verification else { return false }
+        switch row {
+        case .address:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                if field == .addressCity || field == .addressState || field == .addressLine1 || field == .addressPostalCode {
+                    return true
+                } else {
+                    return false
+                }
+            })
+        case .fullSocialSecurityNumber:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                return field == .personalIDNumber
+            })
+        case .last4OfSocialSecurityNumber:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                return field == .socialSecurityNumberLast4Digits
+            })
+        case .bankAccount:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                return field == .externalAccount
+            })
+        case .documents:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                return field == .verificationDocument
+            })
+        case .dateOfBirth:
+            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
+                return field == .birthdayYear || field == .birthdayMonth || field == .birthdayDay
+            })
         }
     }
     

@@ -52,6 +52,11 @@
 		999E9194214B81C100FF894B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9193214B81C100FF894B /* Store.swift */; };
 		99A3A87921D22871009A1AD9 /* Address+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A87721D22871009A1AD9 /* Address+CoreDataClass.swift */; };
 		99A3A87A21D22871009A1AD9 /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A87821D22871009A1AD9 /* Address+CoreDataProperties.swift */; };
+		99B3FA852202E3F800D9887F /* VerificationField+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA812202E3F800D9887F /* VerificationField+CoreDataClass.swift */; };
+		99B3FA862202E3F800D9887F /* VerificationField+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA822202E3F800D9887F /* VerificationField+CoreDataProperties.swift */; };
+		99B3FA872202E3F800D9887F /* Verification+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA832202E3F800D9887F /* Verification+CoreDataClass.swift */; };
+		99B3FA882202E3F800D9887F /* Verification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA842202E3F800D9887F /* Verification+CoreDataProperties.swift */; };
+		99B3FA8A2202ED5100D9887F /* VerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA892202ED5100D9887F /* VerificationTests.swift */; };
 		99D156CA214F73D500BFA435 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */; };
 		99DED725214B80D40061CFE0 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DED71B214B80D30061CFE0 /* Store.framework */; };
 		99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED729214B80D40061CFE0 /* StoreTests.swift */; };
@@ -122,6 +127,11 @@
 		999E9193214B81C100FF894B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		99A3A87721D22871009A1AD9 /* Address+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataClass.swift"; sourceTree = "<group>"; };
 		99A3A87821D22871009A1AD9 /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		99B3FA812202E3F800D9887F /* VerificationField+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerificationField+CoreDataClass.swift"; sourceTree = "<group>"; };
+		99B3FA822202E3F800D9887F /* VerificationField+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerificationField+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		99B3FA832202E3F800D9887F /* Verification+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Verification+CoreDataClass.swift"; sourceTree = "<group>"; };
+		99B3FA842202E3F800D9887F /* Verification+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Verification+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		99B3FA892202ED5100D9887F /* VerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationTests.swift; sourceTree = "<group>"; };
 		99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
 		99DED71B214B80D30061CFE0 /* Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DED71E214B80D30061CFE0 /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
@@ -205,6 +215,10 @@
 				991B401C216ADC5C00D7644D /* TemplateTimeSpan+CoreDataProperties.swift */,
 				991B401E216ADC5C00D7644D /* User+CoreDataClass.swift */,
 				991B4028216ADC5D00D7644D /* User+CoreDataProperties.swift */,
+				99B3FA812202E3F800D9887F /* VerificationField+CoreDataClass.swift */,
+				99B3FA822202E3F800D9887F /* VerificationField+CoreDataProperties.swift */,
+				99B3FA832202E3F800D9887F /* Verification+CoreDataClass.swift */,
+				99B3FA842202E3F800D9887F /* Verification+CoreDataProperties.swift */,
 				991B4026216ADC5C00D7644D /* Vehicle+CoreDataClass.swift */,
 				991B401F216ADC5C00D7644D /* Vehicle+CoreDataProperties.swift */,
 				991B4015216ADC5C00D7644D /* VehicleDescription+CoreDataClass.swift */,
@@ -268,6 +282,7 @@
 				99F0278F21859E29005FEFC7 /* RegionTests.swift */,
 				998D3AD221DC8483003DD717 /* ReviewTests.swift */,
 				99675CAB21E9E137003C9D70 /* StripeTests.swift */,
+				99B3FA892202ED5100D9887F /* VerificationTests.swift */,
 				99DED72B214B80D40061CFE0 /* Info.plist */,
 				999C8D3D218C247300058FE7 /* NSManagedObjectFetchableTests.swift */,
 			);
@@ -402,12 +417,15 @@
 				997DBC84219FF4FC0080F42C /* ServiceEntity+CoreDataProperties.swift in Sources */,
 				99675CB821EB0059003C9D70 /* Transaction+CoreDataProperties.swift in Sources */,
 				9913759A217080D900F15BEC /* CarSwaddleStore.xcdatamodeld in Sources */,
+				99B3FA872202E3F800D9887F /* Verification+CoreDataClass.swift in Sources */,
 				991B4036216ADC5D00D7644D /* VehicleDescription+CoreDataProperties.swift in Sources */,
 				99675CB721EB0059003C9D70 /* Transaction+CoreDataClass.swift in Sources */,
 				991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */,
+				99B3FA882202E3F800D9887F /* Verification+CoreDataProperties.swift in Sources */,
 				99675CA721E9DC2F003C9D70 /* Amount+CoreDataClass.swift in Sources */,
 				991B4032216ADC5D00D7644D /* User+CoreDataClass.swift in Sources */,
 				99675CA821E9DC2F003C9D70 /* Amount+CoreDataProperties.swift in Sources */,
+				99B3FA852202E3F800D9887F /* VerificationField+CoreDataClass.swift in Sources */,
 				99F0278B21858611005FEFC7 /* Region+CoreDataClass.swift in Sources */,
 				991B4034216ADC5D00D7644D /* OilChange+CoreDataClass.swift in Sources */,
 				99675CAA21E9DC2F003C9D70 /* Balance+CoreDataProperties.swift in Sources */,
@@ -436,6 +454,7 @@
 				991B402C216ADC5D00D7644D /* Mechanic+CoreDataClass.swift in Sources */,
 				991B402E216ADC5D00D7644D /* AutoService+CoreDataClass.swift in Sources */,
 				991B4039216ADC5D00D7644D /* Price+CoreDataProperties.swift in Sources */,
+				99B3FA862202E3F800D9887F /* VerificationField+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +466,7 @@
 				997DBCA621B8FD710080F42C /* MechanicTests.swift in Sources */,
 				997DBC78219BE5D00080F42C /* TemplateTimeSpanTests.swift in Sources */,
 				999C8D3E218C247300058FE7 /* NSManagedObjectFetchableTests.swift in Sources */,
+				99B3FA8A2202ED5100D9887F /* VerificationTests.swift in Sources */,
 				997DBCA421B8FD180080F42C /* UserTests.swift in Sources */,
 				99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */,
 				99F027882185820F005FEFC7 /* DateExtensionTests.swift in Sources */,

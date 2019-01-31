@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="PersonalInformationStatusCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nFk-17-fC7">
+                        <rect key="frame" x="16" y="11" width="295" height="53"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-lk-vru">
+                                <rect key="frame" x="0.0" y="16.5" width="273" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-9T-Flh">
+                                <rect key="frame" x="281" y="19.5" width="14" height="14"/>
+                                <color key="backgroundColor" red="1" green="0.1039171571" blue="0.1527470252" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aN1-9T-Flh" secondAttribute="height" multiplier="1:1" id="Y5Z-wx-3LM"/>
+                                    <constraint firstAttribute="height" constant="14" id="cvU-cO-iVp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nFk-17-fC7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2DP-fY-RgW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nFk-17-fC7" secondAttribute="trailing" id="Drc-1P-dOh"/>
+                    <constraint firstItem="nFk-17-fC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="E3s-yW-VCA"/>
+                    <constraint firstItem="nFk-17-fC7" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="hM4-9O-Zer"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="errorView" destination="aN1-9T-Flh" id="wCf-R4-X1Z"/>
+                <outlet property="titleLabel" destination="6xg-lk-vru" id="bV8-cq-pNO"/>
+            </connections>
+            <point key="canvasLocation" x="149.59999999999999" y="160.56971514242881"/>
+        </tableViewCell>
+    </objects>
+</document>

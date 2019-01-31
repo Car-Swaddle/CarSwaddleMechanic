@@ -94,16 +94,17 @@ class MechanicTests: LoginTestCase {
                 XCTAssert(mechanic?.address != nil, "Address is nil")
                 XCTAssert(mechanic?.dateOfBirth != nil, "Should be not nil")
                 
-                self?.stripeNetwork.requestVerification { verification, error in
-                    guard let verification = verification else { return }
-                    XCTAssert(verification.fieldsNeeded.contains(.addressLine1) == false, "Should not still need field")
-                    XCTAssert(verification.fieldsNeeded.contains(.addressPostalCode) == false, "Should not still need field")
-                    XCTAssert(verification.fieldsNeeded.contains(.addressCity) == false, "Should not still need field")
-                    XCTAssert(verification.fieldsNeeded.contains(.addressState) == false, "Should not still need field")
+                self?.stripeNetwork.updateCurrentUserVerification(in: context) { verificationObjectID, error in
                     
-                    XCTAssert(verification.fieldsNeeded.contains(.birthdayDay) == false, "Should not still need field")
-                    XCTAssert(verification.fieldsNeeded.contains(.birthdayMonth) == false, "Should not still need field")
-                    XCTAssert(verification.fieldsNeeded.contains(.birthdayYear) == false, "Should not still need field")
+                    guard let verificationObjectID = verificationObjectID, let verification = context.object(with: verificationObjectID) as? Verification else { return }
+                    XCTAssert(verification.typedFieldsNeeded.contains(.addressLine1) == false, "Should not still need field")
+                    XCTAssert(verification.typedFieldsNeeded.contains(.addressPostalCode) == false, "Should not still need field")
+                    XCTAssert(verification.typedFieldsNeeded.contains(.addressCity) == false, "Should not still need field")
+                    XCTAssert(verification.typedFieldsNeeded.contains(.addressState) == false, "Should not still need field")
+                    
+                    XCTAssert(verification.typedFieldsNeeded.contains(.birthdayDay) == false, "Should not still need field")
+                    XCTAssert(verification.typedFieldsNeeded.contains(.birthdayMonth) == false, "Should not still need field")
+                    XCTAssert(verification.typedFieldsNeeded.contains(.birthdayYear) == false, "Should not still need field")
                     exp.fulfill()
                 }
             }
@@ -117,9 +118,9 @@ class MechanicTests: LoginTestCase {
         
         store.privateContext { [weak self] context in
             self?.mechanicNetwork.update(externalAccount: externalAccountID, in: context) { mechanicID, error in
-                self?.stripeNetwork.requestVerification { verification, error in
-                    guard let verification = verification else { return }
-                    XCTAssert(verification.fieldsNeeded.contains(.socialSecurityNumberLast4Digits) == false, "Should not still need field")
+                self?.stripeNetwork.updateCurrentUserVerification(in: context) { verificationObjectID, error in
+                    guard let verificationObjectID = verificationObjectID, let verification = context.object(with: verificationObjectID) as? Verification else { return }
+                    XCTAssert(verification.typedFieldsNeeded.contains(.socialSecurityNumberLast4Digits) == false, "Should not still need field")
                     exp.fulfill()
                 }
             }
@@ -133,9 +134,10 @@ class MechanicTests: LoginTestCase {
         
         store.privateContext { [weak self] context in
             self?.mechanicNetwork.update(socialSecurityNumberLast4: "0000", in: context) { mechanicID, error in
-                self?.stripeNetwork.requestVerification { verification, error in
-                    guard let verification = verification else { return }
-                    XCTAssert(verification.fieldsNeeded.contains(.socialSecurityNumberLast4Digits) == false, "Should not still need field")
+                self?.stripeNetwork.updateCurrentUserVerification(in: context) { verificationObjectID, error in
+                    guard let verificationObjectID = verificationObjectID,
+                        let verification = context.object(with: verificationObjectID) as? Verification else { return }
+                    XCTAssert(verification.typedFieldsNeeded.contains(.socialSecurityNumberLast4Digits) == false, "Should not still need field")
                     exp.fulfill()
                 }
             }
@@ -149,9 +151,10 @@ class MechanicTests: LoginTestCase {
         
         store.privateContext { [weak self] context in
             self?.mechanicNetwork.update(personalIDNumber: "000000000", in: context) { mechanicID, error in
-                self?.stripeNetwork.requestVerification { verification, error in
-                    guard let verification = verification else { return }
-                    XCTAssert(verification.fieldsNeeded.contains(.personalIDNumber) == false, "Should not still need field")
+                self?.stripeNetwork.updateCurrentUserVerification(in: context) { verificationObjectID, error in
+                    guard let verificationObjectID = verificationObjectID,
+                        let verification = context.object(with: verificationObjectID) as? Verification else { return }
+                    XCTAssert(verification.typedFieldsNeeded.contains(.personalIDNumber) == false, "Should not still need field")
                     exp.fulfill()
                 }
             }

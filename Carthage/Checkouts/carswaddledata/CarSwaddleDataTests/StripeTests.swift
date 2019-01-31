@@ -16,9 +16,24 @@ class StripeTests: LoginTestCase {
     
     func testRequestVerification() {
         let exp = expectation(description: "\(#function)\(#line)")
-        self.stripeNetwork.requestVerification { verification, error in
-            XCTAssert(verification != nil, "Should have fields needed")
-            exp.fulfill()
+        store.privateContext { context in
+            self.stripeNetwork.updateCurrentUserVerification(in: context) { verification, error in
+                XCTAssert(verification != nil, "Should have fields needed")
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testDoubleRequestVerification() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { context in
+            self.stripeNetwork.updateCurrentUserVerification(in: context) { verification1, error in
+                self.stripeNetwork.updateCurrentUserVerification(in: context) { verification2, error in
+                    XCTAssert(verification2 != nil, "Should have fields needed")
+                    exp.fulfill()
+                }
+            }
         }
         waitForExpectations(timeout: 40, handler: nil)
     }

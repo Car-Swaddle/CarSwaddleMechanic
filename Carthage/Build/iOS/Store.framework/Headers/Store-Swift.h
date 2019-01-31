@@ -297,6 +297,14 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeTransactions:(NSSet * _Nonnull)values;
 @end
 
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
 @class TemplateTimeSpan;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
@@ -306,17 +314,10 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
 @end
 
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class Region;
 @class Stats;
 @class Payout;
+@class Verification;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -335,6 +336,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic, copy) NSSet<Transaction *> * _Nonnull transactions;
 @property (nonatomic, copy) NSSet<Payout *> * _Nonnull payouts;
 @property (nonatomic, copy) NSString * _Nullable identityDocumentID;
+@property (nonatomic, strong) Verification * _Nullable verification;
 @end
 
 
@@ -597,6 +599,41 @@ SWIFT_CLASS_NAMED("VehicleDescription")
 @property (nonatomic, copy) NSString * _Nonnull trim;
 @property (nonatomic, copy) NSString * _Nullable style;
 @property (nonatomic, strong) Vehicle * _Nonnull vehicle;
+@end
+
+
+SWIFT_CLASS_NAMED("Verification")
+@interface Verification : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class VerificationField;
+
+@interface Verification (SWIFT_EXTENSION(Store))
+- (void)addFieldsObject:(VerificationField * _Nonnull)value;
+- (void)removeFieldsObject:(VerificationField * _Nonnull)value;
+- (void)addFields:(NSSet * _Nonnull)values;
+- (void)removeFields:(NSSet * _Nonnull)values;
+@end
+
+
+@interface Verification (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nullable disabledReason;
+@property (nonatomic, copy) NSDate * _Nullable dueByDate;
+@property (nonatomic, copy) NSSet<VerificationField *> * _Nonnull fields;
+@property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@end
+
+
+SWIFT_CLASS_NAMED("VerificationField")
+@interface VerificationField : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface VerificationField (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull value;
+@property (nonatomic, strong) Verification * _Nullable verification;
 @end
 
 #if __has_attribute(external_source_symbol)
