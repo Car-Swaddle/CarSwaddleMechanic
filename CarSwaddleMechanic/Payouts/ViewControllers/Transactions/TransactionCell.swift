@@ -38,7 +38,7 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         netLabel.text = currencyFormatter.string(from: transaction.net.dollarValue)
         feeLabel.text = currencyFormatter.string(from: transaction.fee.dollarValue)
         totalLabel.text = currencyFormatter.string(from: transaction.amount.dollarValue)
-        dateLabel.text = monthDayYearDateFormatter.string(from: transaction.created)
+        dateLabel.text = monthDayYearDateFormatter.string(from: transaction.availableOn)
         statusLabel.text = transaction.status.localizedString
         
         bottomView.isHiddenInStackView = transaction.fee == 0
@@ -54,20 +54,6 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-    }
-    
-}
-
-
-public extension Transaction.Status {
-    
-    public var localizedString: String {
-        switch self {
-        case .pending:
-            return NSLocalizedString("Pending", comment: "Status of a transaction")
-        case .available:
-            return NSLocalizedString("Available", comment: "Status of a transaction")
-        }
     }
     
 }

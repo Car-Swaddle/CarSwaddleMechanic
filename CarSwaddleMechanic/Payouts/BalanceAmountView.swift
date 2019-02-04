@@ -50,20 +50,13 @@ final class BalanceAmountView: UIView, NibInstantiating {
     private func text(from type: Balance.AmountType) -> String {
         switch type {
         case .available: return NSLocalizedString("Available balance", comment: "label under dollar value")
-        case .pending: return NSLocalizedString("Pending balance", comment: "label under dollar value")
+        case .pending: return NSLocalizedString("Car Swaddle Account Balance", comment: "label under dollar value")
         case .reserved: return NSLocalizedString("Reserved balance", comment: "label under dollar value")
         }
     }
     
 }
 
-public extension Amount {
-    
-    public var totalDollarValue: NSDecimalNumber {
-        return NSDecimalNumber(value: Float(value)/100.0)
-    }
-    
-}
 
 final class BalanceAmountViewWrapper: UIView {
     

@@ -117,31 +117,3 @@ extension AutoServiceDetailsViewController: UITableViewDelegate {
     
     
 }
-
-
-
-extension OilType {
-    
-    var localizedString: String {
-        switch self {
-        case .blend: return NSLocalizedString("blend", comment: "synthetic blend oil type")
-        case .conventional: return NSLocalizedString("conventional", comment: "conventional oil type")
-        case .synthetic: return NSLocalizedString("synthetic", comment: "synthetic oil type")
-        }
-    }
-    
-}
-
-
-extension AutoService.Status {
-    
-    var localizedString: String {
-        switch self {
-        case .canceled: return NSLocalizedString("canceled", comment: "auto service status")
-        case .inProgress: return NSLocalizedString("in progress", comment: "auto service status")
-        case .completed: return NSLocalizedString("completed", comment: "auto service status")
-        case .scheduled: return NSLocalizedString("scheduled", comment: "auto service status")
-        }
-    }
-    
-}

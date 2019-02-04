@@ -190,18 +190,6 @@ extension TransactionsViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-public extension Transaction {
-    
-    public static func predicate(forPayoutID payoutID: String) -> NSPredicate {
-        return NSPredicate(format: "%K == %@", #keyPath(Transaction.payout.identifier), payoutID)
-    }
-    
-    public static func predicateExcluding(identifier: String) -> NSPredicate {
-        return NSPredicate(format: "%K != %@", #keyPath(Transaction.identifier), identifier)
-    }
-    
-}
-
 
 extension Int {
     

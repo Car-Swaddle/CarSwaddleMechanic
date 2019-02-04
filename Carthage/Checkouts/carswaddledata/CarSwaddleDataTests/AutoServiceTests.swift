@@ -74,12 +74,7 @@ class AutoServiceTests: LoginTestCase {
     
     func testGetAutoServicesSorted() {
         let exp = expectation(description: "\(#function)\(#line)")
-//        let context = store.mainContext
-        
         store.privateContext { pCtx in
-//            let autoService = createAutoService(scheduledDate: self.scheduledDate, in: pCtx)
-            
-//        autoServiceNetwork.createAutoService(autoService: autoService, in: context) { newAutoService, error in
             self.autoServiceNetwork.getAutoServices(limit: 10, offset: 0, sortStatus: [.completed, .inProgress], in: pCtx) { autoServiceIDs, error in
                 store.mainContext { mCtx in
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mCtx)
@@ -88,7 +83,6 @@ class AutoServiceTests: LoginTestCase {
                     exp.fulfill()
                 }
             }
-//        }
         }
         
         waitForExpectations(timeout: 40, handler: nil)

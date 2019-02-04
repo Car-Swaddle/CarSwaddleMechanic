@@ -29,6 +29,8 @@ final class ReviewListCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        cosmosView.isUserInteractionEnabled = false
+        selectionStyle = .none
     }
     
     func configure(with review: Review) {

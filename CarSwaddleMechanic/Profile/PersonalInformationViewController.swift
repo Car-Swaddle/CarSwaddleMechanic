@@ -20,6 +20,7 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
         case bankAccount
         case documents
         case dateOfBirth
+        case emailVerification
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -30,12 +31,21 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
         return refresh
     }()
     
+    private lazy var currentUser: User? = {
+        return User.currentUser(context: store.mainContext)
+    }()
+    
     private let stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
+    private let userNetwork = UserNetwork(serviceRequest: serviceRequest)
     private var rows: [Row] = Row.allCases
+    private var hasSentVerificationEmail: Bool = false
     
     private var verification: Verification? = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.verification {
         didSet {
             tableView.reloadData()
+            if let verification = verification {
+                print("verification: \(verification)")
+            }
         }
     }
     
@@ -51,23 +61,40 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
     }
     
     @objc private func didRefresh() {
-        requestData()
+        requestData { [weak self] in
+            DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
+            }
+        }
     }
 
     private func setupTableView() {
         tableView.register(ProfileDataCell.self)
+        tableView.register(EmailVerificationCell.self)
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refreshControl
     }
     
     private func requestData(completion: @escaping () -> Void = {}) {
         store.privateContext { [weak self] privateContext in
+            let group = DispatchGroup()
+            group.enter()
             self?.stripeNetwork.updateCurrentUserVerification(in: privateContext) { verificationObjectID, error in
                 DispatchQueue.main.async {
                     if let verificationObjectID = verificationObjectID, let verification = store.mainContext.object(with: verificationObjectID) as? Verification {
                         self?.verification = verification
                     }
+                    group.leave()
                 }
+            }
+            
+            group.enter()
+            self?.userNetwork.requestCurrentUser(in: privateContext) { userObjectID, error in
+                group.leave()
+            }
+            
+            group.notify(queue: DispatchQueue.main) {
+                completion()
             }
         }
     }
@@ -82,28 +109,42 @@ extension PersonalInformationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ProfileDataCell = tableView.dequeueCell()
-        
         let row = rows[indexPath.row]
-        cell.errorViewIsHidden = self.shouldShowError(for: row)
         
         switch row {
         case .address:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             cell.descriptionText = NSLocalizedString("Address", comment: "Description of row")
             cell.valueText = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address?.line1
+            return cell
         case .fullSocialSecurityNumber:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             cell.valueText = NSLocalizedString("Full social", comment: "Description of row")
             cell.descriptionText = ""
+            return cell
         case .last4OfSocialSecurityNumber:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             cell.valueText = NSLocalizedString("Last 4 of social", comment: "Description of row")
             cell.descriptionText = ""
+            return cell
         case .bankAccount:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             cell.valueText = NSLocalizedString("Bank Account", comment: "Description of row")
             cell.descriptionText = ""
+            return cell
         case .documents:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             cell.valueText = NSLocalizedString("Documents", comment: "Description of row")
             cell.descriptionText = ""
+            return cell
         case .dateOfBirth:
+            let cell: ProfileDataCell = tableView.dequeueCell()
+            cell.errorViewIsHidden = !shouldShowError(for: row)
             if let dateOfBirth = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth {
                 cell.descriptionText = NSLocalizedString("Date of Birth", comment: "Description of row")
                 cell.valueText = dateOfBirthFormatter.string(from: dateOfBirth)
@@ -111,8 +152,29 @@ extension PersonalInformationViewController: UITableViewDataSource {
                 cell.descriptionText = nil
                 cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
             }
+            return cell
+        case .emailVerification:
+//            let emailFormatString = NSLocalizedString("%@ Not verified", comment: "Description of row")
+            
+//            cell.valueText = String(format: emailFormatString, User.currentUser(context: store.mainContext)?.email ?? "")
+//            cell.descriptionText = ""
+            let cell: EmailVerificationCell = tableView.dequeueCell()
+            cell.hasSentVerificationEmail = hasSentVerificationEmail
+            cell.didSendVerificationEmail = { [weak self] in
+                self?.hasSentVerificationEmail = true
+            }
+            return cell
         }
-        return cell
+    }
+    
+    private var emailVerificationFormatString: String {
+        if currentUser?.isEmailVerified == true {
+            let emailFormatString = NSLocalizedString("%@ Not verified", comment: "Description of row")
+            return String(format: emailFormatString, currentUser?.email ?? "")
+        } else {
+            let emailFormatString = NSLocalizedString("%@ verified", comment: "Description of row")
+            return String(format: emailFormatString, currentUser?.email ?? "")
+        }
     }
     
     
@@ -120,33 +182,19 @@ extension PersonalInformationViewController: UITableViewDataSource {
         guard let verification = verification else { return false }
         switch row {
         case .address:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                if field == .addressCity || field == .addressState || field == .addressLine1 || field == .addressPostalCode {
-                    return true
-                } else {
-                    return false
-                }
-            })
+            return verification.addressRequired
         case .fullSocialSecurityNumber:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                return field == .personalIDNumber
-            })
+            return verification.socialSecurityNumberRequired
         case .last4OfSocialSecurityNumber:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                return field == .socialSecurityNumberLast4Digits
-            })
+            return verification.last4OfSocialSecurityNumberRequired
         case .bankAccount:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                return field == .externalAccount
-            })
+            return verification.bankAccountRequired
         case .documents:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                return field == .verificationDocument
-            })
+            return verification.verificationDocumentRequired
         case .dateOfBirth:
-            return verification.typedFieldsNeeded.contains(where: { (field) -> Bool in
-                return field == .birthdayYear || field == .birthdayMonth || field == .birthdayDay
-            })
+            return verification.dateOfBirthRequired
+        case .emailVerification:
+            return currentUser?.isEmailVerified == false
         }
     }
     
@@ -178,8 +226,9 @@ extension PersonalInformationViewController: UITableViewDelegate {
             let date = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth
             let viewController = DateOfBirthViewController.create(with: date)
             show(viewController, sender: self)
+        case .emailVerification:
+            break
         }
     }
     
 }
-

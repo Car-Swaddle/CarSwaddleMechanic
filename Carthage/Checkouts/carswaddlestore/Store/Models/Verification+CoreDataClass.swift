@@ -28,4 +28,44 @@ public class Verification: NSManagedObject {
         self.fields = fieldsNeeded
     }
     
+    public var addressRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            if field == .addressCity || field == .addressState || field == .addressLine1 || field == .addressPostalCode {
+                return true
+            } else {
+                return false
+            }
+        })
+    }
+    
+    public var socialSecurityNumberRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            return field == .personalIDNumber
+        })
+    }
+    
+    public var last4OfSocialSecurityNumberRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            return field == .socialSecurityNumberLast4Digits
+        })
+    }
+    
+    public var bankAccountRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            return field == .externalAccount
+        })
+    }
+    
+    public var verificationDocumentRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            return field == .verificationDocument
+        })
+    }
+    
+    public var dateOfBirthRequired: Bool {
+        return typedFieldsNeeded.contains(where: { (field) -> Bool in
+            return field == .birthdayYear || field == .birthdayMonth || field == .birthdayDay
+        })
+    }
+    
 }

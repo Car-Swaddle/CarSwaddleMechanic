@@ -27,6 +27,7 @@ class UserTests: XCTestCase {
         
         XCTAssert(user != nil, "Should have user")
         XCTAssert(user?.mechanic != nil, "Should have mechanic")
+        XCTAssert(user?.isEmailVerified == true, "Should have mechanic")
     }
     
 }
@@ -37,5 +38,6 @@ let userJSONWithMechanic: [String: Any] = [
     "lastName": "Rupertarious",
     "phoneNumber": "928-273-8726",
     "id": userID,
-    "mechanic": mechanicJSON
+    "mechanic": mechanicJSON,
+    "isEmailVerified": true
 ]

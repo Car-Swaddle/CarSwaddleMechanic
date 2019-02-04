@@ -20,8 +20,7 @@ public final class PricePart: NSManagedObject {
     
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let key = json["key"] as? String,
-            let valueString = json["value"] as? String,
-            let value = Int(valueString) else { return nil }
+            let value = json["value"] as? Int else { return nil }
         self.init(key: key, value: value, in: context)
     }
     
@@ -54,6 +53,10 @@ public final class PricePart: NSManagedObject {
             assert(false, "We do not have \(key) yet! Please add it \(#function) \(#line)")
             return nil
         }
+    }
+    
+    public var dollarValue: NSDecimalNumber {
+        return NSDecimalNumber(value: Float(value) / 100.0)
     }
     
 }

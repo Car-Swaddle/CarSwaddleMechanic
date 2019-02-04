@@ -114,20 +114,3 @@ extension TemplateTimeSpan {
     }
     
 }
-
-
-extension Weekday {
-    
-    var localizedString: String {
-        switch self {
-        case .sunday: return NSLocalizedString("Sunday", comment: "Day of the week")
-        case .monday: return NSLocalizedString("Monday", comment: "Day of the week")
-        case .tuesday: return NSLocalizedString("Tuesday", comment: "Day of the week")
-        case .wednesday: return NSLocalizedString("Wednesday", comment: "Day of the week")
-        case .thursday: return NSLocalizedString("Thursday", comment: "Day of the week")
-        case .friday: return NSLocalizedString("Friday", comment: "Day of the week")
-        case .saturday: return NSLocalizedString("Saturday", comment: "Day of the week")
-        }
-    }
-    
-}

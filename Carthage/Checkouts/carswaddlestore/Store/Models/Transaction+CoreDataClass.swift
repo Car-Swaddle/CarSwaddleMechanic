@@ -20,6 +20,16 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
     public enum Status: String {
         case pending
         case available
+        
+        public var localizedString: String {
+            switch self {
+            case .pending:
+                return NSLocalizedString("Pending", comment: "Status of a transaction")
+            case .available:
+                return NSLocalizedString("Available", comment: "Status of a transaction")
+            }
+        }
+        
     }
     
     
@@ -96,6 +106,14 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
     
     public static var currentMechanicPredicate: NSPredicate {
         return NSPredicate(format: "%K == %@", #keyPath(Transaction.mechanic.identifier), Mechanic.currentMechanicID ?? "")
+    }
+    
+    public static func predicate(forPayoutID payoutID: String) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(Transaction.payout.identifier), payoutID)
+    }
+    
+    public static func predicateExcluding(identifier: String) -> NSPredicate {
+        return NSPredicate(format: "%K != %@", #keyPath(Transaction.identifier), identifier)
     }
     
 }

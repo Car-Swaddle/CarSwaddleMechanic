@@ -54,15 +54,3 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     }
     
 }
-
-
-extension ServiceEntity.EntityType {
-    
-    var localizedString: String {
-        switch self {
-        case .oilChange:
-            return NSLocalizedString("Oil Change", comment: "Type of oil change")
-        }
-    }
-    
-}

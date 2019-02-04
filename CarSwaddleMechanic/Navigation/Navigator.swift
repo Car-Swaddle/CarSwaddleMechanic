@@ -35,7 +35,7 @@ extension Navigator {
 
 let navigator = Navigator()
 
-final class Navigator: NSObject {
+final class Navigator: NSObject, TweakViewControllerDelegate {
     
     public override init() {
         self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -49,7 +49,6 @@ final class Navigator: NSObject {
         #if DEBUG
         let tripleTap = UITapGestureRecognizer(target: self, action: #selector(Navigator.didTripleTap))
         tripleTap.numberOfTapsRequired = 3
-//        tripleTap.numberOfTouchesRequired = 2
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
         
@@ -62,10 +61,17 @@ final class Navigator: NSObject {
     #if DEBUG
     
     @objc private func didTripleTap() {
-        let tweakViewController = TweakViewController.viewControllerFromStoryboard()
+        let allTweaks = Tweak.all
+        let tweakViewController = TweakViewController.create(with: allTweaks, delegate: self)
         let navigationController = tweakViewController.inNavigationController()
         
         appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
+        if requiresAppReset {
+            logout.logout()
+        }
     }
     
     #endif

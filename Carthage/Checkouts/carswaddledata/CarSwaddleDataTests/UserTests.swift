@@ -55,7 +55,7 @@ class UserTests: LoginTestCase {
         
         store.privateContext { [weak self] context in
             self?.userNetwork.requestCurrentUser(in: context) { userObjectID, error in
-                store.mainContext{ mainContext in
+                store.mainContext { mainContext in
                     guard let userObjectID = userObjectID else {
                         XCTAssert(false, "userID doesn't exist")
                         return
@@ -75,7 +75,7 @@ class UserTests: LoginTestCase {
         let u = self.userNetwork
         
         let exp = expectation(description: "\(#function)\(#line)")
-        store.privateContext { [weak self] context in
+        store.privateContext { context in
             u.requestCurrentUser(in: context) { userObjectID, error in
                 store.mainContext{ mainContext in
                     guard let userObjectID = userObjectID else {

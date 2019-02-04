@@ -8,6 +8,7 @@
 
 import NetworkRequest
 import CarSwaddleNetworkRequest
+import CarSwaddleUI
 
 
 #if targetEnvironment(simulator)
@@ -16,7 +17,6 @@ private let localDomain = "127.0.0.1"
 private let localDomain = "Kyles-MacBook-Pro.local"
 #endif
 
-//private let hostedDomain = "car-swaddle.herokuapp.com"
 private let hostedDomain = "www.carswaddle.com"
 
 
@@ -34,16 +34,6 @@ extension Tweak {
     }()
     
 }
-
-
-//public var domain: String {
-//    get {
-//        return UserDefaults.standard.string(forKey: domainUserDefaultsKey) ?? localDomain
-//    }
-//    set {
-//        UserDefaults.standard.set(newValue, forKey: domainUserDefaultsKey)
-//    }
-//}
 
 fileprivate var _serviceRequest: Request?
 public var serviceRequest: Request {

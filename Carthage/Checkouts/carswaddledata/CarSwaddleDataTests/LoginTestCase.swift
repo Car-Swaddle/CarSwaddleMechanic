@@ -16,7 +16,7 @@ import Store
 public var currentMechanicID: String = ""
 public var currentUserID: String = ""
 
-private let email = "mechanic@carswaddle.com"
+private let email = "kkendall33@gmail.com"
 private let password = "password"
 
 class LoginTestCase: XCTestCase {
@@ -59,19 +59,29 @@ class LoginTestCase: XCTestCase {
 
 
 #if targetEnvironment(simulator)
-private let domain = "127.0.0.1"
+private let localDomain = "127.0.0.1"
 #else
-private let domain = "Kyles-MacBook-Pro.local"
+private let localDomain = "Kyles-MacBook-Pro.local"
 #endif
 
-//private let domain = "car-swaddle.herokuapp.com"
+private let hostedDomain = "car-swaddle.herokuapp.com"
+
+private var useLocalDomain = true
 
 public let serviceRequest: Request = {
-    let request = Request(domain: domain)
-    request.port = 3000
-    request.timeout = 15
-    request.defaultScheme = .http
-    return request
+    if useLocalDomain {
+        let request = Request(domain: localDomain)
+        request.port = 3000
+        request.timeout = 15
+        request.defaultScheme = .http
+        return request
+    } else {
+        let request = Request(domain: hostedDomain)
+//        request.port = 3000
+        request.timeout = 15
+        request.defaultScheme = .https
+        return request
+    }
 }()
 
 private let authentication = AuthController()

@@ -13,6 +13,7 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let updateUser = Request.Endpoint(rawValue: "/api/update-user")
     fileprivate static let user = Request.Endpoint(rawValue: "/api/user")
     fileprivate static let currentUser = Request.Endpoint(rawValue: "/api/current-user")
+    fileprivate static let sendEmailVerification = Request.Endpoint(rawValue: "/api/email/send-verification")
 }
 
 public class UserService: Service {
@@ -30,6 +31,14 @@ public class UserService: Service {
     @discardableResult
     public func getCurrentUser( completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let urlRequest = serviceRequest.get(with: .currentUser) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func sendEmailVerificationEmail(completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let urlRequest = serviceRequest.get(with: .sendEmailVerification) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)
         }

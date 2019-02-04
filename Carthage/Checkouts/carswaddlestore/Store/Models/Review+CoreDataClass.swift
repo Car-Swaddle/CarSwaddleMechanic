@@ -68,4 +68,17 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
         }
     }
     
+    public static var creationDateSortDescriptor: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(Review.creationDate), ascending: true)
+    }
+    
+    public static func predicateForCurrentMechanic() -> NSPredicate? {
+        guard let mechanicID = Mechanic.currentMechanicID else { return nil }
+        return Review.predicate(for: mechanicID)
+    }
+    
+    public static func predicate(for mechanicID: String) -> NSPredicate {
+        return NSPredicate(format: "%K == %@", #keyPath(Review.revieweeID), mechanicID)
+    }
+    
 }

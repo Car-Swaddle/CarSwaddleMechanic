@@ -120,6 +120,16 @@ class UserTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testSendEmailVerification() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        userService.sendEmailVerificationEmail { json, error in
+            XCTAssert(json?["email"] != nil && error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }
 
 

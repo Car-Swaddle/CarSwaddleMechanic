@@ -363,6 +363,8 @@ SWIFT_CLASS_NAMED("Payout")
 @end
 
 
+
+
 @interface Payout (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic) NSInteger amount;
@@ -532,18 +534,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 
@@ -558,6 +560,7 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic, copy) NSSet<Review *> * _Nonnull reviews;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @property (nonatomic, copy) NSString * _Nullable profileImageID;
+@property (nonatomic, copy) NSString * _Nullable email;
 @property (nonatomic) BOOL isPhoneNumberVerified;
 @property (nonatomic) BOOL isEmailVerified;
 @property (nonatomic, copy) NSString * _Nullable pushDeviceToken;

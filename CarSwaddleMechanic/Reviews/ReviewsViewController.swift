@@ -153,24 +153,3 @@ extension ReviewsViewController: NSFetchedResultsControllerDelegate {
     }
     
 }
-
-
-
-
-
-extension Review {
-    
-    static var creationDateSortDescriptor: NSSortDescriptor {
-        return NSSortDescriptor(key: #keyPath(Review.creationDate), ascending: true)
-    }
-    
-    static func predicateForCurrentMechanic() -> NSPredicate? {
-        guard let mechanicID = Mechanic.currentMechanicID else { return nil }
-        return Review.predicate(for: mechanicID)
-    }
-    
-    static func predicate(for mechanicID: String) -> NSPredicate {
-        return NSPredicate(format: "%K == %@", #keyPath(Review.revieweeID), mechanicID)
-    }
-    
-}

@@ -23,4 +23,8 @@ public class Amount: NSManagedObject {
         self.currency = currency
     }
     
+    public var totalDollarValue: NSDecimalNumber {
+        return NSDecimalNumber(value: Float(value)/100.0)
+    }
+    
 }

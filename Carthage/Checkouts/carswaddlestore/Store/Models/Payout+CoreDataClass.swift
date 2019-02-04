@@ -141,3 +141,55 @@ final public class Payout: NSManagedObject, JSONInitable, NSManagedObjectFetchab
     }
     
 }
+
+public extension Payout {
+    
+    public static func sumOfPayoutAmount(with status: Payout.Status, in context: NSManagedObjectContext) -> Int? {
+        let fetchRequest: NSFetchRequest<NSDictionary> = NSFetchRequest(entityName: Payout.entityName)
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.predicate = Payout.predicate(for: [.inTransit, .pending])
+        
+        let expressionName = "sumOfNet"
+        
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.name = expressionName
+        expressionDescription.expression = NSExpression(forKeyPath: #keyPath(Payout.amount))
+        expressionDescription.expressionResultType = NSAttributeType.decimalAttributeType
+        
+        fetchRequest.propertiesToFetch = [expressionDescription]
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            if let first = result.first as? [String: Any] {
+                return first[expressionName] as? Int
+            }
+            return nil
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    public static func fetchPayoutsInTransitOrPending(in context: NSManagedObjectContext) -> [Payout] {
+        return fetchPayouts(with: [.inTransit, .pending], in: context)
+    }
+    
+    public static func fetchPayouts(with status: [Status], in context: NSManagedObjectContext) -> [Payout] {
+        let fetchRequest: NSFetchRequest<Payout> = Payout.fetchRequest()
+        fetchRequest.sortDescriptors = [Payout.arrivalDateSortDescriptor]
+        fetchRequest.predicate = Payout.predicate(for: status)
+        return (try? context.fetch(fetchRequest)) ?? []
+    }
+    
+    public static func predicate(for status: [Status]) -> NSPredicate {
+        return NSPredicate(format: "status in %@", status.map { $0.rawValue } )
+    }
+    
+    public static func purgeAll(in context: NSManagedObjectContext) {
+        let allPayouts = Payout.fetchAllObjects(with: [Payout.arrivalDateSortDescriptor], in: context)
+        for payout in allPayouts {
+            context.delete(payout)
+        }
+    }
+    
+}

@@ -11,6 +11,15 @@
 		9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD97216C75F70006FDDF /* UIAlertControllerExtensions.swift */; };
 		9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD99216C76260006FDDF /* UIViewControllerExtension.swift */; };
 		9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD9B216C76310006FDDF /* UIViewExtension.swift */; };
+		992BFDC4220567AF006B64CC /* TweakViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992BFDB9220567AF006B64CC /* TweakViewController.storyboard */; };
+		992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDBA220567AF006B64CC /* TweakStringValueCell.swift */; };
+		992BFDC6220567AF006B64CC /* Tweak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDBC220567AF006B64CC /* Tweak.swift */; };
+		992BFDC7220567AF006B64CC /* TweakSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDBE220567AF006B64CC /* TweakSelectViewController.swift */; };
+		992BFDC8220567AF006B64CC /* TweakSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992BFDBF220567AF006B64CC /* TweakSelectViewController.storyboard */; };
+		992BFDC9220567AF006B64CC /* TweakSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDC0220567AF006B64CC /* TweakSelectCell.swift */; };
+		992BFDCA220567AF006B64CC /* TweakSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992BFDC1220567AF006B64CC /* TweakSelectCell.xib */; };
+		992BFDCB220567AF006B64CC /* TweakStringValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992BFDC2220567AF006B64CC /* TweakStringValueCell.xib */; };
+		992BFDCC220567AF006B64CC /* TweakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDC3220567AF006B64CC /* TweakViewController.swift */; };
 		995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */; };
 		995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */; };
 		99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */; };
@@ -53,6 +62,15 @@
 		9912CD97216C75F70006FDDF /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		9912CD99216C76260006FDDF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		9912CD9B216C76310006FDDF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		992BFDB9220567AF006B64CC /* TweakViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TweakViewController.storyboard; sourceTree = "<group>"; };
+		992BFDBA220567AF006B64CC /* TweakStringValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakStringValueCell.swift; sourceTree = "<group>"; };
+		992BFDBC220567AF006B64CC /* Tweak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweak.swift; sourceTree = "<group>"; };
+		992BFDBE220567AF006B64CC /* TweakSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakSelectViewController.swift; sourceTree = "<group>"; };
+		992BFDBF220567AF006B64CC /* TweakSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TweakSelectViewController.storyboard; sourceTree = "<group>"; };
+		992BFDC0220567AF006B64CC /* TweakSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakSelectCell.swift; sourceTree = "<group>"; };
+		992BFDC1220567AF006B64CC /* TweakSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakSelectCell.xib; sourceTree = "<group>"; };
+		992BFDC2220567AF006B64CC /* TweakStringValueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweakStringValueCell.xib; sourceTree = "<group>"; };
+		992BFDC3220567AF006B64CC /* TweakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakViewController.swift; sourceTree = "<group>"; };
 		995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibStoryboardInstantiating.swift; sourceTree = "<group>"; };
 		995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
 		99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegateViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +137,38 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		992BFDB82205677E006B64CC /* Tweaks */ = {
+			isa = PBXGroup;
+			children = (
+				992BFDBB220567AF006B64CC /* Model */,
+				992BFDBD220567AF006B64CC /* Tweak Select */,
+				992BFDBA220567AF006B64CC /* TweakStringValueCell.swift */,
+				992BFDC2220567AF006B64CC /* TweakStringValueCell.xib */,
+				992BFDC3220567AF006B64CC /* TweakViewController.swift */,
+				992BFDB9220567AF006B64CC /* TweakViewController.storyboard */,
+			);
+			path = Tweaks;
+			sourceTree = "<group>";
+		};
+		992BFDBB220567AF006B64CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				992BFDBC220567AF006B64CC /* Tweak.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		992BFDBD220567AF006B64CC /* Tweak Select */ = {
+			isa = PBXGroup;
+			children = (
+				992BFDBE220567AF006B64CC /* TweakSelectViewController.swift */,
+				992BFDBF220567AF006B64CC /* TweakSelectViewController.storyboard */,
+				992BFDC0220567AF006B64CC /* TweakSelectCell.swift */,
+				992BFDC1220567AF006B64CC /* TweakSelectCell.xib */,
+			);
+			path = "Tweak Select";
+			sourceTree = "<group>";
+		};
 		997012072154B14200D547C5 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +190,7 @@
 		997012132154B14200D547C5 /* CarSwaddleUI */ = {
 			isa = PBXGroup;
 			children = (
+				992BFDB82205677E006B64CC /* Tweaks */,
 				99E66D9E21E28EEB00C6E3E1 /* Location */,
 				99E66D9D21E28ED000C6E3E1 /* Generic UI */,
 				99E66CB821DDE4A000C6E3E1 /* Transition */,
@@ -295,8 +346,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992BFDCA220567AF006B64CC /* TweakSelectCell.xib in Resources */,
+				992BFDC4220567AF006B64CC /* TweakViewController.storyboard in Resources */,
 				99E66DA221E28F0100C6E3E1 /* TextCell.xib in Resources */,
 				99E66D1221DDF97900C6E3E1 /* CustomAlertContentView.xib in Resources */,
+				992BFDCB220567AF006B64CC /* TweakStringValueCell.xib in Resources */,
+				992BFDC8220567AF006B64CC /* TweakSelectViewController.storyboard in Resources */,
 				99E66D1021DDF33400C6E3E1 /* CustomAlertController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +373,7 @@
 				99E66CC421DDE60900C6E3E1 /* UITraitCollectionExtension.swift in Sources */,
 				99E66CBE21DDE4B100C6E3E1 /* DelegatingAnimatedTransition.swift in Sources */,
 				9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */,
+				992BFDC6220567AF006B64CC /* Tweak.swift in Sources */,
 				995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */,
 				99E66CBF21DDE4B100C6E3E1 /* AnimatedTransition.swift in Sources */,
 				99E66CB721DDE41000C6E3E1 /* CGSizeExtension.swift in Sources */,
@@ -326,6 +382,7 @@
 				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
 				99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */,
+				992BFDC9220567AF006B64CC /* TweakSelectCell.swift in Sources */,
 				99E66CB121DDDEE600C6E3E1 /* UIColorExtension.swift in Sources */,
 				99E66CC121DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift in Sources */,
 				9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */,
@@ -336,8 +393,11 @@
 				99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */,
 				99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */,
 				99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */,
+				992BFDCC220567AF006B64CC /* TweakViewController.swift in Sources */,
+				992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
 				99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */,
+				992BFDC7220567AF006B64CC /* TweakSelectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

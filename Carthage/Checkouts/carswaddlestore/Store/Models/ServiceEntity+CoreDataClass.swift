@@ -19,6 +19,14 @@ final public class ServiceEntity: NSManagedObject, NSManagedObjectFetchable, JSO
     
     public enum EntityType: String, CaseIterable {
         case oilChange = "OIL_CHANGE"
+        
+        public var localizedString: String {
+            switch self {
+            case .oilChange:
+                return NSLocalizedString("Oil Change", comment: "Type of oil change")
+            }
+        }
+        
     }
     
     public override func awakeFromInsert() {

@@ -57,6 +57,7 @@ class AutoServiceTests: XCTestCase {
         
         let autoService = AutoService(json: json, context: context)
         XCTAssert(autoService != nil, "It's nil")
+        XCTAssert(autoService?.reviewFromUser != nil, "It's nil")
     }
     
     func testCreateAutoServiceFromMultipleJSON() {
@@ -160,6 +161,20 @@ private let json: JSONObject = [
                 "createdAt": "2018-11-18T21:02:11.404Z",
                 "updatedAt": "2018-11-18T21:02:11.404Z"
             ]
+        ]
+    ],
+    "reviewFromUser": [
+        "createdAt": "2019-02-02T18:05:43.228Z",
+        "id": "281cbfc0-2715-11e9-b752-4147be7d783d",
+        "mechanic": [
+            "id": "27ab2eb1-2714-11e9-b752-4147be7d783d",
+        ],
+        "rating": CGFloat(5),
+        "revieweeID": "27ab2eb1-2714-11e9-b752-4147be7d783d",
+        "reviewerID": "0f0cd840-2714-11e9-b752-4147be7d783d",
+        "text": "New review",
+        "user": [
+            "id": "0f0cd840-2714-11e9-b752-4147be7d783d"
         ]
     ],
     "vehicle": [

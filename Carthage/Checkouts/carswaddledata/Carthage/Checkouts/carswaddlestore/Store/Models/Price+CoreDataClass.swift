@@ -27,8 +27,7 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
     
     private static func values(from json: JSONObject) -> PriceValues? {
         guard let id = json.identifier,
-            let totalPriceString = json["totalPrice"] as? String,
-            let totalPrice = Int(totalPriceString) else { return nil }
+            let totalPrice = json["totalPrice"] as? Int else { return nil }
         return (id, totalPrice)
     }
     
@@ -52,6 +51,10 @@ public final class Price: NSManagedObject, NSManagedObjectFetchable, JSONInitabl
         if let autoServiceID = json["autoServiceID"] as? String {
             self.autoService = AutoService.fetch(with: autoServiceID, in: context)
         }
+    }
+    
+    public var totalDollarValue: NSDecimalNumber {
+        return NSDecimalNumber(value: Float(totalPrice) / 100.0)
     }
     
 }

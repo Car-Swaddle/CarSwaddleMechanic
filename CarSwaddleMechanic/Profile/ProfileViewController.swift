@@ -287,6 +287,11 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func didSelectEditName(headerView: ProfileHeaderView) {
+        let viewController = NameViewController.viewControllerFromStoryboard()
+        show(viewController, sender: self)
+    }
+    
     func presentAlert(alert: UIAlertController, headerView: ProfileHeaderView) {
         present(alert, animated: true, completion: nil)
     }

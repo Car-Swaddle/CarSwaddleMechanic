@@ -29,6 +29,7 @@ private let formatAveragesString = NSLocalizedString("%@ avg. from %i ratings", 
 protocol ProfileHeaderViewDelegate: AnyObject {
     func didSelectCamera(headerView: ProfileHeaderView)
     func didSelectCameraRoll(headerView: ProfileHeaderView)
+    func didSelectEditName(headerView: ProfileHeaderView)
     func presentAlert(alert: UIAlertController, headerView: ProfileHeaderView)
 }
 
@@ -64,13 +65,28 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
     @IBAction private func didSelectEditButton() {
+        let editAlert = self.editAlert()
+        delegate?.presentAlert(alert: editAlert, headerView: self)
+    }
+    
+    private func cameraAlertController() -> UIAlertController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(cameraAction)
         alert.addAction(cameraRollAction)
         alert.addCancelAction()
         
-        delegate?.presentAlert(alert: alert, headerView: self)
+        return alert
+    }
+    
+    private func editAlert() -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(editProfilePictureAction)
+        alert.addAction(editNameAction)
+        alert.addCancelAction()
+        
+        return alert
     }
     
     private func configure(with stats: Stats?) {
@@ -115,6 +131,21 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         let title = NSLocalizedString("Camera Roll", comment: "Title of button when selected presents a camera")
         return UIAlertAction(title: title, style: .default) { action in
             self.delegate?.didSelectCameraRoll(headerView: self)
+        }
+    }
+    
+    private var editProfilePictureAction: UIAlertAction {
+        let title = NSLocalizedString("Edit Profile Picture", comment: "Title of button when selected presents a camera")
+        return UIAlertAction(title: title, style: .default) { action in
+            let alert = self.cameraAlertController()
+            self.delegate?.presentAlert(alert: alert, headerView: self)
+        }
+    }
+    
+    private var editNameAction: UIAlertAction {
+        let title = NSLocalizedString("Edit Name", comment: "Title of button when selected presents a camera")
+        return UIAlertAction(title: title, style: .default) { action in
+            self.delegate?.didSelectEditName(headerView: self)
         }
     }
     

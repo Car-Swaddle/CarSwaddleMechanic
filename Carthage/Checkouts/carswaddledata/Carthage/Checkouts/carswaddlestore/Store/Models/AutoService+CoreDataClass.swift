@@ -17,6 +17,16 @@ public extension AutoService {
         case canceled
         case inProgress
         case completed
+        
+        public var localizedString: String {
+            switch self {
+            case .canceled: return NSLocalizedString("canceled", comment: "auto service status")
+            case .inProgress: return NSLocalizedString("in progress", comment: "auto service status")
+            case .completed: return NSLocalizedString("completed", comment: "auto service status")
+            case .scheduled: return NSLocalizedString("scheduled", comment: "auto service status")
+            }
+        }
+        
     }
     
 }
@@ -140,6 +150,10 @@ struct StoreError: Error {
 
 extension AutoService {
     
+    public var canConvertToJSON: Bool {
+        return (try? toJSON()) != nil
+    }
+    
     public static func fetchMostRecentlyUsed(forUserID userID: String, in context: NSManagedObjectContext) -> AutoService? {
         let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest(forUserID: userID)
         fetchRequest.sortDescriptors = [recentlyUsedSort]
@@ -213,10 +227,6 @@ extension AutoService {
         return serviceEntities.first(where: { entity -> Bool in
             return entity.entityType == .oilChange
         })?.oilChange
-    }
-    
-    public var canConvertToJSON: Bool {
-        return (try? toJSON()) != nil
     }
     
 }
