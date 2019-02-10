@@ -8,6 +8,7 @@
 
 import UIKit
 import CarSwaddleUI
+import Lottie
 
 final class ProfileDataCell: UITableViewCell, NibRegisterable {
 
@@ -46,24 +47,30 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
     }
     
     private func updateErrorViewHiddenStatus() {
-        errorView.isHiddenInStackView = errorViewIsHidden
+        animationView.isHiddenInStackView = errorViewIsHidden
     }
     
     private func updateErrorViewCornerRadius() {
-        errorView.layer.cornerRadius = errorView.frame.height / 2
+//        errorView.layer.cornerRadius = errorView.frame.height / 2
     }
     
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
-    @IBOutlet private weak var errorView: UIView!
+    @IBOutlet private weak var animationView: LOTAnimationView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         accessoryType = .disclosureIndicator
         updateErrorViewCornerRadius()
         updateErrorViewHiddenStatus()
+        
+        animationView.animationSpeed = 0.7
+        animationView.loopAnimation = true
     }
     
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        animationView.play()
+    }
     
 }

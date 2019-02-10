@@ -21,6 +21,7 @@ private let domain = "Kyles-MacBook-Pro.local"
 class UserTests: LoginTestCase {
     
     let userNetwork = UserNetwork(serviceRequest: serviceRequest)
+    let userService = UserService(serviceRequest: serviceRequest)
     
     func testUpdateUser() {
         
@@ -130,6 +131,39 @@ class UserTests: LoginTestCase {
                 }
             }
         }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    
+    // Not really testing this framework, just here for convenience
+    func testSendSMS() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        userService.sendSMSVerification { error in
+            XCTAssert(error == nil, "Should not have gotten a error")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testVerifySMS() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        store.privateContext { [weak self] context in
+            self?.userNetwork.verifySMS(withCode: "7199", in: context) { userObjectID, error in
+                store.mainContext { mainContext in
+                    guard let userObjectID = userObjectID else {
+                        XCTAssert(false, "userID doesn't exist")
+                        return
+                    }
+                    let user = mainContext.object(with: userObjectID) as? User
+                    XCTAssert(user != nil && user?.isPhoneNumberVerified == true, "User doesn't exist or isPhoneNumberVerified is false")
+                    exp.fulfill()
+                }
+            }
+        }
+        
         waitForExpectations(timeout: 40, handler: nil)
     }
     

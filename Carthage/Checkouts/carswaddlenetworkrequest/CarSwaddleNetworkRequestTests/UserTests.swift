@@ -130,6 +130,36 @@ class UserTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetCurrentUser() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        userService.getCurrentUser { json, error in
+            XCTAssert(json != nil && error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testSendSMSVerification() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        userService.sendSMSVerification { error in
+            XCTAssert(error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testVerifySMS() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        userService.verifySMS(withCode: "7386") { json, error in
+            XCTAssert(json != nil && error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }
 
 

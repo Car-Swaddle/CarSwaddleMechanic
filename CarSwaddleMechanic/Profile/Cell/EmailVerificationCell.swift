@@ -9,6 +9,7 @@
 import CarSwaddleUI
 import CarSwaddleNetworkRequest
 import Store
+import Lottie
 
 final class EmailVerificationCell: UITableViewCell, NibRegisterable {
     
@@ -19,7 +20,7 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var sendEmailButton: UIButton!
     @IBOutlet private weak var emailLabel: UILabel!
-    @IBOutlet private weak var needsAttentionView: UIView!
+    @IBOutlet private weak var animationView: LOTAnimationView!
     
     private lazy var currentUser: User? = {
         return User.currentUser(context: store.mainContext)
@@ -28,8 +29,9 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        needsAttentionView.layer.cornerRadius = needsAttentionView.frame.height/2
         updateUI()
+        animationView.animationSpeed = 0.7
+        animationView.loopAnimation = true
     }
     
     override func prepareForReuse() {
@@ -48,7 +50,8 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
         UIView.performWithoutAnimation {
             self.sendEmailButton.setTitle(buttonTitle, for: .normal)
         }
-        needsAttentionView.isHiddenInStackView = !shouldShowSendVerificationButton
+        animationView.isHiddenInStackView = !shouldShowSendVerificationButton
+        animationView.play()
     }
     
     private var buttonTitle: String {

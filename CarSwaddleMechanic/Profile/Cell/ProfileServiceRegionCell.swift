@@ -14,7 +14,7 @@ class ProfileServiceRegionCell: UITableViewCell, NibRegisterable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        textLabel?.text = NSLocalizedString("Service Region", comment: "Service region cell")
+        textLabel?.text = NSLocalizedString("Set service region", comment: "Service region cell")
         accessoryType = .disclosureIndicator
     }
     

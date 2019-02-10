@@ -26,8 +26,10 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
 //        case documents
 //        case dateOfBirth
         case schedule
-        case personalInformation
+        case accountInformation
+        case contactInformation
         case reviews
+        case taxes
         case logout
     }
     
@@ -54,7 +56,6 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         view.delegate = self
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         view.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
-//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -156,9 +157,11 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(ProfileDataCell.self)
         tableView.register(LogoutCell.self)
         tableView.register(PersonalInformationStatusCell.self)
+        tableView.register(ContactInformationCell.self)
+        tableView.register(TextCell.self)
         
         tableView.tableHeaderView = headerView
-//        headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
         if let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext) {
             headerView.configure(with: mechanic)
         }
@@ -180,9 +183,12 @@ extension ProfileViewController: UITableViewDelegate {
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
         case .mechanicActive: break
-        case .personalInformation:
+        case .accountInformation:
             let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
+        case .contactInformation:
+            let contactViewController = ContactInformationViewController.viewControllerFromStoryboard()
+            show(contactViewController, sender: self)
         case .schedule:
             let availability = AvailabilityViewController.create()
             show(availability, sender: true)
@@ -210,7 +216,9 @@ extension ProfileViewController: UITableViewDelegate {
         case .reviews:
             let viewController = ReviewsViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
-            
+        case .taxes:
+            let taxesViewController = TaxesViewController.viewControllerFromStoryboard()
+            show(taxesViewController, sender: self)
         case .logout:
             didSelectLogout()
         }
@@ -245,8 +253,15 @@ extension ProfileViewController: UITableViewDataSource {
             cell.valueText = NSLocalizedString("Reviews", comment: "Description of row")
             cell.descriptionText = nil
             return cell
-        case .personalInformation:
+        case .accountInformation:
             let cell: PersonalInformationStatusCell = tableView.dequeueCell()
+            return cell
+        case .contactInformation:
+            let cell: ContactInformationCell = tableView.dequeueCell()
+            return cell
+        case .taxes:
+            let cell: TextCell = tableView.dequeueCell()
+            cell.textLabel?.text = NSLocalizedString("Taxes", comment: "Title of label that when tapped goes to the mechanics taxes")
             return cell
         case .logout:
             let cell: LogoutCell = tableView.dequeueCell()

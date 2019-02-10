@@ -22,18 +22,20 @@
                         <rect key="frame" x="16" y="11" width="295" height="53"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-lk-vru">
-                                <rect key="frame" x="0.0" y="16.5" width="273" height="20.5"/>
+                                <rect key="frame" x="0.0" y="16.5" width="265" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-9T-Flh">
-                                <rect key="frame" x="281" y="19.5" width="14" height="14"/>
-                                <color key="backgroundColor" red="1" green="0.1039171571" blue="0.1527470252" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-9T-Flh" customClass="LOTAnimationView">
+                                <rect key="frame" x="273" y="15.5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aN1-9T-Flh" secondAttribute="height" multiplier="1:1" id="Y5Z-wx-3LM"/>
-                                    <constraint firstAttribute="height" constant="14" id="cvU-cO-iVp"/>
+                                    <constraint firstAttribute="height" constant="22" id="cvU-cO-iVp"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>
@@ -47,7 +49,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="errorView" destination="aN1-9T-Flh" id="wCf-R4-X1Z"/>
+                <outlet property="animationView" destination="aN1-9T-Flh" id="XU6-GT-eb7"/>
                 <outlet property="titleLabel" destination="6xg-lk-vru" id="bV8-cq-pNO"/>
             </connections>
             <point key="canvasLocation" x="149.59999999999999" y="160.56971514242881"/>

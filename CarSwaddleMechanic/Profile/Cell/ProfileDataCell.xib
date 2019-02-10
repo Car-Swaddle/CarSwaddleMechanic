@@ -22,29 +22,31 @@
                         <rect key="frame" x="16" y="11" width="288" height="62"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UqK-Hj-fmJ">
-                                <rect key="frame" x="0.0" y="13" width="274" height="36.5"/>
+                                <rect key="frame" x="0.0" y="13" width="266" height="36.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7X-1e-CCA">
-                                        <rect key="frame" x="0.0" y="0.0" width="274" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="266" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.36348364640000003" green="0.36348364640000003" blue="0.36348364640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-lf-tg2">
-                                        <rect key="frame" x="0.0" y="16" width="274" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="16" width="266" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="600" horizontalCompressionResistancePriority="600" translatesAutoresizingMaskIntoConstraints="NO" id="8ky-1s-uQh">
-                                <rect key="frame" x="274" y="24" width="14" height="14"/>
-                                <color key="backgroundColor" red="1" green="0.1039171571" blue="0.1527470252" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="600" horizontalCompressionResistancePriority="600" translatesAutoresizingMaskIntoConstraints="NO" id="8ky-1s-uQh" customClass="LOTAnimationView">
+                                <rect key="frame" x="266" y="20" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="YYR-SO-SHR"/>
-                                    <constraint firstAttribute="width" constant="14" id="jER-VA-EHg"/>
+                                    <constraint firstAttribute="width" secondItem="8ky-1s-uQh" secondAttribute="height" multiplier="1:1" id="WqL-lo-sZZ"/>
+                                    <constraint firstAttribute="height" constant="22" id="YYR-SO-SHR"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>
@@ -58,8 +60,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="animationView" destination="8ky-1s-uQh" id="lMD-OB-K1g"/>
                 <outlet property="descriptionLabel" destination="x7X-1e-CCA" id="z8p-1T-rdN"/>
-                <outlet property="errorView" destination="8ky-1s-uQh" id="Asn-3H-I01"/>
                 <outlet property="valueLabel" destination="eLI-lf-tg2" id="39O-n6-doX"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="161.91904047976013"/>

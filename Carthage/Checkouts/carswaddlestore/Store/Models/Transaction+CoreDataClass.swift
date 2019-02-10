@@ -51,13 +51,13 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
     public convenience init?(json: JSONObject, context: NSManagedObjectContext) {
         guard let values = Transaction.values(from: json) else { return nil }
         self.init(context: context)
-        configure(with: values, in: context)
+        configure(with: values, json: json, in: context)
     }
     
     public func configure(with json: JSONObject) throws {
         guard let values = Transaction.values(from: json) else { throw StoreError.invalidJSON }
         guard let context = managedObjectContext else { return }
-        self.configure(with: values, in: context)
+        self.configure(with: values, json: json, in: context)
     }
     
     static private func values(from json: JSONObject) -> TransactionValues? {
@@ -85,7 +85,7 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         return (identifier, amount, avilableOnDate, createdDate, currency, transactionDescription, exchangeRateNumber, fee, net, source, status, type)
     }
     
-    private func configure(with values: TransactionValues, in context: NSManagedObjectContext) {
+    private func configure(with values: TransactionValues, json: JSONObject, in context: NSManagedObjectContext) {
         self.identifier = values.identifier
         self.amount = values.amount
         self.availableOn = values.availableOn
@@ -98,6 +98,10 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.type = values.type
         self.transactionDescription = values.transactionDescription
         self.exchangeRate = values.exchangeRate
+        
+        if let metadataJSON = json["car_swaddle_meta"] as? JSONObject {
+            self.transactionMetadata = TransactionMetadata.fetchOrCreate(json: metadataJSON, context: context)
+        }
     }
     
     public static var createdSortDescriptor: NSSortDescriptor {

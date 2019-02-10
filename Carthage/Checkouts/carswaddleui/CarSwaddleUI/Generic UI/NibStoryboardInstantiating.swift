@@ -96,6 +96,9 @@ public protocol StoryboardInstantiating: class {
      You must provide the name of the storyboard on which the UIViewController subclass exists.
      */
     static var storyboardName: String { get }
+    
+    static var bundle: Bundle { get }
+    
 }
 
 public extension StoryboardInstantiating where Self: UIViewController {
@@ -106,7 +109,7 @@ public extension StoryboardInstantiating where Self: UIViewController {
      - returns: `Self` This will be a `UIViewController` subclass generated from a `UIStoryboard`
      */
     public static func viewControllerFromStoryboard() -> Self {
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle(for: Self.self))
+        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
         if let viewController = storyboard.instantiateInitialViewController() as? Self {
             return viewController
         } else if let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName) as? Self {
@@ -117,4 +120,5 @@ public extension StoryboardInstantiating where Self: UIViewController {
     
     public static var viewControllerName: String { return String(describing: Self.self) }
     public static var storyboardName: String { return String(describing: Self.self) }
+    public static var bundle: Bundle { return Bundle(for: Self.self) }
 }

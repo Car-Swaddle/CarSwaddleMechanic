@@ -110,6 +110,10 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         if let reviewFromMechanic = json["reviewFromMechanic"] as? JSONObject {
             self.reviewFromMechanic = Review(json: reviewFromMechanic, context: context)
         }
+        
+        if let balanceTransactionID = json["balanceTransactionID"] as? String {
+            self.balanceTransactionID = balanceTransactionID
+        }
     }
     
     

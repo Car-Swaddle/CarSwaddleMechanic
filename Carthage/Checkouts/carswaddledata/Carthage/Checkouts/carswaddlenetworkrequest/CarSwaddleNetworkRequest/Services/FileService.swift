@@ -15,9 +15,18 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let getImage = Request.Endpoint(rawValue: "/api/data/image/{imageName}")
     fileprivate static let getUserImage = Request.Endpoint(rawValue: "/api/data/profile-picture/{id}")
     fileprivate static let getMechanicImage = Request.Endpoint(rawValue: "/api/data/mechanic/profile-picture/{id}")
+    fileprivate static let transactionReceipt = Request.Endpoint(rawValue: "/api/stripe/transaction-details/receipt")
 }
 
 final public class FileService: Service {
+    
+    // Mark: TransactionReceipt
+    
+    @discardableResult
+    public func uploadTransactionReceipt(transactionID: String, fileURL: URL, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "transactionID", value: transactionID)]
+        return upload(fileURL: fileURL, endpoint: .transactionReceipt, queryItems: queryItems, completion: completion)
+    }
     
     // Mark: User
     
@@ -65,8 +74,8 @@ final public class FileService: Service {
     // MARK: Generic Private
     
     @discardableResult
-    private func upload(fileURL: URL, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        guard let urlRequest = serviceRequest.multipartFormDataPost(with: endpoint) else { return nil }
+    private func upload(fileURL: URL, endpoint: NetworkRequest.Request.Endpoint, queryItems: [URLQueryItem] = [], completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        guard let urlRequest = serviceRequest.multipartFormDataPost(with: endpoint, queryItems: queryItems) else { return nil }
         try? urlRequest.authenticate()
         let contentType = "image/*"
         return serviceRequest.uploadMultipartFormData(urlRequest: urlRequest, fileURL: fileURL, contentType: contentType) { [weak self] data, response, error in

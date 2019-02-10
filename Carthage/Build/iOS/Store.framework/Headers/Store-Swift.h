@@ -250,6 +250,7 @@ SWIFT_CLASS_NAMED("AutoService")
 @property (nonatomic, strong) Review * _Nullable reviewFromUser;
 @property (nonatomic, strong) Review * _Nullable reviewFromMechanic;
 @property (nonatomic, copy) NSSet<ServiceEntity *> * _Nonnull serviceEntities;
+@property (nonatomic, copy) NSString * _Nullable balanceTransactionID;
 @end
 
 
@@ -297,14 +298,6 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeTransactions:(NSSet * _Nonnull)values;
 @end
 
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class TemplateTimeSpan;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
@@ -312,6 +305,14 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
 - (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
+@end
+
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 @class Region;
@@ -509,6 +510,7 @@ SWIFT_CLASS_NAMED("Transaction")
 @end
 
 @class NSNumber;
+@class TransactionMetadata;
 
 @interface Transaction (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -524,6 +526,50 @@ SWIFT_CLASS_NAMED("Transaction")
 @property (nonatomic, copy) NSString * _Nonnull type;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @property (nonatomic, strong) Payout * _Nullable payout;
+@property (nonatomic, strong) TransactionMetadata * _Nullable transactionMetadata;
+@end
+
+
+SWIFT_CLASS_NAMED("TransactionMetadata")
+@interface TransactionMetadata : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class TransactionReceipt;
+
+@interface TransactionMetadata (SWIFT_EXTENSION(Store))
+- (void)addReceiptsObject:(TransactionReceipt * _Nonnull)value;
+- (void)removeReceiptsObject:(TransactionReceipt * _Nonnull)value;
+- (void)addReceipts:(NSSet * _Nonnull)values;
+- (void)removeReceipts:(NSSet * _Nonnull)values;
+@end
+
+
+@interface TransactionMetadata (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic, copy) NSString * _Nonnull stripeTransactionID;
+@property (nonatomic) NSInteger mechanicCost;
+@property (nonatomic) NSInteger drivingDistance;
+@property (nonatomic, copy) NSString * _Nonnull autoServiceID;
+@property (nonatomic, copy) NSString * _Nonnull mechanicID;
+@property (nonatomic, copy) NSDate * _Nonnull createdAt;
+@property (nonatomic, strong) Transaction * _Nullable transaction;
+@property (nonatomic, strong) AutoService * _Nullable autoService;
+@property (nonatomic, copy) NSSet<TransactionReceipt *> * _Nonnull receipts;
+@end
+
+
+SWIFT_CLASS_NAMED("TransactionReceipt")
+@interface TransactionReceipt : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface TransactionReceipt (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull identifier;
+@property (nonatomic, copy) NSString * _Nonnull receiptPhotoID;
+@property (nonatomic, strong) TransactionMetadata * _Nullable transactionMetadata;
+@property (nonatomic, copy) NSDate * _Nonnull createdAt;
 @end
 
 

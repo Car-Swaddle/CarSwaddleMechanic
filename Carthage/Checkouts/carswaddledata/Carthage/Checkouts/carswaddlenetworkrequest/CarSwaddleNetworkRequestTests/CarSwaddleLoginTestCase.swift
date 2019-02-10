@@ -22,7 +22,7 @@ public var currentUserID: String {
 
 private var _currentUserID: String = ""
 
-private let userEmail = "user@carswaddle.com"
+private let userEmail = "mechanic@carswaddle.com"
 private let password = "password"
 
 class CarSwaddleLoginTestCase: XCTestCase {

@@ -13,9 +13,11 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let verification = Request.Endpoint(rawValue: "/api/stripe/verification")
     fileprivate static let balance = Request.Endpoint(rawValue: "/api/stripe/balance")
     fileprivate static let transactions = Request.Endpoint(rawValue: "/api/stripe/transactions")
+    fileprivate static let transactionDetails = Request.Endpoint(rawValue: "/api/stripe/transaction-details")
     fileprivate static let payouts = Request.Endpoint(rawValue: "/api/stripe/payouts")
 }
 
+private let metersToMilesConstant: CGFloat = 1609.344;
 
 final public class StripeService: Service {
     
@@ -59,6 +61,50 @@ final public class StripeService: Service {
         }
         
         guard let urlRequest = serviceRequest.get(with: .transactions, queryItems: queryItems) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getTransactionDetails(transactionID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "transactionID", value: transactionID)]
+        guard let urlRequest = serviceRequest.get(with: .transactionDetails, queryItems: queryItems) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
+    }
+    
+    
+    @discardableResult
+    public func updateTransactionDetails(transactionID: String, mechanicCostCents: Int?, drivingDistanceMiles: Int?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        
+        var distanceInMeters: Int?
+        if let drivingDistanceMiles = drivingDistanceMiles {
+            distanceInMeters = Int(ceil(CGFloat(drivingDistanceMiles) * metersToMilesConstant))
+        }
+        
+        return updateTransactionDetails(transactionID: transactionID, mechanicCostCents: mechanicCostCents, drivingDistanceMeters: distanceInMeters, completion: completion)
+    }
+    
+    /// - Parameters:
+    ///   - mechanicCost: In cents
+    ///   - drivingDistance: In meters
+    @discardableResult
+    public func updateTransactionDetails(transactionID: String, mechanicCostCents: Int?, drivingDistanceMeters: Int?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        var body: JSONObject = [
+            "transactionID": transactionID
+        ]
+        
+        if let cost = mechanicCostCents {
+            body["cost"] = String(cost)
+        }
+        if let distance = drivingDistanceMeters {
+            body["distance"] = String(distance)
+        }
+        
+        guard let data = (try? JSONSerialization.data(withJSONObject: body, options: [])),
+            let urlRequest = serviceRequest.patch(with: .transactionDetails, body: data, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)
         }

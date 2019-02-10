@@ -45,6 +45,12 @@
 		99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66D9F21E28F0100C6E3E1 /* TextCell.swift */; };
 		99E66DA221E28F0100C6E3E1 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DA021E28F0100C6E3E1 /* TextCell.xib */; };
 		99F027752184533D005FEFC7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F027742184533D005FEFC7 /* LocationManager.swift */; };
+		99F69686220BD2600021A719 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F69685220BD2600021A719 /* Lottie.framework */; };
+		99F69689220BD38E0021A719 /* LottieAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F69688220BD38E0021A719 /* LottieAnimation.swift */; };
+		99F696A6220F3AF50021A719 /* OneTimeCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696A5220F3AF50021A719 /* OneTimeCodeViewController.swift */; };
+		99F696A8220F3DE10021A719 /* OneTimeCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F696A7220F3DE10021A719 /* OneTimeCodeViewController.storyboard */; };
+		99F696AA220F630F0021A719 /* OneTimeCodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696A9220F630F0021A719 /* OneTimeCodeEntryView.swift */; };
+		99F696AC220FEB2B0021A719 /* DeletingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696AB220FEB2B0021A719 /* DeletingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +105,12 @@
 		99E66D9F21E28F0100C6E3E1 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		99E66DA021E28F0100C6E3E1 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		99F027742184533D005FEFC7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		99F69685220BD2600021A719 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		99F69688220BD38E0021A719 /* LottieAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimation.swift; sourceTree = "<group>"; };
+		99F696A5220F3AF50021A719 /* OneTimeCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeViewController.swift; sourceTree = "<group>"; };
+		99F696A7220F3DE10021A719 /* OneTimeCodeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OneTimeCodeViewController.storyboard; sourceTree = "<group>"; };
+		99F696A9220F630F0021A719 /* OneTimeCodeEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeEntryView.swift; sourceTree = "<group>"; };
+		99F696AB220FEB2B0021A719 /* DeletingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F69686220BD2600021A719 /* Lottie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +188,7 @@
 				997012132154B14200D547C5 /* CarSwaddleUI */,
 				9970121E2154B14200D547C5 /* CarSwaddleUITests */,
 				997012122154B14200D547C5 /* Products */,
+				99F69684220BD2600021A719 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +204,8 @@
 		997012132154B14200D547C5 /* CarSwaddleUI */ = {
 			isa = PBXGroup;
 			children = (
+				99F696A3220F39D90021A719 /* One Time Code */,
+				99F69687220BD35F0021A719 /* Lottie */,
 				992BFDB82205677E006B64CC /* Tweaks */,
 				99E66D9E21E28EEB00C6E3E1 /* Location */,
 				99E66D9D21E28ED000C6E3E1 /* Generic UI */,
@@ -253,6 +269,33 @@
 				99F027742184533D005FEFC7 /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		99F69684220BD2600021A719 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99F69685220BD2600021A719 /* Lottie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99F69687220BD35F0021A719 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				99F69688220BD38E0021A719 /* LottieAnimation.swift */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		99F696A3220F39D90021A719 /* One Time Code */ = {
+			isa = PBXGroup;
+			children = (
+				99F696A5220F3AF50021A719 /* OneTimeCodeViewController.swift */,
+				99F696A7220F3DE10021A719 /* OneTimeCodeViewController.storyboard */,
+				99F696A9220F630F0021A719 /* OneTimeCodeEntryView.swift */,
+				99F696AB220FEB2B0021A719 /* DeletingTextField.swift */,
+			);
+			path = "One Time Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +395,7 @@
 				99E66D1221DDF97900C6E3E1 /* CustomAlertContentView.xib in Resources */,
 				992BFDCB220567AF006B64CC /* TweakStringValueCell.xib in Resources */,
 				992BFDC8220567AF006B64CC /* TweakSelectViewController.storyboard in Resources */,
+				99F696A8220F3DE10021A719 /* OneTimeCodeViewController.storyboard in Resources */,
 				99E66D1021DDF33400C6E3E1 /* CustomAlertController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,12 +419,15 @@
 				9912CD9C216C76310006FDDF /* UIViewExtension.swift in Sources */,
 				992BFDC6220567AF006B64CC /* Tweak.swift in Sources */,
 				995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */,
+				99F696AA220F630F0021A719 /* OneTimeCodeEntryView.swift in Sources */,
 				99E66CBF21DDE4B100C6E3E1 /* AnimatedTransition.swift in Sources */,
+				99F696AC220FEB2B0021A719 /* DeletingTextField.swift in Sources */,
 				99E66CB721DDE41000C6E3E1 /* CGSizeExtension.swift in Sources */,
 				995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */,
 				99E66CAD21DDDC7600C6E3E1 /* CustomAlertController.swift in Sources */,
 				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
+				99F696A6220F3AF50021A719 /* OneTimeCodeViewController.swift in Sources */,
 				99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */,
 				992BFDC9220567AF006B64CC /* TweakSelectCell.swift in Sources */,
 				99E66CB121DDDEE600C6E3E1 /* UIColorExtension.swift in Sources */,
@@ -395,6 +442,7 @@
 				99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				992BFDCC220567AF006B64CC /* TweakViewController.swift in Sources */,
 				992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */,
+				99F69689220BD38E0021A719 /* LottieAnimation.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
 				99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */,
 				992BFDC7220567AF006B64CC /* TweakSelectViewController.swift in Sources */,
@@ -552,9 +600,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CarSwaddleUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,9 +632,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CarSwaddleUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

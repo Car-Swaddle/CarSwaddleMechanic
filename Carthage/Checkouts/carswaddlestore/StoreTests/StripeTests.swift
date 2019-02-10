@@ -116,16 +116,6 @@ private let singleTransaction: [String: Any] = [
     "type": "payment"
 ]
 
-private let transactionJSON: [String: Any] = [
-    "object": "list",
-    "data": [
-        singleTransaction,
-    ],
-    "has_more": false,
-    "url": "/v1/balance/history"
-]
-
-
 
 private let singlePayoutJSON: [String: Any] = [
     "id": "po_1DqZdvIh8ecz19vMYb1rjevk",

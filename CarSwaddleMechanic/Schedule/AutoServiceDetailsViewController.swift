@@ -9,9 +9,17 @@
 import UIKit
 import CarSwaddleUI
 import Store
+import CarSwaddleData
 
 
 final class AutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
+    
+    
+    public static func create(autoServiceID: String) -> AutoServiceDetailsViewController {
+        let viewController = AutoServiceDetailsViewController.viewControllerFromStoryboard()
+        viewController.autoServiceID = autoServiceID
+        return viewController
+    }
     
     public static func create(autoService: AutoService) -> AutoServiceDetailsViewController {
         let viewController = AutoServiceDetailsViewController.viewControllerFromStoryboard()
@@ -31,14 +39,18 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }
     
     private var rows: [Row] = [.date, .user, .mechanic, .location, .vehicle, .serviceType, .oilType, .autoServiceStatus]
+    private var autoServiceID: String?
     private var autoService: AutoService!
     
     @IBOutlet private var tableView: UITableView!
+    
+    private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        
     }
     
     private func setupTableView() {
@@ -78,6 +90,10 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         case .oilType: return nil
         case .autoServiceStatus: return nil
         }
+    }
+    
+    private func requestData(completion: @escaping () -> Void) {
+        // TODO: get auto services
     }
     
 }

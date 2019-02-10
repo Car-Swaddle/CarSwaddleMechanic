@@ -22,6 +22,18 @@ let serverDateFormatter: DateFormatter = {
 public final class AutoServiceService: Service {
     
     @discardableResult
+    public func getAutoService(autoServiceID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+//        var json = autoServiceJSON
+//        json["sourceID"] = sourceID
+//        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
+//            let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
+//        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+//            self?.completeWithJSON(data: data, error: error, completion: completion)
+//        }
+        return nil
+    }
+    
+    @discardableResult
     public func createAutoService(autoServiceJSON: JSONObject, sourceID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         var json = autoServiceJSON
         json["sourceID"] = sourceID
@@ -78,60 +90,5 @@ public final class AutoServiceService: Service {
             self?.completeWithJSON(data: data, error: error, completion: completion)
         }
     }
-    
-//    @discardableResult
-//    public func getServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {
-//        let request = serverRequest.get(with: .services) { data, response, error in
-//            completion(data, error)
-//        }
-////        let task = requ
-////        try? request?.authenticate()
-////        let task = request?.send(completion: completion)
-//        return task
-//    }
-    
-//    @discardableResult
-//    public func postServer(with completion: @escaping (_ data: Data?, _ error: Error?)->()) -> URLSessionDataTask? {
-//        let json = ["firstName": "First Dude",
-//                    "lastName": "Last dude"]
-//        let body = try! JSONSerialization.data(withJSONObject: json, options: [])
-//        let task = serverRequest.post(with: .user, body: body) { data, response, error in
-//            completion(data, error)
-//        }
-//        task?.resume()
-//        return task
-//    }
-    
-//    public func getScheduledAutoServices(with completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        let task = serverRequest.get(with: .autoService) { data, response, error in
-//            completion(data, error)
-//        }
-//        task?.resume()
-//        return task
-//    }
-    
-//    public func getPastAutoServices(with completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        let queryItems = [URLQueryItem(name: "", value: "")]
-//        return getAutoServices(queryItems: queryItems, with: completion)
-//    }
-//
-//    public func getAutoServices(queryItems: [URLQueryItem], with completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        let task = serverRequest.get(with: .autoService, queryItems: queryItems) { data, response, error in
-//            completion(data, error)
-//        }
-//        task?.resume()
-//        return task
-//    }
-//
-//    public func createNewAutoService(with completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        let json = ["firstName": "First Dude",
-//                    "lastName": "Last dude"]
-//        let body = try! JSONSerialization.data(withJSONObject: json, options: [])
-//        let task = serverRequest.post(with: .user, body: body) { data, response, error in
-//            completion(data, error)
-//        }
-//        task?.resume()
-//        return task
-//    }
     
 }

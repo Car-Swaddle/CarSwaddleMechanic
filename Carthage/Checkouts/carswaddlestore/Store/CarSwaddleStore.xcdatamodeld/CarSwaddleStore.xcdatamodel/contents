@@ -17,6 +17,7 @@
         <relationship name="balanceForReserved" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="reserved" inverseEntity="Balance" syncable="YES"/>
     </entity>
     <entity name="AutoService" representedClassName="AutoService" syncable="YES">
+        <attribute name="balanceTransactionID" attributeType="String" syncable="YES"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,6 +30,7 @@
         <relationship name="reviewFromMechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Review" inverseName="autoServiceFromMechanic" inverseEntity="Review" syncable="YES"/>
         <relationship name="reviewFromUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Review" inverseName="autoServiceFromUser" inverseEntity="Review" syncable="YES"/>
         <relationship name="serviceEntities" toMany="YES" deletionRule="Cascade" destinationEntity="ServiceEntity" inverseName="autoService" inverseEntity="ServiceEntity" syncable="YES"/>
+        <relationship name="transactionMetadata" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransactionMetadata" inverseName="autoService" inverseEntity="TransactionMetadata" syncable="YES"/>
         <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="autoServices" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
     <entity name="Balance" representedClassName="Balance" syncable="YES">
@@ -152,6 +154,25 @@
         <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="transactions" inverseEntity="Mechanic" syncable="YES"/>
         <relationship name="payout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payout" inverseName="transactions" inverseEntity="Payout" syncable="YES"/>
+        <relationship name="transactionMetadata" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransactionMetadata" inverseName="transaction" inverseEntity="TransactionMetadata" syncable="YES"/>
+    </entity>
+    <entity name="TransactionMetadata" representedClassName="TransactionMetadata" syncable="YES">
+        <attribute name="autoServiceID" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="drivingDistance" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="mechanicCost" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mechanicID" attributeType="String" syncable="YES"/>
+        <attribute name="stripeTransactionID" attributeType="String" syncable="YES"/>
+        <relationship name="autoService" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AutoService" inverseName="transactionMetadata" inverseEntity="AutoService" syncable="YES"/>
+        <relationship name="receipts" toMany="YES" deletionRule="Cascade" destinationEntity="TransactionReceipt" inverseName="transactionMetadata" inverseEntity="TransactionReceipt" syncable="YES"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="transactionMetadata" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="TransactionReceipt" representedClassName="TransactionReceipt" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="receiptPhotoID" attributeType="String" syncable="YES"/>
+        <relationship name="transactionMetadata" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransactionMetadata" inverseName="receipts" inverseEntity="TransactionMetadata" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="averageRating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -200,7 +221,7 @@
     <elements>
         <element name="Address" positionX="-27" positionY="99" width="128" height="150"/>
         <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
-        <element name="AutoService" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="AutoService" positionX="-63" positionY="-18" width="128" height="270"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
         <element name="Mechanic" positionX="-27" positionY="99" width="128" height="300"/>
@@ -213,7 +234,9 @@
         <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
-        <element name="Transaction" positionX="-9" positionY="153" width="128" height="255"/>
+        <element name="Transaction" positionX="-9" positionY="153" width="128" height="270"/>
+        <element name="TransactionMetadata" positionX="-27" positionY="135" width="128" height="195"/>
+        <element name="TransactionReceipt" positionX="-18" positionY="144" width="128" height="105"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="255"/>
         <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>

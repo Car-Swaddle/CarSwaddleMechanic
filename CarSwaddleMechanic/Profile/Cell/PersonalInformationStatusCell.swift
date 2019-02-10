@@ -9,36 +9,30 @@
 import CarSwaddleUI
 import CarSwaddleData
 import Store
+import Lottie
 
 final class PersonalInformationStatusCell: UITableViewCell, NibRegisterable {
-
-    @IBOutlet private weak var errorView: UIView!
+    
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var animationView: LOTAnimationView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         updateErrorViewHiddenStatus()
         titleLabel.text = NSLocalizedString("Personal Information", comment: "Description of row")
-        updateErrorViewCornerRadius()
         accessoryType = .disclosureIndicator
-    }
-    
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        updateErrorViewCornerRadius()
-    }
-    
-    private func updateErrorViewCornerRadius() {
-        errorView.layer.cornerRadius = errorView.frame.height / 2
+        animationView.animationSpeed = 0.7
+        animationView.loopAnimation = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         updateErrorViewHiddenStatus()
+        animationView.play()
     }
     
     private func updateErrorViewHiddenStatus() {
-        errorView.isHiddenInStackView = !shouldShowErrorView
+        animationView.isHiddenInStackView = !shouldShowErrorView
     }
     
     private var shouldShowErrorView: Bool {

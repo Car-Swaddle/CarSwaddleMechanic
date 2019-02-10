@@ -23,7 +23,7 @@ class CarSwaddleUITests: XCTestCase {
         let v = CustomAlertContentView.view(withTitle: "Title", message: "Message")
         v.addCancelAction()
         
-        let confirmAction = CustomAlertAction(title: "Confirm") { [weak self] action in
+        let confirmAction = CustomAlertAction(title: "Confirm") { action in
             print("confirm dat")
         }
         v.addCustomView { view in

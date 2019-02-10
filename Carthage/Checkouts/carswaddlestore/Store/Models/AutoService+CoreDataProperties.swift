@@ -43,5 +43,6 @@ extension AutoService {
     @NSManaged public var reviewFromUser: Review?
     @NSManaged public var reviewFromMechanic: Review?
     @NSManaged public var serviceEntities: Set<ServiceEntity>
+    @NSManaged public var balanceTransactionID: String?
 
 }

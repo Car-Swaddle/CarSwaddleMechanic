@@ -24,9 +24,13 @@ public class FileStore {
     public let folderName: String
     
     public func getFile(name: String) throws -> Data? {
-        let fileURL = try directory().appendingPathComponent(name).appendingPathExtension("jpeg")
+        let fileURL = try getFilePath(name: name)
         let data = try Data(contentsOf: fileURL)
         return data
+    }
+    
+    public func getFilePath(name: String) throws -> URL {
+        return try directory().appendingPathComponent(name).appendingPathExtension("jpeg")
     }
     
     private let fileManager: FileManager = FileManager.default

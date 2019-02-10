@@ -258,6 +258,22 @@ SWIFT_CLASS("_TtC12CarSwaddleUI28DelegatingAnimatedTransition")
 @interface DelegatingAnimatedTransition : AnimatedTransition
 @end
 
+@protocol DeletingTextFieldDelegate;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI17DeletingTextField")
+@interface DeletingTextField : UITextField
+@property (nonatomic, weak) IBOutlet id <DeletingTextFieldDelegate> _Nullable deleteDelegate;
+- (void)deleteBackward;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP12CarSwaddleUI25DeletingTextFieldDelegate_")
+@protocol DeletingTextFieldDelegate
+- (void)didDeleteBackward:(DeletingTextField * _Nonnull)textField;
+@end
+
 
 SWIFT_CLASS("_TtC12CarSwaddleUI25HorizontalSlideTransition")
 @interface HorizontalSlideTransition : NSObject <UIViewControllerAnimatedTransitioning>
@@ -292,6 +308,61 @@ SWIFT_CLASS("_TtC12CarSwaddleUI32NavigationDelegateViewController")
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
+
+@protocol OneTimeEntryViewDelegate;
+@class UIColor;
+@class UIFont;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI20OneTimeCodeEntryView")
+@interface OneTimeCodeEntryView : UIView
+@property (nonatomic, weak) IBOutlet id <OneTimeEntryViewDelegate> _Nullable delegate;
+@property (nonatomic) CGFloat spacing;
+@property (nonatomic) NSInteger digits;
+@property (nonatomic, strong) UIColor * _Nullable textFieldTintColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldBackgroundColor;
+@property (nonatomic) CGFloat textFieldCornerRadius;
+@property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+- (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface OneTimeCodeEntryView (SWIFT_EXTENSION(CarSwaddleUI)) <DeletingTextFieldDelegate>
+- (void)didDeleteBackward:(DeletingTextField * _Nonnull)textField;
+@end
+
+
+@interface OneTimeCodeEntryView (SWIFT_EXTENSION(CarSwaddleUI)) <UITextFieldDelegate>
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UILabel;
+@class UIButton;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI25OneTimeCodeViewController")
+@interface OneTimeCodeViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified verifyPhoneNumberTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified verifyPhoneNumberDescriptionLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified resendCodeButton;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP12CarSwaddleUI24OneTimeEntryViewDelegate_")
+@protocol OneTimeEntryViewDelegate
+- (void)codeDidChangeWithCode:(NSString * _Nonnull)code view:(OneTimeCodeEntryView * _Nonnull)view;
+- (void)configureTextFieldWithTextField:(DeletingTextField * _Nonnull)textField view:(OneTimeCodeEntryView * _Nonnull)view;
+@end
+
+
+@interface OneTimeCodeViewController (SWIFT_EXTENSION(CarSwaddleUI)) <OneTimeEntryViewDelegate>
+- (void)configureTextFieldWithTextField:(DeletingTextField * _Nonnull)textField view:(OneTimeCodeEntryView * _Nonnull)view;
+- (void)codeDidChangeWithCode:(NSString * _Nonnull)code view:(OneTimeCodeEntryView * _Nonnull)view;
+@end
+
 
 
 SWIFT_CLASS("_TtC12CarSwaddleUI8TextCell")

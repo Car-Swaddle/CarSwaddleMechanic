@@ -20,7 +20,6 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
         case bankAccount
         case documents
         case dateOfBirth
-        case emailVerification
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -153,17 +152,6 @@ extension PersonalInformationViewController: UITableViewDataSource {
                 cell.valueText = NSLocalizedString("Date of Birth", comment: "Description of row")
             }
             return cell
-        case .emailVerification:
-//            let emailFormatString = NSLocalizedString("%@ Not verified", comment: "Description of row")
-            
-//            cell.valueText = String(format: emailFormatString, User.currentUser(context: store.mainContext)?.email ?? "")
-//            cell.descriptionText = ""
-            let cell: EmailVerificationCell = tableView.dequeueCell()
-            cell.hasSentVerificationEmail = hasSentVerificationEmail
-            cell.didSendVerificationEmail = { [weak self] in
-                self?.hasSentVerificationEmail = true
-            }
-            return cell
         }
     }
     
@@ -193,8 +181,6 @@ extension PersonalInformationViewController: UITableViewDataSource {
             return verification.verificationDocumentRequired
         case .dateOfBirth:
             return verification.dateOfBirthRequired
-        case .emailVerification:
-            return currentUser?.isEmailVerified == false
         }
     }
     
@@ -226,8 +212,6 @@ extension PersonalInformationViewController: UITableViewDelegate {
             let date = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth
             let viewController = DateOfBirthViewController.create(with: date)
             show(viewController, sender: self)
-        case .emailVerification:
-            break
         }
     }
     

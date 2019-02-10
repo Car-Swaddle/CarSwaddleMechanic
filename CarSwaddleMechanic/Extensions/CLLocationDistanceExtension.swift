@@ -20,8 +20,19 @@ extension CLLocationDistance {
     static let centimeter: CLLocationDistance = 0.01
     static let millimeter: CLLocationDistance = 0.001
     
+    private static let milesToMetersConstant: CLLocationDistance = 1609.344
+    private static let metersToMilesConstant: CLLocationDistance = 0.00062137
+    
     var kilometersToMeters: CLLocationDistance {
         return self * 1000
+    }
+    
+    var metersToMiles: CLLocationDistance {
+        return self * CLLocationDistance.metersToMilesConstant
+    }
+    
+    var milesToMeters: CLLocationDistance {
+        return self * CLLocationDistance.milesToMetersConstant
     }
     
 }

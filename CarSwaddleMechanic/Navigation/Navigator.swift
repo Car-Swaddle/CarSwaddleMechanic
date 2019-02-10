@@ -105,6 +105,16 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
             viewControllers.append(dateOfBirth)
         }
         
+        if currentMechanic?.user?.phoneNumber == nil {
+            let phoneNumber = PhoneNumberViewController.viewControllerFromStoryboard()
+            viewControllers.append(phoneNumber)
+        }
+        
+        if currentMechanic?.user?.isPhoneNumberVerified == false {
+            let verify = VerifyPhoneNumberViewController()
+            viewControllers.append(verify)
+        }
+        
         return viewControllers
     }
     
@@ -207,7 +217,7 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
         }
         
         let servicesViewController = ScheduleViewController.scheduleViewController(for: Date())
-        let title = NSLocalizedString("Schedule", comment: "Title of tab item.")
+        let title = NSLocalizedString("Set hours", comment: "Title of tab item.")
         servicesViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
         _servicesViewController = servicesViewController
         return servicesViewController

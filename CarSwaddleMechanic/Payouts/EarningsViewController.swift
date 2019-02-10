@@ -25,6 +25,8 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
     
     private lazy var header: EarningsHeaderView = {
         let view = EarningsHeaderView.viewFromNib()
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 300)
+        view.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         return view
     }()
     
@@ -44,6 +46,11 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
         super.viewDidLoad()
         
         setupTableView()
+//        updateBalance()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateBalance()
     }
     

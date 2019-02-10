@@ -44,7 +44,6 @@ public final class UserNetwork: Network {
         }
     }
     
-    
     @discardableResult
     public func requestCurrentUser(in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return userService.getCurrentUser { json, error in
@@ -115,6 +114,25 @@ public final class UserNetwork: Network {
                 permanentURL = try profileImageStore.storeFile(url: url, fileName: imageName)
             } catch {
                 completionError = error
+            }
+        }
+    }
+    
+    @discardableResult
+    public func verifySMS(withCode code: String, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return userService.verifySMS(withCode: code) { json, error in
+            context.perform {
+                var userObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(userObjectID, error)
+                    }
+                }
+                
+                guard let json = json else { return }
+                let user = User.fetchOrCreate(json: json, context: context)
+                context.persist()
+                userObjectID = user?.objectID
             }
         }
     }

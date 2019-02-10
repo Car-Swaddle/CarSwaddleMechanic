@@ -95,7 +95,7 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
         let lastID = self.lastID
         let payoutID = self.payoutID
         store.privateContext { [weak self] context in
-            self?.task = self?.stripeNetwork.requestTransaction(startingAfterID: lastID, payoutID: payoutID, limit: transactionRequestLimit, in: context) { objectIDs, lastID, hasMore, error in
+            self?.task = self?.stripeNetwork.requestTransactions(startingAfterID: lastID, payoutID: payoutID, limit: transactionRequestLimit, in: context) { objectIDs, lastID, hasMore, error in
                 DispatchQueue.main.async {
                     guard error == nil else { return }
                     self?.lastID = hasMore ? lastID : nil
@@ -113,6 +113,9 @@ extension TransactionsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let transaction = fetchedResultsController.object(at: indexPath)
+        let viewController = TransactionViewController.create(transaction: transaction)
+        show(viewController, sender: self)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

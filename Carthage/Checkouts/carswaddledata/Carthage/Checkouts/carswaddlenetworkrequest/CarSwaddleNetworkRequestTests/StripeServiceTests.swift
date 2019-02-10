@@ -11,6 +11,7 @@ import XCTest
 import Authentication
 import MapKit
 
+let transactionID = "txn_1DzuNcEUGV6ByO73IAFoguV7"
 
 class StripeServiceTests: CarSwaddleLoginTestCase {
     
@@ -97,6 +98,59 @@ class StripeServiceTests: CarSwaddleLoginTestCase {
             
             XCTAssert((json?["has_more"] as? Bool) != nil, "Should have `hasMore`")
             XCTAssert(error == nil, "Got error: \(error?.localizedDescription ?? "")")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetTransactionDetails() {
+        let exp = expectation(description: "\(#function)\(#line)")
+
+        stripeService.getTransactionDetails(transactionID: transactionID) { json, error in
+            XCTAssert(json?["id"] != nil, "Should have id")
+            if let metaJSON = json?["car_swaddle_meta"] as? JSONObject {
+                XCTAssert(metaJSON["id"] != nil, "Should have id")
+                XCTAssert((metaJSON["transactionReceipts"] as? [JSONObject]) != nil, "Should have meta")
+            } else {
+                XCTAssert(false, "Should have meta")
+            }
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateTransactionDetails() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        stripeService.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: 234567, drivingDistanceMeters: 8765) { json, error in
+            XCTAssert(json?["id"] != nil, "Should have id")
+            if let metaJSON = json?["car_swaddle_meta"] as? JSONObject {
+                XCTAssert(metaJSON["id"] != nil, "Should have id")
+                XCTAssert((metaJSON["mechanicCost"] as? Int) != nil, "Should have cost")
+                XCTAssert((metaJSON["drivingDistance"] as? Int) != nil, "Should have cost")
+            } else {
+                XCTAssert(false, "Should have meta")
+            }
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateTransactionDetailsMiles() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        stripeService.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: 234567, drivingDistanceMiles: 13) { json, error in
+            XCTAssert(json?["id"] != nil, "Should have id")
+            if let metaJSON = json?["car_swaddle_meta"] as? JSONObject {
+                XCTAssert(metaJSON["id"] != nil, "Should have id")
+                XCTAssert((metaJSON["mechanicCost"] as? Int) != nil, "Should have cost")
+                XCTAssert((metaJSON["drivingDistance"] as? Int) != nil, "Should have cost")
+            } else {
+                XCTAssert(false, "Should have meta")
+            }
             exp.fulfill()
         }
         

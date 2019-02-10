@@ -36,13 +36,15 @@
                             </button>
                         </subviews>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su0-47-xbc">
-                        <rect key="frame" x="307" y="39" width="12" height="12"/>
-                        <color key="backgroundColor" red="1" green="0.1039171571" blue="0.1527470252" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su0-47-xbc" customClass="LOTAnimationView">
+                        <rect key="frame" x="297" y="34" width="22" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="12" id="AUX-cD-YWZ"/>
+                            <constraint firstAttribute="height" constant="22" id="AUX-cD-YWZ"/>
                             <constraint firstAttribute="width" secondItem="su0-47-xbc" secondAttribute="height" multiplier="1:1" id="VwS-Xy-bRy"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
@@ -56,8 +58,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="animationView" destination="su0-47-xbc" id="5Ky-Wx-csa"/>
                 <outlet property="emailLabel" destination="9o0-Ca-vXs" id="Jgy-E1-NCM"/>
-                <outlet property="needsAttentionView" destination="su0-47-xbc" id="E1k-dm-v3a"/>
                 <outlet property="sendEmailButton" destination="g1N-q0-hop" id="uZr-kB-lym"/>
             </connections>
             <point key="canvasLocation" x="125.59999999999999" y="69.265367316341838"/>

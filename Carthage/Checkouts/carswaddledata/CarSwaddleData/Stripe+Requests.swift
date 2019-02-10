@@ -14,9 +14,11 @@ import CoreData
 final public class StripeNetwork: Network {
     
     private var stripeService: StripeService
+    private var fileService: FileService
     
     override public init(serviceRequest: Request) {
         self.stripeService = StripeService(serviceRequest: serviceRequest)
+        self.fileService = FileService(serviceRequest: serviceRequest)
         super.init(serviceRequest: serviceRequest)
     }
     
@@ -67,7 +69,71 @@ final public class StripeNetwork: Network {
     }
     
     @discardableResult
-    public func requestTransaction(startingAfterID: String? = nil, payoutID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func requestTransactionDetails(transactionID: String, in context: NSManagedObjectContext, completion: @escaping (_ transactionObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.getTransactionDetails(transactionID: transactionID) { [weak self] json, error in
+            self?.finishTransactionDetails(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func updateTransactionDetails(transactionID: String, mechanicCostCents: Int?, drivingDistanceMiles: Int?, in context: NSManagedObjectContext, completion: @escaping (_ transactionObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: mechanicCostCents, drivingDistanceMiles: drivingDistanceMiles) { [weak self] json, error in
+            self?.finishTransactionDetails(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func updateTransactionDetails(transactionID: String, mechanicCostCents: Int?, drivingDistanceMeters: Int?, in context: NSManagedObjectContext, completion: @escaping (_ transactionObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return stripeService.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: mechanicCostCents, drivingDistanceMeters: drivingDistanceMeters) { [weak self] json, error in
+            self?.finishTransactionDetails(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    private func finishTransactionDetails(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping (_ transactionObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
+        context.perform {
+            var transactionObjectID: NSManagedObjectID?
+            defer {
+                DispatchQueue.global().async {
+                    completion(transactionObjectID, error)
+                }
+            }
+            guard let json = json else { return }
+            let transaction = Transaction.fetchOrCreate(json: json, context: context)
+            context.persist()
+            transactionObjectID = transaction?.objectID
+        }
+    }
+    
+    @discardableResult
+    public func uploadTransactionReceipt(transactionID: String, fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ transactionReceiptObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let uuid = UUID().uuidString
+        _ = try? profileImageStore.storeFile(url: fileURL, fileName: uuid)
+        return fileService.uploadTransactionReceipt(transactionID: transactionID, fileURL: fileURL) { json, error in
+            context.perform {
+                var receiptObjectID: NSManagedObjectID?
+                defer {
+                    DispatchQueue.global().async {
+                        completion(receiptObjectID, error)
+                    }
+                }
+                guard let json = json else { return }
+                let receipt = TransactionReceipt.fetchOrCreate(json: json, context: context)
+                if receipt?.transactionMetadata == nil,
+                    let metadata = Transaction.fetch(with: transactionID, in: context)?.transactionMetadata {
+                    receipt?.transactionMetadata = metadata
+                }
+                if let imageData = profileImageStore.getImage(withName: uuid)?.pngData() {
+                    _ = try? profileImageStore.storeFile(data: imageData, fileName: (json["receiptPhotoID"] as? String) ?? uuid)
+                }
+                
+                context.persist()
+                receiptObjectID = receipt?.objectID
+            }
+        }
+    }
+    
+    @discardableResult
+    public func requestTransactions(startingAfterID: String? = nil, payoutID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return stripeService.getTransactions(startingAfterID: startingAfterID, payoutID: payoutID, limit: limit) { json, error in
             context.perform {
                 var objectIDs: [NSManagedObjectID] = []
@@ -141,70 +207,3 @@ final public class StripeNetwork: Network {
     }
     
 }
-
-
-//public class Verification {
-//
-//    init(json: JSONObject) {
-//        self.disabledReason = json["disabled_reason"] as? String
-//        if let dueByDate = json["due_by"] as? Double {
-//            self.dueByDate = Date.init(timeIntervalSince1970: dueByDate)
-//        }
-//        let fieldsNeededStrings = json["fields_needed"] as? [String] ?? []
-//        var fieldsNeeded: [Field] = []
-//        for fieldString in fieldsNeededStrings {
-//            guard let field = Field(rawValue: fieldString) else { continue }
-//            fieldsNeeded.append(field)
-//        }
-//        self.fieldsNeeded = fieldsNeeded
-//    }
-//
-//    /// The reason the account is disabled
-//    public var disabledReason: String?
-//    /// The date by which the fields needed are due
-//    public var dueByDate: Date?
-//    /// The fields needed before the user can get funds
-//    public var fieldsNeeded: [Field]
-//
-//    public enum Field: String {
-//        /// The bank account used to transfer funds i.e. payout
-//        case externalAccount = "external_account"
-//        /// The city of the entity's address
-//        case addressCity = "legal_entity.address.city"
-//        /// The first line of the entity's address
-//        case addressLine1 = "legal_entity.address.line1"
-//        /// The postal code of the entity's address
-//        case addressPostalCode = "legal_entity.address.postal_code"
-//        /// The state of the entity's address
-//        case addressState = "legal_entity.address.state"
-//        /// The name of the business (only if type is company)
-//        case businessName = "legal_entity.business_name"
-//        /// The business tax ID of the business (only if type is company)
-//        case businessTaxID = "legal_entity.business_tax_id"
-//        /// The day of the month of the representative's/user's birth
-//        case birthdayDay = "legal_entity.dob.day"
-//        /// The month of the representative's/user's birth
-//        case birthdayMonth = "legal_entity.dob.month"
-//        /// The year of the representative's/user's birth
-//        case birthdayYear = "legal_entity.dob.year"
-//        /// The representative's/user's first name
-//        case firstName = "legal_entity.first_name"
-//        /// The representative's/user's last name
-//        case lastName = "legal_entity.last_name"
-//        /// The last 4 digits of the representative's/user's social security number
-//        case socialSecurityNumberLast4Digits = "legal_entity.ssn_last_4"
-//        /// The legal entity type (individual or company)
-//        case type = "legal_entity.type"
-//        /// The date the user accepted terms of service
-//        case termsOfServiceAcceptanceDate = "tos_acceptance.date"
-//        /// The IP address used when accepting terms of service
-//        case termsOfServiceIPAddress = "tos_acceptance.ip"
-//        /// Full Social Security Number
-//        case personalIDNumber = "legal_entity.personal_id_number"
-//        /// The document (passport or drivers license)
-//        case verificationDocument = "legal_entity.verification.document"
-//    }
-//
-//}
-//
-//
