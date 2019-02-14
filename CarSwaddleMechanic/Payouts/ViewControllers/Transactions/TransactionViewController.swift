@@ -10,6 +10,7 @@ import CarSwaddleUI
 import Store
 import CarSwaddleData
 import CoreData
+import CoreLocation
 
 let costFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
@@ -183,7 +184,7 @@ extension TransactionViewController: UITableViewDataSource {
             case .cost:
                 let cell: TextFieldCell = tableView.dequeueCell()
                 cell.textFieldLabel.text = NSLocalizedString("How much you spent on this service", comment: "Label for text field")
-                cell.textField.keyboardType = .numberPad
+                cell.textField.keyboardType = .decimalPad
                 if let cost = transaction.transactionMetadata?.mechanicCostDollars {
                     cell.textField.text = costFormatter.string(from: NSNumber(value: cost))
                 } else {
@@ -212,8 +213,9 @@ extension TransactionViewController: UITableViewDataSource {
                 let transactionID = transaction.identifier
                 cell.didChangeText = { [weak self] text in
                     guard let text = text, let distanceMiles = Int(text) else { return }
+                    let meters = Int(CLLocationDistance(distanceMiles).milesToMeters)
                     store.privateContext { privateContext in
-                        self?.stripeNetwork.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: nil, drivingDistanceMiles: distanceMiles, in: privateContext) { transactionMetadataObjectID, error in
+                        self?.stripeNetwork.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: nil, drivingDistanceMeters: meters, in: privateContext) { transactionMetadataObjectID, error in
                             print("updated")
                         }
                     }
@@ -311,12 +313,8 @@ extension TransactionViewController: UIImagePickerControllerDelegate, UINavigati
         guard let url = try? profileImageStore.storeFile(data: imageData, fileName: "receipt") else {
             return
         }
-//        if let mechanic = user?.mechanic {
-//            headerView.configure(with: mechanic)
-//        }
         let transactionID = self.transaction.identifier
         store.privateContext { [weak self] privateContext in
-//            self?.mechanicNetwork.setProfileImage(fileURL: url, in: privateContext) { mechanicObjectID, error in
             self?.stripeNetwork.uploadTransactionReceipt(transactionID: transactionID, fileURL: url, in: privateContext) { receiptObjectID, error in
                 store.mainContext { mainContext in
                     print("got back")
@@ -325,10 +323,6 @@ extension TransactionViewController: UIImagePickerControllerDelegate, UINavigati
                     } else if let id = receiptObjectID {
                         print("id: \(id)")
                     }
-//                    guard let receiptObjectID = receiptObjectID else { return }
-//                    self?.tableView
-//                    guard let mechanic = mainContext.object(with: mechanicObjectID) as? Mechanic else { return }
-//                    self?.headerView.configure(with: mechanic)
                 }
             }
         }

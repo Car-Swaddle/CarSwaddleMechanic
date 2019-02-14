@@ -74,7 +74,7 @@ class AutoServiceTests: CarSwaddleLoginTestCase {
     
     func testGetAutoServices() {
         let exp = expectation(description: "\(#function)\(#line)")
-        autoServiceService.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, filterStatus: []) { jsonArray, error in
+        autoServiceService.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: []) { jsonArray, error in
             guard let jsonArray = jsonArray else {
                 XCTAssert(false, "Should have json")
                 exp.fulfill()

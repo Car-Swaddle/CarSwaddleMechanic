@@ -17,7 +17,7 @@
         <relationship name="balanceForReserved" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="reserved" inverseEntity="Balance" syncable="YES"/>
     </entity>
     <entity name="AutoService" representedClassName="AutoService" syncable="YES">
-        <attribute name="balanceTransactionID" attributeType="String" syncable="YES"/>
+        <attribute name="balanceTransactionID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
@@ -240,6 +240,7 @@
         <element name="Review" positionX="-27" positionY="108" width="128" height="195"/>
         <element name="ServiceEntity" positionX="-27" positionY="99" width="128" height="105"/>
         <element name="Stats" positionX="-18" positionY="126" width="128" height="105"/>
+        <element name="TaxInfo" positionX="-18" positionY="144" width="128" height="105"/>
         <element name="TemplateTimeSpan" positionX="0" positionY="126" width="128" height="120"/>
         <element name="Transaction" positionX="-9" positionY="153" width="128" height="270"/>
         <element name="TransactionMetadata" positionX="-27" positionY="135" width="128" height="195"/>
@@ -249,6 +250,5 @@
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
         <element name="Verification" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="VerificationField" positionX="-18" positionY="144" width="128" height="75"/>
-        <element name="TaxInfo" positionX="-18" positionY="144" width="128" height="105"/>
     </elements>
 </model>

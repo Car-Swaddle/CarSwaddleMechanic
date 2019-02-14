@@ -297,12 +297,12 @@ extension Navigator: UITabBarControllerDelegate {
     
     private static let didChangeTabEvent = "Did Change Tab"
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    @objc func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        guard let tab = self.tab(from: viewController) else { return }
 //        trackEvent(with: Navigator.didChangeTabEvent, attributes: ["Screen": tab.name])
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
     

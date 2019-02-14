@@ -18,6 +18,7 @@ let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+
 /// The service used to make requests to the server
 public final class AutoServiceService: Service {
     
@@ -38,7 +39,10 @@ public final class AutoServiceService: Service {
         var json = autoServiceJSON
         json["sourceID"] = sourceID
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
-            let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
+            let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else {
+                completion(nil, NetworkRequestError.unableToCreateURLRequest)
+                return nil
+        }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)
         }

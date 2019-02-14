@@ -24,7 +24,7 @@ final class TransactionReceiptCell: UITableViewCell, NibRegisterable {
     
     func configure(with transactionReceipt: TransactionReceipt) {
         let photoID = transactionReceipt.receiptPhotoID
-        guard (try? profileImageStore.getFilePath(name: photoID)) == nil else { return }
+        guard (try? profileImageStore.getFile(name: photoID)) == nil else { return }
         
         store.privateContext { [weak self] privateContext in
             self?.fileService.getImage(imageName: photoID) { downloadURL, error in

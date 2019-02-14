@@ -54,7 +54,7 @@
 		99F0278021852A42005FEFC7 /* RegionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277F21852A42005FEFC7 /* RegionService.swift */; };
 		99F0278221852BE4005FEFC7 /* RegionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */; };
 		99F36C5F216AD5B300CE4564 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99C8DD87216AD59C00627E8A /* KeychainAccess.framework */; };
-		99F696B42210E25D0021A719 /* TexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B32210E25D0021A719 /* TexService.swift */; };
+		99F696B42210E25D0021A719 /* TaxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B32210E25D0021A719 /* TaxService.swift */; };
 		99F696B62210E50F0021A719 /* TaxServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B52210E50F0021A719 /* TaxServiceTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,7 +147,7 @@
 		99F026A0217BD01B005FEFC7 /* AvailabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityTests.swift; sourceTree = "<group>"; };
 		99F0277F21852A42005FEFC7 /* RegionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionService.swift; sourceTree = "<group>"; };
 		99F0278121852BE4005FEFC7 /* RegionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionServiceTests.swift; sourceTree = "<group>"; };
-		99F696B32210E25D0021A719 /* TexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexService.swift; sourceTree = "<group>"; };
+		99F696B32210E25D0021A719 /* TaxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxService.swift; sourceTree = "<group>"; };
 		99F696B52210E50F0021A719 /* TaxServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,7 +266,7 @@
 				997714B821CA1D5C00E54F5B /* PriceService.swift */,
 				997714C821CE36A400E54F5B /* StripeService.swift */,
 				99E66D2A21E0915400C6E3E1 /* FileService.swift */,
-				99F696B32210E25D0021A719 /* TexService.swift */,
+				99F696B32210E25D0021A719 /* TaxService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				99F0278021852A42005FEFC7 /* RegionService.swift in Sources */,
 				99F0269D217BAA18005FEFC7 /* BoolExtension.swift in Sources */,
 				99F02699217BA048005FEFC7 /* Service.swift in Sources */,
-				99F696B42210E25D0021A719 /* TexService.swift in Sources */,
+				99F696B42210E25D0021A719 /* TaxService.swift in Sources */,
 				997714C921CE36A400E54F5B /* StripeService.swift in Sources */,
 				99E66D2B21E0915400C6E3E1 /* FileService.swift in Sources */,
 				995B9F2B2154B4DB0030A7CA /* GlobalImports.swift in Sources */,

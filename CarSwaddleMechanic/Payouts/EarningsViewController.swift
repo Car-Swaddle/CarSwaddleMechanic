@@ -46,11 +46,15 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
         super.viewDidLoad()
         
         setupTableView()
-//        updateBalance()
+        NotificationCenter.default.addObserver(self, selector: #selector(EarningsViewController.didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateBalance()
+    }
+    
+    @objc private func didBecomeActive() {
         updateBalance()
     }
     
