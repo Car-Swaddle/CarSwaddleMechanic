@@ -30,7 +30,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vzY-dw-UtP">
-                    <rect key="frame" x="175" y="62" width="217" height="141.5"/>
+                    <rect key="frame" x="175" y="62" width="217" height="105.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ex6-Ef-GAZ">
                             <rect key="frame" x="0.0" y="0.0" width="79" height="20.5"/>
@@ -39,10 +39,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="anf-Rp-cI5">
-                            <rect key="frame" x="0.0" y="30.5" width="70" height="50"/>
+                            <rect key="frame" x="0.0" y="30.5" width="70" height="14"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCa-bG-UBE" customClass="CosmosView" customModule="Cosmos">
-                                    <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="70" height="14"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -65,19 +65,30 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.8 of 28 ratings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKi-tf-Baq">
-                            <rect key="frame" x="0.0" y="90.5" width="126" height="20.5"/>
+                            <rect key="frame" x="0.0" y="54.5" width="126" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="49 services provided" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ub-ST-Ebb">
-                            <rect key="frame" x="0.0" y="121" width="160.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="85" width="160.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-VU-VTK" customClass="LOTAnimationView">
+                    <rect key="frame" x="41" y="206" width="22" height="22"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="0YC-C0-vat"/>
+                        <constraint firstAttribute="width" secondItem="1ah-VU-VTK" secondAttribute="height" multiplier="1:1" id="A8q-LT-ufc"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -85,6 +96,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vzY-dw-UtP" secondAttribute="trailing" constant="16" id="9LB-yO-Dgo"/>
                 <constraint firstItem="udB-CP-dPe" firstAttribute="centerX" secondItem="ayR-xx-LJI" secondAttribute="centerX" id="9ws-0C-4dE"/>
                 <constraint firstItem="vzY-dw-UtP" firstAttribute="leading" secondItem="ayR-xx-LJI" secondAttribute="trailing" constant="23" id="D1b-yY-zKQ"/>
+                <constraint firstItem="udB-CP-dPe" firstAttribute="leading" secondItem="1ah-VU-VTK" secondAttribute="trailing" constant="8" id="iKo-bp-ZhF"/>
+                <constraint firstItem="1ah-VU-VTK" firstAttribute="centerY" secondItem="udB-CP-dPe" secondAttribute="centerY" id="jqG-o8-V1Y"/>
                 <constraint firstItem="udB-CP-dPe" firstAttribute="top" secondItem="ayR-xx-LJI" secondAttribute="bottom" constant="8" id="mfS-yR-rY6"/>
                 <constraint firstItem="ayR-xx-LJI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ouh-A1-aYB"/>
                 <constraint firstItem="ayR-xx-LJI" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="yf5-kd-J7i"/>
@@ -97,6 +110,7 @@
                 <outlet property="editButton" destination="udB-CP-dPe" id="Bfz-0S-Rdd"/>
                 <outlet property="mechanicImageView" destination="ayR-xx-LJI" id="0Cz-Dh-XF5"/>
                 <outlet property="nameLabel" destination="ex6-Ef-GAZ" id="euz-zh-kpf"/>
+                <outlet property="pulseAnimationView" destination="1ah-VU-VTK" id="2GO-x8-Ukn"/>
                 <outlet property="ratingsLabel" destination="DKi-tf-Baq" id="6OY-fG-QUi"/>
                 <outlet property="servicesProvidedLabel" destination="3Ub-ST-Ebb" id="QZM-3e-BH7"/>
                 <outlet property="starRatingView" destination="kCa-bG-UBE" id="XGL-wh-qhl"/>

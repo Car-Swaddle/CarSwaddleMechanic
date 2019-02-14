@@ -15,16 +15,8 @@ import Authentication
 final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private enum Row: CaseIterable {
-//        case firstName
-//        case lastName
         case mechanicActive
         case serviceRegion
-//        case fullSocialSecurityNumber
-//        case last4OfSocialSecurityNumber
-//        case address
-//        case bankAccount
-//        case documents
-//        case dateOfBirth
         case schedule
         case accountInformation
         case contactInformation
@@ -115,20 +107,6 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
             }
         }
     }
-    
-//    @IBAction func didSelectOptions(_ sender: Any) {
-//        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//
-//        let title = NSLocalizedString("Logout", comment: "title of button to logout")
-//        let logoutAction = UIAlertAction(title: title, style: .destructive) { action in
-//            logout.logout()
-//        }
-//
-//        actionController.addAction(logoutAction)
-//        actionController.addCancelAction()
-//
-//        present(actionController, animated: true, completion: nil)
-//    }
     
     private func didSelectLogout() {
         let actionTitle = NSLocalizedString("Are you sure you want to logout?", comment: "String shown after user selects logout and before they actually logout")

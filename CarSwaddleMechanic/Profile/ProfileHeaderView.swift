@@ -11,6 +11,7 @@ import Store
 import CarSwaddleUI
 import Cosmos
 import CarSwaddleData
+import Lottie
 
 let ratingFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
@@ -37,6 +38,15 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     
     public func configure(with mechanic: Mechanic) {
         mechanicImageView.configure(withMechanicID: mechanic.identifier)
+        
+        let isPulseHidden = mechanic.profileImageID != nil
+        pulseAnimationView.isHiddenInStackView = isPulseHidden
+        if isPulseHidden {
+            pulseAnimationView.stop()
+        } else {
+            pulseAnimationView.play()
+        }
+        
         self.nameLabel.text = mechanic.user?.displayName
         let mechanicID = mechanic.identifier
         configure(with: mechanic.stats)
@@ -61,8 +71,16 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     @IBOutlet private weak var starRatingView: CosmosView!
     @IBOutlet private weak var ratingsLabel: UILabel!
     @IBOutlet private weak var servicesProvidedLabel: UILabel!
+    @IBOutlet private weak var pulseAnimationView: LOTAnimationView!
     
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        pulseAnimationView.animationSpeed = 0.7
+        pulseAnimationView.loopAnimation = true
+    }
     
     @IBAction private func didSelectEditButton() {
         let editAlert = self.editAlert()
