@@ -25,10 +25,19 @@ class LoginTestCase: XCTestCase {
     
     override func setUp() {
         
+        
+        let exp = expectation(description: "\(#function)\(#line)")
+        
         DispatchQueue.once(token: "SomeString") {
             try? store.destroyAllData()
-            auth.logout(deviceToken: nil) {_ in }
+            auth.logout(deviceToken: nil) { _ in
+                DispatchQueue.main.async {
+                    exp.fulfill()
+                }
+            }
         }
+        
+        waitForExpectations(timeout: 40, handler: nil)
         
         loginOrSignUpIfNeeded()
     }

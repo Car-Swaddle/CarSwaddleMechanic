@@ -16,10 +16,29 @@
                     <view key="view" contentMode="scaleToFill" id="bDA-Eu-gxM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gEB-js-UEC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wZT-bH-fJa" id="H9b-33-vwV"/>
+                                    <outlet property="delegate" destination="wZT-bH-fJa" id="dJq-4o-Bnk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pbg-P5-HHC" firstAttribute="trailing" secondItem="gEB-js-UEC" secondAttribute="trailing" id="XBO-TO-cLZ"/>
+                            <constraint firstItem="gEB-js-UEC" firstAttribute="top" secondItem="pbg-P5-HHC" secondAttribute="top" id="ePC-xJ-G4y"/>
+                            <constraint firstItem="gEB-js-UEC" firstAttribute="leading" secondItem="pbg-P5-HHC" secondAttribute="leading" id="gli-9z-13H"/>
+                            <constraint firstItem="gEB-js-UEC" firstAttribute="bottom" secondItem="pbg-P5-HHC" secondAttribute="bottom" id="vdB-aG-F4o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pbg-P5-HHC"/>
                     </view>
                     <navigationItem key="navigationItem" id="ePn-xj-Bch"/>
+                    <connections>
+                        <outlet property="tableView" destination="gEB-js-UEC" id="JTi-dv-JxW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvY-8g-VnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

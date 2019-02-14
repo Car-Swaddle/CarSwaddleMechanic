@@ -135,13 +135,16 @@ public class Store {
 
 public extension NSManagedObjectContext {
     
-    public func persist() {
-        guard hasChanges else { return }
+    @discardableResult
+    public func persist() -> Bool {
+        guard hasChanges else { return false }
         do {
             try save()
+            return true
         } catch {
             let nserror = error as NSError
             print("Unresolved error \(nserror), \(nserror.userInfo)")
+            return false
         }
     }
     

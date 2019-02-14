@@ -33,11 +33,6 @@ class AutoServiceTests: LoginTestCase {
         return dateComponents.date ?? Date()
     }
     
-    override func setUp() {
-        super.setUp()
-        try? store.destroyAllData()
-    }
-    
     func testCreateAutoService() {
         
         let exp = expectation(description: "\(#function)\(#line)")
@@ -59,8 +54,8 @@ class AutoServiceTests: LoginTestCase {
         let autoService = createAutoService(scheduledDate: scheduledDate, in: context)
         
         autoServiceNetwork.createAutoService(autoService: autoService, sourceID: "", in: context) { newAutoService, error in
-            self.autoServiceNetwork.getAutoServices(mechanicID: defaultMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
-                context.perform {
+            self.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.inProgress, .scheduled, .completed], in: context) { autoServiceIDs, error in
+                context.performOnImportQueue {
                     let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: context)
                     
                     XCTAssert(autoServices.count > 0, "Should have auto services")
@@ -86,6 +81,22 @@ class AutoServiceTests: LoginTestCase {
         }
         
         waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetAutoServicesCurrentMechanicID() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { pCtx in
+            self.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: self.startDate, endDate: self.endDate, filterStatus: [.scheduled, .canceled, .inProgress, .completed], in: pCtx) { autoServiceIDs, error in
+                store.mainContext { mCtx in
+                    let autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mCtx)
+                    
+                    XCTAssert(autoServices.count > 0, "Should have auto services")
+                    exp.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 3340, handler: nil)
     }
     
     func testUpdateAutoServiceStatus() {

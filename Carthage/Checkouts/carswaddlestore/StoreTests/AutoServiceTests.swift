@@ -86,7 +86,8 @@ private let multipleAutoServicesJSON: JSONObject = [
     "createdAt": "2018-11-21T08:38:41.330Z",
     "updatedAt": "2018-11-21T08:38:41.387Z",
     "userID": "109fd510-ea9f-11e8-a56c-2953c4831dcb",
-    "mechanicID": "10aaf8a0-ea9f-11e8-a56c-2953c4831dcb"
+    "mechanicID": "10aaf8a0-ea9f-11e8-a56c-2953c4831dcb",
+    "balanceTransactionID": "somerandomid"
 ]
 
 private let newJSON: JSONObject = [

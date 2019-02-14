@@ -47,7 +47,7 @@ final public class StripeNetwork: Network {
     @discardableResult
     public func requestBalance(in context: NSManagedObjectContext, completion: @escaping (_ balanceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return stripeService.getBalance { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var objectID: NSManagedObjectID?
                 defer {
                     completion(objectID, error)
@@ -90,7 +90,7 @@ final public class StripeNetwork: Network {
     }
     
     private func finishTransactionDetails(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping (_ transactionObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
-        context.perform {
+        context.performOnImportQueue {
             var transactionObjectID: NSManagedObjectID?
             defer {
                 DispatchQueue.global().async {
@@ -109,7 +109,7 @@ final public class StripeNetwork: Network {
         let uuid = UUID().uuidString
         _ = try? profileImageStore.storeFile(url: fileURL, fileName: uuid)
         return fileService.uploadTransactionReceipt(transactionID: transactionID, fileURL: fileURL) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var receiptObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {
@@ -135,7 +135,7 @@ final public class StripeNetwork: Network {
     @discardableResult
     public func requestTransactions(startingAfterID: String? = nil, payoutID: String? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return stripeService.getTransactions(startingAfterID: startingAfterID, payoutID: payoutID, limit: limit) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var objectIDs: [NSManagedObjectID] = []
                 var lastID: String?
                 var hasMore: Bool = false
@@ -173,7 +173,7 @@ final public class StripeNetwork: Network {
     @discardableResult
     public func requestPayouts(startingAfterID: String? = nil, status: Payout.Status? = nil, limit: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ lastID: String?, _ hasMore: Bool, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return stripeService.getPayouts(startingAfterID: startingAfterID, status: status?.rawValue, limit: limit) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var objectIDs: [NSManagedObjectID] = []
                 var lastID: String?
                 var hasMore: Bool = false

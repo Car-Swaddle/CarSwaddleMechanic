@@ -42,7 +42,7 @@ public final class MechanicNetwork: Network {
     @discardableResult
     public func getStats(mechanicID: String, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
         return mechanicService.getStats(forMechanicWithID: mechanicID) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var mechanicObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {
@@ -65,7 +65,7 @@ public final class MechanicNetwork: Network {
     }
     
     private func completeMechanic(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) {
-        context.perform {
+        context.performOnImportQueue {
             var mechanicObjectID: NSManagedObjectID?
             defer {
                 DispatchQueue.global().async {
@@ -90,7 +90,7 @@ public final class MechanicNetwork: Network {
     @discardableResult
     public func getNearestMechanics(limit: Int, latitude: Double, longitude: Double, maxDistance: Double, in context: NSManagedObjectContext, completion: @escaping ObjectIDArrayCompletion) -> URLSessionDataTask? {
         return mechanicService.getNearestMechanics(limit: limit, latitude: latitude, longitude: longitude, maxDistance: maxDistance) { [weak self] jsonArray, error in
-            context.perform {
+            context.performOnImportQueue {
                 var mechanicIDs: [NSManagedObjectID] = []
                 defer {
                     DispatchQueue.global().async {
@@ -115,7 +115,7 @@ public final class MechanicNetwork: Network {
     @discardableResult
     public func setProfileImage(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return fileService.uploadMechanicProfileImage(fileURL: fileURL) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var mechanicObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {
@@ -138,7 +138,7 @@ public final class MechanicNetwork: Network {
     @discardableResult
     public func uploadIdentityDocument(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return fileService.uploadMechanicIdentityDocument(fileURL: fileURL) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var mechanicObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {

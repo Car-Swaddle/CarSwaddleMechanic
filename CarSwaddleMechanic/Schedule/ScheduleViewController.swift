@@ -100,12 +100,10 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         }
         task?.cancel()
         store.privateContext { [weak self] privateContext in
-            self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [], in: privateContext) { autoServiceIDs, error in
-                DispatchQueue.main.async {
-                    store.mainContext { mainContext in
-                        self?.autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
-                        completion()
-                    }
+            self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
+                store.mainContext { mainContext in
+                    self?.autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
+                    completion()
                 }
             }
         }

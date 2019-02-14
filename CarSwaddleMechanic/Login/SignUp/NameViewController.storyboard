@@ -21,7 +21,7 @@
                                 <rect key="frame" x="16" y="77" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="given-name"/>
                                 <connections>
                                     <action selector="firstNameTextFieldDidChange:" destination="EBo-eu-UFL" eventType="editingChanged" id="d1N-lD-Wli"/>
                                 </connections>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="16" y="115" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="family-name"/>
                                 <connections>
                                     <action selector="lastNameTextFieldDidChange:" destination="EBo-eu-UFL" eventType="editingChanged" id="T9w-38-jFN"/>
                                 </connections>

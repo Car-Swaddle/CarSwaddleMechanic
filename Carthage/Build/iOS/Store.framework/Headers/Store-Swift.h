@@ -319,6 +319,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @class Stats;
 @class Payout;
 @class Verification;
+@class TaxInfo;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
@@ -338,6 +339,7 @@ SWIFT_CLASS_NAMED("Mechanic")
 @property (nonatomic, copy) NSSet<Payout *> * _Nonnull payouts;
 @property (nonatomic, copy) NSString * _Nullable identityDocumentID;
 @property (nonatomic, strong) Verification * _Nullable verification;
+@property (nonatomic, copy) NSSet<TaxInfo *> * _Nonnull taxYears;
 @end
 
 
@@ -488,6 +490,20 @@ SWIFT_CLASS_NAMED("Stats")
 @end
 
 
+SWIFT_CLASS_NAMED("TaxInfo")
+@interface TaxInfo : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface TaxInfo (SWIFT_EXTENSION(Store))
+@property (nonatomic, copy) NSString * _Nonnull year;
+@property (nonatomic) NSInteger metersDriven;
+@property (nonatomic) NSInteger mechanicCostInCents;
+@property (nonatomic, strong) Mechanic * _Nonnull mechanic;
+@end
+
+
 SWIFT_CLASS_NAMED("TemplateTimeSpan")
 @interface TemplateTimeSpan : NSManagedObject
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
@@ -580,18 +596,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
-- (void)addVehicles:(NSSet * _Nonnull)values;
-- (void)removeVehicles:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addServicesObject:(AutoService * _Nonnull)value;
 - (void)removeServicesObject:(AutoService * _Nonnull)value;
 - (void)addServices:(NSSet * _Nonnull)values;
 - (void)removeServices:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
+- (void)addVehicles:(NSSet * _Nonnull)values;
+- (void)removeVehicles:(NSSet * _Nonnull)values;
 @end
 
 

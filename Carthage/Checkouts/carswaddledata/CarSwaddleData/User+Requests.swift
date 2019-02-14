@@ -30,7 +30,7 @@ public final class UserNetwork: Network {
     @discardableResult
     public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {
                     completion(userObjectID, error)
@@ -47,7 +47,7 @@ public final class UserNetwork: Network {
     @discardableResult
     public func requestCurrentUser(in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return userService.getCurrentUser { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {
@@ -66,7 +66,7 @@ public final class UserNetwork: Network {
     @discardableResult
     public func setProfileImage(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return fileService.uploadProfileImage(fileURL: fileURL) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {
@@ -121,7 +121,7 @@ public final class UserNetwork: Network {
     @discardableResult
     public func verifySMS(withCode code: String, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         return userService.verifySMS(withCode: code) { json, error in
-            context.perform {
+            context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {
                     DispatchQueue.global().async {

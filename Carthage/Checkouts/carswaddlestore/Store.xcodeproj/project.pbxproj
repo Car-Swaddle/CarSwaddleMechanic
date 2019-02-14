@@ -72,6 +72,8 @@
 		99F0278C21858611005FEFC7 /* Region+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */; };
 		99F0279021859E29005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278F21859E29005FEFC7 /* RegionTests.swift */; };
 		99F027A0218AE51B005FEFC7 /* PrimitiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */; };
+		99F696B92210E8330021A719 /* TaxInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B72210E8330021A719 /* TaxInfo+CoreDataClass.swift */; };
+		99F696BA2210E8330021A719 /* TaxInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B82210E8330021A719 /* TaxInfo+CoreDataProperties.swift */; };
 		99F7D61D21EC042C00D6B524 /* Payout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7D61B21EC042C00D6B524 /* Payout+CoreDataClass.swift */; };
 		99F7D61E21EC042C00D6B524 /* Payout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7D61C21EC042C00D6B524 /* Payout+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -155,6 +157,8 @@
 		99F0278A21858611005FEFC7 /* Region+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99F0278F21859E29005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
 		99F0279F218AE51B005FEFC7 /* PrimitiveExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveExtensions.swift; sourceTree = "<group>"; };
+		99F696B72210E8330021A719 /* TaxInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		99F696B82210E8330021A719 /* TaxInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99F78F2D214BA53600D1BD28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		99F7D61B21EC042C00D6B524 /* Payout+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payout+CoreDataClass.swift"; sourceTree = "<group>"; };
 		99F7D61C21EC042C00D6B524 /* Payout+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payout+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				992BFDD72208020E006B64CC /* TransactionMetadata+CoreDataProperties.swift */,
 				992BFDD42208020E006B64CC /* TransactionReceipt+CoreDataClass.swift */,
 				992BFDD52208020E006B64CC /* TransactionReceipt+CoreDataProperties.swift */,
+				99F696B72210E8330021A719 /* TaxInfo+CoreDataClass.swift */,
+				99F696B82210E8330021A719 /* TaxInfo+CoreDataProperties.swift */,
 				99F7D61B21EC042C00D6B524 /* Payout+CoreDataClass.swift */,
 				99F7D61C21EC042C00D6B524 /* Payout+CoreDataProperties.swift */,
 				998D3ADC21DD4565003DD717 /* Stats+CoreDataClass.swift */,
@@ -438,8 +444,10 @@
 				992BFDDB2208020E006B64CC /* TransactionMetadata+CoreDataProperties.swift in Sources */,
 				991B4036216ADC5D00D7644D /* VehicleDescription+CoreDataProperties.swift in Sources */,
 				99675CB721EB0059003C9D70 /* Transaction+CoreDataClass.swift in Sources */,
+				99F696BA2210E8330021A719 /* TaxInfo+CoreDataProperties.swift in Sources */,
 				991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */,
 				99B3FA882202E3F800D9887F /* Verification+CoreDataProperties.swift in Sources */,
+				99F696B92210E8330021A719 /* TaxInfo+CoreDataClass.swift in Sources */,
 				99675CA721E9DC2F003C9D70 /* Amount+CoreDataClass.swift in Sources */,
 				991B4032216ADC5D00D7644D /* User+CoreDataClass.swift in Sources */,
 				99675CA821E9DC2F003C9D70 /* Amount+CoreDataProperties.swift in Sources */,

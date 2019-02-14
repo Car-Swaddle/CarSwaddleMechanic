@@ -58,7 +58,7 @@ public class Auth {
     }
     
     private func complete(json: JSONObject?, token: String?, error: Error?, context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) {
-        context.perform { [weak self] in
+        context.performOnImportQueue { [weak self] in
             var error: Error? = error
             defer {
                 completion(error)
@@ -70,6 +70,7 @@ public class Auth {
                 }
                 if let mechanicJSON = json["mechanic"] as? JSONObject {
                     let mechanic = Mechanic.fetchOrCreate(json: mechanicJSON, context: context)
+                    mechanic?.user = user
                     if let mechanicID = mechanic?.identifier {
                         Mechanic.setCurrentMechanicID(mechanicID)
                     }

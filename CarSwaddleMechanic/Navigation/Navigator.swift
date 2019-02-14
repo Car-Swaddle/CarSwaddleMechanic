@@ -35,7 +35,7 @@ extension Navigator {
 
 let navigator = Navigator()
 
-final class Navigator: NSObject, TweakViewControllerDelegate {
+final public class Navigator: NSObject {
     
     public override init() {
         self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -49,6 +49,7 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
         #if DEBUG
         let tripleTap = UITapGestureRecognizer(target: self, action: #selector(Navigator.didTripleTap))
         tripleTap.numberOfTapsRequired = 3
+        tripleTap.numberOfTouchesRequired = 2
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
         
@@ -68,7 +69,7 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
         appDelegate.window?.rootViewController?.present(navigationController, animated: true, completion: nil)
     }
     
-    func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
+    public func didDismiss(requiresAppReset: Bool, tweakViewController: TweakViewController) {
         if requiresAppReset {
             logout.logout()
         }
@@ -77,11 +78,6 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
     #endif
     
     private func showRequiredScreensIfNeeded() {
-//        guard let userID = User.currentUserID else { return }
-//        guard let mechanic = Mechanic.fetch(with: userID, in: store.mainContext) else { return }
-//            mechanic.scheduleTimeSpans.count == 0 else { return
-//        let availabilityViewController = AvailabilityViewController.create(shouldCreateDefaultTimeSpans: true)
-        
         let viewControllers = requiredViewControllers()
         guard viewControllers.count > 0 else { return }
         
@@ -290,6 +286,12 @@ final class Navigator: NSObject, TweakViewControllerDelegate {
     
 }
 
+#if DEBUG
+
+extension Navigator: TweakViewControllerDelegate {  }
+
+#endif
+
 
 extension Navigator: UITabBarControllerDelegate {
     
@@ -308,7 +310,7 @@ extension Navigator: UITabBarControllerDelegate {
 
 extension Navigator: HorizontalSlideTransitionDelegate {
     
-    func relativeTransition(_ transition: HorizontalSlideTransition, fromViewController: UIViewController, toViewController: UIViewController) -> HorizontalSlideDirection {
+    public func relativeTransition(_ transition: HorizontalSlideTransition, fromViewController: UIViewController, toViewController: UIViewController) -> HorizontalSlideDirection {
         guard let fromTab = self.tab(from: fromViewController),
             let toTab = self.tab(from: toViewController) else { return .left }
         return fromTab.rawValue < toTab.rawValue ? .left : .right

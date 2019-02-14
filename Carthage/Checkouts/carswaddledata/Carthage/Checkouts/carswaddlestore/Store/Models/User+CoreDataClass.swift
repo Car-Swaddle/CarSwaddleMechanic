@@ -29,13 +29,28 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
     
     private func configure(with identifier: String, json: JSONObject) {
         self.identifier = identifier
-        self.firstName = json["firstName"] as? String
-        self.lastName = json["lastName"] as? String
-        self.phoneNumber = json["phoneNumber"] as? String
-        self.profileImageID = json["profileImageID"] as? String
-        self.email = json["email"] as? String
-        self.isEmailVerified = (json["isEmailVerified"] as? Bool) ?? false
-        self.isPhoneNumberVerified = (json["isPhoneNumberVerified"] as? Bool) ?? false
+        if let firstName = json["firstName"] as? String {
+            self.firstName = firstName
+        }
+        if let lastName = json["lastName"] as? String {
+            self.lastName = lastName
+        }
+        if let phoneNumber = json["phoneNumber"] as? String {
+            self.phoneNumber = phoneNumber
+        }
+        
+        if let imageID = json["profileImageID"] as? String {
+            self.profileImageID = imageID
+        }
+        if let email = json["email"] as? String {
+            self.email = email
+        }
+        if let verified = (json["isEmailVerified"] as? Bool) {
+            self.isEmailVerified = verified
+        }
+        if let verified = (json["isPhoneNumberVerified"] as? Bool) {
+            self.isPhoneNumberVerified = verified
+        }
         
         guard let context = managedObjectContext else { return }
         

@@ -56,6 +56,8 @@
 		99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */; };
 		99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02783218580C0005FEFC7 /* Region+Requests.swift */; };
 		99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278D21858983005FEFC7 /* RegionTests.swift */; };
+		99F696BC2210EE800021A719 /* Tax+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BB2210EE800021A719 /* Tax+Request.swift */; };
+		99F696BE2210F6720021A719 /* TaxInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BD2210F6720021A719 /* TaxInfoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestCase.swift; sourceTree = "<group>"; };
 		99F02783218580C0005FEFC7 /* Region+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+Requests.swift"; sourceTree = "<group>"; };
 		99F0278D21858983005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
+		99F696BB2210EE800021A719 /* Tax+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tax+Request.swift"; sourceTree = "<group>"; };
+		99F696BD2210F6720021A719 /* TaxInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInfoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 				997DBC7D219E84510080F42C /* Vehicle+Requests.swift */,
 				997714BC21CC5A5000E54F5B /* Price+Request.swift */,
 				99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */,
+				99F696BB2210EE800021A719 /* Tax+Request.swift */,
 				997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */,
 				997DBC4C21969F910080F42C /* JSONExtension.swift */,
 				99E66D8D21E1890A00C6E3E1 /* FileStore.swift */,
@@ -241,6 +246,7 @@
 				997DBC5B21977ED20080F42C /* UserTests.swift */,
 				99F0278D21858983005FEFC7 /* RegionTests.swift */,
 				998D3AE021DD51DB003DD717 /* ReviewTests.swift */,
+				99F696BD2210F6720021A719 /* TaxInfoTests.swift */,
 				99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */,
 				997DBC9D21B24CF00080F42C /* AuthTestCase.swift */,
 				99E66D9721E196DD00C6E3E1 /* Resources */,
@@ -445,6 +451,7 @@
 				998D3AD921DC9B72003DD717 /* Review+Requests.swift in Sources */,
 				997DBC49219418830080F42C /* Mechanic+Requests.swift in Sources */,
 				997DBC5A21977A310080F42C /* User+Requests.swift in Sources */,
+				99F696BC2210EE800021A719 /* Tax+Request.swift in Sources */,
 				9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */,
 				99A3A88D21D58E85009A1AD9 /* Stripe+Requests.swift in Sources */,
 				99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */,
@@ -467,6 +474,7 @@
 				997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */,
 				99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */,
 				99A3A88F21D5964E009A1AD9 /* StripeTests.swift in Sources */,
+				99F696BE2210F6720021A719 /* TaxInfoTests.swift in Sources */,
 				997DBC9E21B24CF00080F42C /* AuthTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

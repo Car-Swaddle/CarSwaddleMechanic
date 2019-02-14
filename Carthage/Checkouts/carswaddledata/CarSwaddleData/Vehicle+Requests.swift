@@ -27,7 +27,7 @@ public class VehicleNetwork: Network {
     @discardableResult
     public func requestVehicles(limit: Int = 100, offset: Int = 0, in context: NSManagedObjectContext, completion: @escaping (_ vehicleObjectIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return vehicleService.getVehicles(limit: limit, offset: offset) { jsonArray, error in
-            context.perform {
+            context.performOnImportQueue {
                 var vehicleObjectIDs: [NSManagedObjectID] = []
                 defer {
                     DispatchQueue.global().async {
@@ -79,7 +79,7 @@ public class VehicleNetwork: Network {
     @discardableResult
     public func deleteVehicle(vehicleID: String, in context: NSManagedObjectContext, completion: @escaping (_ error: Error?) -> Void) -> URLSessionDataTask? {
         return vehicleService.deleteVehicle(vehicleID: vehicleID) { error in
-            context.perform {
+            context.performOnImportQueue {
                 if error == nil {
                     if let vehicle = Vehicle.fetch(with: vehicleID, in: context) {
                         context.delete(vehicle)
@@ -93,7 +93,7 @@ public class VehicleNetwork: Network {
     
     
     private func complete(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) {
-        context.perform {
+        context.performOnImportQueue {
             var vehicleObjectID: NSManagedObjectID?
             defer {
                 completion(vehicleObjectID, error)

@@ -31,7 +31,9 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
     
     private func configure(from identifier: String, json: JSONObject)  {
         self.identifier = identifier
-        self.isActive = json["isActive"] as? Bool ?? false
+        if let isActive = json["isActive"] as? Bool {
+            self.isActive = isActive
+        }
         
         if let dateOfBirthString = json["dateOfBirth"] as? String {
             self.dateOfBirth = serverDateFormatter.date(from: dateOfBirthString)
@@ -47,7 +49,9 @@ public final class Mechanic: NSManagedObject, NSManagedObjectFetchable, JSONInit
             self.user = user
         }
         
-        profileImageID = json["profileImageID"] as? String
+        if let profileImageID = json["profileImageID"] as? String {
+            self.profileImageID = profileImageID
+        }
         
         if let addressJSON = json["address"] as? JSONObject {
             let address = Address.fetchOrCreate(json: addressJSON, context: context)

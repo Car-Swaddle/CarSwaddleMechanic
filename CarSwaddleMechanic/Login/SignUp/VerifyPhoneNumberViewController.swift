@@ -9,6 +9,7 @@
 import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleNetworkRequest
+import Store
 
 private let codeNumberOfDigits = 5
 
@@ -32,6 +33,7 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         let viewController = OneTimeCodeViewController.viewControllerFromStoryboard()
         viewController.delegate = self
         viewController.numberOfDigits = codeNumberOfDigits
+        viewController.phoneNumber = User.currentUser(context: store.mainContext)?.phoneNumber ?? ""
         return viewController
     }()
     

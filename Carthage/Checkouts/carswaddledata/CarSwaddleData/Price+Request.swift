@@ -40,7 +40,7 @@ final public class PriceNetwork: Network {
 //    }
     
     private func complete(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
-        context.perform {
+        context.performOnImportQueue {
             var priceObjectID: NSManagedObjectID?
             var completionError: Error?
             defer {

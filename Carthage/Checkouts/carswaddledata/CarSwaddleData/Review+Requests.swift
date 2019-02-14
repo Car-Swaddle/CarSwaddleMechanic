@@ -35,7 +35,7 @@ public final class ReviewNetwork: Network {
     }
     
     private func completeReview(jsonKey: String, in context: NSManagedObjectContext, json: JSONObject?, error: Error?, completion: @escaping (_ reviewsObjectID: [NSManagedObjectID], _ error: Error?) -> Void) {
-        context.perform {
+        context.performOnImportQueue {
             var reviewIDs: [NSManagedObjectID] = []
             defer {
                 DispatchQueue.global().async {

@@ -28,7 +28,7 @@ class RegionTests: LoginTestCase {
                 exp.fulfill()
                 return
             }
-            context.perform {
+            context.performOnImportQueue {
                 let region = context.object(with: objectID) as? Region
                 XCTAssert(region != nil, "Should have region here")
                 XCTAssert(region?.radius == testMechanicRadius, "Should have \(testMechanicRadius) got \(String(describing: region?.radius))")
@@ -50,9 +50,9 @@ class RegionTests: LoginTestCase {
                 exp.fulfill()
                 return
             }
-            context.perform {
+            context.performOnImportQueue {
                 self.regionNetwork.getRegion(in: context) { objectID, error in
-                    context.perform {
+                    context.performOnImportQueue {
                         guard let objectID = objectID else {
                             XCTAssert(false, "Should have object ID")
                             exp.fulfill()

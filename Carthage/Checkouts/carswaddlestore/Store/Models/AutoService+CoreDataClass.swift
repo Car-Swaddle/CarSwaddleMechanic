@@ -40,7 +40,7 @@ let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String)
+typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String)
 
 @objc(AutoService)
 public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -63,8 +63,9 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             let statusString = json["status"] as? String,
             let status = AutoService.Status(rawValue: statusString),
             let userID = json["userID"] as? String,
+            let balanceTransactionID = json["balanceTransactionID"] as? String,
             let mechanicID = json["mechanicID"] as? String else { return nil }
-        return (id, scheduledDate, status, userID, mechanicID)
+        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID)
     }
     
     private func configure(with values: AutoServiceValues, json: JSONObject) {
@@ -72,6 +73,7 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.scheduledDate = values.scheduledDate
         self.status = values.status
         self.notes = json["notes"] as? String
+        self.balanceTransactionID = values.balanceTransactionID
         
         guard let context = managedObjectContext else { return }
         
@@ -109,10 +111,6 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         
         if let reviewFromMechanic = json["reviewFromMechanic"] as? JSONObject {
             self.reviewFromMechanic = Review(json: reviewFromMechanic, context: context)
-        }
-        
-        if let balanceTransactionID = json["balanceTransactionID"] as? String {
-            self.balanceTransactionID = balanceTransactionID
         }
     }
     

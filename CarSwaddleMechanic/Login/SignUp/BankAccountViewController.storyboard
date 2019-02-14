@@ -57,7 +57,7 @@
                                 <rect key="frame" x="16" y="161" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                 <connections>
                                     <action selector="bankAccountNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="e2j-3n-E56"/>
                                 </connections>

@@ -26,6 +26,7 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     
     public var phoneNumber: String = "" {
         didSet {
+            guard viewIfLoaded != nil else { return }
             verifyPhoneNumberDescriptionLabel.text = verifyPhoneNumberDescription
         }
     }
@@ -39,6 +40,8 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     open override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        verifyPhoneNumberDescriptionLabel.text = verifyPhoneNumberDescription
         oneTimeCodeEntryView.digits = numberOfDigits
         oneTimeCodeEntryView.textFieldWidth = 50
     }

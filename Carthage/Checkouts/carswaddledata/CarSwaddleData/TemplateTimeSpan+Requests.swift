@@ -23,7 +23,7 @@ public final class TemplateTimeSpanNetwork: Network {
     @discardableResult
     public func getTimeSpans(ofMechanicWithID mechanicID: String? = nil, in context: NSManagedObjectContext, completion: @escaping (_ timeSpans: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return availabilityService.getAvailability(ofMechanicWithID: mechanicID) { jsonArray, error in
-            context.perform {
+            context.performOnImportQueue {
                 var timeSpanObjectIDs: [NSManagedObjectID] = []
                 defer {
                     DispatchQueue.global().async {
@@ -66,7 +66,7 @@ public final class TemplateTimeSpanNetwork: Network {
         }
         
         return availabilityService.postAvailability(jsonArray: jsonArray) { jsonArray, error in
-            context.perform {
+            context.performOnImportQueue {
                 var timeSpanObjectIDs: [NSManagedObjectID] = []
                 defer {
                     DispatchQueue.global().async {

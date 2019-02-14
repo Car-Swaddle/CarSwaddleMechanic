@@ -139,6 +139,8 @@
 		99F696AE220FF2BB0021A719 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696AD220FF2BB0021A719 /* PhoneNumberViewController.swift */; };
 		99F696B0220FF2C90021A719 /* PhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F696AF220FF2C90021A719 /* PhoneNumberViewController.storyboard */; };
 		99F696B2220FF5F30021A719 /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696B1220FF5F30021A719 /* VerifyPhoneNumberViewController.swift */; };
+		99F696C122112B5B0021A719 /* TaxYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BF22112B5B0021A719 /* TaxYearCell.swift */; };
+		99F696C222112B5B0021A719 /* TaxYearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F696C022112B5B0021A719 /* TaxYearCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +299,8 @@
 		99F696AD220FF2BB0021A719 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		99F696AF220FF2C90021A719 /* PhoneNumberViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneNumberViewController.storyboard; sourceTree = "<group>"; };
 		99F696B1220FF5F30021A719 /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		99F696BF22112B5B0021A719 /* TaxYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxYearCell.swift; sourceTree = "<group>"; };
+		99F696C022112B5B0021A719 /* TaxYearCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxYearCell.xib; sourceTree = "<group>"; };
 		99FF1E4621787755006A4315 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -661,6 +665,8 @@
 				99F69695220D46150021A719 /* ContactInformationViewController.storyboard */,
 				99F69697220D46210021A719 /* TaxesViewController.swift */,
 				99F69699220D46290021A719 /* TaxesViewController.storyboard */,
+				99F696BF22112B5B0021A719 /* TaxYearCell.swift */,
+				99F696C022112B5B0021A719 /* TaxYearCell.xib */,
 				99E66DBD21E46B3400C6E3E1 /* Cell */,
 			);
 			path = Profile;
@@ -835,6 +841,7 @@
 				99F6968E220BDBB30021A719 /* circle-pulse.json in Resources */,
 				997DBC642198FBE20080F42C /* lehi.gpx in Resources */,
 				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
+				99F696C222112B5B0021A719 /* TaxYearCell.xib in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
 				99F6969A220D46290021A719 /* TaxesViewController.storyboard in Resources */,
 				99F69696220D46150021A719 /* ContactInformationViewController.storyboard in Resources */,
@@ -936,6 +943,7 @@
 				99F69698220D46210021A719 /* TaxesViewController.swift in Sources */,
 				99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */,
 				99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */,
+				99F696C122112B5B0021A719 /* TaxYearCell.swift in Sources */,
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
