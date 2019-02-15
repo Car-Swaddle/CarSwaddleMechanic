@@ -13,6 +13,7 @@ import Store
 import MapKit
 
 private let defaultMechanicID = "8ba0ded0-febd-11e8-9811-059afcb3ba5e"
+private let autoServiceID = "09d3c2c0-3084-11e9-b606-eff43c501111"
 
 class AutoServiceTests: LoginTestCase {
     
@@ -43,6 +44,25 @@ class AutoServiceTests: LoginTestCase {
             XCTAssert(newAutoService != nil, "Should have auto service")
             XCTAssert(error == nil, "Should not have error")
             exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetAutoServiceDetails() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let context = store.mainContext
+        
+        autoServiceNetwork.getAutoServiceDetails(autoServiceID: autoServiceID, in: context) { autoServiceObjectID, error in
+            context.perform {
+                if let autoServiceObjectID = autoServiceObjectID {
+                    let autoService = context.object(with: autoServiceObjectID) as? AutoService
+                    XCTAssert(autoService != nil, "Should have auto service")
+                } else {
+                    XCTAssert(false, "Should have object id")
+                }
+                exp.fulfill()
+            }
         }
         
         waitForExpectations(timeout: 40, handler: nil)

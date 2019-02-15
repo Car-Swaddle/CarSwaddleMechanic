@@ -255,8 +255,8 @@ extension TransactionViewController: UITableViewDelegate {
         switch self.section(fromSectionIndex: indexPath.section) {
         case .transactionDetails:
             if detailsRows[indexPath.row] == .autoService {
-                guard let autoService = transaction.transactionMetadata?.autoService else { return }
-                let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: autoService)
+                guard let autoServiceID = transaction.transactionMetadata?.autoServiceID else { return }
+                let autoServiceViewController = AutoServiceDetailsViewController.create(autoServiceID: autoServiceID)
                 show(autoServiceViewController, sender: self)
             }
         case .receipts:

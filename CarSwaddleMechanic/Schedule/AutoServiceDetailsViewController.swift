@@ -14,10 +14,13 @@ import CarSwaddleData
 
 final class AutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
-    
     public static func create(autoServiceID: String) -> AutoServiceDetailsViewController {
         let viewController = AutoServiceDetailsViewController.viewControllerFromStoryboard()
-        viewController.autoServiceID = autoServiceID
+        if let autoService = AutoService.fetch(with: autoServiceID, in: store.mainContext) {
+            viewController.autoService = autoService
+        } else {
+            viewController.autoServiceID = autoServiceID
+        }
         return viewController
     }
     
@@ -40,7 +43,13 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     
     private var rows: [Row] = [.date, .user, .mechanic, .location, .vehicle, .serviceType, .oilType, .autoServiceStatus]
     private var autoServiceID: String?
-    private var autoService: AutoService!
+    private var autoService: AutoService? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     @IBOutlet private var tableView: UITableView!
     
@@ -49,8 +58,30 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        if autoServiceID != nil && autoService == nil {
+            requestData()
+        }
         
+        setupTableView()
+    }
+    
+    private func requestData(completion: @escaping () -> Void = {}) {
+        guard let autoServiceID = autoServiceID else {
+            completion()
+            return
+        }
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.getAutoServiceDetails(autoServiceID: autoServiceID, in: privateContext) { autoServiceObjectID, error in
+                store.mainContext { mainContext in
+                    defer {
+                        completion()
+                    }
+                    if let autoServiceObjectID = autoServiceObjectID, error == nil {
+                        self?.autoService = mainContext.object(with: autoServiceObjectID) as? AutoService
+                    }
+                }
+            }
+        }
     }
     
     private func setupTableView() {
@@ -65,17 +96,17 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     private func text(for row: Row) -> String? {
         switch row {
         case .date:
-            if let scheduledDate = autoService.scheduledDate {
+            if let scheduledDate = autoService?.scheduledDate {
                 return hourMinuteDateFormatter.string(from: scheduledDate)
             }
             return nil
-        case .user: return autoService.creator?.displayName
-        case .mechanic: return autoService.mechanic?.user?.displayName
-        case .location: return autoService.location?.streetAddress
-        case .vehicle: return autoService.vehicle?.name
-        case .serviceType: return autoService.serviceEntities.first?.entityType.localizedString
-        case .oilType: return autoService.serviceEntities.first?.oilChange?.oilType.localizedString
-        case .autoServiceStatus: return autoService.status.localizedString
+        case .user: return autoService?.creator?.displayName
+        case .mechanic: return autoService?.mechanic?.user?.displayName
+        case .location: return autoService?.location?.streetAddress
+        case .vehicle: return autoService?.vehicle?.name
+        case .serviceType: return autoService?.serviceEntities.first?.entityType.localizedString
+        case .oilType: return autoService?.serviceEntities.first?.oilChange?.oilType.localizedString
+        case .autoServiceStatus: return autoService?.status.localizedString
         }
     }
     
@@ -85,15 +116,11 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         case .user: return nil
         case .mechanic: return nil
         case .location: return nil
-        case .vehicle: return autoService.vehicle?.licensePlate
+        case .vehicle: return autoService?.vehicle?.licensePlate
         case .serviceType: return nil
         case .oilType: return nil
         case .autoServiceStatus: return nil
         }
-    }
-    
-    private func requestData(completion: @escaping () -> Void) {
-        // TODO: get auto services
     }
     
 }
@@ -109,13 +136,15 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
         switch row {
         case .location:
             let cell: AutoServiceLocationCell = tableView.dequeueCell()
-            if let location = autoService.location {
+            if let location = autoService?.location {
                 cell.configure(with: location)
             }
             return cell
         case .autoServiceStatus:
             let cell: AutoServiceStatusCell = tableView.dequeueCell()
-            cell.configure(with: autoService)
+            if let autoService = autoService {
+                cell.configure(with: autoService)
+            }
             return cell
         case .date, .mechanic, .serviceType, .user, .vehicle, .oilType:
             let cell: AutoServiceItemCell = tableView.dequeueCell()

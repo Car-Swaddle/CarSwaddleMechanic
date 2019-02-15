@@ -56,22 +56,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CarSwaddleMechanic/Login/SignUp/SignUpViewController.swift"
-            timestampString = "570755552.08153"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "textFieldShouldReturn(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "CarSwaddleMechanic/Payouts/ViewControllers/Transactions/TransactionReceiptCell.swift"
             timestampString = "571120244.396552"
             startingColumnNumber = "9223372036854775807"
@@ -80,54 +64,6 @@
             endingLineNumber = "33"
             landmarkName = "configure(with:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CarSwaddleMechanic/Payouts/ViewControllers/Transactions/Cells/TransactionReceiptCell.swift"
-            timestampString = "571869014.826225"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "configure(with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CarSwaddleMechanic.TransactionReceiptCell.configure(with: Store.TransactionReceipt) -&gt; ()"
-                  moduleName = "CarSwaddleMechanic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddlemechanic/CarSwaddleMechanic/Payouts/ViewControllers/Transactions/Cells/TransactionReceiptCell.swift"
-                  timestampString = "571869015.146965"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "384">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSManagedObjectContext) -&gt; () in CarSwaddleMechanic.TransactionReceiptCell.configure(with: Store.TransactionReceipt) -&gt; ()"
-                  moduleName = "CarSwaddleMechanic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kylekendall/Projects/carswaddlemechanic/CarSwaddleMechanic/Payouts/ViewControllers/Transactions/Cells/TransactionReceiptCell.swift"
-                  timestampString = "571869015.148607"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

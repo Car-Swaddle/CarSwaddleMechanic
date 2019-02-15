@@ -40,7 +40,6 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         verifyPhoneNumberDescriptionLabel.text = verifyPhoneNumberDescription
         oneTimeCodeEntryView.digits = numberOfDigits
         oneTimeCodeEntryView.textFieldWidth = 50

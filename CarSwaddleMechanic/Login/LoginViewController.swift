@@ -16,6 +16,9 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+    
     private var task: URLSessionDataTask?
     
     private var auth = Auth(serviceRequest: serviceRequest)
@@ -27,6 +30,39 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         view.addGestureRecognizer(tap)
         
         setupNotifications()
+        emailTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
+        
+        let tintColor = UIColor.textColor2
+        
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: tintColor]
+        emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
+        
+        emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 2.0)
+        passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 2.0)
+        
+        spinner.isHiddenInStackView = true
+        updateLoginEnabledness()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    @objc private func didChangeTextField(_ textField: UITextField) {
+        updateLoginEnabledness()
+    }
+    
+    private func updateLoginEnabledness() {
+        loginButton.isEnabled = loginIsAllowed
+    }
+    
+    private var loginIsAllowed: Bool {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return false
+        }
+        return email.isValidEmail && password.isValidPassword
     }
     
     private func setupNotifications() {
@@ -57,10 +93,27 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     }
     
     private func loginIfPossible() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        guard loginIsAllowed,
+            let email = emailTextField.text,
+            let password = passwordTextField.text else {
+                updateLoginEnabledness()
+                return
+        }
+        
+        spinner.isHiddenInStackView = false
+        spinner.startAnimating()
+        
+        loginButton.isHiddenInStackView = true
+        
         store.privateContext { [weak self] context in
             self?.task = self?.auth.mechanicLogin(email: email, password: password, context: context) { [weak self] error in
                 guard error == nil && self?.auth.isLoggedIn == true else {
+                    DispatchQueue.main.async {
+                        self?.spinner.isHiddenInStackView = true
+                        self?.spinner.stopAnimating()
+                        
+                        self?.loginButton.isHiddenInStackView = false
+                    }
                     return
                 }
                 DispatchQueue.main.async {
@@ -84,7 +137,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("called should change")
+        updateLoginEnabledness()
         return true
     }
     

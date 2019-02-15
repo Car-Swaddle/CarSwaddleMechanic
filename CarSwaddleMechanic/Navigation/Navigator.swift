@@ -136,7 +136,10 @@ final public class Navigator: NSObject {
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
-            return signUp.inNavigationController()
+            let navigationController = signUp.inNavigationController()
+            navigationController.setNavigationBarHidden(true, animated: false)
+            navigationController.interactivePopGestureRecognizer?.delegate = nil
+            return navigationController
         } else {
             return loggedInViewController
         }
@@ -165,19 +168,21 @@ final public class Navigator: NSObject {
         guard let window = appDelegate.window,
             let rootViewController = window.rootViewController else { return }
         let signUp = SignUpViewController.viewControllerFromStoryboard()
-        let newViewController = signUp.inNavigationController()
-        newViewController.view.frame = rootViewController.view.frame
-        newViewController.view.layoutIfNeeded()
+        let navigationController = signUp.inNavigationController()
+        navigationController.setNavigationBarHidden(true, animated: false)
+        navigationController.interactivePopGestureRecognizer?.delegate = nil
+        navigationController.view.frame = rootViewController.view.frame
+        navigationController.view.layoutIfNeeded()
         
         if animated {
             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                window.rootViewController = newViewController
+                window.rootViewController = navigationController
             }) { [weak self] completed in
                 self?.removeUI()
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
         } else {
-            window.rootViewController = newViewController
+            window.rootViewController = navigationController
             removeUI()
             UIApplication.shared.applicationIconBadgeNumber = 0
         }

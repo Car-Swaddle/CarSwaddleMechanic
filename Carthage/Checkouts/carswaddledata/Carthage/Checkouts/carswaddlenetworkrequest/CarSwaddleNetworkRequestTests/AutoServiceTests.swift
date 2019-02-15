@@ -12,6 +12,9 @@ import XCTest
 
 class AutoServiceTests: CarSwaddleLoginTestCase {
     
+    
+    private let autoServiceID = "09d3c2c0-3084-11e9-b606-eff43c501111"
+    
     private let autoServiceService = AutoServiceService(serviceRequest: serviceRequest)
     
     private var startDate: Date {
@@ -70,6 +73,16 @@ class AutoServiceTests: CarSwaddleLoginTestCase {
             }
             waitForExpectations(timeout: 40, handler: nil)
         }
+    }
+    
+    func testGetAutoServiceDetails() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        autoServiceService.getAutoServiceDetails(autoServiceID: autoServiceID) { json, error in
+            XCTAssert(json != nil, "Should have json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
     }
     
     func testGetAutoServices() {

@@ -33,6 +33,24 @@ public final class AutoServiceNetwork: Network {
     }
     
     @discardableResult
+    public func getAutoServiceDetails(autoServiceID: String, in context: NSManagedObjectContext, completion: @escaping (_ autoService: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+//        return autoServiceService.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, filterStatus: filterStatus.rawValues) { [weak self] jsonArray, error in
+        return autoServiceService.getAutoServiceDetails(autoServiceID: autoServiceID) { json, error in
+            context.performOnImportQueue {
+                var autoServiceObjectID: NSManagedObjectID?
+                defer {
+                    completion(autoServiceObjectID, error)
+                }
+                
+                guard let json = json else { return }
+                let autoService = AutoService.fetchOrCreate(json: json, context: context)
+                context.persist()
+                autoServiceObjectID = autoService?.objectID
+            }
+        }
+    }
+    
+    @discardableResult
     public func createAutoService(autoService originalAutoService: AutoService, sourceID: String, in context: NSManagedObjectContext, completion: @escaping (_ autoServiceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let json = try? originalAutoService.toJSON() else {
             completion(nil, AutoServiceError.unableToGetJSON)

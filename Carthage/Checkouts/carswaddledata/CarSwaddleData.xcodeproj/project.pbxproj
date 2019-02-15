@@ -58,6 +58,7 @@
 		99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278D21858983005FEFC7 /* RegionTests.swift */; };
 		99F696BC2210EE800021A719 /* Tax+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BB2210EE800021A719 /* Tax+Request.swift */; };
 		99F696BE2210F6720021A719 /* TaxInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BD2210F6720021A719 /* TaxInfoTests.swift */; };
+		99F7BC292215FA7400DD5401 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC282215FA7400DD5401 /* FileTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		99F0278D21858983005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
 		99F696BB2210EE800021A719 /* Tax+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tax+Request.swift"; sourceTree = "<group>"; };
 		99F696BD2210F6720021A719 /* TaxInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInfoTests.swift; sourceTree = "<group>"; };
+		99F7BC282215FA7400DD5401 /* FileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				99F696BD2210F6720021A719 /* TaxInfoTests.swift */,
 				99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */,
 				997DBC9D21B24CF00080F42C /* AuthTestCase.swift */,
+				99F7BC282215FA7400DD5401 /* FileTests.swift */,
 				99E66D9721E196DD00C6E3E1 /* Resources */,
 				9912CDBC216C81760006FDDF /* Info.plist */,
 			);
@@ -474,6 +477,7 @@
 				997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */,
 				99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */,
 				99A3A88F21D5964E009A1AD9 /* StripeTests.swift in Sources */,
+				99F7BC292215FA7400DD5401 /* FileTests.swift in Sources */,
 				99F696BE2210F6720021A719 /* TaxInfoTests.swift in Sources */,
 				997DBC9E21B24CF00080F42C /* AuthTestCase.swift in Sources */,
 			);

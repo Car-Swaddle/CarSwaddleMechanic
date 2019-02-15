@@ -10,6 +10,7 @@ import Foundation
 
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let autoService = Request.Endpoint(rawValue: "/api/auto-service")
+    fileprivate static let autoServiceDetails = Request.Endpoint(rawValue: "/api/auto-service-details")
 }
 
 let serverDateFormatter: DateFormatter = {
@@ -23,15 +24,12 @@ let serverDateFormatter: DateFormatter = {
 public final class AutoServiceService: Service {
     
     @discardableResult
-    public func getAutoService(autoServiceID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-//        var json = autoServiceJSON
-//        json["sourceID"] = sourceID
-//        guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])),
-//            let urlRequest = serviceRequest.post(with: .autoService, body: body, contentType: .applicationJSON) else { return nil }
-//        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
-//            self?.completeWithJSON(data: data, error: error, completion: completion)
-//        }
-        return nil
+    public func getAutoServiceDetails(autoServiceID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "autoServiceID", value: autoServiceID)]
+        guard let urlRequest = serviceRequest.get(with: .autoServiceDetails, queryItems: queryItems) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
+            self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
     }
     
     @discardableResult
