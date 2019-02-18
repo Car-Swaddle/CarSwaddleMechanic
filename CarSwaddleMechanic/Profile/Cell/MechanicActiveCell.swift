@@ -27,6 +27,7 @@ final class MechanicActiveCell: UITableViewCell, NibRegisterable {
         
         accessoryView = activeSwitch
         updateIsActive()
+        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
         textLabel?.text = NSLocalizedString("Allow new appointments", comment: "")
         detailTextLabel?.text = NSLocalizedString("If this is on, people will schedule appointments on your calendar", comment: "Explanation of a UI switch")
     }

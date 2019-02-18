@@ -15,7 +15,13 @@ extension UIColor {
     static let red1 = #colorLiteral(red: 0.9921568627, green: 0.5411764706, blue: 0.4509803922, alpha: 1)
     
     static let textColor1 = UIColor(named: "textColor1")!
+    static let veryLightGray = UIColor(named: "veryLightGray")!
     static let textColor2 = UIColor(named: "textColor2")!
+    static let textColor3 = UIColor(named: "textColor3")!
     static let viewBackgroundColor1 = UIColor(named: "viewBackgroundColor1")!
+    static let complementary = UIColor(named: "complementary")!
+    static let secondary = UIColor(named: "secondary")!
+    
+    // rgb(66, 134, 136) Seattle Mariners Green
     
 }

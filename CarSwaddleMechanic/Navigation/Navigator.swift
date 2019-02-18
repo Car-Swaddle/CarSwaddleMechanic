@@ -53,10 +53,54 @@ final public class Navigator: NSObject {
         appDelegate.window?.addGestureRecognizer(tripleTap)
         #endif
         
+        setupAppearance()
+        
         if AuthController().token != nil {
             pushNotificationController.requestPermission()
             showRequiredScreensIfNeeded()
         }
+    }
+    
+    private func setupAppearance() {
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().barTintColor = .veryLightGray
+        UINavigationBar.appearance().isTranslucent = false
+//        UILabel.appearance().font = UIFont.appFont(type: .regular, size: 14)
+//        let buttonLabelProxy = UILabel.appearance(whenContainedInInstancesOf: [UIButton.self])
+//        buttonLabelProxy.font = UIFont.appFont(type: .regular, size: 14)
+        
+        let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.appFont(type: .regular, size: 10),
+            .foregroundColor: UIColor.secondary
+        ]
+        UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
+        
+        let normalTabBarAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.appFont(type: .regular, size: 10),
+            .foregroundColor: UIColor.lightGray
+        ]
+        UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
+//        UITabBarItem.appearance().tintColor = .secondary
+        UITabBar.appearance().tintColor = .secondary
+//        let tabBarLabelProxy = UILabel.appearance(whenContainedInInstancesOf: [UITabBarItem.self])
+//        tabBarLabelProxy.font = UIFont.appFont(type: .regular, size: 24)
+        
+//        buttonLabelProxy.textColor = .green
+//        UIButton().titleLabel?.font
+//        UIButton().titleLabel?.textColor
+        UIButton.appearance().setTitleColor(.secondary, for: .normal)
+//        UIButton.appearance().titleLabel?.font = UIFont.appFont(type: .medium, size: 24)
+//        UIButton.appearance().setFont(UIFont.appFont(type: .medium, size: 14), for: .normal)
+//        UIButton().font
+        UISwitch.appearance().tintColor = .secondary
+        UISwitch.appearance().onTintColor = .secondary
+        UINavigationBar.appearance().tintColor = .secondary
+        
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        
+        UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
     }
     
     #if DEBUG
@@ -137,8 +181,11 @@ final public class Navigator: NSObject {
         if AuthController().token == nil {
             let signUp = SignUpViewController.viewControllerFromStoryboard()
             let navigationController = signUp.inNavigationController()
-            navigationController.setNavigationBarHidden(true, animated: false)
-            navigationController.interactivePopGestureRecognizer?.delegate = nil
+            navigationController.navigationBar.barStyle = .black
+            navigationController.navigationBar.isHidden = true
+//            navigationController.setNeedsStatusBarAppearanceUpdate()
+//            navigationController.setNavigationBarHidden(true, animated: false)
+//            navigationController.interactivePopGestureRecognizer?.delegate = nil
             return navigationController
         } else {
             return loggedInViewController
@@ -169,8 +216,10 @@ final public class Navigator: NSObject {
             let rootViewController = window.rootViewController else { return }
         let signUp = SignUpViewController.viewControllerFromStoryboard()
         let navigationController = signUp.inNavigationController()
-        navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.interactivePopGestureRecognizer?.delegate = nil
+        navigationController.navigationBar.barStyle = .black
+        navigationController.navigationBar.isHidden = true
+//        navigationController.setNavigationBarHidden(true, animated: false)
+//        navigationController.interactivePopGestureRecognizer?.delegate = nil
         navigationController.view.frame = rootViewController.view.frame
         navigationController.view.layoutIfNeeded()
         
@@ -218,8 +267,10 @@ final public class Navigator: NSObject {
         }
         
         let servicesViewController = ScheduleViewController.scheduleViewController(for: Date())
-        let title = NSLocalizedString("Set hours", comment: "Title of tab item.")
-        servicesViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        let title = NSLocalizedString("Schedule", comment: "Title of tab item.")
+        let image = #imageLiteral(resourceName: "calendar")
+        let selectedImage = #imageLiteral(resourceName: "calendar-filled")
+        servicesViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         _servicesViewController = servicesViewController
         return servicesViewController
     }
@@ -231,7 +282,9 @@ final public class Navigator: NSObject {
         }
         let profileViewController = ProfileViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Profile", comment: "Title of tab item.")
-        profileViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        let image = #imageLiteral(resourceName: "user")
+        let selectedImage = #imageLiteral(resourceName: "user")
+        profileViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         _profileViewController = profileViewController
         return profileViewController
     }
@@ -243,7 +296,9 @@ final public class Navigator: NSObject {
         }
         let earningsViewController = EarningsViewController.viewControllerFromStoryboard()
         let title = NSLocalizedString("Earnings", comment: "Title of tab item.")
-        earningsViewController.tabBarItem = UITabBarItem(title: title, image: nil, selectedImage: nil)
+        let image = #imageLiteral(resourceName: "us-dollar")
+        let selectedImage = #imageLiteral(resourceName: "us-dollar")
+        earningsViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         _earningsViewController = earningsViewController
         return earningsViewController
     }

@@ -14,7 +14,7 @@ final class NameCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
     }
     
 }

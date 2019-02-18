@@ -68,7 +68,6 @@
 		998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AC621DA963F003DD717 /* EarningsViewController.swift */; };
 		998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D3AC821DA9648003DD717 /* EarningsViewController.storyboard */; };
 		9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992763E21673BCA0032D7F7 /* AppDelegate.swift */; };
-		9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9992764821673BCC0032D7F7 /* Assets.xcassets */; };
 		9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9992764A21673BCC0032D7F7 /* LaunchScreen.storyboard */; };
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
 		9992766221673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */; };
@@ -180,6 +179,9 @@
 		99F7BC7422169EFF00DD5401 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */; };
 		99F7BC762216A74300DD5401 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC752216A74300DD5401 /* UIColorExtension.swift */; };
 		99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC772216A78400DD5401 /* Colors.xcassets */; };
+		99F7BC7A22191F0000DD5401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC7922191F0000DD5401 /* Assets.xcassets */; };
+		99F7BC7C22193AAC00DD5401 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */; };
+		99F7BC7E22193CC400DD5401 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F7BC7D22193CC400DD5401 /* FSCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,7 +271,6 @@
 		998D3AC821DA9648003DD717 /* EarningsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EarningsViewController.storyboard; sourceTree = "<group>"; };
 		9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSwaddleMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9992763E21673BCA0032D7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9992764821673BCC0032D7F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9992764B21673BCC0032D7F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9992764D21673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9992765221673BCC0032D7F7 /* CarSwaddleMechanicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleMechanicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,6 +380,9 @@
 		99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		99F7BC752216A74300DD5401 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		99F7BC772216A78400DD5401 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		99F7BC7922191F0000DD5401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
+		99F7BC7D22193CC400DD5401 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
 		99FF1E4621787755006A4315 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -396,6 +400,8 @@
 				99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
 				99F69690220BDD720021A719 /* Lottie.framework in Frameworks */,
 				99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */,
+				99F7BC7C22193AAC00DD5401 /* JTAppleCalendar.framework in Frameworks */,
+				99F7BC7E22193CC400DD5401 /* FSCalendar.framework in Frameworks */,
 				99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +426,8 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99F7BC7D22193CC400DD5401 /* FSCalendar.framework */,
+				99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */,
 				99F6968F220BDD720021A719 /* Lottie.framework */,
 				99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */,
 				998D03E121F42CDC00546C58 /* Cosmos.framework */,
@@ -456,9 +464,9 @@
 		9912CDA0216C7E220006FDDF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				99F7BC7922191F0000DD5401 /* Assets.xcassets */,
 				99F7BC2A22169E3A00DD5401 /* Fonts */,
 				997DBC632198FBE20080F42C /* lehi.gpx */,
-				9992764821673BCC0032D7F7 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -967,6 +975,7 @@
 				99F7BC7022169E5F00DD5401 /* Montserrat-Regular.otf in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
 				99F7BC5A22169E5F00DD5401 /* MontserratAlternates-Medium.otf in Resources */,
+				99F7BC7A22191F0000DD5401 /* Assets.xcassets in Resources */,
 				99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */,
 				99F7BC6F22169E5F00DD5401 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
 				9953AE1A21C0EC3E002D099A /* AutoServiceItemCell.xib in Resources */,
@@ -978,7 +987,6 @@
 				99F7BC6422169E5F00DD5401 /* MontserratAlternates-Thin.otf in Resources */,
 				99F7BC6B22169E5F00DD5401 /* Montserrat-Black.otf in Resources */,
 				99F7BC5E22169E5F00DD5401 /* MontserratAlternates-Bold.otf in Resources */,
-				9992764921673BCC0032D7F7 /* Assets.xcassets in Resources */,
 				99F696C222112B5B0021A719 /* TaxYearCell.xib in Resources */,
 				9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */,
 				99F6969A220D46290021A719 /* TaxesViewController.storyboard in Resources */,
@@ -1073,6 +1081,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -1087,6 +1097,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Lottie.framework",
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JTAppleCalendar.framework",
+				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FSCalendar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

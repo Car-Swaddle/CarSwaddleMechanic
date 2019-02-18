@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xe0-Us-4zf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="h2d-rH-QPw"/>
+                    <navigationItem key="navigationItem" title="Profile" id="h2d-rH-QPw"/>
                     <connections>
                         <outlet property="tableView" destination="mtM-ux-htM" id="Wp9-L2-OOU"/>
                     </connections>

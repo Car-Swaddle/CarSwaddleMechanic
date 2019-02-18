@@ -16,6 +16,7 @@ class ProfileServiceRegionCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         textLabel?.text = NSLocalizedString("Set service region", comment: "Service region cell")
         accessoryType = .disclosureIndicator
+        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
     }
     
     func configure(with region: Region) {

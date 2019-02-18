@@ -12,7 +12,7 @@ final class LogoutCell: UITableViewCell, NibRegisterable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
     }
     
     

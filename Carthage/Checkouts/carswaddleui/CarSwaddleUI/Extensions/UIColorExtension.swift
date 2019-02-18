@@ -16,6 +16,10 @@ public extension UIColor {
     
     public static let linkColor =  #colorLiteral(red: 0.4431372549, green: 0.7176470588, blue: 0.8980392157, alpha: 1) // Hex: #71B7E5, R: 113, G: 183, B: 229, A: 1.0
     
+    public static let appBlue = #colorLiteral(red: 0.4941176471, green: 0.6588235294, blue: 0.9882352941, alpha: 1)
+    public static let appGreen = #colorLiteral(red: 0.3607843137, green: 0.7882352941, blue: 0.4196078431, alpha: 1)
+    public static let appRed = #colorLiteral(red: 0.9921568627, green: 0.5411764706, blue: 0.4509803922, alpha: 1)
+    
     public static let orange1 =  #colorLiteral(red: 0.9921568627, green: 0.9254901961, blue: 0.6784313725, alpha: 1) // Hex: #FDECAD, R: 253, G: 236, B: 173, A: 1.0
     public static let orange2 =  #colorLiteral(red: 0.9882352941, green: 0.8117647059, blue: 0.5176470588, alpha: 1) // Hex: #FCCF84, R: 252, G: 207, B: 132, A: 1.0
     public static let orange3 =  #colorLiteral(red: 0.9843137255, green: 0.6784313725, blue: 0.337254902, alpha: 1) // Hex: #FBAD56, R: 251, G: 173, B:  86, A: 1.0

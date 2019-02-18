@@ -239,6 +239,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .taxes:
             let cell: TextCell = tableView.dequeueCell()
+            cell.textLabel?.font = UIFont.appFont(type: .regular, size: 15)
             cell.textLabel?.text = NSLocalizedString("Taxes", comment: "Title of label that when tapped goes to the mechanics taxes")
             return cell
         case .logout:

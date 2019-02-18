@@ -32,7 +32,7 @@ public extension UIFont {
     }
     
     public static func appFont(type: FontType, size: CGFloat) -> UIFont! {
-        return UIFont(name: type.rawValue, size: size)!
+        return UIFont(name: type.rawValue, size: UIFontMetrics.default.scaledValue(for: size))!
     }
     
     public static func printAllFonts() {

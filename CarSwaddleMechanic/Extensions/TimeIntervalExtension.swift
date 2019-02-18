@@ -31,4 +31,12 @@ extension Date {
         return Calendar.current.date(byAdding: .year, value: years, to: self, wrappingComponents: false)
     }
     
+    func dateByAdding(days: Int) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: days, to: self, wrappingComponents: false)
+    }
+    
+    var dayOfWeek: Int? {
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+    
 }

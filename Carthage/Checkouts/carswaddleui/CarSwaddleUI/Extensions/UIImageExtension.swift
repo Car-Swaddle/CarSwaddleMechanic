@@ -53,5 +53,34 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
+    public convenience init?(size: CGSize, gradientPoints: [GradientPoint]) {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        let components = gradientPoints.compactMap { $0.color.cgColor.components }.flatMap { $0 }
+        let locations = gradientPoints.map { $0.location }
+        guard let gradient = CGGradient(colorSpace: CGColorSpaceCreateDeviceRGB(), colorComponents: components, locations: locations, count: gradientPoints.count) else {
+            return nil
+        }
+        
+        context.drawLinearGradient(gradient, start: CGPoint.zero, end: CGPoint(x: 0, y: size.height), options: CGGradientDrawingOptions())
+        guard let image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+        self.init(cgImage: image)
+        UIGraphicsEndImageContext()
+    }
+    
+}
+
+
+public struct GradientPoint {
+    
+    public init(location: CGFloat, color: UIColor) {
+        self.location = location
+        self.color = color
+    }
+    
+    public let location: CGFloat
+    public let color: UIColor
+    
 }
 

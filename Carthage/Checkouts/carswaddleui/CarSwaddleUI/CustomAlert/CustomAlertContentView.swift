@@ -3,10 +3,10 @@ import UIKit
 //import Lottie
 
 
-private let defaultTitleTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.blue4, .font: UIFont.appFont(size: 17, type: .semibold)]
-private let defaultMessageTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray5Alpha, .font: UIFont.appFont(size: 14)]
+private let defaultTitleTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.blue4, .font: UIFont.systemFont(ofSize: 17, weight: .medium)]
+private let defaultMessageTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray5Alpha, .font: UIFont.systemFont(ofSize: 14)]
 
-private let buttonTitleFont = UIFont.appFont(size: 15, type: .semibold)
+private let buttonTitleFont = UIFont.systemFont(ofSize: 15, weight: .medium)
 private let buttonContentInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
 
 
@@ -179,7 +179,7 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
         let actionSwitch = UISwitch()
         
         let label = UILabel()
-        label.font = UIFont.appFont(size: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .gray4
         label.numberOfLines = 2
         label.textAlignment = .right
@@ -473,7 +473,7 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
         textField.addTarget(self, action: #selector(CustomAlertContentView.didBeginEditingTextField(_:)), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(CustomAlertContentView.didEndEditingTextField(_:)), for: .editingDidEnd)
         
-        textField.font = UIFont.appFont(size: 14)
+        textField.font = UIFont.systemFont(ofSize: 14)
         
         return textField
     }

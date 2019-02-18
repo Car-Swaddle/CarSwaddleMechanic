@@ -64,6 +64,8 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
         updateErrorViewCornerRadius()
         updateErrorViewHiddenStatus()
         
+        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
+        
         animationView.animationSpeed = 0.7
         animationView.loopAnimation = true
     }

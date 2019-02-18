@@ -12,6 +12,13 @@ import CarSwaddleData
 import CoreData
 import CarSwaddleNetworkRequest
 import Store
+import FSCalendar
+
+let monthYearDateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM yyyy"
+    return dateFormatter
+}()
 
 
 final class ScheduleViewController: UIViewController, StoryboardInstantiating {
@@ -23,10 +30,11 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
     }
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var dateLabel: UILabel!
     
+    @IBOutlet weak var weekView: FSCalendar!
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
+    @IBOutlet weak var weekViewHeightConstraint: NSLayoutConstraint!
     private var task: URLSessionDataTask?
     
     lazy private var refreshControl: UIRefreshControl = {
@@ -49,6 +57,9 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
             updateDateLabelIfNeeded()
             autoServices = []
             requestAutoServices()
+            if viewIfLoaded != nil {
+                weekView.select(dayDate)
+            }
         }
     }
     private var startDate: Date!
@@ -60,11 +71,24 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         setupTableView()
         requestAutoServices()
         updateDateLabelIfNeeded()
+        
+        weekView.setScope(.week, animated: false)
+        weekView.appearance.weekdayFont = UIFont.appFont(type: .regular, size: 14)
+        weekView.appearance.weekdayFont = UIFont.appFont(type: .regular, size: 12)
+        weekView.appearance.titleFont = UIFont.appFont(type: .regular, size: 16)
+        
+        if viewIfLoaded != nil {
+            weekView.select(dayDate)
+        }
+        
+        weekView.addHairlineView(toSide: .bottom, color: UIColor(white: 0.6, alpha: 1.0), size: 1.0 / UIScreen.main.scale)
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func updateDateLabelIfNeeded() {
         guard viewIfLoaded != nil else { return }
-        title = dateFormatter.string(from: dayDate)
+        navigationItem.title = monthDayYearDateFormatter.string(from: dayDate)
     }
     
     private func setupTableView() {
@@ -130,5 +154,56 @@ extension ScheduleViewController: UITableViewDelegate {
         let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: autoServices[indexPath.row])
         show(autoServiceViewController, sender: self)
     }
+    
+}
+
+extension ScheduleViewController: FSCalendarDelegate {
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("page: \(calendar.currentPage)")
+        if let selectedDayOfWeek = calendar.selectedDate?.dayOfWeek,
+            let newDate = calendar.currentPage.dateByAdding(days: selectedDayOfWeek-1) {
+//            calendar.select(newDate)
+            dayDate = newDate
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        dayDate = date
+    }
+    
+}
+
+extension ScheduleViewController: FSCalendarDataSource {
+    
+}
+
+extension ScheduleViewController: FSCalendarDelegateAppearance {
+
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        if Calendar.current.isDateInToday(date) {
+            return .red1
+        } else {
+            return .black
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+        return .textColor1
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        weekViewHeightConstraint.constant = bounds.height
+        view.layoutIfNeeded()
+    }
+    
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+//        return .viewBackgroundColor1
+//    }
+    
+    
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+//        return .white
+//    }
     
 }
