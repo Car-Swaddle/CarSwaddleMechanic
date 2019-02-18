@@ -29,53 +29,79 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         return viewController
     }
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var viewControllerContentView: UIView!
+    
+    //    @IBOutlet private weak var tableView: UITableView!
     
     @IBOutlet weak var weekView: FSCalendar!
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     @IBOutlet weak var weekViewHeightConstraint: NSLayoutConstraint!
-    private var task: URLSessionDataTask?
+//    private var task: URLSessionDataTask?
     
-    lazy private var refreshControl: UIRefreshControl = {
-        let refresh = UIRefreshControl(frame: .zero)
-        refresh.addRefreshTarget(target: self, action: #selector(ScheduleViewController.didRefresh))
-        return refresh
-    }()
+//    lazy private var refreshControl: UIRefreshControl = {
+//        let refresh = UIRefreshControl(frame: .zero)
+//        refresh.addRefreshTarget(target: self, action: #selector(ScheduleViewController.didRefresh))
+//        return refresh
+//    }()
     
-    private var autoServices: [AutoService] = [] {
-        didSet {
-            guard viewIfLoaded != nil else { return }
-            tableView.reloadData()
-        }
-    }
+//    private var autoServices: [AutoService] = [] {
+//        didSet {
+//            guard viewIfLoaded != nil else { return }
+//            tableView.reloadData()
+//        }
+//    }
     
     private var dayDate: Date! {
         didSet {
             startDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: dayDate)
             endDate = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: dayDate)
             updateDateLabelIfNeeded()
-            autoServices = []
-            requestAutoServices()
+//            autoServices = []
+//            requestAutoServices()
             if viewIfLoaded != nil {
-                weekView.select(dayDate)
+//                weekView.select(dayDate)
             }
+            
+            if let previousDate = (pageViewController.viewControllers?.first as? AutoServicesViewController)?.dayDate,
+                Calendar.current.isDate(previousDate, inSameDayAs: dayDate) == false {
+                DispatchQueue.main.async {
+                    let autoServicesViewController = AutoServicesViewController.create(date: self.dayDate)
+                    if previousDate > self.dayDate {
+                        self.pageViewController.setViewControllers([autoServicesViewController], direction: .reverse, animated: true, completion: nil)
+                    } else {
+                        self.pageViewController.setViewControllers([autoServicesViewController], direction: .forward, animated: true, completion: nil)
+                    }
+                }
+            } else {
+                (pageViewController.viewControllers?.first as? AutoServicesViewController)?.dayDate = dayDate
+            }
+            
+//            (pageViewController.viewControllers?.first as? AutoServicesViewController)?.dayDate = dayDate
         }
     }
     private var startDate: Date!
     private var endDate: Date!
     
+    private lazy var pageViewController: UIPageViewController = {
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        
+        return pageViewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        requestAutoServices()
+//        setupTableView()
+//        requestAutoServices()
         updateDateLabelIfNeeded()
         
         weekView.setScope(.week, animated: false)
-        weekView.appearance.weekdayFont = UIFont.appFont(type: .regular, size: 14)
-        weekView.appearance.weekdayFont = UIFont.appFont(type: .regular, size: 12)
-        weekView.appearance.titleFont = UIFont.appFont(type: .regular, size: 16)
+        weekView.appearance.weekdayFont = UIFont.appFont(type: .semiBold, size: 14)
+        weekView.appearance.titleFont = UIFont.appFont(type: .semiBold, size: 16)
         
         if viewIfLoaded != nil {
             weekView.select(dayDate)
@@ -84,6 +110,23 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         weekView.addHairlineView(toSide: .bottom, color: UIColor(white: 0.6, alpha: 1.0), size: 1.0 / UIScreen.main.scale)
         
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let autoServicesViewController = AutoServicesViewController.create(date: Date())
+        
+        pageViewController.setViewControllers([autoServicesViewController], direction: .forward, animated: false, completion: nil)
+        
+        addChild(pageViewController)
+        viewControllerContentView.addSubview(pageViewController.view)
+        
+        pageViewController.view.frame = viewControllerContentView.bounds
+        pageViewController.didMove(toParent: self)
+        
+        view.gestureRecognizers = pageViewController.gestureRecognizers
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        pageViewController.view.frame = viewControllerContentView.bounds
     }
     
     private func updateDateLabelIfNeeded() {
@@ -91,21 +134,21 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         navigationItem.title = monthDayYearDateFormatter.string(from: dayDate)
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(AutoServiceCell.self)
-        tableView.tableFooterView = UIView()
-        tableView.refreshControl = refreshControl
-    }
+//    private func setupTableView() {
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.register(AutoServiceCell.self)
+//        tableView.tableFooterView = UIView()
+//        tableView.refreshControl = refreshControl
+//    }
     
-    @objc private func didRefresh() {
-        requestAutoServices { [weak self] in
-            DispatchQueue.main.async {
-                self?.refreshControl.endRefreshing()
-            }
-        }
-    }
+//    @objc private func didRefresh() {
+//        requestAutoServices { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.refreshControl.endRefreshing()
+//            }
+//        }
+//    }
     
     @IBAction private func didTapLeft() {
         dayDate = dayDate.dayBefore ?? dayDate
@@ -115,56 +158,92 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         dayDate = dayDate.dayAfter ?? dayDate
     }
     
-    private func requestAutoServices(completion: @escaping () -> Void = {}) {
-        guard let currentMechanicID = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier,
-            let startDate = startDate,
-            let endDate = endDate else {
-                completion()
-                return
+//    private func requestAutoServices(completion: @escaping () -> Void = {}) {
+//        guard let currentMechanicID = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier,
+//            let startDate = startDate,
+//            let endDate = endDate else {
+//                completion()
+//                return
+//        }
+//        task?.cancel()
+//        store.privateContext { [weak self] privateContext in
+//            self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
+//                store.mainContext { mainContext in
+//                    self?.autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
+//                    completion()
+//                }
+//            }
+//        }
+//    }
+    
+}
+
+extension ScheduleViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let previousDay = (viewController as? AutoServicesViewController)?.dayDate.dateByAdding(days: -1) else {
+            return nil
         }
-        task?.cancel()
-        store.privateContext { [weak self] privateContext in
-            self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
-                store.mainContext { mainContext in
-                    self?.autoServices = AutoService.fetchObjects(with: autoServiceIDs, in: mainContext)
-                    completion()
-                }
-            }
+        let autoServicesViewController = AutoServicesViewController.create(date: previousDay)
+        return autoServicesViewController
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let nextDay = (viewController as? AutoServicesViewController)?.dayDate.dateByAdding(days: 1) else {
+            return nil
+        }
+        let autoServicesViewController = AutoServicesViewController.create(date: nextDay)
+        return autoServicesViewController
+    }
+    
+}
+
+extension ScheduleViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+//        if let date = (pageViewController.viewControllers?.first as? AutoServicesViewController)?.dayDate {
+//            weekView.select(date)
+//        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let date = (pageViewController.viewControllers?.first as? AutoServicesViewController)?.dayDate {
+            weekView.select(date, scrollToDate: true)
         }
     }
     
 }
 
-extension ScheduleViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoServices.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: AutoServiceCell = tableView.dequeueCell()
-        cell.configure(with: autoServices[indexPath.row])
-        return cell
-    }
-    
-}
 
-extension ScheduleViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: autoServices[indexPath.row])
-        show(autoServiceViewController, sender: self)
-    }
-    
-}
+//extension ScheduleViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return autoServices.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell: AutoServiceCell = tableView.dequeueCell()
+//        cell.configure(with: autoServices[indexPath.row])
+//        return cell
+//    }
+//
+//}
+//
+//extension ScheduleViewController: UITableViewDelegate {
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: autoServices[indexPath.row])
+//        show(autoServiceViewController, sender: self)
+//    }
+//
+//}
 
 extension ScheduleViewController: FSCalendarDelegate {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("page: \(calendar.currentPage)")
         if let selectedDayOfWeek = calendar.selectedDate?.dayOfWeek,
             let newDate = calendar.currentPage.dateByAdding(days: selectedDayOfWeek-1) {
-//            calendar.select(newDate)
             dayDate = newDate
+            weekView.select(newDate)
         }
     }
     

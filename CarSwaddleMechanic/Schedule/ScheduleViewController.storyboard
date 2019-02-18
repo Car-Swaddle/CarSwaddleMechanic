@@ -70,14 +70,10 @@
                                             <outlet property="delegate" destination="sUO-0n-HZl" id="Jhu-2I-mZL"/>
                                         </connections>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="es8-8Q-LjG">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-8I-7X4">
                                         <rect key="frame" x="0.0" y="300" width="375" height="303"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="sUO-0n-HZl" id="V1k-CI-hI9"/>
-                                            <outlet property="delegate" destination="sUO-0n-HZl" id="hgl-cT-i4j"/>
-                                        </connections>
-                                    </tableView>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-pr-6uU">
@@ -111,7 +107,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="W0n-NO-9kP"/>
                     <connections>
-                        <outlet property="tableView" destination="es8-8Q-LjG" id="6VR-0N-nsg"/>
+                        <outlet property="viewControllerContentView" destination="Bav-8I-7X4" id="asr-6T-jDu"/>
                         <outlet property="weekView" destination="Hqy-ao-pH0" id="Nxo-36-DD6"/>
                         <outlet property="weekViewHeightConstraint" destination="E5V-hJ-Pqg" id="80X-He-itd"/>
                     </connections>

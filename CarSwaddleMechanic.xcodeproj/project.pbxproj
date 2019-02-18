@@ -23,6 +23,8 @@
 		9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9912CDED216DCB660006FDDF /* HourCollectionViewCell.xib */; };
 		9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */; };
 		9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9913756F21706CC500F15BEC /* ProfileViewController.storyboard */; };
+		9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */; };
+		9923BFC8221A8F7100F83003 /* AutoServicesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */; };
 		992BFDD3220573BB006B64CC /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDD2220573BB006B64CC /* TransactionViewController.swift */; };
 		9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0821BC6F5C002D099A /* PushNotificationController.swift */; };
 		9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */; };
@@ -222,6 +224,8 @@
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9913759D2171BE1800F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
 		991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
+		9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesViewController.swift; sourceTree = "<group>"; };
+		9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServicesViewController.storyboard; sourceTree = "<group>"; };
 		992BFDD2220573BB006B64CC /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		9953AE0821BC6F5C002D099A /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicActiveCell.swift; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 			children = (
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */,
+				9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */,
 				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
 				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
 				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
@@ -1008,6 +1014,7 @@
 				99F7BC5822169E5F00DD5401 /* Montserrat-MediumItalic.otf in Resources */,
 				99F7BC4F22169E5F00DD5401 /* MontserratAlternates-ExtraLight.otf in Resources */,
 				99F7BC5022169E5F00DD5401 /* Montserrat-Medium.otf in Resources */,
+				9923BFC8221A8F7100F83003 /* AutoServicesViewController.storyboard in Resources */,
 				99F7BC5D22169E5F00DD5401 /* Montserrat-BoldItalic.otf in Resources */,
 				99F696A2220D4DDD0021A719 /* PhoneNumberVerificationCell.xib in Resources */,
 				99F7BC6122169E5F00DD5401 /* Montserrat-Bold.otf in Resources */,
@@ -1162,6 +1169,7 @@
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
 				99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */,
+				9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */,
 				99F6967C220A9CD40021A719 /* AddReceiptCell.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,

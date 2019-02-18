@@ -62,7 +62,7 @@ final public class Navigator: NSObject {
     }
     
     private func setupAppearance() {
-        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 18)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = .veryLightGray
         UINavigationBar.appearance().isTranslucent = false
