@@ -107,6 +107,9 @@
 		99D5DA4521FD15BD00E6A511 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */; };
 		99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5121FE689400E6A511 /* TweakValues.swift */; };
 		99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA6121FE87F200E6A511 /* Logout.swift */; };
+		99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */; };
+		99DCD32B221BBA5A0040DABA /* AutoServicesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */; };
+		99DCD32D221BD9DF0040DABA /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */; };
 		99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DB721E469A000C6E3E1 /* UserImageView.swift */; };
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
@@ -309,6 +312,9 @@
 		99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		99D5DA5121FE689400E6A511 /* TweakValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakValues.swift; sourceTree = "<group>"; };
 		99D5DA6121FE87F200E6A511 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesHeaderView.swift; sourceTree = "<group>"; };
+		99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServicesHeaderView.xib; sourceTree = "<group>"; };
+		99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		99E66DB721E469A000C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
@@ -529,8 +535,7 @@
 			children = (
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
-				9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */,
-				9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */,
+				99DCD327221BA0490040DABA /* AutoServiceDetails */,
 				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
 				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
 				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
@@ -648,6 +653,7 @@
 				99D5DA6121FE87F200E6A511 /* Logout.swift */,
 				99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */,
 				99F7BC752216A74300DD5401 /* UIColorExtension.swift */,
+				99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */,
 				99F7BC772216A78400DD5401 /* Colors.xcassets */,
 				99D5DA4A21FE660600E6A511 /* Tweaks */,
 				99675C9E21E717C3003C9D70 /* Navigation */,
@@ -701,6 +707,17 @@
 				99D5DA5121FE689400E6A511 /* TweakValues.swift */,
 			);
 			path = Tweaks;
+			sourceTree = "<group>";
+		};
+		99DCD327221BA0490040DABA /* AutoServiceDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */,
+				9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */,
+				99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */,
+				99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */,
+			);
+			path = AutoServiceDetails;
 			sourceTree = "<group>";
 		};
 		99E66DB621E4698A00C6E3E1 /* Reuseable UI */ = {
@@ -1042,6 +1059,7 @@
 				99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */,
 				99F7BC5322169E5F00DD5401 /* Montserrat-BlackItalic.otf in Resources */,
 				99F7BC5722169E5F00DD5401 /* Montserrat-SemiBold.otf in Resources */,
+				99DCD32B221BBA5A0040DABA /* AutoServicesHeaderView.xib in Resources */,
 				99F7BC6922169E5F00DD5401 /* MontserratAlternates-ThinItalic.otf in Resources */,
 				99B3FA7C2202C97F00D9887F /* PersonalInformationViewController.storyboard in Resources */,
 				99F7BC5B22169E5F00DD5401 /* Montserrat-ExtraLight.otf in Resources */,
@@ -1134,6 +1152,7 @@
 				997714D021D0DADE00E54F5B /* AddressViewController.swift in Sources */,
 				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
+				99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
@@ -1172,6 +1191,7 @@
 				9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */,
 				99F6967C220A9CD40021A719 /* AddReceiptCell.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
+				99DCD32D221BD9DF0040DABA /* UIKitExtensions.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
 				99D5DA3D21F8371D00E6A511 /* ReviewsViewController.swift in Sources */,
 				99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */,

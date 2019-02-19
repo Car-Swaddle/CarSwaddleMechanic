@@ -97,7 +97,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         switch row {
         case .date:
             if let scheduledDate = autoService?.scheduledDate {
-                return hourMinuteDateFormatter.string(from: scheduledDate)
+                return dayOfWeekMonthDayTimeDateFormatter.string(from: scheduledDate)
             }
             return nil
         case .user: return autoService?.creator?.displayName

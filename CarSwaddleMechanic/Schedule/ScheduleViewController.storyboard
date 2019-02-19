@@ -61,7 +61,7 @@
                                                 <color key="value" name="red1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                <color key="value" name="secondaryColor"/>
+                                                <color key="value" name="textColor3"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
                                         </userDefinedRuntimeAttributes>
@@ -141,6 +141,9 @@
         </namedColor>
         <namedColor name="secondaryColor">
             <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="veryLightGray">
             <color white="0.9779999852180481" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
