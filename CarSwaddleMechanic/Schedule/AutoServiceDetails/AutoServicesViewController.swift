@@ -71,7 +71,7 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
             }
             let routeRequest = RouteRequest(sourceLocation: sourceLocation, destinationLocation: destinationLocation) { [weak self] route, error in
                 if let route = route {
-                    self?.routes.append(route)
+                    self?.addRoute(route: route)
                 }
             }
             routeRequests.append(routeRequest)
@@ -88,13 +88,19 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
     
     private var routeRequests: [RouteRequest] = []
     
-    private var routes: [MKRoute] = [] {
-        didSet {
-            tableView.reloadData()
-        }
+    private func addRoute(route: MKRoute) {
+        routes.append(route)
+        let indexPath = IndexPath(row: routes.count-1, section: 0)
+        let cell = tableView.cellForRow(at: indexPath) as? AutoServiceCell
+        cell?.route = route
     }
     
-    
+    private var routes: [MKRoute] = []
+//    {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

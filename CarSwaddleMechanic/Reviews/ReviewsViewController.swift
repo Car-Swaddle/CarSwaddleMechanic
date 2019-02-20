@@ -37,7 +37,7 @@ final class ReviewsViewController: UIViewController, StoryboardInstantiating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTableView()
         requestData()
     }
@@ -77,7 +77,7 @@ final class ReviewsViewController: UIViewController, StoryboardInstantiating {
                     self?.reloadData()
                     completion()
                     self?.task = nil
-                    self?.hasMore = reviewIDs.count < reviewPageLimit
+                    self?.hasMore = reviewIDs.count == reviewPageLimit
                 }
             }
         }
