@@ -2,7 +2,7 @@ git "git@bitbucket.org:kkendall33/authentication.git" "c6dff227a9ee5a23e63d0402a
 git "git@bitbucket.org:kkendall33/carswaddledata.git" "7fb1179f7d53585e5aea73a19e7d39b9c0dcbe11"
 git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "eb6f75b7c247fb669e71b226c90bee954d59d6b9"
 git "git@bitbucket.org:kkendall33/carswaddlestore.git" "3e044ce20d3063fc8821c57af188aa9b5e4c5a8c"
-git "git@bitbucket.org:kkendall33/carswaddleui.git" "19d1cd0e56979713cece0e333fb488a37a53f243"
+git "git@bitbucket.org:kkendall33/carswaddleui.git" "1e52934760e51e7a74fd2aedc729fbce86227d32"
 git "git@bitbucket.org:kkendall33/networkrequest.git" "81a170661aba90d88e99741a68e669b10b6d3330"
 github "WenchaoD/FSCalendar" "2.8.0"
 github "airbnb/lottie-ios" "5a54b18137b3b03247138e929ac5760e1af7eadd"

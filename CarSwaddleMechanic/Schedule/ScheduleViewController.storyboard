@@ -105,7 +105,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4t0-Ss-ORF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="W0n-NO-9kP"/>
+                    <navigationItem key="navigationItem" id="W0n-NO-9kP">
+                        <barButtonItem key="backBarButtonItem" title="Schedule" id="fpO-9s-j6j"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="viewControllerContentView" destination="Bav-8I-7X4" id="asr-6T-jDu"/>
                         <outlet property="weekView" destination="Hqy-ao-pH0" id="Nxo-36-DD6"/>

@@ -11,6 +11,7 @@ import CarSwaddleUI
 import CarSwaddleData
 import Store
 import CoreData
+import MapKit
 
 let weekdayMonthDayDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
@@ -59,13 +60,41 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         return view
     }()
     
-//    private var autoServices: [AutoService] = [] {
-//        didSet {
-//            guard viewIfLoaded != nil else { return }
-//            tableView.reloadData()
-//            noDataLabel.isHidden = autoServices.count != 0
-//        }
-//    }
+    private func requestDistanceEstimates() {
+        routes.removeAll()
+        var previousAutoServiceOptional: AutoService?
+        for autoService in fetchedResultsController.fetchedObjects ?? [] {
+            guard let sourceLocation = autoService.location?.clLocation,
+                let destinationLocation = previousAutoServiceOptional?.location?.clLocation else {
+                previousAutoServiceOptional = autoService
+                continue
+            }
+            let routeRequest = RouteRequest(sourceLocation: sourceLocation, destinationLocation: destinationLocation) { [weak self] route, error in
+                if let route = route {
+                    self?.routes.append(route)
+                }
+            }
+            routeRequests.append(routeRequest)
+            locationManager.queueRouteRequest(routeRequest: routeRequest)
+            previousAutoServiceOptional = autoService
+        }
+    }
+    
+    deinit {
+        for routeRequest in routeRequests {
+            routeRequest.cancel()
+        }
+    }
+    
+    private var routeRequests: [RouteRequest] = []
+    
+    private var routes: [MKRoute] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,23 +103,6 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         requestAutoServices()
         updateNoServicesLabelDisplayState()
     }
-
-//    private func updateTimelineBannerLabel() {
-//        header.dayLabel.text = timelineBannerString
-//    }
-//
-//    private var timelineBannerString: String {
-//        let weekdayString = weekdayMonthDayDateFormatter.string(from: dayDate)
-//        if Calendar.current.isDateInToday(dayDate) {
-//            let todayFormatString = NSLocalizedString("Today • %@", comment: "Today, a dot then the day of the week and the day of the month")
-//            return String(format: todayFormatString, weekdayString)
-//        } else if Calendar.current.isDateInTomorrow(dayDate) {
-//            let tomorrowFormatString = NSLocalizedString("Tomorrow • %@", comment: "Today, a dot then the day of the week and the day of the month")
-//            return String(format: tomorrowFormatString, weekdayString)
-//        } else {
-//            return weekdayString
-//        }
-//    }
     
     private func setupTableView() {
         tableView.delegate = self
@@ -123,6 +135,7 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
                     if self?.refreshControl.isRefreshing == true {
                         self?.refreshControl.endRefreshing()
                     }
+                    self?.requestDistanceEstimates()
                     completion()
                 }
             }
@@ -168,6 +181,7 @@ extension AutoServicesViewController: UITableViewDataSource {
         let cell: AutoServiceCell = tableView.dequeueCell()
         cell.configure(with: fetchedResultsController.object(at: indexPath))
         cell.isLastAutoService = self.isLastRow(indexPath: indexPath)
+        cell.route = routes.safeObject(at: indexPath.row)
         return cell
     }
     
@@ -180,6 +194,7 @@ extension AutoServicesViewController: UITableViewDataSource {
 extension AutoServicesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: fetchedResultsController.object(at: indexPath))
         show(autoServiceViewController, sender: self)
     }
@@ -221,6 +236,15 @@ public extension AutoService {
     
     public static func creationDateSort(ascending: Bool) -> NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(AutoService.creationDate), ascending: ascending)
+    }
+    
+}
+
+
+public extension Location {
+    
+    public var clLocation: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
     
 }

@@ -536,8 +536,6 @@
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
 				99DCD327221BA0490040DABA /* AutoServiceDetails */,
-				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
-				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
 				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
 				9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */,
 				9953AE1721C0EC3E002D099A /* AutoServiceItemCell.swift */,
@@ -716,6 +714,8 @@
 				9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */,
 				99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */,
 				99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */,
+				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
+				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
 			);
 			path = AutoServiceDetails;
 			sourceTree = "<group>";

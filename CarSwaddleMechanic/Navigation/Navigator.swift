@@ -89,7 +89,7 @@ final public class Navigator: NSObject {
 //        buttonLabelProxy.textColor = .green
 //        UIButton().titleLabel?.font
 //        UIButton().titleLabel?.textColor
-        UIButton.appearance().setTitleColor(.secondary, for: .normal)
+//        UIButton.appearance().setTitleColor(.secondary, for: .normal)
 //        UIButton.appearance().titleLabel?.font = UIFont.appFont(type: .medium, size: 24)
 //        UIButton.appearance().setFont(UIFont.appFont(type: .medium, size: 14), for: .normal)
 //        UIButton().font
@@ -97,8 +97,8 @@ final public class Navigator: NSObject {
         UISwitch.appearance().onTintColor = .secondary
         UINavigationBar.appearance().tintColor = .secondary
         
-        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
-        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+//        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
+//        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
         
         UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
     }

@@ -99,6 +99,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         pageViewController.didMove(toParent: self)
         
         view.gestureRecognizers = pageViewController.gestureRecognizers
+
     }
     
     override func viewDidLayoutSubviews() {

@@ -40,7 +40,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
-        location.promptUserForLocationAccess()
+        locationManager.promptUserForLocationAccess()
         requestMapRegion()
         setupRegionSelection()
         setupBarButtons()
@@ -149,7 +149,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     }
     
     @objc private func didChangeLocationAccess(_ notification: Notification) {
-        switch location.authorizationStatus {
+        switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             updateMapViewToUsersLocation(animated: true)
         default: break
@@ -185,7 +185,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     }
     
     private func updateMapViewToUsersLocation(animated: Bool) {
-        location.currentLocation(cacheOptions: .cacheElseNetwork(maxAge: .hour)) { [weak self] location, error in
+        locationManager.currentLocation(cacheOptions: .cacheElseNetwork(maxAge: .hour)) { [weak self] location, error in
             DispatchQueue.main.async {
                 guard let self = self, let location = location else { return }
                 let region = Region(context: store.mainContext)

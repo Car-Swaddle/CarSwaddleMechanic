@@ -114,8 +114,12 @@ extension TransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let transaction = fetchedResultsController.object(at: indexPath)
-        let viewController = TransactionViewController.create(transaction: transaction)
-        show(viewController, sender: self)
+        
+        // Don't show details if it's a payout
+        if transaction.amount >= 0 {
+            let viewController = TransactionViewController.create(transaction: transaction)
+            show(viewController, sender: self)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

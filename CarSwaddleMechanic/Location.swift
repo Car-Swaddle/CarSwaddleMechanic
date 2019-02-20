@@ -8,4 +8,4 @@
 
 import CarSwaddleUI
 
-let location = LocationManager()
+let locationManager = LocationManager()

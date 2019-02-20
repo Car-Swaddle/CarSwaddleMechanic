@@ -10,7 +10,7 @@ import UIKit
 import CarSwaddleUI
 import Store
 import CarSwaddleData
-
+import MapKit
 
 final class AutoServiceDetailsViewController: UIViewController, StoryboardInstantiating {
     
@@ -63,6 +63,33 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         }
         
         setupTableView()
+        
+        
+        requestDistance()
+    }
+    
+    private func requestDistance() {
+        guard let autoServiceLocation = autoService?.location else { return }
+        let cllocation = CLLocation(latitude: autoServiceLocation.latitude, longitude: autoServiceLocation.longitude)
+        locationManager.placemark(from: cllocation) { destinationPlacemark, error in
+            guard let destinationPlacemark = destinationPlacemark else { return }
+            locationManager.currentLocationPlacemark { sourcePlacemark, error in
+                guard let sourcePlacemark = sourcePlacemark else { return }
+                let request = MKDirections.Request()
+                request.source = MKMapItem(placemark: MKPlacemark(placemark: sourcePlacemark))
+                request.destination = MKMapItem(placemark: MKPlacemark(placemark: destinationPlacemark))
+                request.transportType = .automobile
+                request.requestsAlternateRoutes = false
+                let directions = MKDirections(request: request)
+                directions.calculate { response, error in
+                    if let route = response?.routes.first {
+                        print("Distance: \(route.distance), ETA: \(route.expectedTravelTime)")
+                    } else {
+                        print("Error!")
+                    }
+                }
+            }
+        }
     }
     
     private func requestData(completion: @escaping () -> Void = {}) {
