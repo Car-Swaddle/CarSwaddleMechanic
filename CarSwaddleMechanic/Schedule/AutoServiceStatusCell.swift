@@ -30,6 +30,7 @@ final class AutoServiceStatusCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        selectionStyle = .none
     }
     
     func configure(with autoService: AutoService) {

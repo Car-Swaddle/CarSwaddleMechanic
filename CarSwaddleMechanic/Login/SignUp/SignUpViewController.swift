@@ -49,9 +49,13 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         let tintColor = UIColor.textColor2
         
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 14)]
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15)]
         emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
+        emailTextField.textColor = tintColor
         passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
+        passwordTextField.textColor = tintColor
+        
+        signUpButton.setTitleColor(tintColor, for: .normal)
         
         emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)

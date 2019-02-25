@@ -35,7 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2s3-o0-rXV"/>
                                 </constraints>
-                                <color key="textColor" name="viewBackgroundColor1"/>
+                                <color key="textColor" name="textColor1"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" smartInsertDeleteType="yes" textContentType="email"/>
                                 <connections>
@@ -48,7 +48,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fKN-ZM-QRw"/>
                                 </constraints>
-                                <color key="textColor" name="viewBackgroundColor1"/>
+                                <color key="textColor" name="textColor1"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password">
                                     <passwordRules key="passwordRules" passwordRulesDescriptor="minlength: 4;"/>
@@ -67,7 +67,7 @@
                                             <color key="titleColor" name="textColor1"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" name="viewBackgroundColor1"/>
+                                            <color key="titleColor" name="textColor2"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapSignUp" destination="jOc-3d-GWZ" eventType="touchUpInside" id="wKI-no-qVg"/>

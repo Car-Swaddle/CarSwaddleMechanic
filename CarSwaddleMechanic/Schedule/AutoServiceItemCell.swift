@@ -31,6 +31,9 @@ final class AutoServiceItemCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        titleLabel.font = UIFont.appFont(type: .regular, size: 17)
+        
+        selectionStyle = .none
     }
     
 }

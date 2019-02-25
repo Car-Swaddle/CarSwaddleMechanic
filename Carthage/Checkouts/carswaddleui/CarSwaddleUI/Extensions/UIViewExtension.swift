@@ -197,7 +197,7 @@ public extension UIView {
      
      */
     @discardableResult
-    public func addHairlineView(toSide side: Side, color: UIColor = .gray, size: CGFloat = 1.0 / UIScreen.main.scale, inset: CGFloat = 0.0) -> UIView {
+    public func addHairlineView(toSide side: Side, color: UIColor = .gray, size: CGFloat = 1.0 / UIScreen.main.scale, insets: UIEdgeInsets = .zero) -> UIView {
         let hairlineView = UIView()
         hairlineView.translatesAutoresizingMaskIntoConstraints = false
         hairlineView.backgroundColor = color
@@ -205,24 +205,24 @@ public extension UIView {
         
         switch side {
         case .top:
-            hairlineView.topAnchor.constraint(equalTo: topAnchor, constant: inset).isActive = true
+            hairlineView.topAnchor.constraint(equalTo: topAnchor, constant: insets.top).isActive = true
         case .bottom:
-            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: inset).isActive = true
+            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: insets.bottom).isActive = true
         case .left:
-            hairlineView.leftAnchor.constraint(equalTo: leftAnchor, constant: inset).isActive = true
+            hairlineView.leftAnchor.constraint(equalTo: leftAnchor, constant: insets.left).isActive = true
         case .right:
-            hairlineView.rightAnchor.constraint(equalTo: rightAnchor, constant: inset).isActive = true
+            hairlineView.rightAnchor.constraint(equalTo: rightAnchor, constant: insets.right).isActive = true
         }
         
         switch side {
         case .top, .bottom:
             hairlineView.heightAnchor.constraint(equalToConstant: size).isActive = true
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left).isActive = true
+            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: insets.right).isActive = true
         case .left, .right:
             hairlineView.widthAnchor.constraint(equalToConstant: size).isActive = true
-            hairlineView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            hairlineView.topAnchor.constraint(equalTo: topAnchor, constant: insets.top).isActive = true
+            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: insets.bottom).isActive = true
         }
         
         return hairlineView

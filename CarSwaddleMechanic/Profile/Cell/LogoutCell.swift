@@ -10,11 +10,11 @@ import CarSwaddleUI
 
 final class LogoutCell: UITableViewCell, NibRegisterable {
 
+    @IBOutlet private weak var logoutLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
+        logoutLabel.font = UIFont.appFont(type: .semiBold, size: 17)
     }
-    
-    
     
 }

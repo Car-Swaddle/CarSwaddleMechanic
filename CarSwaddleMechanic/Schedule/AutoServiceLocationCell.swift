@@ -15,31 +15,69 @@ final class AutoServiceLocationCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var streetAddressLabel: UILabel!
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var distanceLabel: UILabel!
+    
+    @IBOutlet private weak var distanceContentView: UIView!
+    
     
     private var location: Location?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        streetAddressLabel.font = UIFont.appFont(type: .regular, size: 17)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(AutoServiceLocationCell.didTapMap(_:)))
         mapView.addGestureRecognizer(tap)
         
+        mapView.addAnnotation(annotation)
+        
+        distanceContentView.layer.cornerRadius = 6
+        mapView.layer.cornerRadius = 12
+        
+        let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
+        let view = addHairlineView(toSide: .bottom, color: .gray3, size: 1.0, insets: insets)
+        view.layer.cornerRadius = 0.5
+        
+        selectionStyle = .none
+    }
+    
+    private func requestRoute() {
+        guard let destinationLocation = location?.clLocation else { return }
+        locationManager.currentLocation(cacheOptions: .cacheElseNetwork(maxAge: 2*60)) { [weak self] location, error in
+            guard let location = location else {
+                // Update label
+                return
+            }
+            let routeRequest = RouteRequest(sourceLocation: location, destinationLocation: destinationLocation) { route, error in
+                let formatString = NSLocalizedString("%@ mi", comment: "number of miles shortened")
+                let milesString = distanceNumberFormatter.string(from: NSNumber(value: route?.distance.metersToMiles ?? 0))
+                self?.distanceLabel.text = String(format: formatString, milesString ?? "")
+            }
+            locationManager.queueRouteRequest(routeRequest: routeRequest)
+        }
     }
 
     func configure(with location: Location) {
         self.location = location
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1200, longitudinalMeters: 1200)
         mapView.setRegion(region, animated: false)
         streetAddressLabel.text = location.streetAddress
+        requestRoute()
+        
+        annotation.coordinate = location.coordinate
     }
     
+    private var annotation: MKPointAnnotation = MKPointAnnotation()
+    
     @IBAction private func didTapMap(_ map: MKMapView) {
-        
+        location?.openInMaps()
     }
     
     @IBAction private func didTapGetDirections() {
         location?.openInMaps()
     }
+    
 }
 
 

@@ -86,7 +86,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         
         weekView.addHairlineView(toSide: .bottom, color: UIColor(white: 0.6, alpha: 1.0), size: 1.0 / UIScreen.main.scale)
         
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.shadowImage = UIImage()
         
         let autoServicesViewController = AutoServicesViewController.create(date: Date())
         

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AutoServiceDetailsHeaderView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="246" horizontalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="zAR-dW-XtN" customClass="LabeledBannerView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="58" width="209" height="44"/>
+                    <color key="backgroundColor" name="secondary"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="FxZ-yY-apA"/>
+                        <constraint firstAttribute="width" priority="750" constant="209" id="L49-KD-584"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-KN-Oum">
+                    <rect key="frame" x="337" y="20" width="32" height="30"/>
+                    <state key="normal" title="SMS"/>
+                    <connections>
+                        <action selector="didTapSMS" destination="iN0-l3-epB" eventType="touchUpInside" id="c96-CZ-3Ll"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W5-Uf-l2a">
+                    <rect key="frame" x="299" y="20" width="30" height="30"/>
+                    <state key="normal" title="Call"/>
+                    <connections>
+                        <action selector="didTapCall" destination="iN0-l3-epB" eventType="touchUpInside" id="811-Ec-Xay"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art Stewart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEu-Cc-j8z">
+                    <rect key="frame" x="16" y="20" width="114" height="30"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aEu-Cc-j8z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="CVe-Ew-Ec3"/>
+                <constraint firstItem="eIu-KN-Oum" firstAttribute="centerY" secondItem="aEu-Cc-j8z" secondAttribute="centerY" id="Eft-bt-ydG"/>
+                <constraint firstItem="eIu-KN-Oum" firstAttribute="leading" secondItem="2W5-Uf-l2a" secondAttribute="trailing" constant="8" id="EpX-xd-WBj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eIu-KN-Oum" secondAttribute="trailing" constant="16" id="IYM-I6-YlR"/>
+                <constraint firstItem="2W5-Uf-l2a" firstAttribute="centerY" secondItem="eIu-KN-Oum" secondAttribute="centerY" id="Nho-px-zG8"/>
+                <constraint firstItem="zAR-dW-XtN" firstAttribute="top" secondItem="aEu-Cc-j8z" secondAttribute="bottom" constant="8" id="UGP-iv-xIi"/>
+                <constraint firstItem="zAR-dW-XtN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ear-Tr-hs4"/>
+                <constraint firstItem="aEu-Cc-j8z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="m53-LE-bgk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zAR-dW-XtN" secondAttribute="bottom" constant="18" id="m8e-mG-Wlo"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bannerView" destination="zAR-dW-XtN" id="0TZ-Er-ptf"/>
+                <outlet property="callButton" destination="2W5-Uf-l2a" id="fUp-Tb-0Qh"/>
+                <outlet property="nameLabel" destination="aEu-Cc-j8z" id="c5q-V4-gnJ"/>
+                <outlet property="smsButton" destination="eIu-KN-Oum" id="vfa-S4-TXY"/>
+            </connections>
+            <point key="canvasLocation" x="146.40000000000001" y="387.70614692653675"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="secondary">
+            <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -5,12 +5,13 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Regular.otf">
-            <string>Montserrat-Regular</string>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -24,9 +25,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06R-JG-8rS">
-                        <rect key="frame" x="149.5" y="36" width="54" height="20.5"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                        <color key="textColor" red="1" green="0.1039171570868227" blue="0.15274702524121431" alpha="0.75108061050124275" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="149" y="36" width="55.5" height="20.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" name="red1"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -39,7 +40,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="9999" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="logoutLabel" destination="06R-JG-8rS" id="GOo-0m-h0B"/>
+            </connections>
             <point key="canvasLocation" x="164" y="175.86206896551727"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="red1">
+            <color red="0.99215686274509807" green="0.54117647058823526" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

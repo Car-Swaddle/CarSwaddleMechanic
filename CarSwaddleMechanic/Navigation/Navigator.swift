@@ -29,6 +29,15 @@ extension Navigator {
             }
         }
         
+        fileprivate var removeShadowImage: Bool {
+            switch self {
+            case .schedule:
+                return true
+            case .profile, .earnings:
+                return false
+            }
+        }
+        
     }
     
 }
@@ -62,7 +71,7 @@ final public class Navigator: NSObject {
     }
     
     private func setupAppearance() {
-        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 18)]
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = .veryLightGray
         UINavigationBar.appearance().isTranslucent = false
@@ -71,8 +80,8 @@ final public class Navigator: NSObject {
 //        buttonLabelProxy.font = UIFont.appFont(type: .regular, size: 14)
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.appFont(type: .regular, size: 10),
-            .foregroundColor: UIColor.secondary
+            .font: UIFont.appFont(type: .semiBold, size: 10),
+            .foregroundColor: UIColor.viewBackgroundColor1
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
@@ -95,10 +104,10 @@ final public class Navigator: NSObject {
 //        UIButton().font
         UISwitch.appearance().tintColor = .secondary
         UISwitch.appearance().onTintColor = .secondary
-        UINavigationBar.appearance().tintColor = .secondary
+        UINavigationBar.appearance().tintColor = .viewBackgroundColor1
         
-//        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 16)]
-//        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17)]
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
         
         UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
     }
@@ -175,7 +184,7 @@ final public class Navigator: NSObject {
     
     
     
-    private var appDelegate: AppDelegate
+    private(set) var appDelegate: AppDelegate
     
     public func initialViewController() -> UIViewController {
         if AuthController().token == nil {
@@ -238,7 +247,7 @@ final public class Navigator: NSObject {
     }
     
     private var _tabBarController: UITabBarController?
-    private var tabBarController: UITabBarController {
+    var tabBarController: UITabBarController {
         if let _tabBarController = _tabBarController {
             return _tabBarController
         }
@@ -246,7 +255,11 @@ final public class Navigator: NSObject {
         
         for tab in Tab.allCases {
             let viewController = self.viewController(for: tab)
-            viewControllers.append(viewController.inNavigationController())
+            let navigationController = viewController.inNavigationController()
+            if tab.removeShadowImage {
+                navigationController.navigationBar.shadowImage = UIImage()
+            }
+            viewControllers.append(navigationController)
         }
         
         let tabController = UITabBarController()
@@ -256,6 +269,8 @@ final public class Navigator: NSObject {
 //        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 9)]
 //        tabController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
         tabController.view.backgroundColor = .white
+        
+        _tabBarController = tabController
         
         return tabController
     }
