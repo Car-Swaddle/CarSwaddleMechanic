@@ -32,6 +32,25 @@ final class PayoutsViewController: UIViewController, StoryboardInstantiating {
 
         setupTableView()
         requestData()
+        
+        if Payout.fetch(with: "something", in: store.mainContext) == nil {
+            let payout = Payout(context: store.mainContext)
+            payout.identifier = "something" // : String
+            payout.amount = 34689 // : Int
+            payout.arrivalDate = Date().dateByAdding(days: 4)! // : Date
+            payout.created = Date().dayAfter! // : Date
+            payout.currency = "usd" // : String
+            payout.payoutDescription = "Your Payout for the oil changes"
+            payout.destination = "sr_345678"
+            payout.type = "card"
+            payout.method = "standard"
+            payout.sourceType = "bank_account"
+            payout.mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext)
+            payout.status = .paid
+//            payout.failureMessage = "This is a failure message"
+            
+            store.mainContext.persist()
+        }
     }
     
     private func setupTableView() {

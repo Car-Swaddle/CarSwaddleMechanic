@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Payouts View Controller-->
+        <!--Payouts-->
         <scene sceneID="sw1-60-XXj">
             <objects>
-                <viewController id="COF-jh-1Qg" customClass="PayoutsViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Payouts" id="COF-jh-1Qg" customClass="PayoutsViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1S-p0-Km9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Kp-C6-TT5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wGd-bd-cPl"/>
+                    <navigationItem key="navigationItem" title="Payouts" id="wGd-bd-cPl">
+                        <barButtonItem key="backBarButtonItem" title="Payouts" id="i7d-Ef-ho5"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kow-cO-L0h" id="3Xg-mW-CaB"/>
                     </connections>

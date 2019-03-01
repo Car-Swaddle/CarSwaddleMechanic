@@ -81,6 +81,10 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
     }
     
     deinit {
+        cancelAllRouteRequests()
+    }
+    
+    private func cancelAllRouteRequests() {
         for routeRequest in routeRequests {
             routeRequest.cancel()
         }
@@ -108,6 +112,11 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         setupTableView()
         requestAutoServices()
         updateNoServicesLabelDisplayState()
+        NotificationCenter.default.addObserver(self, selector: #selector(AutoServicesViewController.didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc private func didBecomeActive() {
+        requestAutoServices()
     }
     
     private func setupTableView() {
@@ -133,6 +142,9 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
                 completion()
                 return
         }
+        cancelAllRouteRequests()
+        routes = []
+        tableView.reloadData()
         task?.cancel()
         store.privateContext { [weak self] privateContext in
             self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in

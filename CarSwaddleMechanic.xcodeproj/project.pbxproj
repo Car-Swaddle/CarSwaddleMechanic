@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990ADFBF2228E38400D1C109 /* TransactionsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */; };
+		990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */; };
 		9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD88216C6DEF0006FDDF /* Navigator.swift */; };
 		9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8A216C6E590006FDDF /* SignUpViewController.swift */; };
 		9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8C216C6EB50006FDDF /* LoginViewController.swift */; };
@@ -215,6 +217,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSectionHeaderView.swift; sourceTree = "<group>"; };
+		990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsSectionHeaderView.xib; sourceTree = "<group>"; };
 		9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9912CD88216C6DEF0006FDDF /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9912CD8A216C6E590006FDDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -599,6 +603,8 @@
 				99675CC521EBBB36003C9D70 /* TransactionCell.xib */,
 				992BFDD2220573BB006B64CC /* TransactionViewController.swift */,
 				99F69674220A8CA80021A719 /* TransactionViewController.storyboard */,
+				990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */,
+				990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */,
 				99F6967E220A9CD90021A719 /* Cells */,
 			);
 			path = Transactions;
@@ -1083,6 +1089,7 @@
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */,
 				99B3FA802202CF3600D9887F /* LogoutCell.xib in Resources */,
+				990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
 				99675CBD21EB24A8003C9D70 /* PayoutsViewController.storyboard in Resources */,
 				99F7BC5322169E5F00DD5401 /* Montserrat-BlackItalic.otf in Resources */,
@@ -1168,6 +1175,7 @@
 				99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */,
 				99A1E3F62221177000470A5F /* CancelAutoServiceCell.swift in Sources */,
 				99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */,
+				990ADFBF2228E38400D1C109 /* TransactionsSectionHeaderView.swift in Sources */,
 				99F69698220D46210021A719 /* TaxesViewController.swift in Sources */,
 				99F7BC7422169EFF00DD5401 /* UIFontExtension.swift in Sources */,
 				99A1E3ED221E7A1900470A5F /* AutoServiceDetailsHeaderView.swift in Sources */,

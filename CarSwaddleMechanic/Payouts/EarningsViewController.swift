@@ -87,6 +87,7 @@ extension EarningsViewController: UITableViewDataSource {
         let row = rows[indexPath.row]
         cell.textLabel?.text = self.text(for: row)
         cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.font = UIFont.appFont(type: .regular, size: 17)
         return cell
     }
     

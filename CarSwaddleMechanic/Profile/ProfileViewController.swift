@@ -223,7 +223,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Schedule", comment: "Description of row")
+            cell.valueText = NSLocalizedString("Set hours", comment: "Description of row")
             cell.descriptionText = nil
             return cell
         case .reviews:
@@ -240,7 +240,7 @@ extension ProfileViewController: UITableViewDataSource {
         case .taxes:
             let cell: TextCell = tableView.dequeueCell()
             cell.textLabel?.font = UIFont.appFont(type: .regular, size: 15)
-            cell.textLabel?.text = NSLocalizedString("Taxes", comment: "Title of label that when tapped goes to the mechanics taxes")
+            cell.textLabel?.text = NSLocalizedString("Tax deductions", comment: "Title of label that when tapped goes to the mechanics taxes")
             return cell
         case .logout:
             let cell: LogoutCell = tableView.dequeueCell()

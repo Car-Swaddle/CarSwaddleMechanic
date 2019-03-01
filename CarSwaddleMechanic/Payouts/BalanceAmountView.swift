@@ -45,6 +45,11 @@ final class BalanceAmountView: UIView, NibInstantiating {
         super.awakeFromNib()
         inTransitLabel.text = "--"
         inTransitTextLabel.text = NSLocalizedString("In transit", comment: "Label text with a label above indicating how much money is in transit")
+        
+        amountLabel.font = UIFont.appFont(type: .regular, size: 64)
+        descriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        inTransitLabel.font = UIFont.appFont(type: .medium, size: 17)
+        inTransitTextLabel.font = UIFont.appFont(type: .regular, size: 15)
     }
     
     private func text(from type: Balance.AmountType) -> String {

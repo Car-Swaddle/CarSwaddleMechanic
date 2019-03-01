@@ -28,7 +28,8 @@ final class AutoServiceVehicleCell: UITableViewCell, NibRegisterable {
     }
     
     func configure(with autoService: AutoService) {
-        vehicleNameLabel.text = autoService.vehicle?.name
+        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string")
+        vehicleNameLabel.text = String(format: vehicleFormatString, autoService.vehicle?.name ?? "", autoService.vehicle?.licensePlate ?? "")
         oilTypeLabel.text = self.localizedStringForOilType(for: autoService)
     }
     

@@ -525,6 +525,8 @@ SWIFT_CLASS_NAMED("Transaction")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
 @class NSNumber;
 @class TransactionMetadata;
 
@@ -596,18 +598,18 @@ SWIFT_CLASS_NAMED("User")
 
 
 @interface User (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
-
-@interface User (SWIFT_EXTENSION(Store))
 - (void)addVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)removeVehiclesObject:(Vehicle * _Nonnull)value;
 - (void)addVehicles:(NSSet * _Nonnull)values;
 - (void)removeVehicles:(NSSet * _Nonnull)values;
+@end
+
+
+@interface User (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 

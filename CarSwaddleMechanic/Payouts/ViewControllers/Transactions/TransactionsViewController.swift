@@ -66,17 +66,14 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
     private func createFetchedResultsController() -> NSFetchedResultsController<Transaction> {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         fetchRequest.sortDescriptors = [Transaction.createdSortDescriptor]
-        var predicates: [NSPredicate] = [Transaction.currentMechanicPredicate]
+        var predicates: [NSPredicate] = [Transaction.currentMechanicPredicate, Transaction.transactionListPredicate]
         if let payoutID = payoutID {
             let payoutPredicate = Transaction.predicate(forPayoutID: payoutID)
             predicates.append(payoutPredicate)
-            if let payoutTransactionID = Payout.fetch(with: payoutID, in: store.mainContext)?.balanceTransactionID {
-                predicates.append(Transaction.predicateExcluding(identifier: payoutTransactionID))
-            }
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(Transaction.availableOn), cacheName: nil)
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
@@ -116,7 +113,7 @@ extension TransactionsViewController: UITableViewDelegate {
         let transaction = fetchedResultsController.object(at: indexPath)
         
         // Don't show details if it's a payout
-        if transaction.amount >= 0 {
+        if transaction.transactionType == .payment {
             let viewController = TransactionViewController.create(transaction: transaction)
             show(viewController, sender: self)
         }
@@ -136,10 +133,12 @@ extension TransactionsViewController: UITableViewDelegate {
 
 extension TransactionsViewController: UITableViewDataSource, TransactionCellDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = fetchedResultsController.fetchedObjects?.count ?? 0
-        print(count)
-        return count
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,6 +147,17 @@ extension TransactionsViewController: UITableViewDataSource, TransactionCellDele
         let transaction = fetchedResultsController.object(at: indexPath)
         cell.configure(with: transaction)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 74
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = TransactionsSectionHeaderView.viewFromNib()
+        let transaction = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
+        view.availableDate = transaction.availableOn
+        return view
     }
     
     func didUpdateHeight(cell: TransactionCell) {
@@ -206,3 +216,22 @@ extension Int {
     
 }
 
+
+
+public extension Transaction {
+    
+    public static var transactionListPredicate: NSPredicate {
+        return Transaction.predicate(excluding: [.payout])
+    }
+    
+    public static func predicate(excluding transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+        let types = transactionTypes.map { $0.rawValue }
+        return NSPredicate(format: "NOT (%K IN %@)", #keyPath(Transaction.type), types)
+    }
+    
+    public static func predicate(with transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+        let types = transactionTypes.map { $0.rawValue }
+        return NSPredicate(format: "%K IN %@", #keyPath(Transaction.type), types)
+    }
+    
+}

@@ -107,21 +107,21 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        UIView.animate(withDuration: 0.3) {
-            self.navigationController?.navigationBar.shadowImage = UIImage()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIView.animate(withDuration: 0.3) {
-            self.navigationController?.navigationBar.shadowImage = UIImage.from(color: .gray2)
-        }
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        UIView.animate(withDuration: 0.3) {
+//            self.navigationController?.navigationBar.shadowImage = UIImage()
+//        }
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        UIView.animate(withDuration: 0.3) {
+//            self.navigationController?.navigationBar.shadowImage = UIImage.from(color: .gray2)
+//        }
+//    }
     
     @objc private func keyboardWillHide(notification: Notification) {
         let newYOffset = tableView.contentOffset.y

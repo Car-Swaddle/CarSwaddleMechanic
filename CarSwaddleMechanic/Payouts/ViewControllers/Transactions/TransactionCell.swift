@@ -23,37 +23,72 @@ protocol TransactionCellDelegate: AnyObject {
 
 final class TransactionCell: UITableViewCell, NibRegisterable {
     
-    @IBOutlet private weak var netLabel: UILabel!
-    @IBOutlet private weak var feeLabel: UILabel!
-    @IBOutlet private weak var totalLabel: UILabel!
-    @IBOutlet private weak var statusLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    
-    @IBOutlet private weak var topView: UIView!
-    @IBOutlet private weak var bottomView: UIView!
+    @IBOutlet private weak var typeLabel: UILabel!
+    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     weak var delegate: TransactionCellDelegate?
     
     func configure(with transaction: Transaction) {
-        netLabel.text = currencyFormatter.string(from: transaction.net.dollarValue)
-        feeLabel.text = currencyFormatter.string(from: transaction.fee.dollarValue)
-        totalLabel.text = currencyFormatter.string(from: transaction.amount.dollarValue)
-        dateLabel.text = monthDayYearDateFormatter.string(from: transaction.availableOn)
-        statusLabel.text = transaction.status.localizedString
+        dateLabel.text = monthDayYearDateFormatter.string(from: transaction.created)
+        typeLabel.text = transaction.transactionType.localizedString
+        valueLabel.text = currencyFormatter.string(from: transaction.amount.dollarValue)
         
-        bottomView.isHiddenInStackView = transaction.fee == 0
-        
-        delegate?.didUpdateHeight(cell: self)
+        if let transactionDescription = transaction.transactionDescription, !transactionDescription.isEmpty {
+            descriptionLabel.text = transaction.transactionDescription
+            descriptionLabel.isHiddenInStackView = false
+        } else {
+            descriptionLabel.isHiddenInStackView = true
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        dateLabel.font = UIFont.appFont(type: .regular, size: 15)
+        typeLabel.font = UIFont.appFont(type: .regular, size: 15)
+        valueLabel.font = UIFont.appFont(type: .semiBold, size: 20)
+        descriptionLabel.font = UIFont.appFont(type: .regular, size: 17)
     }
+    
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
+
+extension Transaction.TransactionType {
+    
+    var localizedString: String {
+        switch self {
+        case .adjustment: return NSLocalizedString("Adjustment", comment: "Transaction Type string")
+        case .advance: return NSLocalizedString("Advance", comment: "Transaction Type string")
+        case .advanceFunding: return NSLocalizedString("Advance Funding", comment: "Transaction Type string")
+        case .applicationFee: return NSLocalizedString("Application Fee", comment: "Transaction Type string")
+        case .applicationFeeRefund: return NSLocalizedString("Application Fee Refund", comment: "Transaction Type string")
+        case .charge: return NSLocalizedString("Charge", comment: "Transaction Type string")
+        case .connectCollectionTransfer: return NSLocalizedString("Connect Collection Transfer", comment: "Transaction Type string")
+        case .issuingAuthorizationHold: return NSLocalizedString("Issuing Authorization Hold", comment: "Transaction Type string")
+        case .issuingAuthorizationRelease: return NSLocalizedString("Issuing Authorization Release", comment: "Transaction Type string")
+        case .issuingTransaction: return NSLocalizedString("Issuing Transaction", comment: "Transaction Type string")
+        case .payment: return NSLocalizedString("Payment", comment: "Transaction Type string")
+        case .paymentFailureRefund: return NSLocalizedString("Payment Failure Refund", comment: "Transaction Type string")
+        case .paymentRefund: return NSLocalizedString("Payment Refund", comment: "Transaction Type string")
+        case .payout: return NSLocalizedString("Payout", comment: "Transaction Type string")
+        case .payoutCancel: return NSLocalizedString("Payout Cancel", comment: "Transaction Type string")
+        case .payoutFailure: return NSLocalizedString("Payout Failure", comment: "Transaction Type string")
+        case .refund: return NSLocalizedString("Refund", comment: "Transaction Type string")
+        case .refundFailure: return NSLocalizedString("Refund Failure", comment: "Transaction Type string")
+        case .reserveTransaction: return NSLocalizedString("Reserve Transaction", comment: "Transaction Type string")
+        case .reservedFunds: return NSLocalizedString("Reserved Funds", comment: "Transaction Type string")
+        case .stripeFee: return NSLocalizedString("Stripe Fee", comment: "Transaction Type string")
+        case .stripeFxFee: return NSLocalizedString("Stripe Fx Fee", comment: "Transaction Type string")
+        case .taxFee: return NSLocalizedString("Tax Fee", comment: "Transaction Type string")
+        case .topup: return NSLocalizedString("Topup", comment: "Transaction Type string")
+        case .topupReversal: return NSLocalizedString("Topup Reversal", comment: "Transaction Type string")
+        case .transfer: return NSLocalizedString("Transfer", comment: "Transaction Type string")
+        case .transferCancel: return NSLocalizedString("Transfer Cancel", comment: "Transaction Type string")
+        case .transferFailure: return NSLocalizedString("Transfer Failure", comment: "Transaction Type string")
+        case .transferRefund: return NSLocalizedString("Transfer Refund", comment: "Transaction Type string")
+        }
     }
     
 }

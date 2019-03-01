@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Transactions View Controller-->
+        <!--Transactions-->
         <scene sceneID="Z19-PQ-kYq">
             <objects>
-                <viewController id="Qt0-dh-Z3z" customClass="TransactionsViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Transactions" id="Qt0-dh-Z3z" customClass="TransactionsViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNZ-S3-gwT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zdi-66-a6D"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eNj-T1-1bn"/>
+                    <navigationItem key="navigationItem" title="Transactions" id="eNj-T1-1bn">
+                        <barButtonItem key="backBarButtonItem" title="Transactions" id="ser-de-ZDs"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="WVv-1h-PBm" id="VAM-iz-tEj"/>
                     </connections>

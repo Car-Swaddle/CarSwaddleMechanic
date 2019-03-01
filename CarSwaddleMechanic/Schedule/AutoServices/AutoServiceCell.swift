@@ -96,8 +96,6 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         vehicleLabel.font = UIFont.appFont(type: .regular, size: 17)
         userLabel.font = UIFont.appFont(type: .regular, size: 17)
         oilTypeLabel.font = UIFont.appFont(type: .regular, size: 17)
-//        getDirectionsButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 13)
-//        getDirectionsButton.setTitleColor(.gray5, for: .normal)
         
         updateBottomTimelineConstraint()
         
@@ -182,6 +180,8 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         let coordinate = autoService.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
         mapView.setRegion(region, animated: false)
+        
+        contentView.alpha = autoService.status == .canceled ? 0.3 : 1.0
     }
     
     @objc private func didSelectGetDirections() {

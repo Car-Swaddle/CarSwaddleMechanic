@@ -99,7 +99,18 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         pageViewController.didMove(toParent: self)
         
         view.gestureRecognizers = pageViewController.gestureRecognizers
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage.from(color: .gray2)
     }
     
     override func viewDidLayoutSubviews() {

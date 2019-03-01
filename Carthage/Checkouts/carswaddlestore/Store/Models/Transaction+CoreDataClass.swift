@@ -29,7 +29,10 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
                 return NSLocalizedString("Available", comment: "Status of a transaction")
             }
         }
-        
+    }
+    
+    public var transactionType: TransactionType {
+        return TransactionType(rawValue: type)!
     }
     
     
@@ -75,7 +78,24 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         let avilableOnDate = Date(timeIntervalSince1970: TimeInterval(availableOnInt))
         let createdDate = Date(timeIntervalSince1970: TimeInterval(createdInt))
         
-        let transactionDescription = json["transaction_description"] as? String
+        /*
+         "id": "txn_1E90e6Kvdbv2b5urs849LQ8S",
+         "object": "balance_transaction",
+         "amount": -5931,
+         "available_on": 1552003200,
+         "created": 1551405522,
+         "currency": "usd",
+         "description": "REFUND FOR PAYMENT",
+         "exchange_rate": null,
+         "fee": 0,
+         "fee_details": [],
+         "net": -5931,
+         "source": "pyr_1E90e6Kvdbv2b5urg3UzJoii",
+         "status": "pending",
+         "type": "payment_refund"
+         */
+        
+        let transactionDescription = json["description"] as? String
         
         var exchangeRateNumber: NSNumber?
         if let exchangeRateFloat = json["exchange_rate"] as? Float {
@@ -118,6 +138,49 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
     
     public static func predicateExcluding(identifier: String) -> NSPredicate {
         return NSPredicate(format: "%K != %@", #keyPath(Transaction.identifier), identifier)
+    }
+    
+}
+
+
+
+/*
+ type can be: adjustment, advance, advance_funding, application_fee, application_fee_refund, charge, connect_collection_transfer, issuing_authorization_hold, issuing_authorization_release, issuing_transaction, payment, payment_failure_refund, payment_refund, payout, payout_cancel, payout_failure, refund, refund_failure, reserve_transaction, reserved_funds, stripe_fee, stripe_fx_fee, tax_fee, topup, topup_reversal, transfer, transfer_cancel, transfer_failure, or transfer_refund
+ */
+
+
+extension Transaction {
+    
+    public enum TransactionType: String {
+        case adjustment = "adjustment"
+        case advance = "advance"
+        case advanceFunding = "advance_funding"
+        case applicationFee = "application_fee"
+        case applicationFeeRefund = "application_fee_refund"
+        case charge = "charge"
+        case connectCollectionTransfer = "connect_collection_transfer"
+        case issuingAuthorizationHold = "issuing_authorization_hold"
+        case issuingAuthorizationRelease = "issuing_authorization_release"
+        case issuingTransaction = "issuing_transaction"
+        case payment = "payment"
+        case paymentFailureRefund = "payment_failure_refund"
+        case paymentRefund = "payment_refund"
+        case payout = "payout"
+        case payoutCancel = "payout_cancel"
+        case payoutFailure = "payout_failure"
+        case refund = "refund"
+        case refundFailure = "refund_failure"
+        case reserveTransaction = "reserve_transaction"
+        case reservedFunds = "reserved_funds"
+        case stripeFee = "stripe_fee"
+        case stripeFxFee = "stripe_fx_fee"
+        case taxFee = "tax_fee"
+        case topup = "topup"
+        case topupReversal = "topup_reversal"
+        case transfer = "transfer"
+        case transferCancel = "transfer_cancel"
+        case transferFailure = "transfer_failure"
+        case transferRefund = "transfer_refund"
     }
     
 }

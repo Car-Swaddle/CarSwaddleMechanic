@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TransactionsSectionHeaderView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="378" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="246" horizontalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="6hT-Jq-4dn" customClass="LabeledBannerView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="14" width="209" height="44"/>
+                    <color key="backgroundColor" name="secondary"/>
+                    <constraints>
+                        <constraint firstAttribute="width" priority="750" constant="209" id="BUs-5h-t6h"/>
+                        <constraint firstAttribute="height" constant="44" id="d8S-qc-PSe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6hT-Jq-4dn" secondAttribute="bottom" constant="16" id="ZUT-uT-enb"/>
+                <constraint firstItem="6hT-Jq-4dn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gzd-yZ-QWA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6hT-Jq-4dn" secondAttribute="trailing" constant="8" id="lUU-Hj-PLb"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="labeledBanner" destination="6hT-Jq-4dn" id="EvO-1A-0Jz"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="408.39580209895058"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="secondary">
+            <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

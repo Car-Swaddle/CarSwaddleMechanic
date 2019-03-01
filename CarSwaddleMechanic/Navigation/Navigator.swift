@@ -282,7 +282,7 @@ final public class Navigator: NSObject {
         }
         
         let servicesViewController = ScheduleViewController.scheduleViewController(for: Date())
-        let title = NSLocalizedString("Schedule", comment: "Title of tab item.")
+        let title = NSLocalizedString("Calendar", comment: "Title of tab item.")
         let image = #imageLiteral(resourceName: "calendar")
         let selectedImage = #imageLiteral(resourceName: "calendar-filled")
         servicesViewController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
