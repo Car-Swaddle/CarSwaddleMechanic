@@ -33,9 +33,9 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        amountLabel.font = UIFont.appFont(type: .semiBold, size: 20)
-        payoutDescriptionLabel.font = UIFont.appFont(type: .regular, size: 17)
-        errorDescriptionLabel.font = UIFont.appFont(type: .regular, size: 17)
+        amountLabel.font = UIFont.appFont(type: .medium, size: 20)
+        payoutDescriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
+        errorDescriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         statusLabel.font = UIFont.appFont(type: .regular, size: 15)
     }
