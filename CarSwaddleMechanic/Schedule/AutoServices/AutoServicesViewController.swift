@@ -21,6 +21,11 @@ let weekdayMonthDayDateFormatter: DateFormatter = {
 
 final class AutoServicesViewController: UIViewController, StoryboardInstantiating {
 
+    enum Section: Int {
+        case scheduled
+        case canceled
+    }
+    
     static func create(date: Date) -> AutoServicesViewController {
         let viewController = AutoServicesViewController.viewControllerFromStoryboard()
         viewController.dayDate = date
@@ -63,7 +68,9 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
     private func requestDistanceEstimates() {
         routes.removeAll()
         var previousAutoServiceOptional: AutoService?
-        for autoService in fetchedResultsController.fetchedObjects ?? [] {
+        let objects = fetchedResultsController.sections?.safeObject(at: 0)?.objects ?? []
+        for object in objects {
+            guard let autoService = object as? AutoService else { continue }
             guard let sourceLocation = autoService.location?.clLocation,
                 let destinationLocation = previousAutoServiceOptional?.location?.clLocation else {
                 previousAutoServiceOptional = autoService
@@ -165,10 +172,10 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
     
     private func createFetchedResultsController() -> NSFetchedResultsController<AutoService> {
         let fetchRequest: NSFetchRequest<AutoService> = AutoService.fetchRequest()
-        fetchRequest.sortDescriptors = [AutoService.mostRecentScheduledDateSort]
+        fetchRequest.sortDescriptors = [AutoService.isCanceledSort, AutoService.mostRecentScheduledDateSort]
         fetchRequest.predicate = AutoService.predicate(startDate: startDate, endDate: endDate)
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(AutoService.isCanceled), cacheName: nil)
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
     }
@@ -181,7 +188,8 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
     }
     
     private var hasAutoServices: Bool {
-        return (fetchedResultsController.sections?[0].numberOfObjects ?? 0) != 0
+//        return (fetchedResultsController.sections?[0].numberOfObjects ?? 0) != 0
+        return (fetchedResultsController.fetchedObjects?.count ?? 0) != 0
     }
     
     private func updateNoServicesLabelDisplayState() {
@@ -191,6 +199,10 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
 }
 
 extension AutoServicesViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -204,8 +216,33 @@ extension AutoServicesViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection sectionIndex: Int) -> CGFloat {
+        switch self.section(fromSectionIndex: sectionIndex) {
+        case .scheduled: return 0
+        case .canceled: return 100
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection sectionIndex: Int) -> UIView? {
+        switch self.section(fromSectionIndex: sectionIndex) {
+        case .scheduled:
+            return nil
+        case .canceled:
+            let header = HeaderView()
+            header.labelText = NSLocalizedString("Canceled Auto Services", comment: "Title of header")
+            return header
+        }
+    }
+    
+    private func section(fromSectionIndex sectionIndex: Int) -> Section {
+        guard let section = Section(rawValue: sectionIndex) else {
+            fatalError("Should not have section: \(sectionIndex)")
+        }
+        return section
+    }
+    
     private func isLastRow(indexPath: IndexPath) -> Bool {
-        return indexPath.row == (fetchedResultsController.sections?[0].numberOfObjects ?? 0)-1
+        return indexPath.row == (fetchedResultsController.sections?.safeObject(at: 0)?.numberOfObjects ?? 0)-1
     }
     
 }
@@ -257,6 +294,12 @@ public extension AutoService {
         return NSSortDescriptor(key: #keyPath(AutoService.creationDate), ascending: ascending)
     }
     
+    // MARK: -
+    
+    public static var isCanceledSort: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(AutoService.isCanceled), ascending: true)
+    }
+    
 }
 
 
@@ -264,6 +307,16 @@ public extension Location {
     
     public var clLocation: CLLocation {
         return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+}
+
+
+public extension Array {
+    
+    func safeObject(at index: Int) -> Element? {
+        guard index < count else { return nil }
+        return self[index]
     }
     
 }

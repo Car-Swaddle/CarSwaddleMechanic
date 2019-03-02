@@ -181,7 +181,9 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
         mapView.setRegion(region, animated: false)
         
-        contentView.alpha = autoService.status == .canceled ? 0.3 : 1.0
+        timelineHairlineView?.isHiddenInStackView = autoService.status == .canceled
+        
+        contentView.alpha = autoService.status == .canceled ? 0.4 : 1.0
     }
     
     @objc private func didSelectGetDirections() {

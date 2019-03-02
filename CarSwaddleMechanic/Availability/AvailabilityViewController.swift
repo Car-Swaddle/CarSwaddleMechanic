@@ -42,7 +42,15 @@ final class AvailabilityViewController: UIViewController, StoryboardInstantiatin
     private var shouldCreateDefaultTimeSpans: Bool = false
     private var days: [Weekday] = Weekday.allCases
     private var timespans: [TemplateTimeSpan] = [] {
-        didSet { tableView.reloadData() }
+        didSet {
+//            tableView.reloadData()
+            for cell in tableView.visibleCells {
+                guard let dayCell = cell as? DayCell,
+                let indexPath = tableView.indexPath(for: cell) else { continue }
+                let day = days[indexPath.row]
+                dayCell.configure(day: day, timespans: timespans(for: day))
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -124,7 +132,7 @@ extension AvailabilityViewController: UITableViewDataSource {
         cell.delegate = self
         let day = days[indexPath.row]
         cell.configure(day: day, timespans: timespans(for: day))
-        cell.layoutIfNeeded()
+//        cell.layoutIfNeeded()
         return cell
     }
     

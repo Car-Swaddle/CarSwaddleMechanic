@@ -94,7 +94,7 @@ extension EarningsViewController: UITableViewDataSource {
     private func text(for row: Row) -> String {
         switch row {
         case .payouts:
-            return NSLocalizedString("Payouts", comment: "When selected displays all groups of paid out transactions")
+            return NSLocalizedString("Deposits", comment: "When selected displays all groups of paid out transactions")
         case .transactions:
             return NSLocalizedString("Transactions", comment: "When selected displays all groups of paid out transactions")
         }

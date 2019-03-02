@@ -85,5 +85,9 @@ public final class Location: NSManagedObject {
         
         return json
     }
-
+    
+    public var clLocation: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
 }

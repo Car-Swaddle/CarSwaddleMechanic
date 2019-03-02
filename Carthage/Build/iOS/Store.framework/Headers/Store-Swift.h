@@ -223,6 +223,8 @@ SWIFT_CLASS_NAMED("Amount")
 SWIFT_CLASS_NAMED("AutoService")
 @interface AutoService : NSManagedObject
 - (void)awakeFromInsert;
+/// Bool value for data base usage. Reflects value found in <code>status</code>.
+@property (nonatomic, readonly) BOOL isCanceled;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 

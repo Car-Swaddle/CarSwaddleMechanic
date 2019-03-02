@@ -140,6 +140,20 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
         return NSPredicate(format: "%K != %@", #keyPath(Transaction.identifier), identifier)
     }
     
+    public static var transactionListPredicate: NSPredicate {
+        return Transaction.predicate(excluding: [.payout])
+    }
+    
+    public static func predicate(excluding transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+        let types = transactionTypes.map { $0.rawValue }
+        return NSPredicate(format: "%K NOT in %@", #keyPath(Transaction.type), types)
+    }
+    
+    public static func predicate(with transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+        let types = transactionTypes.map { $0.rawValue }
+        return NSPredicate(format: "%K in %@", #keyPath(Transaction.type), types)
+    }
+    
 }
 
 

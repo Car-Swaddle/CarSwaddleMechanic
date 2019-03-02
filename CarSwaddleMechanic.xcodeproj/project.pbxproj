@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		990ADFBF2228E38400D1C109 /* TransactionsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */; };
 		990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */; };
+		990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFC2222A4DC000D1C109 /* HeaderView.swift */; };
+		990ADFCB222A7B1400D1C109 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFCA222A7B1400D1C109 /* NotificationService.swift */; };
+		990ADFCF222A7B1400D1C109 /* NotificationModifier.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 990ADFC8222A7B1400D1C109 /* NotificationModifier.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD88216C6DEF0006FDDF /* Navigator.swift */; };
 		9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8A216C6E590006FDDF /* SignUpViewController.swift */; };
 		9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CD8C216C6EB50006FDDF /* LoginViewController.swift */; };
@@ -200,6 +203,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		990ADFCD222A7B1400D1C109 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9992763321673BCA0032D7F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 990ADFC7222A7B1400D1C109;
+			remoteInfo = NotificationModifier;
+		};
 		9992765321673BCC0032D7F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9992763321673BCA0032D7F7 /* Project object */;
@@ -216,9 +226,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		990ADFD3222A7B1400D1C109 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				990ADFCF222A7B1400D1C109 /* NotificationModifier.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSectionHeaderView.swift; sourceTree = "<group>"; };
 		990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsSectionHeaderView.xib; sourceTree = "<group>"; };
+		990ADFC2222A4DC000D1C109 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		990ADFC8222A7B1400D1C109 /* NotificationModifier.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationModifier.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		990ADFCA222A7B1400D1C109 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		990ADFCC222A7B1400D1C109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9912CD88216C6DEF0006FDDF /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9912CD8A216C6E590006FDDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +445,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		990ADFC5222A7B1400D1C109 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9992763821673BCA0032D7F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +488,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		990ADFC9222A7B1400D1C109 /* NotificationModifier */ = {
+			isa = PBXGroup;
+			children = (
+				990ADFCA222A7B1400D1C109 /* NotificationService.swift */,
+				990ADFCC222A7B1400D1C109 /* Info.plist */,
+			);
+			path = NotificationModifier;
+			sourceTree = "<group>";
+		};
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +696,7 @@
 				9992763D21673BCA0032D7F7 /* CarSwaddleMechanic */,
 				9992765521673BCC0032D7F7 /* CarSwaddleMechanicTests */,
 				9992766021673BCC0032D7F7 /* CarSwaddleMechanicUITests */,
+				990ADFC9222A7B1400D1C109 /* NotificationModifier */,
 				9992763C21673BCA0032D7F7 /* Products */,
 				9912CD75216C6AF00006FDDF /* Frameworks */,
 			);
@@ -663,6 +708,7 @@
 				9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */,
 				9992765221673BCC0032D7F7 /* CarSwaddleMechanicTests.xctest */,
 				9992765D21673BCC0032D7F7 /* CarSwaddleMechanicUITests.xctest */,
+				990ADFC8222A7B1400D1C109 /* NotificationModifier.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -746,6 +792,7 @@
 				99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */,
 				9953AE0F21BE5908002D099A /* AutoServiceCell.swift */,
 				9953AE1021BE5908002D099A /* AutoServiceCell.xib */,
+				990ADFC2222A4DC000D1C109 /* HeaderView.swift */,
 			);
 			path = AutoServices;
 			sourceTree = "<group>";
@@ -883,6 +930,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		990ADFC7222A7B1400D1C109 /* NotificationModifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 990ADFD0222A7B1400D1C109 /* Build configuration list for PBXNativeTarget "NotificationModifier" */;
+			buildPhases = (
+				990ADFC4222A7B1400D1C109 /* Sources */,
+				990ADFC5222A7B1400D1C109 /* Frameworks */,
+				990ADFC6222A7B1400D1C109 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationModifier;
+			productName = NotificationModifier;
+			productReference = 990ADFC8222A7B1400D1C109 /* NotificationModifier.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9992763A21673BCA0032D7F7 /* CarSwaddleMechanic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9992766621673BCC0032D7F7 /* Build configuration list for PBXNativeTarget "CarSwaddleMechanic" */;
@@ -891,10 +955,12 @@
 				9992763821673BCA0032D7F7 /* Frameworks */,
 				9992763921673BCA0032D7F7 /* Resources */,
 				991B4065216B4E5500D7644D /* ShellScript */,
+				990ADFD3222A7B1400D1C109 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				990ADFCE222A7B1400D1C109 /* PBXTargetDependency */,
 			);
 			name = CarSwaddleMechanic;
 			productName = CarSwaddleMechanic;
@@ -943,10 +1009,13 @@
 		9992763321673BCA0032D7F7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = CarSwaddle;
 				TargetAttributes = {
+					990ADFC7222A7B1400D1C109 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					9992763A21673BCA0032D7F7 = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
@@ -996,11 +1065,19 @@
 				9992763A21673BCA0032D7F7 /* CarSwaddleMechanic */,
 				9992765121673BCC0032D7F7 /* CarSwaddleMechanicTests */,
 				9992765C21673BCC0032D7F7 /* CarSwaddleMechanicUITests */,
+				990ADFC7222A7B1400D1C109 /* NotificationModifier */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		990ADFC6222A7B1400D1C109 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9992763921673BCA0032D7F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1167,6 +1244,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		990ADFC4222A7B1400D1C109 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				990ADFCB222A7B1400D1C109 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9992763721673BCA0032D7F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1222,6 +1307,7 @@
 				99B3FA8D2202FEE900D9887F /* PersonalInformationStatusCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
 				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
+				990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,
 				99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */,
 				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
@@ -1271,6 +1357,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		990ADFCE222A7B1400D1C109 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 990ADFC7222A7B1400D1C109 /* NotificationModifier */;
+			targetProxy = 990ADFCD222A7B1400D1C109 /* PBXContainerItemProxy */;
+		};
 		9992765421673BCC0032D7F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9992763A21673BCA0032D7F7 /* CarSwaddleMechanic */;
@@ -1295,6 +1386,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		990ADFD1222A7B1400D1C109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				INFOPLIST_FILE = NotificationModifier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic.NotificationModifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		990ADFD2222A7B1400D1C109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				INFOPLIST_FILE = NotificationModifier/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic.NotificationModifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9992766421673BCC0032D7F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1414,6 +1547,7 @@
 		9992766721673BCC0032D7F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1441,6 +1575,7 @@
 		9992766821673BCC0032D7F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1550,6 +1685,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		990ADFD0222A7B1400D1C109 /* Build configuration list for PBXNativeTarget "NotificationModifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				990ADFD1222A7B1400D1C109 /* Debug */,
+				990ADFD2222A7B1400D1C109 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9992763621673BCA0032D7F7 /* Build configuration list for PBXProject "CarSwaddleMechanic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
