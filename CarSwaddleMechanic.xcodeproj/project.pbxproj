@@ -46,7 +46,6 @@
 		9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */; };
 		9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */; };
 		9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */; };
-		99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */; };
 		99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */; };
 		99675CB021E9F1FF003C9D70 /* EarningsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */; };
 		99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */; };
@@ -285,7 +284,6 @@
 		9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
 		9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceStatusCell.swift; sourceTree = "<group>"; };
 		9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceStatusCell.xib; sourceTree = "<group>"; };
-		99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegateViewController.swift; sourceTree = "<group>"; };
 		99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsHeaderView.swift; sourceTree = "<group>"; };
 		99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningsHeaderView.xib; sourceTree = "<group>"; };
 		99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceAmountView.swift; sourceTree = "<group>"; };
@@ -624,7 +622,6 @@
 			isa = PBXGroup;
 			children = (
 				9912CD88216C6DEF0006FDDF /* Navigator.swift */,
-				99675C9F21E717E8003C9D70 /* NavigationDelegateViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1312,7 +1309,6 @@
 				99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */,
 				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
-				99675CA021E717E8003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */,
 				9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */,
 				99F6967C220A9CD40021A719 /* AddReceiptCell.swift in Sources */,

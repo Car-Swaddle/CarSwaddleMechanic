@@ -212,7 +212,12 @@ extension AutoServicesViewController: UITableViewDataSource {
         let cell: AutoServiceCell = tableView.dequeueCell()
         cell.configure(with: fetchedResultsController.object(at: indexPath))
         cell.isLastAutoService = self.isLastRow(indexPath: indexPath)
-        cell.route = routes.safeObject(at: indexPath.row)
+        
+        if section(fromSectionIndex: indexPath.section) == .scheduled {
+            cell.route = routes.safeObject(at: indexPath.row)
+        } else {
+            cell.route = nil
+        }
         return cell
     }
     

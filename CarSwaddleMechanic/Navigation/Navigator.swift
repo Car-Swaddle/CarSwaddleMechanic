@@ -135,6 +135,7 @@ final public class Navigator: NSObject {
         guard viewControllers.count > 0 else { return }
         
         let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
+        navigationDelegateViewController.externalDelegate = self
         appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
     }
     
@@ -389,6 +390,20 @@ extension Navigator: HorizontalSlideTransitionDelegate {
         guard let fromTab = self.tab(from: fromViewController),
             let toTab = self.tab(from: toViewController) else { return .left }
         return fromTab.rawValue < toTab.rawValue ? .left : .right
+    }
+    
+}
+
+extension Navigator: NavigationDelegateViewControllerDelegate {
+    
+    public func didFinishLastViewController(_ navigationDelegateViewController: NavigationDelegateViewController) {
+        appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        navigateToLoggedInViewController()
+    }
+    
+    public func didSelectLogout(_ navigationDelegateViewController: NavigationDelegateViewController) {
+        appDelegate.window?.endEditing(true)
+        logout.logout()
     }
     
 }

@@ -35,8 +35,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Kp-C6-TT5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Payouts" id="wGd-bd-cPl">
-                        <barButtonItem key="backBarButtonItem" title="Payouts" id="i7d-Ef-ho5"/>
+                    <navigationItem key="navigationItem" title="Deposits" id="wGd-bd-cPl">
+                        <barButtonItem key="backBarButtonItem" title="Deposits" id="i7d-Ef-ho5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kow-cO-L0h" id="3Xg-mW-CaB"/>

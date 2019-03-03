@@ -40,6 +40,7 @@ public class PushNotificationController: NSObject {
     
     public func didReceiveRemoteNotification(userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("got remote notification: \(userInfo)")
+        handleInteraction(interactionInfo: userInfo)
         completionHandler(.newData)
     }
     
@@ -70,6 +71,10 @@ public class PushNotificationController: NSObject {
         UserDefaults.standard.setValue(deviceToken, forKey: deviceTokenKey)
     }
     
+    private func handleInteraction(interactionInfo: [AnyHashable: Any]) {
+        
+    }
+    
 }
 
 extension PushNotificationController: UNUserNotificationCenterDelegate {
@@ -80,6 +85,8 @@ extension PushNotificationController: UNUserNotificationCenterDelegate {
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("did receive response")
+        let userInfo = response.notification.request.content.userInfo
+        handleInteraction(interactionInfo: userInfo)
         completionHandler()
     }
     
