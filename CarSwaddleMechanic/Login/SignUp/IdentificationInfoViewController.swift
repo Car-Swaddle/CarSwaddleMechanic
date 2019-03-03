@@ -31,7 +31,7 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
     }
     
     @IBAction private func didTapSave() {
-        guard let socialSecurityNumber = socialSecurityTextField.text else { return }
+        guard let socialSecurityNumber = socialSecurityTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         
         if isFullSocialSecurityNumberRequired == false && socialSecurityNumber.count != 4 {
             let title = NSLocalizedString("Should enter last 4 of social", comment: "Alert helping user")

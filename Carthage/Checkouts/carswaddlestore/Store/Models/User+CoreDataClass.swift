@@ -51,6 +51,9 @@ public final class User: NSManagedObject, NSManagedObjectFetchable, JSONInitable
         if let verified = (json["isPhoneNumberVerified"] as? Bool) {
             self.isPhoneNumberVerified = verified
         }
+        if let timeZone = json["timeZone"] as? String {
+            self.timeZone = timeZone
+        }
         
         guard let context = managedObjectContext else { return }
         

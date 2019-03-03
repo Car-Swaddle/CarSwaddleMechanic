@@ -630,6 +630,7 @@ SWIFT_CLASS_NAMED("User")
 @property (nonatomic) BOOL isPhoneNumberVerified;
 @property (nonatomic) BOOL isEmailVerified;
 @property (nonatomic, copy) NSString * _Nullable pushDeviceToken;
+@property (nonatomic, copy) NSString * _Nullable timeZone;
 @end
 
 

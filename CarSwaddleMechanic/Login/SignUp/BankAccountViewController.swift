@@ -63,9 +63,9 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
     }
     
     private func generateBankAccountToken(completion: @escaping (_ token: STPToken?) -> Void) {
-        guard let routingNumber = routingNumberTextField.text,
-            let bankAccountNumber = bankAccountNumberTextField.text,
-            let accountHolderName = accountHolderNameTextField.text else {
+        guard let routingNumber = routingNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let bankAccountNumber = bankAccountNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let accountHolderName = accountHolderNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
                 completion(nil)
                 return
         }

@@ -64,7 +64,7 @@ public class UserService: Service {
     }
     
     @discardableResult
-    public func updateCurrentUser(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func updateCurrentUser(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, timeZone: String?, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         var json: JSONObject = [:]
         if let firstName = firstName {
             json["firstName"] = firstName
@@ -77,6 +77,9 @@ public class UserService: Service {
         }
         if let token = token {
             json["token"] = token
+        }
+        if let timeZone = timeZone {
+            json["timeZone"] = timeZone
         }
         return updateCurrentUser(json: json, completion: completion)
     }

@@ -24,6 +24,7 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     private var task: URLSessionDataTask?
     
     private var auth = Auth(serviceRequest: serviceRequest)
+    private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,23 +110,32 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         
         loginButton.isHiddenInStackView = true
         
+        login(email: email, password: password) { [weak self] error in
+            guard error == nil && self?.auth.isLoggedIn == true else {
+                DispatchQueue.main.async {
+                    self?.spinner.isHiddenInStackView = true
+                    self?.spinner.stopAnimating()
+                    
+                    self?.loginButton.isHiddenInStackView = false
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                navigator.navigateToLoggedInViewController()
+            }
+        }
+    }
+    
+    private func login(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
         store.privateContext { [weak self] context in
             self?.task = self?.auth.mechanicLogin(email: email, password: password, context: context) { [weak self] error in
-                guard error == nil && self?.auth.isLoggedIn == true else {
-                    DispatchQueue.main.async {
-                        self?.spinner.isHiddenInStackView = true
-                        self?.spinner.stopAnimating()
-                        
-                        self?.loginButton.isHiddenInStackView = false
-                    }
-                    return
-                }
-                DispatchQueue.main.async {
-                    navigator.navigateToLoggedInViewController()
+                self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, in: context) { userObjectID, userError in
+                    completion(error)
                 }
             }
         }
     }
+    
     
     private var backgroundImage: UIImage? {
         let top = GradientPoint(location: 1.0, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: 15))

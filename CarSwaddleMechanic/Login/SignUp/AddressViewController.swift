@@ -53,10 +53,10 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
     @IBAction private func didTapSave() {
         guard let address = address else { return }
         
-        address.city = address.city?.trimmingCharacters(in: [" "])
-        address.postalCode = address.postalCode?.trimmingCharacters(in: [" "])
-        address.state = address.state?.trimmingCharacters(in: [" "])
-        address.line1 = address.line1?.trimmingCharacters(in: [" "])
+        address.city = address.city?.trimmingCharacters(in: .whitespacesAndNewlines)
+        address.postalCode = address.postalCode?.trimmingCharacters(in: .whitespacesAndNewlines)
+        address.state = address.state?.trimmingCharacters(in: .whitespacesAndNewlines)
+        address.line1 = address.line1?.trimmingCharacters(in: .whitespacesAndNewlines)
         address.managedObjectContext?.persist()
         
         let previousButton = navigationItem.rightBarButtonItem

@@ -11,7 +11,6 @@ import CarSwaddleData
 
 final class PhoneNumberViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
     
-    
     weak var navigationDelegate: NavigationDelegate?
 
     @IBOutlet private weak var phoneNumberTextField: UITextField!
@@ -31,9 +30,9 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         
         navigationItem.rightBarButtonItem = spinner
         
-        let phoneNumber = phoneNumberTextField.text
+        let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     if error == nil {

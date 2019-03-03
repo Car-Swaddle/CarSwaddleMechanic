@@ -30,6 +30,7 @@ extension User {
     @NSManaged public var isPhoneNumberVerified: Bool
     @NSManaged public var isEmailVerified: Bool
     @NSManaged public var pushDeviceToken: String?
+    @NSManaged public var timeZone: String?
     
 }
 

@@ -24,12 +24,12 @@ public final class UserNetwork: Network {
     
     @discardableResult
     public func update(user: User, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return update(firstName: user.firstName, lastName: user.lastName, phoneNumber: user.phoneNumber, token: nil, in: context, completion: completion)
+        return update(firstName: user.firstName, lastName: user.lastName, phoneNumber: user.phoneNumber, token: nil, timeZone: user.timeZone , in: context, completion: completion)
     }
     
     @discardableResult
-    public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token) { json, error in
+    public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, timeZone: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token, timeZone: timeZone) { json, error in
             context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {

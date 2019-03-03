@@ -39,13 +39,13 @@ final class NameViewController: UIViewController, StoryboardInstantiating, Navig
     
     
     @IBAction private func didTapSave() {
-        guard let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text else { return }
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         let previousBarButtonItem = navigationItem.rightBarButtonItem
         let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
         navigationItem.rightBarButtonItem = spinButton
         store.privateContext { [weak self] privateContext in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, in: privateContext) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard error == nil else { return }
                     if let self = self, let navigationDelegate = self.navigationDelegate {
