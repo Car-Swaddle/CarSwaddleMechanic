@@ -16,6 +16,8 @@ typealias TransactionValues = (identifier: String, amount: Int, availableOn: Dat
 final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
     
     @NSManaged private var primitiveStatus: String
+    @NSManaged private var primitiveAvailableOn: Date
+    @NSManaged private var primitiveAdjustedAvailableOnDate: Date
     
     public enum Status: String {
         case pending
@@ -48,6 +50,27 @@ final public class Transaction: NSManagedObject, NSManagedObjectFetchable, JSONI
             willChangeValue(forKey: statusKey)
             primitiveStatus = newValue.rawValue
             didChangeValue(forKey: statusKey)
+        }
+    }
+    
+    private let availableOnKey = "availableOn"
+    public var availableOn: Date {
+        get {
+            willAccessValue(forKey: availableOnKey)
+            let availableOn = primitiveAvailableOn
+            didAccessValue(forKey: availableOnKey)
+            return availableOn
+        }
+        set {
+            willChangeValue(forKey: availableOnKey)
+            primitiveAvailableOn = newValue
+            didChangeValue(forKey: availableOnKey)
+            
+            if let adjustedDate = Calendar.current.date(bySetting: .hour, value: 0, of: newValue) {
+                willChangeValue(forKey: availableOnKey)
+                primitiveAdjustedAvailableOnDate = adjustedDate
+                didChangeValue(forKey: availableOnKey)
+            }
         }
     }
     

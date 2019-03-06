@@ -228,8 +228,6 @@ final public class Navigator: NSObject {
         let navigationController = signUp.inNavigationController()
         navigationController.navigationBar.barStyle = .black
         navigationController.navigationBar.isHidden = true
-//        navigationController.setNavigationBarHidden(true, animated: false)
-//        navigationController.interactivePopGestureRecognizer?.delegate = nil
         navigationController.view.frame = rootViewController.view.frame
         navigationController.view.layoutIfNeeded()
         

@@ -24,9 +24,9 @@ final class TransactionsSectionHeaderView: UIView, NibInstantiating {
     
     private var titleLabelText: String {
         guard let date = availableDate else {
-            return NSLocalizedString("Available on", comment: "Transaction availability date")
+            return NSLocalizedString("Expected deposit date", comment: "Transaction availability date")
         }
-        let formatString = NSLocalizedString("Available on %@", comment: "Date a transaction will be available")
+        let formatString = NSLocalizedString("Expected deposit date %@", comment: "Date a transaction will be available")
         return String(format: formatString, monthDayDateFormatter.string(from: date))
     }
     

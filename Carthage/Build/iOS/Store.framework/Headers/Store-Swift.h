@@ -535,7 +535,6 @@ SWIFT_CLASS_NAMED("Transaction")
 @interface Transaction (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic) NSInteger amount;
-@property (nonatomic, copy) NSDate * _Nonnull availableOn;
 @property (nonatomic, copy) NSDate * _Nonnull created;
 @property (nonatomic, copy) NSString * _Nonnull currency;
 @property (nonatomic, copy) NSString * _Nullable transactionDescription;
@@ -547,6 +546,7 @@ SWIFT_CLASS_NAMED("Transaction")
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
 @property (nonatomic, strong) Payout * _Nullable payout;
 @property (nonatomic, strong) TransactionMetadata * _Nullable transactionMetadata;
+@property (nonatomic, copy) NSDate * _Nonnull adjustedAvailableOnDate;
 @end
 
 

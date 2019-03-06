@@ -20,56 +20,48 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="57" id="KGk-i7-Jjw" customClass="TransactionCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="402" height="74"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="TransactionCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="402" height="73.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="402" height="93.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IAO-7n-b2H">
-                        <rect key="frame" x="20" y="11" width="362" height="52"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IAO-7n-b2H">
+                        <rect key="frame" x="20" y="11" width="362" height="72"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZB-e7-gGT">
-                                <rect key="frame" x="0.0" y="0.0" width="362" height="17.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9ZB-e7-gGT">
+                                <rect key="frame" x="0.0" y="0.0" width="287.5" height="72"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 15th, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heE-Oh-2ER">
-                                        <rect key="frame" x="0.0" y="0.0" width="297.5" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="February 15th, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heE-Oh-2ER">
+                                        <rect key="frame" x="0.0" y="0.0" width="287.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" name="textColor3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="757" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-XT-jw7">
-                                        <rect key="frame" x="297.5" y="0.0" width="64.5" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="254" horizontalCompressionResistancePriority="757" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-XT-jw7">
+                                        <rect key="frame" x="0.0" y="25.5" width="287.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" name="textColor3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BJp-OE-E6d">
-                                <rect key="frame" x="0.0" y="25.5" width="362" height="26.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" horizontalCompressionResistancePriority="753" text="$56.78" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmC-nv-P1E">
-                                        <rect key="frame" x="0.0" y="1" width="66.5" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="243" verticalHuggingPriority="251" text="Car Swaddle Oil Change" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="UT4-pa-p9M">
-                                        <rect key="frame" x="66.5" y="0.0" width="295.5" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="244" verticalHuggingPriority="243" verticalCompressionResistancePriority="759" text="Car Swaddle Oil Change" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UT4-pa-p9M">
+                                        <rect key="frame" x="0.0" y="51" width="287.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                        <color key="textColor" name="textColor3"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="499" horizontalCompressionResistancePriority="753" text="$56.78" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmC-nv-P1E">
+                                <rect key="frame" x="295.5" y="0.0" width="66.5" height="72"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="BJp-OE-E6d" secondAttribute="trailing" id="5Ma-12-tgP"/>
                             <constraint firstItem="9ZB-e7-gGT" firstAttribute="leading" secondItem="IAO-7n-b2H" secondAttribute="leading" id="Nkb-Yy-mBx"/>
-                            <constraint firstItem="BJp-OE-E6d" firstAttribute="leading" secondItem="IAO-7n-b2H" secondAttribute="leading" id="ZZx-6U-9eB"/>
-                            <constraint firstAttribute="trailing" secondItem="9ZB-e7-gGT" secondAttribute="trailing" id="kG2-OX-7PO"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -87,7 +79,7 @@
                 <outlet property="typeLabel" destination="Lzg-XT-jw7" id="E75-1n-SQK"/>
                 <outlet property="valueLabel" destination="fmC-nv-P1E" id="Dph-Vn-TCl"/>
             </connections>
-            <point key="canvasLocation" x="204.80000000000001" y="70.164917541229386"/>
+            <point key="canvasLocation" x="204.80000000000001" y="79.160419790104953"/>
         </tableViewCell>
     </objects>
     <resources>

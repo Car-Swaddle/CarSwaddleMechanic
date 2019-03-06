@@ -29,10 +29,20 @@ public extension UIFont {
         case italic = "Montserrat-Italic"
         case mediumItalic = "Montserrat-MediumItalic"
         case extraBoldItalic = "Montserrat-ExtraBoldItalic"
+        case monoSpaced = "Montserrat-Monospaced"
     }
     
     public static func appFont(type: FontType, size: CGFloat) -> UIFont! {
-        return UIFont(name: type.rawValue, size: UIFontMetrics.default.scaledValue(for: size))!
+        let adjustedSize = UIFontMetrics.default.scaledValue(for: size)
+        switch type {
+        case .monoSpaced:
+//            let mono = UIFontDescriptor(name: "Montserrat", size: 15).monospacedDigitFontDescriptor
+//            return UIFont(descriptor: mono, size: 0)
+            let mono = UIFontDescriptor(name: "Montserrat", size: adjustedSize).monospacedDigitFontDescriptor
+            return UIFont(descriptor: mono, size: 0)
+        default:
+            return UIFont(name: type.rawValue, size: adjustedSize)!
+        }
     }
     
     public static func printAllFonts() {
@@ -42,4 +52,16 @@ public extension UIFont {
         }
     }
     
+}
+
+extension UIFontDescriptor {
+    var monospacedDigitFontDescriptor: UIFontDescriptor {
+        let fontDescriptorFeatureSettings = [[UIFontDescriptor.FeatureKey.featureIdentifier: kNumberSpacingType,
+                                              UIFontDescriptor.FeatureKey.typeIdentifier: kMonospacedNumbersSelector]]
+        
+        
+        let fontDescriptorAttributes = [UIFontDescriptor.AttributeName.featureSettings: fontDescriptorFeatureSettings]
+        let fontDescriptor = self.addingAttributes(fontDescriptorAttributes)
+        return fontDescriptor
+    }
 }

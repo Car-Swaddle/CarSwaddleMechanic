@@ -31,9 +31,19 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
     weak var delegate: TransactionCellDelegate?
     
     func configure(with transaction: Transaction) {
-        dateLabel.text = monthDayYearDateFormatter.string(from: transaction.created)
-        typeLabel.text = transaction.transactionType.localizedString
-        valueLabel.text = currencyFormatter.string(from: transaction.amount.dollarValue)
+        let topTextFormatString = NSLocalizedString("%@ • %@", comment: "date and payment type")
+        dateLabel.text = String(format: topTextFormatString, monthDayYearDateFormatter.string(from: transaction.created), transaction.transactionType.localizedString)
+//        typeLabel.text = transaction.transactionType.localizedString
+        let transactionAmount = transaction.amount
+        valueLabel.text = currencyFormatter.string(from: transactionAmount.dollarValue)
+        
+        typeLabel.isHiddenInStackView = true
+        
+        if transactionAmount > 0 {
+            valueLabel.textColor = .green1
+        } else {
+            valueLabel.textColor = .black
+        }
         
         if let transactionDescription = transaction.transactionDescription, !transactionDescription.isEmpty {
             descriptionLabel.text = transaction.transactionDescription
@@ -48,11 +58,17 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         typeLabel.font = UIFont.appFont(type: .regular, size: 15)
-        valueLabel.font = UIFont.appFont(type: .medium, size: 20)
+//        valueLabel.font = UIFont.appFont(type: .medium, size: 20)
         descriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
+        
+//        let mono = UIFontDescriptor(name: "Montserrat", size: 20).monospacedDigitFontDescriptor
+//        valueLabel.font = UIFont(descriptor: mono, size: 0)
+        valueLabel.font = UIFont.appFont(type: .monoSpaced, size: 20)
     }
     
 }
+
+
 
 
 extension Transaction.TransactionType {

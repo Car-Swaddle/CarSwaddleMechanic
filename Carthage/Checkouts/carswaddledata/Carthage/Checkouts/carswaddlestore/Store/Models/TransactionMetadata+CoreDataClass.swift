@@ -55,4 +55,6 @@ final public class TransactionMetadata: NSManagedObject, NSManagedObjectFetchabl
         self.autoService = AutoService.fetch(with: values.autoServiceID, in: context)
     }
     
+    
+    
 }

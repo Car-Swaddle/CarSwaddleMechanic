@@ -65,7 +65,7 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
     
     private func createFetchedResultsController() -> NSFetchedResultsController<Transaction> {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
-        fetchRequest.sortDescriptors = [Transaction.createdSortDescriptor]
+        fetchRequest.sortDescriptors = [Transaction.adjustedAvailableOnDateSortDescriptor, Transaction.createdSortDescriptor]
         var predicates: [NSPredicate] = [Transaction.currentMechanicPredicate, Transaction.transactionListPredicate]
         if let payoutID = payoutID {
             let payoutPredicate = Transaction.predicate(forPayoutID: payoutID)
@@ -73,7 +73,7 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(Transaction.availableOn), cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(Transaction.adjustedAvailableOnDate), cacheName: nil)
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
@@ -91,12 +91,15 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
     private func requestTransactions(completion: @escaping () -> Void = {}) {
         let lastID = self.lastID
         let payoutID = self.payoutID
+        fetchedResultsController.delegate = nil
         store.privateContext { [weak self] context in
             self?.task = self?.stripeNetwork.requestTransactions(startingAfterID: lastID, payoutID: payoutID, limit: transactionRequestLimit, in: context) { objectIDs, lastID, hasMore, error in
                 DispatchQueue.main.async {
-                    guard error == nil else { return }
-                    self?.lastID = hasMore ? lastID : nil
-                    self?.task = nil
+                    guard error == nil, let self = self else { return }
+                    self.fetchedResultsController.delegate = self
+                    self.lastID = hasMore ? lastID : nil
+                    self.task = nil
+                    self.resetData()
                     completion()
                 }
             }
@@ -219,6 +222,10 @@ extension Int {
 
 
 public extension Transaction {
+    
+    public static var adjustedAvailableOnDateSortDescriptor: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(Transaction.adjustedAvailableOnDate), ascending: false)
+    }
     
     public static var transactionListPredicate: NSPredicate {
         return Transaction.predicate(excluding: [.payout])

@@ -19,7 +19,7 @@ extension Transaction {
 
     @NSManaged public var identifier: String
     @NSManaged public var amount: Int
-    @NSManaged public var availableOn: Date
+//    @NSManaged public var availableOn: Date
     @NSManaged public var created: Date
     @NSManaged public var currency: String
     @NSManaged public var transactionDescription: String?
@@ -31,5 +31,7 @@ extension Transaction {
     @NSManaged public var mechanic: Mechanic?
     @NSManaged public var payout: Payout?
     @NSManaged public var transactionMetadata: TransactionMetadata?
+    
+    @NSManaged public var adjustedAvailableOnDate: Date
 
 }
