@@ -24,9 +24,9 @@ final class TransactionsSectionHeaderView: UIView, NibInstantiating {
     
     private var titleLabelText: String {
         guard let date = availableDate else {
-            return NSLocalizedString("Expected deposit date", comment: "Transaction availability date")
+            return NSLocalizedString("Deposit date", comment: "Transaction availability date")
         }
-        let formatString = NSLocalizedString("Expected deposit date %@", comment: "Date a transaction will be available")
+        let formatString = NSLocalizedString("Deposit date %@", comment: "Date a transaction will be available")
         return String(format: formatString, monthDayDateFormatter.string(from: date))
     }
     
@@ -34,7 +34,14 @@ final class TransactionsSectionHeaderView: UIView, NibInstantiating {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        addHairlineView(toSide: .top, color: .gray3)
         addHairlineView(toSide: .bottom, color: .gray3)
+        
+//        layer.shadowColor = UIColor.gray3.cgColor
+        layer.shadowOpacity = 0.05
+//        layer.shadowRadius = 3
+        layer.shadowOffset = CGSize(width: 0, height: 2)
     }
     
 }

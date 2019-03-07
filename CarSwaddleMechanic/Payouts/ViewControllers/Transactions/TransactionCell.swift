@@ -42,7 +42,7 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         if transactionAmount > 0 {
             valueLabel.textColor = .green1
         } else {
-            valueLabel.textColor = .black
+            valueLabel.textColor = .gray6
         }
         
         if let transactionDescription = transaction.transactionDescription, !transactionDescription.isEmpty {
@@ -58,12 +58,10 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         typeLabel.font = UIFont.appFont(type: .regular, size: 15)
-//        valueLabel.font = UIFont.appFont(type: .medium, size: 20)
         descriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
-        
-//        let mono = UIFontDescriptor(name: "Montserrat", size: 20).monospacedDigitFontDescriptor
-//        valueLabel.font = UIFont(descriptor: mono, size: 0)
         valueLabel.font = UIFont.appFont(type: .monoSpaced, size: 20)
+        
+        descriptionLabel.textColor = .gray6
     }
     
 }

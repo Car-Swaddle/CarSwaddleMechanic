@@ -19,14 +19,26 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
     
     func configure(with payout: Payout) {
         amountLabel.text = currencyFormatter.string(from: payout.amount.dollarValue)
-        dateLabel.text = monthDayYearDateFormatter.string(from: payout.arrivalDate)
-        statusLabel.text = payout.status.localizedString
+        
+//        dateLabel.text = monthDayYearDateFormatter.string(from: payout.arrivalDate)
+        
+        let topTextFormatString = NSLocalizedString("%@ • %@", comment: "date and payment type")
+        dateLabel.text = String(format: topTextFormatString, monthDayYearDateFormatter.string(from: payout.arrivalDate), payout.status.localizedString)
+        
+//        statusLabel.text = payout.status.localizedString
         payoutDescriptionLabel.text = payout.payoutDescription
+        
         if let failurMessage = payout.failureMessage, !failurMessage.isEmpty {
             errorDescriptionLabel.text = payout.failureMessage
             errorDescriptionLabel.isHiddenInStackView = false
         } else {
             errorDescriptionLabel.isHiddenInStackView = true
+        }
+        
+        if payout.amount > 0 {
+            amountLabel.textColor = .green1
+        } else {
+            amountLabel.textColor = .black
         }
     }
     
@@ -38,6 +50,8 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
         errorDescriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         statusLabel.font = UIFont.appFont(type: .regular, size: 15)
+        
+        amountLabel.font = UIFont.appFont(type: .monoSpaced, size: 20)
     }
     
 }

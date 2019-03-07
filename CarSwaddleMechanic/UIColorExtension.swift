@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
     
     static let blue1 = #colorLiteral(red: 0.102667383, green: 0.4, blue: 0.9882352941, alpha: 1)
-    static let green1 = #colorLiteral(red: 0.3607843137, green: 0.7882352941, blue: 0.4196078431, alpha: 1)
+    static let green1 = #colorLiteral(red: 0.1490196078, green: 0.537254902, blue: 0.2274509804, alpha: 1)
     static let red1 = #colorLiteral(red: 0.9921568627, green: 0.5411764706, blue: 0.4509803922, alpha: 1)
     
     static let textColor1 = UIColor(named: "textColor1")!

@@ -73,7 +73,12 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(Transaction.adjustedAvailableOnDate), cacheName: nil)
+        var sectionNameKeypath: String?
+        if payoutID == nil {
+            sectionNameKeypath = #keyPath(Transaction.adjustedAvailableOnDate)
+        }
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: sectionNameKeypath, cacheName: nil)
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
         return fetchedResultsController
@@ -99,7 +104,7 @@ final class TransactionsViewController: UIViewController, StoryboardInstantiatin
                     self.fetchedResultsController.delegate = self
                     self.lastID = hasMore ? lastID : nil
                     self.task = nil
-                    self.resetData()
+                    self.reload()
                     completion()
                 }
             }
@@ -153,14 +158,22 @@ extension TransactionsViewController: UITableViewDataSource, TransactionCellDele
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 74
+        if payoutID == nil {
+            return 74
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = TransactionsSectionHeaderView.viewFromNib()
-        let transaction = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
-        view.availableDate = transaction.availableOn
-        return view
+        if payoutID == nil && fetchedResultsController.sections?[section].numberOfObjects != 0 {
+            let view = TransactionsSectionHeaderView.viewFromNib()
+            let transaction = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
+            view.availableDate = transaction.availableOn
+            return view
+        } else {
+            return nil
+        }
     }
     
     func didUpdateHeight(cell: TransactionCell) {
