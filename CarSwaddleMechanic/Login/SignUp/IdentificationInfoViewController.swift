@@ -184,3 +184,19 @@ open class UnderlineTextField: UITextField {
     }
     
 }
+
+
+extension OneTimeCodeEntryView {
+    
+    func styleDefault() {
+        textFieldCornerRadius = 6
+        textFieldWidth = 29
+        textFieldBackgroundColor = UIColor(white255: 244)
+        spacing = 4
+        textFieldFont = UIFont.appFont(type: .semiBold, size: 17)
+        spacerFont = UIFont.appFont(type: .regular, size: 20)
+        textFieldTintColor = .viewBackgroundColor1
+        underlineColor = .viewBackgroundColor1
+    }
+    
+}

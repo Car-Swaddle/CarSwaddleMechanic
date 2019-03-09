@@ -14,17 +14,58 @@ import CarSwaddleData
 
 final class BankAccountViewController: UIViewController, StoryboardInstantiating {
 
-    @IBOutlet private weak var routingNumberTextField: UITextField!
-    @IBOutlet private weak var bankAccountNumberTextField: UITextField!
-    @IBOutlet private weak var accountHolderNameTextField: UITextField!
+    @IBOutlet private weak var routingNumberDigitEntryView: OneTimeCodeEntryView!
+    @IBOutlet private weak var bankAccountNumberLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var accountHolderLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var routingNumberLabel: UILabel!
     
     private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    private var stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
+    
+    private let routingNumberDigits = 9
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        accountHolderNameTextField.text = User.currentUser(context: store.mainContext)?.displayName
+        
+        requestData { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateUI()
+            }
+        }
+        
+        routingNumberDigitEntryView.digits = routingNumberDigits
+        routingNumberDigitEntryView.textFieldWidth = 27
+        routingNumberDigitEntryView.styleDefault()
+        routingNumberDigitEntryView.textFieldFont = UIFont.appFont(type: .regular, size: 17)
+        
+        routingNumberDigitEntryView.delegate = self
+        
+        routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
+        routingNumberLabel.text = NSLocalizedString("Routing number", comment: "Label for bank routing number")
+        
+        updateUI()
+    }
+    
+    private func updateUI() {
+        guard let bankAccount = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.bankAccount else { return }
+        
+        routingNumberDigitEntryView.setText(bankAccount.routingNumber)
+        let maskedBankAccount = "••••••••" + bankAccount.last4
+        bankAccountNumberLabeledTextField.textField.text = maskedBankAccount
+        accountHolderLabeledTextField.textField.text = bankAccount.accountHolderName
+        
+        bankAccountNumberLabeledTextField.updateLabelFontForCurrentText()
+        accountHolderLabeledTextField.updateLabelFontForCurrentText()
+        
+        updateRoutingNumberLabel()
+    }
+    
+    private func requestData(completion: @escaping () -> Void) {
+        store.privateContext { [weak self] privateContext in
+            self?.stripeNetwork.requestBankAccount(in: privateContext) { bankAccountObjectID, error in
+                completion()
+            }
+        }
     }
     
     
@@ -63,9 +104,10 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
     }
     
     private func generateBankAccountToken(completion: @escaping (_ token: STPToken?) -> Void) {
-        guard let routingNumber = routingNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let bankAccountNumber = bankAccountNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let accountHolderName = accountHolderNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+        let routingNumber = routingNumberDigitEntryView.code.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let bankAccountNumber = bankAccountNumberLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let accountHolderName = accountHolderLabeledTextField.textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            routingNumber.count == routingNumberDigits else {
                 completion(nil)
                 return
         }
@@ -80,6 +122,26 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         
         STPAPIClient.shared().createToken(withBankAccount: bankAccountParameters) { token, error in
             completion(token)
+        }
+    }
+    
+}
+
+extension BankAccountViewController: OneTimeEntryViewDelegate {
+    
+    func configureTextField(textField: DeletingTextField, view: OneTimeCodeEntryView) {
+        
+    }
+    
+    func codeDidChange(code: String, view: OneTimeCodeEntryView) {
+        updateRoutingNumberLabel()
+    }
+    
+    private func updateRoutingNumberLabel() {
+        if routingNumberDigitEntryView.code.isEmpty {
+            routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
+        } else {
+            routingNumberLabel.font = UIFont.appFont(type: .regular, size: 15)
         }
     }
     

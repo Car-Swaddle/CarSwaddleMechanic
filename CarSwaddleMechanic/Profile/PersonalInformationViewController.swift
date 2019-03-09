@@ -92,6 +92,11 @@ final class PersonalInformationViewController: UIViewController, StoryboardInsta
                 group.leave()
             }
             
+            group.enter()
+            self?.stripeNetwork.requestBankAccount(in: privateContext) { bankAccountObjectID, error in
+                group.leave()
+            }
+            
             group.notify(queue: DispatchQueue.main) {
                 completion()
             }

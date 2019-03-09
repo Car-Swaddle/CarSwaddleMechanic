@@ -32,7 +32,7 @@ class UserTests: LoginTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: nil, in: context) { objectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { objectID, error in
                 store.mainContext { mainContext in
                     guard let objectID = objectID else {
                         XCTAssert(false, "Didn't get objectID")

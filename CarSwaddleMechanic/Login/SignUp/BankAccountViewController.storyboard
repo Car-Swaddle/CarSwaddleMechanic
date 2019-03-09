@@ -5,9 +5,15 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="1Pg-j2-DlQ">
@@ -35,45 +41,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-jV-QNH">
-                                <rect key="frame" x="16" y="123" width="335" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="bankAccountNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="9n7-k7-PTi"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Routing Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-th-diW">
-                                <rect key="frame" x="16" y="85" width="335" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="routingNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="i8G-vH-NeC"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Holder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVZ-wb-E35">
-                                <rect key="frame" x="16" y="161" width="335" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
-                                <connections>
-                                    <action selector="bankAccountNumberTextFieldDidChange:" destination="1hj-hw-beP" eventType="editingChanged" id="e2j-3n-E56"/>
-                                </connections>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LG-QH-BcG" customClass="OneTimeCodeEntryView" customModule="CarSwaddleUI">
+                                <rect key="frame" x="16" y="80" width="335" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ZiL-ev-R97"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-ok-Zn7" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="165" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="D3N-x7-btT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Bank account number (8 to 12 digits)"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                                        <color key="value" name="viewBackgroundColor1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textFieldToLabelGap">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oc-nG-pu4" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="248" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sFq-iy-JCQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Account holder name"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                                        <color key="value" name="viewBackgroundColor1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textFieldToLabelGap">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMN-xo-sJv">
+                                <rect key="frame" x="16" y="119" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" name="viewBackgroundColor1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="DSg-th-diW" secondAttribute="trailing" constant="24" id="BXc-93-PWH"/>
-                            <constraint firstItem="DSg-th-diW" firstAttribute="top" secondItem="LNh-q7-mNZ" secondAttribute="top" constant="21" id="GsJ-On-Arj"/>
-                            <constraint firstItem="IVZ-wb-E35" firstAttribute="top" secondItem="Yae-jV-QNH" secondAttribute="bottom" constant="8" id="I0K-7j-aXj"/>
-                            <constraint firstItem="Yae-jV-QNH" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="LG0-lb-o9X"/>
-                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="IVZ-wb-E35" secondAttribute="trailing" constant="24" id="UEp-Bu-zN3"/>
-                            <constraint firstItem="IVZ-wb-E35" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="aVy-yA-9tq"/>
-                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="Yae-jV-QNH" secondAttribute="trailing" constant="24" id="j0s-uc-ZFe"/>
-                            <constraint firstItem="DSg-th-diW" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="l4z-Kh-kh9"/>
-                            <constraint firstItem="Yae-jV-QNH" firstAttribute="top" secondItem="DSg-th-diW" secondAttribute="bottom" constant="8" id="vh3-vb-Tfb"/>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="ygf-ok-Zn7" secondAttribute="trailing" constant="24" id="Cwf-Ge-qWl"/>
+                            <constraint firstItem="6oc-nG-pu4" firstAttribute="top" secondItem="ygf-ok-Zn7" secondAttribute="bottom" constant="16" id="F55-nA-OgF"/>
+                            <constraint firstItem="ygf-ok-Zn7" firstAttribute="leading" secondItem="5LG-QH-BcG" secondAttribute="leading" id="IUF-Lq-NkH"/>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="5LG-QH-BcG" secondAttribute="trailing" priority="200" constant="24" id="K4t-jL-7KE"/>
+                            <constraint firstItem="ygf-ok-Zn7" firstAttribute="top" secondItem="iMN-xo-sJv" secondAttribute="bottom" constant="16" id="L1s-fJ-bix"/>
+                            <constraint firstItem="LNh-q7-mNZ" firstAttribute="trailing" secondItem="iMN-xo-sJv" secondAttribute="trailing" constant="16" id="Y5f-hj-py6"/>
+                            <constraint firstItem="6oc-nG-pu4" firstAttribute="trailing" secondItem="ygf-ok-Zn7" secondAttribute="trailing" id="hKW-Mb-7Jl"/>
+                            <constraint firstItem="iMN-xo-sJv" firstAttribute="top" secondItem="5LG-QH-BcG" secondAttribute="bottom" constant="3" id="lBC-tC-Yka"/>
+                            <constraint firstItem="5LG-QH-BcG" firstAttribute="leading" secondItem="LNh-q7-mNZ" secondAttribute="leading" constant="16" id="pWs-jP-vK1"/>
+                            <constraint firstItem="6oc-nG-pu4" firstAttribute="leading" secondItem="ygf-ok-Zn7" secondAttribute="leading" id="tbS-XK-hVy"/>
+                            <constraint firstItem="5LG-QH-BcG" firstAttribute="top" secondItem="LNh-q7-mNZ" secondAttribute="top" constant="16" id="u3C-cT-rzg"/>
+                            <constraint firstItem="iMN-xo-sJv" firstAttribute="leading" secondItem="5LG-QH-BcG" secondAttribute="leading" constant="8" id="znm-Uh-iko"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LNh-q7-mNZ"/>
                     </view>
@@ -85,9 +112,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="accountHolderNameTextField" destination="IVZ-wb-E35" id="07c-BV-SnS"/>
-                        <outlet property="bankAccountNumberTextField" destination="Yae-jV-QNH" id="9i9-id-wxi"/>
-                        <outlet property="routingNumberTextField" destination="DSg-th-diW" id="xSw-ju-Bla"/>
+                        <outlet property="accountHolderLabeledTextField" destination="6oc-nG-pu4" id="5Bc-An-EYV"/>
+                        <outlet property="bankAccountNumberLabeledTextField" destination="ygf-ok-Zn7" id="ye1-sg-ARR"/>
+                        <outlet property="routingNumberDigitEntryView" destination="5LG-QH-BcG" id="x6X-17-7z2"/>
+                        <outlet property="routingNumberLabel" destination="iMN-xo-sJv" id="CvY-po-S4L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJA-iE-dUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -95,4 +123,9 @@
             <point key="canvasLocation" x="936.79999999999995" y="-687.7061469265368"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="viewBackgroundColor1">
+            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

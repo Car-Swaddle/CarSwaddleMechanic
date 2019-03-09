@@ -78,7 +78,7 @@ class MechanicServiceTests: CarSwaddleLoginTestCase {
     
     func testUpdateMechanicDOBAndAddress() {
         let exp = expectation(description: "\(#function)\(#line)")
-        let address = MechanicService.addressJSON(line1: "1541 N 1300 W St", postalCode: "84062", city: "American Fork", state: "Ut")
+        let address = MechanicService.addressJSON(line1: "1541 N 1300 W St", line2: "Some line 2", postalCode: "84062", city: "American Fork", state: "Ut", country: "us")
         service.updateCurrentMechanic(isActive: nil, token: nil, dateOfBirth: dob, addressJSON: address, externalAccount: nil, socialSecurityNumberLast4: nil, personalIDNumber: nil) { json, error in
             if let json = json {
                 if let dateString = json["dateOfBirth"] as? String,

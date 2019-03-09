@@ -63,6 +63,8 @@
 		99B3FA882202E3F800D9887F /* Verification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA842202E3F800D9887F /* Verification+CoreDataProperties.swift */; };
 		99B3FA8A2202ED5100D9887F /* VerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA892202ED5100D9887F /* VerificationTests.swift */; };
 		99D156CA214F73D500BFA435 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */; };
+		99D2F50922343953003750D6 /* BankAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2F50722343953003750D6 /* BankAccount+CoreDataClass.swift */; };
+		99D2F50A22343953003750D6 /* BankAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2F50822343953003750D6 /* BankAccount+CoreDataProperties.swift */; };
 		99DED725214B80D40061CFE0 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DED71B214B80D30061CFE0 /* Store.framework */; };
 		99DED72A214B80D40061CFE0 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DED729214B80D40061CFE0 /* StoreTests.swift */; };
 		99DED72C214B80D40061CFE0 /* Store.h in Headers */ = {isa = PBXBuildFile; fileRef = 99DED71E214B80D30061CFE0 /* Store.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,6 +147,8 @@
 		99B3FA842202E3F800D9887F /* Verification+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Verification+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99B3FA892202ED5100D9887F /* VerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationTests.swift; sourceTree = "<group>"; };
 		99D156C9214F73D500BFA435 /* NSManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtension.swift; sourceTree = "<group>"; };
+		99D2F50722343953003750D6 /* BankAccount+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankAccount+CoreDataClass.swift"; sourceTree = "<group>"; };
+		99D2F50822343953003750D6 /* BankAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99DED71B214B80D30061CFE0 /* Store.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Store.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DED71E214B80D30061CFE0 /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		99DED71F214B80D30061CFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			children = (
 				99675CA321E9DC2F003C9D70 /* Amount+CoreDataClass.swift */,
 				99675CA421E9DC2F003C9D70 /* Amount+CoreDataProperties.swift */,
+				99D2F50722343953003750D6 /* BankAccount+CoreDataClass.swift */,
+				99D2F50822343953003750D6 /* BankAccount+CoreDataProperties.swift */,
 				99675CA521E9DC2F003C9D70 /* Balance+CoreDataClass.swift */,
 				99675CA621E9DC2F003C9D70 /* Balance+CoreDataProperties.swift */,
 				99675CB521EB0059003C9D70 /* Transaction+CoreDataClass.swift */,
@@ -448,12 +454,14 @@
 				991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */,
 				99B3FA882202E3F800D9887F /* Verification+CoreDataProperties.swift in Sources */,
 				99F696B92210E8330021A719 /* TaxInfo+CoreDataClass.swift in Sources */,
+				99D2F50922343953003750D6 /* BankAccount+CoreDataClass.swift in Sources */,
 				99675CA721E9DC2F003C9D70 /* Amount+CoreDataClass.swift in Sources */,
 				991B4032216ADC5D00D7644D /* User+CoreDataClass.swift in Sources */,
 				99675CA821E9DC2F003C9D70 /* Amount+CoreDataProperties.swift in Sources */,
 				99B3FA852202E3F800D9887F /* VerificationField+CoreDataClass.swift in Sources */,
 				99F0278B21858611005FEFC7 /* Region+CoreDataClass.swift in Sources */,
 				991B4034216ADC5D00D7644D /* OilChange+CoreDataClass.swift in Sources */,
+				99D2F50A22343953003750D6 /* BankAccount+CoreDataProperties.swift in Sources */,
 				99675CAA21E9DC2F003C9D70 /* Balance+CoreDataProperties.swift in Sources */,
 				99F7D61E21EC042C00D6B524 /* Payout+CoreDataProperties.swift in Sources */,
 				991B402D216ADC5D00D7644D /* OilChange+CoreDataProperties.swift in Sources */,

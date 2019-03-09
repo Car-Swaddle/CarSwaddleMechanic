@@ -178,7 +178,7 @@ public final class LabeledTextField: UIView {
         updateLabelFontForCurrentText()
     }
     
-    private func updateLabelFontForCurrentText() {
+    public func updateLabelFontForCurrentText() {
         if textField.text == nil || textField.text?.isEmpty == true {
             configureLabelFontForNoText()
         } else {

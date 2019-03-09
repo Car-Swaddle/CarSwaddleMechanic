@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StoreTests/StripeTests.swift"
-            timestampString = "571038889.024956"
+            timestampString = "573850340.757746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StoreTests/StripeTests.swift"
-            timestampString = "571038889.025018"
+            timestampString = "573850340.758166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "testPaidPayout()"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "testBankAccount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

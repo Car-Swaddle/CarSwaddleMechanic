@@ -233,7 +233,7 @@ open class OneTimeCodeEntryView: UIView {
         let textCountIs2 = textCount == 2
         
         if textIsGreaterThan2 {
-            updateTextFieldsWith(string: textField.text ?? "")
+            setText(textField.text ?? "")
         }
         
         if textCountIs2, let last = textField.text?.last {
@@ -265,7 +265,7 @@ extension OneTimeCodeEntryView: UITextFieldDelegate {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let isPasted = string == UIPasteboard.general.string
         if isPasted {
-            updateTextFieldsWith(string: string)
+            setText(string)
             delegate?.codeDidChange(code: code, view: self)
             return false
         } else {
@@ -273,7 +273,7 @@ extension OneTimeCodeEntryView: UITextFieldDelegate {
         }
     }
     
-    private func updateTextFieldsWith(string: String) {
+    public func setText(_ string: String) {
         textFields.forEach { $0.text = nil }
         var nextTextField: UITextField?
         for (index, c) in string.enumerated() {

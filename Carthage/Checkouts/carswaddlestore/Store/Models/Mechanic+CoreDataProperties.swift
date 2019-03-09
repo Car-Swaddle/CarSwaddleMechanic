@@ -34,6 +34,7 @@ extension Mechanic {
     @NSManaged public var identityDocumentID: String?
     @NSManaged public var verification: Verification?
     @NSManaged public var taxYears: Set<TaxInfo>
+    @NSManaged public var bankAccount: BankAccount?
 
 }
 

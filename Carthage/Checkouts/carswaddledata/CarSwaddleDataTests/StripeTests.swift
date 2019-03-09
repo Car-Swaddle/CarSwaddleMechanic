@@ -156,4 +156,17 @@ class StripeTests: LoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testRequestBankAccount() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { pCtx in
+            self.stripeNetwork.requestBankAccount(in: pCtx) { objectID, error in
+                store.mainContext { mCtx in
+                    XCTAssert(objectID != nil, "Should have objectID")
+                    exp.fulfill()
+                }
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }

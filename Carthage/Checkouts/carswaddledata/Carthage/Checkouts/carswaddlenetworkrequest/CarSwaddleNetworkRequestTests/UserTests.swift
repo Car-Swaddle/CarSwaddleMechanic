@@ -22,7 +22,7 @@ class UserTests: CarSwaddleLoginTestCase {
     
     func testUpdateCurrentUserParameters() {
         let exp = expectation(description: "\(#function)\(#line)")
-        userService.updateCurrentUser(firstName: "Rupert", lastName: "Rolph", phoneNumber: "801-111-1111", token: nil) { json, error in
+        userService.updateCurrentUser(firstName: "Rupert", lastName: "Rolph", phoneNumber: "801-111-1111", token: nil, timeZone: "America/Denver") { json, error in
             XCTAssert(json != nil && error == nil, "Should have gotten json")
             exp.fulfill()
         }

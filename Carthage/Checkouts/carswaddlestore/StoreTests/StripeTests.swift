@@ -63,8 +63,18 @@ class StripeTests: XCTestCase {
         let json = paidPayout
         let payout = Payout(json: json, context: context)
         context.persist()
-        print(payout)
+        print(payout ?? "")
         XCTAssert(payout != nil, "Must have transaction from: \(json)")
+    }
+    
+    func testBankAccount() {
+        let context = store.mainContext
+        let json = bankAccountJSON
+//        let payout = Payout(json: json, context: context)
+        let bankAccount = BankAccount(json: json, context: context)
+        context.persist()
+        print(bankAccount ?? "")
+        XCTAssert(bankAccount != nil, "Must have transaction from: \(json)")
     }
     
 }
@@ -186,4 +196,22 @@ private let paidPayout: [String: Any] = [
     "statement_descriptor": NSNull(),
     "status": "paid",
     "type": "bank_account"
+]
+
+
+let bankAccountJSON: [String: Any] = [
+    "id": "ba_1E8K2aIucYRP2W8I3sd9uLzp",
+    "object": "bank_account",
+    "account": "acct_1E8Js0IucYRP2W8I",
+    "account_holder_name": "Rupert McGee",
+    "account_holder_type": "individual",
+    "bank_name": "STRIPE TEST BANK",
+    "country": "US",
+    "currency": "usd",
+    "default_for_currency": true,
+    "fingerprint": "UvOlySjRzdmjSwkF",
+    "last4": "6789",
+    "metadata": {},
+    "routing_number": "110000000",
+    "status": "new"
 ]

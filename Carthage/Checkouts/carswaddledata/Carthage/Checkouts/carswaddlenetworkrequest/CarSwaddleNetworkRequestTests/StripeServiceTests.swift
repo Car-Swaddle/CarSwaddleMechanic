@@ -191,4 +191,15 @@ class StripeServiceTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetBankAccount() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        stripeService.getBankAccount { json, error in
+            XCTAssert(json?["id"] != nil, "Should have id")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }
