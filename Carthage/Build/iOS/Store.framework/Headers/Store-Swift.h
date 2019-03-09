@@ -196,6 +196,7 @@ SWIFT_CLASS_NAMED("Address")
 @interface Address (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nonnull identifier;
 @property (nonatomic, copy) NSString * _Nullable line1;
+@property (nonatomic, copy) NSString * _Nullable line2;
 @property (nonatomic, copy) NSString * _Nullable postalCode;
 @property (nonatomic, copy) NSString * _Nullable city;
 @property (nonatomic, copy) NSString * _Nullable state;

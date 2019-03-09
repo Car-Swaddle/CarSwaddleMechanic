@@ -120,13 +120,13 @@ extension PersonalInformationViewController: UITableViewDataSource {
         case .fullSocialSecurityNumber:
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.errorViewIsHidden = !shouldShowError(for: row)
-            cell.valueText = NSLocalizedString("Full social", comment: "Description of row")
+            cell.valueText = NSLocalizedString("Full social security number", comment: "Description of row")
             cell.descriptionText = ""
             return cell
         case .last4OfSocialSecurityNumber:
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.errorViewIsHidden = !shouldShowError(for: row)
-            cell.valueText = NSLocalizedString("Last 4 of social", comment: "Description of row")
+            cell.valueText = NSLocalizedString("Last 4 of social security number", comment: "Description of row")
             cell.descriptionText = ""
             return cell
         case .bankAccount:

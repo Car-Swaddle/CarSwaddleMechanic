@@ -19,6 +19,7 @@ extension Address {
 
     @NSManaged public var identifier: String
     @NSManaged public var line1: String?
+    @NSManaged public var line2: String?
     @NSManaged public var postalCode: String?
     @NSManaged public var city: String?
     @NSManaged public var state: String?

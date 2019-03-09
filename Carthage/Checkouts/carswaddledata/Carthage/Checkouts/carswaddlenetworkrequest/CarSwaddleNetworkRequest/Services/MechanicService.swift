@@ -65,8 +65,8 @@ final public class MechanicService: Service {
         return updateCurrentMechanic(json: json, completion: completion)
     }
     
-    public static func addressJSON(line1: String, postalCode: String, city: String, state: String) -> JSONObject {
-        return ["line1": line1, "postalCode": postalCode, "city": city, "state": state]
+    public static func addressJSON(line1: String, line2: String?, postalCode: String, city: String, state: String, country: String) -> JSONObject {
+        return ["line1": line1, "line2": line2 ?? "", "postalCode": postalCode, "city": city, "state": state, "country": country]
     }
     
     @discardableResult

@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 
-typealias AddressValues = (identifier: String, line1: String?, postalCode: String?, city: String?, state: String?, country: String?, mechanicID: String?)
+typealias AddressValues = (identifier: String, line1: String?, line2: String?, postalCode: String?, city: String?, state: String?, country: String?, mechanicID: String?)
 
 @objc(Address)
 final public class Address: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -37,12 +37,13 @@ final public class Address: NSManagedObject, NSManagedObjectFetchable, JSONInita
         guard let identifier = json["id"] as? String else { return nil }
         
         let line1 = json["line1"] as? String
+        let line2 = json["line2"] as? String
         let postalCode = json["postalCode"] as? String
         let city = json["city"] as? String
         let state = json["state"] as? String
         let country = json["country"] as? String
         
-        return (identifier, line1, postalCode, city, state, country, nil)
+        return (identifier, line1, line2, postalCode, city, state, country, nil)
     }
     
     private func configure(with values: AddressValues, in context: NSManagedObjectContext) {
@@ -52,6 +53,7 @@ final public class Address: NSManagedObject, NSManagedObjectFetchable, JSONInita
         self.city = values.city
         self.state = values.state
         self.country = values.country
+        self.line2 = values.line2
         
         if let mechanicID = values.mechanicID {
             self.mechanic = Mechanic.fetch(with: mechanicID, in: context)
@@ -63,6 +65,9 @@ final public class Address: NSManagedObject, NSManagedObjectFetchable, JSONInita
         if let line1 = line1 {
             json["line1"] = line1
         }
+        if let line2 = line2 {
+            json["line2"] = line2
+        }
         if let postalCode = postalCode {
             json["postalCode"] = postalCode
         }
@@ -71,6 +76,9 @@ final public class Address: NSManagedObject, NSManagedObjectFetchable, JSONInita
         }
         if let state = state {
             json["state"] = state
+        }
+        if let country = country {
+            json["country"] = country
         }
         return json
     }

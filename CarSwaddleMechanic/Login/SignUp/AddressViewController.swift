@@ -25,6 +25,7 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
     
     private enum Row: CaseIterable {
         case addressLine1
+        case addressLine2
         case postalCode
         case city
         case state
@@ -107,7 +108,7 @@ extension AddressViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = rows[indexPath.row]
         switch row {
-        case .addressLine1, .city, .postalCode, .state:
+        case .addressLine1, .addressLine2, .city, .postalCode, .state:
             let cell: PersonalInformationCell = tableView.dequeueCell()
             cell.label.text = self.title(for: row)
 //            cell.textField.text = valueText(for: row)
@@ -117,6 +118,7 @@ extension AddressViewController: UITableViewDataSource {
             cell.didChangeText = { [weak self] text in
                 switch row {
                 case .addressLine1: self?.address?.line1 = text
+                case .addressLine2: self?.address?.line2 = text
                 case .city: self?.address?.city = text
                 case .postalCode: self?.address?.postalCode = text
                 case .state: self?.address?.state = text
@@ -126,7 +128,7 @@ extension AddressViewController: UITableViewDataSource {
             cell.didSelectReturn = { [weak self] in
                 guard let self = self else { return }
                 switch row {
-                case .addressLine1, .city, .postalCode:
+                case .addressLine1, .addressLine2, .city, .postalCode:
                     let nextCell = tableView.cellForRow(at: self.nextRow(indexPath: indexPath))
                     (nextCell as? PersonalInformationCell)?.textField.becomeFirstResponder()
                     
@@ -150,6 +152,7 @@ extension AddressViewController: UITableViewDataSource {
         switch row {
         case .city: return NSLocalizedString("City", comment: "title of given row")
         case .addressLine1: return NSLocalizedString("Line 1", comment: "title of given row")
+            case .addressLine2: return NSLocalizedString("Line 2", comment: "title of given row")
         case .postalCode: return NSLocalizedString("Postal Code", comment: "title of given row")
         case .state: return NSLocalizedString("State", comment: "title of given row")
         }
@@ -159,6 +162,7 @@ extension AddressViewController: UITableViewDataSource {
         switch row {
         case .city: return address?.city
         case .addressLine1: return address?.line1
+        case .addressLine2: return address?.line2
         case .postalCode: return address?.postalCode
         case .state: return address?.state
         }
@@ -166,7 +170,7 @@ extension AddressViewController: UITableViewDataSource {
     
     private func configure(for textField: UITextField, row: Row) {
         switch row {
-        case .addressLine1:
+        case .addressLine1, .addressLine2:
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .no
             textField.textContentType = .streetAddressLine1

@@ -5,6 +5,7 @@
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="line1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="line2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mechanic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mechanic" inverseName="address" inverseEntity="Mechanic" syncable="YES"/>
@@ -229,7 +230,7 @@
         <relationship name="verification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Verification" inverseName="fields" inverseEntity="Verification" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="-27" positionY="99" width="128" height="150"/>
+        <element name="Address" positionX="-27" positionY="99" width="128" height="165"/>
         <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
