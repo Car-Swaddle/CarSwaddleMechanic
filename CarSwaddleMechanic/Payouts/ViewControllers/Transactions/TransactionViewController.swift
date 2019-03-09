@@ -19,6 +19,8 @@ let costFormatter: NumberFormatter = {
     numberFormatter.minimumIntegerDigits = 1
     numberFormatter.maximumFractionDigits = 2
     
+    numberFormatter.numberStyle = .currency
+    
     return numberFormatter
 }()
 
@@ -80,7 +82,7 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
         tableView.register(TransactionReceiptCell.self)
         tableView.register(AddReceiptCell.self)
         tableView.register(TextCell.self)
-        tableView.register(TextFieldCell.self)
+        tableView.register(LabelValueCell.self)
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refreshControl
     }
@@ -182,43 +184,22 @@ extension TransactionViewController: UITableViewDataSource {
                 cell.textLabel?.text = NSLocalizedString("Auto service", comment: "Tap to get to auto service from a transaction")
                 return cell
             case .cost:
-                let cell: TextFieldCell = tableView.dequeueCell()
-                cell.textFieldLabel.text = NSLocalizedString("How much you spent on this service", comment: "Label for text field")
-                cell.textField.keyboardType = .decimalPad
+                let cell: LabelValueCell = tableView.dequeueCell()
+                cell.labelText = NSLocalizedString("Cost to write off for taxes (estimate)", comment: "Label")
                 if let cost = transaction.transactionMetadata?.mechanicCostDollars {
-                    cell.textField.text = costFormatter.string(from: NSNumber(value: cost))
+                    cell.value = costFormatter.string(from: NSNumber(value: cost))
                 } else {
-                    cell.textField.text = nil
-                }
-                let transactionID = transaction.identifier
-                cell.didChangeText = { [weak self] text in
-                    guard let text = text, let dollars = Float(text) else { return }
-                    let cents = Int(dollars * 100)
-                    store.privateContext { privateContext in
-                        self?.stripeNetwork.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: cents, drivingDistanceMiles: nil, in: privateContext) { transactionMetadataObjectID, error in
-                            print("updated")
-                        }
-                    }
+                    cell.value = "--"
                 }
                 return cell
             case .distance:
-                let cell: TextFieldCell = tableView.dequeueCell()
-                cell.textFieldLabel.text = NSLocalizedString("How many miles driven", comment: "Label for text field")
-                cell.textField.keyboardType = .numberPad
+                let cell: LabelValueCell = tableView.dequeueCell()
+                cell.labelText = NSLocalizedString("Miles to write off for taxes (estimate)", comment: "Label")
                 if let distance = transaction.transactionMetadata?.drivingDistanceMiles {
-                    cell.textField.text = String(distance)
+                    let formatString = NSLocalizedString("%@ miles driven", comment: "How many miles driven to point")
+                    cell.value = String(format: formatString, String(distance))
                 } else {
-                    cell.textField.text = nil
-                }
-                let transactionID = transaction.identifier
-                cell.didChangeText = { [weak self] text in
-                    guard let text = text, let distanceMiles = Int(text) else { return }
-                    let meters = Int(CLLocationDistance(distanceMiles).milesToMeters)
-                    store.privateContext { privateContext in
-                        self?.stripeNetwork.updateTransactionDetails(transactionID: transactionID, mechanicCostCents: nil, drivingDistanceMeters: meters, in: privateContext) { transactionMetadataObjectID, error in
-                            print("updated")
-                        }
-                    }
+                    cell.value = "--"
                 }
                 return cell
             }

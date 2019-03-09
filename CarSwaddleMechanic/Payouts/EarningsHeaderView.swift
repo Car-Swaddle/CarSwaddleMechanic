@@ -51,7 +51,7 @@ final class EarningsHeaderView: UIView, NibInstantiating {
             
             group.enter()
             Payout.purgeAll(in: privateContext)
-            self?.stripeNetwork.requestPayoutsPendingForBalance(in: privateContext) { objectIDs, error in
+            self?.stripeNetwork.requestPayoutsInTransit(in: privateContext) { objectIDs, error in
                 store.mainContext { mainContext in
                     defer { group.leave() }
                     self?.balanceAmountView.inTransitAmount = Payout.sumOfPayoutAmount(with: .inTransit, in: mainContext)

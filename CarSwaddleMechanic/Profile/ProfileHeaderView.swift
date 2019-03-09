@@ -16,10 +16,10 @@ import Lottie
 let ratingFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()
     
-    numberFormatter.minimumFractionDigits = 2
-    numberFormatter.minimumSignificantDigits = 2
+    numberFormatter.minimumFractionDigits = 1
     numberFormatter.maximumFractionDigits = 1
     numberFormatter.maximumIntegerDigits = 1
+    numberFormatter.minimumIntegerDigits = 1
     
     return numberFormatter
 }()
@@ -80,6 +80,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         
         pulseAnimationView.animationSpeed = 0.7
         pulseAnimationView.loopAnimation = true
+        starRatingView.settings.fillMode = .precise
     }
     
     @IBAction private func didSelectEditButton() {

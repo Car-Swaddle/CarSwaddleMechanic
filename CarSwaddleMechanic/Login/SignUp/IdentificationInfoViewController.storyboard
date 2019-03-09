@@ -5,11 +5,20 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Identification Info View Controller-->
+        <!--Social Security Number-->
         <scene sceneID="nbY-Av-PG4">
             <objects>
                 <viewController id="bK7-e0-FbT" customClass="IdentificationInfoViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,25 +26,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Social Security Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c63-XX-dN1">
-                                <rect key="frame" x="16" y="78" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                <connections>
-                                    <action selector="didChangeSocialSecurityTextField:" destination="bK7-e0-FbT" eventType="editingChanged" id="kNc-vz-CYA"/>
-                                </connections>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhw-u4-FFT" customClass="OneTimeCodeEntryView" customModule="CarSwaddleUI">
+                                <rect key="frame" x="16" y="80" width="343" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Yya-rV-awr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full social security number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-hp-tVB">
+                                <rect key="frame" x="97.5" y="121" width="180.5" height="16"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" name="viewBackgroundColor1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90h-KN-ovu">
+                                <rect key="frame" x="16" y="168" width="343" height="73.5"/>
+                                <string key="text">Your social security number is required in order to send you your tax documents at the end of the year. Add this in order for us to put funds in your bank account.</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" name="textColor3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="c63-XX-dN1" firstAttribute="leading" secondItem="0nr-UC-7Ps" secondAttribute="leading" constant="16" id="84s-pz-Jck"/>
-                            <constraint firstItem="0nr-UC-7Ps" firstAttribute="trailing" secondItem="c63-XX-dN1" secondAttribute="trailing" constant="16" id="8AR-Z9-HPo"/>
-                            <constraint firstItem="c63-XX-dN1" firstAttribute="top" secondItem="0nr-UC-7Ps" secondAttribute="top" constant="14" id="8ea-oK-4nr"/>
+                            <constraint firstItem="0nr-UC-7Ps" firstAttribute="trailing" secondItem="uhw-u4-FFT" secondAttribute="trailing" priority="200" constant="16" id="1Bf-0M-jw9"/>
+                            <constraint firstItem="uhw-u4-FFT" firstAttribute="leading" secondItem="0nr-UC-7Ps" secondAttribute="leading" priority="200" constant="16" id="GW2-iA-vKe"/>
+                            <constraint firstItem="90h-KN-ovu" firstAttribute="top" secondItem="bV9-hp-tVB" secondAttribute="bottom" constant="31" id="KsX-zT-Jis"/>
+                            <constraint firstItem="90h-KN-ovu" firstAttribute="leading" secondItem="0nr-UC-7Ps" secondAttribute="leading" constant="16" id="PNo-Mh-x70"/>
+                            <constraint firstItem="bV9-hp-tVB" firstAttribute="centerX" secondItem="uhw-u4-FFT" secondAttribute="centerX" id="Q7L-Qb-Ofa"/>
+                            <constraint firstItem="uhw-u4-FFT" firstAttribute="top" secondItem="0nr-UC-7Ps" secondAttribute="top" constant="16" id="WgC-tB-gO5"/>
+                            <constraint firstItem="uhw-u4-FFT" firstAttribute="centerX" secondItem="0nr-UC-7Ps" secondAttribute="centerX" id="XsY-Q5-wRW"/>
+                            <constraint firstItem="bV9-hp-tVB" firstAttribute="top" secondItem="uhw-u4-FFT" secondAttribute="bottom" constant="8" id="fyQ-gr-Bwt"/>
+                            <constraint firstItem="0nr-UC-7Ps" firstAttribute="trailing" secondItem="90h-KN-ovu" secondAttribute="trailing" constant="16" id="jdt-wP-T8L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0nr-UC-7Ps"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2sf-tX-pZF">
+                    <navigationItem key="navigationItem" title="Social Security Number" id="2sf-tX-pZF">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="t1A-hj-WjU">
                             <connections>
                                 <action selector="didTapSave" destination="bK7-e0-FbT" id="t3f-Lh-7Wt"/>
@@ -43,7 +69,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="socialSecurityTextField" destination="c63-XX-dN1" id="XIf-kk-A3t"/>
+                        <outlet property="bottomLabel" destination="bV9-hp-tVB" id="eg7-Qt-YEE"/>
+                        <outlet property="entryView" destination="uhw-u4-FFT" id="goS-ua-KoO"/>
+                        <outlet property="explanationLabel" destination="90h-KN-ovu" id="Acx-eT-zRf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMB-IM-NwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,4 +97,12 @@
             <point key="canvasLocation" x="213.59999999999999" y="-686.80659670164926"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="viewBackgroundColor1">
+            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

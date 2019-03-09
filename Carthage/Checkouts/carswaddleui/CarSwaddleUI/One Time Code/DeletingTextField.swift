@@ -12,7 +12,7 @@ import UIKit
     func didDeleteBackward(_ textField: DeletingTextField)
 }
 
-public final class DeletingTextField: UITextField {
+public final class DeletingTextField: UnderlineTextField {
     
     @IBOutlet public weak var deleteDelegate: DeletingTextFieldDelegate?
     

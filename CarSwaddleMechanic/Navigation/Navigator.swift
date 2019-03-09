@@ -75,6 +75,8 @@ final public class Navigator: NSObject {
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = .veryLightGray
         UINavigationBar.appearance().isTranslucent = false
+        UITextField.appearance().tintColor = .secondary
+        
 //        UILabel.appearance().font = UIFont.appFont(type: .regular, size: 14)
 //        let buttonLabelProxy = UILabel.appearance(whenContainedInInstancesOf: [UIButton.self])
 //        buttonLabelProxy.font = UIFont.appFont(type: .regular, size: 14)

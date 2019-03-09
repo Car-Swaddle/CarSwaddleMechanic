@@ -17,6 +17,26 @@ open class OneTimeCodeEntryView: UIView {
     
     @IBOutlet public weak var delegate: OneTimeEntryViewDelegate?
     
+    @IBInspectable public var spacerText: String = "-" {
+        didSet {
+            spacerLabels.forEach {
+                $0.text = spacerText
+            }
+        }
+    }
+    
+    @IBInspectable public var indexesPrecedingSpacer: [Int] = [] {
+        didSet { updateStackViewWithTextFields() }
+    }
+    
+    @IBInspectable public var spacerFont: UIFont = UIFont.boldSystemFont(ofSize: 14) {
+        didSet {
+            for spacerLabel in spacerLabels {
+                spacerLabel.font = spacerFont
+            }
+        }
+    }
+    
     @IBInspectable public var spacing: CGFloat = 20 {
         didSet { stackView.spacing = spacing }
     }
@@ -26,24 +46,58 @@ open class OneTimeCodeEntryView: UIView {
     }
     
     @IBInspectable public var textFieldTintColor: UIColor? {
-        didSet { updateStackViewWithTextFields() }
+        didSet {
+            textFields.forEach {
+                $0.tintColor = textFieldTintColor
+            }
+        }
     }
     
     @IBInspectable public var textFieldBackgroundColor: UIColor = .white {
-        didSet { updateStackViewWithTextFields() }
+        didSet {
+            textFields.forEach {
+                $0.backgroundColor = textFieldBackgroundColor
+            }
+        }
     }
     
     @IBInspectable public var textFieldCornerRadius: CGFloat = 3 {
-        didSet { updateStackViewWithTextFields() }
+        didSet {
+            textFields.forEach {
+                $0.layer.cornerRadius = textFieldCornerRadius
+            }
+        }
     }
     
     @IBInspectable public var textFieldFont: UIFont = UIFont.boldSystemFont(ofSize: 19) {
-        didSet { updateStackViewWithTextFields() }
+        didSet {
+            textFields.forEach {
+                $0.font = textFieldFont
+            }
+        }
+    }
+    
+    @IBInspectable public var underlineColor: UIColor = .black {
+        didSet {
+            textFields.forEach {
+                $0.underlineColor = underlineColor
+            }
+        }
     }
     
     public var textFieldWidth: CGFloat? {
         didSet { updateTextFieldWidths() }
     }
+    
+    public var isSecureTextEntry: Bool = false {
+        didSet {
+            for textField in textFields {
+                textField.isSecureTextEntry = isSecureTextEntry
+            }
+        }
+    }
+    
+    private var spacerLabels: [UILabel] = []
     
     open override func becomeFirstResponder() -> Bool {
         let result = super.becomeFirstResponder()
@@ -80,21 +134,40 @@ open class OneTimeCodeEntryView: UIView {
     private func updateStackViewWithTextFields() {
         for textField in textFields {
             stackView.removeArrangedSubview(textField)
+            textField.removeFromSuperview()
         }
         
+        for spacerLabel in spacerLabels {
+            stackView.removeArrangedSubview(spacerLabel)
+            spacerLabel.removeFromSuperview()
+        }
+        
+        spacerLabels.removeAll()
         textFields.removeAll()
         
-        for _ in 0..<digits {
+        for index in 0..<digits {
             let textField = self.createTextField()
             stackView.addArrangedSubview(textField)
             textFields.append(textField)
+            
+            if indexesPrecedingSpacer.contains(index) {
+                let spacerLabel = UILabel()
+                spacerLabel.text = spacerText
+                spacerLabel.font = spacerFont
+                spacerLabel.textAlignment = .center
+                
+                stackView.addArrangedSubview(spacerLabel)
+                spacerLabels.append(spacerLabel)
+            }
         }
+        updateTextFieldWidths()
     }
     
     private var textFieldWidthConstraints: [UITextField: NSLayoutConstraint] = [:]
     
     private func updateTextFieldWidths() {
         if let textFieldWidth = textFieldWidth {
+            stackView.distribution = .fill
             for textField in textFields {
                 if let constraint = textFieldWidthConstraints[textField] {
                     constraint.constant = textFieldWidth
@@ -105,6 +178,7 @@ open class OneTimeCodeEntryView: UIView {
                 }
             }
         } else {
+            stackView.distribution = .fillEqually
             for key in textFieldWidthConstraints.keys {
                 let constraint = textFieldWidthConstraints[key]
                 constraint?.isActive = false
@@ -130,6 +204,8 @@ open class OneTimeCodeEntryView: UIView {
         textField.layer.cornerRadius = textFieldCornerRadius
         textField.backgroundColor = textFieldBackgroundColor
         textField.tintColor = textFieldTintColor
+        textField.underlineColor = underlineColor
+        textField.layer.masksToBounds = true
         
         textField.adjustsFontSizeToFitWidth = true
         
@@ -141,6 +217,14 @@ open class OneTimeCodeEntryView: UIView {
         delegate?.configureTextField(textField: textField, view: self)
         
         return textField
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        
     }
     
     @objc private func editingDidChange(_ textField: DeletingTextField) {
@@ -166,7 +250,7 @@ open class OneTimeCodeEntryView: UIView {
         textFields[nextIndex].becomeFirstResponder()
     }
     
-    private var code: String {
+    public var code: String {
         var code = ""
         textFields.forEach { textField in
             code += textField.text ?? ""
@@ -218,6 +302,56 @@ extension OneTimeCodeEntryView: DeletingTextFieldDelegate {
             originalIndex > 0 else { return }
         let previousIndex = originalIndex.advanced(by: -1)
         textFields[previousIndex].becomeFirstResponder()
+    }
+    
+}
+
+
+
+open class UnderlineTextField: UITextField {
+    
+    @IBInspectable public var underlineColor: UIColor = .black {
+        didSet {
+            underlineView.backgroundColor = underlineColor
+        }
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    private var underlineView: UIView!
+    
+    private func setup() {
+        self.underlineView = addHairlineView(toSide: .bottom, color: underlineColor, size: 2.0, insets: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0))
+        underlineView.isHidden = true
+        borderStyle = .none
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(UnderlineTextField.didBeginEditing), name: UITextField.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(UnderlineTextField.didEndEditing), name: UITextField.textDidEndEditingNotification, object: self)
+    }
+    
+    @objc private func didBeginEditing() {
+        underlineView.isHidden = false
+        underlineView.alpha = 0.0
+        UIView.animate(withDuration: 0.25) {
+            self.underlineView.alpha = 1.0
+        }
+    }
+    
+    @objc private func didEndEditing() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.underlineView.alpha = 0.0
+        }) { isFinished in
+            self.underlineView.alpha = 1.0
+            self.underlineView.isHidden = true
+        }
     }
     
 }

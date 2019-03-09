@@ -48,6 +48,7 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
         tableView.register(PersonalInformationCell.self)
         tableView.register(DateOfBirthCell.self)
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
     }
     
     @IBAction private func didTapSave() {
@@ -109,7 +110,8 @@ extension AddressViewController: UITableViewDataSource {
         case .addressLine1, .city, .postalCode, .state:
             let cell: PersonalInformationCell = tableView.dequeueCell()
             cell.label.text = self.title(for: row)
-            cell.textField.text = valueText(for: row)
+//            cell.textField.text = valueText(for: row)
+            cell.textFieldText = valueText(for: row)
             configure(for: cell.textField, row: row)
             
             cell.didChangeText = { [weak self] text in
@@ -121,16 +123,35 @@ extension AddressViewController: UITableViewDataSource {
                 }
                 store.mainContext.persist()
             }
+            cell.didSelectReturn = { [weak self] in
+                guard let self = self else { return }
+                switch row {
+                case .addressLine1, .city, .postalCode:
+                    let nextCell = tableView.cellForRow(at: self.nextRow(indexPath: indexPath))
+                    (nextCell as? PersonalInformationCell)?.textField.becomeFirstResponder()
+                    
+                    let currentCell = tableView.cellForRow(at: indexPath) as? PersonalInformationCell
+                    currentCell?.textFieldText = currentCell?.textFieldText?.trimmingCharacters(in: .whitespacesAndNewlines)
+                case .state:
+                    let currentCell = tableView.cellForRow(at: indexPath) as? PersonalInformationCell
+                    currentCell?.textField.resignFirstResponder()
+                    currentCell?.textFieldText = currentCell?.textFieldText?.trimmingCharacters(in: .whitespacesAndNewlines)
+                }
+            }
             return cell
         }
     }
     
+    private func nextRow(indexPath: IndexPath) -> IndexPath {
+        return IndexPath(row: indexPath.row + 1, section: indexPath.section)
+    }
+    
     private func title(for row: Row) -> String {
         switch row {
-        case .city: return NSLocalizedString("City:", comment: "title of given row")
-        case .addressLine1: return NSLocalizedString("Line 1:", comment: "title of given row")
-        case .postalCode: return NSLocalizedString("Postal Code:", comment: "title of given row")
-        case .state: return NSLocalizedString("State:", comment: "title of given row")
+        case .city: return NSLocalizedString("City", comment: "title of given row")
+        case .addressLine1: return NSLocalizedString("Line 1", comment: "title of given row")
+        case .postalCode: return NSLocalizedString("Postal Code", comment: "title of given row")
+        case .state: return NSLocalizedString("State", comment: "title of given row")
         }
     }
     
@@ -149,21 +170,26 @@ extension AddressViewController: UITableViewDataSource {
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .no
             textField.textContentType = .streetAddressLine1
+            textField.returnKeyType = .next
         case .city:
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .no
             textField.textContentType = .addressCity
+            textField.returnKeyType = .next
         case .postalCode:
             textField.autocapitalizationType = .none
             textField.keyboardType = .asciiCapableNumberPad
             textField.autocorrectionType = .no
             textField.textContentType = .postalCode
+            textField.returnKeyType = .next
         case .state:
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .yes
             textField.textContentType = .addressState
+            textField.returnKeyType = .done
         }
-        textField.smartInsertDeleteType = .yes
+        textField.enablesReturnKeyAutomatically = true
+        textField.smartInsertDeleteType = .no
     }
     
 }

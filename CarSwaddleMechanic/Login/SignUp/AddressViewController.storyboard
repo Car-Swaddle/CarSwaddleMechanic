@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Address View Controller-->
+        <!--Address-->
         <scene sceneID="gfC-j5-M3M">
             <objects>
                 <viewController id="DBC-au-DVf" customClass="AddressViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ePz-4D-fdY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ePz-4D-fdY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -35,7 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uxK-0L-zsC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5jt-ta-IpZ">
+                    <navigationItem key="navigationItem" title="Address" id="5jt-ta-IpZ">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Pyu-bN-TqI">
                             <connections>
                                 <action selector="didTapSave" destination="DBC-au-DVf" id="k4j-kW-x4k"/>

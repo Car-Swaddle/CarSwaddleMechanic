@@ -33,6 +33,9 @@
 		992A5FB022239DE300182FD6 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A5FAE22239DE300182FD6 /* NotesTableViewCell.swift */; };
 		992A5FB122239DE300182FD6 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992A5FAF22239DE300182FD6 /* NotesTableViewCell.xib */; };
 		992BFDD3220573BB006B64CC /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992BFDD2220573BB006B64CC /* TransactionViewController.swift */; };
+		993C3E4322324CAD00BC5937 /* LabelValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C3E4122324CAD00BC5937 /* LabelValueCell.swift */; };
+		993C3E4422324CAD00BC5937 /* LabelValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993C3E4222324CAD00BC5937 /* LabelValueCell.xib */; };
+		993C3E462233A75800BC5937 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C3E452233A75800BC5937 /* LabeledTextField.swift */; };
 		9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0821BC6F5C002D099A /* PushNotificationController.swift */; };
 		9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */; };
 		9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */; };
@@ -271,6 +274,9 @@
 		992A5FAE22239DE300182FD6 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		992A5FAF22239DE300182FD6 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		992BFDD2220573BB006B64CC /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		993C3E4122324CAD00BC5937 /* LabelValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelValueCell.swift; sourceTree = "<group>"; };
+		993C3E4222324CAD00BC5937 /* LabelValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelValueCell.xib; sourceTree = "<group>"; };
+		993C3E452233A75800BC5937 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
 		9953AE0821BC6F5C002D099A /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicActiveCell.swift; sourceTree = "<group>"; };
 		9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicActiveCell.xib; sourceTree = "<group>"; };
@@ -723,6 +729,7 @@
 				99F02791218663BB005FEFC7 /* Location.swift */,
 				99D5DA6121FE87F200E6A511 /* Logout.swift */,
 				99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */,
+				993C3E452233A75800BC5937 /* LabeledTextField.swift */,
 				99F7BC752216A74300DD5401 /* UIColorExtension.swift */,
 				99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */,
 				99F7BC772216A78400DD5401 /* Colors.xcassets */,
@@ -868,6 +875,8 @@
 				99F6967B220A9CD40021A719 /* AddReceiptCell.xib */,
 				99F6967F220AAE6D0021A719 /* TextFieldCell.swift */,
 				99F69680220AAE6D0021A719 /* TextFieldCell.xib */,
+				993C3E4122324CAD00BC5937 /* LabelValueCell.swift */,
+				993C3E4222324CAD00BC5937 /* LabelValueCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1144,6 +1153,7 @@
 				9953AE0D21BCE753002D099A /* MechanicActiveCell.xib in Resources */,
 				9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */,
 				99F7BC7222169E5F00DD5401 /* MontserratAlternates-SemiBold.otf in Resources */,
+				993C3E4422324CAD00BC5937 /* LabelValueCell.xib in Resources */,
 				9953AE1221BE5908002D099A /* AutoServiceCell.xib in Resources */,
 				99A1E3EF221E7A2300470A5F /* AutoServiceDetailsHeaderView.xib in Resources */,
 				99F6967D220A9CD40021A719 /* AddReceiptCell.xib in Resources */,
@@ -1272,6 +1282,7 @@
 				997714D021D0DADE00E54F5B /* AddressViewController.swift in Sources */,
 				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
+				993C3E462233A75800BC5937 /* LabeledTextField.swift in Sources */,
 				99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
@@ -1326,6 +1337,7 @@
 				998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
 				998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */,
+				993C3E4322324CAD00BC5937 /* LabelValueCell.swift in Sources */,
 				99675CC621EBBB36003C9D70 /* TransactionCell.swift in Sources */,
 				99F0279921867816005FEFC7 /* ProfileServiceRegionCell.swift in Sources */,
 				9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */,

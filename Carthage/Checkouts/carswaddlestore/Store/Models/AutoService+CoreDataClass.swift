@@ -107,11 +107,11 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         }
         
         if let reviewFromUserJSON = json["reviewFromUser"] as? JSONObject {
-            self.reviewFromUser = Review(json: reviewFromUserJSON, context: context)
+            self.reviewFromUser = Review.fetchOrCreate(json: reviewFromUserJSON, context: context)
         }
         
         if let reviewFromMechanic = json["reviewFromMechanic"] as? JSONObject {
-            self.reviewFromMechanic = Review(json: reviewFromMechanic, context: context)
+            self.reviewFromMechanic = Review.fetchOrCreate(json: reviewFromMechanic, context: context)
         }
     }
     

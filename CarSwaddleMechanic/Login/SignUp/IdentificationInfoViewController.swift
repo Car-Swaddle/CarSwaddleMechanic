@@ -18,20 +18,76 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         didSet {
             guard viewIfLoaded != nil else { return }
             updatePlaceholderText()
+            updateNumberOfDigits()
+            updateExplanationText()
         }
     }
     
-    @IBOutlet private weak var socialSecurityTextField: UITextField!
+    private func updateExplanationText() {
+        explanationLabel.text = explanationText
+    }
     
+    private func updateNumberOfDigits() {
+        entryView.digits = numberOfDigits
+    }
+    
+    private var numberOfDigits: Int {
+        if isFullSocialSecurityNumberRequired {
+            return 9
+        } else {
+            return 4
+        }
+    }
+    
+    @IBOutlet private weak var entryView: OneTimeCodeEntryView!
+    @IBOutlet private weak var bottomLabel: UILabel!
+    
+    @IBOutlet weak var explanationLabel: UILabel!
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePlaceholderText()
+        
+        updateNumberOfDigits()
+        entryView.textFieldCornerRadius = 6
+        entryView.textFieldWidth = 29
+        entryView.textFieldBackgroundColor = UIColor(white255: 244)
+        entryView.spacing = 4
+        entryView.textFieldFont = UIFont.appFont(type: .semiBold, size: 17)
+        entryView.spacerFont = UIFont.appFont(type: .regular, size: 20)
+        entryView.isSecureTextEntry = false
+        entryView.textFieldTintColor = .viewBackgroundColor1
+        entryView.underlineColor = .viewBackgroundColor1
+        _ = entryView.becomeFirstResponder()
+        
+        updateExplanationText()
+        updateSpacerIndexes()
+    }
+    
+    private func updateSpacerIndexes() {
+        entryView.indexesPrecedingSpacer = spacerIndexes
+    }
+    
+    private var spacerIndexes: [Int] {
+        if isFullSocialSecurityNumberRequired {
+            return [2,4]
+        } else {
+            return []
+        }
+    }
+    
+    private var explanationText: String {
+        if isFullSocialSecurityNumberRequired {
+            return NSLocalizedString("Your social security number is required in order to send you your tax documents at the end of the year. This may be a requirement in order for funds to be put into your account", comment: "Social security number explnation")
+        } else {
+            return NSLocalizedString("The last four digits of your social security number are required in order to send you your tax documents at the end of the year. This may be a requirement in order for funds to be put into your account.", comment: "Social security number explnation")
+        }
     }
     
     @IBAction private func didTapSave() {
-        guard let socialSecurityNumber = socialSecurityTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        let socialSecurityNumber = entryView.code.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard socialSecurityNumber.count == numberOfDigits else { return }
         
         if isFullSocialSecurityNumberRequired == false && socialSecurityNumber.count != 4 {
             let title = NSLocalizedString("Should enter last 4 of social", comment: "Alert helping user")
@@ -64,10 +120,11 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
     }
     
     private func updatePlaceholderText() {
-        socialSecurityTextField?.placeholder = placeholderText
+        bottomLabel.text = placeholderText
     }
     
     private var placeholderText: String {
+//        return ""
         if isFullSocialSecurityNumberRequired {
             return NSLocalizedString("Full Social Security Number", comment: "Placeholder text")
         } else {
@@ -82,6 +139,47 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
     private func createPersonalIDNumberToken(personalID: String, completion: @escaping (_ token: STPToken?) -> Void) {
         STPAPIClient.shared().createToken(withPersonalIDNumber: personalID) { token, error in
             completion(token)
+        }
+    }
+    
+}
+
+
+
+
+open class UnderlineTextField: UITextField {
+    
+    @IBInspectable public var underlineColor: UIColor = .black {
+        didSet {
+            underlineView?.backgroundColor = underlineColor
+        }
+    }
+    
+    private var underlineView: UIView!
+    
+    private func setup() {
+        self.underlineView = addHairlineView(toSide: .bottom, color: underlineColor, size: 2.0, insets: UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0))
+        underlineView.isHidden = true
+        borderStyle = .none
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(UnderlineTextField.didBeginEditing), name: UITextField.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(UnderlineTextField.didEndEditing), name: UITextField.textDidEndEditingNotification, object: self)
+    }
+    
+    @objc private func didBeginEditing() {
+        underlineView.isHidden = false
+        underlineView.alpha = 0.0
+        UIView.animate(withDuration: 0.25) {
+            self.underlineView.alpha = 1.0
+        }
+    }
+    
+    @objc private func didEndEditing() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.underlineView.alpha = 0.0
+        }) { isFinished in
+            self.underlineView.alpha = 1.0
+            self.underlineView.isHidden = true
         }
     }
     

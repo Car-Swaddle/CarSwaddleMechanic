@@ -258,14 +258,23 @@ SWIFT_CLASS("_TtC12CarSwaddleUI28DelegatingAnimatedTransition")
 @interface DelegatingAnimatedTransition : AnimatedTransition
 @end
 
+@class UIColor;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI18UnderlineTextField")
+@interface UnderlineTextField : UITextField
+@property (nonatomic, strong) UIColor * _Nonnull underlineColor;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @protocol DeletingTextFieldDelegate;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI17DeletingTextField")
-@interface DeletingTextField : UITextField
+@interface DeletingTextField : UnderlineTextField
 @property (nonatomic, weak) IBOutlet id <DeletingTextFieldDelegate> _Nullable deleteDelegate;
 - (void)deleteBackward;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -310,21 +319,26 @@ SWIFT_CLASS("_TtC12CarSwaddleUI32NavigationDelegateViewController")
 @end
 
 @protocol OneTimeEntryViewDelegate;
-@class UIColor;
 @class UIFont;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI20OneTimeCodeEntryView")
 @interface OneTimeCodeEntryView : UIView
 @property (nonatomic, weak) IBOutlet id <OneTimeEntryViewDelegate> _Nullable delegate;
+@property (nonatomic, copy) NSString * _Nonnull spacerText;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull indexesPrecedingSpacer;
+@property (nonatomic, strong) UIFont * _Nonnull spacerFont;
 @property (nonatomic) CGFloat spacing;
 @property (nonatomic) NSInteger digits;
 @property (nonatomic, strong) UIColor * _Nullable textFieldTintColor;
 @property (nonatomic, strong) UIColor * _Nonnull textFieldBackgroundColor;
 @property (nonatomic) CGFloat textFieldCornerRadius;
 @property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+@property (nonatomic, strong) UIColor * _Nonnull underlineColor;
 - (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField;
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
 @end
 
 
@@ -412,6 +426,7 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 

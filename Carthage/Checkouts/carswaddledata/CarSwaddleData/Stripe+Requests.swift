@@ -200,8 +200,15 @@ final public class StripeNetwork: Network {
     }
     
     @discardableResult
-    public func requestPayoutsPendingForBalance(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+    public func requestPayoutsPending(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return requestPayouts(status: .pending, limit: 300, in: context) { objectIDs, lastID, hasMore, error in
+            completion(objectIDs, error)
+        }
+    }
+    
+    @discardableResult
+    public func requestPayoutsInTransit(in context: NSManagedObjectContext, completion: @escaping (_ transactionIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return requestPayouts(status: .inTransit, limit: 300, in: context) { objectIDs, lastID, hasMore, error in
             completion(objectIDs, error)
         }
     }
