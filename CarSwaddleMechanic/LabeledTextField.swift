@@ -36,7 +36,7 @@ public final class LabeledTextField: UIView {
         }
     }
     
-    @IBInspectable public var textFieldToLabelGap: CGFloat = 8 {
+    @IBInspectable public var textFieldToLabelGap: CGFloat = 3 {
         didSet {
             textFieldToLabelVerticalConstraint?.constant = textFieldToLabelGap
         }

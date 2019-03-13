@@ -13,35 +13,63 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     
     weak var navigationDelegate: NavigationDelegate?
 
-    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    private var phoneNumberTextField: UITextField {
+        return phoneNumberLabeledTextField.textField
+    }
+    
+    @IBOutlet private var phoneNumberLabeledTextField: LabeledTextField!
+    @IBOutlet private var actionButton: ActionButton!
+    
     
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
-    
+    lazy private var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        insetAdjuster.showActionButtonAboveKeyboard = true
+        insetAdjuster.includeTabBarInKeyboardCalculation = tabBarController != nil
+        insetAdjuster.positionActionButton()
+        
+        phoneNumberTextField.textContentType = .telephoneNumber
+        phoneNumberTextField.autocorrectionType = .no
+        phoneNumberTextField.autocapitalizationType = .none
+        phoneNumberTextField.returnKeyType = .done
+        phoneNumberTextField.keyboardType = .numbersAndPunctuation
+        
+        phoneNumberTextField.delegate = self
     }
     
 
-    @IBAction func didTapSave(_ sender: UIBarButtonItem) {
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinner = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        
-        navigationItem.rightBarButtonItem = spinner
-        
+    @IBAction func didTapSave() {
         let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard phoneNumber?.isEmpty == false else { return }
         store.privateContext { [weak self] context in
             self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    if error == nil {
-                        self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
+                    guard error == nil else {
+                        print(error ?? "")
+                        return
                     }
-                    self.navigationItem.rightBarButtonItem = previousButton
+                    if let navigationDelegate = self.navigationDelegate {
+                        navigationDelegate.didFinish(navigationDelegatingViewController: self)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
         }
     }
 
+}
+
+
+extension PhoneNumberViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        didTapSave()
+        return true
+    }
+    
 }

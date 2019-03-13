@@ -13,6 +13,8 @@ import CarSwaddleData
 
 final class NotesTableViewCell: UITableViewCell, NibRegisterable {
 
+    var didBeginEditing: () -> () = {}
+    
     @IBOutlet private weak var notesLabel: UILabel!
     @IBOutlet private weak var notesTextView: UITextView!
     
@@ -53,13 +55,16 @@ final class NotesTableViewCell: UITableViewCell, NibRegisterable {
 
 extension NotesTableViewCell: UITextViewDelegate {
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        didBeginEditing()
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(NotesTableViewCell.updateNotes), userInfo: nil, repeats: false)
     }
     
     @objc private func updateNotes() {
-        print("update notes")
         guard let autoServiceID = autoService?.identifier,
             let notesText = notesTextView.text else { return }
         

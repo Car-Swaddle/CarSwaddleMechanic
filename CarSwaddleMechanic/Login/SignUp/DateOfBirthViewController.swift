@@ -20,6 +20,7 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
 
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var actionButton: ActionButton!
     
     weak var navigationDelegate: NavigationDelegate?
     
@@ -32,6 +33,8 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
     }
     
     private var date: Date?
+    
+    private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,8 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
         datePicker.maximumDate = maxDate
         datePicker.date = pickerDate
         dateLabel.text = dateOfBirthFormatter.string(from: pickerDate)
+        
+        insetAdjuster.positionActionButton()
     }
     
     private var maxDate: Date {
@@ -57,21 +62,23 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
     }
     
     @IBAction private func didTapSave() {
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+//        let previousButton = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         let newDate = datePicker.date
         
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.update(dateOfBirth: newDate, in: privateContext) { mechanicID, error in
                 DispatchQueue.main.async {
-                    if let navigationDelegate = self?.navigationDelegate, let self = self {
+                    guard let self = self else { return }
+                    guard error == nil else {
+                        print(error ?? "")
+                        return
+                    }
+                    if let navigationDelegate = self.navigationDelegate {
                         navigationDelegate.didFinish(navigationDelegatingViewController: self)
                     } else {
-                        self?.navigationItem.rightBarButtonItem = previousButton
-                        if error == nil {
-                            self?.navigationController?.popViewController(animated: true)
-                        }
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }

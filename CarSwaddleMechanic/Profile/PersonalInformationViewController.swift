@@ -143,7 +143,7 @@ extension PersonalInformationViewController: UITableViewDataSource {
         case .documents:
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.errorViewIsHidden = !shouldShowError(for: row)
-            cell.valueText = NSLocalizedString("Documents", comment: "Description of row")
+            cell.valueText = NSLocalizedString("Identification document", comment: "Description of row")
             cell.descriptionText = ""
             return cell
         case .dateOfBirth:

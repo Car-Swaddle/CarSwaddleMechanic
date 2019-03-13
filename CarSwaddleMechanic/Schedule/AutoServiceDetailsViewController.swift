@@ -38,6 +38,10 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         return viewController
     }
     
+    private lazy var contentInsetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
+    
+    @IBOutlet private weak var actionButton: ActionButton!
+    
     enum Row {
         case user
         case vehicle
@@ -64,7 +68,14 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
                 if let autoService = self.autoService {
                     self.header.configure(with: autoService)
                 }
+                if let nextStatusColor = self.autoService?.status.nextStatus?.color {
+                    self.actionButton.backgroundColor = nextStatusColor
+                }
                 self.tableView.reloadData()
+                
+                self.actionButton.actionSubtext = NSLocalizedString("set status to", comment: "Button that sets the auto service status")
+                self.actionButton.actionTitle = self.autoService?.status.nextStatus?.localizedString
+                self.actionButton.isHiddenInStackView = self.autoService?.status.nextStatus == nil
             }
         }
     }
@@ -103,25 +114,20 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         requestData()
         setupTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+//        contentInsetAdjuster.updateContentInsets()
+        
+//        actionButton.actionTitle = "In progress"
+//        actionButton.actionSubtext = "set status to"
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-//        UIView.animate(withDuration: 0.3) {
-//            self.navigationController?.navigationBar.shadowImage = UIImage()
-//        }
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        UIView.animate(withDuration: 0.3) {
-//            self.navigationController?.navigationBar.shadowImage = UIImage.from(color: .gray2)
-//        }
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        contentInsetAdjuster.updateContentInsets()
+    }
     
     @objc private func keyboardWillHide(notification: Notification) {
         let newYOffset = tableView.contentOffset.y
@@ -259,6 +265,22 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         }
     }
     
+    @IBAction private func didTapActionButton(_ button: UIButton) {
+        guard let autoServiceID = autoService?.identifier,
+            let nextStatus = autoService?.status.nextStatus else { return }
+        actionButton.isEnabled = false
+        store.privateContext { [weak self] context in
+            self?.autoServiceNetwork.updateAutoService(autoServiceID: autoServiceID, status: nextStatus, in: context) { autoServiceObjectID, error in
+                DispatchQueue.main.async {
+                    self?.actionButton.isEnabled = true
+                    guard let autoServiceObjectID = autoServiceObjectID else { return }
+                    self?.autoService = store.mainContext.object(with: autoServiceObjectID) as? AutoService
+                }
+            }
+        }
+    }
+    
+    
 }
 
 extension AutoServiceDetailsViewController: UITableViewDataSource {
@@ -295,6 +317,10 @@ extension AutoServiceDetailsViewController: UITableViewDataSource {
             let cell: NotesTableViewCell = tableView.dequeueCell()
             if let autoService = autoService {
                 cell.configure(with: autoService)
+            }
+            
+            cell.didBeginEditing = { [weak self] in
+                self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
             return cell
         case .date, .mechanic, .serviceType, .user, .oilType:

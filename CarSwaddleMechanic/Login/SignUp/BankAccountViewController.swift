@@ -19,8 +19,14 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
     @IBOutlet private weak var accountHolderLabeledTextField: LabeledTextField!
     @IBOutlet private weak var routingNumberLabel: UILabel!
     
+    @IBOutlet private weak var actionButton: ActionButton!
+    
     private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     private var stripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
+    
+    
+    
+    private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
     
     private let routingNumberDigits = 9
     
@@ -43,7 +49,13 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
         routingNumberLabel.text = NSLocalizedString("Routing number", comment: "Label for bank routing number")
         
+        bankAccountNumberLabeledTextField.textField.keyboardType = .numberPad
+        bankAccountNumberLabeledTextField.textField.autocorrectionType = .no
+        bankAccountNumberLabeledTextField.textField.autocapitalizationType = .none
+        
         updateUI()
+        
+        insetAdjuster.positionActionButton()
     }
     
     private func updateUI() {
@@ -78,20 +90,20 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
     }
     
     @IBAction private func didTapSave() {
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+//        let previousButton = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         generateBankAccountToken { [weak self] token in
             guard let token = token?.tokenId else {
                 DispatchQueue.main.async {
-                    self?.navigationItem.rightBarButtonItem = previousButton
+//                    self?.navigationItem.rightBarButtonItem = previousButton
                 }
                 return
             }
             store.privateContext { privateContext in
                 self?.mechanicNetwork.update(externalAccount: token, in: privateContext) { mechanicObjectID, error in
                     DispatchQueue.main.async {
-                        self?.navigationItem.rightBarButtonItem = previousButton
+//                        self?.navigationItem.rightBarButtonItem = previousButton
                         if let error = error {
                             print("error: \(error)")
                         } else {

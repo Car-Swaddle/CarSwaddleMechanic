@@ -31,6 +31,8 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
         self.autoService = autoService
         bannerView.label.text = self.statusString(for: autoService)
         nameLabel.text = autoService.creator?.displayName
+        
+        bannerView.backgroundColor = autoService.status.color
     }
     
     private func statusString(for autoService: AutoService) -> String {
@@ -52,7 +54,7 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
     }
     
     @IBAction func didTapCall() {
-        guard let phoneNumber = self.phoneNumber,
+        guard let phoneNumber = self.phoneNumber?.replacingOccurrences(of: " ", with: ""),
             let url = URL(string: "tel://" + phoneNumber) else { return }
         UIApplication.shared.open(url)
     }

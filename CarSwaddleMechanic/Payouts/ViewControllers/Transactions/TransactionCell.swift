@@ -27,13 +27,13 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var trailingConstraint: NSLayoutConstraint!
     
     weak var delegate: TransactionCellDelegate?
     
     func configure(with transaction: Transaction) {
         let topTextFormatString = NSLocalizedString("%@ • %@", comment: "date and payment type")
         dateLabel.text = String(format: topTextFormatString, monthDayYearDateFormatter.string(from: transaction.created), transaction.transactionType.localizedString)
-//        typeLabel.text = transaction.transactionType.localizedString
         let transactionAmount = transaction.amount
         valueLabel.text = currencyFormatter.string(from: transactionAmount.dollarValue)
         
@@ -51,6 +51,17 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         } else {
             descriptionLabel.isHiddenInStackView = true
         }
+        
+        if transaction.transactionType == .payment {
+            accessoryType = .disclosureIndicator
+            trailingConstraint.constant = 0
+            selectionStyle = .default
+        } else {
+            accessoryType = .none
+            trailingConstraint.constant = 26
+            selectionStyle = .none
+        }
+        
     }
     
     override func awakeFromNib() {

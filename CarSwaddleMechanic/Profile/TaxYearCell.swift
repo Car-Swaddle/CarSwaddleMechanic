@@ -40,7 +40,7 @@ final class TaxYearCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        selectionStyle = .none
     }
     
     func configure(with taxInfo: TaxInfo, updateData: Bool = true) {
@@ -52,13 +52,13 @@ final class TaxYearCell: UITableViewCell, NibRegisterable {
             requestData()
         }
         
-        if task == nil {
+//        if task == nil {
             deductionCostLabel.text = currencyFormatter.string(from: taxInfo.mechanicCostInCents.dollarValue)
             milesDeductionLabel.text = distanceNumberFormatter.string(from: NSNumber(value: taxInfo.milesDriven))
-        } else {
-            deductionCostLabel.text = NSLocalizedString("--", comment: "empty values for cost to deduct")
-            milesDeductionLabel.text = NSLocalizedString("--", comment: "empty values for miles to deduct")
-        }
+//        } else {
+//            deductionCostLabel.text = NSLocalizedString("--", comment: "empty values for cost to deduct")
+//            milesDeductionLabel.text = NSLocalizedString("--", comment: "empty values for miles to deduct")
+//        }
     }
     
     private func requestData(completion: @escaping () -> Void = {}) {

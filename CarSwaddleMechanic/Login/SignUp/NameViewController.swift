@@ -13,37 +13,61 @@ import CarSwaddleData
 
 final class NameViewController: UIViewController, StoryboardInstantiating, NavigationDelegating {
 
-    @IBOutlet private weak var firstNameTextField: UITextField!
-    @IBOutlet private weak var lastNameTextField: UITextField!
+    private var firstNameTextField: UITextField {
+        return firstNameLabeledTextField.textField
+    }
+    private var lastNameTextField: UITextField {
+        return lastNameLabeledTextField.textField
+    }
+    
+    @IBOutlet private weak var firstNameLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var lastNameLabeledTextField: LabeledTextField!
+    @IBOutlet private weak var actionButton: ActionButton!
     
     weak var navigationDelegate: NavigationDelegate?
-    
     private var userNetwork: UserNetwork = UserNetwork(serviceRequest: serviceRequest)
-    
     private var currentUser: User? = User.currentUser(context: store.mainContext)
+    lazy private var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         firstNameTextField.text = currentUser?.firstName
         lastNameTextField.text = currentUser?.lastName
+        
+        firstNameTextField.textContentType = .givenName
+        firstNameTextField.returnKeyType = .next
+        firstNameTextField.delegate = self
+        
+        lastNameTextField.textContentType = .familyName
+        lastNameTextField.returnKeyType = .done
+        lastNameTextField.delegate = self
+        
+        configureTextField(firstNameTextField)
+        configureTextField(lastNameTextField)
+        
+        insetAdjuster.showActionButtonAboveKeyboard = true
+        insetAdjuster.positionActionButton()
+        insetAdjuster.includeTabBarInKeyboardCalculation = tabBarController != nil
+        insetAdjuster.showActionButtonAboveKeyboard = true
     }
     
-    @IBAction func firstNameTextFieldDidChange(_ sender: UITextField) {
-        
+    private func configureTextField(_ textField: UITextField) {
+        textField.autocapitalizationType = .words
+        textField.autocorrectionType = .no
+        textField.spellCheckingType = .no
     }
     
-    @IBAction func lastNameTextFieldDidChange(_ sender: UITextField) {
-        
-    }
     
     
     @IBAction private func didTapSave() {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        let previousBarButtonItem = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+            firstName.isEmpty == false, lastName.isEmpty == false else { return }
+        
+//        let previousBarButtonItem = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
@@ -54,11 +78,25 @@ final class NameViewController: UIViewController, StoryboardInstantiating, Navig
                         if error == nil {
                             self?.navigationController?.popViewController(animated: true)
                         }
-                        self?.navigationItem.rightBarButtonItem = previousBarButtonItem
+//                        self?.navigationItem.rightBarButtonItem = previousBarButtonItem
                     }
                 }
             }
         }
+    }
+    
+}
+
+
+extension NameViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            didTapSave()
+        }
+        return true
     }
     
 }

@@ -33,7 +33,7 @@
             </objects>
             <point key="canvasLocation" x="213.59999999999999" y="-686.80659670164926"/>
         </scene>
-        <!--Bank Account View Controller-->
+        <!--Bank Account-->
         <scene sceneID="xd0-GU-DsC">
             <objects>
                 <viewController id="1hj-hw-beP" customClass="BankAccountViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,8 +48,8 @@
                                     <constraint firstAttribute="height" constant="31" id="ZiL-ev-R97"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-ok-Zn7" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
-                                <rect key="frame" x="16" y="165" width="335" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygf-ok-Zn7" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="148.5" width="335" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="D3N-x7-btT"/>
@@ -64,8 +64,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oc-nG-pu4" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
-                                <rect key="frame" x="16" y="248" width="335" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6oc-nG-pu4" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="224.5" width="335" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="sFq-iy-JCQ"/>
@@ -80,12 +80,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMN-xo-sJv">
-                                <rect key="frame" x="16" y="119" width="343" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMN-xo-sJv">
+                                <rect key="frame" x="24" y="114" width="335" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" name="viewBackgroundColor1"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5H-TG-0qA" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="166" y="617" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="1hj-hw-beP" eventType="touchUpInside" id="QsC-Ep-GvO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -104,15 +112,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LNh-q7-mNZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="M6v-bM-0nk">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="82f-F8-FVI">
-                            <connections>
-                                <action selector="didTapSave" destination="1hj-hw-beP" id="nQt-Kp-0tF"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Bank Account" id="M6v-bM-0nk"/>
                     <connections>
                         <outlet property="accountHolderLabeledTextField" destination="6oc-nG-pu4" id="5Bc-An-EYV"/>
+                        <outlet property="actionButton" destination="I5H-TG-0qA" id="lHg-z1-hvG"/>
                         <outlet property="bankAccountNumberLabeledTextField" destination="ygf-ok-Zn7" id="ye1-sg-ARR"/>
                         <outlet property="routingNumberDigitEntryView" destination="5LG-QH-BcG" id="x6X-17-7z2"/>
                         <outlet property="routingNumberLabel" destination="iMN-xo-sJv" id="CvY-po-S4L"/>

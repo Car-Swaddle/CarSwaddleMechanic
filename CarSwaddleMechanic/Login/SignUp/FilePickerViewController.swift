@@ -17,14 +17,18 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
         case unableToUpload
     }
 
-    @IBOutlet private weak var fileNameLabel: UILabel!
+    @IBOutlet private weak var documentDescriptionLabel: UILabel!
     @IBOutlet private weak var documentImageView: UIImageView!
+    @IBOutlet private weak var actionButton: ActionButton!
+    @IBOutlet private weak var selectFileButton: UIButton!
     
     private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
+    private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
+    
     private var selectedFileURL: URL? {
         didSet {
-            fileNameLabel.text = selectedFileURL?.lastPathComponent
+//            fileNameLabel.text = selectedFileURL?.lastPathComponent
             if let fileURL = selectedFileURL {
                 documentImageView.image = UIImage(contentsOfFile: fileURL.path)
             }
@@ -35,6 +39,14 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
         super.viewDidLoad()
         
         documentImageView.layer.cornerRadius = 8
+        
+        insetAdjuster.positionActionButton()
+        
+        documentDescriptionLabel.font = UIFont.appFont(type: .regular, size: 17)
+        selectFileButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
+        
+        // Passport, government-issued ID, or driver's license*
+        documentDescriptionLabel.text = NSLocalizedString("To correctly identify you for security and for tax reasons an identity document may be required.\n\nPlease provide one of the following documents:\n- Passport\n- Goverment issued id\n- Driver's license", comment: "Explanation of identity document")
     }
     
     @IBAction private func didTapSave() {
@@ -54,15 +66,15 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
     }
     
     private func uploadFileIfExists(completion: @escaping (_ error: Error?) -> Void) {
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+//        let previousButton = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         
         guard let fileURL = selectedFileURL else { return }
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.uploadIdentityDocument(fileURL: fileURL, in: privateContext) { mechanicID, error in
                 DispatchQueue.main.async {
-                    self?.navigationItem.rightBarButtonItem = previousButton
+//                    self?.navigationItem.rightBarButtonItem = previousButton
                     var completionError: Error? = error
                     if error == nil && mechanicID == nil {
                         completionError = FilePickerError.unableToUpload

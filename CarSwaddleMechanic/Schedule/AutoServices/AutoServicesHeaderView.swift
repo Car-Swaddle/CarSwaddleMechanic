@@ -87,7 +87,7 @@ public class LabeledBannerView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.mask = shapeLayerWithRoundedCorners([.topRight, .bottomRight], radius: 6)
+        layer.mask = shapeLayerWithRoundedCorners([.topRight, .bottomRight], radius: frame.height/2)
     }
     
     private func setup() {

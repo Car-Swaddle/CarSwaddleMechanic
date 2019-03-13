@@ -83,6 +83,9 @@
 		9992765721673BCC0032D7F7 /* CarSwaddleMechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992765621673BCC0032D7F7 /* CarSwaddleMechanicTests.swift */; };
 		9992766221673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */; };
 		9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */; };
+		999F4A67223637C900C4A1D6 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F4A66223637C900C4A1D6 /* ActionButton.swift */; };
+		999F4A692237764400C4A1D6 /* AutoService+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F4A682237764400C4A1D6 /* AutoService+UI.swift */; };
+		999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F4A6A22378E2600C4A1D6 /* ContentInsetAdjuster.swift */; };
 		99A1E3ED221E7A1900470A5F /* AutoServiceDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A1E3EC221E7A1900470A5F /* AutoServiceDetailsHeaderView.swift */; };
 		99A1E3EF221E7A2300470A5F /* AutoServiceDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A1E3EE221E7A2300470A5F /* AutoServiceDetailsHeaderView.xib */; };
 		99A1E3F2221E845200470A5F /* AutoServiceVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A1E3F0221E845200470A5F /* AutoServiceVehicleCell.swift */; };
@@ -333,6 +336,9 @@
 		9992766121673BCC0032D7F7 /* CarSwaddleMechanicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicUITests.swift; sourceTree = "<group>"; };
 		9992766321673BCC0032D7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleMechanicStore.swift; sourceTree = "<group>"; };
+		999F4A66223637C900C4A1D6 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		999F4A682237764400C4A1D6 /* AutoService+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoService+UI.swift"; sourceTree = "<group>"; };
+		999F4A6A22378E2600C4A1D6 /* ContentInsetAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInsetAdjuster.swift; sourceTree = "<group>"; };
 		99A1E3EC221E7A1900470A5F /* AutoServiceDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceDetailsHeaderView.swift; sourceTree = "<group>"; };
 		99A1E3EE221E7A2300470A5F /* AutoServiceDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceDetailsHeaderView.xib; sourceTree = "<group>"; };
 		99A1E3F0221E845200470A5F /* AutoServiceVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceVehicleCell.swift; sourceTree = "<group>"; };
@@ -729,7 +735,10 @@
 				99F02791218663BB005FEFC7 /* Location.swift */,
 				99D5DA6121FE87F200E6A511 /* Logout.swift */,
 				99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */,
+				999F4A66223637C900C4A1D6 /* ActionButton.swift */,
+				999F4A6A22378E2600C4A1D6 /* ContentInsetAdjuster.swift */,
 				993C3E452233A75800BC5937 /* LabeledTextField.swift */,
+				999F4A682237764400C4A1D6 /* AutoService+UI.swift */,
 				99F7BC752216A74300DD5401 /* UIColorExtension.swift */,
 				99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */,
 				99F7BC772216A78400DD5401 /* Colors.xcassets */,
@@ -1293,6 +1302,7 @@
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				992A5FB022239DE300182FD6 /* NotesTableViewCell.swift in Sources */,
 				99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */,
+				999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */,
 				99F6968C220BDAE60021A719 /* LottieValues.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
 				99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */,
@@ -1323,6 +1333,7 @@
 				99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */,
 				9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */,
 				99F6967C220A9CD40021A719 /* AddReceiptCell.swift in Sources */,
+				999F4A692237764400C4A1D6 /* AutoService+UI.swift in Sources */,
 				9912CD89216C6DEF0006FDDF /* Navigator.swift in Sources */,
 				99DCD32D221BD9DF0040DABA /* UIKitExtensions.swift in Sources */,
 				997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */,
@@ -1331,6 +1342,7 @@
 				99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */,
 				99F7BC762216A74300DD5401 /* UIColorExtension.swift in Sources */,
 				99F69678220A94800021A719 /* TransactionReceiptCell.swift in Sources */,
+				999F4A67223637C900C4A1D6 /* ActionButton.swift in Sources */,
 				99F696AE220FF2BB0021A719 /* PhoneNumberViewController.swift in Sources */,
 				99F696B2220FF5F30021A719 /* VerifyPhoneNumberViewController.swift in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,

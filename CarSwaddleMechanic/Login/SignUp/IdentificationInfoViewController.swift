@@ -45,6 +45,9 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
     @IBOutlet weak var explanationLabel: UILabel!
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
+    @IBOutlet private weak var actionButton: ActionButton!
+    lazy private var contentAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePlaceholderText()
@@ -63,6 +66,9 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         
         updateExplanationText()
         updateSpacerIndexes()
+        
+        contentAdjuster.positionActionButton()
+        contentAdjuster.showActionButtonAboveKeyboard = true
     }
     
     private func updateSpacerIndexes() {
@@ -96,14 +102,14 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
             present(alert, animated: true, completion: nil)
         }
         
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+//        let previousButton = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         
         store.privateContext { [weak self] privateContext in
             let completion: (_ userID: NSManagedObjectID?, _ error: Error?) -> Void = { userID, error in
                 DispatchQueue.main.async {
-                    self?.navigationItem.rightBarButtonItem = previousButton
+//                    self?.navigationItem.rightBarButtonItem = previousButton
                     if error == nil {
                         self?.navigationController?.popViewController(animated: true)
                     }

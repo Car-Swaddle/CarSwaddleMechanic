@@ -184,6 +184,8 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         timelineHairlineView?.isHiddenInStackView = autoService.status == .canceled
         
         contentView.alpha = autoService.status == .canceled ? 0.4 : 1.0
+        
+        autoServiceStatusView.backgroundColor = autoService.status.color
     }
     
     @objc private func didSelectGetDirections() {

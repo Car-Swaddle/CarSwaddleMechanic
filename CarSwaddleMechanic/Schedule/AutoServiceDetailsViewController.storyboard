@@ -21,18 +21,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uef-Kx-Alp" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="149" y="621" width="77" height="30"/>
+                                <state key="normal" title="In progress"/>
+                                <connections>
+                                    <action selector="didTapActionButton:" destination="pTg-vP-t0D" eventType="touchUpInside" id="SOI-zT-Wlm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DRO-HL-8hc" firstAttribute="bottom" secondItem="XQW-9a-iFj" secondAttribute="bottom" id="5jd-CK-gO3"/>
                             <constraint firstAttribute="trailing" secondItem="DRO-HL-8hc" secondAttribute="trailing" id="8NA-k7-rjr"/>
                             <constraint firstItem="DRO-HL-8hc" firstAttribute="top" secondItem="XQW-9a-iFj" secondAttribute="top" id="9q7-aC-1pS"/>
+                            <constraint firstItem="Uef-Kx-Alp" firstAttribute="centerX" secondItem="XQW-9a-iFj" secondAttribute="centerX" id="Uf3-9A-YE2"/>
+                            <constraint firstItem="f4F-FH-0iJ" firstAttribute="bottom" secondItem="Uef-Kx-Alp" secondAttribute="bottom" constant="16" id="kPd-P1-0sE"/>
                             <constraint firstItem="DRO-HL-8hc" firstAttribute="leading" secondItem="XQW-9a-iFj" secondAttribute="leading" id="zD4-JQ-egD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f4F-FH-0iJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="k9l-PQ-bZB"/>
                     <connections>
+                        <outlet property="actionButton" destination="Uef-Kx-Alp" id="gkS-wI-rbZ"/>
                         <outlet property="tableView" destination="DRO-HL-8hc" id="CnX-fQ-1hi"/>
                     </connections>
                 </viewController>

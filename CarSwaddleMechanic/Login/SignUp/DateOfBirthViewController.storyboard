@@ -40,6 +40,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df8-XL-2ny" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="170" y="617" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="IJq-bT-Byo" eventType="touchUpInside" id="sMf-3B-N6f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -52,14 +60,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wxj-z9-eTp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Date of Birth" id="vfY-zw-FWf">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="N3i-1N-vQM">
-                            <connections>
-                                <action selector="didTapSave" destination="IJq-bT-Byo" id="cia-wL-sM6"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Date of Birth" id="vfY-zw-FWf"/>
                     <connections>
+                        <outlet property="actionButton" destination="Df8-XL-2ny" id="5Cu-IP-fPA"/>
                         <outlet property="dateLabel" destination="c95-lX-jxn" id="LEe-Gb-HMZ"/>
                         <outlet property="datePicker" destination="Jtl-oX-4fF" id="DVZ-mf-1yN"/>
                     </connections>

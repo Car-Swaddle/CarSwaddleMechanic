@@ -177,6 +177,7 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: store.mainContext, sectionNameKeyPath: #keyPath(AutoService.isCanceled), cacheName: nil)
         try! fetchedResultsController.performFetch()
+        fetchedResultsController.delegate = self
         return fetchedResultsController
     }
     
@@ -258,6 +259,46 @@ extension AutoServicesViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let autoServiceViewController = AutoServiceDetailsViewController.create(autoService: fetchedResultsController.object(at: indexPath))
         show(autoServiceViewController, sender: self)
+    }
+    
+}
+
+extension AutoServicesViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
     
 }

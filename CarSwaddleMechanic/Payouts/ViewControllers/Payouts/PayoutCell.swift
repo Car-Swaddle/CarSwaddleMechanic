@@ -40,6 +40,8 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
         } else {
             amountLabel.textColor = .black
         }
+        
+        accessoryType = .disclosureIndicator
     }
     
     override func awakeFromNib() {

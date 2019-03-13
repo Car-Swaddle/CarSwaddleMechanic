@@ -50,7 +50,7 @@ final class EarningsHeaderView: UIView, NibInstantiating {
             }
             
             group.enter()
-            Payout.purgeAll(in: privateContext)
+//            Payout.purgeAll(in: privateContext)
             self?.stripeNetwork.requestPayoutsInTransit(in: privateContext) { objectIDs, error in
                 store.mainContext { mainContext in
                     defer { group.leave() }

@@ -19,6 +19,10 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    @IBOutlet private weak var actionButton: ActionButton!
+    
+    private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
+    
     private var address: Address? = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.address ?? Address.fetch(with: localAddressID, in: store.mainContext)
     private var mechanicService: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     private let auth = Auth(serviceRequest: serviceRequest)
@@ -43,6 +47,9 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
         }
 
         setupTableView()
+        
+        insetAdjuster.showActionButtonAboveKeyboard = true
+        insetAdjuster.positionActionButton()
     }
     
     private func setupTableView() {
@@ -61,16 +68,16 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
         address.line1 = address.line1?.trimmingCharacters(in: .whitespacesAndNewlines)
         address.managedObjectContext?.persist()
         
-        let previousButton = navigationItem.rightBarButtonItem
-        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-        navigationItem.rightBarButtonItem = spinButton
+//        let previousButton = navigationItem.rightBarButtonItem
+//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
+//        navigationItem.rightBarButtonItem = spinButton
         
         let addressID = address.objectID
         store.privateContext { [weak self] privateContext in
             guard let privateAddress = privateContext.object(with: addressID) as? Address else { return }
             self?.mechanicService.update(isActive: nil, token: nil, dateOfBirth: nil, address: privateAddress, in: privateContext) { mechanicObjectID, error in
                 DispatchQueue.main.async {
-                    self?.navigationItem.rightBarButtonItem = previousButton
+//                    self?.navigationItem.rightBarButtonItem = previousButton
                     if error == nil {
                         self?.navigationController?.popViewController(animated: true)
                         if let fetchedAddress = store.mainContext.object(with: addressID) as? Address {
@@ -169,12 +176,20 @@ extension AddressViewController: UITableViewDataSource {
     }
     
     private func configure(for textField: UITextField, row: Row) {
+        textField.enablesReturnKeyAutomatically = true
+        textField.smartInsertDeleteType = .no
         switch row {
-        case .addressLine1, .addressLine2:
+        case .addressLine1:
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .no
             textField.textContentType = .streetAddressLine1
             textField.returnKeyType = .next
+        case .addressLine2:
+            textField.autocapitalizationType = .words
+            textField.autocorrectionType = .no
+            textField.textContentType = .streetAddressLine2
+            textField.returnKeyType = .next
+            textField.enablesReturnKeyAutomatically = false
         case .city:
             textField.autocapitalizationType = .words
             textField.autocorrectionType = .no
@@ -192,8 +207,6 @@ extension AddressViewController: UITableViewDataSource {
             textField.textContentType = .addressState
             textField.returnKeyType = .done
         }
-        textField.enablesReturnKeyAutomatically = true
-        textField.smartInsertDeleteType = .no
     }
     
 }

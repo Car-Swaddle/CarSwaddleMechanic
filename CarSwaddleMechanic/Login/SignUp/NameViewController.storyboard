@@ -17,46 +17,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Occ-gh-kYz">
-                                <rect key="frame" x="16" y="77" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="given-name"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSF-yp-fDt" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="firstNameTextFieldDidChange:" destination="EBo-eu-UFL" eventType="editingChanged" id="d1N-lD-Wli"/>
+                                    <action selector="didTapSave" destination="EBo-eu-UFL" eventType="touchUpInside" id="xxf-T9-U4R"/>
                                 </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p1I-KQ-JwO">
-                                <rect key="frame" x="16" y="115" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="family-name"/>
-                                <connections>
-                                    <action selector="lastNameTextFieldDidChange:" destination="EBo-eu-UFL" eventType="editingChanged" id="T9w-38-jFN"/>
-                                </connections>
-                            </textField>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztf-bS-bjj" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" placeholder="YES" id="HCX-uI-oB7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textFieldToLabelGap">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="First name"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIC-x0-4sP" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="166" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" placeholder="YES" id="LzN-cg-j1U"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textFieldToLabelGap">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Last name"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Occ-gh-kYz" firstAttribute="top" secondItem="Mgc-OM-5gv" secondAttribute="top" constant="13" id="ODh-2E-7za"/>
-                            <constraint firstItem="p1I-KQ-JwO" firstAttribute="top" secondItem="Occ-gh-kYz" secondAttribute="bottom" constant="8" id="VHR-3U-shV"/>
-                            <constraint firstItem="p1I-KQ-JwO" firstAttribute="leading" secondItem="Mgc-OM-5gv" secondAttribute="leading" constant="16" id="eVz-jN-hE0"/>
-                            <constraint firstItem="Mgc-OM-5gv" firstAttribute="trailing" secondItem="p1I-KQ-JwO" secondAttribute="trailing" constant="16" id="kNT-hq-ndL"/>
-                            <constraint firstItem="Mgc-OM-5gv" firstAttribute="trailing" secondItem="Occ-gh-kYz" secondAttribute="trailing" constant="16" id="tFj-Yj-fgo"/>
-                            <constraint firstItem="Occ-gh-kYz" firstAttribute="leading" secondItem="Mgc-OM-5gv" secondAttribute="leading" constant="16" id="weo-U1-Hm6"/>
+                            <constraint firstItem="Ztf-bS-bjj" firstAttribute="top" secondItem="Mgc-OM-5gv" secondAttribute="top" constant="16" id="OGZ-xD-fer"/>
+                            <constraint firstItem="Mgc-OM-5gv" firstAttribute="trailing" secondItem="Ztf-bS-bjj" secondAttribute="trailing" constant="16" id="SaG-58-ffg"/>
+                            <constraint firstItem="KIC-x0-4sP" firstAttribute="leading" secondItem="Mgc-OM-5gv" secondAttribute="leading" constant="16" id="TyM-JO-CWZ"/>
+                            <constraint firstItem="KIC-x0-4sP" firstAttribute="top" secondItem="Ztf-bS-bjj" secondAttribute="bottom" constant="16" id="UMf-or-ZvT"/>
+                            <constraint firstItem="Mgc-OM-5gv" firstAttribute="trailing" secondItem="KIC-x0-4sP" secondAttribute="trailing" constant="16" id="l7u-u2-UoE"/>
+                            <constraint firstItem="Ztf-bS-bjj" firstAttribute="leading" secondItem="Mgc-OM-5gv" secondAttribute="leading" constant="16" id="ucr-zl-yle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mgc-OM-5gv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AJa-p4-iiD">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="6vg-Bp-XUk">
-                            <connections>
-                                <action selector="didTapSave" destination="EBo-eu-UFL" id="QCl-mm-klp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="AJa-p4-iiD"/>
                     <connections>
-                        <outlet property="firstNameTextField" destination="Occ-gh-kYz" id="xdG-9e-0sK"/>
-                        <outlet property="lastNameTextField" destination="p1I-KQ-JwO" id="qhs-Mi-A2S"/>
+                        <outlet property="actionButton" destination="KSF-yp-fDt" id="JuO-76-JSd"/>
+                        <outlet property="firstNameLabeledTextField" destination="Ztf-bS-bjj" id="2d5-MI-eEd"/>
+                        <outlet property="lastNameLabeledTextField" destination="KIC-x0-4sP" id="0Iy-Ta-vjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a64-Rc-bMk" userLabel="First Responder" sceneMemberID="firstResponder"/>

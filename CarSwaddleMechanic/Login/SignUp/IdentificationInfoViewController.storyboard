@@ -46,6 +46,14 @@
                                 <color key="textColor" name="textColor3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDw-PV-G7c" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="170" y="617" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="bK7-e0-FbT" eventType="touchUpInside" id="qqM-Zm-YX7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -61,14 +69,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0nr-UC-7Ps"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Social Security Number" id="2sf-tX-pZF">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="t1A-hj-WjU">
-                            <connections>
-                                <action selector="didTapSave" destination="bK7-e0-FbT" id="t3f-Lh-7Wt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Social Security Number" id="2sf-tX-pZF"/>
                     <connections>
+                        <outlet property="actionButton" destination="XDw-PV-G7c" id="HDx-ye-EIi"/>
                         <outlet property="bottomLabel" destination="bV9-hp-tVB" id="eg7-Qt-YEE"/>
                         <outlet property="entryView" destination="uhw-u4-FFT" id="goS-ua-KoO"/>
                         <outlet property="explanationLabel" destination="90h-KN-ovu" id="Acx-eT-zRf"/>

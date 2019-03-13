@@ -25,6 +25,14 @@
                                     <outlet property="delegate" destination="DBC-au-DVf" id="EFJ-Bc-83Q"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SN-dx-Viz" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="126" y="619" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="DBC-au-DVf" eventType="touchUpInside" id="kMH-2d-yy5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -35,20 +43,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uxK-0L-zsC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Address" id="5jt-ta-IpZ">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Pyu-bN-TqI">
-                            <connections>
-                                <action selector="didTapSave" destination="DBC-au-DVf" id="k4j-kW-x4k"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Address" id="5jt-ta-IpZ"/>
                     <connections>
+                        <outlet property="actionButton" destination="7SN-dx-Viz" id="cvy-yc-Aew"/>
                         <outlet property="tableView" destination="ePz-4D-fdY" id="o0P-db-dKt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gzo-J0-ka5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="86"/>
+            <point key="canvasLocation" x="584.79999999999995" y="85.907046476761622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lTB-zI-ALM">

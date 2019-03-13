@@ -76,6 +76,7 @@
             <connections>
                 <outlet property="dateLabel" destination="heE-Oh-2ER" id="RFb-93-tfH"/>
                 <outlet property="descriptionLabel" destination="UT4-pa-p9M" id="Y3J-QH-Ru0"/>
+                <outlet property="trailingConstraint" destination="KxN-SQ-4V1" id="Rbg-6I-1EM"/>
                 <outlet property="typeLabel" destination="Lzg-XT-jw7" id="E75-1n-SQK"/>
                 <outlet property="valueLabel" destination="fmC-nv-P1E" id="Dph-Vn-TCl"/>
             </connections>

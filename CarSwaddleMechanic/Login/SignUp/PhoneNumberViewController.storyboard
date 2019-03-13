@@ -17,30 +17,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="heE-OQ-rhE">
-                                <rect key="frame" x="16" y="96" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="no" textContentType="tel"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-mI-gUV" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="170" y="617" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave" destination="0nQ-kW-gvd" eventType="touchUpInside" id="1CH-30-EVT"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7c-EB-Pw4" customClass="LabeledTextField" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="343" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" placeholder="YES" id="zXp-un-Nre"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelText" value="Phone number"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textFieldToLabelGap">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="heE-OQ-rhE" firstAttribute="top" secondItem="WNl-cn-8X8" secondAttribute="top" constant="32" id="KHe-dG-gad"/>
-                            <constraint firstItem="WNl-cn-8X8" firstAttribute="trailing" secondItem="heE-OQ-rhE" secondAttribute="trailing" constant="16" id="KO3-e9-fLi"/>
-                            <constraint firstItem="heE-OQ-rhE" firstAttribute="leading" secondItem="WNl-cn-8X8" secondAttribute="leading" constant="16" id="pmT-VL-sQM"/>
+                            <constraint firstItem="w7c-EB-Pw4" firstAttribute="top" secondItem="WNl-cn-8X8" secondAttribute="top" constant="16" id="AOf-CZ-Tom"/>
+                            <constraint firstItem="w7c-EB-Pw4" firstAttribute="leading" secondItem="WNl-cn-8X8" secondAttribute="leading" constant="16" id="FwU-r1-Ja8"/>
+                            <constraint firstItem="WNl-cn-8X8" firstAttribute="trailing" secondItem="w7c-EB-Pw4" secondAttribute="trailing" constant="16" id="YDi-Z8-kqt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WNl-cn-8X8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EJc-Cb-gfm">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Obv-2A-xxL">
-                            <connections>
-                                <action selector="didTapSave:" destination="0nQ-kW-gvd" id="xHo-S6-Bcc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="EJc-Cb-gfm"/>
                     <connections>
-                        <outlet property="phoneNumberTextField" destination="heE-OQ-rhE" id="if1-GW-m0y"/>
+                        <outlet property="actionButton" destination="fIu-mI-gUV" id="pd8-hG-BwW"/>
+                        <outlet property="phoneNumberLabeledTextField" destination="w7c-EB-Pw4" id="5hU-o7-PTT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gl-CG-ezK" userLabel="First Responder" sceneMemberID="firstResponder"/>
