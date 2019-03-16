@@ -72,12 +72,15 @@ final class AddressViewController: UIViewController, StoryboardInstantiating {
 //        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
 //        navigationItem.rightBarButtonItem = spinButton
         
+        actionButton.isLoading = true
+        
         let addressID = address.objectID
         store.privateContext { [weak self] privateContext in
             guard let privateAddress = privateContext.object(with: addressID) as? Address else { return }
             self?.mechanicService.update(isActive: nil, token: nil, dateOfBirth: nil, address: privateAddress, in: privateContext) { mechanicObjectID, error in
                 DispatchQueue.main.async {
 //                    self?.navigationItem.rightBarButtonItem = previousButton
+                    self?.actionButton.isLoading = false
                     if error == nil {
                         self?.navigationController?.popViewController(animated: true)
                         if let fetchedAddress = store.mainContext.object(with: addressID) as? Address {

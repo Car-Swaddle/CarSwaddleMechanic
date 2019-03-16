@@ -32,6 +32,11 @@ public final class PricePart: NSManagedObject {
     public static let bookingFeeKey = "bookingFee"
     public static let processingFeeKey = "processingFee"
     
+    public static let oilChangeHighMileageKey = "oilChangeHighMileage"
+    public static let oilChangeConventionalKey = "oilChangeConventional"
+    public static let oilChangeSyntheticKey = "oilChangeSynthetic"
+    public static let oilChangeBlendKey = "oilChangeBlend"
+    
     public var isPartOfSubtotal: Bool {
         return PricePart.subtotalKeys.contains(key)
     }
@@ -49,6 +54,10 @@ public final class PricePart: NSManagedObject {
         case PricePart.subtotalKey: return NSLocalizedString("Subtotal", comment: "Price part key")
         case PricePart.bookingFeeKey: return NSLocalizedString("Booking fee", comment: "Price part key")
         case PricePart.processingFeeKey: return NSLocalizedString("Processing fee", comment: "Price part key")
+        case PricePart.oilChangeHighMileageKey: return NSLocalizedString("Oil change high mileage", comment: "Price part key")
+        case PricePart.oilChangeConventionalKey: return NSLocalizedString("Oil change conventional", comment: "Price part key")
+        case PricePart.oilChangeSyntheticKey: return NSLocalizedString("Oil change synthetic", comment: "Price part key")
+        case PricePart.oilChangeBlendKey: return NSLocalizedString("Oil change blend", comment: "Price part key")
         default:
             assert(false, "We do not have \(key) yet! Please add it \(#function) \(#line)")
             return nil

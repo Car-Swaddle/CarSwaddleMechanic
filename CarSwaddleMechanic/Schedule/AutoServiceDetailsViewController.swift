@@ -268,11 +268,11 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     @IBAction private func didTapActionButton(_ button: UIButton) {
         guard let autoServiceID = autoService?.identifier,
             let nextStatus = autoService?.status.nextStatus else { return }
-        actionButton.isEnabled = false
+        actionButton.isLoading = true
         store.privateContext { [weak self] context in
             self?.autoServiceNetwork.updateAutoService(autoServiceID: autoServiceID, status: nextStatus, in: context) { autoServiceObjectID, error in
                 DispatchQueue.main.async {
-                    self?.actionButton.isEnabled = true
+                    self?.actionButton.isLoading = false
                     guard let autoServiceObjectID = autoServiceObjectID else { return }
                     self?.autoService = store.mainContext.object(with: autoServiceObjectID) as? AutoService
                 }

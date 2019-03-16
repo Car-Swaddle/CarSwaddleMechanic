@@ -48,8 +48,12 @@ final public class FileService: Service {
     }
     
     @discardableResult
-    public func uploadMechanicIdentityDocument(fileURL: URL, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        return upload(fileURL: fileURL, endpoint: .uploadIdentityDocument, completion: completion)
+    public func uploadMechanicIdentityDocument(fileURL: URL, side: String? = nil, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        var queryItems: [URLQueryItem] = []
+        if let side = side {
+            queryItems.append(URLQueryItem(name: "side", value: side))
+        }
+        return upload(fileURL: fileURL, endpoint: .uploadIdentityDocument, queryItems: queryItems, completion: completion)
     }
     
     @discardableResult

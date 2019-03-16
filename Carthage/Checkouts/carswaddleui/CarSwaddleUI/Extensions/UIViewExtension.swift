@@ -146,10 +146,10 @@ public extension UIView {
             assert(false, "Invalid superview!!!")
             return
         }
-        topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor).isActive = true
-        bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor).isActive = true
-        leadingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor).isActive = true
-        trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor).isActive = true
+        topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor, constant: insets.top).isActive = true
+        bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: insets.bottom).isActive = true
+        leadingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor, constant: insets.left).isActive = true
+        trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: insets.right).isActive = true
     }
     
     @discardableResult public func constraintsWithItem(_ item:AnyObject)->[NSLayoutConstraint] {

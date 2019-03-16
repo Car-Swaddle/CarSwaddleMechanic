@@ -10,7 +10,7 @@ import UIKit
 
 private let insetLength: CGFloat = 6
 
-open class ActionButton: UIButton {
+open class ActionButton: LoadingButton {
     
     // Change this sometime. Subclass UIControl and make a sublabel and label
     var actionTitle: String? {
@@ -66,6 +66,8 @@ open class ActionButton: UIButton {
         titleLabel?.textAlignment = .center
 //        titleEdgeInsets = UIEdgeInsets(top: insetLength, left: insetLength, bottom: insetLength, right: insetLength)
         contentEdgeInsets = UIEdgeInsets(top: insetLength, left: insetLength, bottom: insetLength, right: insetLength)
+        
+        indicatorViewStyle = .white
     }
     
     open override var intrinsicContentSize: CGSize {

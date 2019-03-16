@@ -136,8 +136,8 @@ public final class MechanicNetwork: Network {
     }
     
     @discardableResult
-    public func uploadIdentityDocument(fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return fileService.uploadMechanicIdentityDocument(fileURL: fileURL) { json, error in
+    public func uploadIdentityDocument(fileURL: URL, side: DocumentSide? = nil, in context: NSManagedObjectContext, completion: @escaping (_ mechanicObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return fileService.uploadMechanicIdentityDocument(fileURL: fileURL, side: side?.rawValue) { json, error in
             context.performOnImportQueue {
                 var mechanicObjectID: NSManagedObjectID?
                 defer {
@@ -188,6 +188,16 @@ public final class MechanicNetwork: Network {
         user?.mechanic = mechanic
         
         return mechanic
+    }
+    
+}
+
+
+extension MechanicNetwork {
+    
+    public enum DocumentSide: String {
+        case front
+        case back
     }
     
 }

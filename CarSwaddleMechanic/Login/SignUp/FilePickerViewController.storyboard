@@ -25,41 +25,81 @@
                                 <color key="textColor" red="0.4525964921002561" green="0.4525964921002561" blue="0.4525964921002561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="d6V-J0-yyx">
-                                <rect key="frame" x="16" y="80" width="343" height="199"/>
-                                <color key="backgroundColor" red="0.97042988989637302" green="0.97042988989637302" blue="0.97042988989637302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-GO-cMP">
+                                <rect key="frame" x="16" y="80" width="343" height="245"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-1C-POf">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="245"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="d6V-J0-yyx">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="199"/>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="199" id="PlX-3s-LMd"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-YI-iBS" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                                <rect key="frame" x="42" y="215" width="84" height="30"/>
+                                                <state key="normal" title="Select Front">
+                                                    <color key="titleColor" name="viewBackgroundColor1"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapSelectFront" destination="ur9-bv-g6k" eventType="touchUpInside" id="MvS-H0-hh9"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="d6V-J0-yyx" firstAttribute="leading" secondItem="4yB-1C-POf" secondAttribute="leading" id="1h4-yu-mFC"/>
+                                            <constraint firstAttribute="trailing" secondItem="d6V-J0-yyx" secondAttribute="trailing" id="eSw-FM-Tff"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DLi-uv-5rh">
+                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="245"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="KNQ-TD-awD">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="199"/>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="199" id="IcD-9n-j46"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft9-F8-SMX" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                                <rect key="frame" x="43.5" y="215" width="81" height="30"/>
+                                                <state key="normal" title="Select Back">
+                                                    <color key="titleColor" name="viewBackgroundColor1"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapSelectBack" destination="ur9-bv-g6k" eventType="touchUpInside" id="jsg-Bw-3cl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KNQ-TD-awD" firstAttribute="leading" secondItem="DLi-uv-5rh" secondAttribute="leading" id="AVd-oc-rlM"/>
+                                            <constraint firstAttribute="trailing" secondItem="KNQ-TD-awD" secondAttribute="trailing" id="Uqe-wM-gI2"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="199" id="PlX-3s-LMd"/>
+                                    <constraint firstItem="KNQ-TD-awD" firstAttribute="height" secondItem="d6V-J0-yyx" secondAttribute="height" id="ZWn-6I-b3F"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY8-os-p9p" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
-                                <rect key="frame" x="150" y="617" width="74" height="30"/>
+                            </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY8-os-p9p" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="170" y="617" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Upload file"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="didTapSave" destination="ur9-bv-g6k" eventType="touchUpInside" id="tn2-pi-VyY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-YI-iBS">
-                                <rect key="frame" x="152" y="295" width="71" height="30"/>
-                                <state key="normal" title="Select File">
-                                    <color key="titleColor" name="viewBackgroundColor1"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapSelectFile" destination="ur9-bv-g6k" eventType="touchUpInside" id="gua-2e-O1K"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="j57-lt-HAE" firstAttribute="trailing" secondItem="d6V-J0-yyx" secondAttribute="trailing" constant="16" id="0xG-dG-lR4"/>
-                            <constraint firstItem="LON-bx-Zr5" firstAttribute="top" secondItem="my0-YI-iBS" secondAttribute="bottom" constant="16" id="9CI-wD-D7C"/>
                             <constraint firstItem="LON-bx-Zr5" firstAttribute="leading" secondItem="j57-lt-HAE" secondAttribute="leading" constant="16" id="EJ2-wX-bMm"/>
                             <constraint firstItem="LON-bx-Zr5" firstAttribute="centerX" secondItem="j57-lt-HAE" secondAttribute="centerX" id="G5Y-rw-S4u"/>
-                            <constraint firstItem="d6V-J0-yyx" firstAttribute="leading" secondItem="j57-lt-HAE" secondAttribute="leading" constant="16" id="R8K-P0-srJ"/>
-                            <constraint firstItem="my0-YI-iBS" firstAttribute="top" secondItem="d6V-J0-yyx" secondAttribute="bottom" constant="16" id="Rs9-hY-8SP"/>
-                            <constraint firstItem="my0-YI-iBS" firstAttribute="centerX" secondItem="j57-lt-HAE" secondAttribute="centerX" id="e8w-Fn-APX"/>
-                            <constraint firstItem="d6V-J0-yyx" firstAttribute="top" secondItem="j57-lt-HAE" secondAttribute="top" constant="16" id="n92-JG-uMo"/>
+                            <constraint firstItem="LON-bx-Zr5" firstAttribute="top" secondItem="VIk-GO-cMP" secondAttribute="bottom" constant="16" id="cco-f1-gSz"/>
+                            <constraint firstItem="VIk-GO-cMP" firstAttribute="leading" secondItem="jbk-1G-da8" secondAttribute="leading" constant="16" id="nmZ-ca-6UM"/>
+                            <constraint firstItem="j57-lt-HAE" firstAttribute="trailing" secondItem="VIk-GO-cMP" secondAttribute="trailing" constant="16" id="oOz-ZW-xwy"/>
+                            <constraint firstItem="VIk-GO-cMP" firstAttribute="top" secondItem="j57-lt-HAE" secondAttribute="top" constant="16" id="r3s-ec-W0i"/>
                             <constraint firstItem="j57-lt-HAE" firstAttribute="trailing" secondItem="LON-bx-Zr5" secondAttribute="trailing" constant="16" id="sxu-O6-ci9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j57-lt-HAE"/>
@@ -67,9 +107,11 @@
                     <navigationItem key="navigationItem" title="Identification Document" id="qri-Fd-Rhi"/>
                     <connections>
                         <outlet property="actionButton" destination="OY8-os-p9p" id="tis-UD-0t1"/>
+                        <outlet property="backImageView" destination="KNQ-TD-awD" id="3Ho-30-6hq"/>
                         <outlet property="documentDescriptionLabel" destination="LON-bx-Zr5" id="Rfi-wC-h5y"/>
-                        <outlet property="documentImageView" destination="d6V-J0-yyx" id="4cD-Ik-EhX"/>
-                        <outlet property="selectFileButton" destination="my0-YI-iBS" id="2h8-j7-oPj"/>
+                        <outlet property="frontImageView" destination="d6V-J0-yyx" id="8P4-gP-3pU"/>
+                        <outlet property="selectBackButton" destination="ft9-F8-SMX" id="tEP-ap-Dok"/>
+                        <outlet property="selectFrontButton" destination="my0-YI-iBS" id="A0D-Rp-bPN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjb-RZ-Pl5" userLabel="First Responder" sceneMemberID="firstResponder"/>

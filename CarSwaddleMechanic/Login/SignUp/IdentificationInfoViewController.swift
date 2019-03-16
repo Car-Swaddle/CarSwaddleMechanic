@@ -52,6 +52,9 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         super.viewDidLoad()
         updatePlaceholderText()
         
+        contentAdjuster.positionActionButton()
+        contentAdjuster.showActionButtonAboveKeyboard = true
+        
         updateNumberOfDigits()
         entryView.textFieldCornerRadius = 6
         entryView.textFieldWidth = 29
@@ -67,8 +70,7 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         updateExplanationText()
         updateSpacerIndexes()
         
-        contentAdjuster.positionActionButton()
-        contentAdjuster.showActionButtonAboveKeyboard = true
+        view.layoutIfNeeded()
     }
     
     private func updateSpacerIndexes() {
@@ -102,14 +104,12 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
             present(alert, animated: true, completion: nil)
         }
         
-//        let previousButton = navigationItem.rightBarButtonItem
-//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-//        navigationItem.rightBarButtonItem = spinButton
+        actionButton.isLoading = true
         
         store.privateContext { [weak self] privateContext in
             let completion: (_ userID: NSManagedObjectID?, _ error: Error?) -> Void = { userID, error in
                 DispatchQueue.main.async {
-//                    self?.navigationItem.rightBarButtonItem = previousButton
+                    self?.actionButton.isLoading = false
                     if error == nil {
                         self?.navigationController?.popViewController(animated: true)
                     }

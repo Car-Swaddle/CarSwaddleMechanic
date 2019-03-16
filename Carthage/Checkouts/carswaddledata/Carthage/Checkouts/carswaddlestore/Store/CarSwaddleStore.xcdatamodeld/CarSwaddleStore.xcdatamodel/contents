@@ -66,6 +66,7 @@
     <entity name="Mechanic" representedClassName="Mechanic" syncable="YES">
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="identityDocumentBackID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identityDocumentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isActive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="profileImageID" optional="YES" attributeType="String" syncable="YES"/>
@@ -250,8 +251,9 @@
         <element name="Amount" positionX="-18" positionY="144" width="128" height="120"/>
         <element name="AutoService" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="Balance" positionX="-27" positionY="135" width="128" height="105"/>
+        <element name="BankAccount" positionX="-27" positionY="135" width="128" height="240"/>
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
-        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="330"/>
+        <element name="Mechanic" positionX="-27" positionY="99" width="128" height="345"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Payout" positionX="-27" positionY="135" width="128" height="315"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="105"/>
@@ -270,6 +272,5 @@
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
         <element name="Verification" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="VerificationField" positionX="-18" positionY="144" width="128" height="75"/>
-        <element name="BankAccount" positionX="-27" positionY="135" width="128" height="240"/>
     </elements>
 </model>

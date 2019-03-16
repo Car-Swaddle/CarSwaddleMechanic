@@ -65,12 +65,14 @@ final class DateOfBirthViewController: UIViewController, StoryboardInstantiating
 //        let previousButton = navigationItem.rightBarButtonItem
 //        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
 //        navigationItem.rightBarButtonItem = spinButton
-        let newDate = datePicker.date
+        actionButton.isLoading = true
         
+        let newDate = datePicker.date
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.update(dateOfBirth: newDate, in: privateContext) { mechanicID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
+                    self.actionButton.isLoading = false
                     guard error == nil else {
                         print(error ?? "")
                         return

@@ -32,6 +32,7 @@ extension Mechanic {
     @NSManaged public var transactions: Set<Transaction>
     @NSManaged public var payouts: Set<Payout>
     @NSManaged public var identityDocumentID: String?
+    @NSManaged public var identityDocumentBackID: String?
     @NSManaged public var verification: Verification?
     @NSManaged public var taxYears: Set<TaxInfo>
     @NSManaged public var bankAccount: BankAccount?

@@ -55,7 +55,17 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         
         updateUI()
         
+        insetAdjuster.showActionButtonAboveKeyboard = true
         insetAdjuster.positionActionButton()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(BankAccountViewController.didTapView))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func didTapView() {
+        routingNumberDigitEntryView.resignFirstResponder()
+        bankAccountNumberLabeledTextField.textField.resignFirstResponder()
+        accountHolderLabeledTextField.textField.resignFirstResponder()
     }
     
     private func updateUI() {
@@ -93,6 +103,8 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
 //        let previousButton = navigationItem.rightBarButtonItem
 //        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
 //        navigationItem.rightBarButtonItem = spinButton
+        
+        actionButton.isLoading = true
         generateBankAccountToken { [weak self] token in
             guard let token = token?.tokenId else {
                 DispatchQueue.main.async {
@@ -103,6 +115,7 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
             store.privateContext { privateContext in
                 self?.mechanicNetwork.update(externalAccount: token, in: privateContext) { mechanicObjectID, error in
                     DispatchQueue.main.async {
+                        self?.actionButton.isLoading = false
 //                        self?.navigationItem.rightBarButtonItem = previousButton
                         if let error = error {
                             print("error: \(error)")

@@ -111,9 +111,8 @@ class ContentInsetAdjuster {
         var keyboardHeight = keyboardFrame.cgRectValue.height
         keyboardHeight = keyboardHeight - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0)
         if includeTabBarInKeyboardCalculation {
-            keyboardHeight = keyboardHeight - navigator.tabBarController.tabBar.bounds.height
+            keyboardHeight = keyboardHeight - navigator.tabBarController.tabBar.bounds.height + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0)
         }
-        
         
         var contentInsetBottom = keyboardHeight
         
@@ -127,7 +126,6 @@ class ContentInsetAdjuster {
         if let actionButton = actionButton, showActionButtonAboveKeyboard {
             contentInsetBottom = contentInsetBottom + actionButton.frame.height + bottomGapConstant*2
         }
-//        let newContentOffset = CGPoint(x: 0, y: max(0, newYOffset))
         
         self.actionButton?.superview?.layoutIfNeeded()
         
