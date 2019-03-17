@@ -11,13 +11,16 @@ import CarSwaddleUI
 import Store
 
 class ProfileServiceRegionCell: UITableViewCell, NibRegisterable {
-
+    
+    @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        textLabel?.text = NSLocalizedString("Set service region", comment: "Service region cell")
+        label?.text = NSLocalizedString("Set service region", comment: "Service region cell")
         accessoryType = .disclosureIndicator
-        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
+        label?.font = UIFont.appFont(type: .regular, size: 17)
     }
+    
     
     func configure(with region: Region) {
         

@@ -8,24 +8,29 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="ReviewListCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="329" height="200"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="147" id="KGk-i7-Jjw" customClass="ReviewListCell" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="147"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="329" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="329" height="146.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZV4-qo-wIa">
-                        <rect key="frame" x="16" y="19" width="297" height="170"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV4-qo-wIa">
+                        <rect key="frame" x="16" y="19" width="297" height="117"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U1c-b4-LRg">
-                                <rect key="frame" x="0.0" y="0.0" width="187" height="52.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="127" height="20"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAC-ss-Q4o" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="127" id="Grj-HD-9Hb"/>
@@ -35,25 +40,21 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="star_filled_no_border"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_inactive_gray_border"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Martha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WO-ha-aVj">
-                                        <rect key="frame" x="135" y="0.0" width="52" height="52.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" verticalCompressionResistancePriority="800" text="Here is a long review with a bunch of text so that it fills the content view thing" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-8K-l8m">
-                                <rect key="frame" x="0.0" y="70.5" width="285" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="28" width="297" height="62.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" verticalCompressionResistancePriority="800" text="May 28" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOk-bX-21j">
-                                <rect key="frame" x="0.0" y="149.5" width="57" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="98.5" width="53.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" red="0.42943789770000002" green="0.42943789770000002" blue="0.42943789770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -72,9 +73,12 @@
                 <outlet property="cosmosView" destination="HAC-ss-Q4o" id="T6E-pp-jKL"/>
                 <outlet property="dateLabel" destination="IOk-bX-21j" id="JPG-sd-dsa"/>
                 <outlet property="reviewTextLabel" destination="Zpy-8K-l8m" id="5Jp-Aa-RGo"/>
-                <outlet property="reviewerNameLabel" destination="1WO-ha-aVj" id="trM-eg-7sN"/>
             </connections>
-            <point key="canvasLocation" x="148" y="190.70464767616193"/>
+            <point key="canvasLocation" x="148" y="201.04947526236884"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star_filled_no_border" width="19" height="18"/>
+        <image name="star_inactive_gray_border" width="19" height="18"/>
+    </resources>
 </document>

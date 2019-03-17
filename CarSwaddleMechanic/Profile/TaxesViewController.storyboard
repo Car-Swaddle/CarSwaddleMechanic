@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Taxes View Controller-->
+        <!--Tax Deductions-->
         <scene sceneID="2D9-46-m65">
             <objects>
                 <viewController id="wZT-bH-fJa" customClass="TaxesViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pbg-P5-HHC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ePn-xj-Bch"/>
+                    <navigationItem key="navigationItem" title="Tax Deductions" id="ePn-xj-Bch"/>
                     <connections>
                         <outlet property="tableView" destination="gEB-js-UEC" id="JTi-dv-JxW"/>
                     </connections>

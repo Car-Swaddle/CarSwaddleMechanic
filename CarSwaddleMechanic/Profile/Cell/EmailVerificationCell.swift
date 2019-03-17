@@ -32,6 +32,9 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
         updateUI()
         animationView.animationSpeed = 0.7
         animationView.loopAnimation = true
+        
+        emailLabel.font = UIFont.appFont(type: .regular, size: 17)
+        sendEmailButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
     }
     
     override func prepareForReuse() {

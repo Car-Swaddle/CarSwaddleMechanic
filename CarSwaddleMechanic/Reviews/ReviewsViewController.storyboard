@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reviews View Controller-->
+        <!--Reviews-->
         <scene sceneID="b2K-yY-MpD">
             <objects>
                 <viewController id="r0g-A0-C5o" customClass="ReviewsViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aLV-g3-NV5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ofh-7P-BOa"/>
+                    <navigationItem key="navigationItem" title="Reviews" id="Ofh-7P-BOa"/>
                     <connections>
                         <outlet property="tableView" destination="x8I-QH-HG3" id="cIA-xD-GiY"/>
                     </connections>

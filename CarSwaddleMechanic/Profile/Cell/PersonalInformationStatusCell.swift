@@ -38,7 +38,7 @@ final class PersonalInformationStatusCell: UITableViewCell, NibRegisterable {
     private var shouldShowErrorView: Bool {
         let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext)
         guard let verification = mechanic?.verification else { return false }
-        return verification.fields.count > 0
+        return verification.currentlyDue.count > 0
     }
     
 }

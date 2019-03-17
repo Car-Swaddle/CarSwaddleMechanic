@@ -89,6 +89,11 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         autoServiceStatusView.layer.cornerRadius = autoServiceStatusView.frame.height / 2
         
         autoServiceDetailsContentView.layer.cornerRadius = 12
+//        autoServiceDetailsContentView.layer.shadowOpacity = 0.2
+        autoServiceDetailsContentView.layer.shadowOpacity = 0.2
+        autoServiceDetailsContentView.layer.shadowRadius = 4
+        autoServiceDetailsContentView.layer.shadowColor = UIColor.black.cgColor
+        autoServiceDetailsContentView.layer.shadowOffset = CGSize(width: 2, height: 2)
         
         scheduledDateLabel.font = UIFont.appFont(type: .semiBold, size: 17)
         

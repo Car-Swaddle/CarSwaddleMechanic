@@ -40,7 +40,7 @@ class ContentInsetAdjuster {
         let bottomConstraint = actionButton.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -bottomGapConstant)
         self.actionButtonBottomConstraint = bottomConstraint
         bottomConstraint.isActive = true
-        actionButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 120).isActive = true
+        actionButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 280).isActive = true
         actionButton.centerXAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.centerXAnchor).isActive = true
     }
     

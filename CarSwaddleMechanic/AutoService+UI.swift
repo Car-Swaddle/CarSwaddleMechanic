@@ -37,4 +37,17 @@ extension AutoService.Status {
         }
     }
     
+    var actionButtonText: String? {
+        switch self {
+        case .scheduled:
+            return NSLocalizedString("Start service", comment: "Button that will start the service")
+        case .inProgress:
+            return NSLocalizedString("Complete service", comment: "Button that will start the service")
+        case .completed:
+            return nil
+        case .canceled:
+            return nil
+        }
+    }
+    
 }

@@ -26,6 +26,9 @@ final class TaxYearCell: UITableViewCell, NibRegisterable {
     
     private var taxInfo: TaxInfo?
     
+    @IBOutlet private weak var mileDeductTitleLabel: UILabel!
+    @IBOutlet private weak var dollarDeductTitleLabel: UILabel!
+    @IBOutlet private weak var taxYearTitleLabel: UILabel!
     @IBOutlet private weak var yearLabel: UILabel!
     @IBOutlet private weak var deductionCostLabel: UILabel!
     @IBOutlet private weak var milesDeductionLabel: UILabel!
@@ -41,6 +44,14 @@ final class TaxYearCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         
         selectionStyle = .none
+        
+        mileDeductTitleLabel.font = UIFont.appFont(type: .regular, size: 15)
+        dollarDeductTitleLabel.font = UIFont.appFont(type: .regular, size: 15)
+        taxYearTitleLabel.font = UIFont.appFont(type: .regular, size: 15)
+        
+        yearLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        deductionCostLabel.font = UIFont.appFont(type: .semiBold, size: 17)
+        milesDeductionLabel.font = UIFont.appFont(type: .semiBold, size: 17)
     }
     
     func configure(with taxInfo: TaxInfo, updateData: Bool = true) {

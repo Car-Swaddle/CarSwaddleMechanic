@@ -32,6 +32,7 @@ protocol ProfileHeaderViewDelegate: AnyObject {
     func didSelectCameraRoll(headerView: ProfileHeaderView)
     func didSelectEditName(headerView: ProfileHeaderView)
     func presentAlert(alert: UIAlertController, headerView: ProfileHeaderView)
+    func didTapReviews(headerView: ProfileHeaderView)
 }
 
 final class ProfileHeaderView: UIView, NibInstantiating {
@@ -39,7 +40,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     public func configure(with mechanic: Mechanic) {
         mechanicImageView.configure(withMechanicID: mechanic.identifier)
         
-        let isPulseHidden = mechanic.profileImageID != nil
+        let isPulseHidden = mechanic.profileImageID != nil && false
         pulseAnimationView.isHiddenInStackView = isPulseHidden
         if isPulseHidden {
             pulseAnimationView.stop()
@@ -65,22 +66,36 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     
     public weak var delegate: ProfileHeaderViewDelegate?
     
-    @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var mechanicImageView: MechanicImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var starRatingView: CosmosView!
     @IBOutlet private weak var ratingsLabel: UILabel!
     @IBOutlet private weak var servicesProvidedLabel: UILabel!
+    @IBOutlet private weak var editImageButton: UIButton!
     @IBOutlet private weak var pulseAnimationView: LOTAnimationView!
+    
+    @IBOutlet weak var allReviewsButton: UIButton!
+    
     
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        pulseAnimationView.animationSpeed = 0.7
-        pulseAnimationView.loopAnimation = true
+        editImageButton.backgroundColor = .white
+        editImageButton.layer.cornerRadius = 11
+        editImageButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
+        editImageButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
+        
+        editImageButton.layer.shadowOpacity = 0.2
+        editImageButton.layer.shadowRadius = 2
+        editImageButton.layer.shadowColor = UIColor.black.cgColor
+        editImageButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        
         starRatingView.settings.fillMode = .precise
+        nameLabel.font = UIFont.appFont(type: .semiBold, size: 20)
+        ratingsLabel.font = UIFont.appFont(type: .regular, size: 17)
+        servicesProvidedLabel.font = UIFont.appFont(type: .regular, size: 17)
     }
     
     @IBAction private func didSelectEditButton() {
@@ -121,10 +136,42 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         self.starRatingView.rating = averageRating
         
         let numberOfRatings = stats.numberOfRatings
-        let averageRatingString = ratingFormatter.string(from: NSNumber(value: averageRating)) ?? ""
-        ratingsLabel.text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
+//        let averageRatingString = ratingFormatter.string(from: NSNumber(value: averageRating)) ?? ""
+//        ratingsLabel.text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
+        ratingsLabel.attributedText = starRatingAttributedString(withAverage: averageRating, numberOfRatings: numberOfRatings)
         
-        servicesProvidedLabel.text = String(format: formatServicesString, stats.autoServicesProvided)
+        servicesProvidedLabel.attributedText = self.attributedString(forNumberOfServices: stats.autoServicesProvided)
+        // String(format: formatServicesString, stats.autoServicesProvided)
+    }
+    
+    private func starRatingAttributedString(withAverage averageRating: Double, numberOfRatings: Int) -> NSAttributedString {
+        let averageRatingString = ratingFormatter.string(from: NSNumber(value: averageRating)) ?? ""
+        let text = String(format: formatAveragesString, averageRatingString, numberOfRatings)
+        let averageRatingRange = NSString(string: text).range(of: averageRatingString)
+        let numberOfRatingsRange = NSString(string: text).range(of: "\(numberOfRatings)", options: .backwards)
+        
+        let mutableString = NSMutableAttributedString(string: text)
+        
+        mutableString.setAttributes(highlightAttributes, range: averageRatingRange)
+        mutableString.setAttributes(highlightAttributes, range: numberOfRatingsRange)
+        
+        return mutableString.copy() as! NSAttributedString
+    }
+    
+    private var highlightAttributes: [NSAttributedString.Key: Any] {
+        let font = UIFont.appFont(type: .semiBold, size: 17)!
+        return [.font: font, .foregroundColor: UIColor.black]
+    }
+    
+    private func attributedString(forNumberOfServices numberOfServices: Int) -> NSAttributedString {
+        let text = String(format: formatServicesString, numberOfServices)
+        let mutableString = NSMutableAttributedString(string: text)
+        
+        let range = NSString(string: text).range(of: "\(numberOfServices)")
+        
+        mutableString.setAttributes(highlightAttributes, range: range)
+        
+        return mutableString.copy() as! NSAttributedString
     }
     
     private func configureForEmpty() {
@@ -166,6 +213,10 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         return UIAlertAction(title: title, style: .default) { action in
             self.delegate?.didSelectEditName(headerView: self)
         }
+    }
+    
+    @IBAction private func didTapAllReviews() {
+        delegate?.didTapReviews(headerView: self)
     }
     
 }

@@ -15,6 +15,7 @@ final class PhoneNumberVerificationCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        verifiedLabel.font = UIFont.appFont(type: .regular, size: 17)
     }
     
     @IBAction func didTapVerify() {

@@ -34,7 +34,7 @@ final class NotesTableViewCell: UITableViewCell, NibRegisterable {
         notesTextView.font = UIFont.appFont(type: .regular, size: 17)
         notesTextView.delegate = self
         
-        notesContentView.layer.cornerRadius = 12
+        notesContentView.layer.cornerRadius = defaultCornerRadius
         
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
         let hairlineView = addHairlineView(toSide: .bottom, color: .gray3, size: 1.0, insets: insets)

@@ -22,7 +22,6 @@ let monthDayDateFormatter: DateFormatter = {
 final class ReviewListCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var cosmosView: CosmosView!
-    @IBOutlet private weak var reviewerNameLabel: UILabel!
     @IBOutlet private weak var reviewTextLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -31,11 +30,13 @@ final class ReviewListCell: UITableViewCell, NibRegisterable {
         
         cosmosView.isUserInteractionEnabled = false
         selectionStyle = .none
+        
+        reviewTextLabel.font = UIFont.appFont(type: .regular, size: 17)
+        dateLabel.font = UIFont.appFont(type: .regular, size: 15)
     }
     
     func configure(with review: Review) {
         cosmosView.rating = Double(review.rating)
-        reviewerNameLabel.text = review.user?.firstName
         reviewTextLabel.text = review.text
         dateLabel.text = monthDayDateFormatter.string(from: review.creationDate)
     }

@@ -41,7 +41,7 @@ final class AutoServiceStatusCell: UITableViewCell, NibRegisterable {
     private func setButtonSelected(_ button: UIButton) {
         resetAllButtonsStyle()
         button.titleLabel?.font = boldFont
-        button.layer.cornerRadius = 6
+        button.layer.cornerRadius = defaultCornerRadius
         button.layer.borderColor = UIColor.blue.cgColor
         button.layer.borderWidth = 1
     }

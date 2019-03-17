@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contact Information View Controller-->
+        <!--Contact Information-->
         <scene sceneID="Ytv-MG-UIb">
             <objects>
                 <viewController id="9pf-ZZ-5jl" customClass="ContactInformationViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8os-uj-tcH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OLr-8g-bHL"/>
+                    <navigationItem key="navigationItem" title="Contact Information" id="OLr-8g-bHL"/>
                     <connections>
                         <outlet property="tableView" destination="1Ik-yD-7bi" id="Bme-P0-5MU"/>
                     </connections>

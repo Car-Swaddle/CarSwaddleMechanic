@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Name View Controller-->
+        <!--Name-->
         <scene sceneID="bhC-1b-ce2">
             <objects>
                 <viewController id="EBo-eu-UFL" customClass="NameViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mgc-OM-5gv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AJa-p4-iiD"/>
+                    <navigationItem key="navigationItem" title="Name" id="AJa-p4-iiD"/>
                     <connections>
                         <outlet property="actionButton" destination="KSF-yp-fDt" id="JuO-76-JSd"/>
                         <outlet property="firstNameLabeledTextField" destination="Ztf-bS-bjj" id="2d5-MI-eEd"/>

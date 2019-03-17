@@ -65,20 +65,21 @@ final class NameViewController: UIViewController, StoryboardInstantiating, Navig
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             firstName.isEmpty == false, lastName.isEmpty == false else { return }
         
-//        let previousBarButtonItem = navigationItem.rightBarButtonItem
-//        let spinButton = UIBarButtonItem.activityBarButtonItem(with: .gray)
-//        navigationItem.rightBarButtonItem = spinButton
+        actionButton.isLoading = true
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
-                    guard error == nil else { return }
-                    if let self = self, let navigationDelegate = self.navigationDelegate {
+                    guard let self = self else { return }
+                    
+                    self.actionButton.isLoading = false
+                    guard error == nil else {
+                        print(error ?? "")
+                        return
+                    }
+                    if let navigationDelegate = self.navigationDelegate {
                         navigationDelegate.didFinish(navigationDelegatingViewController: self)
                     } else {
-                        if error == nil {
-                            self?.navigationController?.popViewController(animated: true)
-                        }
-//                        self?.navigationItem.rightBarButtonItem = previousBarButtonItem
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }

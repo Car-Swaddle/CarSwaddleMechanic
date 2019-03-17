@@ -35,7 +35,7 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     @IBOutlet public weak var verifyPhoneNumberDescriptionLabel: UILabel!
     @IBOutlet public weak var resendCodeButton: UIButton!
     
-    @IBOutlet private weak var oneTimeCodeEntryView: OneTimeCodeEntryView!
+    @IBOutlet public weak var oneTimeCodeEntryView: OneTimeCodeEntryView!
     
     open override func viewDidLoad() {
         super.viewDidLoad()

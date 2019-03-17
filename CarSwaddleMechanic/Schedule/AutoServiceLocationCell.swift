@@ -32,8 +32,8 @@ final class AutoServiceLocationCell: UITableViewCell, NibRegisterable {
         
         mapView.addAnnotation(annotation)
         
-        distanceContentView.layer.cornerRadius = 6
-        mapView.layer.cornerRadius = 12
+        distanceContentView.layer.cornerRadius = defaultCornerRadius
+        mapView.layer.cornerRadius = defaultCornerRadius
         
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
         let view = addHairlineView(toSide: .bottom, color: .gray3, size: 1.0, insets: insets)

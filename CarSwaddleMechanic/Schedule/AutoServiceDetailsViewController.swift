@@ -72,9 +72,8 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
                     self.actionButton.backgroundColor = nextStatusColor
                 }
                 self.tableView.reloadData()
-                
-                self.actionButton.actionSubtext = NSLocalizedString("set status to", comment: "Button that sets the auto service status")
-                self.actionButton.actionTitle = self.autoService?.status.nextStatus?.localizedString
+            
+                self.actionButton.actionTitle = self.autoService?.status.actionButtonText
                 self.actionButton.isHiddenInStackView = self.autoService?.status.nextStatus == nil
             }
         }
@@ -114,13 +113,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         requestData()
         setupTableView()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-//        contentInsetAdjuster.updateContentInsets()
-        
-//        actionButton.actionTitle = "In progress"
-//        actionButton.actionSubtext = "set status to"
+        contentInsetAdjuster.positionActionButton()
     }
     
     override func viewDidLayoutSubviews() {

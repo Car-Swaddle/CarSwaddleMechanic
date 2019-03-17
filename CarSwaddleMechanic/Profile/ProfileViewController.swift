@@ -20,7 +20,6 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         case schedule
         case accountInformation
         case contactInformation
-        case reviews
         case taxes
         case logout
     }
@@ -46,7 +45,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     private lazy var headerView: ProfileHeaderView = {
         let view = ProfileHeaderView.viewFromNib()
         view.delegate = self
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 300)
         view.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         return view
     }()
@@ -62,6 +61,19 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let headerView = tableView.tableHeaderView else { return }
+        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+            tableView.tableHeaderView = headerView
+            tableView.layoutIfNeeded()
+        }
     }
     
     @objc private func didRefresh() {
@@ -191,9 +203,6 @@ extension ProfileViewController: UITableViewDelegate {
 //            let date = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.dateOfBirth
 //            let viewController = DateOfBirthViewController.create(with: date)
 //            show(viewController, sender: self)
-        case .reviews:
-            let viewController = ReviewsViewController.viewControllerFromStoryboard()
-            show(viewController, sender: self)
         case .taxes:
             let taxesViewController = TaxesViewController.viewControllerFromStoryboard()
             show(taxesViewController, sender: self)
@@ -226,11 +235,6 @@ extension ProfileViewController: UITableViewDataSource {
             cell.valueText = NSLocalizedString("Set hours", comment: "Description of row")
             cell.descriptionText = nil
             return cell
-        case .reviews:
-            let cell: ProfileDataCell = tableView.dequeueCell()
-            cell.valueText = NSLocalizedString("Reviews", comment: "Description of row")
-            cell.descriptionText = nil
-            return cell
         case .accountInformation:
             let cell: PersonalInformationStatusCell = tableView.dequeueCell()
             return cell
@@ -238,9 +242,9 @@ extension ProfileViewController: UITableViewDataSource {
             let cell: ContactInformationCell = tableView.dequeueCell()
             return cell
         case .taxes:
-            let cell: TextCell = tableView.dequeueCell()
-            cell.textLabel?.font = UIFont.appFont(type: .regular, size: 15)
-            cell.textLabel?.text = NSLocalizedString("Tax deductions", comment: "Title of label that when tapped goes to the mechanics taxes")
+            let cell: ProfileDataCell = tableView.dequeueCell()
+//            cell.valueText?.font = UIFont.appFont(type: .regular, size: 15)
+            cell.valueText = NSLocalizedString("Tax deductions", comment: "Title of label that when tapped goes to the mechanics taxes")
             return cell
         case .logout:
             let cell: LogoutCell = tableView.dequeueCell()
@@ -288,6 +292,11 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     
     func presentAlert(alert: UIAlertController, headerView: ProfileHeaderView) {
         present(alert, animated: true, completion: nil)
+    }
+    
+    func didTapReviews(headerView: ProfileHeaderView) {
+        let viewController = ReviewsViewController.viewControllerFromStoryboard()
+        show(viewController, sender: self)
     }
     
     private func imagePicker(source: UIImagePickerController.SourceType) -> UIImagePickerController {

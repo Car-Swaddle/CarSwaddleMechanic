@@ -27,6 +27,7 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         view.addSubview(oneTimeViewController.view)
         oneTimeViewController.view.pinFrameToSuperViewBounds()
         oneTimeViewController.didMove(toParent: self)
+        oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
     }
     
     private lazy var oneTimeViewController: OneTimeCodeViewController = {
@@ -43,13 +44,14 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         store.privateContext { [weak self] privateContext in
             self?.userNetwork.verifySMS(withCode: code, in: privateContext) { userObjectID, error in
                 guard let self = self else { return }
-                if error == nil {
-                    print("success")
-                    DispatchQueue.main.async {
-                        self.navigationDelegate?.didFinish(navigationDelegatingViewController: self)
-                    }
+                guard error == nil else {
+                    print(error ?? "")
+                    return
+                }
+                if let navigationDelegate = self.navigationDelegate {
+                    navigationDelegate.didFinish(navigationDelegatingViewController: self)
                 } else {
-                    print("it no worky")
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

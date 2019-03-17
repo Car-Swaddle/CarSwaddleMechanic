@@ -16,20 +16,21 @@ final class MechanicActiveCell: UITableViewCell, NibRegisterable {
 
     private var mechanicNetwork: MechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
     
-    private lazy var activeSwitch: UISwitch = {
-        let activitySwitch = UISwitch()
-        activitySwitch.addTarget(self, action: #selector(MechanicActiveCell.switchDidChange(_:)), for: .valueChanged)
-        return activitySwitch
-    }()
+    @IBOutlet private weak var subLabel: UILabel!
+    @IBOutlet private weak var label: UILabel!
+    @IBOutlet private weak var activeSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        accessoryView = activeSwitch
+//        accessoryView = activeSwitch
         updateIsActive()
-        textLabel?.font = UIFont.appFont(type: .regular, size: 15)
-        textLabel?.text = NSLocalizedString("Allow new appointments", comment: "")
-        detailTextLabel?.text = NSLocalizedString("If this is on, people will schedule appointments on your calendar", comment: "Explanation of a UI switch")
+        label.font = UIFont.appFont(type: .regular, size: 17)
+        subLabel.font = UIFont.appFont(type: .regular, size: 15)
+        label.text = NSLocalizedString("Allow new appointments", comment: "")
+        subLabel?.text = NSLocalizedString("If this is on, customers can schedule appointments on your calendar", comment: "Explanation of a UI switch")
+        
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {
@@ -50,7 +51,7 @@ final class MechanicActiveCell: UITableViewCell, NibRegisterable {
         }
     }
 
-    @objc private func switchDidChange(_ activeSwitch: UISwitch) {
+    @IBAction private func switchDidChange(_ activeSwitch: UISwitch) {
         let isActive = activeSwitch.isOn
         store.privateContext { [weak self] context in
             self?.mechanicNetwork.update(isActive: isActive, token: nil, dateOfBirth: nil, address: nil, in: context) { mechanicID, error in

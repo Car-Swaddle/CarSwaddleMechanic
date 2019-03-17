@@ -716,8 +716,10 @@ SWIFT_CLASS_NAMED("Verification")
 @interface Verification (SWIFT_EXTENSION(Store))
 @property (nonatomic, copy) NSString * _Nullable disabledReason;
 @property (nonatomic, copy) NSDate * _Nullable dueByDate;
-@property (nonatomic, copy) NSSet<VerificationField *> * _Nonnull fields;
 @property (nonatomic, strong) Mechanic * _Nullable mechanic;
+@property (nonatomic, copy) NSSet<VerificationField *> * _Nonnull pastDue;
+@property (nonatomic, copy) NSSet<VerificationField *> * _Nonnull currentlyDue;
+@property (nonatomic, copy) NSSet<VerificationField *> * _Nonnull eventuallyDue;
 @end
 
 

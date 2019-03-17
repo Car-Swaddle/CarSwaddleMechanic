@@ -17,7 +17,7 @@ final class UserImageView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
         image = UIImage.from(color: .gray3)
-        layer.cornerRadius = 8
+        layer.cornerRadius = defaultCornerRadius
         layer.masksToBounds = true
         contentMode = .scaleAspectFill
     }

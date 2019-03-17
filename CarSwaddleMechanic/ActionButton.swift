@@ -8,7 +8,9 @@
 
 import UIKit
 
-private let insetLength: CGFloat = 6
+public let defaultCornerRadius: CGFloat = 22
+
+private let insetLength: CGFloat = 12
 
 open class ActionButton: LoadingButton {
     
@@ -34,9 +36,8 @@ open class ActionButton: LoadingButton {
         if let actionSubtext = actionSubtext {
             let attributedSubtext = NSAttributedString(string: actionSubtext, attributes: [.font: UIFont.appFont(type: .semiBold, size: 15)])
             attributedTitle.append(attributedSubtext)
+            attributedTitle.append(NSAttributedString(string: "\n"))
         }
-        
-        attributedTitle.append(NSAttributedString(string: "\n"))
         
         if let actionTitle = actionTitle {
             let attributedAction = NSAttributedString(string: actionTitle, attributes: [.font: UIFont.appFont(type: .semiBold, size: 20)])

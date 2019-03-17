@@ -60,6 +60,7 @@ extension ContactInformationViewController: UITableViewDataSource {
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = currentUser?.phoneNumber ?? NSLocalizedString("No phone number", comment: "")
             cell.descriptionText = nil
+            cell.accessoryType = .none
             return cell
         }
     }

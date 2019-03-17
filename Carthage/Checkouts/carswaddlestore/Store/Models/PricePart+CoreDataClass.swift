@@ -55,9 +55,9 @@ public final class PricePart: NSManagedObject {
         case PricePart.bookingFeeKey: return NSLocalizedString("Booking fee", comment: "Price part key")
         case PricePart.processingFeeKey: return NSLocalizedString("Processing fee", comment: "Price part key")
         case PricePart.oilChangeHighMileageKey: return NSLocalizedString("Oil change high mileage", comment: "Price part key")
-        case PricePart.oilChangeConventionalKey: return NSLocalizedString("Oil change conventional", comment: "Price part key")
-        case PricePart.oilChangeSyntheticKey: return NSLocalizedString("Oil change synthetic", comment: "Price part key")
-        case PricePart.oilChangeBlendKey: return NSLocalizedString("Oil change blend", comment: "Price part key")
+        case PricePart.oilChangeConventionalKey: return NSLocalizedString("Synthetic oil change", comment: "Price part key")
+        case PricePart.oilChangeSyntheticKey: return NSLocalizedString("Conventional oil change", comment: "Price part key")
+        case PricePart.oilChangeBlendKey: return NSLocalizedString("Blend oil change", comment: "Price part key")
         default:
             assert(false, "We do not have \(key) yet! Please add it \(#function) \(#line)")
             return nil

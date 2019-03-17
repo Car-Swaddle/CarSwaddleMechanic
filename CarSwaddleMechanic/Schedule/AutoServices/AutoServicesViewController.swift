@@ -153,15 +153,17 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         routes = []
         tableView.reloadData()
         task?.cancel()
+        fetchedResultsController.delegate = nil
         store.privateContext { [weak self] privateContext in
             self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
                 store.mainContext { mainContext in
-                    print("autoServices: \(autoServiceIDs.count), date: \(String(describing: self?.dayDate))")
-                    self?.resetData()
-                    if self?.refreshControl.isRefreshing == true {
-                        self?.refreshControl.endRefreshing()
+                    guard let self = self else { return }
+                    self.resetData()
+                    self.fetchedResultsController.delegate = self
+                    if self.refreshControl.isRefreshing == true {
+                        self.refreshControl.endRefreshing()
                     }
-                    self?.requestDistanceEstimates()
+                    self.requestDistanceEstimates()
                     completion()
                 }
             }

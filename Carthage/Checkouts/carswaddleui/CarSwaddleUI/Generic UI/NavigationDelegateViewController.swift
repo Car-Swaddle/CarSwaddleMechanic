@@ -31,7 +31,7 @@ public final class NavigationDelegateViewController: UINavigationController, Nav
     private var navigationDelegatingViewControllers: [NavigationDelegatingViewController]
     
     private func createLogoutButton() -> UIBarButtonItem {
-        let title = NSLocalizedString("Logout", comment: "logout button")
+        let title = NSLocalizedString("Cancel", comment: "logout button")
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(NavigationDelegateViewController.viewControllerDidSelectLogout))
         return button
     }

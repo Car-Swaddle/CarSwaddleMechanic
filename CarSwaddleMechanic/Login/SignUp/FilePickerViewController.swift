@@ -54,8 +54,8 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        frontImageView.layer.cornerRadius = 8
-        backImageView.layer.cornerRadius = 8
+        frontImageView.layer.cornerRadius = defaultCornerRadius
+        backImageView.layer.cornerRadius = defaultCornerRadius
         
         let frontImageLabel = self.imageLabel()
         frontImageLabel.text = NSLocalizedString("front of document", comment: "front of document")
