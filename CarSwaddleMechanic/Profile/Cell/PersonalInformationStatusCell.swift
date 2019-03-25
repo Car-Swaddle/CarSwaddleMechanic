@@ -14,15 +14,17 @@ import Lottie
 final class PersonalInformationStatusCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var animationView: LOTAnimationView!
+    @IBOutlet private weak var animationView: AnimationView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         updateErrorViewHiddenStatus()
         titleLabel.text = NSLocalizedString("Personal Information", comment: "Description of row")
         accessoryType = .disclosureIndicator
+        
+        animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7
-        animationView.loopAnimation = true
+        animationView.loopMode = .loop
     }
     
     override func prepareForReuse() {

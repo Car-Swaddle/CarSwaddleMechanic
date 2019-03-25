@@ -7,6 +7,8 @@
 //
 
 import CarSwaddleUI
+import Lottie
+import Store
 
 final class AutoServicesHeaderView: UIView, NibInstantiating {
     
@@ -69,6 +71,51 @@ public class LabeledBannerView: UIView {
         return label
     }()
     
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    public var image: UIImage? {
+        didSet {
+            imageView.image = image
+            if image == nil {
+                imageView.isHiddenInStackView = true
+            } else {
+                imageView.isHiddenInStackView = false
+            }
+        }
+    }
+    
+    public var lottieAnimation: String? {
+        didSet {
+            if let lottieAnimation = lottieAnimation {
+                lottieView.animation = Animation.named(lottieAnimation)
+                lottieView.play()
+                lottieView.loopMode = .loop
+                lottieView.isHiddenInStackView = false
+            } else {
+                lottieView.animation = nil
+                lottieView.stop()
+                lottieView.isHiddenInStackView = true
+            }
+        }
+    }
+    
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var lottieView: AnimationView = {
+        let view = AnimationView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -91,13 +138,45 @@ public class LabeledBannerView: UIView {
     }
     
     private func setup() {
-        addSubview(label)
+        addSubview(stackView)
         
-        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: TimelineUIBuilder.labelOffset).isActive = true
-        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -TimelineUIBuilder.labelOffset).isActive = true
-        label.setContentCompressionResistancePriority(UILayoutPriority.required, for: .horizontal)
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: TimelineUIBuilder.labelOffset).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -TimelineUIBuilder.labelOffset).isActive = true
+        stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        stackView.alignment = .center
+        stackView.spacing = 8
         
-        label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        stackView.addArrangedSubview(imageView)
+        
+        imageView.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        imageView.isHiddenInStackView = true
+        imageView.tintColor = .white
+        
+        stackView.addArrangedSubview(lottieView)
+        
+        lottieView.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        lottieView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        lottieView.isHiddenInStackView = true
+        
+        stackView.addArrangedSubview(label)
+    }
+    
+}
+
+
+extension LabeledBannerView {
+    
+    func configure(for status: AutoService.Status) {
+        switch status {
+        case .completed, .scheduled, .canceled:
+            image = status.image
+            lottieAnimation = nil
+        case .inProgress:
+            lottieAnimation = LottieAnimation.inProgress.fileName
+            image = nil
+        }
     }
     
 }

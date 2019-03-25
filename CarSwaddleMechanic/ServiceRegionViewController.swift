@@ -23,8 +23,10 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
 
     @IBOutlet private weak var mapView: MKMapView!
     
-    private var serviceRegion: Region?
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var descriptionView: UIVisualEffectView!
     
+    private var serviceRegion: Region?
     private var hasFetchedRegion: Bool = false
     
     private var regionNetwork = RegionNetwork(serviceRequest: serviceRequest)
@@ -32,8 +34,8 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     private var circleView: CircleView = {
         let view = CircleView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.alpha = 0.4
-        view.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 1.0, alpha: 1.0)
+        view.alpha = 0.56
+        view.backgroundColor = .secondary
         return view
     }()
     
@@ -45,6 +47,12 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
         setupRegionSelection()
         setupBarButtons()
         mapView.delegate = self
+        
+        descriptionLabel.text = NSLocalizedString("Set the region you'll be available for an oil change. Grab the white grip to adjust the size of the region.", comment: "Explanaiton of what to do on the service region screen")
+        descriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        descriptionView.layer.cornerRadius = defaultCornerRadius
+        descriptionView.clipsToBounds = true
+//        descriptionView.layer.shadowOpacity = 0.2
     }
     
     private func setupBarButtons() {
@@ -108,8 +116,8 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     
     private func setupRegionSelection() {
         view.addSubview(circleView)
-        circleView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        circleView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        circleView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        circleView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
         circleHeightConstraint.isActive = true
         
@@ -177,6 +185,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
     private func updateMapView(to region: Region, animated: Bool) {
         let mapViewSpan: CLLocationDistance = region.radius*5
         let thatThing = MKCoordinateRegion(center: region.centerCoordinate, latitudinalMeters: mapViewSpan, longitudinalMeters: mapViewSpan)
+        mapView.layoutIfNeeded()
         mapView.setRegion(thatThing, animated: animated)
         mapView.layoutIfNeeded()
         let circleCoordinateRegion = MKCoordinateRegion(center: region.centerCoordinate, latitudinalMeters: 100, longitudinalMeters: region.radius*2)
@@ -222,9 +231,8 @@ extension ServiceRegionViewController: MKMapViewDelegate {
 
 class CircleView: UIView {
     
-    var gripView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0.3, green: 0.9, blue: 0.6, alpha: 1.0)
+    var gripView: GripView = {
+        let view = GripView.viewFromNib()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -238,7 +246,6 @@ class CircleView: UIView {
         super.init(frame: frame)
         setupSubview()
         clipsToBounds = true
-//        isUserInteractionEnabled = false
     }
     
     required init?(coder aDecoder: NSCoder) {

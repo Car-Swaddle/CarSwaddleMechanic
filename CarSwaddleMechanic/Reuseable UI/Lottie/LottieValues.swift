@@ -10,4 +10,5 @@ import CarSwaddleUI
 
 extension LottieAnimation {
     static let circlePulse = LottieAnimation(fileName: "circle-pulse")
+    static let inProgress = LottieAnimation(fileName: "in-progress")
 }

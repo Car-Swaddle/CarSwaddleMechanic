@@ -19,11 +19,22 @@ extension Verification {
 
     @NSManaged public var disabledReason: String?
     @NSManaged public var dueByDate: Date?
-    @NSManaged public var fields: Set<VerificationField>
     @NSManaged public var mechanic: Mechanic?
+    
+    @NSManaged public var pastDue: Set<VerificationField>
+    @NSManaged public var currentlyDue: Set<VerificationField>
+    @NSManaged public var eventuallyDue: Set<VerificationField>
 
-    public var typedFieldsNeeded: [VerificationField.Field] {
-        return fields.compactMap { $0.typedValue }
+    public var typedFieldsPastDue: [VerificationField.Field] {
+        return pastDue.compactMap { $0.typedValue }
+    }
+    
+    public var typedFieldsCurrentlyDue: [VerificationField.Field] {
+        return currentlyDue.compactMap { $0.typedValue }
+    }
+    
+    public var typedFieldsEventuallyDue: [VerificationField.Field] {
+        return eventuallyDue.compactMap { $0.typedValue }
     }
     
     public var typedDisabledReason: DisabledReason? {

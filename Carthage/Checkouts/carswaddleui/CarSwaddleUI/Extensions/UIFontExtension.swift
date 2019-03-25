@@ -10,25 +10,42 @@ import UIKit
 
 public extension UIFont {
     
-//    public static func appFont(size: CGFloat, type: FontType = .regular) -> UIFont {
-//        switch type {
-//        case .regular:
-//            return UIFont.systemFont(ofSize: size)
-//        case .semibold:
-//            return UIFont.systemFont(ofSize: size, weight: .medium)
-//        case .bold:
-//            return UIFont.boldSystemFont(ofSize: size)
-//        case .italic:
-//            return UIFont.italicSystemFont(ofSize: size)
-//        }
-//    }
+    public struct FontType: Equatable {
+        public var rawValue: String
+        
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+        
+        public static let system: FontType = FontType(rawValue: ".SFUIText")
+        
+        public static func ==(lhs: FontType, rhs: FontType) -> Bool {
+            return lhs.rawValue == rhs.rawValue
+        }
+    }
+    
+    public static func appFont(type: FontType, size: CGFloat) -> UIFont! {
+        let adjustedSize = UIFontMetrics.default.scaledValue(for: size)
+        return UIFont(name: type.rawValue, size: adjustedSize)!
+    }
+    
+    public static func printAllFonts() {
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
+    }
     
 }
 
-
-//public enum FontType {
-//    case regular
-//    case semibold
-//    case bold
-//    case italic
-//}
+extension UIFontDescriptor {
+    var monospacedDigitFontDescriptor: UIFontDescriptor {
+        let fontDescriptorFeatureSettings = [[UIFontDescriptor.FeatureKey.featureIdentifier: kNumberSpacingType,
+                                              UIFontDescriptor.FeatureKey.typeIdentifier: kMonospacedNumbersSelector]]
+        
+        
+        let fontDescriptorAttributes = [UIFontDescriptor.AttributeName.featureSettings: fontDescriptorFeatureSettings]
+        let fontDescriptor = self.addingAttributes(fontDescriptorAttributes)
+        return fontDescriptor
+    }
+}

@@ -44,10 +44,13 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
     @IBAction func didTapSave() {
         let phoneNumber = phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         guard phoneNumber?.isEmpty == false else { return }
+        
+        actionButton.isLoading = true
         store.privateContext { [weak self] context in
             self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
+                    self.actionButton.isLoading = false
                     guard error == nil else {
                         print(error ?? "")
                         return

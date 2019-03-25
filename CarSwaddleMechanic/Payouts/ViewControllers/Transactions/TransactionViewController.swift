@@ -33,10 +33,12 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
     
     private enum TransactionDetailsRow: CaseIterable {
         case transaction
-        case autoService
         case cost
         case distance
+        case autoService
     }
+    
+    @IBOutlet private weak var actionButton: ActionButton!
     
     private var sections: [Section] = Section.allCases
     private var detailsRows: [TransactionDetailsRow] = TransactionDetailsRow.allCases
@@ -68,6 +70,8 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
         }
     }
     
+    private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +79,7 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
             self?.tableView.reloadData()
         }
         setupTableView()
+        insetAdjuster.positionActionButton()
     }
     
     private func setupTableView() {
@@ -136,7 +141,8 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
     }
     
     private func cameraAlertController() -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let title = NSLocalizedString("Add a receipt for your tax records", comment: "Title of alert")
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(cameraAction)
         alert.addAction(cameraRollAction)
@@ -153,6 +159,11 @@ final class TransactionViewController: UIViewController, StoryboardInstantiating
         return imagePicker
     }
     
+    @IBAction private func didTapAddReceipt() {
+        let alert = self.cameraAlertController()
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -167,7 +178,7 @@ extension TransactionViewController: UITableViewDataSource {
         case .transactionDetails:
             return detailsRows.count
         case .receipts:
-            return (fetchedResultsController.sections?[0].numberOfObjects ?? 0) + 1
+            return (fetchedResultsController.sections?[0].numberOfObjects ?? 0)
         }
     }
     
@@ -177,11 +188,14 @@ extension TransactionViewController: UITableViewDataSource {
             switch detailsRows[indexPath.row] {
             case .transaction:
                 let cell: TransactionCell = tableView.dequeueCell()
+                cell.allowDisclosure = false
                 cell.configure(with: transaction)
                 return cell
             case .autoService:
                 let cell: TextCell = tableView.dequeueCell()
                 cell.textLabel?.text = NSLocalizedString("Auto service", comment: "Tap to get to auto service from a transaction")
+                cell.textLabel?.font = UIFont.appFont(type: .regular, size: 17)
+                cell.accessoryType = .disclosureIndicator
                 return cell
             case .cost:
                 let cell: LabelValueCell = tableView.dequeueCell()
@@ -204,9 +218,9 @@ extension TransactionViewController: UITableViewDataSource {
                 return cell
             }
         case .receipts:
-            if isAddReceiptRow(indexPath: indexPath) {
-                return tableView.dequeueCell() as AddReceiptCell
-            } else {
+//            if isAddReceiptRow(indexPath: indexPath) {
+//                return tableView.dequeueCell() as AddReceiptCell
+//            } else {
                 let cell: TransactionReceiptCell = tableView.dequeueCell()
                 let formatString = NSLocalizedString("Receipt %i", comment: "The order of the receipt. Just how many there are")
                 cell.receiptLabel?.text = String(format: formatString, indexPath.row+1)
@@ -214,8 +228,26 @@ extension TransactionViewController: UITableViewDataSource {
                 let receipt = fetchedResultsController.object(at: adjustedIndexPath)
                 cell.configure(with: receipt)
                 return cell
-            }
+//            }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch self.section(fromSectionIndex: section) {
+        case .receipts:
+            if fetchedResultsController.sections?[0].numberOfObjects == 0 {
+                return 0
+            } else {
+                return 74
+            }
+        case .transactionDetails: return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let labeledHeaderView = HeaderView()
+        labeledHeaderView.labelText = NSLocalizedString("Receipts", comment: "Header list of photos of receipts listed below")
+        return labeledHeaderView
     }
     
     private func isAddReceiptRow(indexPath: IndexPath) -> Bool {
@@ -241,16 +273,16 @@ extension TransactionViewController: UITableViewDelegate {
                 show(autoServiceViewController, sender: self)
             }
         case .receipts:
-            if isAddReceiptRow(indexPath: indexPath) {
-                let alert = self.cameraAlertController()
-                present(alert, animated: true, completion: nil)
-            } else {
+//            if isAddReceiptRow(indexPath: indexPath) {
+//                let alert = self.cameraAlertController()
+//                present(alert, animated: true, completion: nil)
+//            } else {
                 let receipt = fetchedResultsController.object(at: receiptIndexPath(from: indexPath))
                 guard let fileURL = (try? profileImageStore.getFilePath(name: receipt.receiptPhotoID)) else { return }
                 let viewController = UIDocumentInteractionController(url: fileURL)
                 viewController.delegate = self
                 viewController.presentPreview(animated: true)
-            }
+//            }
         }
     }
     

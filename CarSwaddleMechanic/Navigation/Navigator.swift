@@ -77,10 +77,6 @@ final public class Navigator: NSObject {
         UINavigationBar.appearance().isTranslucent = false
         UITextField.appearance().tintColor = .secondary
         
-//        UILabel.appearance().font = UIFont.appFont(type: .regular, size: 14)
-//        let buttonLabelProxy = UILabel.appearance(whenContainedInInstancesOf: [UIButton.self])
-//        buttonLabelProxy.font = UIFont.appFont(type: .regular, size: 14)
-        
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .semiBold, size: 10),
             .foregroundColor: UIColor.viewBackgroundColor1
@@ -92,26 +88,25 @@ final public class Navigator: NSObject {
             .foregroundColor: UIColor.lightGray
         ]
         UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
-//        UITabBarItem.appearance().tintColor = .secondary
         UITabBar.appearance().tintColor = .secondary
-//        let tabBarLabelProxy = UILabel.appearance(whenContainedInInstancesOf: [UITabBarItem.self])
-//        tabBarLabelProxy.font = UIFont.appFont(type: .regular, size: 24)
         
-//        buttonLabelProxy.textColor = .green
-//        UIButton().titleLabel?.font
-//        UIButton().titleLabel?.textColor
-//        UIButton.appearance().setTitleColor(.secondary, for: .normal)
-//        UIButton.appearance().titleLabel?.font = UIFont.appFont(type: .medium, size: 24)
-//        UIButton.appearance().setFont(UIFont.appFont(type: .medium, size: 14), for: .normal)
-//        UIButton().font
         UISwitch.appearance().tintColor = .secondary
         UISwitch.appearance().onTintColor = .secondary
         UINavigationBar.appearance().tintColor = .viewBackgroundColor1
         
         let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17)]
-        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        
+        for state in [UIControl.State.normal, .highlighted, .selected, .disabled, .focused, .reserved] {
+            UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: state)
+        }
         
         UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
+        
+        let actionButton = ActionButton.appearance()
+        actionButton.defaultTitleFont = UIFont.appFont(type: .bold, size: 23)
+        actionButton.defaultBackgroundColor = .red
+        
+        CarSwaddleUI.ContentInsetAdjuster.defaultBottomOffset = navigator.tabBarController.tabBar.bounds.height
     }
     
     #if DEBUG

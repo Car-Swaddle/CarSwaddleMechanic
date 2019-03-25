@@ -8,8 +8,13 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Service Region View Controller-->
+        <!--Service Region-->
         <scene sceneID="jvZ-zx-XpB">
             <objects>
                 <viewController id="bU7-jb-ZMg" customClass="ServiceRegionViewController" customModule="CarSwaddleMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,23 +25,69 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meu-B5-g6E">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgo-E8-vPr">
+                                <rect key="frame" x="16" y="519.5" width="343" height="123.5"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q38-FY-THa">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="124"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-2N-1ZC">
+                                            <rect key="frame" x="16" y="16" width="311" height="91.5"/>
+                                            <string key="text">Set the region you will support. If an oil change is requested in the region you provide, you'll be a candidate for the customer to choose from. Grab the white grip to adjust the size of the region.</string>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eyz-2N-1ZC" firstAttribute="top" secondItem="q38-FY-THa" secondAttribute="top" constant="16" id="LK2-Ho-aaC"/>
+                                        <constraint firstItem="eyz-2N-1ZC" firstAttribute="leading" secondItem="q38-FY-THa" secondAttribute="leading" constant="16" id="asA-Zv-SlW"/>
+                                        <constraint firstAttribute="bottom" secondItem="eyz-2N-1ZC" secondAttribute="bottom" constant="16" id="dv3-py-n7n"/>
+                                        <constraint firstAttribute="trailing" secondItem="eyz-2N-1ZC" secondAttribute="trailing" constant="16" id="u69-5H-u6I"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Swx-Qc-J3f" firstAttribute="bottom" secondItem="bgo-E8-vPr" secondAttribute="bottom" constant="24" id="9Ks-uy-ZgP"/>
                             <constraint firstItem="meu-B5-g6E" firstAttribute="leading" secondItem="3H1-hZ-Kzm" secondAttribute="leading" id="FuL-P4-OIW"/>
                             <constraint firstItem="meu-B5-g6E" firstAttribute="bottom" secondItem="3H1-hZ-Kzm" secondAttribute="bottom" id="K24-o7-Gi1"/>
                             <constraint firstItem="meu-B5-g6E" firstAttribute="top" secondItem="3H1-hZ-Kzm" secondAttribute="top" id="MPY-Sp-hUT"/>
                             <constraint firstAttribute="trailing" secondItem="meu-B5-g6E" secondAttribute="trailing" id="f12-wz-NFY"/>
+                            <constraint firstItem="Swx-Qc-J3f" firstAttribute="trailing" secondItem="bgo-E8-vPr" secondAttribute="trailing" constant="16" id="vMQ-Ur-TA0"/>
+                            <constraint firstItem="bgo-E8-vPr" firstAttribute="leading" secondItem="Swx-Qc-J3f" secondAttribute="leading" constant="16" id="wdb-74-g2Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Swx-Qc-J3f"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Service Region" id="7ry-E2-pYU"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="eyz-2N-1ZC" id="n4X-4Q-LDd"/>
+                        <outlet property="descriptionView" destination="bgo-E8-vPr" id="9eq-Uh-uue"/>
                         <outlet property="mapView" destination="meu-B5-g6E" id="uPN-R8-Qvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npy-JS-DP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="184"/>
+            <point key="canvasLocation" x="956" y="183.95802098950526"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oVY-Xw-kqy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XZ3-Ko-wuT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ody-i0-0Z3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bU7-jb-ZMg" kind="relationship" relationship="rootViewController" id="0OT-Db-tJl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HnD-Xv-vZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="184"/>
         </scene>
     </scenes>
 </document>

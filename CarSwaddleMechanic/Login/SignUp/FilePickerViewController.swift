@@ -11,6 +11,7 @@ import CarSwaddleUI
 import MobileCoreServices
 import CarSwaddleData
 import Store
+import CarSwaddleNetworkRequest
 
 final class FilePickerViewController: UIViewController, StoryboardInstantiating {
     
@@ -27,6 +28,7 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
     @IBOutlet private weak var actionButton: ActionButton!
     
     private var mechanicNetwork = MechanicNetwork(serviceRequest: serviceRequest)
+    private var fileService: FileService = FileService(serviceRequest: serviceRequest)
     
     private lazy var insetAdjuster: ContentInsetAdjuster = ContentInsetAdjuster(tableView: nil, actionButton: actionButton)
     
@@ -79,6 +81,8 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
         
         // Passport, government-issued ID, or driver's license*
         documentDescriptionLabel.text = NSLocalizedString("To correctly identify you for security and for tax reasons an identity document may be required.\n\nPlease provide one of the following documents:\n- Passport\n- Goverment issued id\n- Driver's license (front and back)", comment: "Explanation of identity document")
+        
+        
     }
     
     private func imageLabel() -> UILabel {

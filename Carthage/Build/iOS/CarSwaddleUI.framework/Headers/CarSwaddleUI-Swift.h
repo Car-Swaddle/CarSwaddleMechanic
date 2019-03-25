@@ -185,6 +185,28 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class NSCoder;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI13LoadingButton")
+@interface LoadingButton : UIButton
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIFont;
+@class UIColor;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI12ActionButton")
+@interface ActionButton : LoadingButton
+@property (nonatomic, strong) UIFont * _Nonnull defaultTitleFont;
+@property (nonatomic, strong) UIColor * _Nonnull defaultBackgroundColor;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)layoutSubviews;
+@end
+
 @protocol UIViewControllerContextTransitioning;
 
 /// Base class for animated transitions
@@ -211,7 +233,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI17CustomAlertAction")
 
 
 
-@class NSCoder;
 
 /// The display of one piece of content on a <code>CustomAlertController</code>.
 /// This holds the image, lottie, title, message and any buttons.
@@ -258,7 +279,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI28DelegatingAnimatedTransition")
 @interface DelegatingAnimatedTransition : AnimatedTransition
 @end
 
-@class UIColor;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI18UnderlineTextField")
 @interface UnderlineTextField : UITextField
@@ -293,6 +313,24 @@ SWIFT_CLASS("_TtC12CarSwaddleUI25HorizontalSlideTransition")
 @end
 
 
+SWIFT_CLASS("_TtC12CarSwaddleUI16LabeledTextField")
+@interface LabeledTextField : UIView
+@property (nonatomic) CGFloat textFieldToLabelGap;
+@property (nonatomic, strong) UIColor * _Nonnull underlineColor;
+@property (nonatomic, strong) UIColor * _Nonnull textFieldBackgroundColor;
+@property (nonatomic, copy) NSString * _Nullable textFieldPlaceholder;
+@property (nonatomic, strong) UIColor * _Nonnull labelTextColor;
+@property (nonatomic, strong) UIFont * _Nonnull labelTextExistsFont;
+@property (nonatomic, strong) UIFont * _Nonnull labelTextNotExistsFont;
+@property (nonatomic, strong) UIFont * _Nonnull textFieldFont;
+@property (nonatomic, copy) NSString * _Nullable labelText;
+- (void)prepareForInterfaceBuilder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
 /// Thin layer around CLLocationManager providing a simpler API and caching.
 SWIFT_CLASS("_TtC12CarSwaddleUI15LocationManager")
 @interface LocationManager : NSObject
@@ -319,7 +357,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI32NavigationDelegateViewController")
 @end
 
 @protocol OneTimeEntryViewDelegate;
-@class UIFont;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI20OneTimeCodeEntryView")
 @interface OneTimeCodeEntryView : UIView
@@ -352,7 +389,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI20OneTimeCodeEntryView")
 @end
 
 @class UILabel;
-@class UIButton;
 
 SWIFT_CLASS("_TtC12CarSwaddleUI25OneTimeCodeViewController")
 @interface OneTimeCodeViewController : UIViewController
@@ -378,6 +414,18 @@ SWIFT_PROTOCOL("_TtP12CarSwaddleUI24OneTimeEntryViewDelegate_")
 - (void)codeDidChangeWithCode:(NSString * _Nonnull)code view:(OneTimeCodeEntryView * _Nonnull)view;
 @end
 
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI16PocketController")
+@interface PocketController : UINavigationController
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
+@property (nonatomic, readonly) BOOL shouldAutomaticallyForwardAppearanceMethods;
+- (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
+@end
 
 
 SWIFT_CLASS("_TtC12CarSwaddleUI8TextCell")
@@ -427,6 +475,10 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
+
+
 
 
 

@@ -56,11 +56,18 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         setupTableView()
         user = User.currentUser(context: store.mainContext)
         updateData()
+        
+        let systemFont = UIFont.systemFont(ofSize: 13)
+        
+        let font = UIFont(name: ".SFUIText", size: 13)
+        
+        UIFont.printAllFonts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        updateData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -223,9 +230,19 @@ extension ProfileViewController: UITableViewDataSource {
         switch row {
         case .serviceRegion:
             let cell: ProfileServiceRegionCell = tableView.dequeueCell()
-            if let region = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.serviceRegion {
+            let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext)
+            if mechanic?.hasSetServiceRegion == false {
+                cell.pulseAnimationView.isHiddenInStackView = false
+                cell.pulseAnimationView.play()
+            } else {
+                cell.pulseAnimationView.isHiddenInStackView = true
+                cell.pulseAnimationView.stop()
+            }
+            
+            if let region = mechanic?.serviceRegion {
                 cell.configure(with: region)
             }
+            
             return cell
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()
@@ -234,6 +251,7 @@ extension ProfileViewController: UITableViewDataSource {
             let cell: ProfileDataCell = tableView.dequeueCell()
             cell.valueText = NSLocalizedString("Set hours", comment: "Description of row")
             cell.descriptionText = nil
+            cell.errorViewIsHidden = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.hasSetAvailability != false
             return cell
         case .accountInformation:
             let cell: PersonalInformationStatusCell = tableView.dequeueCell()

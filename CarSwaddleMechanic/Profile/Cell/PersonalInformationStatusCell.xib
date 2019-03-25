@@ -32,15 +32,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-9T-Flh" customClass="LOTAnimationView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-9T-Flh" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="273" y="14.5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aN1-9T-Flh" secondAttribute="height" multiplier="1:1" id="Y5Z-wx-3LM"/>
                                     <constraint firstAttribute="height" constant="22" id="cvU-cO-iVp"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>

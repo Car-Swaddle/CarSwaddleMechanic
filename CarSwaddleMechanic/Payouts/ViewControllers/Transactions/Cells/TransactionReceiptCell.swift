@@ -20,6 +20,8 @@ final class TransactionReceiptCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        receiptLabel.font = UIFont.appFont(type: .regular, size: 17)
+        accessoryType = .disclosureIndicator
     }
     
     func configure(with transactionReceipt: TransactionReceipt) {

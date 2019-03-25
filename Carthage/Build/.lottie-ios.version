@@ -1,9 +1,13 @@
 {
-  "commitish" : "65402f3cf81e9148bc6daad1d6e5f8e310169711",
+  "commitish" : "32be591c8f5b278e54a8cffcc041787bf2a00acd",
   "iOS" : [
     {
       "name" : "Lottie",
-      "hash" : "ecc956c4f63a473bf427d44631a274abe7faa8cd011c5d5e980137fb25b63bff"
+      "hash" : "bbcc39f2a991f4a6e2699fff3a159250584fc2faa6eeeaed4d2b59531cf3b5a2"
+    },
+    {
+      "name" : "Lottie",
+      "hash" : "bbcc39f2a991f4a6e2699fff3a159250584fc2faa6eeeaed4d2b59531cf3b5a2"
     }
   ]
 }

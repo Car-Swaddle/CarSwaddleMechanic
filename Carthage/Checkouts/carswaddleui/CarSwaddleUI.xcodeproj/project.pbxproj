@@ -27,6 +27,11 @@
 		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */; };
+		99BC8D282245F47A00B732E7 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D262245F47A00B732E7 /* ActionButton.swift */; };
+		99BC8D292245F47A00B732E7 /* ContentInsetAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */; };
+		99BC8D2B2245F49C00B732E7 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */; };
+		99BC8D2D2245F4E300B732E7 /* LabeledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D2C2245F4E300B732E7 /* LabeledTextField.swift */; };
+		99DC25F822469AAE009E0A15 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC25F722469AAE009E0A15 /* PocketViewController.swift */; };
 		99E66CAA21DDDC7600C6E3E1 /* CustomAlertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA521DDDC7600C6E3E1 /* CustomAlertContentView.swift */; };
 		99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA621DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift */; };
 		99E66CAD21DDDC7600C6E3E1 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66CA821DDDC7600C6E3E1 /* CustomAlertController.swift */; };
@@ -87,6 +92,11 @@
 		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
 		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		99BC8D262245F47A00B732E7 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInsetAdjuster.swift; sourceTree = "<group>"; };
+		99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		99BC8D2C2245F4E300B732E7 /* LabeledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextField.swift; sourceTree = "<group>"; };
+		99DC25F722469AAE009E0A15 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
 		99E66CA421DDDC7500C6E3E1 /* CustomAlertController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomAlertController.storyboard; sourceTree = "<group>"; };
 		99E66CA521DDDC7600C6E3E1 /* CustomAlertContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertContentView.swift; sourceTree = "<group>"; };
 		99E66CA621DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertControllerExtension.swift; sourceTree = "<group>"; };
@@ -213,7 +223,7 @@
 				99E66CA321DDDC4C00C6E3E1 /* CustomAlert */,
 				9912CD96216C75E80006FDDF /* Extensions */,
 				997012142154B14200D547C5 /* CarSwaddleUI.h */,
-				997012152154B14200D547C5 /* Info.plist */,
+				99DC26012246E498009E0A15 /* Resources */,
 			);
 			path = CarSwaddleUI;
 			sourceTree = "<group>";
@@ -225,6 +235,14 @@
 				997012212154B14200D547C5 /* Info.plist */,
 			);
 			path = CarSwaddleUITests;
+			sourceTree = "<group>";
+		};
+		99DC26012246E498009E0A15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				997012152154B14200D547C5 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		99E66CA321DDDC4C00C6E3E1 /* CustomAlert */ = {
@@ -254,11 +272,16 @@
 		99E66D9D21E28ED000C6E3E1 /* Generic UI */ = {
 			isa = PBXGroup;
 			children = (
+				99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */,
+				99BC8D2C2245F4E300B732E7 /* LabeledTextField.swift */,
+				99BC8D262245F47A00B732E7 /* ActionButton.swift */,
+				99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */,
 				995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */,
 				995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */,
 				99E66D9F21E28F0100C6E3E1 /* TextCell.swift */,
 				99E66DA021E28F0100C6E3E1 /* TextCell.xib */,
 				99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */,
+				99DC25F722469AAE009E0A15 /* PocketViewController.swift */,
 			);
 			path = "Generic UI";
 			sourceTree = "<group>";
@@ -423,17 +446,21 @@
 				99E66CBF21DDE4B100C6E3E1 /* AnimatedTransition.swift in Sources */,
 				99F696AC220FEB2B0021A719 /* DeletingTextField.swift in Sources */,
 				99E66CB721DDE41000C6E3E1 /* CGSizeExtension.swift in Sources */,
+				99BC8D292245F47A00B732E7 /* ContentInsetAdjuster.swift in Sources */,
 				995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */,
 				99E66CAD21DDDC7600C6E3E1 /* CustomAlertController.swift in Sources */,
 				99F027752184533D005FEFC7 /* LocationManager.swift in Sources */,
 				9912CD9A216C76260006FDDF /* UIViewControllerExtension.swift in Sources */,
 				99F696A6220F3AF50021A719 /* OneTimeCodeViewController.swift in Sources */,
+				99BC8D282245F47A00B732E7 /* ActionButton.swift in Sources */,
 				99E66DA121E28F0100C6E3E1 /* TextCell.swift in Sources */,
 				992BFDC9220567AF006B64CC /* TweakSelectCell.swift in Sources */,
 				99E66CB121DDDEE600C6E3E1 /* UIColorExtension.swift in Sources */,
 				99E66CC121DDE4B100C6E3E1 /* ZoomAnimatedTransition.swift in Sources */,
 				9912CD98216C75F70006FDDF /* UIAlertControllerExtensions.swift in Sources */,
 				99E66CB521DDE1D900C6E3E1 /* UIImageExtension.swift in Sources */,
+				99BC8D2B2245F49C00B732E7 /* LoadingButton.swift in Sources */,
+				99BC8D2D2245F4E300B732E7 /* LabeledTextField.swift in Sources */,
 				99E66CAA21DDDC7600C6E3E1 /* CustomAlertContentView.swift in Sources */,
 				99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */,
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
@@ -444,6 +471,7 @@
 				992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */,
 				99F69689220BD38E0021A719 /* LottieAnimation.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
+				99DC25F822469AAE009E0A15 /* PocketViewController.swift in Sources */,
 				99E66CAB21DDDC7600C6E3E1 /* CustomAlertControllerExtension.swift in Sources */,
 				992BFDC7220567AF006B64CC /* TweakSelectViewController.swift in Sources */,
 			);
@@ -604,7 +632,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CarSwaddleUI/Info.plist;
+				INFOPLIST_FILE = CarSwaddleUI/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -636,7 +664,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = CarSwaddleUI/Info.plist;
+				INFOPLIST_FILE = CarSwaddleUI/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -661,7 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
-				INFOPLIST_FILE = CarSwaddleUITests/Info.plist;
+				INFOPLIST_FILE = CarSwaddleUITests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,7 +709,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MG7WLQ6J4A;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
-				INFOPLIST_FILE = CarSwaddleUITests/Info.plist;
+				INFOPLIST_FILE = CarSwaddleUITests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

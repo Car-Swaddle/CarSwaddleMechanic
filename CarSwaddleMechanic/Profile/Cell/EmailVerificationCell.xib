@@ -39,15 +39,12 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su0-47-xbc" customClass="LOTAnimationView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="su0-47-xbc" customClass="AnimationView" customModule="Lottie">
                                         <rect key="frame" x="277" y="3.5" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="AUX-cD-YWZ"/>
                                             <constraint firstAttribute="width" secondItem="su0-47-xbc" secondAttribute="height" multiplier="1:1" id="VwS-Xy-bRy"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>

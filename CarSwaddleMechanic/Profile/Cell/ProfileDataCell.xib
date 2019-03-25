@@ -43,15 +43,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="600" horizontalCompressionResistancePriority="600" translatesAutoresizingMaskIntoConstraints="NO" id="8ky-1s-uQh" customClass="LOTAnimationView">
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="600" horizontalCompressionResistancePriority="600" translatesAutoresizingMaskIntoConstraints="NO" id="8ky-1s-uQh" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="266" y="16.5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8ky-1s-uQh" secondAttribute="height" multiplier="1:1" id="WqL-lo-sZZ"/>
                                     <constraint firstAttribute="height" constant="22" id="YYR-SO-SHR"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="circle-pulse"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>

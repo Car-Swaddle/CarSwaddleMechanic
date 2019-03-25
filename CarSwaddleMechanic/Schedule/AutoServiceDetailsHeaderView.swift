@@ -30,9 +30,9 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
     func configure(with autoService: AutoService) {
         self.autoService = autoService
         bannerView.label.text = self.statusString(for: autoService)
-        nameLabel.text = autoService.creator?.displayName
-        
         bannerView.backgroundColor = autoService.status.color
+        nameLabel.text = autoService.creator?.displayName
+        bannerView.configure(for: autoService.status)
     }
     
     private func statusString(for autoService: AutoService) -> String {
@@ -51,6 +51,8 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        bannerView.label.text = nil
+        nameLabel.text = nil
     }
     
     @IBAction func didTapCall() {

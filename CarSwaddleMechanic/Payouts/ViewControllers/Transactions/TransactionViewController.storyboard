@@ -25,6 +25,14 @@
                                     <outlet property="delegate" destination="Ea1-LK-UT2" id="mKQ-Fa-wTx"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-fL-aEJ" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="145" y="618" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Receipt"/>
+                                <connections>
+                                    <action selector="didTapAddReceipt" destination="Ea1-LK-UT2" eventType="touchUpInside" id="BHG-8b-LcE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -39,6 +47,7 @@
                         <barButtonItem key="backBarButtonItem" title="Transaction" id="zjt-J5-byN"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionButton" destination="tbK-fL-aEJ" id="ewH-fX-9Kj"/>
                         <outlet property="tableView" destination="UA6-Pn-OzG" id="bGG-xl-yQl"/>
                     </connections>
                 </viewController>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GripView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="43" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4V-Yu-oTA">
+                    <rect key="frame" x="20.5" y="6" width="2" height="28"/>
+                    <color key="backgroundColor" name="textColor3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="G41-zS-Gpb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-W9-Ypq">
+                    <rect key="frame" x="31.5" y="6" width="2" height="28"/>
+                    <color key="backgroundColor" name="textColor3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="oZa-LS-Ji7"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXi-g6-vqk">
+                    <rect key="frame" x="10" y="6" width="2" height="28"/>
+                    <color key="backgroundColor" name="textColor3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="VtD-Xf-rTT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="j4V-Yu-oTA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="6lg-Ra-6uJ"/>
+                <constraint firstItem="j4V-Yu-oTA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="8bf-CU-laz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j4V-Yu-oTA" secondAttribute="bottom" constant="6" id="FLE-TX-3VP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uXi-g6-vqk" secondAttribute="bottom" constant="6" id="G9c-vY-Dfe"/>
+                <constraint firstItem="Io5-W9-Ypq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="TBp-Ti-R6M"/>
+                <constraint firstItem="uXi-g6-vqk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="XiK-kw-NDv"/>
+                <constraint firstItem="Io5-W9-Ypq" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="1.5" id="bsh-JR-nYE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Io5-W9-Ypq" secondAttribute="bottom" constant="6" id="kuO-Hk-of0"/>
+                <constraint firstItem="uXi-g6-vqk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" multiplier="0.5" id="vv2-D3-t5n"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="widthConstraints" destination="oZa-LS-Ji7" collectionClass="NSMutableArray" id="EXs-Mg-D8h"/>
+                <outletCollection property="widthConstraints" destination="G41-zS-Gpb" collectionClass="NSMutableArray" id="1YU-jr-flx"/>
+                <outletCollection property="widthConstraints" destination="VtD-Xf-rTT" collectionClass="NSMutableArray" id="alt-fT-beX"/>
+            </connections>
+            <point key="canvasLocation" x="-127.2" y="363.41829085457272"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

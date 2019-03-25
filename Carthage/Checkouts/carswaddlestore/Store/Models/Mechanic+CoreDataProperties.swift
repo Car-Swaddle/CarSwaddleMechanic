@@ -36,6 +36,8 @@ extension Mechanic {
     @NSManaged public var verification: Verification?
     @NSManaged public var taxYears: Set<TaxInfo>
     @NSManaged public var bankAccount: BankAccount?
+    @NSManaged public var hasSetAvailability: Bool
+    @NSManaged public var hasSetServiceRegion: Bool
 
 }
 

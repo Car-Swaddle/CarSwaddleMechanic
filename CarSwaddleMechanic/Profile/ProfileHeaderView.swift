@@ -40,7 +40,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     public func configure(with mechanic: Mechanic) {
         mechanicImageView.configure(withMechanicID: mechanic.identifier)
         
-        let isPulseHidden = mechanic.profileImageID != nil && false
+        let isPulseHidden = mechanic.profileImageID != nil
         pulseAnimationView.isHiddenInStackView = isPulseHidden
         if isPulseHidden {
             pulseAnimationView.stop()
@@ -72,7 +72,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     @IBOutlet private weak var ratingsLabel: UILabel!
     @IBOutlet private weak var servicesProvidedLabel: UILabel!
     @IBOutlet private weak var editImageButton: UIButton!
-    @IBOutlet private weak var pulseAnimationView: LOTAnimationView!
+    @IBOutlet private weak var pulseAnimationView: AnimationView!
     
     @IBOutlet weak var allReviewsButton: UIButton!
     
@@ -96,6 +96,10 @@ final class ProfileHeaderView: UIView, NibInstantiating {
         nameLabel.font = UIFont.appFont(type: .semiBold, size: 20)
         ratingsLabel.font = UIFont.appFont(type: .regular, size: 17)
         servicesProvidedLabel.font = UIFont.appFont(type: .regular, size: 17)
+        
+        pulseAnimationView.animation = Animation.named("circle-pulse")
+        pulseAnimationView.animationSpeed = 0.7
+        pulseAnimationView.loopMode = .loop
     }
     
     @IBAction private func didSelectEditButton() {

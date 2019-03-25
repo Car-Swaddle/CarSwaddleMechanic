@@ -29,16 +29,34 @@
                         <constraint firstAttribute="width" priority="750" constant="209" id="L49-KD-584"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-KN-Oum">
-                    <rect key="frame" x="337" y="20" width="32" height="30"/>
-                    <state key="normal" title="SMS"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-KN-Oum" customClass="CircleButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                    <rect key="frame" x="324" y="12.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="0nY-UF-N6E"/>
+                        <constraint firstAttribute="width" secondItem="eIu-KN-Oum" secondAttribute="height" multiplier="1:1" id="bFU-f8-Uyf"/>
+                    </constraints>
+                    <state key="normal" image="sms-bubble"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapSMS" destination="iN0-l3-epB" eventType="touchUpInside" id="c96-CZ-3Ll"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W5-Uf-l2a">
-                    <rect key="frame" x="299" y="20" width="30" height="30"/>
-                    <state key="normal" title="Call"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W5-Uf-l2a" customClass="CircleButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                    <rect key="frame" x="263" y="12.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2W5-Uf-l2a" secondAttribute="height" multiplier="1:1" id="3XB-zU-5MI"/>
+                        <constraint firstAttribute="height" constant="45" id="GFW-hw-BYQ"/>
+                    </constraints>
+                    <state key="normal" image="phone"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapCall" destination="iN0-l3-epB" eventType="touchUpInside" id="811-Ec-Xay"/>
                     </connections>
@@ -54,7 +72,7 @@
             <constraints>
                 <constraint firstItem="aEu-Cc-j8z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="CVe-Ew-Ec3"/>
                 <constraint firstItem="eIu-KN-Oum" firstAttribute="centerY" secondItem="aEu-Cc-j8z" secondAttribute="centerY" id="Eft-bt-ydG"/>
-                <constraint firstItem="eIu-KN-Oum" firstAttribute="leading" secondItem="2W5-Uf-l2a" secondAttribute="trailing" constant="8" id="EpX-xd-WBj"/>
+                <constraint firstItem="eIu-KN-Oum" firstAttribute="leading" secondItem="2W5-Uf-l2a" secondAttribute="trailing" constant="16" id="EpX-xd-WBj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eIu-KN-Oum" secondAttribute="trailing" constant="16" id="IYM-I6-YlR"/>
                 <constraint firstItem="2W5-Uf-l2a" firstAttribute="centerY" secondItem="eIu-KN-Oum" secondAttribute="centerY" id="Nho-px-zG8"/>
                 <constraint firstItem="zAR-dW-XtN" firstAttribute="top" secondItem="aEu-Cc-j8z" secondAttribute="bottom" constant="8" id="UGP-iv-xIi"/>
@@ -76,6 +94,8 @@
         </view>
     </objects>
     <resources>
+        <image name="phone" width="37.5" height="37.5"/>
+        <image name="sms-bubble" width="500" height="500"/>
         <namedColor name="secondary">
             <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

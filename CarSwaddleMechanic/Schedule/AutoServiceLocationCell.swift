@@ -32,7 +32,7 @@ final class AutoServiceLocationCell: UITableViewCell, NibRegisterable {
         
         mapView.addAnnotation(annotation)
         
-        distanceContentView.layer.cornerRadius = defaultCornerRadius
+        distanceContentView.layer.cornerRadius = 6
         mapView.layer.cornerRadius = defaultCornerRadius
         
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)

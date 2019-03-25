@@ -18,24 +18,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="343" height="80.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWx-b2-PiI">
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FGn-JG-pUa">
                         <rect key="frame" x="16" y="16" width="311" height="48.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWx-b2-PiI">
+                                <rect key="frame" x="0.0" y="14" width="281" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-OT-z1T" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="289" y="13.5" width="22" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="0KT-gt-hu4"/>
+                                    <constraint firstAttribute="height" constant="22" id="Fle-bu-Bss"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cWx-b2-PiI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7D4-Uu-yF7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="cWx-b2-PiI" secondAttribute="trailing" id="LF1-eO-M6X"/>
-                    <constraint firstAttribute="bottom" secondItem="cWx-b2-PiI" secondAttribute="bottom" constant="16" id="OcL-Ss-hqD"/>
-                    <constraint firstItem="cWx-b2-PiI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Siq-zm-grs"/>
-                    <constraint firstItem="cWx-b2-PiI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kpA-Df-UIt"/>
+                    <constraint firstAttribute="bottom" secondItem="FGn-JG-pUa" secondAttribute="bottom" constant="16" id="7Cq-UZ-TNV"/>
+                    <constraint firstItem="FGn-JG-pUa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="N6J-0v-taP"/>
+                    <constraint firstItem="FGn-JG-pUa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ev1-mG-HVW"/>
+                    <constraint firstAttribute="trailing" secondItem="FGn-JG-pUa" secondAttribute="trailing" constant="16" id="nDE-qX-OQd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="label" destination="cWx-b2-PiI" id="f4w-hE-qx8"/>
+                <outlet property="pulseAnimationView" destination="cMU-OT-z1T" id="pSu-7e-8h0"/>
             </connections>
             <point key="canvasLocation" x="156" y="160.56971514242881"/>
         </tableViewCell>

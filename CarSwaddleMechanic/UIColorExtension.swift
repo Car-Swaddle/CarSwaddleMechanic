@@ -15,7 +15,7 @@ extension UIColor {
     static let red1 = #colorLiteral(red: 0.9921568627, green: 0.5411764706, blue: 0.4509803922, alpha: 1)
     
     static let scheduledColor = UIColor.secondary
-    static let inProgressColor = #colorLiteral(red: 0.38406394, green: 0.5855452583, blue: 0.9687775088, alpha: 1)
+    static let inProgressColor = #colorLiteral(red: 0.3843137255, green: 0.5843137255, blue: 0.968627451, alpha: 1)
     static let completedColor = UIColor(hexString: "459650")
     // greens ABEDC6, B9FFB7, 90D086, 5EFC8D, 37FF8B too sharp, 749C75 too dark, B2BD7E too yellow, 415D43 too dark, 2A9638, 004F2D *, 0A8754 *, 459650
     static let canceledColor: UIColor = .gray3

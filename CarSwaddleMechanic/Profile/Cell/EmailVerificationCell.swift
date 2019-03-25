@@ -20,7 +20,7 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var sendEmailButton: UIButton!
     @IBOutlet private weak var emailLabel: UILabel!
-    @IBOutlet private weak var animationView: LOTAnimationView!
+    @IBOutlet private weak var animationView: AnimationView!
     
     private lazy var currentUser: User? = {
         return User.currentUser(context: store.mainContext)
@@ -30,8 +30,10 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
         super.awakeFromNib()
         selectionStyle = .none
         updateUI()
+        
+        animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7
-        animationView.loopAnimation = true
+        animationView.loopMode = .loop
         
         emailLabel.font = UIFont.appFont(type: .regular, size: 17)
         sendEmailButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)

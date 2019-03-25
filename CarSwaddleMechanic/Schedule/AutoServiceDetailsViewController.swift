@@ -73,7 +73,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
                 }
                 self.tableView.reloadData()
             
-                self.actionButton.actionTitle = self.autoService?.status.actionButtonText
+                self.actionButton.setTitle(self.autoService?.status.actionButtonText, for: .normal)
                 self.actionButton.isHiddenInStackView = self.autoService?.status.nextStatus == nil
             }
         }
@@ -194,7 +194,7 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
         let message = NSLocalizedString("If you cancel this Autoservice, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
-        let actionTitle = NSLocalizedString("Cancel Autoservice", comment: "Action title")
+        let actionTitle = NSLocalizedString("Cancel auto service", comment: "Action title")
         let cancelAutoServiceAction = UIAlertAction(title: actionTitle, style: .destructive) { [weak self] action in
             self?.cancelAutoService()
         }

@@ -56,7 +56,7 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
-    @IBOutlet private weak var animationView: LOTAnimationView!
+    @IBOutlet private weak var animationView: AnimationView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,8 +66,9 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
         
         textLabel?.font = UIFont.appFont(type: .regular, size: 15)
         
+        animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7
-        animationView.loopAnimation = true
+        animationView.loopMode = .loop
     }
     
     override func prepareForReuse() {

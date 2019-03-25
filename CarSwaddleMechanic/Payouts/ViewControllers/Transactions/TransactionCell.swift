@@ -31,7 +31,18 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
     
     weak var delegate: TransactionCellDelegate?
     
+    var allowDisclosure: Bool = true {
+        didSet {
+            if let transaction = transaction {
+                configure(with: transaction)
+            }
+        }
+    }
+    
+    private var transaction: Transaction?
+    
     func configure(with transaction: Transaction) {
+        self.transaction = transaction
         let topTextFormatString = NSLocalizedString("%@ • %@", comment: "date and payment type")
         dateLabel.text = String(format: topTextFormatString, monthDayYearDateFormatter.string(from: transaction.created), transaction.transactionType.localizedString)
         let transactionAmount = transaction.amount
@@ -52,7 +63,7 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
             descriptionLabel.isHiddenInStackView = true
         }
         
-        if transaction.transactionType == .payment {
+        if transaction.transactionType == .payment && allowDisclosure {
             accessoryType = .disclosureIndicator
             trailingConstraint.constant = 0
             selectionStyle = .default
@@ -61,7 +72,6 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
             trailingConstraint.constant = 26
             selectionStyle = .none
         }
-        
     }
     
     override func awakeFromNib() {

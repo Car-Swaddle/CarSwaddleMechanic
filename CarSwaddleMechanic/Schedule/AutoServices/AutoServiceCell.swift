@@ -10,6 +10,7 @@ import UIKit
 import CarSwaddleUI
 import Store
 import MapKit
+import Lottie
 
 let dayOfWeekMonthDayTimeDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -41,7 +42,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     var route: MKRoute? {
         didSet {
             if let route = route {
-                let formatString = NSLocalizedString("%@ miles, %@ minutes to next autoservice", comment: "Distance estimate")
+                let formatString = NSLocalizedString("%@ miles, %@ minutes to next auto service", comment: "Distance estimate")
                 let distanceString = distanceNumberFormatter.string(from: NSNumber(value: route.distance.metersToMiles))!
                 let minutesString = numberOfMinutesNumberFormatter.string(from: NSNumber(value: route.expectedTravelTime / 60))!
                 self.distanceEstimateLabel.text = String(format: formatString, distanceString, minutesString)
@@ -66,11 +67,15 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var scheduledDateLabel: UILabel!
     @IBOutlet private weak var oilTypeLabel: UILabel!
     @IBOutlet private weak var distanceEstimateLabel: UILabel!
+    @IBOutlet private weak var statusImageView: UIImageView!
+    @IBOutlet private weak var lottieAutoServiceStatusView: AnimationView!
+    @IBOutlet private weak var statusViewHeight: NSLayoutConstraint!
+    
     
     private var timelineBuiler: TimelineUIBuilder = TimelineUIBuilder()
     private var timelineHairlineView: UIView?
     
-    @IBOutlet private weak var mapView: MKMapView!
+//    @IBOutlet private weak var mapView: MKMapView!
     
     private var bottomTimelineViewConstraint: NSLayoutConstraint?
     
@@ -102,17 +107,23 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         userLabel.font = UIFont.appFont(type: .regular, size: 17)
         oilTypeLabel.font = UIFont.appFont(type: .regular, size: 17)
         
+        statusImageView.tintColor = .gray1
+        
         updateBottomTimelineConstraint()
         
-        selectionStyle = .none
+        lottieAutoServiceStatusView.loopMode = .loop
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AutoServiceCell.didSelectGetDirections))
-        mapView.addGestureRecognizer(tap)
+        selectionStyle = .none
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         updateBottomTimelineConstraint()
+        updateStatusViewCornerRadius()
+    }
+    
+    private func updateStatusViewCornerRadius() {
+        autoServiceStatusView.layer.cornerRadius = autoServiceStatusView.frame.height/2
     }
     
     override func prepareForReuse() {
@@ -182,19 +193,83 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         locationLabel.text = autoService.location?.streetAddress ?? "location"
         oilTypeLabel.text = autoService.firstOilChange?.oilType.localizedString ?? ""
         
-        let coordinate = autoService.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-        mapView.setRegion(region, animated: false)
+//        let coordinate = autoService.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+//        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+//        mapView.setRegion(region, animated: false)
         
+        statusImageView.isHiddenInStackView = !showImage(for: autoService.status)
+        statusImageView.image = self.statusImage(for: autoService.status)?.withRenderingMode(.alwaysTemplate)
+        
+        let showLottie = showLottieAnimation(for: autoService.status)
+        
+        if showLottie {
+            lottieAutoServiceStatusView.isHiddenInStackView = false
+            lottieAutoServiceStatusView.play()
+        } else {
+            lottieAutoServiceStatusView.stop()
+            lottieAutoServiceStatusView.isHiddenInStackView = true
+        }
+        
+        statusImageView.image = self.statusImage(for: autoService.status)
         timelineHairlineView?.isHiddenInStackView = autoService.status == .canceled
-        
         contentView.alpha = autoService.status == .canceled ? 0.4 : 1.0
-        
         autoServiceStatusView.backgroundColor = autoService.status.color
+        
+        statusViewHeight.constant = showLottie ? 22 : 29
+        
+        updateStatusViewCornerRadius()
+    }
+    
+    private func showLottieAnimation(for status: AutoService.Status) -> Bool {
+        return status.showLottieAnimation
+    }
+    
+    private func showImage(for status: AutoService.Status) -> Bool {
+        return status.showImage
+    }
+    
+    private func statusImage(for status: AutoService.Status) -> UIImage? {
+        return status.image
     }
     
     @objc private func didSelectGetDirections() {
         autoService?.location?.openInMaps()
+    }
+    
+}
+
+
+extension AutoService.Status {
+    
+    var image: UIImage? {
+        switch self {
+        case .scheduled:
+            return UIImage(named: "calendar-filled")
+        case .inProgress:
+            return nil
+        case .completed:
+            return UIImage(named: "checkmark")
+        case .canceled:
+            return UIImage(named: "x")
+        }
+    }
+    
+    var showLottieAnimation: Bool {
+        switch self {
+        case .scheduled, .completed, .canceled:
+            return false
+        case .inProgress:
+            return true
+        }
+    }
+    
+    var showImage: Bool {
+        switch self {
+        case .scheduled, .completed, .canceled:
+            return true
+        case .inProgress:
+            return false
+        }
     }
     
 }

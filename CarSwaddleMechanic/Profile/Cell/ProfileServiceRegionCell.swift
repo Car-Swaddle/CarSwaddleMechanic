@@ -9,16 +9,23 @@
 import UIKit
 import CarSwaddleUI
 import Store
+import Lottie
 
 class ProfileServiceRegionCell: UITableViewCell, NibRegisterable {
     
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var pulseAnimationView: AnimationView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         label?.text = NSLocalizedString("Set service region", comment: "Service region cell")
         accessoryType = .disclosureIndicator
         label?.font = UIFont.appFont(type: .regular, size: 17)
+        
+        
+        pulseAnimationView.animation = Animation.named("circle-pulse")
+        pulseAnimationView.loopMode = .loop
+        pulseAnimationView.animationSpeed = 0.7
     }
     
     
