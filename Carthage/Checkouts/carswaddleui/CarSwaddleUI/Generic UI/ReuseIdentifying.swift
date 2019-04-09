@@ -10,7 +10,7 @@ public protocol ReuseIdentifying: class {
 }
 
 public extension ReuseIdentifying {
-    public static var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: Self.self) + "Identifier"
     }
 }
@@ -27,14 +27,14 @@ public extension UITableView {
     /// Register a NIB with this method.
     ///
     /// - Parameter nibRegisterable: A UITableViewCell that conforms to NibRegisterable
-    public func register(_ nibRegisterable: (NibRegisterable & UITableViewCell).Type) {
+    func register(_ nibRegisterable: (NibRegisterable & UITableViewCell).Type) {
         register(nibRegisterable.nib, forCellReuseIdentifier: nibRegisterable.reuseIdentifier)
     }
     
     /// Register a class with this method.
     ///
     /// - Parameter reuseIdentifying: A UITableViewCell that conforms to ReuseIdentifying
-    public func register(_ reuseIdentifying: (ReuseIdentifying & UITableViewCell).Type) {
+    func register(_ reuseIdentifying: (ReuseIdentifying & UITableViewCell).Type) {
         register(reuseIdentifying, forCellReuseIdentifier: reuseIdentifying.reuseIdentifier)
     }
     
@@ -67,14 +67,14 @@ public extension UICollectionView {
     /// Register a NIB with this method.
     ///
     /// - Parameter nibRegisterable: A UITableViewCell that conforms to NibRegisterable
-    public func register(_ nibRegisterable: (NibRegisterable & UICollectionViewCell).Type) {
+    func register(_ nibRegisterable: (NibRegisterable & UICollectionViewCell).Type) {
         register(nibRegisterable.nib, forCellWithReuseIdentifier: nibRegisterable.reuseIdentifier)
     }
     
     /// Register a class with this method.
     ///
     /// - Parameter reuseIdentifying: A UITableViewCell that conforms to ReuseIdentifying
-    public func register(_ reuseIdentifying: (ReuseIdentifying & UICollectionViewCell).Type) {
+    func register(_ reuseIdentifying: (ReuseIdentifying & UICollectionViewCell).Type) {
         register(reuseIdentifying, forCellWithReuseIdentifier: reuseIdentifying.reuseIdentifier)
     }
     

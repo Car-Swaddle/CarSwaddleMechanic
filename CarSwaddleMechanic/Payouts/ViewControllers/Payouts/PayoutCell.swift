@@ -53,7 +53,7 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         statusLabel.font = UIFont.appFont(type: .regular, size: 15)
         
-        amountLabel.font = UIFont.appFont(type: .monoSpaced, size: 20)
+        amountLabel.font = UIFont.monoSpacedAppFont(size: 20)
     }
     
 }

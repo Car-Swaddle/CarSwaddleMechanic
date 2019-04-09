@@ -80,7 +80,7 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         dateLabel.font = UIFont.appFont(type: .regular, size: 15)
         typeLabel.font = UIFont.appFont(type: .regular, size: 15)
         descriptionLabel.font = UIFont.appFont(type: .medium, size: 17)
-        valueLabel.font = UIFont.appFont(type: .monoSpaced, size: 20)
+        valueLabel.font = UIFont.monoSpacedAppFont(size: 20)
         
         descriptionLabel.textColor = .gray6
     }

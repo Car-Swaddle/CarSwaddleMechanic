@@ -296,6 +296,8 @@ extension AutoServicesViewController: NSFetchedResultsControllerDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     
@@ -310,41 +312,41 @@ public extension AutoService {
     
     // MARK: - Predicates
     
-    public static func predicate(startDate: Date, endDate: Date) -> NSPredicate {
+    static func predicate(startDate: Date, endDate: Date) -> NSPredicate {
         return NSPredicate(format: "%@ <= %K && %K <= %@", startDate as NSDate, #keyPath(AutoService.scheduledDate), #keyPath(AutoService.scheduledDate), endDate as NSDate)
     }
     
     // MARK: - Scheduled Date Sort
     
-    public static var leastRecentRecentScheduledDateSort: NSSortDescriptor {
+    static var leastRecentRecentScheduledDateSort: NSSortDescriptor {
         return AutoService.scheduledDateSort(ascending: false)
     }
     
-    public static var mostRecentScheduledDateSort: NSSortDescriptor {
+    static var mostRecentScheduledDateSort: NSSortDescriptor {
         return AutoService.scheduledDateSort(ascending: true)
     }
     
-    public static func scheduledDateSort(ascending: Bool) -> NSSortDescriptor {
+    static func scheduledDateSort(ascending: Bool) -> NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(AutoService.scheduledDate), ascending: ascending)
     }
     
     // MARK: - Creation Date Sort
     
-    public static var leastRecentRecentCreationDateSort: NSSortDescriptor {
+    static var leastRecentRecentCreationDateSort: NSSortDescriptor {
         return AutoService.creationDateSort(ascending: false)
     }
     
-    public static var mostRecentCreationDateSort: NSSortDescriptor {
+    static var mostRecentCreationDateSort: NSSortDescriptor {
         return AutoService.creationDateSort(ascending: true)
     }
     
-    public static func creationDateSort(ascending: Bool) -> NSSortDescriptor {
+    static func creationDateSort(ascending: Bool) -> NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(AutoService.creationDate), ascending: ascending)
     }
     
     // MARK: -
     
-    public static var isCanceledSort: NSSortDescriptor {
+    static var isCanceledSort: NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(AutoService.isCanceled), ascending: true)
     }
     
@@ -353,7 +355,7 @@ public extension AutoService {
 
 public extension Location {
     
-    public var clLocation: CLLocation {
+    var clLocation: CLLocation {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     

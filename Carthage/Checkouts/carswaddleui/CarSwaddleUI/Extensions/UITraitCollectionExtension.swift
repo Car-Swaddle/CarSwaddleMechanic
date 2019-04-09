@@ -10,19 +10,19 @@ import UIKit
 
 public extension UITraitCollection {
     
-    public var isAllRegular: Bool {
+    var isAllRegular: Bool {
         return isAll(sizeClass: .regular)
     }
     
-    public var isAllCompact: Bool {
+    var isAllCompact: Bool {
         return isAll(sizeClass: .compact)
     }
     
-    public var isAllUnspecified: Bool {
+    var isAllUnspecified: Bool {
         return isAll(sizeClass: .unspecified)
     }
     
-    public func isAll(sizeClass: UIUserInterfaceSizeClass) -> Bool {
+    func isAll(sizeClass: UIUserInterfaceSizeClass) -> Bool {
         return horizontalSizeClass == sizeClass && verticalSizeClass == sizeClass
     }
     

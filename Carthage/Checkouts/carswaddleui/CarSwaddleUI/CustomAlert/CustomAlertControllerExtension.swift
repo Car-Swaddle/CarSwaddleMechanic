@@ -9,7 +9,7 @@ public extension CustomAlertAction {
     ///
     /// - Parameter handler: Closure called on button tap.
     /// - Returns: CustomAlertAction configured for `cancel`.
-    public static func cancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+    static func cancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
         let action = CustomAlertAction(title: cancelTitle, handler: handler)
         return action
     }
@@ -20,7 +20,7 @@ public extension CustomAlertAction {
     ///
     /// - Parameter handler: Closure called on button tap.
     /// - Returns: CustomAlertAction configured for `okay`.
-    public static func okayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+    static func okayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
         let action = CustomAlertAction(title: okayTitle, handler: handler)
         return action
     }
@@ -33,7 +33,7 @@ public extension CustomAlertContentView {
     ///
     /// - Parameter handler: Closure called on button tap.
     @discardableResult
-    public func addCancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+    func addCancelAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
         let action = CustomAlertAction.cancelAction(handler)
         addAction(action)
         return action
@@ -43,7 +43,7 @@ public extension CustomAlertContentView {
     ///
     /// - Parameter handler: Closure called on button tap.
     @discardableResult
-    public func addOkayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
+    func addOkayAction(_ handler: ((CustomAlertAction) -> Void)? = nil) -> CustomAlertAction {
         let action = CustomAlertAction.okayAction(handler)
         addAction(action)
         return action

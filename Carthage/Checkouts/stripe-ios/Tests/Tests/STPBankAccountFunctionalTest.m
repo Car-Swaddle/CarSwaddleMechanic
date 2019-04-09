@@ -12,11 +12,17 @@
 #import "Stripe.h"
 #import "STPBankAccount.h"
 #import "STPToken.h"
+#import "STPNetworkStubbingTestCase.h"
 
-@interface STPBankAccountFunctionalTest : XCTestCase
+@interface STPBankAccountFunctionalTest : STPNetworkStubbingTestCase
 @end
 
 @implementation STPBankAccountFunctionalTest
+
+- (void)setUp {
+//    self.recordingMode = YES;
+    [super setUp];
+}
 
 - (void)testCreateAndRetreiveBankAccountToken {
     STPBankAccountParams *bankAccount = [[STPBankAccountParams alloc] init];
@@ -36,6 +42,7 @@
                                 XCTAssertNotNil(token, @"token should not be nil");
 
                                 XCTAssertNotNil(token.tokenId);
+                                XCTAssertEqual(token.type, STPTokenTypeBankAccount);
                                 XCTAssertNotNil(token.bankAccount.stripeID);
                                 XCTAssertEqualObjects(@"STRIPE TEST BANK", token.bankAccount.bankName);
                                 XCTAssertEqualObjects(@"6789", token.bankAccount.last4);

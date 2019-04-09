@@ -142,7 +142,7 @@ public final class PocketController: UINavigationController {
 
 public extension UIViewController {
     
-    public var safeAreaInsetsMinusAdditional: UIEdgeInsets {
+    var safeAreaInsetsMinusAdditional: UIEdgeInsets {
         return UIEdgeInsets(top: view.safeAreaInsets.top - additionalSafeAreaInsets.top,
                             left: view.safeAreaInsets.left - additionalSafeAreaInsets.left,
                             bottom: view.safeAreaInsets.bottom - additionalSafeAreaInsets.bottom,

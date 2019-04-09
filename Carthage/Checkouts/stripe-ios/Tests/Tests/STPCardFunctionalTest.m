@@ -9,11 +9,17 @@
 @import XCTest;
 
 #import "Stripe.h"
+#import "STPNetworkStubbingTestCase.h"
 
-@interface STPCardFunctionalTest : XCTestCase
+@interface STPCardFunctionalTest : STPNetworkStubbingTestCase
 @end
 
 @implementation STPCardFunctionalTest
+
+- (void)setUp {
+//    self.recordingMode = YES;
+    [super setUp];
+}
 
 - (void)testCreateCardToken {
     STPCardParams *card = [[STPCardParams alloc] init];
@@ -41,10 +47,12 @@
                          XCTAssertNotNil(token, @"token should not be nil");
 
                          XCTAssertNotNil(token.tokenId);
+                         XCTAssertEqual(token.type, STPTokenTypeCard);
                          XCTAssertEqual(6U, token.card.expMonth);
                          XCTAssertEqual(2024U, token.card.expYear);
                          XCTAssertEqualObjects(@"4242", token.card.last4);
                          XCTAssertEqualObjects(@"usd", token.card.currency);
+                         XCTAssertEqualObjects(@"10002", token.card.address.postalCode);
                      }];
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
 }
@@ -115,6 +123,41 @@
                          XCTAssertNotNil(error, @"error should not be nil");
                          XCTAssert([error.localizedDescription rangeOfString:@"asdf"].location != NSNotFound, @"error should contain last 4 of key");
                      }];
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
+}
+
+- (void)testCreateCVCUpdateToken {
+    // You have to be gated in to CVC Update tokens, so we use this differing key
+    STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey:@"pk_test_6pRNASCoBOKtIshFeQd4XMUh"];
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"CVC Update Token Creation"];
+
+    [client createTokenForCVCUpdate:@"1234"
+                         completion:^(STPToken *token, NSError *error) {
+                             [expectation fulfill];
+
+                             XCTAssertNil(error, @"error should be nil %@", error.localizedDescription);
+                             XCTAssertNotNil(token, @"token should not be nil");
+
+                             XCTAssertNotNil(token.tokenId);
+                             XCTAssertEqual(token.type, STPTokenTypeCVCUpdate, @"token should be type CVC Update");
+                         }];
+    [self waitForExpectationsWithTimeout:5.0f handler:nil];
+}
+
+- (void)testInvalidCVC {
+    // You have to be gated in to CVC Update tokens, so we use this differing key
+    STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey:@"pk_test_6pRNASCoBOKtIshFeQd4XMUh"];
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Invalid CVC"];
+
+    [client createTokenForCVCUpdate:@"1"
+                         completion:^(STPToken *token, NSError *error) {
+                             [expectation fulfill];
+
+                             XCTAssertNil(token, @"token should be nil");
+                             XCTAssertNotNil(error, @"error should not be nil");
+                         }];
     [self waitForExpectationsWithTimeout:5.0f handler:nil];
 }
 

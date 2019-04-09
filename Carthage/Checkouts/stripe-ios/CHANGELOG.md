@@ -1,3 +1,37 @@
+## 15.0.0 2019-3-19
+* Renames all former references to 'PaymentMethod' to 'PaymentOption'. See [MIGRATING.md](/MIGRATING.md) for more details. [#1139](https://github.com/stripe/stripe-ios/pull/1139) 
+  * Renames `STPPaymentMethod` to `STPPaymentOption`
+  * Renames `STPPaymentMethodType` to `STPPaymentOptionType`
+  * Renames `STPApplePaymentMethod` to `STPApplePayPaymentOption`
+  * Renames `STPPaymentMethodTuple` to `STPPaymentOptionTuple`
+  * Renames `STPPaymentMethodsViewController` to `STPPaymentOptionsViewController`
+  * Renames all properties, methods, comments referencing 'PaymentMethod' to 'PaymentOption'
+* Rewrites `STPaymentMethod` and `STPPaymentMethodType` to match the [Stripe API](https://stripe.com/docs/api/payment_methods/object). [#1140](https://github.com/stripe/stripe-ios/pull/1140).
+* Adds `[STPAPI createPaymentMethodWithParams:completion:]`, which creates a PaymentMethod. [#1141](https://github.com/stripe/stripe-ios/pull/1141)
+* Adds `paymentMethodParams` and `paymentMethodId` to `STPPaymentIntentParams`.  You can now confirm a PaymentIntent with a PaymentMethod. [#1142](https://github.com/stripe/stripe-ios/pull/1142)
+* Adds `paymentMethodTypes` to `STPPaymentIntent`.
+* Deprecates several Source-named properties, based on changes to the [Stripe API](https://stripe.com/docs/upgrades#2019-02-11). [#1146](https://github.com/stripe/stripe-ios/pull/1146)
+  * Deprecates `STPPaymentIntentParams.saveSourceToCustomer`, replaced by `savePaymentMethod` 
+  * Deprecates `STPPaymentIntentsStatusRequiresSource`, replaced by `STPPaymentIntentsStatusRequiresPaymentMethod`
+  * Deprecates `STPPaymentIntentsStatusRequiresSourceAction`, replaced by `STPPaymentIntentsStatusRequiresAction`
+  * Deprecates `STPPaymentIntentSourceAction`, replaced by `STPPaymentIntentAction`
+  * Deprecates `STPPaymentSourceActionAuthorizeWithURL`, replaced by `STPPaymentActionRedirectToURL`
+  * Deprecates `STPPaymentIntent.nextSourceAction`, replaced by `nextAction`
+* Added new localizations for the following languages [#1050](https://github.com/stripe/stripe-ios/pull/1050)
+  * Danish
+  * Spanish (Argentina/Latin America)
+  * French (Canada)
+  * Norwegian
+  * Portuguese (Brazil)
+  * Portuguese (Portugal)
+  * Swedish
+* Deprecates `STPEphemeralKeyProvider`, replaced by `STPCustomerEphemeralKeyProvider`.  We now allow for ephemeral keys that are not customer [#1131](https://github.com/stripe/stripe-ios/pull/1131)
+* Adds CVC image for Amex cards [#1046](https://github.com/stripe/stripe-ios/pull/1046)
+* Fixed `STPPaymentCardTextField.nextFirstResponderField` to never return nil [#1059](https://github.com/stripe/stripe-ios/pull/1059)
+* Improves return key functionality for `STPPaymentCardTextField`, `STPAddCardViewController` [#1059](https://github.com/stripe/stripe-ios/pull/1059)
+* Add postal code support for Saudi Arabia [#1127](https://github.com/stripe/stripe-ios/pull/1127)
+* CVC field updates validity if card number/brand change [#1128](https://github.com/stripe/stripe-ios/pull/1128)
+
 ## 14.0.0 2018-11-14
 * Changes `STPPaymentCardTextField`, which now copies the `cardParams` property. See [MIGRATING.md](/MIGRATING.md) for more details. [#1031](https://github.com/stripe/stripe-ios/pull/1031)
 * Renames `STPPaymentIntentParams.returnUrl` to `STPPaymentIntentParams.returnURL`. [#1037](https://github.com/stripe/stripe-ios/pull/1037)

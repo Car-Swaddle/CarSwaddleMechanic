@@ -191,7 +191,7 @@ public extension UIView {
 
 public extension CAShapeLayer {
     
-    public static func withRoundedCorners(_ corners: UIRectCorner, bounds: CGRect, radius: CGFloat) -> CAShapeLayer {
+    static func withRoundedCorners(_ corners: UIRectCorner, bounds: CGRect, radius: CGFloat) -> CAShapeLayer {
         let path = UIBezierPath(roundedRect: bounds,
                                 byRoundingCorners: corners,
                                 cornerRadii: CGSize(width: radius, height: radius))

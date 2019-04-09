@@ -32,6 +32,7 @@ public final class PricePart: NSManagedObject {
     public static let bookingFeeKey = "bookingFee"
     public static let processingFeeKey = "processingFee"
     
+    public static let oilChangeKey = "oilChange"
     public static let oilChangeHighMileageKey = "oilChangeHighMileage"
     public static let oilChangeConventionalKey = "oilChangeConventional"
     public static let oilChangeSyntheticKey = "oilChangeSynthetic"
@@ -55,6 +56,7 @@ public final class PricePart: NSManagedObject {
         case PricePart.bookingFeeKey: return NSLocalizedString("Booking fee", comment: "Price part key")
         case PricePart.processingFeeKey: return NSLocalizedString("Processing fee", comment: "Price part key")
         case PricePart.oilChangeHighMileageKey: return NSLocalizedString("Oil change high mileage", comment: "Price part key")
+        case PricePart.oilChangeKey: return NSLocalizedString("Oil change", comment: "Price part key")
         case PricePart.oilChangeConventionalKey: return NSLocalizedString("Synthetic oil change", comment: "Price part key")
         case PricePart.oilChangeSyntheticKey: return NSLocalizedString("Conventional oil change", comment: "Price part key")
         case PricePart.oilChangeBlendKey: return NSLocalizedString("Blend oil change", comment: "Price part key")

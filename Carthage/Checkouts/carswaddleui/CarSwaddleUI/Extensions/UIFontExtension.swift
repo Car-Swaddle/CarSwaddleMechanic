@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIFont {
     
-    public struct FontType: Equatable {
+    struct FontType: Equatable {
         public var rawValue: String
         
         public init(rawValue: String) {
@@ -24,12 +24,12 @@ public extension UIFont {
         }
     }
     
-    public static func appFont(type: FontType, size: CGFloat) -> UIFont! {
+    static func appFont(type: FontType, size: CGFloat) -> UIFont! {
         let adjustedSize = UIFontMetrics.default.scaledValue(for: size)
         return UIFont(name: type.rawValue, size: adjustedSize)!
     }
     
-    public static func printAllFonts() {
+    static func printAllFonts() {
         for family in UIFont.familyNames.sorted() {
             let names = UIFont.fontNames(forFamilyName: family)
             print("Family: \(family) Font names: \(names)")
@@ -38,8 +38,8 @@ public extension UIFont {
     
 }
 
-extension UIFontDescriptor {
-    var monospacedDigitFontDescriptor: UIFontDescriptor {
+public extension UIFontDescriptor {
+    var monospacedFontDescriptor: UIFontDescriptor {
         let fontDescriptorFeatureSettings = [[UIFontDescriptor.FeatureKey.featureIdentifier: kNumberSpacingType,
                                               UIFontDescriptor.FeatureKey.typeIdentifier: kMonospacedNumbersSelector]]
         

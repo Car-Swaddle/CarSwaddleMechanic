@@ -56,12 +56,6 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         setupTableView()
         user = User.currentUser(context: store.mainContext)
         updateData()
-        
-        let systemFont = UIFont.systemFont(ofSize: 13)
-        
-        let font = UIFont(name: ".SFUIText", size: 13)
-        
-        UIFont.printAllFonts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -249,6 +243,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
+//            cell.font = UIFont.appFont(type: .regular, size: 17)
             cell.valueText = NSLocalizedString("Set hours", comment: "Description of row")
             cell.descriptionText = nil
             cell.errorViewIsHidden = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.hasSetAvailability != false

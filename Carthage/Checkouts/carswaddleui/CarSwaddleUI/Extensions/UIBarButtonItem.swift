@@ -10,7 +10,7 @@ import Foundation
 
 public extension UIBarButtonItem {
     
-    public static func activityBarButtonItem(with style: UIActivityIndicatorView.Style) -> UIBarButtonItem {
+    static func activityBarButtonItem(with style: UIActivityIndicatorView.Style) -> UIBarButtonItem {
         let activityButton = UIActivityIndicatorView(style: style)
         activityButton.startAnimating()
         return UIBarButtonItem(customView: activityButton)

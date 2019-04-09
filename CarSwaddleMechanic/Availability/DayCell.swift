@@ -23,6 +23,9 @@ final class DayCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var collectionView: HourCollectionView!
     @IBOutlet private weak var button: UIButton!
     
+    @IBOutlet private weak var weekDayView: UIView!
+    @IBOutlet private weak var weekDayLabel: UILabel!
+    
     weak var delegate: DayCellDelegate?
     
     private var weekday: Weekday?
@@ -32,6 +35,9 @@ final class DayCell: UITableViewCell, NibRegisterable {
     override func awakeFromNib() {
         super.awakeFromNib()
         updateButtonCornerRadius()
+        clipsToBounds = false
+        
+        weekDayLabel.font = UIFont.appFont(type: .semiBold, size: 20)
     }
     
     func configure(day: Weekday, timespans: [TemplateTimeSpan]) {
@@ -41,7 +47,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
         collectionView.hours = self.hours(from: timespans)
         layoutIfNeeded()
         updateButtonCornerRadius()
-        button.setTitle(day.localizedString, for: .normal)
+        weekDayLabel.text = day.localizedString
         collectionViewHeightConstraint.constant = collectionView.contentSize.height
     }
         
@@ -59,13 +65,15 @@ final class DayCell: UITableViewCell, NibRegisterable {
     }
     
     private func updateButtonCornerRadius() {
-        button.layer.cornerRadius = button.frame.height/2
+//        button.layer.cornerRadius = button.frame.height/2
+        weekDayView.layer.cornerRadius = weekDayView.frame.height/2
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         updateButtonCornerRadius()
-//        collectionViewHeightConstraint.constant = collectionView.contentSize.height
+//        weekDayView.layer.cornerRadius = weekDayView.frame.height/2
     }
     
 }

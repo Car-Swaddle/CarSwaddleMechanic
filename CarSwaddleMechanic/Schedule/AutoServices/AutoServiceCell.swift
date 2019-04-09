@@ -112,6 +112,7 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         updateBottomTimelineConstraint()
         
         lottieAutoServiceStatusView.loopMode = .loop
+        lottieAutoServiceStatusView.animation = Animation.named("in-progress")
         
         selectionStyle = .none
     }

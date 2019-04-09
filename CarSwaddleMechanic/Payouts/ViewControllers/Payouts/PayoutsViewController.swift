@@ -170,6 +170,8 @@ extension PayoutsViewController: NSFetchedResultsControllerDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     

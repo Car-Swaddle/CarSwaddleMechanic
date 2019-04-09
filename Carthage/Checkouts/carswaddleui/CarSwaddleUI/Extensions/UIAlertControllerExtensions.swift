@@ -14,11 +14,11 @@ private let okayButtonTitle = NSLocalizedString("Okay", comment: "Action to okay
 
 public extension UIAlertAction {
     
-    public static func cancelAction(_ handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
+    static func cancelAction(_ handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         return UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: handler)
     }
     
-    public static func okayAction(_ handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
+    static func okayAction(_ handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         return UIAlertAction(title: okayButtonTitle, style: .default, handler: handler)
     }
     
@@ -28,11 +28,11 @@ public extension UIAlertAction {
 
 public extension UIAlertController {
     
-    public func addCancelAction(_ handler: ((UIAlertAction) -> Void)? = nil) {
+    func addCancelAction(_ handler: ((UIAlertAction) -> Void)? = nil) {
         self.addAction( UIAlertAction.cancelAction(handler) )
     }
     
-    public func addOkayAction(_ handler: ((UIAlertAction) -> Void)? = nil) {
+    func addOkayAction(_ handler: ((UIAlertAction) -> Void)? = nil) {
         self.addAction( UIAlertAction.okayAction(handler) )
     }
     

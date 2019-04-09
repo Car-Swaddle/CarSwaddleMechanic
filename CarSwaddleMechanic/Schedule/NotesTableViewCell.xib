@@ -44,7 +44,7 @@
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="0.96547603187426712" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.99059156884609811" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GaM-FE-RFm" secondAttribute="trailing" constant="16" id="7hc-Oc-23I"/>
                             <constraint firstItem="Yj4-J4-0X4" firstAttribute="leading" secondItem="2XO-zP-ilK" secondAttribute="leading" constant="16" id="J3s-D8-yk9"/>

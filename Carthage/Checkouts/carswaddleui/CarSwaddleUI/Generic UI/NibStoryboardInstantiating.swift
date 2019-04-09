@@ -55,11 +55,11 @@ public extension NibInstantiating where Self: UIView {
      - seealso: `nibName` This is used to determine which '.xib' file to use
      
      */
-    public static func viewFromNib(owner: Any? = nil) -> Self {
+    static func viewFromNib(owner: Any? = nil) -> Self {
         return viewFromGenericNib(owner: owner) as Self
     }
     
-    public static func viewFromGenericNib<T: UIView>(owner: Any? = nil) -> T {
+    static func viewFromGenericNib<T: UIView>(owner: Any? = nil) -> T {
         var view: T!
         let objects = Bundle(for: self).loadNibNamed(nibName, owner: owner, options: nil)
         for object in objects ?? [] {
@@ -108,7 +108,7 @@ public extension StoryboardInstantiating where Self: UIViewController {
      
      - returns: `Self` This will be a `UIViewController` subclass generated from a `UIStoryboard`
      */
-    public static func viewControllerFromStoryboard() -> Self {
+    static func viewControllerFromStoryboard() -> Self {
         let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
         if let viewController = storyboard.instantiateInitialViewController() as? Self {
             return viewController
@@ -118,7 +118,7 @@ public extension StoryboardInstantiating where Self: UIViewController {
         fatalError("A viewcontroller with the identifier '\(viewControllerName)' does not exist on the storyboard with the name '\(storyboardName)'. Or it does exist and it does NOT match up with the type '\(type(of: self))'. AND… there is no initial view controller of the current type.")
     }
     
-    public static var viewControllerName: String { return String(describing: Self.self) }
-    public static var storyboardName: String { return String(describing: Self.self) }
-    public static var bundle: Bundle { return Bundle(for: Self.self) }
+    static var viewControllerName: String { return String(describing: Self.self) }
+    static var storyboardName: String { return String(describing: Self.self) }
+    static var bundle: Bundle { return Bundle(for: Self.self) }
 }

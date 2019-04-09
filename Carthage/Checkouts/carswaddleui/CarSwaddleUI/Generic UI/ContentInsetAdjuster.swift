@@ -32,7 +32,7 @@ public class ContentInsetAdjuster {
     public var tableView: UITableView?
     public var actionButton: ActionButton?
     
-    /// If this is true, you must call `positionActionButton`.
+    /// If this is true, you must call `positionActionButton`
     public var showActionButtonAboveKeyboard: Bool = false
     
     public var includeTabBarInKeyboardCalculation: Bool = true
@@ -41,7 +41,7 @@ public class ContentInsetAdjuster {
     
     public func positionActionButton() {
         guard let actionButton = actionButton, let superview = actionButton.superview else {
-            assert(false, "Don't have action button")
+            assert(false, "Don't have action button or superview")
             return
         }
         actionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -50,8 +50,10 @@ public class ContentInsetAdjuster {
         bottomConstraint.isActive = true
         actionButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 280).isActive = true
         actionButton.centerXAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        
+        actionButton.layoutIfNeeded()
+        updateContentInsets()
     }
-    
     
     private func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -73,7 +75,7 @@ public class ContentInsetAdjuster {
     
     private var defaultBottomContentInset: CGFloat {
         if let actionButton = actionButton, actionButton.isHidden == false {
-            let inset = actionButton.frame.height + bottomGapConstant
+            let inset = actionButton.frame.height + bottomGapConstant*2
             return inset
         } else {
             return 0
@@ -87,8 +89,6 @@ public class ContentInsetAdjuster {
     
     @objc private func keyboardWillHide(notification: Notification) {
         if UIApplication.shared.applicationState != .active { return }
-//        let newYOffset = (tableView?.contentOffset.y ?? 0)
-//        let newContentOffset = CGPoint(x: 0, y: max(0, -newYOffset))
         
         let bottomContentInset: CGFloat
         if actionButton != nil {
@@ -101,7 +101,6 @@ public class ContentInsetAdjuster {
         UIView.animate(withDuration: 0.25) {
             self.tableView?.contentInset.bottom = bottomContentInset
             self.tableView?.scrollIndicatorInsets.bottom = bottomContentInset
-//            self.tableView?.contentOffset = newContentOffset
             self.actionButtonBottomConstraint?.constant = -bottomGapConstant
             self.actionButton?.superview?.layoutIfNeeded()
         }
@@ -142,7 +141,6 @@ public class ContentInsetAdjuster {
         UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {
             self.tableView?.contentInset.bottom = contentInsetBottom
             self.tableView?.scrollIndicatorInsets.bottom = contentInsetBottom
-//            self.tableView?.contentOffset = newContentOffset
             if self.showActionButtonAboveKeyboard {
                 self.actionButtonBottomConstraint?.constant = -(keyboardHeight + bottomGapConstant)
             }

@@ -35,6 +35,8 @@ final class NotesTableViewCell: UITableViewCell, NibRegisterable {
         notesTextView.delegate = self
         
         notesContentView.layer.cornerRadius = defaultCornerRadius
+        notesContentView.layer.borderColor = UIColor.gray5.cgColor
+        notesContentView.layer.borderWidth = UIView.hairlineLength
         
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
         let hairlineView = addHairlineView(toSide: .bottom, color: .gray3, size: 1.0, insets: insets)

@@ -7,6 +7,7 @@
 //
 
 import Lottie
+import Foundation
 
 private let lottieAnimationFileType = "json"
 

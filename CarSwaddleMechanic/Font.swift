@@ -29,6 +29,15 @@ extension UIFont.FontType {
     static let italic: UIFont.FontType = UIFont.FontType(rawValue: "Montserrat-Italic")
     static let mediumItalic: UIFont.FontType = UIFont.FontType(rawValue: "Montserrat-MediumItalic")
     static let extraBoldItalic: UIFont.FontType = UIFont.FontType(rawValue: "Montserrat-ExtraBoldItalic")
-    static let monoSpaced: UIFont.FontType = UIFont.FontType(rawValue: "Montserrat-Monospaced")
+    
+}
+
+extension UIFont {
+    
+    static func monoSpacedAppFont(size: CGFloat) -> UIFont! {
+        let adjustedSize = UIFontMetrics.default.scaledValue(for: size)
+        let descriptor = UIFontDescriptor(name: "Montserrat", size: adjustedSize)
+        return UIFont(descriptor: descriptor.monospacedFontDescriptor, size: 0)
+    }
     
 }

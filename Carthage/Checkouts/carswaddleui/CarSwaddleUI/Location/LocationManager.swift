@@ -383,6 +383,8 @@ extension CLAuthorizationStatus {
             return false
         case .authorizedAlways, .authorizedWhenInUse:
             return true
+        @unknown default:
+            fatalError("unkown presentation style")
         }
     }
     

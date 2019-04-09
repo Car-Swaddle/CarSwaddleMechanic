@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIImage {
     
-    public static func from(color: UIColor) -> UIImage? {
+    static func from(color: UIColor) -> UIImage? {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
         
@@ -25,7 +25,7 @@ public extension UIImage {
         return image
     }
     
-    public static func imageWithCorrectedOrientation(_ image: UIImage) -> UIImage {
+    static func imageWithCorrectedOrientation(_ image: UIImage) -> UIImage {
         if image.imageOrientation == .up { return image }
         
         UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale);
@@ -37,7 +37,7 @@ public extension UIImage {
         return normalizedImage
     }
     
-    public func resized(withPercentage percentage: CGFloat) -> UIImage? {
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
         defer { UIGraphicsEndImageContext() }
@@ -45,7 +45,7 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    public func resized(toWidth width: CGFloat) -> UIImage? {
+    func resized(toWidth width: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
         defer { UIGraphicsEndImageContext() }
@@ -53,7 +53,7 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    public convenience init?(size: CGSize, gradientPoints: [GradientPoint]) {
+    convenience init?(size: CGSize, gradientPoints: [GradientPoint]) {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         
         guard let context = UIGraphicsGetCurrentContext() else { return nil }

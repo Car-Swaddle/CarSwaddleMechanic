@@ -14,12 +14,14 @@ import SafariServices
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
 // TODO: Change this to CarSwaddle's service agreement
-private let carSwaddleAgreementURLString = "https://stripe.com/us/connect-account/legal"
+private let carSwaddleAgreementURLString = "https://carswaddle.net/terms-of-use/"
+private let carSwaddlePrivacyPolicyURLString = "https://carswaddle.net/privacy-policy/"
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
     public static let stripeAgreementURL: URL! = URL(string: stripeAgreementURLString)!
     public static let carSwaddleAgreementURL: URL! = URL(string: carSwaddleAgreementURLString)!
+    public static let carSwaddlePrivacyURL: URL! = URL(string: carSwaddlePrivacyPolicyURLString)!
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -49,7 +51,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         let tintColor = UIColor.textColor2
         
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15)]
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15) as Any]
         emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
         emailTextField.textColor = tintColor
         passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
@@ -60,21 +62,27 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         
-        let text = "By registering your account, you agree to the Car Swaddle Services Agreement and the Stripe Connected Account Agreement."
+        let termsOfUseText = "Car Swaddle Terms of Use Agreement"
+        let privacyPolicyText = "Car Swaddle Privacy Policy"
+        let stripeText = "Stripe Connected Account Agreement"
         
-        let carSwaddleAgreementRange = (text as NSString).range(of: "Car Swaddle Services Agreement")
-        let connectAgreementRange = (text as NSString).range(of: "Stripe Connected Account Agreement")
+        let text = "By registering your account, you agree to the \(termsOfUseText), the \(privacyPolicyText) and the \(stripeText)."
         
-        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: tintColor, .font: UIFont.appFont(type: .regular, size: 13)])
+        let carSwaddleAgreementRange = (text as NSString).range(of: termsOfUseText)
+        let privacyPolicyRange = (text as NSString).range(of: privacyPolicyText)
+        let connectAgreementRange = (text as NSString).range(of: stripeText)
+        
+        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: tintColor, .font: UIFont.appFont(type: .regular, size: 13) as Any])
         
         attributedText.addAttributes(linkAttributes(with: SignUpViewController.stripeAgreementURL), range: connectAgreementRange)
         attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddleAgreementURL), range: carSwaddleAgreementRange)
+        attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddlePrivacyURL), range: privacyPolicyRange)
         
         let textViewLinkAttributes: [NSAttributedString.Key : Any] = [
             .foregroundColor: UIColor.textColor2,
             .underlineColor: UIColor.textColor2,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
-            .font: UIFont.appFont(type: .regular, size: 13)
+            .font: UIFont.appFont(type: .regular, size: 13) as Any
         ]
         
         agreementTextView.textAlignment = .center
@@ -242,7 +250,7 @@ extension SignUpViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-        if SignUpViewController.stripeAgreementURL == URL || SignUpViewController.carSwaddleAgreementURL == URL {
+        if SignUpViewController.stripeAgreementURL == URL || SignUpViewController.carSwaddleAgreementURL == URL || SignUpViewController.carSwaddlePrivacyURL == URL {
             showSafari(with: URL)
         }
         
@@ -262,12 +270,12 @@ public extension String {
         "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
     "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     
-    public var isValidEmail: Bool {
+    var isValidEmail: Bool {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", String.validateEmailRegex)
         return emailTest.evaluate(with: self)
     }
     
-    public var isValidPassword: Bool {
+    var isValidPassword: Bool {
         return self.count > 3
     }
     

@@ -10,10 +10,10 @@
 
 #import "STPAPIClient.h"
 #import "STPConnectAccountParams.h"
-
 #import "STPFixtures.h"
+#import "STPNetworkStubbingTestCase.h"
 
-@interface STPConnectAccountFunctionalTest : XCTestCase
+@interface STPConnectAccountFunctionalTest : STPNetworkStubbingTestCase
 
 /// Client with test publishable key
 @property (nonatomic, strong, nonnull) STPAPIClient *client;
@@ -65,6 +65,7 @@
             XCTAssertNil(error);
             XCTAssertNotNil(token);
             XCTAssertNotNil(token.tokenId);
+            XCTAssertEqual(token.type, STPTokenTypeAccount);
         }
         else {
             XCTAssertNil(token);

@@ -53,6 +53,8 @@ open class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 toViewController.view.frame = transitionContext.containerView.frame
             case .popover, .pageSheet, .formSheet:
                 fatalError("This model presentation style is not supported. Add it!")
+            @unknown default:
+                fatalError("unkown presentation style")
             }
         case .presenting:
             containerView.addSubview(toViewController.view)
@@ -64,6 +66,8 @@ open class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 toViewController.view.frame = transitionContext.containerView.frame
             case .popover, .pageSheet, .formSheet:
                 fatalError("This model presentation style is not supported. Add it!")
+            @unknown default:
+                fatalError("unkown presentation style")
             }
         }
         

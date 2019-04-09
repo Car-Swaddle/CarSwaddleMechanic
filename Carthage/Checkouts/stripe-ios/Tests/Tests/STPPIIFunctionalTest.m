@@ -10,11 +10,16 @@
 
 #import "STPAPIClient.h"
 #import "STPToken.h"
+#import "STPNetworkStubbingTestCase.h"
 
-@interface STPPIIFunctionalTest : XCTestCase
+@interface STPPIIFunctionalTest : STPNetworkStubbingTestCase
 @end
 
 @implementation STPPIIFunctionalTest
+
+- (void)setUp {
+    [super setUp];
+}
 
 - (void)testCreatePersonallyIdentifiableInformationToken {
     STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey:@"pk_test_vOo1umqsYxSrP5UXfOeL3ecm"];
@@ -26,6 +31,7 @@
         XCTAssertNil(error, @"error should be nil %@", error.localizedDescription);
         XCTAssertNotNil(token, @"token should not be nil");
         XCTAssertNotNil(token.tokenId);
+        XCTAssertEqual(token.type, STPTokenTypePII);
     }];
     
     [self waitForExpectationsWithTimeout:5.0f handler:nil];

@@ -11,7 +11,7 @@ import Foundation
 
 public extension Array {
     
-    public func safeObject(at index: Int) -> Iterator.Element? {
+    func safeObject(at index: Int) -> Iterator.Element? {
         guard index < count && index >= 0 else { return nil }
         return self[index]
     }

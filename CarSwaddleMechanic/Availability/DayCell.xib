@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,43 +18,59 @@
                 <rect key="frame" x="0.0" y="0.0" width="462" height="243.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zeq-Xb-6AX">
-                        <rect key="frame" x="20" y="11" width="422" height="59"/>
-                        <color key="backgroundColor" red="0.88499618901146782" green="0.88323295116424561" blue="0.88434514734480119" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="59" id="Auk-Op-Qro"/>
-                        </constraints>
-                        <state key="normal" title="Monday"/>
-                    </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibl-oV-YC0" customClass="HourCollectionView" customModule="CarSwaddleMechanic" customModuleProvider="target">
-                        <rect key="frame" x="20" y="78" width="422" height="155"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="155" id="85G-qu-bqe"/>
-                        </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SF5-aG-EHC">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4JQ-I7-SVM">
+                        <rect key="frame" x="20" y="11" width="422" height="222"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1jU-UO-AT5">
+                                <rect key="frame" x="0.0" y="0.0" width="422" height="59"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHD-Sd-AeV">
+                                        <rect key="frame" x="190" y="19.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yHD-Sd-AeV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1jU-UO-AT5" secondAttribute="top" id="5RS-rM-jb0"/>
+                                    <constraint firstItem="yHD-Sd-AeV" firstAttribute="centerX" secondItem="1jU-UO-AT5" secondAttribute="centerX" id="DiC-Qs-qzj"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yHD-Sd-AeV" secondAttribute="bottom" id="FsW-kp-VDO"/>
+                                    <constraint firstAttribute="height" priority="999" constant="59" id="l1H-wT-Qzc"/>
+                                    <constraint firstItem="yHD-Sd-AeV" firstAttribute="centerY" secondItem="1jU-UO-AT5" secondAttribute="centerY" id="tLt-tK-To2"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yHD-Sd-AeV" secondAttribute="trailing" id="tZU-XG-n9Z"/>
+                                    <constraint firstItem="yHD-Sd-AeV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1jU-UO-AT5" secondAttribute="leading" id="u5r-gd-NcH"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibl-oV-YC0" customClass="HourCollectionView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="67" width="422" height="155"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="155" id="85G-qu-bqe"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SF5-aG-EHC">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Zeq-Xb-6AX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7AO-lK-YBm"/>
-                    <constraint firstItem="Ibl-oV-YC0" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9xY-tf-kJx"/>
-                    <constraint firstItem="Zeq-Xb-6AX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="CyJ-ve-7U1"/>
-                    <constraint firstItem="Zeq-Xb-6AX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Fw4-64-KbC"/>
-                    <constraint firstItem="Ibl-oV-YC0" firstAttribute="top" secondItem="Zeq-Xb-6AX" secondAttribute="bottom" constant="8" id="Uls-3E-pJr"/>
-                    <constraint firstItem="Ibl-oV-YC0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qBV-DS-7TD"/>
-                    <constraint firstItem="Ibl-oV-YC0" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="skr-j5-kjl"/>
+                    <constraint firstItem="4JQ-I7-SVM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6dR-22-caz"/>
+                    <constraint firstItem="4JQ-I7-SVM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="QCZ-zf-JAj"/>
+                    <constraint firstItem="4JQ-I7-SVM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="S9N-oB-Iyt"/>
+                    <constraint firstItem="4JQ-I7-SVM" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="rid-3X-nH4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="button" destination="Zeq-Xb-6AX" id="KCd-1U-H0B"/>
                 <outlet property="collectionView" destination="Ibl-oV-YC0" id="YuW-kr-ecX"/>
                 <outlet property="collectionViewHeightConstraint" destination="85G-qu-bqe" id="zyn-t4-BDL"/>
+                <outlet property="weekDayLabel" destination="yHD-Sd-AeV" id="hvw-Zt-pf3"/>
+                <outlet property="weekDayView" destination="1jU-UO-AT5" id="m7G-7P-Jyv"/>
             </connections>
             <point key="canvasLocation" x="251.19999999999999" y="243.77811094452775"/>
         </tableViewCell>

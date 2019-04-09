@@ -24,7 +24,21 @@ class Hour {
     }
 }
 
-final class HourCollectionView: UICollectionView {
+open class DynamicCollectionView: UICollectionView {
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if bounds.size != intrinsicContentSize {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    
+    open override var intrinsicContentSize: CGSize {
+        return collectionViewLayout.collectionViewContentSize
+    }
+}
+
+final class HourCollectionView: DynamicCollectionView {
     
     weak var hourDelegate: HourCollectionViewDelegate?
     
@@ -41,6 +55,7 @@ final class HourCollectionView: UICollectionView {
         allowsMultipleSelection = true
         (collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         register(HourCollectionViewCell.self)
+        clipsToBounds = false
     }
     
 }

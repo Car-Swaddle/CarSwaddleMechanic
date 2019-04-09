@@ -71,20 +71,20 @@ final public class Navigator: NSObject {
     }
     
     private func setupAppearance() {
-        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20)]
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().barTintColor = .veryLightGray
         UINavigationBar.appearance().isTranslucent = false
         UITextField.appearance().tintColor = .secondary
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.appFont(type: .semiBold, size: 10),
+            .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
             .foregroundColor: UIColor.viewBackgroundColor1
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
         let normalTabBarAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.appFont(type: .regular, size: 10),
+            .font: UIFont.appFont(type: .regular, size: 10) as Any,
             .foregroundColor: UIColor.lightGray
         ]
         UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
@@ -94,7 +94,7 @@ final public class Navigator: NSObject {
         UISwitch.appearance().onTintColor = .secondary
         UINavigationBar.appearance().tintColor = .viewBackgroundColor1
         
-        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17)]
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17) as Any]
         
         for state in [UIControl.State.normal, .highlighted, .selected, .disabled, .focused, .reserved] {
             UIBarButtonItem.appearance().setTitleTextAttributes(barButtonTextAttributes, for: state)
@@ -103,8 +103,8 @@ final public class Navigator: NSObject {
         UITableViewCell.appearance().textLabel?.font = UIFont.appFont(type: .regular, size: 14)
         
         let actionButton = ActionButton.appearance()
-        actionButton.defaultTitleFont = UIFont.appFont(type: .bold, size: 23)
-        actionButton.defaultBackgroundColor = .red
+        actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
+        actionButton.defaultBackgroundColor = .secondary
         
         CarSwaddleUI.ContentInsetAdjuster.defaultBottomOffset = navigator.tabBarController.tabBar.bounds.height
     }
@@ -368,12 +368,12 @@ extension Navigator: UITabBarControllerDelegate {
     
     private static let didChangeTabEvent = "Did Change Tab"
     
-    @objc func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    @objc public func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        guard let tab = self.tab(from: viewController) else { return }
 //        trackEvent(with: Navigator.didChangeTabEvent, attributes: ["Screen": tab.name])
     }
     
-    @objc func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc public func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
     

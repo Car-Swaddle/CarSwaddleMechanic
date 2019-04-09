@@ -497,7 +497,7 @@ public final class CustomAlertContentView: UIView, NibInstantiating {
         imageHeightConstraint.constant = image.size.height
         imageWidthConstraint.constant = image.size.width
         let newAspectRatio = image.size.aspectRatio
-        let newAspectRatioConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: newAspectRatio, constant: 0)
+        let newAspectRatioConstraint = NSLayoutConstraint(item: imageView as Any, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: newAspectRatio, constant: 0)
         imageViewAspectRatioConstraint = newAspectRatioConstraint
     }
     

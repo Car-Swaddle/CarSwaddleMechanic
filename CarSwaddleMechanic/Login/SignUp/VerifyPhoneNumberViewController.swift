@@ -27,7 +27,7 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         view.addSubview(oneTimeViewController.view)
         oneTimeViewController.view.pinFrameToSuperViewBounds()
         oneTimeViewController.didMove(toParent: self)
-        oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
+        _ = oneTimeViewController.oneTimeCodeEntryView.becomeFirstResponder()
     }
     
     private lazy var oneTimeViewController: OneTimeCodeViewController = {

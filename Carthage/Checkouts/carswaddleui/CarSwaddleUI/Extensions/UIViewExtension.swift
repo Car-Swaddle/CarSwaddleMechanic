@@ -26,7 +26,7 @@ public enum Side {
 public extension Side {
     
     /// `NSLayoutAttribute` for the corresponding `Side`.
-    public var layoutAttribute: NSLayoutConstraint.Attribute {
+    var layoutAttribute: NSLayoutConstraint.Attribute {
         switch self {
         case .top: return NSLayoutConstraint.Attribute.top
         case .bottom: return NSLayoutConstraint.Attribute.bottom
@@ -36,7 +36,7 @@ public extension Side {
     }
     
     /// `NSLayoutAttribute` for the corresponding height or width attribute.
-    public var sizeAttribute: NSLayoutConstraint.Attribute {
+    var sizeAttribute: NSLayoutConstraint.Attribute {
         switch self {
         case .top, .bottom: return NSLayoutConstraint.Attribute.height
         case .left, .right: return NSLayoutConstraint.Attribute.width
@@ -53,7 +53,7 @@ public extension UIView {
     /// need to unhide it twice for it to show... 😩🔫
     // http://www.openradar.me/22819594
     // http://stackoverflow.com/questions/33240635/hidden-property-cannot-be-changed-within-an-animation-block
-    public var isHiddenInStackView: Bool {
+    var isHiddenInStackView: Bool {
         get {
             return isHidden
         }
@@ -71,7 +71,7 @@ public extension UIView {
      
      - returns: `(top:NSLayoutConstraint, bottom:NSLayoutConstraint, left:NSLayoutConstraint, right:NSLayoutConstraint)` All added constraints.
      */
-    @discardableResult public func pinFrameToSuperViewBounds(insets: UIEdgeInsets = UIEdgeInsets.zero, useSafeArea: Bool = false) -> (top:NSLayoutConstraint, bottom:NSLayoutConstraint, left:NSLayoutConstraint, right:NSLayoutConstraint)? {
+    @discardableResult func pinFrameToSuperViewBounds(insets: UIEdgeInsets = UIEdgeInsets.zero, useSafeArea: Bool = false) -> (top:NSLayoutConstraint, bottom:NSLayoutConstraint, left:NSLayoutConstraint, right:NSLayoutConstraint)? {
         assert(self.superview != nil, "Invalid superview!!!")
         guard let superview = superview else { return nil }
         translatesAutoresizingMaskIntoConstraints = false // TODO: Look into taking this out. But Don't know what it would effect.
@@ -112,7 +112,7 @@ public extension UIView {
      - returns: `[NSLayoutConstraint]?` Constraints added to the sender.
      
      */
-    @discardableResult public func constrain(toSides sides: [Side]) -> [NSLayoutConstraint]? {
+    @discardableResult func constrain(toSides sides: [Side]) -> [NSLayoutConstraint]? {
         assert(self.superview != nil, "Invalid superview!!!")
         guard let superview = superview else { return nil }
         
@@ -132,7 +132,7 @@ public extension UIView {
      
      The view must already be in the view hierarchy (i.e. have a superview)
      */
-    public func constrainToCenter() {
+    func constrainToCenter() {
         guard let superview = superview else {
             assert(false, "Invalid superview!!!")
             return
@@ -141,7 +141,7 @@ public extension UIView {
         centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
     }
     
-    public func constrainWithinEdges(insets: UIEdgeInsets = UIEdgeInsets.zero) {
+    func constrainWithinEdges(insets: UIEdgeInsets = UIEdgeInsets.zero) {
         guard let superview = superview else {
             assert(false, "Invalid superview!!!")
             return
@@ -152,13 +152,13 @@ public extension UIView {
         trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: insets.right).isActive = true
     }
     
-    @discardableResult public func constraintsWithItem(_ item:AnyObject)->[NSLayoutConstraint] {
+    @discardableResult func constraintsWithItem(_ item:AnyObject)->[NSLayoutConstraint] {
         return self.constraints.filter({ (constraint) -> Bool in
             return constraint.firstItem === item || constraint.secondItem === item
         })
     }
     
-    public func removeConstraintsWithItem(_ item: AnyObject) {
+    func removeConstraintsWithItem(_ item: AnyObject) {
         self.removeConstraints(constraintsWithItem(item))
     }
     
@@ -172,7 +172,7 @@ public extension UIView {
      - returns: *CGFloat* Height of Keyboard
      
      */
-    @discardableResult public func keyboardHeightFromBottomWithNotification(_ notification: Foundation.Notification) -> CGFloat {
+    @discardableResult func keyboardHeightFromBottomWithNotification(_ notification: Foundation.Notification) -> CGFloat {
         guard let userInfo = notification.userInfo as? [String:Any] else { return 0 }
         guard let rectValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return 0 }
         
@@ -197,7 +197,7 @@ public extension UIView {
      
      */
     @discardableResult
-    public func addHairlineView(toSide side: Side, color: UIColor = .gray, size: CGFloat = 1.0 / UIScreen.main.scale, insets: UIEdgeInsets = .zero) -> UIView {
+    func addHairlineView(toSide side: Side, color: UIColor = .gray, size: CGFloat = 1.0 / UIScreen.main.scale, insets: UIEdgeInsets = .zero) -> UIView {
         let hairlineView = UIView()
         hairlineView.translatesAutoresizingMaskIntoConstraints = false
         hairlineView.backgroundColor = color
@@ -229,7 +229,7 @@ public extension UIView {
     }
     
     /// Process this view and create a `UIImage` from it.
-    public func snapshotImage() -> UIImage? {
+    func snapshotImage() -> UIImage? {
         assert(Thread.isMainThread, "Must be ran on the main thread!")
         
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
@@ -246,7 +246,7 @@ public extension UIView {
     
     /// Spin the view for a certain `duration` with a number of `rotation`. Set `repeat` to `Float.infinity` to
     ///  spin forever.
-    public func spin(forDuration duration: CGFloat, numberOfRotations rotation: CGFloat, repeatCount: Float, clockwise: Bool = true) {
+    func spin(forDuration duration: CGFloat, numberOfRotations rotation: CGFloat, repeatCount: Float, clockwise: Bool = true) {
         guard layer.animation(forKey: SpinAnimationKey) == nil else { return }
         
         let spinAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -259,12 +259,12 @@ public extension UIView {
     }
     
     /// Stop the view from spinning (from calling `spin`).
-    public func stopSpin() {
+    func stopSpin() {
         layer.removeAnimation(forKey: SpinAnimationKey)
     }
     
     /// Shake the view with a custom animation.
-    public func shake(completion: @escaping (_ completed: Bool) -> () = { _ in } ) {
+    func shake(completion: @escaping (_ completed: Bool) -> () = { _ in } ) {
         transform = CGAffineTransform(translationX: 20, y: 0)
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [.allowUserInteraction, .curveEaseInOut], animations: { [weak self] in
             self?.transform = CGAffineTransform.identity
@@ -273,7 +273,7 @@ public extension UIView {
     
     /// This will return the smallest possible length that will be displayed
     /// Used often with layer border widths.
-    public static var hairlineLength: CGFloat {
+    static var hairlineLength: CGFloat {
         return 1.0 / UIScreen.main.scale
     }
     

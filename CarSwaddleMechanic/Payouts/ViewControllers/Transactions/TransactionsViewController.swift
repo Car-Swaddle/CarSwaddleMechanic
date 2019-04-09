@@ -214,6 +214,8 @@ extension TransactionsViewController: NSFetchedResultsControllerDelegate {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     
@@ -236,20 +238,20 @@ extension Int {
 
 public extension Transaction {
     
-    public static var adjustedAvailableOnDateSortDescriptor: NSSortDescriptor {
+    static var adjustedAvailableOnDateSortDescriptor: NSSortDescriptor {
         return NSSortDescriptor(key: #keyPath(Transaction.adjustedAvailableOnDate), ascending: false)
     }
     
-    public static var transactionListPredicate: NSPredicate {
+    static var transactionListPredicate: NSPredicate {
         return Transaction.predicate(excluding: [.payout])
     }
     
-    public static func predicate(excluding transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+    static func predicate(excluding transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
         let types = transactionTypes.map { $0.rawValue }
         return NSPredicate(format: "NOT (%K IN %@)", #keyPath(Transaction.type), types)
     }
     
-    public static func predicate(with transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
+    static func predicate(with transactionTypes: [Transaction.TransactionType]) -> NSPredicate {
         let types = transactionTypes.map { $0.rawValue }
         return NSPredicate(format: "%K IN %@", #keyPath(Transaction.type), types)
     }

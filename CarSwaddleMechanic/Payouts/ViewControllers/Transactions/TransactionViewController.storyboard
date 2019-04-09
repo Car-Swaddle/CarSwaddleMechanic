@@ -25,7 +25,7 @@
                                     <outlet property="delegate" destination="Ea1-LK-UT2" id="mKQ-Fa-wTx"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-fL-aEJ" customClass="ActionButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-fL-aEJ" customClass="ActionButton" customModule="CarSwaddleUI">
                                 <rect key="frame" x="145" y="618" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Receipt"/>

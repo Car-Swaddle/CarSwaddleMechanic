@@ -23,6 +23,8 @@ final class ContactInformationCell: UITableViewCell, NibRegisterable {
         titleLabel.text = NSLocalizedString("Contact Information", comment: "Description of row")
         accessoryType = .disclosureIndicator
         
+        titleLabel.font = UIFont.appFont(type: .regular, size: 17)
+        
         animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7
         animationView.loopMode = .loop

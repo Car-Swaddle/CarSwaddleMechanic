@@ -141,6 +141,8 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
             }
         case .failed, .possible, .cancelled:
             break
+        @unknown default:
+            fatalError("unkown case")
         }
     }
     
