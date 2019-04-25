@@ -31,8 +31,6 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
     @IBOutlet private weak var agreementTextViewHeightConstraint: NSLayoutConstraint!
     
-    
-    
     private var auth = Auth(serviceRequest: serviceRequest)
     
     @IBOutlet private weak var backgroundImageView: UIImageView!
@@ -61,6 +59,20 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
         passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        
+        setupAgreementTextView()
+        
+        backgroundImageView.image = backgroundImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    private func setupAgreementTextView() {
+        let tintColor = UIColor.textColor2
         
         let termsOfUseText = "Car Swaddle Terms of Use Agreement"
         let privacyPolicyText = "Car Swaddle Privacy Policy"
@@ -93,35 +105,6 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         agreementTextView.delegate = self
         
         agreementTextViewHeightConstraint.constant = agreementTextView.contentSize.height
-        
-        backgroundImageView.image = backgroundImage
-        
-//        UIBlurEffect.Style.prominent
-//        let blurEffect = UIBlurEffect(style: .dark)
-//        let blurView = UIVisualEffectView(effect: blurEffect)
-////        visualEffectView.frame = backgroundImageView.bounds
-//
-//        backgroundImageView.addSubview(blurView)
-//        blurView.pinFrameToSuperViewBounds()
-//
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-//        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//
-//        blurView.contentView.addSubview(vibrancyEffectView)
-//        vibrancyEffectView.pinFrameToSuperViewBounds()
-//
-//        blurView.alpha = 0.0
-//
-//        UIView.animate(withDuration: 1.25) {
-//            blurView.alpha = 1.0
-//        }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setNeedsStatusBarAppearanceUpdate()
     }
     
     private func linkAttributes(with url: URL) -> [NSAttributedString.Key: Any] {

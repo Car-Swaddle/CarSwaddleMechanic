@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FGn-JG-pUa">
-                        <rect key="frame" x="16" y="16" width="311" height="48.5"/>
+                        <rect key="frame" x="16" y="16" width="319" height="48.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWx-b2-PiI">
-                                <rect key="frame" x="0.0" y="14" width="281" height="20.5"/>
+                                <rect key="frame" x="0.0" y="14" width="289" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-OT-z1T" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="289" y="13.5" width="22" height="22"/>
+                                <rect key="frame" x="297" y="13.5" width="22" height="22"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="0KT-gt-hu4"/>
@@ -42,7 +42,7 @@
                     <constraint firstAttribute="bottom" secondItem="FGn-JG-pUa" secondAttribute="bottom" constant="16" id="7Cq-UZ-TNV"/>
                     <constraint firstItem="FGn-JG-pUa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="N6J-0v-taP"/>
                     <constraint firstItem="FGn-JG-pUa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ev1-mG-HVW"/>
-                    <constraint firstAttribute="trailing" secondItem="FGn-JG-pUa" secondAttribute="trailing" constant="16" id="nDE-qX-OQd"/>
+                    <constraint firstAttribute="trailing" secondItem="FGn-JG-pUa" secondAttribute="trailing" constant="8" id="nDE-qX-OQd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
