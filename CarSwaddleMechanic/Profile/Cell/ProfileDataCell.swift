@@ -65,7 +65,8 @@ final class ProfileDataCell: UITableViewCell, NibRegisterable {
         updateErrorViewCornerRadius()
         updateErrorViewHiddenStatus()
         
-        textLabel?.font = UIFont.appFont(type: .regular, size: 17)
+        valueLabel?.font = UIFont.appFont(type: .regular, size: 17)
+        descriptionLabel?.font = UIFont.appFont(type: .regular, size: 15)
         
         animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7

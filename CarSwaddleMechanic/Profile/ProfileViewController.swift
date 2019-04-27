@@ -243,7 +243,6 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
-//            cell.font = UIFont.appFont(type: .regular, size: 17)
             cell.valueText = NSLocalizedString("Set hours", comment: "Description of row")
             cell.descriptionText = nil
             cell.errorViewIsHidden = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.hasSetAvailability != false
@@ -256,13 +255,10 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .taxes:
             let cell: ProfileDataCell = tableView.dequeueCell()
-//            cell.valueText?.font = UIFont.appFont(type: .regular, size: 15)
             cell.valueText = NSLocalizedString("Tax deductions", comment: "Title of label that when tapped goes to the mechanics taxes")
             return cell
         case .logout:
             let cell: LogoutCell = tableView.dequeueCell()
-//            cell.valueText = NSLocalizedString("Personal Information", comment: "Description of row")
-//            cell.descriptionText = nil
             return cell
         }
     }
