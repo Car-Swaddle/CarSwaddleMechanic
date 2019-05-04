@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,18 +18,28 @@
             <subviews>
                 <view contentMode="scaleToFill" horizontalHuggingPriority="246" horizontalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="6hT-Jq-4dn" customClass="LabeledBannerView" customModule="CarSwaddleMechanic" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="14" width="209" height="44"/>
-                    <color key="backgroundColor" name="secondary"/>
+                    <color key="backgroundColor" white="0.93172315140845074" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="750" constant="209" id="BUs-5h-t6h"/>
                         <constraint firstAttribute="height" constant="44" id="d8S-qc-PSe"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                            <color key="value" name="viewBackgroundColor1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6hT-Jq-4dn" secondAttribute="bottom" constant="16" id="ZUT-uT-enb"/>
                 <constraint firstItem="6hT-Jq-4dn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gzd-yZ-QWA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6hT-Jq-4dn" secondAttribute="trailing" constant="8" id="lUU-Hj-PLb"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -42,8 +52,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="secondary">
-            <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="viewBackgroundColor1">
+            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

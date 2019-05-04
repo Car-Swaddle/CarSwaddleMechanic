@@ -127,7 +127,6 @@
 		99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */; };
 		99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */; };
 		99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */; };
-		99D5DA4521FD15BD00E6A511 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */; };
 		99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA5121FE689400E6A511 /* TweakValues.swift */; };
 		99D5DA6221FE87F200E6A511 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA6121FE87F200E6A511 /* Logout.swift */; };
 		99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */; };
@@ -137,6 +136,7 @@
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */; };
+		99E6EB7322795BD700418077 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E6EB7222795BD700418077 /* AuthenticationServices.framework */; };
 		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
 		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99F02792218663BB005FEFC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02791218663BB005FEFC7 /* Location.swift */; };
@@ -377,7 +377,6 @@
 		99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewsViewController.storyboard; sourceTree = "<group>"; };
 		99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListCell.swift; sourceTree = "<group>"; };
 		99D5DA4121F8431B00E6A511 /* ReviewListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewListCell.xib; sourceTree = "<group>"; };
-		99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		99D5DA5121FE689400E6A511 /* TweakValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakValues.swift; sourceTree = "<group>"; };
 		99D5DA6121FE87F200E6A511 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesHeaderView.swift; sourceTree = "<group>"; };
@@ -388,6 +387,7 @@
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		99E6EB7222795BD700418077 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
 		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99F02791218663BB005FEFC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -476,7 +476,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D5DA4521FD15BD00E6A511 /* AuthenticationServices.framework in Frameworks */,
+				99E6EB7322795BD700418077 /* AuthenticationServices.framework in Frameworks */,
 				99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */,
 				99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */,
 				99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */,
@@ -520,10 +520,10 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99E6EB7222795BD700418077 /* AuthenticationServices.framework */,
 				99F7BC7D22193CC400DD5401 /* FSCalendar.framework */,
 				99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */,
 				99F6968F220BDD720021A719 /* Lottie.framework */,
-				99D5DA4421FD15BD00E6A511 /* AuthenticationServices.framework */,
 				998D03E121F42CDC00546C58 /* Cosmos.framework */,
 				998D03DD21F42BBB00546C58 /* Authentication.framework */,
 				99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */,
@@ -1431,7 +1431,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				INFOPLIST_FILE = NotificationModifier/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1439,7 +1439,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic.NotificationModifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic.NotificationModifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1452,7 +1452,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				INFOPLIST_FILE = NotificationModifier/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1460,7 +1460,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic.NotificationModifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic.NotificationModifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1592,7 +1592,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -1604,7 +1604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1620,7 +1620,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
+				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -1632,7 +1632,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleMechanic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

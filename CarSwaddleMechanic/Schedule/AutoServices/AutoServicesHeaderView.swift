@@ -60,8 +60,20 @@ final class AutoServicesHeaderView: UIView, NibInstantiating {
 
 
 
+@IBDesignable
 public class LabeledBannerView: UIView {
     
+    @IBInspectable
+    public var labelTextColor: UIColor {
+        get {
+            return label.textColor
+        }
+        set {
+            label.textColor = newValue
+        }
+    }
+    
+    @IBInspectable
     public lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.appFont(type: .semiBold, size: 17)
@@ -135,6 +147,11 @@ public class LabeledBannerView: UIView {
         super.layoutSubviews()
         
         layer.mask = shapeLayerWithRoundedCorners([.topRight, .bottomRight], radius: frame.height/2)
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setup()
     }
     
     private func setup() {

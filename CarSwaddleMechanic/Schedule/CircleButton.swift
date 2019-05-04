@@ -27,11 +27,11 @@ class CircleButton: UIButton {
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 1.0 {
-        didSet {
-            updateBorderWidth()
-        }
-    }
+//    @IBInspectable var borderWidth: CGFloat = 1.0 {
+//        didSet {
+//            updateBorderWidth()
+//        }
+//    }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
