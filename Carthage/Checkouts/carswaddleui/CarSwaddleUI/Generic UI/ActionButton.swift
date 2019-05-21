@@ -21,9 +21,22 @@ open class ActionButton: LoadingButton {
     }
     @objc dynamic public var defaultBackgroundColor: UIColor = .white {
         didSet {
-            updateDefaultBackgroundColor()
+            updateBackgroundColor()
         }
     }
+    
+    @objc dynamic public var disabledBackgroundColor: UIColor = .gray {
+        didSet {
+            updateBackgroundColor()
+        }
+    }
+    
+    open override var isEnabled: Bool {
+        didSet {
+            updateBackgroundColor()
+        }
+    }
+    
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,7 +51,7 @@ open class ActionButton: LoadingButton {
     private func setup() {
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 1, height: 2)
-        updateDefaultBackgroundColor()
+        updateBackgroundColor()
         setTitleColor(.white, for: .normal)
         updateTitleFont()
         titleLabel?.numberOfLines = 0
@@ -48,8 +61,12 @@ open class ActionButton: LoadingButton {
         indicatorViewStyle = .white
     }
     
-    private func updateDefaultBackgroundColor() {
-        backgroundColor = defaultBackgroundColor
+    private var backgroundColorForCurrentState: UIColor {
+        return isEnabled ? defaultBackgroundColor : disabledBackgroundColor
+    }
+    
+    private func updateBackgroundColor() {
+        backgroundColor = backgroundColorForCurrentState
     }
     
     private func updateTitleFont() {

@@ -55,7 +55,7 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
         nameLabel.text = nil
     }
     
-    @IBAction func didTapCall() {
+    @IBAction private func didTapCall() {
         guard let phoneNumber = self.phoneNumber?.replacingOccurrences(of: " ", with: ""),
             let url = URL(string: "tel://" + phoneNumber) else { return }
         UIApplication.shared.open(url)
@@ -66,7 +66,7 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
     }
     
     
-    @IBAction func didTapSMS() {
+    @IBAction private func didTapSMS() {
         guard MFMessageComposeViewController.canSendText(),
             let phoneNumber = self.phoneNumber else { return }
         let controller = MFMessageComposeViewController()
@@ -78,6 +78,5 @@ final class AutoServiceDetailsHeaderView: UIView, NibInstantiating, MFMessageCom
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         delegate?.dismissMailComposeViewController(header: self)
     }
-    
     
 }

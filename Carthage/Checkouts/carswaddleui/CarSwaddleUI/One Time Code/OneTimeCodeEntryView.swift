@@ -18,11 +18,7 @@ open class OneTimeCodeEntryView: UIView {
     @IBOutlet public weak var delegate: OneTimeEntryViewDelegate?
     
     @IBInspectable public var spacerText: String = "-" {
-        didSet {
-            spacerLabels.forEach {
-                $0.text = spacerText
-            }
-        }
+        didSet { spacerLabels.forEach { $0.text = spacerText } }
     }
     
     @IBInspectable public var indexesPrecedingSpacer: [Int] = [] {
@@ -46,43 +42,23 @@ open class OneTimeCodeEntryView: UIView {
     }
     
     @IBInspectable public var textFieldTintColor: UIColor? {
-        didSet {
-            textFields.forEach {
-                $0.tintColor = textFieldTintColor
-            }
-        }
+        didSet { textFields.forEach { $0.tintColor = textFieldTintColor  } }
     }
     
     @IBInspectable public var textFieldBackgroundColor: UIColor = .white {
-        didSet {
-            textFields.forEach {
-                $0.backgroundColor = textFieldBackgroundColor
-            }
-        }
+        didSet { textFields.forEach { $0.backgroundColor = textFieldBackgroundColor } }
     }
     
     @IBInspectable public var textFieldCornerRadius: CGFloat = 3 {
-        didSet {
-            textFields.forEach {
-                $0.layer.cornerRadius = textFieldCornerRadius
-            }
-        }
+        didSet { textFields.forEach { $0.layer.cornerRadius = textFieldCornerRadius } }
     }
     
     @IBInspectable public var textFieldFont: UIFont = UIFont.boldSystemFont(ofSize: 19) {
-        didSet {
-            textFields.forEach {
-                $0.font = textFieldFont
-            }
-        }
+        didSet { textFields.forEach { $0.font = textFieldFont } }
     }
     
     @IBInspectable public var underlineColor: UIColor = .black {
-        didSet {
-            textFields.forEach {
-                $0.underlineColor = underlineColor
-            }
-        }
+        didSet { textFields.forEach { $0.underlineColor = underlineColor } }
     }
     
     public var textFieldWidth: CGFloat? {
@@ -90,11 +66,7 @@ open class OneTimeCodeEntryView: UIView {
     }
     
     public var isSecureTextEntry: Bool = false {
-        didSet {
-            for textField in textFields {
-                textField.isSecureTextEntry = isSecureTextEntry
-            }
-        }
+        didSet { textFields.forEach { $0.isSecureTextEntry = isSecureTextEntry } }
     }
     
     private var spacerLabels: [UILabel] = []
@@ -133,7 +105,8 @@ open class OneTimeCodeEntryView: UIView {
     
     private func updateStackViewWithTextFields() {
         for textField in textFields {
-            stackView.removeArrangedSubview(textField)
+            guard let superview = textField.superview else { continue }
+            stackView.removeArrangedSubview(superview)
             textField.removeFromSuperview()
         }
         
@@ -147,7 +120,18 @@ open class OneTimeCodeEntryView: UIView {
         
         for index in 0..<digits {
             let textField = self.createTextField()
-            stackView.addArrangedSubview(textField)
+            let wrapperView = UIView()
+            wrapperView.translatesAutoresizingMaskIntoConstraints = false
+            wrapperView.addSubview(textField)
+            textField.pinFrameToSuperViewBounds()
+            
+            wrapperView.layer.cornerRadius = textFieldCornerRadius
+            wrapperView.layer.shadowColor = UIColor.black.cgColor
+            wrapperView.layer.shadowOffset = CGSize(width: 2, height: 2)
+            wrapperView.layer.shadowRadius = 4
+            wrapperView.layer.shadowOpacity = 0.2
+            
+            stackView.addArrangedSubview(wrapperView)
             textFields.append(textField)
             
             if indexesPrecedingSpacer.contains(index) {
@@ -172,6 +156,7 @@ open class OneTimeCodeEntryView: UIView {
                 if let constraint = textFieldWidthConstraints[textField] {
                     constraint.constant = textFieldWidth
                 } else {
+//                    guard let superview = textField.superview else { continue }
                     let constraint = textField.widthAnchor.constraint(equalToConstant: textFieldWidth)
                     constraint.isActive = true
                     textFieldWidthConstraints[textField] = constraint

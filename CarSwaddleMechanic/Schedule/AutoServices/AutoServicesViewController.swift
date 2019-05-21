@@ -237,7 +237,7 @@ extension AutoServicesViewController: UITableViewDataSource {
             return nil
         case .canceled:
             let header = HeaderView()
-            header.labelText = NSLocalizedString("Canceled Auto Services", comment: "Title of header")
+            header.labelText = NSLocalizedString("Canceled auto services", comment: "Title of header")
             return header
         }
     }

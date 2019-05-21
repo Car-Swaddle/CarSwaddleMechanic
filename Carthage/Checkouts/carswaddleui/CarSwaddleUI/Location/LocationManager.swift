@@ -89,6 +89,12 @@ final public class LocationManager: NSObject {
         fetchLocationTasks.append(task)
     }
     
+    public func placemarks(fromAddress address: String, completion: @escaping (_ placemarks: [CLPlacemark]?, _ error: Error?) -> Void) {
+        geocoder.geocodeAddressString(address) { placemarks, error in
+            completion(placemarks, error)
+        }
+    }
+    
     /**
      Gets the user's current address
      
@@ -222,7 +228,7 @@ final public class LocationManager: NSObject {
         return reverseGeocodeLocationCache[location]
     }
     
-    private let geocoder = CLGeocoder()
+    public let geocoder = CLGeocoder()
     private var fetchLocationTasks: [UIBackgroundTaskIdentifier] = []
     private let coreLocationManager = CLLocationManager()
     private var locationCompletions: [((CLLocation?, Error?) -> Void)] = []

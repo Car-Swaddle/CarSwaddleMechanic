@@ -190,8 +190,8 @@ final class AutoServiceDetailsViewController: UIViewController, StoryboardInstan
     }
     
     private func cancelAlert() -> UIAlertController {
-        let title = NSLocalizedString("Are you sure you want to cancel this Autoservice?", comment: "Alert")
-        let message = NSLocalizedString("If you cancel this Autoservice, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
+        let title = NSLocalizedString("Are you sure you want to cancel this auto service?", comment: "Alert")
+        let message = NSLocalizedString("If you cancel this auto service, the funds already placed in your account will be removed and the customer will receive their funds back.", comment: "Alert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         let actionTitle = NSLocalizedString("Cancel auto service", comment: "Action title")

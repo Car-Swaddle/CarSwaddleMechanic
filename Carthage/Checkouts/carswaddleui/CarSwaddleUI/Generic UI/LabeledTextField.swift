@@ -11,6 +11,10 @@ import UIKit
 @IBDesignable
 public final class LabeledTextField: UIView {
     
+    public static var defaultTextFieldFont: UIFont = UIFont.appFont(type: .system, size: 15)
+    public static var defaultLabelNotExistsFont: UIFont = UIFont.appFont(type: .system, size: 15)
+    public static var defaultLabelFont: UIFont = UIFont.appFont(type: .system, size: 15)
+    
     lazy public var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,19 +40,19 @@ public final class LabeledTextField: UIView {
         }
     }
     
-    @IBInspectable public var textFieldToLabelGap: CGFloat = 3 {
+    @IBInspectable dynamic public var textFieldToLabelGap: CGFloat = 3 {
         didSet {
             textFieldToLabelVerticalConstraint?.constant = textFieldToLabelGap
         }
     }
     
-    @IBInspectable public var underlineColor: UIColor = .black {
+    @IBInspectable dynamic public var underlineColor: UIColor = .black {
         didSet {
             underlineView.backgroundColor = underlineColor
         }
     }
     
-    @IBInspectable public var textFieldBackgroundColor: UIColor = UIColor(white255: 244) {
+    @IBInspectable dynamic public var textFieldBackgroundColor: UIColor = UIColor(white255: 244) {
         didSet {
             textFieldContainerView.backgroundColor = textFieldBackgroundColor
         }
@@ -60,25 +64,25 @@ public final class LabeledTextField: UIView {
         }
     }
     
-    @IBInspectable public var labelTextColor: UIColor = .black {
+    @IBInspectable dynamic public var labelTextColor: UIColor = .black {
         didSet {
             label.textColor = labelTextColor
         }
     }
     
-    @IBInspectable public var labelTextExistsFont: UIFont = UIFont.appFont(type: .system, size: 15) {
+    @IBInspectable dynamic public var labelTextExistsFont: UIFont = LabeledTextField.defaultLabelFont {
         didSet {
             updateLabelFontForCurrentText()
         }
     }
     
-    @IBInspectable public var labelTextNotExistsFont: UIFont = UIFont.appFont(type: .system, size: 15) {
+    @IBInspectable dynamic public var labelTextNotExistsFont: UIFont = LabeledTextField.defaultLabelNotExistsFont {
         didSet {
             updateLabelFontForCurrentText()
         }
     }
     
-    @IBInspectable public var textFieldFont: UIFont = UIFont.appFont(type: .system, size: 17) {
+    @IBInspectable dynamic public var textFieldFont: UIFont = LabeledTextField.defaultTextFieldFont {
         didSet {
             textField.font = textFieldFont
         }
@@ -175,15 +179,15 @@ public final class LabeledTextField: UIView {
     }
     
     @objc private func textDidChange() {
-        updateLabelFontForCurrentText()
+//        updateLabelFontForCurrentText()
     }
     
     public func updateLabelFontForCurrentText() {
-        if textField.text == nil || textField.text?.isEmpty == true {
-            configureLabelFontForNoText()
-        } else {
+//        if textField.text == nil || textField.text?.isEmpty == true {
+//            configureLabelFontForNoText()
+//        } else {
             configureLabelFontForExistingText()
-        }
+//        }
     }
     
     private func configureLabelFontForNoText() {

@@ -69,7 +69,7 @@ final public class Review: NSManagedObject, NSManagedObjectFetchable, JSONInitab
     }
     
     public static var creationDateSortDescriptor: NSSortDescriptor {
-        return NSSortDescriptor(key: #keyPath(Review.creationDate), ascending: true)
+        return NSSortDescriptor(key: #keyPath(Review.creationDate), ascending: false)
     }
     
     public static func predicateForCurrentMechanic() -> NSPredicate? {

@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "queueRouteRequest(routeRequest:)"
+            landmarkName = "requestDirections(sourcePlacemark:destinationPlacemark:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

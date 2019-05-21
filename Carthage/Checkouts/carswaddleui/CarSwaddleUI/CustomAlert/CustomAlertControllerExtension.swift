@@ -3,7 +3,7 @@ import UIKit
 
 public extension CustomAlertAction {
     
-    private static let cancelTitle = NSLocalizedString("CANCEL", comment: "Action to cancel on an alert")
+    static var cancelTitle = NSLocalizedString("CANCEL", comment: "Action to cancel on an alert")
     
     /// CustomAlertAction configured for `cancel`.
     ///
@@ -14,7 +14,7 @@ public extension CustomAlertAction {
         return action
     }
     
-    private static let okayTitle = NSLocalizedString("OKAY", comment: "Action to cancel on an alert")
+    static var okayTitle = NSLocalizedString("OKAY", comment: "Action to cancel on an alert")
     
     /// CustomAlertAction configured for `okay`.
     ///

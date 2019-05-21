@@ -11,6 +11,7 @@ import UIKit
 public protocol OneTimeCodeViewControllerDelegate: AnyObject {
     func codeDidChange(code: String, viewController: OneTimeCodeViewController)
     func didSelectResendVerificationCode(viewController: OneTimeCodeViewController)
+    func didSelectUpdatePhoneNumberButton(viewController: OneTimeCodeViewController)
 }
 
 open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating {
@@ -35,6 +36,8 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     @IBOutlet public weak var verifyPhoneNumberDescriptionLabel: UILabel!
     @IBOutlet public weak var resendCodeButton: UIButton!
     
+    @IBOutlet public weak var updatePhoneNumberButton: UIButton!
+    
     @IBOutlet public weak var oneTimeCodeEntryView: OneTimeCodeEntryView!
     
     open override func viewDidLoad() {
@@ -47,6 +50,10 @@ open class OneTimeCodeViewController: UIViewController, StoryboardInstantiating 
     
     @IBAction private func didSelectResendVerificationCode() {
         delegate?.didSelectResendVerificationCode(viewController: self)
+    }
+    
+    @IBAction private func tapUpdatePhoneNumber() {
+        delegate?.didSelectUpdatePhoneNumberButton(viewController: self)
     }
     
     private var verifyPhoneNumberDescription: String {
