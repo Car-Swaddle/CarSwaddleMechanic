@@ -114,6 +114,26 @@ class LoginTests: XCTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testRequestUpdatePassword() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        authService.requestUpdatePassword(email: "kyle@carswaddle.com") { json, error in
+            XCTAssert(json != nil && error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testSetNewPassword() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        authService.setNewPassword(newPassword: "thatone", token: "d8ec15f0-7dee-11e9-b887-73c97506c8ad") { json, error in
+            XCTAssert(json != nil && error == nil, "Should have gotten json")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
     /// Keep this here, but only uncomment if you want to create a new user
 //    func testMechanicSignUp() {
 //        let exp = expectation(description: "\(#function)\(#line)")

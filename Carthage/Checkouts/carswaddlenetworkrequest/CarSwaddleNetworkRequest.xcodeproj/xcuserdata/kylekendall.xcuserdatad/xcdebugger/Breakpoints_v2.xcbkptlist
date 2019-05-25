@@ -74,12 +74,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-                  timestampString = "574324401.117105"
+                  timestampString = "580372878.2744811"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
                   endingLineNumber = "124"
-                  offsetFromSymbolStart = "456">
+                  offsetFromSymbolStart = "519">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +89,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/FileServiceTests.swift"
-                  timestampString = "574324401.118894"
+                  timestampString = "580372878.276539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
                   endingLineNumber = "125"
-                  offsetFromSymbolStart = "184">
+                  offsetFromSymbolStart = "342">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.952431"
+            timestampString = "580372877.494837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.95251"
+            timestampString = "580372877.4952821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.9525681"
+            timestampString = "580372877.4957041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.952649"
+            timestampString = "580372877.496127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -170,12 +170,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/LoginTests.swift"
-                  timestampString = "574324401.130511"
+                  timestampString = "580372878.287384"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
                   endingLineNumber = "71"
-                  offsetFromSymbolStart = "456">
+                  offsetFromSymbolStart = "519">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +185,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/LoginTests.swift"
-                  timestampString = "574324401.132441"
+                  timestampString = "580372878.289315"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
                   endingLineNumber = "72"
-                  offsetFromSymbolStart = "165">
+                  offsetFromSymbolStart = "260">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.952713"
+            timestampString = "580372877.496532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -218,12 +218,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/LoginTests.swift"
-                  timestampString = "574324401.135232"
+                  timestampString = "580372878.292428"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
                   endingLineNumber = "85"
-                  offsetFromSymbolStart = "466">
+                  offsetFromSymbolStart = "532">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -233,12 +233,12 @@
                   moduleName = "CarSwaddleNetworkRequestTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddlenetworkrequest/CarSwaddleNetworkRequestTests/LoginTests.swift"
-                  timestampString = "574324401.137025"
+                  timestampString = "580372878.2943749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
                   endingLineNumber = "86"
-                  offsetFromSymbolStart = "169">
+                  offsetFromSymbolStart = "265">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
-            timestampString = "571044131.9527889"
+            timestampString = "580372877.496897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "testLogout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -304,6 +304,38 @@
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "testGetBankAccount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
+            timestampString = "580372877.497573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "testRequestUpdatePassword()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleNetworkRequestTests/LoginTests.swift"
+            timestampString = "580372877.497974"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "testSetNewPassword()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

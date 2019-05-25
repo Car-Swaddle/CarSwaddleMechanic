@@ -13,9 +13,11 @@ import SafariServices
 
 
 private let stripeAgreementURLString = "https://stripe.com/us/connect-account/legal"
-// TODO: Change this to CarSwaddle's service agreement
 private let carSwaddleAgreementURLString = "https://carswaddle.net/terms-of-use/"
 private let carSwaddlePrivacyPolicyURLString = "https://carswaddle.net/privacy-policy/"
+
+private let unableToLoginErrorTitle = NSLocalizedString("Car Swaddle wasn't able to log you in", comment: "Error message")
+private let unableToLoginErrorMessage = NSLocalizedString("Your email or password was incorrect. Please verify your email and password and try again.\n\nDo you already have an account? Tap `Go to login` to login to your account.", comment: "Error message")
 
 final class SignUpViewController: UIViewController, StoryboardInstantiating {
     
@@ -165,8 +167,9 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
                     DispatchQueue.main.async {
                         self?.spinner.isHiddenInStackView = true
                         self?.spinner.stopAnimating()
-                        
                         self?.signUpButton.isHiddenInStackView = false
+                        
+                        self?.showError(message: unableToLoginErrorMessage, title: unableToLoginErrorTitle)
                     }
                     return
                 }
@@ -200,6 +203,13 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     private func showSafari(with url: URL) {
         let stripeSafariViewController = SFSafariViewController(url: url, configuration: safariConfiguration)
         present(stripeSafariViewController, animated: true, completion: nil)
+    }
+    
+    private func showError(message: String, title: String) {
+        let contentView = CustomAlertContentView.view(withTitle: title, message: message)
+        contentView.addOkayAction()
+        let alert = CustomAlertController.viewController(contentView: contentView)
+        present(alert, animated: true, completion: nil)
     }
     
     private var backgroundImage: UIImage? {

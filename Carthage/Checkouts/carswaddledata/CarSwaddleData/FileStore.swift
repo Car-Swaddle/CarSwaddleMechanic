@@ -117,6 +117,7 @@ public let profileImageStore = ProfileImageStore(folderName: "profile-images")
 
 
 public extension Data {
+    
     private static let mimeTypeSignatures: [UInt8 : String] = [
         0xFF : "image/jpeg",
         0x89 : "image/png",
@@ -150,7 +151,7 @@ public extension Data {
         }
     }
     
-    public var mimeType: MimeType? {
+    var mimeType: MimeType? {
         var c: UInt8 = 0
         copyBytes(to: &c, count: 1)
         guard let rawValue = Data.mimeTypeSignatures[c] else { return nil }

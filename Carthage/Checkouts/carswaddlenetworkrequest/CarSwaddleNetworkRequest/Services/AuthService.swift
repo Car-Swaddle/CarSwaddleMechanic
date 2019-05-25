@@ -12,6 +12,8 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let login = Request.Endpoint(rawValue: "/login")
     fileprivate static let logout = Request.Endpoint(rawValue: "/api/logout")
     fileprivate static let signup = Request.Endpoint(rawValue: "/signup")
+    fileprivate static let requestUpdatePassword = Request.Endpoint(rawValue: "/api/request-reset-password")
+    fileprivate static let setNewPassword = Request.Endpoint(rawValue: "/api/reset-password")
 }
 
 public class AuthService: Service {
@@ -29,6 +31,44 @@ public class AuthService: Service {
     public func mechanicSignUp(email: String, password: String, completion: @escaping (_ json: JSONObject?, _ token: String?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let task = authTask(email: email, password: password, isMechanic: true, endpoint: .signup) { [weak self] data, error in
             self?.complete(data: data, error: error, completion: completion)
+        }
+        task?.resume()
+        return task
+    }
+    
+    @discardableResult
+    public func requestUpdatePassword(email: String, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(email: email, endpoint: .requestUpdatePassword) { [weak self] data, error in
+            var json: JSONObject?
+            var error = error
+            defer {
+                completion(json, error)
+            }
+            guard let data = data,
+                let responseJSON = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                    error = NetworkRequestError.invalidJSON
+                    return
+            }
+            json = responseJSON
+        }
+        task?.resume()
+        return task
+    }
+    
+    @discardableResult
+    public func setNewPassword(newPassword: String, token: String, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(newPassword: newPassword, resetToken: token, endpoint: .setNewPassword) { [weak self] data, error in
+            var json: JSONObject?
+            var error = error
+            defer {
+                completion(json, error)
+            }
+            guard let data = data,
+                let responseJSON = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
+                    error = NetworkRequestError.invalidJSON
+                    return
+            }
+            json = responseJSON
         }
         task?.resume()
         return task
@@ -90,7 +130,7 @@ public class AuthService: Service {
     }
     
     private func authTask(email: String, password: String, isMechanic: Bool, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        guard let body = serielizedData(from: email, password: password) else {
+        guard let body = serielizedData(email: email, password: password) else {
             return nil
         }
         
@@ -99,8 +139,59 @@ public class AuthService: Service {
         return serviceRequest.send(urlRequest: request, completion: completion)
     }
     
-    private func serielizedData(from email: String, password: String) -> Data? {
-        let bodyString = "email=\(email.urlEscaped())&password=\(password)"
+    
+    private func authTask(newPassword: String, resetToken: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = serielizedData(newPassword: newPassword, resetToken: resetToken) else {
+            return nil
+        }
+        
+        guard let request = serviceRequest.post(with: endpoint, body: body) else { return nil }
+        return serviceRequest.send(urlRequest: request, completion: completion)
+    }
+    
+    private func authTask(email: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        guard let body = serielizedData(email: email) else {
+            return nil
+        }
+        
+        guard let request = serviceRequest.post(with: endpoint, body: body) else { return nil }
+        return serviceRequest.send(urlRequest: request, completion: completion)
+    }
+    
+    private func serielizedData(email: String? = nil, password: String? = nil, newPassword: String? = nil, resetToken: String? = nil) -> Data? {
+        
+        var bodyString = ""
+        var previousValueExists = false
+        
+        if let email = email {
+            bodyString += "email=\(email.urlEscaped())"
+            previousValueExists = true
+        }
+        
+        if let password = password {
+            if previousValueExists {
+                bodyString += "&"
+            }
+            bodyString += "password=\(password)"
+            previousValueExists = true
+        }
+        
+        if let newPassword = newPassword {
+            if previousValueExists {
+                bodyString += "&"
+            }
+            bodyString += "newPassword=\(newPassword)"
+            previousValueExists = true
+        }
+        
+        if let resetToken = resetToken {
+            if previousValueExists {
+                bodyString += "&"
+            }
+            bodyString += "token=\(resetToken.urlEscaped())"
+            previousValueExists = true
+        }
+        
         return bodyString.data(using: .utf8)
     }
     

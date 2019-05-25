@@ -246,6 +246,36 @@ SWIFT_CLASS("_TtC6Lottie14AnimatedSwitch")
 - (void)endTrackingWithTouch:(UITouch * _Nullable)touch withEvent:(UIEvent * _Nullable)event;
 @end
 
+@class CAAnimation;
+
+SWIFT_CLASS("_TtC6Lottie27AnimationCompletionDelegate")
+@interface AnimationCompletionDelegate : NSObject <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@protocol CAAction;
+
+/// The base animation container.
+/// This layer holds a single composition container and allows for animation of
+/// the currentFrame property.
+SWIFT_CLASS("_TtC6Lottie18AnimationContainer")
+@interface AnimationContainer : CALayer
+/// The animatable Current Frame Property
+@property (nonatomic) CGFloat currentFrame;
+/// For CAAnimation Use
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
++ (BOOL)needsDisplayForKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)display;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
 
 /// A view that can be added to a keypath of an AnimationView
 SWIFT_CLASS("_TtC6Lottie16AnimationSubview")
@@ -260,6 +290,8 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 - (void)didMoveToWindow;
 @property (nonatomic) UIViewContentMode contentMode;
 - (void)layoutSubviews;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -267,10 +299,14 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 
 SWIFT_CLASS("_TtC6Lottie13AnimationView")
 @interface AnimationView : LottieView
+/// Set animation name from Interface Builder
+@property (nonatomic, copy) NSString * _Nullable animationName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 @end
 
 
@@ -283,6 +319,7 @@ SWIFT_CLASS("_TtC6Lottie13AnimationView")
 
 SWIFT_CLASS("_TtC6Lottie19CompatibleAnimation")
 @interface CompatibleAnimation : NSObject
++ (CompatibleAnimation * _Nonnull)named:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name bundle:(NSBundle * _Nonnull)bundle OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -300,8 +337,9 @@ SWIFT_CLASS("_TtC6Lottie26CompatibleAnimationKeypath")
 
 SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 @interface CompatibleAnimationView : UIView
+- (nonnull instancetype)initWithCompatibleAnimation:(CompatibleAnimation * _Nonnull)compatibleAnimation OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, strong) CompatibleAnimation * _Nullable compatibleAnimation;
 @property (nonatomic) BOOL loopAnimation;
 @property (nonatomic) UIViewContentMode contentMode;
@@ -331,6 +369,126 @@ SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 - (CGFloat)frameTimeForMarker:(NSString * _Nonnull)named SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+/// The base class for a child layer of CompositionContainer
+SWIFT_CLASS("_TtC6Lottie16CompositionLayer")
+@interface CompositionLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie10DebugLayer")
+@interface DebugLayer : CALayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
+@interface DisabledTextLayer : CATextLayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
+@interface ImageCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A layer that inverses the alpha output of its input layer.
+/// WARNING: This is experimental and probably not very performant.
+SWIFT_CLASS("_TtC6Lottie18InvertedMatteLayer")
+@interface InvertedMatteLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC6Lottie18MaskContainerLayer")
+@interface MaskContainerLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20NullCompositionLayer")
+@interface NullCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie19PreCompositionLayer")
+@interface PreCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A CompositionLayer responsible for initializing and rendering shapes
+SWIFT_CLASS("_TtC6Lottie21ShapeCompositionLayer")
+@interface ShapeCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+/// The base layer that holds Shapes and Shape Renderers
+SWIFT_CLASS("_TtC6Lottie19ShapeContainerLayer")
+@interface ShapeContainerLayer : CALayer
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The layer responsible for rendering shape objects
+SWIFT_CLASS("_TtC6Lottie16ShapeRenderLayer")
+@interface ShapeRenderLayer : ShapeContainerLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie21SolidCompositionLayer")
+@interface SolidCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
+@interface TextCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 
@@ -582,6 +740,36 @@ SWIFT_CLASS("_TtC6Lottie14AnimatedSwitch")
 - (void)endTrackingWithTouch:(UITouch * _Nullable)touch withEvent:(UIEvent * _Nullable)event;
 @end
 
+@class CAAnimation;
+
+SWIFT_CLASS("_TtC6Lottie27AnimationCompletionDelegate")
+@interface AnimationCompletionDelegate : NSObject <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@protocol CAAction;
+
+/// The base animation container.
+/// This layer holds a single composition container and allows for animation of
+/// the currentFrame property.
+SWIFT_CLASS("_TtC6Lottie18AnimationContainer")
+@interface AnimationContainer : CALayer
+/// The animatable Current Frame Property
+@property (nonatomic) CGFloat currentFrame;
+/// For CAAnimation Use
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
++ (BOOL)needsDisplayForKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)display;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
 
 /// A view that can be added to a keypath of an AnimationView
 SWIFT_CLASS("_TtC6Lottie16AnimationSubview")
@@ -596,6 +784,8 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 - (void)didMoveToWindow;
 @property (nonatomic) UIViewContentMode contentMode;
 - (void)layoutSubviews;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -603,10 +793,14 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 
 SWIFT_CLASS("_TtC6Lottie13AnimationView")
 @interface AnimationView : LottieView
+/// Set animation name from Interface Builder
+@property (nonatomic, copy) NSString * _Nullable animationName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 @end
 
 
@@ -619,6 +813,7 @@ SWIFT_CLASS("_TtC6Lottie13AnimationView")
 
 SWIFT_CLASS("_TtC6Lottie19CompatibleAnimation")
 @interface CompatibleAnimation : NSObject
++ (CompatibleAnimation * _Nonnull)named:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name bundle:(NSBundle * _Nonnull)bundle OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -636,8 +831,9 @@ SWIFT_CLASS("_TtC6Lottie26CompatibleAnimationKeypath")
 
 SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 @interface CompatibleAnimationView : UIView
+- (nonnull instancetype)initWithCompatibleAnimation:(CompatibleAnimation * _Nonnull)compatibleAnimation OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, strong) CompatibleAnimation * _Nullable compatibleAnimation;
 @property (nonatomic) BOOL loopAnimation;
 @property (nonatomic) UIViewContentMode contentMode;
@@ -667,6 +863,126 @@ SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 - (CGFloat)frameTimeForMarker:(NSString * _Nonnull)named SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+/// The base class for a child layer of CompositionContainer
+SWIFT_CLASS("_TtC6Lottie16CompositionLayer")
+@interface CompositionLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie10DebugLayer")
+@interface DebugLayer : CALayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
+@interface DisabledTextLayer : CATextLayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
+@interface ImageCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A layer that inverses the alpha output of its input layer.
+/// WARNING: This is experimental and probably not very performant.
+SWIFT_CLASS("_TtC6Lottie18InvertedMatteLayer")
+@interface InvertedMatteLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC6Lottie18MaskContainerLayer")
+@interface MaskContainerLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20NullCompositionLayer")
+@interface NullCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie19PreCompositionLayer")
+@interface PreCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A CompositionLayer responsible for initializing and rendering shapes
+SWIFT_CLASS("_TtC6Lottie21ShapeCompositionLayer")
+@interface ShapeCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+/// The base layer that holds Shapes and Shape Renderers
+SWIFT_CLASS("_TtC6Lottie19ShapeContainerLayer")
+@interface ShapeContainerLayer : CALayer
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The layer responsible for rendering shape objects
+SWIFT_CLASS("_TtC6Lottie16ShapeRenderLayer")
+@interface ShapeRenderLayer : ShapeContainerLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie21SolidCompositionLayer")
+@interface SolidCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
+@interface TextCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 
@@ -922,6 +1238,36 @@ SWIFT_CLASS("_TtC6Lottie14AnimatedSwitch")
 - (void)endTrackingWithTouch:(UITouch * _Nullable)touch withEvent:(UIEvent * _Nullable)event;
 @end
 
+@class CAAnimation;
+
+SWIFT_CLASS("_TtC6Lottie27AnimationCompletionDelegate")
+@interface AnimationCompletionDelegate : NSObject <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@protocol CAAction;
+
+/// The base animation container.
+/// This layer holds a single composition container and allows for animation of
+/// the currentFrame property.
+SWIFT_CLASS("_TtC6Lottie18AnimationContainer")
+@interface AnimationContainer : CALayer
+/// The animatable Current Frame Property
+@property (nonatomic) CGFloat currentFrame;
+/// For CAAnimation Use
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
++ (BOOL)needsDisplayForKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)display;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
 
 /// A view that can be added to a keypath of an AnimationView
 SWIFT_CLASS("_TtC6Lottie16AnimationSubview")
@@ -936,6 +1282,8 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 - (void)didMoveToWindow;
 @property (nonatomic) UIViewContentMode contentMode;
 - (void)layoutSubviews;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -943,10 +1291,14 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 
 SWIFT_CLASS("_TtC6Lottie13AnimationView")
 @interface AnimationView : LottieView
+/// Set animation name from Interface Builder
+@property (nonatomic, copy) NSString * _Nullable animationName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 @end
 
 
@@ -959,6 +1311,7 @@ SWIFT_CLASS("_TtC6Lottie13AnimationView")
 
 SWIFT_CLASS("_TtC6Lottie19CompatibleAnimation")
 @interface CompatibleAnimation : NSObject
++ (CompatibleAnimation * _Nonnull)named:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name bundle:(NSBundle * _Nonnull)bundle OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -976,8 +1329,9 @@ SWIFT_CLASS("_TtC6Lottie26CompatibleAnimationKeypath")
 
 SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 @interface CompatibleAnimationView : UIView
+- (nonnull instancetype)initWithCompatibleAnimation:(CompatibleAnimation * _Nonnull)compatibleAnimation OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, strong) CompatibleAnimation * _Nullable compatibleAnimation;
 @property (nonatomic) BOOL loopAnimation;
 @property (nonatomic) UIViewContentMode contentMode;
@@ -1007,6 +1361,126 @@ SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 - (CGFloat)frameTimeForMarker:(NSString * _Nonnull)named SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+/// The base class for a child layer of CompositionContainer
+SWIFT_CLASS("_TtC6Lottie16CompositionLayer")
+@interface CompositionLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie10DebugLayer")
+@interface DebugLayer : CALayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
+@interface DisabledTextLayer : CATextLayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
+@interface ImageCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A layer that inverses the alpha output of its input layer.
+/// WARNING: This is experimental and probably not very performant.
+SWIFT_CLASS("_TtC6Lottie18InvertedMatteLayer")
+@interface InvertedMatteLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC6Lottie18MaskContainerLayer")
+@interface MaskContainerLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20NullCompositionLayer")
+@interface NullCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie19PreCompositionLayer")
+@interface PreCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A CompositionLayer responsible for initializing and rendering shapes
+SWIFT_CLASS("_TtC6Lottie21ShapeCompositionLayer")
+@interface ShapeCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+/// The base layer that holds Shapes and Shape Renderers
+SWIFT_CLASS("_TtC6Lottie19ShapeContainerLayer")
+@interface ShapeContainerLayer : CALayer
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The layer responsible for rendering shape objects
+SWIFT_CLASS("_TtC6Lottie16ShapeRenderLayer")
+@interface ShapeRenderLayer : ShapeContainerLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie21SolidCompositionLayer")
+@interface SolidCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
+@interface TextCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 
@@ -1258,6 +1732,36 @@ SWIFT_CLASS("_TtC6Lottie14AnimatedSwitch")
 - (void)endTrackingWithTouch:(UITouch * _Nullable)touch withEvent:(UIEvent * _Nullable)event;
 @end
 
+@class CAAnimation;
+
+SWIFT_CLASS("_TtC6Lottie27AnimationCompletionDelegate")
+@interface AnimationCompletionDelegate : NSObject <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@protocol CAAction;
+
+/// The base animation container.
+/// This layer holds a single composition container and allows for animation of
+/// the currentFrame property.
+SWIFT_CLASS("_TtC6Lottie18AnimationContainer")
+@interface AnimationContainer : CALayer
+/// The animatable Current Frame Property
+@property (nonatomic) CGFloat currentFrame;
+/// For CAAnimation Use
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
++ (BOOL)needsDisplayForKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)display;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
 
 /// A view that can be added to a keypath of an AnimationView
 SWIFT_CLASS("_TtC6Lottie16AnimationSubview")
@@ -1272,6 +1776,8 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 - (void)didMoveToWindow;
 @property (nonatomic) UIViewContentMode contentMode;
 - (void)layoutSubviews;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1279,10 +1785,14 @@ SWIFT_CLASS("_TtC6Lottie10LottieView")
 
 SWIFT_CLASS("_TtC6Lottie13AnimationView")
 @interface AnimationView : LottieView
+/// Set animation name from Interface Builder
+@property (nonatomic, copy) NSString * _Nullable animationName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)animationWillMoveToBackground;
+- (void)animationWillEnterForeground;
 @end
 
 
@@ -1295,6 +1805,7 @@ SWIFT_CLASS("_TtC6Lottie13AnimationView")
 
 SWIFT_CLASS("_TtC6Lottie19CompatibleAnimation")
 @interface CompatibleAnimation : NSObject
++ (CompatibleAnimation * _Nonnull)named:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name bundle:(NSBundle * _Nonnull)bundle OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -1312,8 +1823,9 @@ SWIFT_CLASS("_TtC6Lottie26CompatibleAnimationKeypath")
 
 SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 @interface CompatibleAnimationView : UIView
+- (nonnull instancetype)initWithCompatibleAnimation:(CompatibleAnimation * _Nonnull)compatibleAnimation OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, strong) CompatibleAnimation * _Nullable compatibleAnimation;
 @property (nonatomic) BOOL loopAnimation;
 @property (nonatomic) UIViewContentMode contentMode;
@@ -1343,6 +1855,126 @@ SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 - (CGFloat)frameTimeForMarker:(NSString * _Nonnull)named SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+/// The base class for a child layer of CompositionContainer
+SWIFT_CLASS("_TtC6Lottie16CompositionLayer")
+@interface CompositionLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie10DebugLayer")
+@interface DebugLayer : CALayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
+@interface DisabledTextLayer : CATextLayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
+@interface ImageCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A layer that inverses the alpha output of its input layer.
+/// WARNING: This is experimental and probably not very performant.
+SWIFT_CLASS("_TtC6Lottie18InvertedMatteLayer")
+@interface InvertedMatteLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC6Lottie18MaskContainerLayer")
+@interface MaskContainerLayer : CALayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20NullCompositionLayer")
+@interface NullCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie19PreCompositionLayer")
+@interface PreCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A CompositionLayer responsible for initializing and rendering shapes
+SWIFT_CLASS("_TtC6Lottie21ShapeCompositionLayer")
+@interface ShapeCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+/// The base layer that holds Shapes and Shape Renderers
+SWIFT_CLASS("_TtC6Lottie19ShapeContainerLayer")
+@interface ShapeContainerLayer : CALayer
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The layer responsible for rendering shape objects
+SWIFT_CLASS("_TtC6Lottie16ShapeRenderLayer")
+@interface ShapeRenderLayer : ShapeContainerLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC6Lottie21SolidCompositionLayer")
+@interface SolidCompositionLayer : CompositionLayer
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
+@interface TextCompositionLayer : CompositionLayer
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 

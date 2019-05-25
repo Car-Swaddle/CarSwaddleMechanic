@@ -28,8 +28,8 @@ public final class UserNetwork: Network {
     }
     
     @discardableResult
-    public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, timeZone: String?, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token, timeZone: timeZone) { json, error in
+    public func update(firstName: String?, lastName: String?, phoneNumber: String?, token: String?, timeZone: String?, adminKey: String? = nil, in context: NSManagedObjectContext, completion: @escaping (_ userObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return userService.updateCurrentUser(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, token: token, timeZone: timeZone, adminKey: adminKey) { json, error in
             context.performOnImportQueue {
                 var userObjectID: NSManagedObjectID?
                 defer {

@@ -94,6 +94,19 @@
                                     <action selector="didTapBack" destination="UcH-pF-gFQ" eventType="touchUpInside" id="VxQ-Zx-u7X"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBo-UF-dct">
+                                <rect key="frame" x="113.5" y="351" width="148" height="33"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="Forgot password">
+                                    <color key="titleColor" name="textColor1"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" name="textColor2"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapForgotPassword" destination="UcH-pF-gFQ" eventType="touchUpInside" id="AqN-LV-v38"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="viewBackgroundColor1"/>
                         <constraints>
@@ -102,6 +115,7 @@
                             <constraint firstItem="zTO-b0-BhO" firstAttribute="leading" secondItem="Ycq-zV-y3T" secondAttribute="leading" constant="8" id="3HD-If-uwM"/>
                             <constraint firstItem="yaW-ne-adL" firstAttribute="leading" secondItem="Ycq-zV-y3T" secondAttribute="leading" constant="16" id="60J-5q-xaI"/>
                             <constraint firstItem="8h3-h2-1tR" firstAttribute="centerX" secondItem="Ycq-zV-y3T" secondAttribute="centerX" id="DSR-KK-Wtt"/>
+                            <constraint firstItem="lBo-UF-dct" firstAttribute="top" secondItem="8r0-UJ-onx" secondAttribute="bottom" constant="39" id="EcX-af-LDh"/>
                             <constraint firstItem="Ycq-zV-y3T" firstAttribute="trailing" secondItem="yaW-ne-adL" secondAttribute="trailing" constant="16" id="Fph-jC-Tjp"/>
                             <constraint firstItem="Ycq-zV-y3T" firstAttribute="trailing" secondItem="IDE-Gt-fuK" secondAttribute="trailing" constant="16" id="GuC-M0-Rfu"/>
                             <constraint firstItem="sno-8s-OIC" firstAttribute="trailing" secondItem="QpJ-w1-zqP" secondAttribute="trailing" id="SEG-6W-0DW"/>
@@ -110,6 +124,7 @@
                             <constraint firstItem="IDE-Gt-fuK" firstAttribute="top" secondItem="yaW-ne-adL" secondAttribute="bottom" constant="40" id="WZ8-Od-E2d"/>
                             <constraint firstItem="sno-8s-OIC" firstAttribute="top" secondItem="QpJ-w1-zqP" secondAttribute="top" id="cOZ-xr-6Cz"/>
                             <constraint firstItem="IDE-Gt-fuK" firstAttribute="leading" secondItem="Ycq-zV-y3T" secondAttribute="leading" constant="16" id="fHh-Ku-h3d"/>
+                            <constraint firstItem="lBo-UF-dct" firstAttribute="centerX" secondItem="sno-8s-OIC" secondAttribute="centerX" id="l9P-AU-Qi9"/>
                             <constraint firstItem="8h3-h2-1tR" firstAttribute="leading" secondItem="zTO-b0-BhO" secondAttribute="trailing" constant="8" id="r4H-3d-NCM"/>
                             <constraint firstItem="sno-8s-OIC" firstAttribute="leading" secondItem="QpJ-w1-zqP" secondAttribute="leading" id="riB-9B-RNU"/>
                             <constraint firstItem="8h3-h2-1tR" firstAttribute="leading" secondItem="zTO-b0-BhO" secondAttribute="trailing" constant="8" id="tkm-Ui-uMi"/>

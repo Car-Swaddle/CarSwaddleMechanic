@@ -11,6 +11,9 @@ import CarSwaddleUI
 import CarSwaddleData
 import Store
 
+private let unableToLoginErrorTitle = NSLocalizedString("Car Swaddle wasn't able to log you in", comment: "Error message")
+private let unableToLoginErrorMessage = NSLocalizedString("Your email or password was incorrect. Please verify your email and password and try again.", comment: "Error message")
+
 final class LoginViewController: UIViewController, StoryboardInstantiating {
     
     @IBOutlet private weak var emailTextField: UITextField!
@@ -101,10 +104,17 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction private func didTapForgotPassword() {
+        let forgotPassword = ForgotPasswordViewController.viewControllerFromStoryboard()
+        forgotPassword.previousEmailAddress = emailTextField.text
+        present(forgotPassword.inNavigationController(), animated: true, completion: nil)
+    }
+    
+    
     
     private func loginIfPossible() {
         guard loginIsAllowed,
-            let email = emailTextField.text,
+            let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             let password = passwordTextField.text else {
                 updateLoginEnabledness()
                 return
@@ -120,8 +130,9 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
                 DispatchQueue.main.async {
                     self?.spinner.isHiddenInStackView = true
                     self?.spinner.stopAnimating()
-                    
                     self?.loginButton.isHiddenInStackView = false
+                    
+                    self?.showError(message: unableToLoginErrorMessage, title: unableToLoginErrorTitle)
                 }
                 return
             }
@@ -139,6 +150,13 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
                 }
             }
         }
+    }
+    
+    private func showError(message: String, title: String) {
+        let contentView = CustomAlertContentView.view(withTitle: title, message: message)
+        contentView.addOkayAction()
+        let alert = CustomAlertController.viewController(contentView: contentView)
+        present(alert, animated: true, completion: nil)
     }
     
     

@@ -133,7 +133,11 @@ final public class Navigator: NSObject {
         
         let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
         navigationDelegateViewController.externalDelegate = self
-        appDelegate.window?.rootViewController?.present(navigationDelegateViewController, animated: true, completion: nil)
+        presentAtRoot(viewController: navigationDelegateViewController)
+    }
+    
+    private func presentAtRoot(viewController: UIViewController) {
+        appDelegate.window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
     private func requiredViewControllers() -> [NavigationDelegatingViewController] {
@@ -163,6 +167,11 @@ final public class Navigator: NSObject {
         }
         
         return viewControllers
+    }
+    
+    func showEnterNewPasswordScreen(resetToken: String) {
+        let enterPassword = EnterNewPasswordViewController.create(resetToken: resetToken)
+        presentAtRoot(viewController: enterPassword.inNavigationController())
     }
     
     
