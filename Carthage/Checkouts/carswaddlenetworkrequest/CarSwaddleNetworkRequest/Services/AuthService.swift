@@ -155,7 +155,7 @@ public class AuthService: Service {
     }
     
     private func authTask(email: String, appName: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        guard let body = serielizedData(email: email) else {
+        guard let body = serielizedData(email: email, appName: appName) else {
             return nil
         }
         
@@ -201,7 +201,7 @@ public class AuthService: Service {
             if previousValueExists {
                 bodyString += "&"
             }
-            bodyString += "token=\(appName.urlEscaped())"
+            bodyString += "appName=\(appName.urlEscaped())"
             previousValueExists = true
         }
         

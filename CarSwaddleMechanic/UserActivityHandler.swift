@@ -15,13 +15,11 @@ class UserActivityHandler {
     
     private init() {}
     
-    private let resetPasswordPath = "car-swaddle-mechanic/reset-password/"
+    private let resetPasswordPath = "/car-swaddle-mechanic/reset-password"
     private let resetTokenQueryItemName = "resetToken"
     
     
     public func handle(userActivity: NSUserActivity) -> Bool {
-        print("user activity: \(userActivity)")
-        
         guard let url = userActivity.webpageURL,
             let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             return false

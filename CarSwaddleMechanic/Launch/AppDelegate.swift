@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        print("userActivity: \(userActivity)")
         return UserActivityHandler.shared.handle(userActivity: userActivity)
     }
 

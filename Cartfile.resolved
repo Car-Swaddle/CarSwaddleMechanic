@@ -1,6 +1,6 @@
 git "git@bitbucket.org:kkendall33/authentication.git" "1812e9c7b90df2deb12071eccad741a1f6077266"
 git "git@bitbucket.org:kkendall33/carswaddledata.git" "0e9b59ba7284456221d40983d4acb885cc44c75b"
-git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "88233516a77f8aab2b5eb93da7bbd13566756b01"
+git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "794e74ae164653efad3b4199afc91bb77d55e4bc"
 git "git@bitbucket.org:kkendall33/carswaddlestore.git" "8cf6d4bf43cff1954a4172ca31289c7177d17a13"
 git "git@bitbucket.org:kkendall33/carswaddleui.git" "43ce0e543bdcef682ffd7f97552a1051291771c9"
 git "git@bitbucket.org:kkendall33/networkrequest.git" "43091192fd88d5751aab5ce163ac393b07860f4b"
