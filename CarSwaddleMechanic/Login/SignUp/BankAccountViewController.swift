@@ -43,10 +43,12 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         routingNumberDigitEntryView.textFieldWidth = 27
         routingNumberDigitEntryView.styleDefault()
         routingNumberDigitEntryView.textFieldFont = UIFont.appFont(type: .regular, size: 17)
+        routingNumberDigitEntryView.underlineColor = .secondary
+        routingNumberDigitEntryView.tintColor = .secondary
         
         routingNumberDigitEntryView.delegate = self
         
-        routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
+        routingNumberLabel.font = UIFont.appFont(type: .regular, size: 15)
         routingNumberLabel.text = NSLocalizedString("Routing number", comment: "Label for bank routing number")
         
         bankAccountNumberLabeledTextField.textField.keyboardType = .numberPad
@@ -163,11 +165,11 @@ extension BankAccountViewController: OneTimeEntryViewDelegate {
     }
     
     private func updateRoutingNumberLabel() {
-        if routingNumberDigitEntryView.code.isEmpty {
-            routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
-        } else {
+//        if routingNumberDigitEntryView.code.isEmpty {
+//            routingNumberLabel.font = UIFont.appFont(type: .semiBold, size: 15)
+//        } else {
             routingNumberLabel.font = UIFont.appFont(type: .regular, size: 15)
-        }
+//        }
     }
     
 }

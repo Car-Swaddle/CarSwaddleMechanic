@@ -28,6 +28,8 @@ final class ContactInformationCell: UITableViewCell, NibRegisterable {
         animationView.animation = Animation.named("circle-pulse")
         animationView.animationSpeed = 0.7
         animationView.loopMode = .loop
+        
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {

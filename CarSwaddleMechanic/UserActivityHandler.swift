@@ -15,7 +15,7 @@ class UserActivityHandler {
     
     private init() {}
     
-    private let resetPasswordPath = "/reset-password/"
+    private let resetPasswordPath = "car-swaddle-mechanic/reset-password/"
     private let resetTokenQueryItemName = "resetToken"
     
     

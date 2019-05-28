@@ -63,8 +63,8 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         entryView.textFieldFont = UIFont.appFont(type: .semiBold, size: 17)
         entryView.spacerFont = UIFont.appFont(type: .regular, size: 20)
         entryView.isSecureTextEntry = false
-        entryView.textFieldTintColor = .viewBackgroundColor1
-        entryView.underlineColor = .viewBackgroundColor1
+        entryView.textFieldTintColor = .secondary
+        entryView.underlineColor = .secondary
         _ = entryView.becomeFirstResponder()
         
         updateExplanationText()

@@ -37,8 +37,13 @@ public class AuthService: Service {
     }
     
     @discardableResult
-    public func requestUpdatePassword(email: String, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        let task = authTask(email: email, endpoint: .requestUpdatePassword) { [weak self] data, error in
+    public func requestUpdatePassword(email: String, app: App, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return requestUpdatePassword(email: email, appName: app.rawValue, completion: completion)
+    }
+    
+    @discardableResult
+    public func requestUpdatePassword(email: String, appName: String, completion: @escaping (_ json: JSONObject?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        let task = authTask(email: email, appName: appName, endpoint: .requestUpdatePassword) { [weak self] data, error in
             var json: JSONObject?
             var error = error
             defer {
@@ -149,7 +154,7 @@ public class AuthService: Service {
         return serviceRequest.send(urlRequest: request, completion: completion)
     }
     
-    private func authTask(email: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+    private func authTask(email: String, appName: String, endpoint: NetworkRequest.Request.Endpoint, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let body = serielizedData(email: email) else {
             return nil
         }
@@ -158,7 +163,7 @@ public class AuthService: Service {
         return serviceRequest.send(urlRequest: request, completion: completion)
     }
     
-    private func serielizedData(email: String? = nil, password: String? = nil, newPassword: String? = nil, resetToken: String? = nil) -> Data? {
+    private func serielizedData(email: String? = nil, password: String? = nil, newPassword: String? = nil, resetToken: String? = nil, appName: String? = nil) -> Data? {
         
         var bodyString = ""
         var previousValueExists = false
@@ -189,6 +194,14 @@ public class AuthService: Service {
                 bodyString += "&"
             }
             bodyString += "token=\(resetToken.urlEscaped())"
+            previousValueExists = true
+        }
+        
+        if let appName = appName {
+            if previousValueExists {
+                bodyString += "&"
+            }
+            bodyString += "token=\(appName.urlEscaped())"
             previousValueExists = true
         }
         

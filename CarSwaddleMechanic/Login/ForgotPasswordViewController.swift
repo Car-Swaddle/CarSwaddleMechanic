@@ -54,7 +54,7 @@ class ForgotPasswordViewController: UIViewController, StoryboardInstantiating {
                 return
         }
         sendLinkButton.isLoading = true
-        auth.requestUpdatePassword(email: email) { [weak self] json, error in
+        auth.requestUpdatePassword(email: email, app: .carSwaddleMechanic) { [weak self] json, error in
             DispatchQueue.main.async {
                 if let error = error {
                     let message: String

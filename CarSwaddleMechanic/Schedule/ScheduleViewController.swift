@@ -193,7 +193,7 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if Calendar.current.isDateInToday(date) {
-            return .red1
+            return .appRed
         } else {
             return .black
         }

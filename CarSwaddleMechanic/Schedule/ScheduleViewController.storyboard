@@ -49,7 +49,7 @@
                                                 <real key="value" value="42"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                                <color key="value" name="secondaryColor"/>
+                                                <color key="value" name="secondary"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
                                                 <color key="value" name="veryLightGray"/>
@@ -141,8 +141,8 @@
         <namedColor name="red1">
             <color red="1" green="0.50588235294117645" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="secondaryColor">
-            <color red="0.42352941176470588" green="0.65098039215686276" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="secondary">
+            <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor3">
             <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

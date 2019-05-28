@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ur9-bv-g6k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ur9-bv-g6k">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +41,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-YI-iBS" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
                                                 <rect key="frame" x="42" y="215" width="84" height="30"/>
                                                 <state key="normal" title="Select Front">
-                                                    <color key="titleColor" name="viewBackgroundColor1"/>
+                                                    <color key="titleColor" name="secondary"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapSelectFront" destination="ur9-bv-g6k" eventType="touchUpInside" id="MvS-H0-hh9"/>
@@ -66,7 +66,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft9-F8-SMX" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
                                                 <rect key="frame" x="43.5" y="215" width="81" height="30"/>
                                                 <state key="normal" title="Select Back">
-                                                    <color key="titleColor" name="viewBackgroundColor1"/>
+                                                    <color key="titleColor" name="secondary"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapSelectBack" destination="ur9-bv-g6k" eventType="touchUpInside" id="jsg-Bw-3cl"/>
@@ -138,8 +138,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="viewBackgroundColor1">
-            <color red="0.27058823529411763" green="0.38039215686274508" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="secondary">
+            <color red="0.30196078431372547" green="0.4823529411764706" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

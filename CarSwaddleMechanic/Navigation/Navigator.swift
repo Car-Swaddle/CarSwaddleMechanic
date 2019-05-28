@@ -79,7 +79,7 @@ final public class Navigator: NSObject {
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
-            .foregroundColor: UIColor.viewBackgroundColor1
+            .foregroundColor: UIColor.secondary
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
@@ -92,7 +92,7 @@ final public class Navigator: NSObject {
         
         UISwitch.appearance().tintColor = .secondary
         UISwitch.appearance().onTintColor = .secondary
-        UINavigationBar.appearance().tintColor = .viewBackgroundColor1
+        UINavigationBar.appearance().tintColor = .secondary
         
         let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17) as Any]
         
@@ -107,6 +107,15 @@ final public class Navigator: NSObject {
         actionButton.defaultBackgroundColor = .secondary
         
         CarSwaddleUI.ContentInsetAdjuster.defaultBottomOffset = navigator.tabBarController.tabBar.bounds.height
+        
+        CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
+        
+        LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 15)
+        LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
+        LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 15)
+        
+        let labeledTextFieldAppearance = LabeledTextField.appearance()
+        labeledTextFieldAppearance.underlineColor = .secondary
     }
     
     #if DEBUG
