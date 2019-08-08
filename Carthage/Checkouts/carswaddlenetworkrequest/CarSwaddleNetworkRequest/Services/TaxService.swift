@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-import Foundation
-
 extension NetworkRequest.Request.Endpoint {
     fileprivate static let taxYears = Request.Endpoint(rawValue: "/api/tax-years")
     fileprivate static let taxes = Request.Endpoint(rawValue: "/api/taxes")

@@ -190,6 +190,38 @@ public final class MechanicNetwork: Network {
         return mechanic
     }
     
+    
+    @discardableResult
+    public func getMechanics(limit: Int = 30, offset: Int = 0, sortType: SortType = .descending, in context: NSManagedObjectContext, completion: @escaping ObjectIDArrayCompletion) -> URLSessionDataTask? {
+        return mechanicService.getMechanics(limit: limit, offset: offset, sortType: sortType) { [weak self] jsonArray, error in
+            context.performOnImportQueue {
+                var mechanicIDs: [NSManagedObjectID] = []
+                defer {
+                    DispatchQueue.global().async {
+                        completion(mechanicIDs, error)
+                    }
+                }
+                guard let jsonArray = jsonArray else { return }
+                for json in jsonArray {
+                    guard let mechanic = self?.createModel(from: json, in: context) else { continue }
+                    if mechanic.objectID.isTemporaryID {
+                        try? context.obtainPermanentIDs(for: [mechanic])
+                    }
+                    mechanicIDs.append(mechanic.objectID)
+                }
+                
+                context.persist()
+            }
+        }
+    }
+    
+    @discardableResult
+    public func updateMechanicCorperate(mechanicID: String, isAllowed: Bool? = nil, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        return mechanicService.updateMechanicCorperate(mechanicID: mechanicID, isAllowed: isAllowed) { [weak self] json, error in
+            self?.completeMechanic(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
 }
 
 

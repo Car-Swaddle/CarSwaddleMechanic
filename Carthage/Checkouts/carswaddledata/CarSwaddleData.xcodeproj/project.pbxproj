@@ -24,6 +24,8 @@
 		997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9921A536BE0080F42C /* AutoServiceTests.swift */; };
 		997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9B21A537390080F42C /* AutoService+Request.swift */; };
 		997DBC9E21B24CF00080F42C /* AuthTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC9D21B24CF00080F42C /* AuthTestCase.swift */; };
+		9989855D22B9F46700E4B25A /* Authority+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989855C22B9F46700E4B25A /* Authority+Request.swift */; };
+		9989855F22BA827E00E4B25A /* AuthorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9989855E22BA827E00E4B25A /* AuthorityTests.swift */; };
 		998D3AD921DC9B72003DD717 /* Review+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AD821DC9B72003DD717 /* Review+Requests.swift */; };
 		998D3AE121DD51DB003DD717 /* ReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AE021DD51DB003DD717 /* ReviewTests.swift */; };
 		99A3A88D21D58E85009A1AD9 /* Stripe+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */; };
@@ -56,6 +58,8 @@
 		99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */; };
 		99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02783218580C0005FEFC7 /* Region+Requests.swift */; };
 		99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0278D21858983005FEFC7 /* RegionTests.swift */; };
+		99F08C7222DBEEC100317EEA /* Coupon+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C7122DBEEC000317EEA /* Coupon+Request.swift */; };
+		99F08C7422DBF6E200317EEA /* CouponTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F08C7322DBF6E200317EEA /* CouponTests.swift */; };
 		99F696BC2210EE800021A719 /* Tax+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BB2210EE800021A719 /* Tax+Request.swift */; };
 		99F696BE2210F6720021A719 /* TaxInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696BD2210F6720021A719 /* TaxInfoTests.swift */; };
 		99F7BC292215FA7400DD5401 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC282215FA7400DD5401 /* FileTests.swift */; };
@@ -128,6 +132,8 @@
 		997DBC9921A536BE0080F42C /* AutoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceTests.swift; sourceTree = "<group>"; };
 		997DBC9B21A537390080F42C /* AutoService+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoService+Request.swift"; sourceTree = "<group>"; };
 		997DBC9D21B24CF00080F42C /* AuthTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestCase.swift; sourceTree = "<group>"; };
+		9989855C22B9F46700E4B25A /* Authority+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authority+Request.swift"; sourceTree = "<group>"; };
+		9989855E22BA827E00E4B25A /* AuthorityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorityTests.swift; sourceTree = "<group>"; };
 		998D03CF21F4281400546C58 /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Authentication.framework; sourceTree = "<group>"; };
 		998D3AD821DC9B72003DD717 /* Review+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+Requests.swift"; sourceTree = "<group>"; };
 		998D3AE021DD51DB003DD717 /* ReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTests.swift; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 		99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestCase.swift; sourceTree = "<group>"; };
 		99F02783218580C0005FEFC7 /* Region+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Region+Requests.swift"; sourceTree = "<group>"; };
 		99F0278D21858983005FEFC7 /* RegionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTests.swift; sourceTree = "<group>"; };
+		99F08C7122DBEEC000317EEA /* Coupon+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coupon+Request.swift"; sourceTree = "<group>"; };
+		99F08C7322DBF6E200317EEA /* CouponTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponTests.swift; sourceTree = "<group>"; };
 		99F696BB2210EE800021A719 /* Tax+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tax+Request.swift"; sourceTree = "<group>"; };
 		99F696BD2210F6720021A719 /* TaxInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxInfoTests.swift; sourceTree = "<group>"; };
 		99F7BC282215FA7400DD5401 /* FileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
@@ -226,6 +234,8 @@
 				997714BC21CC5A5000E54F5B /* Price+Request.swift */,
 				99A3A88C21D58E85009A1AD9 /* Stripe+Requests.swift */,
 				99F696BB2210EE800021A719 /* Tax+Request.swift */,
+				9989855C22B9F46700E4B25A /* Authority+Request.swift */,
+				99F08C7122DBEEC000317EEA /* Coupon+Request.swift */,
 				997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */,
 				997DBC4C21969F910080F42C /* JSONExtension.swift */,
 				99E66D8D21E1890A00C6E3E1 /* FileStore.swift */,
@@ -240,6 +250,7 @@
 			children = (
 				9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */,
 				997DBC9921A536BE0080F42C /* AutoServiceTests.swift */,
+				9989855E22BA827E00E4B25A /* AuthorityTests.swift */,
 				997714C021CC9B8100E54F5B /* PriceTests.swift */,
 				99A3A88E21D5964E009A1AD9 /* StripeTests.swift */,
 				99F026BD217F061A005FEFC7 /* TemplateTimeSpanTests.swift */,
@@ -251,6 +262,7 @@
 				99F696BD2210F6720021A719 /* TaxInfoTests.swift */,
 				99F026EB21803F4E005FEFC7 /* LoginTestCase.swift */,
 				997DBC9D21B24CF00080F42C /* AuthTestCase.swift */,
+				99F08C7322DBF6E200317EEA /* CouponTests.swift */,
 				99F7BC282215FA7400DD5401 /* FileTests.swift */,
 				99E66D9721E196DD00C6E3E1 /* Resources */,
 				9912CDBC216C81760006FDDF /* Info.plist */,
@@ -452,12 +464,14 @@
 				997DBC4D21969F910080F42C /* JSONExtension.swift in Sources */,
 				99F026BC217EFCD9005FEFC7 /* TemplateTimeSpan+Requests.swift in Sources */,
 				998D3AD921DC9B72003DD717 /* Review+Requests.swift in Sources */,
+				99F08C7222DBEEC100317EEA /* Coupon+Request.swift in Sources */,
 				997DBC49219418830080F42C /* Mechanic+Requests.swift in Sources */,
 				997DBC5A21977A310080F42C /* User+Requests.swift in Sources */,
 				99F696BC2210EE800021A719 /* Tax+Request.swift in Sources */,
 				9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */,
 				99A3A88D21D58E85009A1AD9 /* Stripe+Requests.swift in Sources */,
 				99F02784218580C0005FEFC7 /* Region+Requests.swift in Sources */,
+				9989855D22B9F46700E4B25A /* Authority+Request.swift in Sources */,
 				997DBC9C21A537390080F42C /* AutoService+Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,12 +483,14 @@
 				997DBC5C21977ED20080F42C /* UserTests.swift in Sources */,
 				997DBC4F2196B8640080F42C /* MechanicTests.swift in Sources */,
 				99F026BE217F061A005FEFC7 /* TemplateTimeSpanTests.swift in Sources */,
+				99F08C7422DBF6E200317EEA /* CouponTests.swift in Sources */,
 				997714C121CC9B8100E54F5B /* PriceTests.swift in Sources */,
 				99F026EC21803F4E005FEFC7 /* LoginTestCase.swift in Sources */,
 				998D3AE121DD51DB003DD717 /* ReviewTests.swift in Sources */,
 				997DBC80219E8BB70080F42C /* VehicleTests.swift in Sources */,
 				9912CDBB216C81760006FDDF /* CarSwaddleDataTests.swift in Sources */,
 				997DBC9A21A536BE0080F42C /* AutoServiceTests.swift in Sources */,
+				9989855F22BA827E00E4B25A /* AuthorityTests.swift in Sources */,
 				99F0278E21858983005FEFC7 /* RegionTests.swift in Sources */,
 				99A3A88F21D5964E009A1AD9 /* StripeTests.swift in Sources */,
 				99F7BC292215FA7400DD5401 /* FileTests.swift in Sources */,

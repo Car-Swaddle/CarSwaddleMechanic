@@ -36,7 +36,7 @@ final class PayoutCell: UITableViewCell, NibRegisterable {
         }
         
         if payout.amount > 0 {
-            amountLabel.textColor = .green1
+            amountLabel.textColor = .appGreen
         } else {
             amountLabel.textColor = .black
         }

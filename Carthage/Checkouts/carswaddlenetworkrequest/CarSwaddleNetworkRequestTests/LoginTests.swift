@@ -116,7 +116,8 @@ class LoginTests: XCTestCase {
     
     func testRequestUpdatePassword() {
         let exp = expectation(description: "\(#function)\(#line)")
-        authService.requestUpdatePassword(email: "kyle@carswaddle.com") { json, error in
+//        authService.requestUpdatePassword(email: "kyle@carswaddle.com") { json, error in
+        authService.requestUpdatePassword(email: "kyle@carswaddle.com", app: .carSwaddle) { json, error in
             XCTAssert(json != nil && error == nil, "Should have gotten json")
             exp.fulfill()
         }

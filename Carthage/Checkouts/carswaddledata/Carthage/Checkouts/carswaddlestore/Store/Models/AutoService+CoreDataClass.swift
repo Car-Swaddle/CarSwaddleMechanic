@@ -12,7 +12,7 @@ import CoreData
 
 public extension AutoService {
     
-    public enum Status: String {
+    enum Status: String {
         case scheduled
         case canceled
         case inProgress
@@ -41,7 +41,7 @@ let serverDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String)
+typealias AutoServiceValues = (identifier: String, scheduledDate: Date, status: AutoService.Status, userID: String, mechanicID: String, balanceTransactionID: String?, transferID: String?, chargeID: String?, couponID: String?)
 
 @objc(AutoService)
 public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -64,9 +64,12 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
             let statusString = json["status"] as? String,
             let status = AutoService.Status(rawValue: statusString),
             let userID = json["userID"] as? String,
-            let balanceTransactionID = json["balanceTransactionID"] as? String,
             let mechanicID = json["mechanicID"] as? String else { return nil }
-        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID)
+        let couponID = json["couponID"] as? String
+        let balanceTransactionID = json["balanceTransactionID"] as? String
+        let transferID = json["transferID"] as? String
+        let chargeID = json["chargeID"] as? String
+        return (id, scheduledDate, status, userID, mechanicID, balanceTransactionID, transferID, chargeID, couponID)
     }
     
     private func configure(with values: AutoServiceValues, json: JSONObject) {
@@ -75,6 +78,9 @@ public final class AutoService: NSManagedObject, NSManagedObjectFetchable, JSONI
         self.status = values.status
         self.notes = json["notes"] as? String
         self.balanceTransactionID = values.balanceTransactionID
+        self.couponID = values.couponID
+        self.transferID = values.transferID
+        self.chargeID = values.chargeID
         
         guard let context = managedObjectContext else { return }
         
@@ -228,14 +234,9 @@ extension AutoService {
             throw StoreError.invalidJSON
         }
         
-        if let priceID = price?.identifier {
-            json["priceID"] = priceID
-        } else {
-            throw StoreError.invalidJSON
-        }
-        
         json["status"] = status.rawValue
         json["notes"] = notes
+        json["couponID"] = couponID
         
         return json
     }

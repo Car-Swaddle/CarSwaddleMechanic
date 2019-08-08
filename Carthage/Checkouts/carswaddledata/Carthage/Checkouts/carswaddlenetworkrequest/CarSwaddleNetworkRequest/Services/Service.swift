@@ -62,4 +62,15 @@ public class Service {
         completion(json, error)
     }
     
+    public enum App: String {
+        case carSwaddle = "car-swaddle"
+        case carSwaddleMechanic = "car-swaddle-mechanic"
+    }
+    
+}
+
+
+public enum SortType: String {
+    case ascending
+    case descending
 }

@@ -521,7 +521,7 @@ _$s14KeychainAccess7OptionsVN
 Apple LLVM version 10.0.1 (clang-1001.0.46.5)
 <swift-imported-modules>
 /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/KeychainAccess/Lib
-Apple Swift version 5.0.1 effective-4.2 (swiftlang-1001.0.82.4 clang-1001.0.46.5)
+Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)
 /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/KeychainAccess/Lib/KeychainAccess/Keychain.swift
 $s10Foundation3URLVSgWOd
 <compiler-generated>
@@ -964,7 +964,6 @@ $s14KeychainAccess0A0C7allKeysySaySS_SStGAA9ItemClassOFZSS_SStSDySSypGXEfU_
 $s14KeychainAccess17SynchronizableAny33_2D02A349A5107BCCDA6E697579A7BF63LLSo11CFStringRefavau
 contains
 removeAll
-flatMap
 subscript.modify
 get
 getString

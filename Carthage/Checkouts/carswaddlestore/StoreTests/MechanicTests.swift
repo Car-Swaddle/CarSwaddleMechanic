@@ -48,5 +48,6 @@ class MechanicTests: XCTestCase {
 let mechanicJSONWithUser: JSONObject = [
     "id": mechanicID,
     "isActive": true,
-    "user": userJSON
+    "user": userJSON,
+    "createdAt": "2019-06-14T04:46:23.176Z",
 ]

@@ -18,6 +18,7 @@ extension Mechanic {
 
     @NSManaged public var identifier: String
     @NSManaged public var isActive: Bool
+    @NSManaged public var isAllowed: Bool
     @NSManaged public var user: User?
     @NSManaged public var scheduleTimeSpans: Set<TemplateTimeSpan>
     @NSManaged public var services: Set<AutoService>
@@ -38,6 +39,7 @@ extension Mechanic {
     @NSManaged public var bankAccount: BankAccount?
     @NSManaged public var hasSetAvailability: Bool
     @NSManaged public var hasSetServiceRegion: Bool
+    @NSManaged public var creationDate: Date
 
 }
 

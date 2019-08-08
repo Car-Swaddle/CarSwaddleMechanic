@@ -71,12 +71,10 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
 
 extension Vehicle {
     
-//    public static func fetchMostRecentlyUsedVehicle(forUserID userID: String, in context: NSManagedObjectContext) -> Vehicle? {
-//        let fetchRequest: NSFetchRequest<Vehicle> = Vehicle.fetchRequest(forUserID: userID)
-//        fetchRequest.sortDescriptors = [recentlyUsedSort]
-//        fetchRequest.fetchLimit = 1
-//        return ((try? context.fetch(fetchRequest)) ?? []).first
-//    }
+    public static func fetchVehiclesForCurrentUser(in context: NSManagedObjectContext) -> [Vehicle] {
+        guard let userID = User.currentUserID else { return [] }
+        return Vehicle.fetchVehicles(forUserID: userID, in: context)
+    }
     
     public static func defaultVehicle(in context: NSManagedObjectContext) -> Vehicle? {
         guard let userID = User.currentUserID else { return nil }

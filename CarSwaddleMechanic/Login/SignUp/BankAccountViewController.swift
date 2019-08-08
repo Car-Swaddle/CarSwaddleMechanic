@@ -55,6 +55,9 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         bankAccountNumberLabeledTextField.textField.autocorrectionType = .no
         bankAccountNumberLabeledTextField.textField.autocapitalizationType = .none
         
+        accountHolderLabeledTextField.textField.autocapitalizationType = .words
+        accountHolderLabeledTextField.textField.autocorrectionType = .no
+        
         updateUI()
         
         insetAdjuster.showActionButtonAboveKeyboard = true
@@ -110,7 +113,7 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         generateBankAccountToken { [weak self] token in
             guard let token = token?.tokenId else {
                 DispatchQueue.main.async {
-//                    self?.navigationItem.rightBarButtonItem = previousButton
+                    self?.actionButton.isLoading = false
                 }
                 return
             }
@@ -118,7 +121,6 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
                 self?.mechanicNetwork.update(externalAccount: token, in: privateContext) { mechanicObjectID, error in
                     DispatchQueue.main.async {
                         self?.actionButton.isLoading = false
-//                        self?.navigationItem.rightBarButtonItem = previousButton
                         if let error = error {
                             print("error: \(error)")
                         } else {
@@ -148,6 +150,11 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         bankAccountParameters.accountNumber = bankAccountNumber
         
         STPAPIClient.shared().createToken(withBankAccount: bankAccountParameters) { token, error in
+            #if DEBUG
+            if let error = error {
+                print("error: \(error)")
+            }
+            #endif
             completion(token)
         }
     }

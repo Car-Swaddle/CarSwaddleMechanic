@@ -27,6 +27,9 @@ extension VerificationField {
         }
         return typeValue
     }
+    
+    /*
+    */
 
     public enum Field: String, CaseIterable {
         /// The bank account used to transfer funds i.e. payout

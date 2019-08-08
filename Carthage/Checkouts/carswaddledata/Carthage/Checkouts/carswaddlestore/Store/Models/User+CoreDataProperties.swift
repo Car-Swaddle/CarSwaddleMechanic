@@ -21,6 +21,7 @@ extension User {
     @NSManaged public var lastName: String?
     @NSManaged public var phoneNumber: String?
     @NSManaged public var averageRating: CGFloat
+    
     @NSManaged public var services: Set<AutoService>
     @NSManaged public var vehicles: Set<Vehicle>
     @NSManaged public var reviews: Set<Review>
@@ -31,6 +32,11 @@ extension User {
     @NSManaged public var isEmailVerified: Bool
     @NSManaged public var pushDeviceToken: String?
     @NSManaged public var timeZone: String?
+    
+    @NSManaged public var authorities: Set<Authority>
+    @NSManaged public var authorityRequests: Set<AuthorityRequest>
+    @NSManaged public var authorityConfirmations: Set<AuthorityConfirmation>
+    @NSManaged public var coupons: Set<Coupon>
     
 }
 

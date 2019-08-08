@@ -68,3 +68,9 @@ public class Service {
     }
     
 }
+
+
+public enum SortType: String {
+    case ascending
+    case descending
+}

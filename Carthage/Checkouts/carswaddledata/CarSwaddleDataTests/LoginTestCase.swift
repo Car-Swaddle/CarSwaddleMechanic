@@ -16,7 +16,7 @@ import Store
 public var currentMechanicID: String = ""
 public var currentUserID: String = ""
 
-private let email = "mechanic@carswaddle.com"
+private let email = "kyle@carswaddle.com"
 private let password = "password"
 
 class LoginTestCase: XCTestCase {
@@ -24,8 +24,6 @@ class LoginTestCase: XCTestCase {
     let auth = Auth(serviceRequest: serviceRequest)
     
     override func setUp() {
-        
-        
         let exp = expectation(description: "\(#function)\(#line)")
         
         DispatchQueue.once(token: "SomeString") {
@@ -66,12 +64,18 @@ class LoginTestCase: XCTestCase {
 }
 
 
-
 #if targetEnvironment(simulator)
+//private let localDomain = "192.168.1.184"
 private let localDomain = "127.0.0.1"
 #else
 private let localDomain = "Kyles-MacBook-Pro.local"
 #endif
+
+//#if targetEnvironment(simulator)
+//private let localDomain = "127.0.0.1"
+//#else
+//private let localDomain = "Kyles-MacBook-Pro.local"
+//#endif
 
 private let hostedDomain = "car-swaddle.herokuapp.com"
 

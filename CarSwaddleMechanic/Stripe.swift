@@ -9,8 +9,19 @@
 import Foundation
 import Stripe
 import CarSwaddleNetworkRequest
+import CarSwaddleUI
 
-public let stripePublishableKey: String = "pk_test_93FPMcPQ4mSaWfjtMWlkGvDr00ytb8KnDJ"
+private let stripeLivePublishableKey = "pk_live_ZJkoNBROBK0ttmZLDNfNF0Cw00VwQ7JjFw"
+private let stripeTestPublishableKey = "pk_test_93FPMcPQ4mSaWfjtMWlkGvDr00ytb8KnDJ"
+
+public var stripePublishableKey: String {
+    guard let serverType = Tweak.currentDomainServerType() else { return stripeTestPublishableKey }
+    switch serverType {
+    case .local: return stripeTestPublishableKey
+    case .staging: return stripeTestPublishableKey
+    case .production: return stripeLivePublishableKey
+    }
+}
 public let appleMerchantIdentifier: String = "merchant.com.carswaddle"
 
 

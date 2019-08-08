@@ -141,7 +141,6 @@
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */; };
-		99E6EB7322795BD700418077 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E6EB7222795BD700418077 /* AuthenticationServices.framework */; };
 		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
 		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99F02792218663BB005FEFC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02791218663BB005FEFC7 /* Location.swift */; };
@@ -397,7 +396,6 @@
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
-		99E6EB7222795BD700418077 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
 		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99F02791218663BB005FEFC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -486,7 +484,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99E6EB7322795BD700418077 /* AuthenticationServices.framework in Frameworks */,
 				99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */,
 				99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */,
 				99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */,
@@ -530,7 +527,6 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99E6EB7222795BD700418077 /* AuthenticationServices.framework */,
 				99F7BC7D22193CC400DD5401 /* FSCalendar.framework */,
 				99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */,
 				99F6968F220BDD720021A719 /* Lottie.framework */,
@@ -1068,7 +1064,7 @@
 								enabled = 1;
 							};
 							com.apple.AutoFillCredentialProvider = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 0;

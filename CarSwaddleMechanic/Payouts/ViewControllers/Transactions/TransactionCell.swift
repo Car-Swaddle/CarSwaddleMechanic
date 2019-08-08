@@ -51,7 +51,7 @@ final class TransactionCell: UITableViewCell, NibRegisterable {
         typeLabel.isHiddenInStackView = true
         
         if transactionAmount > 0 {
-            valueLabel.textColor = .green1
+            valueLabel.textColor = .appGreen
         } else {
             valueLabel.textColor = .gray6
         }

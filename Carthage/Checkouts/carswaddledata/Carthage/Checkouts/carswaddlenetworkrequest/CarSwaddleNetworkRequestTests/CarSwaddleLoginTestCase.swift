@@ -22,7 +22,7 @@ public var currentUserID: String {
 
 private var _currentUserID: String = ""
 
-private let userEmail = "mechanic@carswaddle.com"
+private let userEmail = "kyle@carswaddle.com"
 private let password = "password"
 
 class CarSwaddleLoginTestCase: XCTestCase {
@@ -70,9 +70,12 @@ class CarSwaddleLoginTestCase: XCTestCase {
 
 #if targetEnvironment(simulator)
 private let domain = "127.0.0.1"
+//private let domain = "192.168.1.184"
 #else
 private let domain = "Kyles-MacBook-Pro.local"
 #endif
+
+
 
 //private let domain = "127.0.0.1"
 
@@ -97,7 +100,7 @@ public extension DispatchQueue {
      - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
      - parameter block: Block to execute once
      */
-    public class func once(token: String, block: () -> Void) {
+    class func once(token: String, block: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
         if _onceTracker.contains(token) { return }

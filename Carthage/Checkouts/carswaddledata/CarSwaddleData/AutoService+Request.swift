@@ -34,7 +34,6 @@ public final class AutoServiceNetwork: Network {
     
     @discardableResult
     public func getAutoServiceDetails(autoServiceID: String, in context: NSManagedObjectContext, completion: @escaping (_ autoService: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        return autoServiceService.getAutoServices(mechanicID: mechanicID, startDate: startDate, endDate: endDate, filterStatus: filterStatus.rawValues) { [weak self] jsonArray, error in
         return autoServiceService.getAutoServiceDetails(autoServiceID: autoServiceID) { json, error in
             context.performOnImportQueue {
                 var autoServiceObjectID: NSManagedObjectID?

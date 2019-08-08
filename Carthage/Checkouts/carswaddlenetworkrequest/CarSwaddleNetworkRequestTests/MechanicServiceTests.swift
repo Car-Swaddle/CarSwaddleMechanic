@@ -219,4 +219,33 @@ class MechanicServiceTests: CarSwaddleLoginTestCase {
         }
     }
     
+    func testGetMechanics() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        service.getMechanics(limit: 30, offset: 0, sortType: .ascending) { jsonArray, err in
+            if let jsonArray = jsonArray {
+                XCTAssert(jsonArray.count > 0, "Should have gotten at least one mechanic")
+            } else {
+                XCTAssert(false, "Should have gotten jsonArray")
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+
+    func testUpdateMechanicCorperate() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        let mechanicID = "39895440-8fd8-11e9-a0b9-ff60380afd50"
+        let isAllowed = true
+        service.updateMechanicCorperate(mechanicID: mechanicID, isAllowed: isAllowed) { mechanicJSON, error in
+            XCTAssert(mechanicJSON != nil, "Should have mechanic")
+            let jsonIsAllowed = mechanicJSON?["isAllowed"] as! Bool
+            XCTAssert(jsonIsAllowed == isAllowed, "Should have isAllowed. Set as: \(isAllowed), got \(jsonIsAllowed)")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }

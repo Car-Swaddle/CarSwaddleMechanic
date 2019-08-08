@@ -18,8 +18,7 @@ class PriceTests: CarSwaddleLoginTestCase {
     
     func testGetPrice() {
         let exp = expectation(description: "\(#function)\(#line)")
-        let location = CLLocationCoordinate2D(latitude: 40.36, longitude: -111.8657987654)
-        priceService.getPrice(mechanicID: currentMechanicID, oilType: "CONVENTIONAL", location: location) { json, error in
+        priceService.getPrice(mechanicID: "60a8ca60-a03b-11e9-b54d-d938b4077b64", oilType: "CONVENTIONAL", locationID: "66513230-a03c-11e9-b54d-d938b4077b64", couponCode: "30off") { json, error in
             XCTAssert(json != nil, "Should have at least one json object")
             XCTAssert(error == nil, "Should have not have error")
             

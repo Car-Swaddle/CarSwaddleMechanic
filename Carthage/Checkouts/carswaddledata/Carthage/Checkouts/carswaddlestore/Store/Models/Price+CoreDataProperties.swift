@@ -17,25 +17,14 @@ extension Price {
     }
     
     @NSManaged public var identifier: String
-    @NSManaged public var totalPrice: Int
-    @NSManaged public var parts: Set<PricePart>
     @NSManaged public var autoService: AutoService?
-
-}
-
-// MARK: Generated accessors for parts
-extension Price {
-
-    @objc(addPartsObject:)
-    @NSManaged public func addToParts(_ value: PricePart)
-
-    @objc(removePartsObject:)
-    @NSManaged public func removeFromParts(_ value: PricePart)
-
-    @objc(addParts:)
-    @NSManaged public func addToParts(_ values: NSSet)
-
-    @objc(removeParts:)
-    @NSManaged public func removeFromParts(_ values: NSSet)
+    
+    @NSManaged public var oilChangeCost: Int
+    @NSManaged public var distanceCost: Int
+    @NSManaged public var bookingFee: Int
+    @NSManaged public var processingFee: Int
+    @NSManaged public var subtotal: Int
+    @NSManaged public var taxes: Int
+    @NSManaged public var total: Int
 
 }

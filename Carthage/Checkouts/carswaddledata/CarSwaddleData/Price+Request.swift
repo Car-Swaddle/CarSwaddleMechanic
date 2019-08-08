@@ -21,23 +21,16 @@ final public class PriceNetwork: Network {
     }
     
     @discardableResult
-    public func requestPrice(mechanicID: String, oilType: OilType, location: Location, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return self.requestPrice(mechanicID: mechanicID, oilType: oilType, location: location.coordinate, in: context, completion: completion)
+    public func requestPrice(mechanicID: String, oilType: OilType, location: Location, couponCode: String?, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return self.requestPrice(mechanicID: mechanicID, oilType: oilType, location: location.coordinate, couponCode: couponCode, in: context, completion: completion)
     }
     
     @discardableResult
-    public func requestPrice(mechanicID: String, oilType: OilType, location: CLLocationCoordinate2D, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-        return priceService.getPrice(mechanicID: mechanicID, oilType: oilType.rawValue, location: location) { [weak self] json, error in
+    public func requestPrice(mechanicID: String, oilType: OilType, location: CLLocationCoordinate2D, couponCode: String?, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return priceService.getPrice(mechanicID: mechanicID, oilType: oilType.rawValue, location: location, couponCode: couponCode) { [weak self] json, error in
             self?.complete(json: json, error: error, in: context, completion: completion)
         }
     }
-    
-//    @discardableResult
-//    public func requestPrice(mechanicID: String, oilType: OilType, locationID: String, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
-//        return priceService.getPrice(mechanicID: mechanicID, oilType: oilType.rawValue, locationID: locationID) { [weak self] json, error in
-//            self?.complete(json: json, error: error, in: context, completion: completion)
-//        }
-//    }
     
     private func complete(json: JSONObject?, error: Error?, in context: NSManagedObjectContext, completion: @escaping (_ priceObjectID: NSManagedObjectID?, _ error: Error?) -> Void) {
         context.performOnImportQueue {

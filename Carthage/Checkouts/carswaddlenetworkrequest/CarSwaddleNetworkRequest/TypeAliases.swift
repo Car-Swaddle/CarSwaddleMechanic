@@ -10,5 +10,6 @@ import Foundation
 
 public typealias JSONCompletion = (_ json: JSONObject?, _ error: Error?) -> Void
 public typealias JSONArrayCompletion = (_ jsonArray: [JSONObject]?, _ error: Error?) -> Void
+public typealias StringArrayCompletion = (_ stringArray: [String]?, _ error: Error?) -> Void
 public typealias JSONObject = [String: Any]
 public typealias QueryItems = [String: String]

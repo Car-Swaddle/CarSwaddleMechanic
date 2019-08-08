@@ -562,7 +562,7 @@ _$s14KeychainAccess7OptionsVN
 Apple LLVM version 10.0.1 (clang-1001.0.46.5)
 <swift-imported-modules>
 /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/KeychainAccess/Lib
-Apple Swift version 5.0.1 effective-4.2 (swiftlang-1001.0.82.4 clang-1001.0.46.5)
+Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)
 /Users/kylekendall/Projects/carswaddlemechanic/Carthage/Checkouts/KeychainAccess/Lib/KeychainAccess/Keychain.swift
 $s10Foundation3URLVSgWOd
 <compiler-generated>
@@ -689,7 +689,6 @@ getString
 _allocateUninitializedArray
 $sSa13_adoptStorage_5countSayxG_SpyxGts016_ContiguousArrayB0CyxGn_SitFZyp_Tg5
 $ss23_ContiguousArrayStorageCyypGMa
-flatMap
 set
 $sS2SSysWl
 forEach
