@@ -10,6 +10,7 @@ import UIKit
 import Authentication
 import CarSwaddleUI
 import Store
+import CarSwaddleData
 
 extension Navigator {
     
@@ -45,6 +46,8 @@ extension Navigator {
 let navigator = Navigator()
 
 final public class Navigator: NSObject {
+    
+    private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
     public override init() {
         self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -178,9 +181,39 @@ final public class Navigator: NSObject {
         return viewControllers
     }
     
+    public var isLoggedIn: Bool {
+        return AuthController().token != nil
+    }
+    
     func showEnterNewPasswordScreen(resetToken: String) {
         let enterPassword = EnterNewPasswordViewController.create(resetToken: resetToken)
         presentAtRoot(viewController: enterPassword.inNavigationController())
+    }
+    
+//    public func showRatingAlertFor(autoServiceID: String) {
+//        guard isLoggedIn else { return }
+//        let alert = ratingController.createRatingAlert(forAutoServiceID: autoServiceID)
+//        appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
+//    }
+    
+    public func showAutoService(autoServiceID: String) {
+        guard isLoggedIn else { return }
+        store.privateContext { [weak self] privateContext in
+            self?.autoServiceNetwork.getAutoServiceDetails(autoServiceID: autoServiceID, in: privateContext) { autoServiceObjectID, error in
+                store.mainContext { mainContext in
+                    guard let self = self else { return }
+                    guard let autoService = AutoService.fetch(with: autoServiceID, in: store.mainContext) else { return }
+                    let viewController = self.viewController(for: .schedule)
+                    UIViewController.dismissToViewController(viewController) { success in
+                        self.tabBarController.selectedIndex = Tab.schedule.rawValue
+                        if let navigationController = viewController.navigationController {
+                            let viewController = AutoServiceDetailsViewController.create(autoService: autoService)
+                            navigationController.show(viewController, sender: self)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -417,6 +450,63 @@ extension Navigator: NavigationDelegateViewControllerDelegate {
     public func didSelectLogout(_ navigationDelegateViewController: NavigationDelegateViewController) {
         appDelegate.window?.endEditing(true)
         logout.logout()
+    }
+    
+}
+
+
+extension UINavigationController {
+    
+    public func popToRootViewController(animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popToRootViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    public func popViewController(animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    public func popToViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        popToViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+    
+}
+
+
+public extension UIViewController {
+    
+    static func dismissToViewController(_ rootViewController: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
+        if let presentedViewController = rootViewController.presentedViewController {
+            presentedViewController.dismiss(animated: true) {
+                if let navigationController = presentedViewController as? UINavigationController {
+                    navigationController.popToRootViewController(animated: true) {
+                        completion(true)
+                    }
+                } else {
+                    completion(true)
+                }
+            }
+        } else if let navigationController = rootViewController.navigationController {
+            navigationController.popToRootViewController(animated: true) {
+                completion(true)
+            }
+        } else {
+            completion(false)
+        }
     }
     
 }

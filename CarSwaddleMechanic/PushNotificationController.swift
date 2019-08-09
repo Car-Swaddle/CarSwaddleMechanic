@@ -72,7 +72,22 @@ public class PushNotificationController: NSObject {
     }
     
     private func handleInteraction(interactionInfo: [AnyHashable: Any]) {
-        
+        guard let remoteNotification = RemoteNotification(userInfo: interactionInfo) else {
+            return
+        }
+        switch remoteNotification {
+        case .mechanicRating(_):
+            break
+//            navigator.showRatingAlertFor(autoServiceID: rating.autoServiceID)
+        case .reminder(let reminder):
+            navigator.showAutoService(autoServiceID: reminder.autoServiceID)
+        case .userDidRate(let userDidRate):
+            navigator.showAutoService(autoServiceID: userDidRate.autoServiceID)
+        case .autoServiceWasUpdated(let autoServiceWasUpdated):
+            navigator.showAutoService(autoServiceID: autoServiceWasUpdated.autoServiceID)
+        case .scheduledAutoService(let scheduledAutoService):
+            navigator.showAutoService(autoServiceID: scheduledAutoService.autoServiceID)
+        }
     }
     
 }
