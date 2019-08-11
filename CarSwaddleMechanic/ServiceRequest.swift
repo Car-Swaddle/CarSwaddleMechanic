@@ -10,6 +10,11 @@ import NetworkRequest
 import CarSwaddleNetworkRequest
 import CarSwaddleUI
 
+import UIKit
+import Authentication
+import Store
+import CarSwaddleData
+
 
 #if targetEnvironment(simulator)
 private let localDomain = "127.0.0.1"
@@ -41,6 +46,7 @@ extension Tweak {
     }
     
     private static let domainOptions = Tweak.Options.string(values: [localDomain, productionDomain, stagingDomain])
+    
     static let domain: Tweak = {
         let valueDidChange: (_ tweak: Tweak) -> Void = { tweak in
             _serviceRequest = nil
@@ -62,6 +68,7 @@ public var serviceRequest: Request {
 }
 
 public func createServiceRequest() -> Request {
+    #if DEBUG
     let domain = (Tweak.domain.value as? String) ?? productionDomain
     if domain == localDomain {
         let request = Request(domain: domain)
@@ -75,6 +82,14 @@ public func createServiceRequest() -> Request {
         request.defaultScheme = .https
         return request
     }
+    #else
+    
+    let request = Request(domain: productionDomain)
+    request.timeout = 15
+    request.defaultScheme = .https
+    return request
+    
+    #endif
 }
 
 
