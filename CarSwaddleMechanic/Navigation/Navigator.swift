@@ -49,6 +49,8 @@ final public class Navigator: NSObject {
     
     private var autoServiceNetwork: AutoServiceNetwork = AutoServiceNetwork(serviceRequest: serviceRequest)
     
+    private var stripeNetwork: StripeNetwork = StripeNetwork(serviceRequest: serviceRequest)
+    
     public override init() {
         self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     }
@@ -306,6 +308,7 @@ final public class Navigator: NSObject {
             if tab.removeShadowImage {
                 navigationController.navigationBar.shadowImage = UIImage()
             }
+            navigationController.tabBarItem.badgeColor = .red5
             viewControllers.append(navigationController)
         }
         
@@ -316,6 +319,16 @@ final public class Navigator: NSObject {
 //        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 9)]
 //        tabController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
         tabController.view.backgroundColor = .white
+        
+        store.privateContext { [weak self] privateContext in
+            self?.stripeNetwork.updateCurrentUserVerification(in: privateContext) { objectID, error in
+                DispatchQueue.main.async {
+                    let tabBarItem = self?.viewController(for: .profile).tabBarItem
+                    let mechanic = User.currentUser(context: store.mainContext)?.mechanic
+                    tabBarItem?.badgeValue = mechanic?.numberOfRequiredItems?.stringValue
+                }
+            }
+        }
         
         _tabBarController = tabController
         
@@ -508,5 +521,22 @@ public extension UIViewController {
             completion(false)
         }
     }
+    
+}
+
+
+
+public extension Mechanic {
+    
+    public var numberOfRequiredItems: Int? {
+        var count = verification?.currentlyDue.count ?? 0
+
+        if user?.isEmailVerified == false {
+            count += 1
+        }
+        
+        return count == 0 ? nil : count
+    }
+    
     
 }

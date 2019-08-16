@@ -114,6 +114,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
             group.notify(queue: DispatchQueue.main) {
                 if let mechanic = self?.user?.mechanic {
                     self?.headerView.configure(with: mechanic)
+                    self?.tabBarItem?.badgeValue = mechanic.numberOfRequiredItems?.stringValue
                 }
                 self?.tableView.reloadData()
                 completion(completionError)
