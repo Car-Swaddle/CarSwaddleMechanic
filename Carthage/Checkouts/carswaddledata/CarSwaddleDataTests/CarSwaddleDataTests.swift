@@ -11,7 +11,7 @@ import XCTest
 import CoreData
 import Store
 
-let store = Store(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
+let store = PersistentStore(bundle: Bundle(identifier: "CS.Store")!, storeName: "CarSwaddleStore", containerName: "StoreContainer")
 
 class CarSwaddleDataTests: XCTestCase {
     

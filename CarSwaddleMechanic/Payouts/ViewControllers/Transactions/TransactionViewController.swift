@@ -278,7 +278,7 @@ extension TransactionViewController: UITableViewDelegate {
 //                present(alert, animated: true, completion: nil)
 //            } else {
                 let receipt = fetchedResultsController.object(at: receiptIndexPath(from: indexPath))
-                guard let fileURL = (try? profileImageStore.getFilePath(name: receipt.receiptPhotoID)) else { return }
+                guard let fileURL = profileImageStore.getFilePathForFile(withName: receipt.receiptPhotoID) else { return }
                 let viewController = UIDocumentInteractionController(url: fileURL)
                 viewController.delegate = self
                 viewController.presentPreview(animated: true)

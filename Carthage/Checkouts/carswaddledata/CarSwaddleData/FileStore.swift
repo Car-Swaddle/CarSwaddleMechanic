@@ -9,55 +9,88 @@
 import UIKit
 import CoreData
 import Store
+import Disk
+
+private let defaultExpirationTimeInterval: TimeInterval = 60 * 60 * 24 * 2
+
+public enum FileStoreError: Error {
+    case noContext
+    case unableToFetchUser
+    case unableToFetchMechanic
+}
 
 public class FileStore {
     
-    init(folderName: String = "") {
+    init(folderName: String = "", directory: Disk.Directory, expirationTimeInterval: TimeInterval = defaultExpirationTimeInterval) {
         self.folderName = folderName
+        self.directory = directory
+        self.expirationTimeInterval = expirationTimeInterval
     }
     
+    public let directory: Disk.Directory
+    public let expirationTimeInterval: TimeInterval
+    
     public func destroy() throws {
-        let directory = try self.directory()
-        try fileManager.removeItem(at: directory)
+        try Disk.remove(folderName, from: directory)
     }
     
     public let folderName: String
     
-    public func getFile(name: String) throws -> Data? {
-        let fileURL = try getFilePath(name: name)
-        let data = try Data(contentsOf: fileURL)
-        return data
-    }
-    
-    public func getFilePath(name: String) throws -> URL {
-        return try directory().appendingPathComponent(name).appendingPathExtension("jpeg")
+    public func getFile(name: String, allowExpired: Bool = false) throws -> Data? {
+        if let dataHolder = fileCache.object(forKey: name as NSString) {
+            return dataHolder.data
+        }
+        let datedData: DatedData = try Disk.retrieve(folder(with: name), from: directory)
+        guard allowExpired == false, datedData.dateFirstStored.timeIntervalSince(Date()) < defaultExpirationTimeInterval else {
+            return nil
+        }
+        return datedData.data
     }
     
     private let fileManager: FileManager = FileManager.default
     
     @discardableResult
-    public func storeFile(url: URL, fileName: String? = nil) throws -> URL {
+    public func storeFile(at url: URL, fileName: String? = nil) throws -> URL {
         let data = try Data(contentsOf: url)
-        return try storeFile(data: data, fileName: fileName ?? url.lastPathComponent)
+        let name = fileName ?? url.lastPathComponent
+        return try storeFile(data: data, fileName: name)
     }
     
     @discardableResult
     public func storeFile(data: Data, fileName: String) throws -> URL {
-        let newFileURL = try directory().appendingPathComponent(fileName).appendingPathExtension("jpeg")
-        fileManager.createFile(atPath: newFileURL.path, contents: data, attributes: nil)
-        try data.write(to: newFileURL)
-        return newFileURL
+        let datedData = DatedData(data: data)
+        fileCache.setObject(DataHolder(data: data), forKey: fileName as NSString)
+        return try Disk.save(datedData, to: directory, as: folder(with: fileName))
     }
     
-    private func directory() throws -> URL {
-        var documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
-        documentDirectory = documentDirectory.appendingPathComponent(folderName, isDirectory: true)
-        if fileManager.fileExists(atPath: documentDirectory.path) == false {
-            try fileManager.createDirectory(at: documentDirectory, withIntermediateDirectories: true, attributes: nil)
-        }
-        return documentDirectory
+    private func folder(with fileName: String) -> String {
+        return folderName + "/" + fileName
     }
     
+    public func getFilePathForFile(withName name: String) -> URL? {
+        guard let url = URL(string: folder(with: name)) else { return nil }
+        return url
+    }
+    
+//    private func directory() throws -> URL {
+//        var documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+//        documentDirectory = documentDirectory.appendingPathComponent(folderName, isDirectory: true)
+//        if fileManager.fileExists(atPath: documentDirectory.path) == false {
+//            try fileManager.createDirectory(at: documentDirectory, withIntermediateDirectories: true, attributes: nil)
+//        }
+//        return documentDirectory
+//    }
+    
+}
+
+public struct DatedData: Codable {
+    let dateFirstStored: Date
+    let data: Data
+    
+    init(data: Data) {
+        self.data = data
+        self.dateFirstStored = Date()
+    }
 }
 
 public class ProfileImageStore: FileStore {
@@ -66,40 +99,57 @@ public class ProfileImageStore: FileStore {
         var fileOptional: Data?
         do {
             fileOptional = try getFile(name: name)
-        } catch {
-            print(error)
+        } catch { return nil }
+        guard let data = fileOptional else { return nil }
+        return UIImage(data: data)
+    }
+    
+    public func getImage(forUserWithID userID: String, in context: NSManagedObjectContext) -> UIImage? {
+        guard let profileImageID = User.fetch(with: userID, in: context)?.profileImageID else {
             return nil
         }
-        guard let file = fileOptional else { return nil }
-        return UIImage(data: file)
+        return getImage(withName: profileImageID)
     }
     
-    public func getImage(forUserWithID userID: String) -> UIImage? {
-        return getImage(withName: userID)
+    public func getImage(forMechanicWithID mechanicID: String, in context: NSManagedObjectContext) -> UIImage? {
+        guard let profileImageID = Mechanic.fetch(with: mechanicID, in: context)?.profileImageID else {
+            return nil
+        }
+        return getImage(withName: profileImageID)
     }
     
-    public func getImage(forMechanicWithID mechanicID: String) -> UIImage? {
-        return getImage(withName: mechanicID)
+    
+    
+    @discardableResult
+    public func storeFile(at url: URL, userID: String, in context: NSManagedObjectContext) throws -> URL {
+        guard let profileImageID = User.fetch(with: userID, in: context)?.profileImageID else {
+            throw FileStoreError.unableToFetchUser
+        }
+        return try storeFile(at: url, fileName: profileImageID)
     }
     
     @discardableResult
-    public func storeFile(url: URL, userID: String) throws -> URL {
-        return try storeFile(url: url, fileName: userID)
+    public func storeFile(data: Data, userID: String, in context: NSManagedObjectContext) throws -> URL {
+        guard let profileImageID = User.fetch(with: userID, in: context)?.profileImageID else {
+            throw FileStoreError.unableToFetchUser
+        }
+        return try storeFile(data: data, fileName: profileImageID)
     }
     
     @discardableResult
-    public func storeFile(data: Data, userID: String) throws -> URL {
-        return try storeFile(data: data, fileName: userID)
+    public func storeFile(at url: URL, mechanicID: String, in context: NSManagedObjectContext) throws -> URL {
+        guard let profileImageID = Mechanic.fetch(with: mechanicID, in: context)?.profileImageID else {
+            throw FileStoreError.unableToFetchMechanic
+        }
+        return try storeFile(at: url, fileName: profileImageID)
     }
     
     @discardableResult
-    public func storeFile(url: URL, mechanicID: String) throws -> URL {
-        return try storeFile(url: url, fileName: mechanicID)
-    }
-    
-    @discardableResult
-    public func storeFile(data: Data, mechanicID: String) throws -> URL {
-        return try storeFile(data: data, fileName: mechanicID)
+    public func storeFile(data: Data, mechanicID: String, in context: NSManagedObjectContext) throws -> URL {
+        guard let profileImageID = Mechanic.fetch(with: mechanicID, in: context)?.profileImageID else {
+            throw FileStoreError.unableToFetchMechanic
+        }
+        return try storeFile(data: data, fileName: profileImageID)
     }
     
 }
@@ -107,13 +157,16 @@ public class ProfileImageStore: FileStore {
 extension User {
     
     public func setProfileImage(withFileURL url: URL) throws {
-        try profileImageStore.storeFile(url: url, userID: identifier)
+        guard let context = managedObjectContext else {
+            throw FileStoreError.noContext
+        }
+        try profileImageStore.storeFile(at: url, userID: identifier, in: context)
     }
     
 }
 
 
-public let profileImageStore = ProfileImageStore(folderName: "profile-images")
+public let profileImageStore = ProfileImageStore(folderName: "profile-images", directory: .caches)
 
 
 public extension Data {

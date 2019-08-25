@@ -9,6 +9,7 @@
 import XCTest
 import Store
 @testable import CarSwaddleData
+import CarSwaddleNetworkRequest
 
 let atlanticLatitude: Double = 28.237381
 let atlanticLongitude: Double = -47.420196
@@ -252,7 +253,7 @@ class MechanicTests: LoginTestCase {
                         XCTAssert(false, "mechanicObjectID doesn't exist")
                         return
                     }
-                    let image = profileImageStore.getImage(forMechanicWithID: currentMechanicID)
+                    let image = profileImageStore.getImage(forMechanicWithID: currentMechanicID, in: store.mainContext)
                     XCTAssert(image != nil, "Should have that image yall")
                     let mechanic = mainContext.object(with: mechanicObjectID) as? Mechanic
                     XCTAssert(mechanic != nil, "User doesn't exist")
@@ -294,9 +295,9 @@ class MechanicTests: LoginTestCase {
         let mechanicID = currentMechanicID
         let exp = expectation(description: "\(#function)\(#line)")
         store.privateContext { [weak self] context in
-            self?.mechanicNetwork.getProfileImage(mechanicID: mechanicID) { url, error in
+            self?.mechanicNetwork.getProfileImage(mechanicID: mechanicID, in: context) { url, error in
                 store.mainContext { mainContext in
-                    let image = profileImageStore.getImage(forMechanicWithID: mechanicID)
+                    let image = profileImageStore.getImage(forMechanicWithID: mechanicID, in: store.mainContext)
                     XCTAssert(image != nil, "Should have that image yall")
                     exp.fulfill()
                 }
@@ -327,16 +328,57 @@ class MechanicTests: LoginTestCase {
     }
     
     
-    func testUpdateMechanicCorperate() {
+    func testUpdateMechanicCorporate() {
         let exp = expectation(description: "\(#function)\(#line)")
         let mechanicID = "39895440-8fd8-11e9-a0b9-ff60380afd50"
         let isAllowed = false
         store.privateContext { [weak self] context in
-            self?.mechanicNetwork.updateMechanicCorperate(mechanicID: mechanicID, isAllowed: isAllowed, in: context) { mechanicObjectID, error in
+            self?.mechanicNetwork.updateMechanicCorporate(mechanicID: mechanicID, isAllowed: isAllowed, in: context) { mechanicObjectID, error in
                 context.perform {
                     XCTAssert(mechanicObjectID != nil, "Should have a mechanic")
                     let mechanic = (context.object(with: mechanicObjectID!) as! Mechanic)
                     XCTAssert(mechanic.isAllowed == isAllowed, "Should have isAllowed \(isAllowed), got: \(mechanic.isAllowed)")
+                    exp.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testGetOilChangePricing() {
+        let exp = expectation(description: "\(#function)\(#line)")
+//        let mechanicID = "39895440-8fd8-11e9-a0b9-ff60380afd50"
+//        let isAllowed = false
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.getOilChangePricingForCurrentMechanic(in: context) { objectID, error in
+                context.perform {
+                    XCTAssert(objectID != nil, "Should have a mechanic")
+                    _ = (context.object(with: objectID!) as! Store.OilChangePricing)
+//                    XCTAssert(mechanic.isAllowed == isAllowed, "Should have isAllowed \(isAllowed), got: \(mechanic.isAllowed)")
+                    exp.fulfill()
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateOilChangePricing() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        //        let mechanicID = "39895440-8fd8-11e9-a0b9-ff60380afd50"
+        //        let isAllowed = false
+        let priceUpdate = OilChangePricingUpdate(conventional: 2000, blend: 2300, synthetic: 2600, highMileage: 2900)
+        store.privateContext { [weak self] context in
+            self?.mechanicNetwork.updateOilChangePricingForCurrentMechanic(newOilChangePriceUpdate: priceUpdate, in: context) { objectID, error in
+                context.perform {
+                    XCTAssert(objectID != nil, "Should have a mechanic")
+                    let pricing = (context.object(with: objectID!) as! Store.OilChangePricing)
+                    //                    XCTAssert(mechanic.isAllowed == isAllowed, "Should have isAllowed \(isAllowed), got: \(mechanic.isAllowed)")
+                    XCTAssert(pricing.conventional == priceUpdate.conventional &&
+                        pricing.blend == priceUpdate.blend &&
+                        pricing.synthetic == priceUpdate.synthetic &&
+                        pricing.highMileage == priceUpdate.highMileage, "Should be equal")
                     exp.fulfill()
                 }
             }

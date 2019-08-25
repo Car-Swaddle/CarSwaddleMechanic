@@ -248,4 +248,27 @@ class MechanicServiceTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetOilChangePricing() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        service.getOilChangePricingForCurrentMechanic { oilChangePricing, error in
+            XCTAssert(oilChangePricing != nil, "Should have oilChangePricing")
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
+    func testUpdateOilChangePricing() {
+        let exp = expectation(description: "\(#function)\(#line)")
+//        service.getOilChangePricingForCurrentMechanic { oilChangePricing, error in
+        let update = OilChangePricingUpdate(conventional: 3000, blend: 3400, synthetic: 3600, highMileage: 4000)
+        service.updateOilChangePricingForCurrentMechanic(oilChangePricingUpdate: update) { oilChangePricing, error in
+            XCTAssert(oilChangePricing != nil, "Should have oilChangePricing")
+            XCTAssert(update.conventional == oilChangePricing?.conventional && update.blend == oilChangePricing?.blend && update.synthetic == oilChangePricing?.synthetic && update.highMileage == oilChangePricing?.highMileage)
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }

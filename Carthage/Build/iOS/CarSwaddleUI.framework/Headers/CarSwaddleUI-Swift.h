@@ -516,6 +516,8 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 
 
 
+
+
 /// Use this to zoom into the viewcontrollers self.view property or a provided content view
 SWIFT_CLASS("_TtC12CarSwaddleUI22ZoomAnimatedTransition")
 @interface ZoomAnimatedTransition : TranslucentAnimatedTransition
@@ -1024,6 +1026,8 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 

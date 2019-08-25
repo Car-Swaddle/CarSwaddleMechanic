@@ -62,9 +62,54 @@ public class Service {
         completion(json, error)
     }
     
+    func complete<Response: Decodable>(data: Data?, error: Error?, completion: @escaping (_ response: Response?, _ error: Error?) -> Void) {
+        
+        completion(data?.decode(), error)
+        
+//        guard let data = data else {
+//            completion(nil, error)
+//            return
+//        }
+//
+//        do {
+//            let decoder = JSONDecoder()
+//            let decoded = try decoder.decode(Response.self, from: data)
+//            completion(decoded, error)
+//        } catch {
+//            completion(nil, error)
+//        }
+    }
+    
     public enum App: String {
         case carSwaddle = "car-swaddle"
         case carSwaddleMechanic = "car-swaddle-mechanic"
+    }
+    
+}
+
+public extension Data {
+    
+    func decode<T: Decodable>(decoder: JSONDecoder = JSONDecoder()) -> T? {
+        do {
+            return try decoder.decode(T.self, from: self)
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+}
+
+
+public extension Encodable {
+    
+    func encode(encoder: JSONEncoder = JSONEncoder()) -> Data? {
+        do {
+            return try encoder.encode(self)
+        } catch {
+            print(error)
+            return nil
+        }
     }
     
 }

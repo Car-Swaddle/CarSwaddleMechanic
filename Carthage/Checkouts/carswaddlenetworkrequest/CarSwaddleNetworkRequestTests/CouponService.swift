@@ -52,5 +52,17 @@ class CouponTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testCreateCouponPercent() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        couponService.createCoupon(id: "test", amountOff: nil, percentOff: 35, maxRedemptions: 30, name: "Kyle's test coupon", redeemBy: Date().addingTimeInterval(24*60*60), discountBookingFee: false, isCorporate: true) { json, error in
+            XCTAssert(json != nil && error == nil, "Should get values")
+            json?.printObject()
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
 }
 

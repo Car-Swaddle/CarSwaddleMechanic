@@ -70,8 +70,9 @@ final public class CouponService: Service {
         if let amountOff = amountOff?.stringValue {
             jsonBody["amountOff"] = amountOff
         }
-        if let percentOff = percentOff?.stringValue {
-            jsonBody["percentOff"] = percentOff
+        if let percentOff = percentOff {
+            let percentOffFloat = Float(percentOff) / 100
+            jsonBody["percentOff"] = String(percentOffFloat)
         }
         if let maxRedemptions = maxRedemptions?.stringValue {
             jsonBody["maxRedemptions"] = maxRedemptions

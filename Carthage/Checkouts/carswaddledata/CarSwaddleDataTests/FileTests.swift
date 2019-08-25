@@ -19,7 +19,7 @@ class FileTests: XCTestCase {
         
         let name = "someName"
         
-        _ = try? profileImageStore.storeFile(url: fileURL, fileName: name)
+        _ = try? profileImageStore.storeFile(at: fileURL, fileName: name)
         let firstFileData = try? profileImageStore.getFile(name: name)
         
         XCTAssert(firstFileData != nil, "Should not be nil")

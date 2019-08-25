@@ -32,7 +32,7 @@ final class TransactionReceiptCell: UITableViewCell, NibRegisterable {
             self?.fileService.getImage(imageName: photoID) { downloadURL, error in
                 DispatchQueue.main.async {
                     if let downloadURL = downloadURL {
-                        _ = try? profileImageStore.storeFile(url: downloadURL, fileName: photoID)
+                        _ = try? profileImageStore.storeFile(at: downloadURL, fileName: photoID)
                     }
                 }
             }

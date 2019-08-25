@@ -44,6 +44,8 @@ final class AutoServiceVehicleCell: UITableViewCell, NibRegisterable {
             return NSLocalizedString("Conventional Oil Type", comment: "Oil Type")
         case .synthetic:
             return NSLocalizedString("Synthetic Oil Type", comment: "Oil Type")
+        case .highMileage:
+            return NSLocalizedString("High Mileage Oil Type", comment: "Oil Type")
         }
     }
     

@@ -3,7 +3,7 @@
   "iOS" : [
     {
       "name" : "Lottie",
-      "hash" : "b34ca7a0947e1d0c787dbe53d7722876287fff10cb18d2a7edd2c242daba96a9",
+      "hash" : "29aec09bc3a22d40976e5e08f455f2e897039b5993253e38b072bc1d6035d8c1",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]

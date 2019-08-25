@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9905FF4D230D328A00DFBCB9 /* OilChangePricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF4C230D328A00DFBCB9 /* OilChangePricing.swift */; };
 		992C53C72150C59B0076949C /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */; };
 		992C53CC2150C59B0076949C /* CarSwaddleLoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C53CB2150C59B0076949C /* CarSwaddleLoginTestCase.swift */; };
 		992C53CE2150C59B0076949C /* CarSwaddleNetworkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 992C53C02150C59B0076949C /* CarSwaddleNetworkRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -104,6 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9905FF4C230D328A00DFBCB9 /* OilChangePricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilChangePricing.swift; sourceTree = "<group>"; };
 		992C53BD2150C59B0076949C /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CarSwaddleNetworkRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		992C53C02150C59B0076949C /* CarSwaddleNetworkRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarSwaddleNetworkRequest.h; sourceTree = "<group>"; };
 		992C53C12150C59B0076949C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9905FF4B230D327700DFBCB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9905FF4C230D328A00DFBCB9 /* OilChangePricing.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		992C53B32150C59B0076949C = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +230,7 @@
 				995B9F2E2154C9050030A7CA /* NetworkRequestError.swift */,
 				99F0269A217BA1F5005FEFC7 /* TypeAliases.swift */,
 				99F0269C217BAA18005FEFC7 /* BoolExtension.swift */,
+				9905FF4B230D327700DFBCB9 /* Models */,
 				99C791C52150CB98000167CB /* Services */,
 				992C53C12150C59B0076949C /* Info.plist */,
 				995B9F2A2154B4DB0030A7CA /* GlobalImports.swift */,
@@ -475,6 +486,7 @@
 				9955BC182154E646008DAF8E /* UserService.swift in Sources */,
 				99F02697217B9FB8005FEFC7 /* AvailabilityService.swift in Sources */,
 				992C53D82150C5B10076949C /* ServerRequest.swift in Sources */,
+				9905FF4D230D328A00DFBCB9 /* OilChangePricing.swift in Sources */,
 				995B9F2D2154BB180030A7CA /* AuthService.swift in Sources */,
 				995B9F2F2154C9050030A7CA /* NetworkRequestError.swift in Sources */,
 				99F08C6822DBC77C00317EEA /* CouponService.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  BrowseExamplesViewController.h
-//  Custom Integration (Recommended)
+//  Custom Integration
 //
 //  Created by Ben Guo on 2/17/17.
 //  Copyright © 2017 Stripe. All rights reserved.
@@ -15,18 +15,15 @@ typedef NS_ENUM(NSInteger, STPBackendResult) {
 };
 
 typedef void (^STPPaymentIntentCreationHandler)(STPBackendResult status, NSString *clientSecret, NSError *error);
-typedef void (^STPPaymentIntentCreateAndConfirmHandler)(STPBackendResult status, STPPaymentIntent *paymentIntent, NSError *error);
-typedef void (^STPRedirectCompletionHandler)(STPPaymentIntent *retrievedIntent, NSError *error);
-typedef void (^STPConfirmPaymentIntentCompletionHandler)(STPBackendResult status, STPPaymentIntent *paymentIntent, NSError *error);
+typedef void (^STPPaymentIntentCreateAndConfirmHandler)(STPBackendResult status, NSString *clientSecret, NSError *error);
+typedef void (^STPConfirmPaymentIntentCompletionHandler)(STPBackendResult status, NSString *clientSecret, NSError *error);
+typedef void (^STPCreateSetupIntentCompletionHandler)(STPBackendResult status, NSString *clientSecret, NSError *error);
 
 
-@protocol ExampleViewControllerDelegate <NSObject>
+@protocol ExampleViewControllerDelegate <STPAuthenticationContext>
 
 - (void)exampleViewController:(UIViewController *)controller didFinishWithMessage:(NSString *)message;
 - (void)exampleViewController:(UIViewController *)controller didFinishWithError:(NSError *)error;
-- (void)performRedirectForViewController:(UIViewController *)controller
-                       withPaymentIntent:(STPPaymentIntent *)paymentIntent
-                              completion:(STPRedirectCompletionHandler)completion;
 
 - (void)createBackendPaymentIntentWithAmount:(NSNumber *)amount completion:(STPPaymentIntentCreationHandler)completion;
 - (void)createAndConfirmPaymentIntentWithAmount:(NSNumber *)amount
@@ -34,6 +31,12 @@ typedef void (^STPConfirmPaymentIntentCompletionHandler)(STPBackendResult status
                                       returnURL:(NSString *)returnURL
                                      completion:(STPPaymentIntentCreateAndConfirmHandler)completion;
 - (void)confirmPaymentIntent:(STPPaymentIntent *)paymentIntent completion:(STPConfirmPaymentIntentCompletionHandler)completion;
+
+
+// if paymentMethodID != nil, this will also confirm on the backend
+- (void)createSetupIntentWithPaymentMethod:(NSString *)paymentMethodID
+                                 returnURL:(NSString *)returnURL
+                                completion:(STPCreateSetupIntentCompletionHandler)completion;
 
 @end
 

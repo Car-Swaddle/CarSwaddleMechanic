@@ -74,30 +74,33 @@ public final class UserNetwork: Network {
                     }
                 }
                 
-                if let currentUserID = User.currentUserID {
-                    _ = try? profileImageStore.storeFile(url: fileURL, userID: currentUserID)
-                }
-                
                 guard let currentUser = User.currentUser(context: context), error == nil else { return }
                 currentUser.profileImageID = json?["profileImageID"] as? String
                 context.persist()
+                
+                if let currentUserID = User.currentUserID {
+                    _ = try? profileImageStore.storeFile(at: fileURL, userID: currentUserID, in: context)
+                }
+                
                 userObjectID = currentUser.objectID
             }
         }
     }
     
     @discardableResult
-    public func getProfileImage(userID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+    public func getProfileImage(userID: String, in context: NSManagedObjectContext, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         return fileService.getProfileImage(userID: userID) { url, responseError in
-            var completionError: Error? = responseError
-            var permanentURL: URL?
-            defer {
-                completion(permanentURL, completionError)
+            context.perform {
+                var completionError: Error? = responseError
+                var permanentURL: URL?
+                defer {
+                    completion(permanentURL, completionError)
+                }
+                guard let url = url else { return }
+                do {
+                    permanentURL = try profileImageStore.storeFile(at: url, userID: userID, in: context)
+                } catch { completionError = error }
             }
-            guard let url = url else { return }
-            do {
-                permanentURL = try profileImageStore.storeFile(url: url, fileName: userID)
-            } catch { completionError = error }
         }
     }
     
@@ -111,7 +114,7 @@ public final class UserNetwork: Network {
             }
             guard let url = url else { return }
             do {
-                permanentURL = try profileImageStore.storeFile(url: url, fileName: imageName)
+                permanentURL = try profileImageStore.storeFile(at: url, fileName: imageName)
             } catch {
                 completionError = error
             }

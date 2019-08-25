@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9905FF50230D3EC800DFBCB9 /* OilChangePricing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF4E230D3EC800DFBCB9 /* OilChangePricing+CoreDataClass.swift */; };
+		9905FF51230D3EC800DFBCB9 /* OilChangePricing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF4F230D3EC800DFBCB9 /* OilChangePricing+CoreDataProperties.swift */; };
 		9913759A217080D900F15BEC /* CarSwaddleStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99137598217080D800F15BEC /* CarSwaddleStore.xcdatamodeld */; };
 		991B4029216ADC5D00D7644D /* VehicleDescription+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4015216ADC5C00D7644D /* VehicleDescription+CoreDataClass.swift */; };
 		991B402A216ADC5D00D7644D /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991B4016216ADC5C00D7644D /* Location+CoreDataProperties.swift */; };
@@ -101,6 +103,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9905FF4E230D3EC800DFBCB9 /* OilChangePricing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OilChangePricing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9905FF4F230D3EC800DFBCB9 /* OilChangePricing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OilChangePricing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99137599217080D800F15BEC /* CarSwaddleStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarSwaddleStore.xcdatamodel; sourceTree = "<group>"; };
 		991B4015216ADC5C00D7644D /* VehicleDescription+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VehicleDescription+CoreDataClass.swift"; sourceTree = "<group>"; };
 		991B4016216ADC5C00D7644D /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		9991FE1C214B873F00F58F42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9905FF4E230D3EC800DFBCB9 /* OilChangePricing+CoreDataClass.swift */,
+				9905FF4F230D3EC800DFBCB9 /* OilChangePricing+CoreDataProperties.swift */,
 				99F08C6B22DBDBAD00317EEA /* Coupon+CoreDataClass.swift */,
 				99F08C6C22DBDBAD00317EEA /* Coupon+CoreDataProperties.swift */,
 				9989854A22AC4E3B00E4B25A /* Authority+CoreDataClass.swift */,
@@ -523,11 +529,13 @@
 				991B403C216ADC5D00D7644D /* User+CoreDataProperties.swift in Sources */,
 				998D3AD021DC0DB0003DD717 /* Review+CoreDataClass.swift in Sources */,
 				99F7D61D21EC042C00D6B524 /* Payout+CoreDataClass.swift in Sources */,
+				9905FF51230D3EC800DFBCB9 /* OilChangePricing+CoreDataProperties.swift in Sources */,
 				991B402C216ADC5D00D7644D /* Mechanic+CoreDataClass.swift in Sources */,
 				991B402E216ADC5D00D7644D /* AutoService+CoreDataClass.swift in Sources */,
 				991B4039216ADC5D00D7644D /* Price+CoreDataProperties.swift in Sources */,
 				99B3FA862202E3F800D9887F /* VerificationField+CoreDataProperties.swift in Sources */,
 				992BFDD92208020E006B64CC /* TransactionReceipt+CoreDataProperties.swift in Sources */,
+				9905FF50230D3EC800DFBCB9 /* OilChangePricing+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

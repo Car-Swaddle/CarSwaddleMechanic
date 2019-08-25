@@ -115,9 +115,9 @@ final public class Navigator: NSObject {
         
         CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
         
-        LabeledTextField.defaultTextFieldFont = UIFont.appFont(type: .regular, size: 15)
-        LabeledTextField.defaultLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
-        LabeledTextField.defaultLabelFont = UIFont.appFont(type: .regular, size: 15)
+        defaultLabeledTextFieldTextFieldFont = UIFont.appFont(type: .regular, size: 15)
+        defaultLabeledTextFieldLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
+        defaultLabeledTextFieldLabelFont = UIFont.appFont(type: .regular, size: 15)
         
         let labeledTextFieldAppearance = LabeledTextField.appearance()
         labeledTextFieldAppearance.underlineColor = .secondary

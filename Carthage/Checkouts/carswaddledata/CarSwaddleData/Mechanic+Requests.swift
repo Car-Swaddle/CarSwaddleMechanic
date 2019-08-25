@@ -123,13 +123,12 @@ public final class MechanicNetwork: Network {
                     }
                 }
                 
-                if let mechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier {
-                    _ = try? profileImageStore.storeFile(url: fileURL, mechanicID: mechanicID)
-                }
-                
                 guard let currentMechanic = Mechanic.currentLoggedInMechanic(in: context), error == nil else { return }
                 currentMechanic.profileImageID = json?["profileImageID"] as? String
                 context.persist()
+                if let mechanicID = Mechanic.currentLoggedInMechanic(in: context)?.identifier {
+                    _ = try? profileImageStore.storeFile(at: fileURL, mechanicID: mechanicID, in: context)
+                }
                 mechanicObjectID = currentMechanic.objectID
             }
         }
@@ -156,17 +155,21 @@ public final class MechanicNetwork: Network {
     
     
     @discardableResult
-    public func getProfileImage(mechanicID: String, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
+    public func getProfileImage(mechanicID: String, in context: NSManagedObjectContext, completion: @escaping (_ fileURL: URL?, _ error: Error?) -> Void) -> URLSessionDownloadTask? {
         return fileService.getMechanicProfileImage(mechanicID: mechanicID) { url, responseError in
-            var completionError: Error? = responseError
-            var permanentURL: URL?
-            defer {
-                completion(permanentURL, completionError)
+            context.performAndWait {
+                var completionError: Error? = responseError
+                var permanentURL: URL?
+                defer {
+                    completion(permanentURL, completionError)
+                }
+                guard let url = url else { return }
+                do {
+                    permanentURL = try profileImageStore.storeFile(at: url, mechanicID: mechanicID, in: context)
+                } catch {
+                    completionError = error
+                }
             }
-            guard let url = url else { return }
-            do {
-                permanentURL = try profileImageStore.storeFile(url: url, mechanicID: mechanicID)
-            } catch { completionError = error }
         }
     }
     
@@ -216,9 +219,79 @@ public final class MechanicNetwork: Network {
     }
     
     @discardableResult
-    public func updateMechanicCorperate(mechanicID: String, isAllowed: Bool? = nil, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+    public func updateMechanicCorporate(mechanicID: String, isAllowed: Bool? = nil, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
         return mechanicService.updateMechanicCorperate(mechanicID: mechanicID, isAllowed: isAllowed) { [weak self] json, error in
             self?.completeMechanic(json: json, error: error, in: context, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getOilChangePricingForCurrentMechanic(in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        return mechanicService.getOilChangePricingForCurrentMechanic { [weak self] oilChangePricing, error in
+            context.performOnImportQueue {
+                var objectID: NSManagedObjectID?
+                defer {
+                    completion(objectID, error)
+                }
+                guard let oilChangePricing = oilChangePricing, error == nil else {
+                    return
+                }
+                let storeModel = OilChangePricing.fetchOrCreate(model: oilChangePricing, in: context)
+                context.persist()
+                objectID = storeModel.objectID
+            }
+        }
+    }
+    
+    @discardableResult
+    public func updateOilChangePricingForCurrentMechanic(newOilChangePriceUpdate: CarSwaddleNetworkRequest.OilChangePricingUpdate, in context: NSManagedObjectContext, completion: @escaping ObjectIDCompletion) -> URLSessionDataTask? {
+        return mechanicService.updateOilChangePricingForCurrentMechanic(oilChangePricingUpdate: newOilChangePriceUpdate) { [weak self] oilChangePricing, error in
+            context.performOnImportQueue {
+                var objectID: NSManagedObjectID?
+                defer {
+                    completion(objectID, error)
+                }
+                guard let oilChangePricing = oilChangePricing, error == nil else {
+                    return
+                }
+                let storeModel = OilChangePricing.fetchOrCreate(model: oilChangePricing, in: context)
+                context.persist()
+                objectID = storeModel.objectID
+            }
+        }
+    }
+    
+}
+
+public extension Store.OilChangePricing {
+    
+    convenience init(oilChangePricing: CarSwaddleNetworkRequest.OilChangePricing, context: NSManagedObjectContext) {
+        self.init(context: context)
+        
+        self.update(with: oilChangePricing)
+    }
+    
+    private func update(with model: CarSwaddleNetworkRequest.OilChangePricing) {
+        self.identifier = model.id
+        self.conventional = Int64(model.conventional)
+        self.blend = Int64(model.blend)
+        self.synthetic = Int64(model.synthetic)
+        self.highMileage = Int64(model.highMileage)
+        self.centsPerMile = Int64(model.centsPerMile)
+        self.mechanicID = model.mechanicID
+        
+        if let context = managedObjectContext, let mechanic = Mechanic.fetch(with: mechanicID, in: context) {
+            self.mechanic = mechanic
+        }
+    }
+    
+    static func fetchOrCreate(model: CarSwaddleNetworkRequest.OilChangePricing, in context: NSManagedObjectContext) -> Store.OilChangePricing {
+        if let oilChangePricing = OilChangePricing.fetch(with: model.id, in: context) {
+            oilChangePricing.update(with: model)
+            return oilChangePricing
+        } else {
+            let oilChangePricing = OilChangePricing(oilChangePricing: model, context: context)
+            return oilChangePricing
         }
     }
     

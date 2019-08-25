@@ -3,7 +3,7 @@
   "iOS" : [
     {
       "name" : "JTAppleCalendar",
-      "hash" : "b1bd1b9da6575bcdf51f240aefbb47dac7b1b8794651088285a361b87160ef64",
+      "hash" : "4e25967cf6ebc1dddb67c7aaa5ddb1523fa65023f3154db6c644dc2dedbffeca",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]

@@ -17,7 +17,7 @@ private let privateContextQueue = DispatchQueue(label: "privateContextQueue", qo
 
 private let importQueue = DispatchQueue(label: "importQueue", qos: .background)
 
-public class Store {
+public class PersistentStore {
     
     public let bundle: Bundle
     public let storeName: String

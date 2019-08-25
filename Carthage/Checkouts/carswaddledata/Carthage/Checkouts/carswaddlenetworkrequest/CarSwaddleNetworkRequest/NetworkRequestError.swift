@@ -9,9 +9,9 @@
 import Foundation
 
 public extension NetworkRequestError {
-    public static let invalidJSON = NetworkRequestError(rawValue: "invalidJSON")
-    public static let invalidResponse = NetworkRequestError(rawValue: "invalidResponse")
-    public static let unableToCreateURLRequest = NetworkRequestError(rawValue: "unableToCreateURLRequest")
+    static let invalidJSON = NetworkRequestError(rawValue: "invalidJSON")
+    static let invalidResponse = NetworkRequestError(rawValue: "invalidResponse")
+    static let unableToCreateURLRequest = NetworkRequestError(rawValue: "unableToCreateURLRequest")
 }
 
 public struct NetworkRequestError: Error {

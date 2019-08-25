@@ -65,19 +65,15 @@ class LoginTestCase: XCTestCase {
 
 
 #if targetEnvironment(simulator)
-//private let localDomain = "192.168.1.184"
 private let localDomain = "127.0.0.1"
+private let marksLocalDomain = "127.0.0.1"
 #else
 private let localDomain = "Kyles-MacBook-Pro.local"
+private let marksLocalDomain = "msg-macbook.local"
 #endif
 
-//#if targetEnvironment(simulator)
-//private let localDomain = "127.0.0.1"
-//#else
-//private let localDomain = "Kyles-MacBook-Pro.local"
-//#endif
-
-private let hostedDomain = "car-swaddle.herokuapp.com"
+//private let productionDomain = "api.carswaddle.com"
+private let stagingDomain = "api.staging.carswaddle.com"
 
 private var useLocalDomain = true
 
@@ -89,7 +85,7 @@ public let serviceRequest: Request = {
         request.defaultScheme = .http
         return request
     } else {
-        let request = Request(domain: hostedDomain)
+        let request = Request(domain: stagingDomain)
 //        request.port = 3000
         request.timeout = 15
         request.defaultScheme = .https

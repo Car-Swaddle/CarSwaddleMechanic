@@ -1,3 +1,50 @@
+## 16.0.6 2019-08-13
+* Adds a method to STPAuthenticationContext allowing you to configure the SFSafariViewController presented for web-based authentication.
+* Adds STPAddress initializer that takes STPPaymentMethodBillingDetails. [#1278](https://github.com/stripe/stripe-ios/pull/1278)
+* Adds convenience method to populate STPUserInformation with STPPaymentMethodBillingDetails. [#1278](https://github.com/stripe/stripe-ios/pull/1278)
+* STPShippingAddressViewController prefills billing address for PaymentMethods too now, not just Card. [#1278](https://github.com/stripe/stripe-ios/pull/1278)
+* Update libStripe3DS2.a to avoid a conflict with Firebase. [#1293](https://github.com/stripe/stripe-ios/issues/1293)
+
+## 16.0.5 2019-08-09
+* Fixed an compatibility issue when building with certain Cocoapods configurations. [#1288](https://github.com/stripe/stripe-ios/issues/1288)
+
+## 16.0.4 2019-08-08
+* Improved compatibility with other OpenSSL-using libraries. [#1265](https://github.com/stripe/stripe-ios/issues/1265)
+* Fixed compatibility with Xcode 10.1. [#1273](https://github.com/stripe/stripe-ios/issues/1273)
+* Fixed an issue where STPPaymentContext could be left in a bad state when cancelled. [#1284](https://github.com/stripe/stripe-ios/pull/1284)
+
+## 16.0.3 2019-08-01
+* Changes to code obfuscation, resolving an issue with App Store review [#1269](https://github.com/stripe/stripe-ios/pull/1269)
+* Adds Apple Pay support to STPPaymentHandler [#1264](https://github.com/stripe/stripe-ios/pull/1264)
+
+## 16.0.2 2019-07-29
+* Adds API to let users set a default payment option for Standard Integration [#1252](https://github.com/stripe/stripe-ios/pull/1252)
+* Removes querying the Advertising Identifier (IDFA).
+* Adds customizable UIStatusBarStyle to STDSUICustomization.
+
+## 16.0.1 2019-07-25
+* Migrates Stripe3DS2.framework to libStripe3DS2.a, resolving an issue with App Store validation. [#1246](https://github.com/stripe/stripe-ios/pull/1246)
+* Fixes a crash in STPPaymentHandler. [#1244](https://github.com/stripe/stripe-ios/pull/1244)
+
+## 16.0.0 2019-07-18
+* Migrates STPPaymentCardTextField.cardParams property type from STPCardParams to STPPaymentMethodCardParams
+* STPAddCardViewController:
+    * Migrates addCardViewController:didCreateSource:completion: and addCardViewController:didCreateToken:completion: to addCardViewController:didCreatePaymentMethod:completion
+    * Removes managedAccountCurrency property - there’s no equivalent parameter necessary for PaymentMethods.
+* STPPaymentOptionViewController now shows, adds, removes PaymentMethods instead of Source/Tokens. 
+* STPCustomerContext, STPBackendAPIAdapter:
+    * Removes selectDefaultCustomerSource:completion: -  Users must explicitly select their Payment Method of choice.
+    * Migrates detachSourceFromCustomer:completion:, attachSourceToCustomer:completion to detachPaymentMethodFromCustomer:completion:, attachPaymentMethodToCustomer:completion:
+    * Adds listPaymentMethodsForCustomerWithCompletion: - the Customer object doesn’t contain attached Payment Methods; you must fetch it from the Payment Methods API.
+* STPPaymentContext now uses the new Payment Method APIs listed above instead of Source/Token, and returns the reworked STPPaymentResult containing a PaymentMethod.
+* Migrates STPPaymentResult.source to paymentMethod of type STPPaymentMethod
+* Deprecates STPPaymentIntentAction* types, replaced by STPIntentAction*. [#1208](https://github.com/stripe/stripe-ios/pull/1208)
+  * Deprecates `STPPaymentIntentAction`, replaced by `STPIntentAction`
+  * Deprecates `STPPaymentIntentActionType`, replaced by `STPIntentActionType`
+  * Deprecates `STPPaymentIntentActionRedirectToURL`, replaced by `STPIntentActionTypeRedirectToURL`
+* Adds support for SetupIntents.  See https://stripe.com/docs/payments/cards/saving-cards#saving-card-without-payment
+* Adds support for 3DS2 authentication.  See https://stripe.com/docs/mobile/ios/authentication
+
 ## 15.0.1 2019-04-16
 * Adds configurable support for JCB (Apple Pay). [#1158](https://github.com/stripe/stripe-ios/pull/1158)
 * Updates sample apps to use `PaymentIntents` and `PaymentMethods` where available. [#1159](https://github.com/stripe/stripe-ios/pull/1159)

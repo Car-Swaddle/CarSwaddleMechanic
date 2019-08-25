@@ -11,6 +11,9 @@
 		9912CDBB216C81760006FDDF /* CarSwaddleDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDBA216C81760006FDDF /* CarSwaddleDataTests.swift */; };
 		9912CDBD216C81760006FDDF /* CarSwaddleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9912CDAF216C81760006FDDF /* CarSwaddleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9912CDC7216C81AE0006FDDF /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDC6216C81AE0006FDDF /* Auth.swift */; };
+		9952C20122F2BF8100027D8F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9952C20022F2BF8100027D8F /* ImageCache.swift */; };
+		9952C20922F7FA8B00027D8F /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9952C20822F7FA8B00027D8F /* Disk.framework */; };
+		9952C20A22F7FA9100027D8F /* Disk.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9952C20822F7FA8B00027D8F /* Disk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		997714BD21CC5A5000E54F5B /* Price+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714BC21CC5A5000E54F5B /* Price+Request.swift */; };
 		997714C121CC9B8100E54F5B /* PriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714C021CC9B8100E54F5B /* PriceTests.swift */; };
 		997DBC49219418830080F42C /* Mechanic+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997DBC48219418830080F42C /* Mechanic+Requests.swift */; };
@@ -89,6 +92,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9952C20A22F7FA9100027D8F /* Disk.framework in CopyFiles */,
 				99D5D9BE21F5A1A700E6A511 /* Authentication.framework in CopyFiles */,
 				99D5D9BF21F5A1A700E6A511 /* NetworkRequest.framework in CopyFiles */,
 				99D5D9C021F5A1A700E6A511 /* Store.framework in CopyFiles */,
@@ -119,6 +123,8 @@
 		9912CDCF216C842D0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		991375A42171D48500F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
 		991375B0217266EF00F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
+		9952C20022F2BF8100027D8F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		9952C20822F7FA8B00027D8F /* Disk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Disk.framework; path = Carthage/Build/iOS/Disk.framework; sourceTree = "<group>"; };
 		997714BC21CC5A5000E54F5B /* Price+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Price+Request.swift"; sourceTree = "<group>"; };
 		997714C021CC9B8100E54F5B /* PriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTests.swift; sourceTree = "<group>"; };
 		997DBC48219418830080F42C /* Mechanic+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mechanic+Requests.swift"; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 				99D5D99C21F4E60800E6A511 /* Authentication.framework in Frameworks */,
 				99D5D9ED21F5E0B800E6A511 /* NetworkRequest.framework in Frameworks */,
 				99D5D99D21F4E60800E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
+				9952C20922F7FA8B00027D8F /* Disk.framework in Frameworks */,
 				99D5D99E21F4E60800E6A511 /* KeychainAccess.framework in Frameworks */,
 				99D5D9A021F4E60800E6A511 /* Store.framework in Frameworks */,
 			);
@@ -238,6 +245,7 @@
 				99F08C7122DBEEC000317EEA /* Coupon+Request.swift */,
 				997DBC4A219418F70080F42C /* CarSwaddleNetwork.swift */,
 				997DBC4C21969F910080F42C /* JSONExtension.swift */,
+				9952C20022F2BF8100027D8F /* ImageCache.swift */,
 				99E66D8D21E1890A00C6E3E1 /* FileStore.swift */,
 				9912CDC6216C81AE0006FDDF /* Auth.swift */,
 				9912CDB0216C81760006FDDF /* Info.plist */,
@@ -273,6 +281,7 @@
 		9912CDC8216C84280006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9952C20822F7FA8B00027D8F /* Disk.framework */,
 				998D03CF21F4281400546C58 /* Authentication.framework */,
 				99E66D8F21E1933600C6E3E1 /* NetworkRequest.framework */,
 				991375B0217266EF00F15BEC /* Store.framework */,
@@ -459,6 +468,7 @@
 			files = (
 				997DBC7E219E84510080F42C /* Vehicle+Requests.swift in Sources */,
 				997714BD21CC5A5000E54F5B /* Price+Request.swift in Sources */,
+				9952C20122F2BF8100027D8F /* ImageCache.swift in Sources */,
 				997DBC4B219418F70080F42C /* CarSwaddleNetwork.swift in Sources */,
 				99E66D8E21E1890A00C6E3E1 /* FileStore.swift in Sources */,
 				997DBC4D21969F910080F42C /* JSONExtension.swift in Sources */,
@@ -741,6 +751,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddleDataTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,6 +776,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = CarSwaddleDataTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

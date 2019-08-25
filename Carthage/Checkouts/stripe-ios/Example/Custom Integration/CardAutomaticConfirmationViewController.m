@@ -1,6 +1,6 @@
 //
 //  CardAutomaticConfirmationViewController.m
-//  Custom Integration (Recommended)
+//  Custom Integration
 //
 //  Created by Daniel Jackson on 7/5/18.
 //  Copyright © 2018 Stripe. All rights reserved.
@@ -17,8 +17,8 @@
  1. Collect user's card information via `STPPaymentCardTextField`
  2. Create a `PaymentIntent` on our backend (this can happen concurrently with #1)
  3. Confirm PaymentIntent using the `STPPaymentMethodParams` for the user's card information.
- 4. If the user needs to go through the 3D Secure authentication flow, use `STPRedirectContext` to do so.
- 5. When user returns to the app, or finishes the SafariVC redirect flow, `STPRedirectContext` notifies via callback
+ 4. If the user needs to go through the 3D Secure authentication flow, use `STPPaymentHandler` to do so.
+ 5. When user finishes native authentication, returns to the app, or finishes the SafariVC redirect flow, `STPPaymentHandler` notifies via callback
 
  See the documentation at https://stripe.com/docs/payments/payment-intents/ios for more information
  on using PaymentIntents for dynamic authentication.
@@ -40,7 +40,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     STPPaymentCardTextField *paymentTextField = [[STPPaymentCardTextField alloc] init];
-    STPCardParams *cardParams = [STPCardParams new];
+    STPPaymentMethodCardParams *cardParams = [STPPaymentMethodCardParams new];
     // Only successful 3D Secure transactions on this test card will succeed.
     cardParams.number = @"4000000000003063";
     paymentTextField.cardParams = cardParams;
@@ -123,67 +123,27 @@
             return;
         }
 
-        STPAPIClient *stripeClient = [STPAPIClient sharedClient];
         STPPaymentIntentParams *paymentIntentParams = [[STPPaymentIntentParams alloc] initWithClientSecret:clientSecret];
-
-        STPPaymentMethodCardParams *cardParams = [[STPPaymentMethodCardParams alloc] initWithCardSourceParams:self.paymentTextField.cardParams];
-        
-
-        paymentIntentParams.paymentMethodParams = [STPPaymentMethodParams paramsWithCard:cardParams
+        paymentIntentParams.paymentMethodParams = [STPPaymentMethodParams paramsWithCard:self.paymentTextField.cardParams
                                                                           billingDetails:nil
                                                                                 metadata:nil];
         paymentIntentParams.returnURL = @"payments-example://stripe-redirect";
-
-        [stripeClient confirmPaymentIntentWithParams:paymentIntentParams completion:^(STPPaymentIntent * _Nullable paymentIntent, NSError * _Nullable error) {
-            if (error) {
-                [self.delegate exampleViewController:self didFinishWithError:error];
-                return;
-            }
-
-            if (paymentIntent.status == STPPaymentIntentStatusRequiresAction) {
-                [self.delegate performRedirectForViewController:self
-                                              withPaymentIntent:paymentIntent
-                                                     completion:^(STPPaymentIntent *retrievedIntent, NSError *error) {
-                                                         if (error) {
-                                                             [self.delegate exampleViewController:self didFinishWithError:error];
-                                                         } else {
-                                                             [self finishWithStatus:retrievedIntent.status];
-                                                         }
-                                                     }];
-            } else {
-                [self finishWithStatus:paymentIntent.status];
-            }
-        }];
+        [[STPPaymentHandler sharedHandler] confirmPayment:paymentIntentParams
+                                withAuthenticationContext:self.delegate
+                                               completion:^(STPPaymentHandlerActionStatus handlerStatus, STPPaymentIntent * handledIntent, NSError * _Nullable handlerError) {
+                                                   switch (handlerStatus) {
+                                                       case STPPaymentHandlerActionStatusFailed:
+                                                           [self.delegate exampleViewController:self didFinishWithError:handlerError];
+                                                           break;
+                                                       case STPPaymentHandlerActionStatusCanceled:
+                                                           [self.delegate exampleViewController:self didFinishWithMessage:@"Canceled"];
+                                                           break;
+                                                       case STPPaymentHandlerActionStatusSucceeded:
+                                                           [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
+                                                           break;
+                                                   }
+                                               }];
     }];
-}
-
-- (void)finishWithStatus:(STPPaymentIntentStatus)status {
-    switch (status) {
-        // There may have been a problem with the payment method (STPPaymentMethodParams or STPSourceParams)
-        case STPPaymentIntentStatusRequiresPaymentMethod:
-        // did you call `confirmPaymentIntentWithParams:completion`?
-        case STPPaymentIntentStatusRequiresConfirmation:
-        // App should have handled the action, but didn't for some reason
-        case STPPaymentIntentStatusRequiresAction:
-        // The PaymentIntent was canceled (maybe by the backend?)
-        case STPPaymentIntentStatusCanceled:
-            [self.delegate exampleViewController:self didFinishWithMessage:@"Payment failed"];
-            break;
-
-        // Processing. You could detect this case and poll for the final status of the PaymentIntent
-        case STPPaymentIntentStatusProcessing:
-        // Unknown status
-        case STPPaymentIntentStatusUnknown:
-            [self.delegate exampleViewController:self didFinishWithMessage:@"Order received"];
-            break;
-
-        // if captureMethod is manual, backend needs to capture it to receive the funds
-        case STPPaymentIntentStatusRequiresCapture:
-        // succeeded
-        case STPPaymentIntentStatusSucceeded:
-            [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
-            break;
-    }
 }
 
 @end

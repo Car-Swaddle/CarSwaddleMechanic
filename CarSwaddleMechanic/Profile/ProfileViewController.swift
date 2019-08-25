@@ -18,6 +18,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         case mechanicActive
         case serviceRegion
         case schedule
+        case pricing
         case accountInformation
         case contactInformation
         case taxes
@@ -184,6 +185,10 @@ extension ProfileViewController: UITableViewDelegate {
         case .schedule:
             let availability = AvailabilityViewController.create()
             show(availability, sender: true)
+        case .pricing:
+            guard let currentMechanicID = Mechanic.currentMechanicID else { return }
+            let availability = CurrentMechanicPricingViewController(mechanicID: currentMechanicID)
+            show(availability, sender: true)
 //        case .address:
 //            let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
 //            show(viewController, sender: self)
@@ -237,7 +242,12 @@ extension ProfileViewController: UITableViewDataSource {
             if let region = mechanic?.serviceRegion {
                 cell.configure(with: region)
             }
-            
+            return cell
+        case .pricing:
+            let cell: TextCell = tableView.dequeueCell()
+            cell.textLabel?.text = NSLocalizedString("Set Pricing", comment: "Title of cell that shows the mechanics pricing")
+            cell.textLabel?.font = UIFont.appFont(type: .regular, size: 17)
+            cell.accessoryType = .disclosureIndicator
             return cell
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()

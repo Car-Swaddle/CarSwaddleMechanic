@@ -12,7 +12,7 @@ import CoreData
 
 //typealias CouponValues = (identifier: String, amountOff: Int?, creationDate: Date, createdByUserID: String, autoServiceID: String?, discountBookingFee: Bool, isCorporate: Bool, maxRedemptions: Int?, name: String, percentOff: CGFloat?, redeemBy: Date, redemptions: Int, updatedAt: Date)
 
-struct CouponCodable: Codable {
+public struct CouponCodable: Codable {
     public var identifier: String
     public var amountOff: Int?
     public var creationDate: Date

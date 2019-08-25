@@ -46,6 +46,7 @@ final public class CouponNetwork: Network {
         case percentOff(value: Int)
     }
     
+    
     @discardableResult
     public func createCoupon(id: String, discount: CouponDiscount, maxRedemptions: Int?, name: String, redeemBy: Date, discountBookingFee: Bool, isCorporate: Bool, in context: NSManagedObjectContext, completion: @escaping (_ couponObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let amountOff: Int?

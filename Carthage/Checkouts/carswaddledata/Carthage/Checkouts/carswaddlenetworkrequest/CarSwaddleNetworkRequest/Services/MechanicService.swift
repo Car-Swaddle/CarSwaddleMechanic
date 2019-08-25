@@ -15,7 +15,11 @@ extension NetworkRequest.Request.Endpoint {
     fileprivate static let stats = Request.Endpoint(rawValue: "/api/stats")
     fileprivate static let mechanics = Request.Endpoint(rawValue: "/api/mechanics")
     fileprivate static let updateMechanicCorperate = Request.Endpoint(rawValue: "/api/update-mechanic/corperate")
+    fileprivate static let oilChangePricing = Request.Endpoint(rawValue: "/api/mechanic/pricing")
 }
+
+
+public typealias OilChangePricingResponse = (_ oilChangePricing: OilChangePricing?, _ error: Error?) -> Void
 
 final public class MechanicService: Service {
     
@@ -111,6 +115,22 @@ final public class MechanicService: Service {
             let urlRequest = serviceRequest.post(with: .updateMechanicCorperate, queryItems: queryItems, body: body, contentType: .applicationJSON) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { [weak self] data, error in
             self?.completeWithJSON(data: data, error: error, completion: completion)
+        }
+    }
+    
+    @discardableResult
+    public func getOilChangePricingForCurrentMechanic(completion: @escaping OilChangePricingResponse) -> URLSessionDataTask? {
+        guard let urlRequest = serviceRequest.get(with: .oilChangePricing) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            completion(data?.decode(), error)
+        }
+    }
+    
+    @discardableResult
+    public func updateOilChangePricingForCurrentMechanic(oilChangePricingUpdate: OilChangePricingUpdate, completion: @escaping OilChangePricingResponse) -> URLSessionDataTask? {
+        guard let urlRequest = serviceRequest.put(with: .oilChangePricing, body: oilChangePricingUpdate.encode(), contentType: .applicationJSON) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            completion(data?.decode(), error)
         }
     }
     

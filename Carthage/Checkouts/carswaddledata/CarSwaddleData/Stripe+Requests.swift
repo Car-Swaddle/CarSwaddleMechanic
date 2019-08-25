@@ -107,7 +107,7 @@ final public class StripeNetwork: Network {
     @discardableResult
     public func uploadTransactionReceipt(transactionID: String, fileURL: URL, in context: NSManagedObjectContext, completion: @escaping (_ transactionReceiptObjectID: NSManagedObjectID?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         let uuid = UUID().uuidString
-        _ = try? profileImageStore.storeFile(url: fileURL, fileName: uuid)
+        _ = try? profileImageStore.storeFile(at: fileURL, fileName: uuid)
         return fileService.uploadTransactionReceipt(transactionID: transactionID, fileURL: fileURL) { json, error in
             context.performOnImportQueue {
                 var receiptObjectID: NSManagedObjectID?

@@ -14,6 +14,7 @@ public enum OilType: String, CaseIterable {
     case conventional = "CONVENTIONAL"
     case blend = "BLEND"
     case synthetic = "SYNTHETIC"
+    case highMileage = "HIGH_MILEAGE"
     
     public var localizedString: String {
         switch self {
@@ -23,6 +24,8 @@ public enum OilType: String, CaseIterable {
             return NSLocalizedString("Blend", comment: "Oil type")
         case .synthetic:
             return NSLocalizedString("Synthetic", comment: "Oil type")
+        case .highMileage:
+            return NSLocalizedString("High Mileage", comment: "Oil type")
         }
     }
     

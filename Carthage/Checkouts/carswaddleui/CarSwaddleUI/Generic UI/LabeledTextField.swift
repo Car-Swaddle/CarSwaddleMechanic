@@ -8,12 +8,13 @@
 
 import UIKit
 
+
+public var defaultLabeledTextFieldTextFieldFont: UIFont = UIFont.appFont(type: .system, size: 15)
+public var defaultLabeledTextFieldLabelNotExistsFont: UIFont = UIFont.appFont(type: .system, size: 15)
+public var defaultLabeledTextFieldLabelFont: UIFont = UIFont.appFont(type: .system, size: 15)
+
 @IBDesignable
 public final class LabeledTextField: UIView {
-    
-    public static var defaultTextFieldFont: UIFont = UIFont.appFont(type: .system, size: 15)
-    public static var defaultLabelNotExistsFont: UIFont = UIFont.appFont(type: .system, size: 15)
-    public static var defaultLabelFont: UIFont = UIFont.appFont(type: .system, size: 15)
     
     lazy public var label: UILabel = {
         let label = UILabel()
@@ -21,9 +22,13 @@ public final class LabeledTextField: UIView {
         return label
     }()
     
+    
+    
     lazy public var textFieldContainerView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.spacing = 8
+//        containerView.alignment = .leading
         return containerView
     }()
     
@@ -32,6 +37,12 @@ public final class LabeledTextField: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    public var prefixText: String? {
+        didSet {
+            prefixTextLabel.text = prefixText
+        }
+    }
     
     public var textFieldText: String? {
         didSet {
@@ -70,21 +81,22 @@ public final class LabeledTextField: UIView {
         }
     }
     
-    @IBInspectable dynamic public var labelTextExistsFont: UIFont = LabeledTextField.defaultLabelFont {
+    @IBInspectable dynamic public var labelTextExistsFont: UIFont = defaultLabeledTextFieldLabelFont {
         didSet {
             updateLabelFontForCurrentText()
         }
     }
     
-    @IBInspectable dynamic public var labelTextNotExistsFont: UIFont = LabeledTextField.defaultLabelNotExistsFont {
+    @IBInspectable dynamic public var labelTextNotExistsFont: UIFont = defaultLabeledTextFieldLabelNotExistsFont {
         didSet {
             updateLabelFontForCurrentText()
         }
     }
     
-    @IBInspectable dynamic public var textFieldFont: UIFont = LabeledTextField.defaultTextFieldFont {
+    @IBInspectable dynamic public var textFieldFont: UIFont = defaultLabeledTextFieldTextFieldFont {
         didSet {
             textField.font = textFieldFont
+            prefixTextLabel.font = textFieldFont
         }
     }
     
@@ -93,6 +105,21 @@ public final class LabeledTextField: UIView {
             label.text = labelText
         }
     }
+    
+    
+    lazy public var topRowContainerView: UIStackView = {
+        let containerView = UIStackView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.spacing = 8
+        containerView.alignment = UIStackView.Alignment.center
+        return containerView
+    }()
+    
+    public lazy var prefixTextLabel: UILabel = {
+        let label = UILabel()
+        label.font = textFieldFont
+        return label
+    }()
     
     private var underlineView: UIView!
     
@@ -118,12 +145,19 @@ public final class LabeledTextField: UIView {
     private var textFieldToLabelVerticalConstraint: NSLayoutConstraint?
     
     private func setup() {
-        addSubview(textFieldContainerView)
+//        addSubview(textFieldContainerView)
+        addSubview(topRowContainerView)
+        
+        topRowContainerView.addArrangedSubview(prefixTextLabel)
+        topRowContainerView.addArrangedSubview(textFieldContainerView)
+        
         textFieldContainerView.addSubview(textField)
         
-        textFieldContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        textFieldContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        textFieldContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        prefixTextLabel.setContentHuggingPriority(.init(rawValue: 900), for: .horizontal)
+        
+        topRowContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        topRowContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        topRowContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
         textField.leadingAnchor.constraint(equalTo: textFieldContainerView.leadingAnchor, constant: 8).isActive = true
         textField.trailingAnchor.constraint(equalTo: textFieldContainerView.trailingAnchor, constant: -8).isActive = true

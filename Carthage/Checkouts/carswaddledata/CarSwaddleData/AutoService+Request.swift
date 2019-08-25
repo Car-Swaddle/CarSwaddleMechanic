@@ -180,7 +180,7 @@ public final class AutoServiceNetwork: Network {
 
 fileprivate extension Array where Iterator.Element == AutoService.Status {
     
-    fileprivate var rawValues: [String] {
+    var rawValues: [String] {
         var values: [String] = []
         for value in self {
             values.append(value.rawValue)

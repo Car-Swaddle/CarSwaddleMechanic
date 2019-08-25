@@ -1,6 +1,6 @@
 //
 //  CardManualConfirmationExampleViewController.m
-//  Custom Integration (Recommended)
+//  Custom Integration
 //
 //  Created by Ben Guo on 2/22/17.
 //  Copyright © 2017 Stripe. All rights reserved.
@@ -83,10 +83,8 @@
         return;
     }
     [self.activityIndicator startAnimating];
-    STPPaymentMethodCardParams *cardParams = [[STPPaymentMethodCardParams alloc] initWithCardSourceParams:self.paymentTextField.cardParams];
 
-
-    STPPaymentMethodParams *paymentMethodParams = [STPPaymentMethodParams paramsWithCard:cardParams
+    STPPaymentMethodParams *paymentMethodParams = [STPPaymentMethodParams paramsWithCard:self.paymentTextField.cardParams
                                                                           billingDetails:nil
                                                                                 metadata:nil];
     [[STPAPIClient sharedClient] createPaymentMethodWithParams:paymentMethodParams
@@ -101,46 +99,54 @@
 
 
 - (void)_createAndConfirmPaymentIntentWithPaymentMethod:(STPPaymentMethod *)paymentMethod {
-
+    STPPaymentHandlerActionPaymentIntentCompletionBlock paymentHandlerCompletion = ^(STPPaymentHandlerActionStatus handlerStatus, STPPaymentIntent * _Nullable paymentIntent, NSError * _Nullable handlerError) {
+        switch (handlerStatus) {
+            case STPPaymentHandlerActionStatusFailed:
+                [self.delegate exampleViewController:self didFinishWithError:handlerError];
+                break;
+            case STPPaymentHandlerActionStatusCanceled:
+                [self.delegate exampleViewController:self didFinishWithMessage:@"Canceled authentication"];
+                break;
+            case STPPaymentHandlerActionStatusSucceeded:
+                if (paymentIntent.status == STPPaymentIntentStatusRequiresConfirmation) {
+                    // Manually confirm the PaymentIntent on the backend again to complete the payment.
+                    [self.delegate confirmPaymentIntent:paymentIntent completion:^(STPBackendResult status, NSString *clientSecret, NSError *error) {
+                        if (status == STPBackendResultFailure || error) {
+                            [self.delegate exampleViewController:self didFinishWithError:error];
+                            return;
+                        }
+                        [[STPAPIClient sharedClient] retrievePaymentIntentWithClientSecret:clientSecret completion:^(STPPaymentIntent *finalPaymentIntent, NSError *finalError) {
+                            if (finalError) {
+                                [self.delegate exampleViewController:self didFinishWithError:error];
+                                return;
+                            }
+                            if (finalPaymentIntent.status == STPPaymentIntentStatusSucceeded) {
+                                [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
+                            } else {
+                                [self.delegate exampleViewController:self didFinishWithMessage:@"Payment failed"];
+                            }
+                        }];
+                    }];
+                    break;
+                } else {
+                    [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
+                }
+        }
+    };
+    STPPaymentIntentCreateAndConfirmHandler createAndConfirmCompletion = ^(STPBackendResult status, NSString *clientSecret, NSError *error) {
+        if (status == STPBackendResultFailure || error) {
+            [self.delegate exampleViewController:self didFinishWithError:error];
+            return;
+        }
+        [[STPPaymentHandler sharedHandler] handleNextActionForPayment:clientSecret
+                                            withAuthenticationContext:self.delegate
+                                                            returnURL:@"payments-example://stripe-redirect"
+                                                           completion:paymentHandlerCompletion];
+    };
     [self.delegate createAndConfirmPaymentIntentWithAmount:@(100)
                                              paymentMethod:paymentMethod.stripeId
                                                  returnURL:@"payments-example://stripe-redirect"
-                                                completion:^(STPBackendResult status, STPPaymentIntent *paymentIntent, NSError *error) {
-                                                    if (status == STPBackendResultFailure || error) {
-                                                        [self.delegate exampleViewController:self didFinishWithError:error];
-                                                        return;
-                                                    }
-
-                                                    if (paymentIntent.status == STPPaymentIntentStatusRequiresAction) {
-                                                        [self _performActionForPaymentIntent:paymentIntent];
-                                                    } else {
-                                                        [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
-                                                    }
-                                                }];
-}
-
-- (void)_performActionForPaymentIntent:(STPPaymentIntent *)paymentIntent {
-    [self.delegate performRedirectForViewController:self
-                                  withPaymentIntent:paymentIntent
-                                         completion:^(STPPaymentIntent *retrievedIntent, NSError *error) {
-                                             if (error) {
-                                                 [self.delegate exampleViewController:self didFinishWithError:error];
-                                             } else {
-                                                 [self.delegate confirmPaymentIntent:retrievedIntent
-                                                                          completion:^(STPBackendResult status, STPPaymentIntent *paymentIntent, NSError *error) {
-                                                                              if (status == STPBackendResultFailure || error) {
-                                                                                  [self.delegate exampleViewController:self didFinishWithError:error];
-                                                                                  return;
-                                                                              }
-
-                                                                              if (paymentIntent.status == STPPaymentIntentStatusRequiresAction) {
-                                                                                  [self _performActionForPaymentIntent:paymentIntent];
-                                                                              } else {
-                                                                                  [self.delegate exampleViewController:self didFinishWithMessage:@"Payment successfully created"];
-                                                                              }
-                                                                          }];
-                                             }
-                                         }];
+                                                completion:createAndConfirmCompletion];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

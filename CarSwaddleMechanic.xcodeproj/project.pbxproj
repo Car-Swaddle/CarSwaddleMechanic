@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9905FF56230E644300DFBCB9 /* MechanicPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF55230E644300DFBCB9 /* MechanicPricingViewController.swift */; };
+		9905FF59230E64ED00DFBCB9 /* MechanicPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF57230E64ED00DFBCB9 /* MechanicPriceCell.swift */; };
+		9905FF5A230E64ED00DFBCB9 /* MechanicPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9905FF58230E64ED00DFBCB9 /* MechanicPriceCell.xib */; };
+		9905FF61230E91F500DFBCB9 /* LabeledTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905FF5F230E91F500DFBCB9 /* LabeledTextFieldCell.swift */; };
+		9905FF62230E91F500DFBCB9 /* LabeledTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9905FF60230E91F500DFBCB9 /* LabeledTextFieldCell.xib */; };
 		990ADFBF2228E38400D1C109 /* TransactionsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */; };
 		990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */; };
 		990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990ADFC2222A4DC000D1C109 /* HeaderView.swift */; };
@@ -256,6 +261,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9905FF55230E644300DFBCB9 /* MechanicPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicPricingViewController.swift; sourceTree = "<group>"; };
+		9905FF57230E64ED00DFBCB9 /* MechanicPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicPriceCell.swift; sourceTree = "<group>"; };
+		9905FF58230E64ED00DFBCB9 /* MechanicPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MechanicPriceCell.xib; sourceTree = "<group>"; };
+		9905FF5F230E91F500DFBCB9 /* LabeledTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldCell.swift; sourceTree = "<group>"; };
+		9905FF60230E91F500DFBCB9 /* LabeledTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldCell.xib; sourceTree = "<group>"; };
 		990ADFBE2228E38400D1C109 /* TransactionsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSectionHeaderView.swift; sourceTree = "<group>"; };
 		990ADFC02228E38A00D1C109 /* TransactionsSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsSectionHeaderView.xib; sourceTree = "<group>"; };
 		990ADFC2222A4DC000D1C109 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -517,6 +527,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9905FF52230E641700DFBCB9 /* Pricing */ = {
+			isa = PBXGroup;
+			children = (
+				9905FF55230E644300DFBCB9 /* MechanicPricingViewController.swift */,
+				9905FF5F230E91F500DFBCB9 /* LabeledTextFieldCell.swift */,
+				9905FF60230E91F500DFBCB9 /* LabeledTextFieldCell.xib */,
+			);
+			path = Pricing;
+			sourceTree = "<group>";
+		};
 		990ADFC9222A7B1400D1C109 /* NotificationModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +651,8 @@
 			children = (
 				9912CD93216C758C0006FDDF /* ScheduleViewController.swift */,
 				9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */,
+				9905FF57230E64ED00DFBCB9 /* MechanicPriceCell.swift */,
+				9905FF58230E64ED00DFBCB9 /* MechanicPriceCell.xib */,
 				99DCD327221BA0490040DABA /* AutoServices */,
 				9953AE1321BFBF89002D099A /* AutoServiceDetailsViewController.swift */,
 				9953AE1521BFBF96002D099A /* AutoServiceDetailsViewController.storyboard */,
@@ -773,6 +795,7 @@
 				99E66DB621E4698A00C6E3E1 /* Reuseable UI */,
 				998D3AC521DA961A003DD717 /* Payouts */,
 				99F02796218677EE005FEFC7 /* Profile */,
+				9905FF52230E641700DFBCB9 /* Pricing */,
 				9953AE0E21BE58E8002D099A /* Schedule */,
 				99D5DA3B21F8370800E6A511 /* Reviews */,
 				99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */,
@@ -1175,6 +1198,7 @@
 				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
 				99F69675220A8CA80021A719 /* TransactionViewController.storyboard in Resources */,
 				99675CC121EBB8E8003C9D70 /* TransactionsViewController.storyboard in Resources */,
+				9905FF62230E91F500DFBCB9 /* LabeledTextFieldCell.xib in Resources */,
 				99F7BC5422169E5F00DD5401 /* Montserrat-Italic.otf in Resources */,
 				99F7BC6A22169E5F00DD5401 /* Montserrat-SemiBoldItalic.otf in Resources */,
 				99F7BC5222169E5F00DD5401 /* MontserratAlternates-BoldItalic.otf in Resources */,
@@ -1207,6 +1231,7 @@
 				99F7BC6522169E5F00DD5401 /* Montserrat-ThinItalic.otf in Resources */,
 				99F7BC6E22169E5F00DD5401 /* MontserratAlternates-BlackItalic.otf in Resources */,
 				99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */,
+				9905FF5A230E64ED00DFBCB9 /* MechanicPriceCell.xib in Resources */,
 				99A1E3F3221E845200470A5F /* AutoServiceVehicleCell.xib in Resources */,
 				9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */,
 				99F7BC6822169E5F00DD5401 /* MontserratAlternates-ExtraLightItalic.otf in Resources */,
@@ -1269,6 +1294,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -1285,6 +1311,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Lottie.framework",
 				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JTAppleCalendar.framework",
 				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FSCalendar.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1330,10 +1357,12 @@
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
+				9905FF59230E64ED00DFBCB9 /* MechanicPriceCell.swift in Sources */,
 				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
 				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,
 				99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
+				9905FF56230E644300DFBCB9 /* MechanicPricingViewController.swift in Sources */,
 				992A5FB022239DE300182FD6 /* NotesTableViewCell.swift in Sources */,
 				99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */,
 				999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */,
@@ -1391,6 +1420,7 @@
 				998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */,
 				993C3E4322324CAD00BC5937 /* LabelValueCell.swift in Sources */,
 				99675CC621EBBB36003C9D70 /* TransactionCell.swift in Sources */,
+				9905FF61230E91F500DFBCB9 /* LabeledTextFieldCell.swift in Sources */,
 				99F0279921867816005FEFC7 /* ProfileServiceRegionCell.swift in Sources */,
 				9953AE1921C0EC3E002D099A /* AutoServiceItemCell.swift in Sources */,
 				9992771E216748910032D7F7 /* CarSwaddleMechanicStore.swift in Sources */,
