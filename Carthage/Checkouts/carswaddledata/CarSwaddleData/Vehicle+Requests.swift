@@ -56,8 +56,8 @@ public class VehicleNetwork: Network {
     }
     
     @discardableResult
-    public func createVehicle(name: String, licensePlate: String, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) -> URLSessionDataTask? {
-        return vehicleService.postVehicle(name: name, licensePlate: licensePlate) { [weak self] json, error in
+    public func createVehicle(name: String, licensePlate: String, state: String, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) -> URLSessionDataTask? {
+        return vehicleService.postVehicle(name: name, licensePlate: licensePlate, state: state) { [weak self] json, error in
             self?.complete(json: json, error: error, in: context, completion: completion)
         }
     }
@@ -70,8 +70,8 @@ public class VehicleNetwork: Network {
     }
     
     @discardableResult
-    public func updateVehicle(vehicleID: String, name: String?, licensePlate: String?, vin: String?, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) -> URLSessionDataTask? {
-        return vehicleService.putVehicle(vehicleID: vehicleID, name: name, licensePlate: licensePlate, vin: vin) { [weak self] json, error in
+    public func updateVehicle(vehicleID: String, name: String?, licensePlate: String?, state: String?, vin: String?, in context: NSManagedObjectContext, completion: @escaping VehicleCompletion) -> URLSessionDataTask? {
+        return vehicleService.putVehicle(vehicleID: vehicleID, name: name, licensePlate: licensePlate, state: state, vin: vin) { [weak self] json, error in
             self?.complete(json: json, error: error, in: context, completion: completion)
         }
     }

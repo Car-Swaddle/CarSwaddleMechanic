@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarSwaddleDataTests/VehicleTests.swift"
-            timestampString = "565864731.057035"
+            timestampString = "589088256.620944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -68,7 +68,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/AuthTestCase.swift"
-                  timestampString = "588145082.900818"
+                  timestampString = "589088257.3386869"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -83,7 +83,7 @@
                   moduleName = "CarSwaddleDataTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kylekendall/Projects/carswaddledata/CarSwaddleDataTests/AuthTestCase.swift"
-                  timestampString = "588145082.902528"
+                  timestampString = "589088257.340939"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -266,6 +266,54 @@
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "getCoupons(limit:offset:in:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleDataTests/AutoServiceTests.swift"
+            timestampString = "589088256.622401"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "testGetAutoServices()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleDataTests/VehicleTests.swift"
+            timestampString = "589088256.6225359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "testRequestVehicles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarSwaddleDataTests/VehicleTests.swift"
+            timestampString = "589088256.622898"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "testRequestVehicles()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

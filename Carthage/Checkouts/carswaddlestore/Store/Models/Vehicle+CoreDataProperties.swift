@@ -25,6 +25,7 @@ extension Vehicle {
     /// At least one of licensePlate or vin or vehicleDescription must not be nil.
     @NSManaged public var vin: String?
     @NSManaged public var licensePlate: String?
+    @NSManaged public var state: String?
     @NSManaged public var vehicleDescription: VehicleDescription?
 
 }

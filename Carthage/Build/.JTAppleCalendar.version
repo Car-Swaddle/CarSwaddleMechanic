@@ -1,9 +1,9 @@
 {
-  "commitish" : "7.1.7",
+  "commitish" : "7.1.8",
   "iOS" : [
     {
       "name" : "JTAppleCalendar",
-      "hash" : "4e25967cf6ebc1dddb67c7aaa5ddb1523fa65023f3154db6c644dc2dedbffeca",
+      "hash" : "09319ff3c7b8ac9971613889b8d94d89a13a8ad2a17173c2649a0eee1f56562d",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]

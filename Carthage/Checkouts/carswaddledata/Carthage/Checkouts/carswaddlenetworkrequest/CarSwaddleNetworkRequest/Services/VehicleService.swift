@@ -46,20 +46,21 @@ final public class VehicleService: Service {
     }
     
     @discardableResult
-    public func postVehicle(name: String, licensePlate: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        return postVehicle(name: name, licensePlate: licensePlate, vin: nil, completion: completion)
+    public func postVehicle(name: String, licensePlate: String, state: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        return postVehicle(name: name, licensePlate: licensePlate, state: state, vin: nil, completion: completion)
     }
     
     @discardableResult
     public func postVehicle(name: String, vin: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
-        return postVehicle(name: name, licensePlate: nil, vin: vin, completion: completion)
+        return postVehicle(name: name, licensePlate: nil, state: nil, vin: vin, completion: completion)
     }
     
-    private func postVehicle(name: String?, licensePlate: String?, vin: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+    private func postVehicle(name: String?, licensePlate: String?, state: String?, vin: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         var json: JSONObject = [:]
         if let name = name { json["name"] = name }
         if let licensePlate = licensePlate { json["licensePlate"] = licensePlate }
         if let vin = vin { json["vin"] = vin }
+        if let state = state { json["state"] = state }
         
         guard let body = (try? JSONSerialization.data(withJSONObject: json, options: [])) else { return nil }
         guard var urlRequest = serviceRequest.post(with: .vehicle, body: body, contentType: .applicationJSON) else { return nil }
@@ -76,11 +77,12 @@ final public class VehicleService: Service {
     }
     
     @discardableResult
-    public func putVehicle(vehicleID: String, name: String?, licensePlate: String?, vin: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+    public func putVehicle(vehicleID: String, name: String?, licensePlate: String?, state: String?, vin: String?, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         var json: JSONObject = [:]
         if let name = name { json["name"] = name }
         if let licensePlate = licensePlate { json["licensePlate"] = licensePlate }
         if let vin = vin { json["vin"] = vin }
+        if let state = state { json["state"] = state }
         
         var queryItems: [URLQueryItem] = []
         queryItems.append(URLQueryItem(name: "id", value: vehicleID))

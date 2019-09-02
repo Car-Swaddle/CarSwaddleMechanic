@@ -71,7 +71,7 @@ final class CurrentMechanicPricingViewController: MechanicPricingViewController 
 }
 
 
-class MechanicPricingViewController: TableViewController {
+class MechanicPricingViewController: TableViewSchemaButtonViewController {
     
     convenience public init(oilChangePricing: Store.OilChangePricing?) {
         self.init()
@@ -79,7 +79,7 @@ class MechanicPricingViewController: TableViewController {
     }
     
     public init() {
-        super.init(schema: [Section(rows: Row.allCases)])
+        super.init(schema: [TableViewSchemaController.Section(rows: Row.allCases)])
         title = pricingTitle
     }
     
@@ -107,21 +107,16 @@ class MechanicPricingViewController: TableViewController {
         var identifier: String { return rawValue }
     }
     
-    private lazy var actionButton: ActionButton = {
-        let actionButton = ActionButton()
-        actionButton.setTitle(buttonTitle, for: .normal)
-        actionButton.addTarget(self, action: #selector(didTapUpload), for: .touchUpInside)
-        return actionButton
-    }()
+    override var cellTypes: [NibRegisterable.Type] {
+        return [LabeledTextFieldCell.self]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cellTypes = [LabeledTextFieldCell.self]
+        actionButton.setTitle(buttonTitle, for: .normal)
+        actionButton.addTarget(self, action: #selector(didTapUpload), for: .touchUpInside)
         
-        view.addSubview(actionButton)
-        
-        adjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
         adjuster?.showActionButtonAboveKeyboard = true
         adjuster?.positionActionButton()
     }
@@ -146,13 +141,16 @@ class MechanicPricingViewController: TableViewController {
         guard let row = tableViewRow as? Row else { fatalError("Should have row here") }
         let mechanicCell: LabeledTextFieldCell = tableView.dequeueCell()
         mechanicCell.labeledTextField.textField.keyboardType = .decimalPad
-        mechanicCell.labeledTextField.prefixText = NSLocalizedString("$", comment: "Dollar sign")
+        mechanicCell.labeledTextField.prefixText = "$" // Do NOT localize until we support other currencies
         
         if let value = self.value(for: row) {
+            mechanicCell.labeledTextField.textField.isUserInteractionEnabled = true
             mechanicCell.labeledTextField.textField.text = dolarFormatter.string(from: NSNumber(cgfloat: value))
         } else {
+            mechanicCell.labeledTextField.textField.isUserInteractionEnabled = false
             mechanicCell.labeledTextField.textField.text = blankText
         }
+        
         mechanicCell.labeledTextField.labelText = self.label(for: row)
         
         mechanicCell.textChanged = { [weak self] text in
@@ -230,103 +228,6 @@ class MechanicPricingViewController: TableViewController {
 }
 
 
-public protocol TableViewControllerRow {
-    var identifier: String { get }
-}
-
-open class TableViewController: UIViewController, UITableViewDataSource {
-    
-    
-    public init(schema: [Section]) {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.schema = schema
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public var adjuster: ContentInsetAdjuster? {
-        didSet {
-            adjuster?.positionActionButton()
-        }
-    }
-    
-    public struct Section {
-        let rows: [TableViewControllerRow]
-    }
-    
-    public func setSchema(newSchema: [Section], animated: Bool) {
-        schema = newSchema
-        // TODO: do that animation
-    }
-    
-    open var schema: [Section] = []
-
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTableView()
-        
-        adjuster = ContentInsetAdjuster(tableView: tableView, actionButton: nil)
-        adjuster?.showActionButtonAboveKeyboard = true
-        
-    }
-    
-    public lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.dataSource = self
-        tableView.keyboardDismissMode = .interactive
-        return tableView
-    }()
-    
-    private func setupTableView() {
-        registerCells()
-        
-        view.addSubview(tableView)
-        tableView.pinFrameToSuperViewBounds()
-        tableView.tableFooterView = UIView()
-    }
-    
-    open var cellTypes: [NibRegisterable.Type] = [] {
-        didSet {
-            registerCells()
-        }
-    }
-    
-    
-    private func registerCells() {
-        for cellType in cellTypes {
-            tableView.register(cellType.nib, forCellReuseIdentifier: cellType.reuseIdentifier)
-        }
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schema[section].rows.count
-    }
-    
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return schema.count
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cell(for: self.row(with: indexPath))
-    }
-    
-    
-    open func cell(for row: TableViewControllerRow) -> UITableViewCell {
-        fatalError("Subclass must override")
-    }
-    
-    private func row(with indexPath: IndexPath) -> TableViewControllerRow {
-        return schema[indexPath.section].rows[indexPath.row]
-    }
-    
-}
-
-
-
 extension OilChangePricingUpdate {
     
     init(oilChangePricing: Store.OilChangePricing) {
@@ -385,13 +286,5 @@ public extension String {
         }
         return returningString
     }
-    
-//    func replacingOccurences(of strings: [String], with replaceString: StringProtocol) -> String {
-//        var returningString = self
-//        for string in strings {
-//            returningString = returningString.replacingOccurrences(of: string, with: replaceString)
-//        }
-//        return returningString
-//    }
     
 }

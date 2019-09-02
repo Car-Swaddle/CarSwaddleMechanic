@@ -1,6 +1,6 @@
 git "git@bitbucket.org:kkendall33/authentication.git" "1812e9c7b90df2deb12071eccad741a1f6077266"
-git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "dea2bfc6ec796ee7e4c43ac4d68ebff280aad7e2"
-git "git@bitbucket.org:kkendall33/carswaddlestore.git" "5fbf11abb361fed56717eb454c98b7038a55bb7f"
+git "git@bitbucket.org:kkendall33/carswaddlenetworkrequest.git" "5df381e6975418c60333e1578fb7f383a345ef60"
+git "git@bitbucket.org:kkendall33/carswaddlestore.git" "be5ec2d08401546722b1b12725a42115ab386dea"
 git "git@bitbucket.org:kkendall33/networkrequest.git" "43091192fd88d5751aab5ce163ac393b07860f4b"
 github "kishikawakatsumi/KeychainAccess" "v3.2.0"
 github "kkendall33/Disk" "2279ffdb64bc76135f94898c31cdd50bd71c6109"

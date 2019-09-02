@@ -301,6 +301,7 @@
         <attribute name="identifier" attributeType="String" syncable="YES"/>
         <attribute name="licensePlate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vin" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="autoServices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AutoService" inverseName="vehicle" inverseEntity="AutoService" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="vehicles" inverseEntity="User" syncable="YES"/>
@@ -341,6 +342,7 @@
         <element name="Location" positionX="-36" positionY="27" width="128" height="120"/>
         <element name="Mechanic" positionX="-27" positionY="99" width="128" height="420"/>
         <element name="OilChange" positionX="-18" positionY="54" width="128" height="90"/>
+        <element name="OilChangePricing" positionX="-27" positionY="135" width="128" height="165"/>
         <element name="Payout" positionX="-27" positionY="135" width="128" height="315"/>
         <element name="Price" positionX="-9" positionY="90" width="128" height="210"/>
         <element name="Region" positionX="-27" positionY="99" width="128" height="120"/>
@@ -353,10 +355,9 @@
         <element name="TransactionMetadata" positionX="-27" positionY="135" width="128" height="195"/>
         <element name="TransactionReceipt" positionX="-18" positionY="144" width="128" height="105"/>
         <element name="User" positionX="-27" positionY="72" width="128" height="330"/>
-        <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="165"/>
+        <element name="Vehicle" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="VehicleDescription" positionX="-27" positionY="90" width="128" height="135"/>
         <element name="Verification" positionX="-27" positionY="135" width="128" height="135"/>
         <element name="VerificationField" positionX="-18" positionY="144" width="128" height="105"/>
-        <element name="OilChangePricing" positionX="-27" positionY="135" width="128" height="165"/>
     </elements>
 </model>

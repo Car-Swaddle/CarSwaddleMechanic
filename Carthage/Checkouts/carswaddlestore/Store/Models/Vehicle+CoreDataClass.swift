@@ -11,7 +11,7 @@ import CoreData
 
 private let tempID = "vehicleTempID"
 
-typealias VehicleValues = (identifier: String, name: String, licensePlate: String?, vin: String?)
+typealias VehicleValues = (identifier: String, name: String, licensePlate: String?, state: String?, vin: String?)
 
 @objc(Vehicle)
 public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInitable {
@@ -34,12 +34,13 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         
         let licensePlate = json["licensePlate"] as? String
         let vin = json["vin"] as? String
+        let state = json["state"] as? String
         
-        if licensePlate == nil && vin == nil {
+        if (licensePlate == nil && state == nil) && vin == nil {
             return nil
         }
         
-        return (identifier, name, licensePlate, vin)
+        return (identifier, name, licensePlate, vin, state)
     }
     
     private func configure(with values: VehicleValues, json: JSONObject) {
@@ -47,6 +48,7 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         self.creationDate = json["creationDate"] as? Date ?? Date()
         self.name = values.name
         self.licensePlate = values.licensePlate
+        self.state = values.state
         self.vin = values.vin
         if let userID = json["userID"] as? String,
             let context = managedObjectContext,
@@ -55,13 +57,14 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         }
     }
     
-    public convenience init(name: String, licensePlate: String, user: User, context: NSManagedObjectContext) {
+    public convenience init(name: String, licensePlate: String, state: String, user: User, context: NSManagedObjectContext) {
         self.init(context: context)
         self.identifier = tempID
         self.creationDate = Date()
         self.name = name
         self.licensePlate = licensePlate
         self.user = user
+        self.state = state
     }
     
 }

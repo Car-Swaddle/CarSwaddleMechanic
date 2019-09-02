@@ -247,4 +247,52 @@ extension AutoService {
         })?.oilChange
     }
     
+    
+    
 }
+
+
+public extension AutoService {
+    
+    // MARK: - Predicates
+    
+    static func predicate(startDate: Date, endDate: Date) -> NSPredicate {
+        return NSPredicate(format: "%@ <= %K && %K <= %@", startDate as NSDate, #keyPath(AutoService.scheduledDate), #keyPath(AutoService.scheduledDate), endDate as NSDate)
+    }
+    
+    // MARK: - Scheduled Date Sort
+    
+    static var leastRecentRecentScheduledDateSort: NSSortDescriptor {
+        return AutoService.scheduledDateSort(ascending: false)
+    }
+    
+    static var mostRecentScheduledDateSort: NSSortDescriptor {
+        return AutoService.scheduledDateSort(ascending: true)
+    }
+    
+    static func scheduledDateSort(ascending: Bool) -> NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(AutoService.scheduledDate), ascending: ascending)
+    }
+    
+    // MARK: - Creation Date Sort
+    
+    static var leastRecentRecentCreationDateSort: NSSortDescriptor {
+        return AutoService.creationDateSort(ascending: false)
+    }
+    
+    static var mostRecentCreationDateSort: NSSortDescriptor {
+        return AutoService.creationDateSort(ascending: true)
+    }
+    
+    static func creationDateSort(ascending: Bool) -> NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(AutoService.creationDate), ascending: ascending)
+    }
+    
+    // MARK: -
+    
+    static var isCanceledSort: NSSortDescriptor {
+        return NSSortDescriptor(key: #keyPath(AutoService.isCanceled), ascending: true)
+    }
+    
+}
+

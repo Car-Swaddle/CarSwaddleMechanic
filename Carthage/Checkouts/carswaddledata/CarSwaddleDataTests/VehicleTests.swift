@@ -23,7 +23,7 @@ class VehicleTests: LoginTestCase {
         let plate = "125 GUE"
         
         store.privateContext { context in
-            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, in: context) { objectID, error in
+            self.vehicleNetwork.createVehicle(name: name, vin: plate, in: context) { objectID, error in
                 store.mainContext { mCtx in
                     guard let objectID = objectID, let vehicle = mCtx.object(with: objectID) as? Vehicle else {
                         XCTAssert(false, "Didn't get vehicle when fetching")
@@ -49,9 +49,10 @@ class VehicleTests: LoginTestCase {
         
         let name = "Dat name"
         let plate = "125 GUE"
+        let state = "Utah"
         
         store.privateContext { context in
-            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, in: context) { objectID, error in
+            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, state: state, in: context) { objectID, error in
                 guard let oID = objectID, let v = context.object(with: oID) as? Vehicle else {
                     XCTAssert(false, "Didn't get object")
                     return
@@ -63,6 +64,7 @@ class VehicleTests: LoginTestCase {
                     }
                     XCTAssert(vehicle.name == name, "Should have gotten name")
                     XCTAssert(vehicle.licensePlate == plate, "Should have gotten name")
+                    XCTAssert(vehicle.state == state, "Should have gotten name")
                     exp.fulfill()
                 }
             }
@@ -74,20 +76,16 @@ class VehicleTests: LoginTestCase {
     func testRequestVehicles() {
         let exp = expectation(description: "\(#function)\(#line)")
         
-        let name = "Dat name"
-        let plate = "125 GUE"
-        
         store.privateContext { context in
-            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, in: context) { objectID, error in
-                self.vehicleNetwork.requestVehicles(in: context) { objectIDs, error in
-                    guard let objectID = objectIDs.first, let vehicle = context.object(with: objectID) as? Vehicle else {
-                        XCTAssert(false, "Didn't get object")
-                        return
-                    }
-                    XCTAssert(vehicle.name.isEmpty == false, "Should have gotten name")
-                    XCTAssert(vehicle.licensePlate != nil || vehicle.vin != nil, "Should have gotten name")
-                    exp.fulfill()
+            self.vehicleNetwork.requestVehicles(in: context) { objectIDs, error in
+                guard let objectID = objectIDs.first, let vehicle = context.object(with: objectID) as? Vehicle else {
+                    XCTAssert(false, "Didn't get object")
+                    return
                 }
+                XCTAssert(vehicle.name.isEmpty == false, "Should have gotten name")
+                XCTAssert(vehicle.licensePlate != nil || vehicle.vin != nil, "Should have gotten licensePlate")
+                XCTAssert(vehicle.state != nil || vehicle.state != nil, "Should have gotten state")
+                exp.fulfill()
             }
         }
         
@@ -99,9 +97,10 @@ class VehicleTests: LoginTestCase {
         
         let name = "Dat name"
         let plate = "125 GUE"
+        let state = "Utah"
         
         store.privateContext { context in
-            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, in: context) { objectID, error in
+            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, state: state, in: context) { objectID, error in
                 guard let oID = objectID, let v = context.object(with: oID) as? Vehicle else {
                     XCTAssert(false, "Didn't get object")
                     return
@@ -134,16 +133,18 @@ class VehicleTests: LoginTestCase {
         
         let name = "Dat name"
         let plate = "125 GUE"
+        let state = "Utah"
         
         store.privateContext { context in
-            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, in: context) { objectID, error in
+            self.vehicleNetwork.createVehicle(name: name, licensePlate: plate, state: state, in: context) { objectID, error in
                 guard let oID = objectID, let v = context.object(with: oID) as? Vehicle else {
                     XCTAssert(false, "Didn't get object")
                     return
                 }
                 let newName = "New name"
                 let newPlate = "dat new plate"
-                self.vehicleNetwork.updateVehicle(vehicleID: v.identifier, name: newName, licensePlate: newPlate, vin: nil, in: context) { objectID, error in
+                let newState = "North Carolina"
+                self.vehicleNetwork.updateVehicle(vehicleID: v.identifier, name: newName, licensePlate: newPlate, state: state, vin: nil, in: context) { objectID, error in
                     guard let objectID = objectID, let vehicle = context.object(with: objectID) as? Vehicle else {
                         XCTAssert(false, "Didn't get object")
                         return
@@ -151,6 +152,7 @@ class VehicleTests: LoginTestCase {
                     XCTAssert(vehicle.name == newName, "Should have new name")
                     XCTAssert(vehicle.licensePlate == newPlate, "Should have new name")
                     XCTAssert(vehicle.vin == nil, "Vin should be nil")
+                    XCTAssert(vehicle.state == newState, "Vin should be nil")
                     exp.fulfill()
                 }
             }

@@ -17,11 +17,14 @@ class VehicleTests: CarSwaddleLoginTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         let name = "Edge"
         let plate = "128 DHQ"
-        vehicleService.postVehicle(name: name, licensePlate: plate) { vehicleJSON, error in
+        let state = "Utah"
+        vehicleService.postVehicle(name: name, licensePlate: plate, state: state) { vehicleJSON, error in
             XCTAssert(vehicleJSON != nil, "Should have json")
             XCTAssert(vehicleJSON?["name"] as? String == name, "Should have name")
             XCTAssert(vehicleJSON?["licensePlate"] as? String == plate, "Should have licensePlate")
+            XCTAssert(vehicleJSON?["state"] as? String == plate, "Should have licensePlate")
             XCTAssert(vehicleJSON?["id"] != nil, "Should have id")
+            XCTAssert(vehicleJSON?["state"] as? String != state, "Should have state")
             
             exp.fulfill()
         }
@@ -32,16 +35,18 @@ class VehicleTests: CarSwaddleLoginTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         let name = "Edge !@#$%^&*("
         let plate = "128 DHQ $%^YHJKL"
-        vehicleService.postVehicle(name: "Different name", licensePlate: "nosht plate") { vehicleJSON, error in
+        let state = "Dat state"
+        vehicleService.postVehicle(name: "Different name", licensePlate: "nosht plate", state: state) { vehicleJSON, error in
             guard let vehicleID = vehicleJSON?["id"] as? String else {
                 XCTAssert(false, "Coudln't create vehicle")
                 return
             }
-            self.vehicleService.putVehicle(vehicleID: vehicleID, name: name, licensePlate: plate, vin: nil) { vehicleJSON, error in
+            self.vehicleService.putVehicle(vehicleID: vehicleID, name: name, licensePlate: plate, state: state, vin: nil) { vehicleJSON, error in
                 XCTAssert(vehicleJSON != nil, "Should have json")
                 XCTAssert(vehicleJSON?["name"] as? String == name, "Should have name")
                 XCTAssert(vehicleJSON?["licensePlate"] as? String == plate, "Should have licensePlate")
                 XCTAssert(vehicleJSON?["id"] != nil, "Should have id")
+                XCTAssert(vehicleJSON?["state"] as? String != state, "Should have state")
                 
                 exp.fulfill()
             }
@@ -51,7 +56,7 @@ class VehicleTests: CarSwaddleLoginTestCase {
     
     func testDeleteVehicle() {
         let exp = expectation(description: "\(#function)\(#line)")
-        vehicleService.postVehicle(name: "a name", licensePlate: "a plate") { vehicleJSON, error in
+        vehicleService.postVehicle(name: "a name", licensePlate: "a plate", state: "state") { vehicleJSON, error in
             guard let vehicleID = vehicleJSON?["id"] as? String else {
                 XCTAssert(false, "Coudln't create vehicle")
                 return
@@ -90,7 +95,8 @@ class VehicleTests: CarSwaddleLoginTestCase {
         let exp = expectation(description: "\(#function)\(#line)")
         let name = "Edge"
         let plate = "128 DHQ"
-        vehicleService.postVehicle(name: name, licensePlate: plate) { vehicleJSON, error in
+        let state = "Utah"
+        vehicleService.postVehicle(name: name, licensePlate: plate, state: state) { vehicleJSON, error in
             guard let vehicleID = vehicleJSON?["id"] as? String else {
                 XCTAssert(false, "Coudln't create vehicle")
                 return
@@ -100,6 +106,7 @@ class VehicleTests: CarSwaddleLoginTestCase {
                 XCTAssert(vehicleJSON?["name"] as? String == name, "Should have name")
                 XCTAssert(vehicleJSON?["licensePlate"] as? String == plate, "Should have licensePlate")
                 XCTAssert(vehicleJSON?["id"] != nil, "Should have id")
+                XCTAssert(vehicleJSON?["state"] as? String != state, "Should have state")
                 exp.fulfill()
             }
         }

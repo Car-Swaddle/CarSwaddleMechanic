@@ -437,6 +437,49 @@ SWIFT_CLASS("_TtC12CarSwaddleUI16PocketController")
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
 @end
 
+@class UITableView;
+@class UITableViewCell;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI19TableViewController")
+@interface TableViewController : UIViewController <UITableViewDataSource>
+@property (nonatomic) UITableViewStyle tableViewStyle;
+@property (nonatomic, readonly, strong) UITableView * _Nonnull tableView;
+- (void)didPullToRefresh;
+- (void)viewDidLoad;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI25TableButtonViewController")
+@interface TableButtonViewController : TableViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI25TableViewSchemaController")
+@interface TableViewSchemaController : TableViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI35TableViewSchemaButtonViewController")
+@interface TableViewSchemaButtonViewController : TableViewSchemaController
+- (void)viewDidLoad;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC12CarSwaddleUI8TextCell")
 @interface TextCell : UITableViewCell
@@ -474,7 +517,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 
 
 
-@class UITableView;
 
 @interface TweakViewController (SWIFT_EXTENSION(CarSwaddleUI)) <UITableViewDelegate>
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
@@ -507,6 +549,23 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 
 
 
+
+
+
+
+
+
+
+
+@interface UIView (SWIFT_EXTENSION(CarSwaddleUI))
+@property (nonatomic) float shadowOpacity;
+@property (nonatomic, strong) UIColor * _Nullable shadowColor;
+@property (nonatomic) CGSize shadowOffset;
+@property (nonatomic) CGFloat shadowRadius;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, strong) UIColor * _Nullable borderColor;
+@property (nonatomic) CGFloat borderWidth;
+@end
 
 
 
@@ -978,6 +1037,49 @@ SWIFT_CLASS("_TtC12CarSwaddleUI16PocketController")
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
 @end
 
+@class UITableView;
+@class UITableViewCell;
+
+SWIFT_CLASS("_TtC12CarSwaddleUI19TableViewController")
+@interface TableViewController : UIViewController <UITableViewDataSource>
+@property (nonatomic) UITableViewStyle tableViewStyle;
+@property (nonatomic, readonly, strong) UITableView * _Nonnull tableView;
+- (void)didPullToRefresh;
+- (void)viewDidLoad;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI25TableButtonViewController")
+@interface TableButtonViewController : TableViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI25TableViewSchemaController")
+@interface TableViewSchemaController : TableViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC12CarSwaddleUI35TableViewSchemaButtonViewController")
+@interface TableViewSchemaButtonViewController : TableViewSchemaController
+- (void)viewDidLoad;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC12CarSwaddleUI8TextCell")
 @interface TextCell : UITableViewCell
@@ -1015,7 +1117,6 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 
 
 
-@class UITableView;
 
 @interface TweakViewController (SWIFT_EXTENSION(CarSwaddleUI)) <UITableViewDelegate>
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
@@ -1048,6 +1149,23 @@ SWIFT_CLASS("_TtC12CarSwaddleUI19TweakViewController")
 
 
 
+
+
+
+
+
+
+
+
+@interface UIView (SWIFT_EXTENSION(CarSwaddleUI))
+@property (nonatomic) float shadowOpacity;
+@property (nonatomic, strong) UIColor * _Nullable shadowColor;
+@property (nonatomic) CGSize shadowOffset;
+@property (nonatomic) CGFloat shadowRadius;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, strong) UIColor * _Nullable borderColor;
+@property (nonatomic) CGFloat borderWidth;
+@end
 
 
 

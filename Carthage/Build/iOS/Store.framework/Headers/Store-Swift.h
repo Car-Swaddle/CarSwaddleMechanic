@@ -306,6 +306,8 @@ SWIFT_CLASS_NAMED("AutoService")
 
 
 
+
+
 @class Location;
 @class Price;
 @class Vehicle;
@@ -413,16 +415,8 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class Transaction;
+@class NSSet;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addTransactionsObject:(Transaction * _Nonnull)value;
@@ -438,6 +432,14 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
 - (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
+@end
+
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 @class Region;
@@ -788,6 +790,7 @@ SWIFT_CLASS_NAMED("Vehicle")
 /// At least one of licensePlate or vin or vehicleDescription must not be nil.
 @property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, copy) NSString * _Nullable licensePlate;
+@property (nonatomic, copy) NSString * _Nullable state;
 @property (nonatomic, strong) VehicleDescription * _Nullable vehicleDescription;
 @end
 
@@ -1154,6 +1157,8 @@ SWIFT_CLASS_NAMED("AutoService")
 
 
 
+
+
 @class Location;
 @class Price;
 @class Vehicle;
@@ -1261,16 +1266,8 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSSet;
-
-@interface Mechanic (SWIFT_EXTENSION(Store))
-- (void)addServicesObject:(AutoService * _Nonnull)value;
-- (void)removeServicesObject:(AutoService * _Nonnull)value;
-- (void)addServices:(NSSet * _Nonnull)values;
-- (void)removeServices:(NSSet * _Nonnull)values;
-@end
-
 @class Transaction;
+@class NSSet;
 
 @interface Mechanic (SWIFT_EXTENSION(Store))
 - (void)addTransactionsObject:(Transaction * _Nonnull)value;
@@ -1286,6 +1283,14 @@ SWIFT_CLASS_NAMED("Mechanic")
 - (void)removeScheduleTimeSpansObject:(TemplateTimeSpan * _Nonnull)value;
 - (void)addScheduleTimeSpans:(NSSet * _Nonnull)values;
 - (void)removeScheduleTimeSpans:(NSSet * _Nonnull)values;
+@end
+
+
+@interface Mechanic (SWIFT_EXTENSION(Store))
+- (void)addServicesObject:(AutoService * _Nonnull)value;
+- (void)removeServicesObject:(AutoService * _Nonnull)value;
+- (void)addServices:(NSSet * _Nonnull)values;
+- (void)removeServices:(NSSet * _Nonnull)values;
 @end
 
 @class Region;
@@ -1636,6 +1641,7 @@ SWIFT_CLASS_NAMED("Vehicle")
 /// At least one of licensePlate or vin or vehicleDescription must not be nil.
 @property (nonatomic, copy) NSString * _Nullable vin;
 @property (nonatomic, copy) NSString * _Nullable licensePlate;
+@property (nonatomic, copy) NSString * _Nullable state;
 @property (nonatomic, strong) VehicleDescription * _Nullable vehicleDescription;
 @end
 
