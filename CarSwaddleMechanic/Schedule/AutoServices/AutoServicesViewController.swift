@@ -156,7 +156,8 @@ final class AutoServicesViewController: UIViewController, StoryboardInstantiatin
         fetchedResultsController.delegate = nil
         store.privateContext { [weak self] privateContext in
             self?.task = self?.autoServiceNetwork.getAutoServices(mechanicID: currentMechanicID, startDate: startDate, endDate: endDate, filterStatus: [.canceled, .inProgress, .completed, .scheduled], in: privateContext) { autoServiceIDs, error in
-                store.mainContext { mainContext in
+//                store.mainContext { mainContext in
+                DispatchQueue.main.async {
                     guard let self = self else { return }
                     self.resetData()
                     self.fetchedResultsController.delegate = self

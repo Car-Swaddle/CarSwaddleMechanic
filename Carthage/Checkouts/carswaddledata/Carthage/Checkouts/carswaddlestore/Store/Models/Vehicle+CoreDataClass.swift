@@ -40,7 +40,7 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
             return nil
         }
         
-        return (identifier, name, licensePlate, vin, state)
+        return (identifier, name, licensePlate, state, vin)
     }
     
     private func configure(with values: VehicleValues, json: JSONObject) {
@@ -50,6 +50,8 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         self.licensePlate = values.licensePlate
         self.state = values.state
         self.vin = values.vin
+        self.state = values.state
+        
         if let userID = json["userID"] as? String,
             let context = managedObjectContext,
             let user = User.fetch(with: userID, in: context) {
@@ -65,6 +67,16 @@ public final class Vehicle: NSManagedObject, NSManagedObjectFetchable, JSONInita
         self.licensePlate = licensePlate
         self.user = user
         self.state = state
+    }
+    
+    public var localizedDescription: String {
+        if let state = state {
+            let vehicleFormatString = NSLocalizedString("%@ • %@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number' • state of vehicle")
+            return String(format: vehicleFormatString, name, licensePlate ?? "", state)
+        } else {
+            let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
+            return String(format: vehicleFormatString, name, licensePlate ?? "")
+        }
     }
     
 }

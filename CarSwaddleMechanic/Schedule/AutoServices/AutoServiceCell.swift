@@ -184,12 +184,12 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
             scheduledDateLabel.text = hourMinuteDateFormatter.string(from: date)
         }
         
-        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
+//        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
         
         let vehicleName = autoService.vehicle?.name ?? ""
         let licensePlateNumber = autoService.vehicle?.licensePlate ?? ""
         
-        vehicleLabel.text = String(format: vehicleFormatString, vehicleName, licensePlateNumber)
+        vehicleLabel.text = autoService.vehicle?.localizedDescription
         userLabel.text = autoService.creator?.displayName
         locationLabel.text = autoService.location?.streetAddress ?? "location"
         oilTypeLabel.text = autoService.firstOilChange?.oilType.localizedString ?? ""

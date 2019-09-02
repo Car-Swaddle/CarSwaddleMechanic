@@ -78,7 +78,7 @@ class VehicleTests: LoginTestCase {
         
         store.privateContext { context in
             self.vehicleNetwork.requestVehicles(in: context) { objectIDs, error in
-                guard let objectID = objectIDs.first, let vehicle = context.object(with: objectID) as? Vehicle else {
+                guard let objectID = objectIDs.last, let vehicle = context.object(with: objectID) as? Vehicle else {
                     XCTAssert(false, "Didn't get object")
                     return
                 }
