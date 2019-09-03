@@ -10,6 +10,15 @@ import UIKit
 import CarSwaddleUI
 import Store
 
+extension String {
+    public static let blankText = NSLocalizedString("--", comment: "Represent an empty state")
+}
+
+private let inTransitString = NSLocalizedString("Transferring", comment: "Label text with a label above indicating how much money is in transit")
+private let accountBalanceString = NSLocalizedString("Account balance", comment: "Label text with a label above indicating how much money is in transit")
+private let accountBalanceSubstring = NSLocalizedString("(2 day rolling deposit)", comment: "Label text with a label above indicating how much money is in transit")
+private let processingString = NSLocalizedString("Processing", comment: "Label text with a label above indicating how much money is in transit")
+
 let currencyFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
@@ -20,10 +29,14 @@ let currencyFormatter: NumberFormatter = {
 final class BalanceAmountView: UIView, NibInstantiating {
     
     @IBOutlet private weak var amountLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var availableLabel: UILabel!
     @IBOutlet private weak var inTransitLabel: UILabel!
     
+    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var inTransitTextLabel: UILabel!
+    @IBOutlet private weak var availableTextLabel: UILabel!
+    
+    @IBOutlet private weak var descriptionSubtitleLabel: UILabel!
     
     var inTransitAmount: Int? {
         didSet {
@@ -31,33 +44,51 @@ final class BalanceAmountView: UIView, NibInstantiating {
         }
     }
     
-    func configure(with amount: Amount, amountType: Balance.AmountType) {
-        amountLabel.text = currencyFormatter.string(from: amount.totalDollarValue)
-        descriptionLabel.text = self.text(from: amountType)
+    var availableAmount: Int? {
+        didSet {
+            guard let availableAmount = availableAmount else {
+                amountLabel.text = .blankText
+                return
+            }
+            amountLabel.text = currencyFormatter.string(from: availableAmount.dollarValue)
+        }
+    }
+    
+    var pendingAmount: Int? {
+        didSet {
+            guard let pendingAmount = pendingAmount else {
+                availableLabel.text = .blankText
+                return
+            }
+            availableLabel.text = currencyFormatter.string(from: pendingAmount.dollarValue)
+        }
     }
     
     func configureForEmpty() {
-        amountLabel.text = NSLocalizedString("--", comment: "Represent an empty state")
-        descriptionLabel.text = NSLocalizedString("balance", comment: "Represent an empty state")
+        pendingAmount = nil
+        availableAmount = nil
+        inTransitAmount = nil
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        inTransitLabel.text = "--"
-        inTransitTextLabel.text = NSLocalizedString("In transit", comment: "Label text with a label above indicating how much money is in transit")
+        
+        inTransitLabel.text = .blankText
+        amountLabel.text = .blankText
+        availableLabel.text = .blankText
+        
+        inTransitTextLabel.text = inTransitString
+        descriptionSubtitleLabel.text = accountBalanceSubstring
+        descriptionLabel.text = accountBalanceString
+        availableTextLabel.text = processingString
         
         amountLabel.font = UIFont.appFont(type: .regular, size: 64)
         descriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        descriptionSubtitleLabel.font = UIFont.appFont(type: .regular, size: 15)
         inTransitLabel.font = UIFont.appFont(type: .medium, size: 17)
         inTransitTextLabel.font = UIFont.appFont(type: .regular, size: 15)
-    }
-    
-    private func text(from type: Balance.AmountType) -> String {
-        switch type {
-        case .available: return NSLocalizedString("Available balance", comment: "label under dollar value")
-        case .pending: return NSLocalizedString("Car Swaddle Account Balance", comment: "label under dollar value")
-        case .reserved: return NSLocalizedString("Reserved balance", comment: "label under dollar value")
-        }
+        availableLabel.font = UIFont.appFont(type: .medium, size: 17)
+        availableTextLabel.font = UIFont.appFont(type: .regular, size: 15)
     }
     
 }

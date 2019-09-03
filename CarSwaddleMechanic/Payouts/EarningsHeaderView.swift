@@ -29,7 +29,8 @@ final class EarningsHeaderView: UIView, NibInstantiating {
     }
     
     private func configure(with balance: Balance) {
-        balanceAmountView.configure(with: balance.pending, amountType: .pending)
+        balanceAmountView.pendingAmount = balance.pending.value
+        balanceAmountView.availableAmount = balance.available.value
     }
     
     private func configureForEmpty() {
@@ -50,7 +51,6 @@ final class EarningsHeaderView: UIView, NibInstantiating {
             }
             
             group.enter()
-//            Payout.purgeAll(in: privateContext)
             self?.stripeNetwork.requestPayoutsInTransit(in: privateContext) { objectIDs, error in
                 store.mainContext { mainContext in
                     defer { group.leave() }

@@ -13,7 +13,6 @@ import CoreData
 import Store
 import CarSwaddleNetworkRequest
 
-private let blankText = NSLocalizedString("--", comment: "Blank")
 private let cancelButtonTitle = NSLocalizedString("Cancel", comment: "Cancel button")
 private let buttonTitle = NSLocalizedString("Update Prices", comment: "Update them prices")
 private let pricingTitle = NSLocalizedString("Pricing", comment: "Title of screen that lets mechanic set their own price")
@@ -148,7 +147,7 @@ class MechanicPricingViewController: TableViewSchemaButtonViewController {
             mechanicCell.labeledTextField.textField.text = dolarFormatter.string(from: NSNumber(cgfloat: value))
         } else {
             mechanicCell.labeledTextField.textField.isUserInteractionEnabled = false
-            mechanicCell.labeledTextField.textField.text = blankText
+            mechanicCell.labeledTextField.textField.text = .blankText
         }
         
         mechanicCell.labeledTextField.labelText = self.label(for: row)
