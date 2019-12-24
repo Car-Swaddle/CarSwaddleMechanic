@@ -98,6 +98,10 @@ public extension Data {
         }
     }
     
+    var json: JSONObject? {
+        return (try? JSONSerialization.jsonObject(with: self, options: [])) as? JSONObject
+    }
+    
 }
 
 

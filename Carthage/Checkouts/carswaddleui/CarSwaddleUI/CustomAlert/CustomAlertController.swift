@@ -51,6 +51,10 @@ final public class CustomAlertController: UIViewController, StoryboardInstantiat
         }
     }
     
+    static public var alertBackgroundColor: UIColor = .white
+    
+    static public var transparentBackgroundColor: UIColor = UIColor(white: 1, alpha: 0.7)
+    
     
     // MARK: - Private
     
@@ -91,6 +95,8 @@ final public class CustomAlertController: UIViewController, StoryboardInstantiat
         view.layoutIfNeeded()
         updateTopImageHeightIfNeeded()
         updateTopContentInset()
+        view.backgroundColor = CustomAlertController.transparentBackgroundColor
+        alertView.backgroundColor = CustomAlertController.alertBackgroundColor
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -103,8 +109,8 @@ final public class CustomAlertController: UIViewController, StoryboardInstantiat
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let safeAreasInsets = view.safeAreaInsets.top + view.safeAreaInsets.bottom
-        let contentInsets = topConstraint.constant + bottomConstraint.constant + topContentConstraint.constant + bottomContentConstraint.constant
+        let safeAreasInsets: CGFloat = 0 //  view.safeAreaInsets.top + view.safeAreaInsets.bottom
+        let contentInsets: CGFloat = 0 // topConstraint.constant + bottomConstraint.constant + topContentConstraint.constant + bottomContentConstraint.constant
         let maxHeight = view.frame.height - (safeAreasInsets + contentInsets + topImageViewHeightConstraint.constant)
         for contentView in contentViews {
             contentView.maxHeight = maxHeight

@@ -4,5 +4,5 @@ github "stripe/stripe-ios"
 github "evgenyneu/Cosmos" ~> 18.0
 github "airbnb/lottie-ios" "master"
 github "patchthecode/JTAppleCalendar" ~> 7.0
-github "WenchaoD/FSCalendar"
+github "WenchaoD/FSCalendar" ~> 2.8.1
 

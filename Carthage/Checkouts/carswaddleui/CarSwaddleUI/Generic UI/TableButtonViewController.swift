@@ -30,6 +30,11 @@ open class TableButtonViewController: TableViewController {
         adjuster = ContentInsetAdjuster(tableView: tableView, actionButton: actionButton)
         adjuster?.showActionButtonAboveKeyboard = true
         adjuster?.positionActionButton()
+        actionButton.addTarget(self, action: #selector(didSelectActionButton), for: .touchUpInside)
+    }
+    
+    @objc open func didSelectActionButton() {
+        
     }
     
 }

@@ -19,24 +19,12 @@ if ! command -v xcpretty > /dev/null; then
   gem install xcpretty --no-document || die "Executing \`gem install xcpretty\` failed"
 fi
 
-# Install sample app dependencies
-info "Installing sample app dependencies..."
-
-cd "Example" || die "Executing \`cd\` failed"
-carthage bootstrap --platform iOS
-carthage_exit_code="$?"
-cd .. || die "Executing \`cd\` failed"
-
-if [[ "${carthage_exit_code}" != 0 ]]; then
-  die "Executing carthage failed with status code: ${carthage_exit_code}"
-fi
-
-# Execute sample app builds (iPhone 6, iOS 11.x)
-info "Executing sample app builds (iPhone 6, iOS 11.x)..."
+# Execute sample app builds
+info "Executing sample app builds (iPhone 7, iOS 12.2)..."
 
 xcodebuild build \
   -workspace "Stripe.xcworkspace" \
-  -scheme "Standard Integration" \
+  -scheme "Basic Integration" \
   -sdk "iphonesimulator" \
   -destination "platform=iOS Simulator,name=iPhone 7,OS=12.2" \
   | xcpretty
@@ -49,7 +37,7 @@ fi
 
 xcodebuild build \
   -workspace "Stripe.xcworkspace" \
-  -scheme "Custom Integration" \
+  -scheme "Non-Card Payment Examples" \
   -sdk "iphonesimulator" \
   -destination "platform=iOS Simulator,name=iPhone 7,OS=12.2" \
   | xcpretty

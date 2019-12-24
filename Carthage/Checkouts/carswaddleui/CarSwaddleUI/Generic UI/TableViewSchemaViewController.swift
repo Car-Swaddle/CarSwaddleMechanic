@@ -18,6 +18,7 @@ open class TableViewSchemaController: TableViewController {
     public init(schema: [Section]) {
         super.init(nibName: nil, bundle: nil)
         
+        refreshControl = nil
         self.schema = schema
     }
     
@@ -26,7 +27,7 @@ open class TableViewSchemaController: TableViewController {
     }
     
     public struct Section {
-        let rows: [TableViewControllerRow]
+        public let rows: [TableViewControllerRow]
         
         public init(rows: [TableViewControllerRow]) {
             self.rows = rows
@@ -49,11 +50,10 @@ open class TableViewSchemaController: TableViewController {
     }
     
     final override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cell(for: self.row(with: indexPath))
+        return cell(for: self.row(with: indexPath), indexPath: indexPath)
     }
     
-    
-    open func cell(for row: TableViewControllerRow) -> UITableViewCell {
+    open func cell(for row: TableViewControllerRow, indexPath: IndexPath) -> UITableViewCell {
         fatalError("Subclass must override")
     }
     

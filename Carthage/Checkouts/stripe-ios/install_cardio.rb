@@ -17,7 +17,7 @@ open('Example/Cartfile', 'a') { |f|
 }
 system('cd Example; carthage update --platform ios')
 
-project_name = 'Standard Integration'
+project_name = 'Basic Integration'
 project_path = "Example/#{project_name}.xcodeproj"
 project = Xcodeproj::Project.open(project_path)
 
@@ -34,7 +34,6 @@ carthage_buildphase = project.objects.select {
   |x| x.class == Xcodeproj::Project::Object::PBXShellScriptBuildPhase && x.name == "Carthage Copy Frameworks"
 }[0];
 carthage_buildphase.input_paths = [
-  '$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework',
   '$(SRCROOT)/Carthage/Build/iOS/CardIO.framework',
 ]
 

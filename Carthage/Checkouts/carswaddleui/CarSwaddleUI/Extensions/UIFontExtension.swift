@@ -27,9 +27,17 @@ public extension UIFont {
     static func appFont(type: FontType, size: CGFloat, scaleFont: Bool = true) -> UIFont! {
         if scaleFont {
             let adjustedSize = UIFontMetrics.default.scaledValue(for: size)
-            return UIFont(name: type.rawValue, size: adjustedSize)!
+            if type == .system {
+                return UIFont.systemFont(ofSize: adjustedSize)
+            } else {
+                return UIFont(name: type.rawValue, size: adjustedSize)!
+            }
         } else {
-            return UIFont(name: type.rawValue, size: size)!
+            if type == .system {
+                return UIFont.systemFont(ofSize: size)
+            } else {
+                return UIFont(name: type.rawValue, size: size)!
+            }
         }
     }
     

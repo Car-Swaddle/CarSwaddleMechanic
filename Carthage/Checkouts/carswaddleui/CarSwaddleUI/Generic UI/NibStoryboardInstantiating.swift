@@ -71,17 +71,6 @@ public extension NibInstantiating where Self: UIView {
         return view
     }
     
-    /* 0
-     /Users/kylekendall/Projects/carswaddleui/CarSwaddleUITests/CarSwaddleUITests.swift:23: error: -[CarSwaddleUITests.CarSwaddleUITests testCreateView] : failed: caught "NSInternalInconsistencyException", "Could not load NIB in bundle: 'NSBundle </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents> (loaded)' with name 'CustomAlertContentView'"
-     */
-    /* 1
-     /Users/kylekendall/Projects/carswaddleui/CarSwaddleUITests/CarSwaddleUITests.swift:23: error: -[CarSwaddleUITests.CarSwaddleUITests testCreateView] : failed: caught "NSInternalInconsistencyException", "Could not load NIB in bundle: 'NSBundle </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents> (loaded)' with name 'CustomAlertContentView'"
-     */
-    
-    /* 2
-     /Users/kylekendall/Projects/carswaddleui/CarSwaddleUITests/CarSwaddleUITests.swift:23: error: -[CarSwaddleUITests.CarSwaddleUITests testCreateView] : failed: caught "NSInternalInconsistencyException", "Could not load NIB in bundle: 'NSBundle </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents> (loaded)' with name 'CustomAlertContentView'"
-     */
-    
 }
 
 

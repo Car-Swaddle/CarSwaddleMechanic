@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wwu-1T-ovH">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wwu-1T-ovH">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +47,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dRM-gG-ZlG" secondAttribute="trailing" constant="16" id="2GI-sZ-7mS"/>
                                     <constraint firstAttribute="width" constant="282" id="6eF-xy-bQm"/>
@@ -69,9 +67,9 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="80H-aD-zHe" firstAttribute="centerY" secondItem="snG-t0-9do" secondAttribute="centerY" id="9Yi-GB-5C7"/>
-                            <constraint firstItem="yb7-Sc-5QV" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="80H-aD-zHe" secondAttribute="bottom" constant="46" id="D7G-hV-IL4"/>
+                            <constraint firstItem="yb7-Sc-5QV" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="80H-aD-zHe" secondAttribute="bottom" constant="5" id="D7G-hV-IL4"/>
                             <constraint firstItem="80H-aD-zHe" firstAttribute="centerX" secondItem="snG-t0-9do" secondAttribute="centerX" id="DWG-DN-iDn"/>
-                            <constraint firstItem="80H-aD-zHe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yb7-Sc-5QV" secondAttribute="top" constant="46" id="JWk-q0-E4F">
+                            <constraint firstItem="80H-aD-zHe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yb7-Sc-5QV" secondAttribute="top" constant="5" id="JWk-q0-E4F">
                                 <variation key="heightClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="yb7-Sc-5QV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="80H-aD-zHe" secondAttribute="trailing" constant="46" id="mZT-JA-47B"/>

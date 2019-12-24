@@ -39,8 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  An enum value representing which payment options you will accept from your user
- in addition to credit cards. Unless you have a very specific reason not to, you
- should leave this at the default, `STPPaymentOptionTypeAll`.
+ in addition to credit cards.
+ 
+ The default value is `STPPaymentOptionTypeDefault`, which includes only Apple Pay.
  */
 @property (nonatomic, assign, readwrite) STPPaymentOptionType additionalPaymentOptions;
 
@@ -76,6 +77,15 @@ NS_ASSUME_NONNULL_BEGIN
  The default value is STPShippingTypeShipping.
  */
 @property (nonatomic, assign, readwrite) STPShippingType shippingType;
+
+/**
+ The set of countries supported when entering an address. This property accepts
+ a set of ISO 2-character country codes.
+
+ The default value is all known countries. Setting this property will limit
+ the available countries to your selected set.
+ */
+@property (nonatomic, copy, null_resettable, readwrite) NSSet<NSString *> *availableCountries;
 
 /**
  The name of your company, for displaying to the user during payment flows. For 

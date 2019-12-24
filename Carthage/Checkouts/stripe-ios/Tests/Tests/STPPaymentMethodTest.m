@@ -25,14 +25,18 @@
     XCTAssertEqual([STPPaymentMethod typeFromString:@"CARD"], STPPaymentMethodTypeCard);
     XCTAssertEqual([STPPaymentMethod typeFromString:@"ideal"], STPPaymentMethodTypeiDEAL);
     XCTAssertEqual([STPPaymentMethod typeFromString:@"IDEAL"], STPPaymentMethodTypeiDEAL);
+    XCTAssertEqual([STPPaymentMethod typeFromString:@"fpx"], STPPaymentMethodTypeFPX);
+    XCTAssertEqual([STPPaymentMethod typeFromString:@"FPX"], STPPaymentMethodTypeFPX);
+    XCTAssertEqual([STPPaymentMethod typeFromString:@"sepa_debit"], STPPaymentMethodTypeSEPADebit);
+    XCTAssertEqual([STPPaymentMethod typeFromString:@"SEPA_DEBIT"], STPPaymentMethodTypeSEPADebit);
     XCTAssertEqual([STPPaymentMethod typeFromString:@"card_present"], STPPaymentMethodTypeCardPresent);
     XCTAssertEqual([STPPaymentMethod typeFromString:@"CARD_PRESENT"], STPPaymentMethodTypeCardPresent);
     XCTAssertEqual([STPPaymentMethod typeFromString:@"unknown_string"], STPPaymentMethodTypeUnknown);
 }
 
 - (void)testTypesFromStrings {
-    NSArray *rawTypes = @[@"card", @"ideal", @"card_present"];
-    NSArray *expectedTypes = @[@(STPPaymentMethodTypeCard), @(STPPaymentMethodTypeiDEAL), @(STPPaymentMethodTypeCardPresent)];
+    NSArray *rawTypes = @[@"card", @"ideal", @"card_present", @"fpx", @"sepa_debit"];
+    NSArray *expectedTypes = @[@(STPPaymentMethodTypeCard), @(STPPaymentMethodTypeiDEAL), @(STPPaymentMethodTypeCardPresent), @(STPPaymentMethodTypeFPX), @(STPPaymentMethodTypeSEPADebit)];
     XCTAssertEqualObjects([STPPaymentMethod typesFromStrings:rawTypes], expectedTypes);
 }
 
@@ -41,6 +45,8 @@
                                     @(STPPaymentMethodTypeCard),
                                     @(STPPaymentMethodTypeiDEAL),
                                     @(STPPaymentMethodTypeCardPresent),
+                                    @(STPPaymentMethodTypeFPX),
+                                    @(STPPaymentMethodTypeSEPADebit),
                                     @(STPPaymentMethodTypeUnknown),
                                     ];
     for (NSNumber *typeNumber in values) {
@@ -56,6 +62,12 @@
                 break;
             case STPPaymentMethodTypeCardPresent:
                 XCTAssertEqualObjects(string, @"card_present");
+                break;
+            case STPPaymentMethodTypeFPX:
+                XCTAssertEqualObjects(string, @"fpx");
+                break;
+            case STPPaymentMethodTypeSEPADebit:
+                XCTAssertEqualObjects(string, @"sepa_debit");
                 break;
             case STPPaymentMethodTypeUnknown:
                 XCTAssertNil(string);

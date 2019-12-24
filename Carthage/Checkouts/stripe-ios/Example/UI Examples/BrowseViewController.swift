@@ -12,10 +12,11 @@ import Stripe
 class BrowseViewController: UITableViewController, STPAddCardViewControllerDelegate, STPPaymentOptionsViewControllerDelegate, STPShippingAddressViewControllerDelegate {
 
     enum Demo: Int {
-        static let count = 5
+        static let count = 6
         case STPPaymentCardTextField
         case STPAddCardViewController
         case STPPaymentOptionsViewController
+        case STPPaymentOptionsFPXViewController
         case STPShippingInfoViewController
         case ChangeTheme
 
@@ -24,6 +25,7 @@ class BrowseViewController: UITableViewController, STPAddCardViewControllerDeleg
             case .STPPaymentCardTextField: return "Card Field"
             case .STPAddCardViewController: return "Card Form with Billing Address"
             case .STPPaymentOptionsViewController: return "Payment Option Picker"
+            case .STPPaymentOptionsFPXViewController: return "Payment Option Picker (With FPX)"
             case .STPShippingInfoViewController: return "Shipping Info Form"
             case .ChangeTheme: return "Change Theme"
             }
@@ -34,6 +36,7 @@ class BrowseViewController: UITableViewController, STPAddCardViewControllerDeleg
             case .STPPaymentCardTextField: return "STPPaymentCardTextField"
             case .STPAddCardViewController: return "STPAddCardViewController"
             case .STPPaymentOptionsViewController: return "STPPaymentOptionsViewController"
+            case .STPPaymentOptionsFPXViewController: return "STPPaymentOptionsViewController"
             case .STPShippingInfoViewController: return "STPShippingInfoViewController"
             case .ChangeTheme: return ""
             }
@@ -91,9 +94,21 @@ class BrowseViewController: UITableViewController, STPAddCardViewControllerDeleg
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.navigationBar.stp_theme = theme
             present(navigationController, animated: true, completion: nil)
+        case .STPPaymentOptionsFPXViewController:
+            let config = STPPaymentConfiguration()
+            config.additionalPaymentOptions = [.default, .FPX]
+            config.requiredBillingAddressFields = .none
+            config.appleMerchantIdentifier = "dummy-merchant-id"
+            let viewController = STPPaymentOptionsViewController(configuration: config,
+                                                                 theme: theme,
+                                                                 customerContext: self.customerContext,
+                                                                 delegate: self)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.stp_theme = theme
+            present(navigationController, animated: true, completion: nil)
         case .STPPaymentOptionsViewController:
             let config = STPPaymentConfiguration()
-            config.additionalPaymentOptions = .all
+            config.additionalPaymentOptions = .default
             config.requiredBillingAddressFields = .none
             config.appleMerchantIdentifier = "dummy-merchant-id"
             let viewController = STPPaymentOptionsViewController(configuration: config,
@@ -139,7 +154,7 @@ class BrowseViewController: UITableViewController, STPAddCardViewControllerDeleg
     }
 
     func paymentOptionsViewControllerDidFinish(_ paymentOptionsViewController: STPPaymentOptionsViewController) {
-        paymentOptionsViewController.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 
     func paymentOptionsViewController(_ paymentOptionsViewController: STPPaymentOptionsViewController, didFailToLoadWithError error: Error) {
@@ -177,13 +192,11 @@ class BrowseViewController: UITableViewController, STPAddCardViewControllerDeleg
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             if address.country == nil || address.country == "US" {
                 completion(.valid, nil, [upsGround, fedEx], fedEx)
-            }
-            else if address.country == "AQ" {
+            } else if address.country == "AQ" {
                 let error = NSError(domain: "ShippingError", code: 123, userInfo: [NSLocalizedDescriptionKey: "Invalid Shipping Address",
                                                                                    NSLocalizedFailureReasonErrorKey: "We can't ship to this country."])
                 completion(.invalid, error, nil, nil)
-            }
-            else {
+            } else {
                 fedEx.amount = 20.99
                 completion(.valid, nil, [upsWorldwide, fedEx], fedEx)
             }

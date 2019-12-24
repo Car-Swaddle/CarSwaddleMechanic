@@ -23,20 +23,24 @@ final public class CouponNetwork: Network {
     public func getCoupons(limit: Int? = nil, offset: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ couponObjectIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
         return couponService.getCoupons(limit: limit, offset: offset) { json, error in
             context.performOnImportQueue {
-                var couponObjectIDs: [NSManagedObjectID] = []
-                defer {
-                    DispatchQueue.global().async {
-                        completion(couponObjectIDs, error)
-                    }
-                }
-                for couponJSON in (json?["coupons"] as? [JSONObject]) ?? [] {
-                    guard let coupon = Coupon.fetchOrCreate(json: couponJSON, context: context) else { continue }
-                    if coupon.objectID.isTemporaryID == true {
-                        try? context.obtainPermanentIDs(for: [coupon])
-                    }
-                    couponObjectIDs.append(coupon.objectID)
-                }
+                let couponObjectIDs = Coupon.fetchOrCreate(with: (json?["coupons"] as? [JSONObject]) ?? [], in: context)
                 context.persist()
+                DispatchQueue.global().async {
+                    completion(couponObjectIDs, error)
+                }
+            }
+        }
+    }
+    
+    @discardableResult
+    public func getSharableCoupons(limit: Int? = nil, offset: Int? = nil, in context: NSManagedObjectContext, completion: @escaping (_ couponObjectIDs: [NSManagedObjectID], _ error: Error?) -> Void) -> URLSessionDataTask? {
+        return couponService.getSharableCoupons(limit: limit) { json, error in
+            context.performOnImportQueue {
+                let couponObjectIDs = Coupon.fetchOrCreate(with: (json?["coupons"] as? [JSONObject]) ?? [], in: context)
+                context.persist()
+                DispatchQueue.global().async {
+                    completion(couponObjectIDs, error)
+                }
             }
         }
     }
@@ -91,6 +95,39 @@ final public class CouponNetwork: Network {
                 }
             }
         }
+    }
+    
+}
+
+
+//public extension Array where Iterator.Element: NSManagedObjectFetchable {
+//
+//    func fetchOrCreate(with jsonArray: [JSONObject], in context: NSManagedObjectContext) -> [NSManagedObjectID] {
+//        var objectIDs: [NSManagedObjectID] = []
+//        for json in jsonArray {
+//            guard let object = .fetchOrCreate(json: json, context: context) else { continue }
+//            if object.objectID.isTemporaryID == true {
+//                try? context.obtainPermanentIDs(for: [object])
+//            }
+//            objectIDs.append(object.objectID)
+//        }
+//        return objectIDs
+//    }
+//
+//}
+
+public extension JSONInitable where Self: NSManagedObject {
+    
+    static func fetchOrCreate(with jsonArray: [JSONObject], in context: NSManagedObjectContext) -> [NSManagedObjectID] {
+        var objectIDs: [NSManagedObjectID] = []
+        for json in jsonArray {
+            guard let object = Self.fetchOrCreate(json: json, context: context) else { continue }
+            if object.objectID.isTemporaryID == true {
+                try? context.obtainPermanentIDs(for: [object])
+            }
+            objectIDs.append(object.objectID)
+        }
+        return objectIDs
     }
     
 }

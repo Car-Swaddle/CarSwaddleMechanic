@@ -54,6 +54,7 @@
 		9953AE1E21C0F14D002D099A /* AutoServiceLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */; };
 		9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */; };
 		9953AE2221C0FD64002D099A /* AutoServiceStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */; };
+		9960EC2A235700F000BA4C1F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960EC29235700F000BA4C1F /* SwiftUIView.swift */; };
 		99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */; };
 		99675CB021E9F1FF003C9D70 /* EarningsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */; };
 		99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */; };
@@ -313,6 +314,7 @@
 		9953AE1C21C0F14D002D099A /* AutoServiceLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceLocationCell.xib; sourceTree = "<group>"; };
 		9953AE1F21C0FD64002D099A /* AutoServiceStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServiceStatusCell.swift; sourceTree = "<group>"; };
 		9953AE2021C0FD64002D099A /* AutoServiceStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServiceStatusCell.xib; sourceTree = "<group>"; };
+		9960EC29235700F000BA4C1F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		99675CAD21E9F175003C9D70 /* EarningsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsHeaderView.swift; sourceTree = "<group>"; };
 		99675CAF21E9F1FF003C9D70 /* EarningsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningsHeaderView.xib; sourceTree = "<group>"; };
 		99675CB121E9F2E5003C9D70 /* BalanceAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceAmountView.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 				9953AE0821BC6F5C002D099A /* PushNotificationController.swift */,
 				997BFC0822FD470C0023F445 /* RemoteNotification.swift */,
 				998984D2229684B500E4B25A /* UserActivityHandler.swift */,
+				9960EC29235700F000BA4C1F /* SwiftUIView.swift */,
 				998D3AB921D75A8B003DD717 /* Stripe.swift */,
 				99F0279D2188321D005FEFC7 /* ServiceRequest.swift */,
 				99F02791218663BB005FEFC7 /* Location.swift */,
@@ -1392,6 +1395,7 @@
 				990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,
 				99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */,
+				9960EC2A235700F000BA4C1F /* SwiftUIView.swift in Sources */,
 				998984CB22967AC400E4B25A /* ForgotPasswordViewController.swift in Sources */,
 				99A3A88921D583F0009A1AD9 /* FilePickerViewController.swift in Sources */,
 				9912CD94216C758C0006FDDF /* ScheduleViewController.swift in Sources */,
@@ -1569,7 +1573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1624,7 +1628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1642,6 +1646,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1670,6 +1675,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

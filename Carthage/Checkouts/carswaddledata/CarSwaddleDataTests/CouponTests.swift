@@ -28,6 +28,17 @@ class CouponTests: LoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testSharableGetCoupons() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        store.privateContext { privateContext in
+            self.couponNetwork.getSharableCoupons(in: privateContext) { objectIDs, error in
+                XCTAssert(objectIDs.count > 0, "Should have coupons")
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
     func testDeleteCoupon() {
         let exp = expectation(description: "\(#function)\(#line)")
         store.privateContext { privateContext in

@@ -28,7 +28,6 @@
 #import "STPPaymentCardTextFieldCell.h"
 #import "STPPromise.h"
 #import "STPSectionHeaderView.h"
-#import "STPWeakStrongMacros.h"
 #import "StripeError.h"
 #import "UIBarButtonItem+Stripe.h"
 #import "UINavigationBar+Stripe_Theme.h"
@@ -93,9 +92,8 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     _shippingAddress = nil;
     _hasUsedShippingAddress = NO;
     _apiClient = [[STPAPIClient alloc] initWithConfiguration:configuration];
-    _addressViewModel = [[STPAddressViewModel alloc] initWithRequiredBillingFields:configuration.requiredBillingAddressFields];
+    _addressViewModel = [[STPAddressViewModel alloc] initWithRequiredBillingFields:configuration.requiredBillingAddressFields availableCountries:configuration._availableCountries];
     _addressViewModel.delegate = self;
-
     self.title = STPLocalizedString(@"Add a Card", @"Title for Add a Card view");
 }
 
@@ -127,7 +125,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     [self updateInputAccessoryVisiblity];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-
+    [self.tableView reloadData];
     if (self.prefilledInformation.billingAddress != nil) {
         self.addressViewModel.address = self.prefilledInformation.billingAddress;
     }
@@ -200,12 +198,6 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     [self.cardIOProxy presentCardIOFromViewController:self];
 }
 
-- (void)cardIOProxy:(__unused STPCardIOProxy *)proxy didFinishWithCardParams:(STPPaymentMethodCardParams *)cardParams {
-    if (cardParams) {
-        self.paymentCell.paymentField.cardParams = cardParams;
-    }
-}
-
 - (void)endEditing {
     [self.view endEditing:NO];
 }
@@ -242,8 +234,10 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
         [self.tableView endEditing:YES];
         UIBarButtonItem *loadingItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         [self.stp_navigationItemProxy setRightBarButtonItem:loadingItem animated:YES];
+        self.cardHeaderView.buttonHidden = YES;
     } else {
         [self.stp_navigationItemProxy setRightBarButtonItem:self.doneItem animated:YES];
+        self.cardHeaderView.buttonHidden = NO;
     }
     NSArray *cells = self.addressViewModel.addressCells;
     for (UITableViewCell *cell in [cells arrayByAddingObject:self.paymentCell]) {
@@ -296,15 +290,13 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     [self.apiClient createPaymentMethodWithParams:paymentMethodParams completion:^(STPPaymentMethod * _Nullable paymentMethod, NSError * _Nullable createPaymentMethodError) {
         if (createPaymentMethodError) {
             [self handleError:createPaymentMethodError];
-        }
-        else {
+        } else {
             if ([self.delegate respondsToSelector:@selector(addCardViewController:didCreatePaymentMethod:completion:)]) {
                 [self.delegate addCardViewController:self didCreatePaymentMethod:paymentMethod completion:^(NSError * _Nullable attachToCustomerError) {
                     stpDispatchToMainThreadIfNecessary(^{
                         if (attachToCustomerError) {
                             [self handleError:attachToCustomerError];
-                        }
-                        else {
+                        } else {
                             self.loading = NO;
                         }
                     });
@@ -376,8 +368,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     if (isAmex) {
         newImage = [STPImageLibrary largeCardAmexCVCImage];
         animationTransition = UIViewAnimationOptionTransitionCrossDissolve;
-    }
-    else {
+    } else {
         newImage = [STPImageLibrary largeCardBackImage];
         animationTransition = UIViewAnimationOptionTransitionFlipFromRight;
     }
@@ -405,25 +396,27 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
 #pragma mark - STPAddressViewModelDelegate
 
 - (void)addressViewModel:(__unused STPAddressViewModel *)addressViewModel addedCellAtIndex:(NSUInteger)index {
-    NSInteger rowsInSection = [self.tableView numberOfRowsInSection:STPPaymentCardBillingAddressSection];
-    if (rowsInSection != NSNotFound && rowsInSection < [self tableView:self.tableView numberOfRowsInSection:STPPaymentCardBillingAddressSection]) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:STPPaymentCardBillingAddressSection];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:STPPaymentCardBillingAddressSection];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self updateInputAccessoryVisiblity];
 }
 
 - (void)addressViewModel:(__unused STPAddressViewModel *)addressViewModel removedCellAtIndex:(NSUInteger)index {
-    NSInteger rowsInSection = [self.tableView numberOfRowsInSection:STPPaymentCardBillingAddressSection];
-    if (rowsInSection != NSNotFound && index < (NSUInteger)rowsInSection) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:STPPaymentCardBillingAddressSection];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:STPPaymentCardBillingAddressSection];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self updateInputAccessoryVisiblity];
 }
 
 - (void)addressViewModelDidChange:(__unused STPAddressViewModel *)addressViewModel {
     [self updateDoneButton];
+}
+
+- (void)addressViewModelWillUpdate:(__unused STPAddressViewModel *)addressViewModel {
+    [self.tableView beginUpdates];
+}
+
+- (void)addressViewModelDidUpdate:(__unused STPAddressViewModel *)addressViewModel {
+    [self.tableView endUpdates];
 }
 
 #pragma mark - UITableView
@@ -435,8 +428,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
 - (NSInteger)tableView:(__unused UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == STPPaymentCardNumberSection) {
         return 1;
-    }
-    else if (section == STPPaymentCardBillingAddressSection) {
+    } else if (section == STPPaymentCardBillingAddressSection) {
         return self.addressViewModel.addressCells.count;
     }
     return 0;
@@ -517,5 +509,14 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     }];
     [self.tableView endUpdates];
 }
+
+#pragma mark - STPCardIOProxyDelegate
+
+- (void)cardIOProxy:(__unused STPCardIOProxy *)proxy didFinishWithCardParams:(STPPaymentMethodCardParams *)cardParams {
+    if (cardParams) {
+        self.paymentCell.paymentField.cardParams = cardParams;
+    }
+}
+
 
 @end

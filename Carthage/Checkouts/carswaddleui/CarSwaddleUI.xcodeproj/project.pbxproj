@@ -30,10 +30,10 @@
 		995B9F212154B2CB0030A7CA /* NibStoryboardInstantiating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F1F2154B2CA0030A7CA /* NibStoryboardInstantiating.swift */; };
 		995B9F222154B2CB0030A7CA /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B9F202154B2CB0030A7CA /* ReuseIdentifying.swift */; };
 		99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CA121E8546E003C9D70 /* NavigationDelegateViewController.swift */; };
-		9970121B2154B14200D547C5 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 997012112154B14200D547C5 /* CarSwaddleUI.framework */; };
-		997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */; };
 		997012222154B14200D547C5 /* CarSwaddleUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 997012142154B14200D547C5 /* CarSwaddleUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99A2CDAC218D9D6B003ED903 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */; };
+		99A87F4C2323A45D00FF1563 /* TableButtonPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */; };
+		99A87F4E2323A75900FF1563 /* PagingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */; };
 		99BC8D282245F47A00B732E7 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D262245F47A00B732E7 /* ActionButton.swift */; };
 		99BC8D292245F47A00B732E7 /* ContentInsetAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */; };
 		99BC8D2B2245F49C00B732E7 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */; };
@@ -65,16 +65,6 @@
 		99F696AC220FEB2B0021A719 /* DeletingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F696AB220FEB2B0021A719 /* DeletingTextField.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9970121C2154B14200D547C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 997012082154B14200D547C5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 997012102154B14200D547C5;
-			remoteInfo = CarSwaddleUI;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		9905FF63231266BB00DFBCB9 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		9905FF652312677700DFBCB9 /* TableButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonViewController.swift; sourceTree = "<group>"; };
@@ -102,10 +92,9 @@
 		997012112154B14200D547C5 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CarSwaddleUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		997012142154B14200D547C5 /* CarSwaddleUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarSwaddleUI.h; sourceTree = "<group>"; };
 		997012152154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9970121A2154B14200D547C5 /* CarSwaddleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarSwaddleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSwaddleUITests.swift; sourceTree = "<group>"; };
-		997012212154B14200D547C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A2CDAB218D9D6B003ED903 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonPagingViewController.swift; sourceTree = "<group>"; };
+		99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTableViewController.swift; sourceTree = "<group>"; };
 		99BC8D262245F47A00B732E7 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		99BC8D272245F47A00B732E7 /* ContentInsetAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInsetAdjuster.swift; sourceTree = "<group>"; };
 		99BC8D2A2245F49C00B732E7 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
@@ -143,14 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				99F69686220BD2600021A719 /* Lottie.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		997012172154B14200D547C5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9970121B2154B14200D547C5 /* CarSwaddleUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				997012132154B14200D547C5 /* CarSwaddleUI */,
-				9970121E2154B14200D547C5 /* CarSwaddleUITests */,
 				997012122154B14200D547C5 /* Products */,
 				99F69684220BD2600021A719 /* Frameworks */,
 			);
@@ -220,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				997012112154B14200D547C5 /* CarSwaddleUI.framework */,
-				9970121A2154B14200D547C5 /* CarSwaddleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,15 +219,6 @@
 				99DC26012246E498009E0A15 /* Resources */,
 			);
 			path = CarSwaddleUI;
-			sourceTree = "<group>";
-		};
-		9970121E2154B14200D547C5 /* CarSwaddleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9970121F2154B14200D547C5 /* CarSwaddleUITests.swift */,
-				997012212154B14200D547C5 /* Info.plist */,
-			);
-			path = CarSwaddleUITests;
 			sourceTree = "<group>";
 		};
 		99DC26012246E498009E0A15 /* Resources */ = {
@@ -301,7 +271,9 @@
 				9905FF6723130CDC00DFBCB9 /* TableViewSchemaViewController.swift */,
 				9905FF6D2313188900DFBCB9 /* TableViewSchemaButtonViewController.swift */,
 				9905FF63231266BB00DFBCB9 /* TableViewController.swift */,
+				99A87F4D2323A75900FF1563 /* PagingTableViewController.swift */,
 				9905FF652312677700DFBCB9 /* TableButtonViewController.swift */,
+				99A87F4B2323A45D00FF1563 /* TableButtonPagingViewController.swift */,
 				9905FF6F2313694E00DFBCB9 /* UITableViewExtension.swift */,
 			);
 			path = "Generic UI";
@@ -374,24 +346,6 @@
 			productReference = 997012112154B14200D547C5 /* CarSwaddleUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		997012192154B14200D547C5 /* CarSwaddleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 997012282154B14200D547C5 /* Build configuration list for PBXNativeTarget "CarSwaddleUITests" */;
-			buildPhases = (
-				997012162154B14200D547C5 /* Sources */,
-				997012172154B14200D547C5 /* Frameworks */,
-				997012182154B14200D547C5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9970121D2154B14200D547C5 /* PBXTargetDependency */,
-			);
-			name = CarSwaddleUITests;
-			productName = CarSwaddleUITests;
-			productReference = 9970121A2154B14200D547C5 /* CarSwaddleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -403,9 +357,6 @@
 				ORGANIZATIONNAME = CarSwaddle;
 				TargetAttributes = {
 					997012102154B14200D547C5 = {
-						CreatedOnToolsVersion = 10.0;
-					};
-					997012192154B14200D547C5 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -423,7 +374,6 @@
 			projectRoot = "";
 			targets = (
 				997012102154B14200D547C5 /* CarSwaddleUI */,
-				997012192154B14200D547C5 /* CarSwaddleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -441,13 +391,6 @@
 				992BFDC8220567AF006B64CC /* TweakSelectViewController.storyboard in Resources */,
 				99F696A8220F3DE10021A719 /* OneTimeCodeViewController.storyboard in Resources */,
 				99E66D1021DDF33400C6E3E1 /* CustomAlertController.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		997012182154B14200D547C5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,11 +434,13 @@
 				9912CD8F216C6F3A0006FDDF /* HorizontalSlideTransition.swift in Sources */,
 				9905FF702313694F00DFBCB9 /* UITableViewExtension.swift in Sources */,
 				99E66CB321DDDFD100C6E3E1 /* ArrayExtension.swift in Sources */,
+				99A87F4E2323A75900FF1563 /* PagingTableViewController.swift in Sources */,
 				99E66CAF21DDDDB700C6E3E1 /* UIFontExtension.swift in Sources */,
 				9905FF662312677700DFBCB9 /* TableButtonViewController.swift in Sources */,
 				99675CA221E8546E003C9D70 /* NavigationDelegateViewController.swift in Sources */,
 				992BFDCC220567AF006B64CC /* TweakViewController.swift in Sources */,
 				9905FF6823130CDC00DFBCB9 /* TableViewSchemaViewController.swift in Sources */,
+				99A87F4C2323A45D00FF1563 /* TableButtonPagingViewController.swift in Sources */,
 				992BFDC5220567AF006B64CC /* TweakStringValueCell.swift in Sources */,
 				99F69689220BD38E0021A719 /* LottieAnimation.swift in Sources */,
 				99E66CC021DDE4B100C6E3E1 /* TranslucentAnimatedTransition.swift in Sources */,
@@ -505,23 +450,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		997012162154B14200D547C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				997012202154B14200D547C5 /* CarSwaddleUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9970121D2154B14200D547C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 997012102154B14200D547C5 /* CarSwaddleUI */;
-			targetProxy = 9970121C2154B14200D547C5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		997012232154B14200D547C5 /* Debug */ = {
@@ -710,46 +639,6 @@
 			};
 			name = Release;
 		};
-		997012292154B14200D547C5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
-				INFOPLIST_FILE = CarSwaddleUITests/Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		9970122A2154B14200D547C5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MG7WLQ6J4A;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
-				INFOPLIST_FILE = CarSwaddleUITests/Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -767,15 +656,6 @@
 			buildConfigurations = (
 				997012262154B14200D547C5 /* Debug */,
 				997012272154B14200D547C5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		997012282154B14200D547C5 /* Build configuration list for PBXNativeTarget "CarSwaddleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				997012292154B14200D547C5 /* Debug */,
-				9970122A2154B14200D547C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

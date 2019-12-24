@@ -15,7 +15,7 @@ public enum FetchedResultsControllerUpdateType {
     case individual
 }
 
-open class FetchedResultsTableViewController<T: NSFetchRequestResult>: TableViewController, NSFetchedResultsControllerDelegate {
+open class FetchedResultsTableViewController<T: NSFetchRequestResult>: PagingTableViewController, NSFetchedResultsControllerDelegate {
     
     open var updateType: FetchedResultsControllerUpdateType = .individual
     
@@ -61,7 +61,6 @@ open class FetchedResultsTableViewController<T: NSFetchRequestResult>: TableView
         extendedLayoutIncludesOpaqueBars = true
         tableView.contentInsetAdjustmentBehavior = .always
         tableView.refreshControl = refreshControl
-        tableView.tableFooterView = UIView()
     }
     
     // MARK: Convenience

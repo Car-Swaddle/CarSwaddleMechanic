@@ -22,7 +22,7 @@ public var currentUserID: String {
 
 private var _currentUserID: String = ""
 
-private let userEmail = "kyle@carswaddle.com"
+private let userEmail = "mechanic@carswaddle.com"
 private let password = "password"
 
 class CarSwaddleLoginTestCase: XCTestCase {
@@ -68,23 +68,42 @@ class CarSwaddleLoginTestCase: XCTestCase {
 
 
 
+//#if targetEnvironment(simulator)
+//private let domain = "127.0.0.1"
+////private let domain = "192.168.1.184"
+//#else
+//private let domain = "Kyles-MacBook-Pro.local"
+//#endif
+
+
+
 #if targetEnvironment(simulator)
-private let domain = "127.0.0.1"
-//private let domain = "192.168.1.184"
+private let localDomain = "127.0.0.1"
+private let marksLocalDomain = "127.0.0.1"
 #else
-private let domain = "Kyles-MacBook-Pro.local"
+private let localDomain = "Kyles-MacBook-Pro.local"
+private let marksLocalDomain = "msg-macbook.local"
 #endif
 
+//private let productionDomain = "api.carswaddle.com"
+private let stagingDomain = "api.staging.carswaddle.com"
 
-
-//private let domain = "127.0.0.1"
+private let useLocalDomain = true
 
 public let serviceRequest: Request = {
-    let request = Request(domain: domain)
-    request.port = 3000
-    request.timeout = 15
-    request.defaultScheme = .http
-    return request
+    if useLocalDomain {
+        let request = Request(domain: localDomain)
+        request.port = 3000
+        request.timeout = 15
+        request.defaultScheme = .http
+        return request
+    } else {
+        let request = Request(domain: stagingDomain)
+        //        request.port = 3000
+        request.timeout = 15
+        request.defaultScheme = .https
+        return request
+    }
 }()
 
 private let authentication = AuthController()

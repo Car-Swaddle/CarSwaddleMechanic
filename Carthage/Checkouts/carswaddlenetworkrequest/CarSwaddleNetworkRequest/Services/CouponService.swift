@@ -10,14 +10,8 @@ import Foundation
 
 
 extension NetworkRequest.Request.Endpoint {
-    /*
-     /api/authorities/request?authority=readAuthorities
-     /api/authorities/reject
-     /api/authorities/approve
-     /api/authorities
-     /api/authorityRequests?pending=false
-     */
     private static let couponsAPI = "/api/coupons"
+    fileprivate static let sharableCoupons = Request.Endpoint(rawValue: "/api/coupons/shareable")
     fileprivate static let coupons = Request.Endpoint(rawValue: Request.Endpoint.couponsAPI)
     fileprivate static func coupons(with couponID: String) -> NetworkRequest.Request.Endpoint {
         return Request.Endpoint(rawValue: Request.Endpoint.couponsAPI + "/" + couponID)
@@ -41,12 +35,21 @@ final public class CouponService: Service {
         
         guard let urlRequest = serviceRequest.get(with: .coupons, queryItems: queryItems) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+            completion(data?.json, error)
+        }
+    }
+    
+    @discardableResult
+    public func getSharableCoupons(limit: Int? = nil, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
+        var queryItems: [URLQueryItem] = []
+        if let limit = limit {
+            let limitQueryItem = URLQueryItem(name: "limit", value: String(limit))
+            queryItems.append(limitQueryItem)
+        }
+        
+        guard let urlRequest = serviceRequest.get(with: .sharableCoupons, queryItems: queryItems) else { return nil }
+        return sendWithAuthentication(urlRequest: urlRequest) { data, error in
+            completion(data?.json, error)
         }
     }
     
@@ -54,12 +57,7 @@ final public class CouponService: Service {
     public func deleteCoupon(couponID: String, completion: @escaping JSONCompletion) -> URLSessionDataTask? {
         guard let urlRequest = serviceRequest.get(with: .coupons(with: couponID)) else { return nil }
         return sendWithAuthentication(urlRequest: urlRequest) { data, error in
-            guard let data = data,
-                let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONObject else {
-                    completion(nil, error)
-                    return
-            }
-            completion(json, error)
+            completion(data?.json, error)
         }
     }
     

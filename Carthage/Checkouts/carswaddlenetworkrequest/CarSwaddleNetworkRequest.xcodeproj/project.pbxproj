@@ -399,14 +399,16 @@
 				TargetAttributes = {
 					992C53BC2150C59B0076949C = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1100;
 					};
 					992C53C52150C59B0076949C = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1100;
 						TestTargetID = 99D5DA0C21F6F87F00E6A511;
 					};
 					99D5DA0C21F6F87F00E6A511 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -711,7 +713,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -745,7 +747,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -771,7 +773,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHostApp.app/TestHostApp";
 			};
@@ -798,7 +800,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CS.CarSwaddleNetworkRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHostApp.app/TestHostApp";
 			};
@@ -819,7 +821,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.TestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -839,7 +841,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS.TestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

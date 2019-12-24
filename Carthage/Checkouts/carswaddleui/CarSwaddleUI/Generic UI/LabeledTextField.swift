@@ -35,6 +35,7 @@ public final class LabeledTextField: UIView {
     lazy public var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .clear
         return textField
     }()
     
@@ -66,6 +67,13 @@ public final class LabeledTextField: UIView {
     @IBInspectable dynamic public var textFieldBackgroundColor: UIColor = UIColor(white255: 244) {
         didSet {
             textFieldContainerView.backgroundColor = textFieldBackgroundColor
+            textField.backgroundColor = textFieldBackgroundColor
+        }
+    }
+    
+    @IBInspectable dynamic public var textFieldTextColor: UIColor = .black {
+        didSet {
+            textField.textColor = textFieldTextColor
         }
     }
     
@@ -181,7 +189,7 @@ public final class LabeledTextField: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(LabeledTextField.textDidChange), name: UITextField.textDidChangeNotification, object: textField)
         
         textFieldContainerView.layer.cornerRadius = 8
-        textFieldContainerView.backgroundColor = UIColor(white255: 244)
+        textFieldContainerView.backgroundColor = .clear
         textFieldContainerView.layer.masksToBounds = true
         
         underlineView.backgroundColor = underlineColor
@@ -191,6 +199,7 @@ public final class LabeledTextField: UIView {
         label.textColor = labelTextColor
         updateLabelFontForCurrentText()
         textField.font = textFieldFont
+        textField.textColor = textFieldTextColor
         
         updateLabelFontForCurrentText()
     }

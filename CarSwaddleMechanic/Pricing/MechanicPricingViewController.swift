@@ -136,7 +136,7 @@ class MechanicPricingViewController: TableViewSchemaButtonViewController {
         }
     }
     
-    override func cell(for tableViewRow: TableViewControllerRow) -> UITableViewCell {
+    override func cell(for tableViewRow: TableViewControllerRow, indexPath: IndexPath) -> UITableViewCell {
         guard let row = tableViewRow as? Row else { fatalError("Should have row here") }
         let mechanicCell: LabeledTextFieldCell = tableView.dequeueCell()
         mechanicCell.labeledTextField.textField.keyboardType = .decimalPad

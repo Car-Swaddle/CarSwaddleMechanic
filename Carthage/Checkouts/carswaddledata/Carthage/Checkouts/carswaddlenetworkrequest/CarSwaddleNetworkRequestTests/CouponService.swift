@@ -28,6 +28,18 @@ class CouponTests: CarSwaddleLoginTestCase {
         waitForExpectations(timeout: 40, handler: nil)
     }
     
+    func testGetSharableCoupons() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        
+        couponService.getSharableCoupons(limit: 30) { json, error in
+            XCTAssert(json != nil && error == nil, "Should get values")
+            json?.printObject()
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 40, handler: nil)
+    }
+    
     func testDeleteCoupon() {
         let exp = expectation(description: "\(#function)\(#line)")
         

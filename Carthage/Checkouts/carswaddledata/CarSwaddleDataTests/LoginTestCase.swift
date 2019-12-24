@@ -75,7 +75,7 @@ private let marksLocalDomain = "msg-macbook.local"
 //private let productionDomain = "api.carswaddle.com"
 private let stagingDomain = "api.staging.carswaddle.com"
 
-private var useLocalDomain = false
+private var useLocalDomain = true
 
 public let serviceRequest: Request = {
     if useLocalDomain {
