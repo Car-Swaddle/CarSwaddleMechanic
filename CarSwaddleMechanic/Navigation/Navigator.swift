@@ -119,8 +119,61 @@ final public class Navigator: NSObject {
         defaultLabeledTextFieldLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
         defaultLabeledTextFieldLabelFont = UIFont.appFont(type: .regular, size: 15)
         
+//        let labeledTextFieldAppearance = LabeledTextField.appearance()
+//        labeledTextFieldAppearance.underlineColor = .secondary
+        
+        ContentInsetAdjuster.defaultBottomOffset = tabBarController.tabBar.bounds.height
+        
         let labeledTextFieldAppearance = LabeledTextField.appearance()
-        labeledTextFieldAppearance.underlineColor = .secondary
+        labeledTextFieldAppearance.underlineColor = .action
+        labeledTextFieldAppearance.textFieldBackgroundColor = .secondaryBackground
+        labeledTextFieldAppearance.labelTextColor = .detailTextColor
+        labeledTextFieldAppearance.textFieldTextColor = .text
+        
+        CircleButton.appearance().buttonColor = .text
+        
+        if #available(iOS 13, *) {
+            let style = UINavigationBarAppearance()
+            style.buttonAppearance.normal.titleTextAttributes = barButtonTextAttributes
+            style.doneButtonAppearance.normal.titleTextAttributes = [.font: UIFont.action as Any, .foregroundColor: UIColor.action as Any]
+            
+            style.titleTextAttributes = [.font: UIFont.extralarge]
+            
+            let navigationBar = UINavigationBar.appearance()
+            navigationBar.standardAppearance = style
+            navigationBar.scrollEdgeAppearance = style
+            navigationBar.compactAppearance = style
+        }
+        
+        let alertAppearance = CustomAlertContentView.appearance()
+        alertAppearance.backgroundColor = .background
+        alertAppearance.titleTextColor = .text
+        alertAppearance.messageTextColor = .secondaryText
+        
+        alertAppearance.normalButtonColor = .secondaryBackground
+        alertAppearance.normalButtonTitleColor = .text
+        alertAppearance.buttonBorderColor = .clear
+        
+        alertAppearance.preferredButtonColor = .action
+        alertAppearance.preferredButtonTitleColor = .inverseText
+        
+        //        alertAppearance.textFieldUnderlineColor = .purple
+        
+        alertAppearance.buttonTitleFont = .title
+        
+        alertAppearance.titleFont = .extralarge
+        alertAppearance.buttonTitleFont = .title
+        alertAppearance.messageFont = .title
+        
+        alertAppearance.textFieldFont = .title
+        
+        alertAppearance.switchLabelFont = .detail
+        alertAppearance.switchLabelTextColor = .text
+        
+        alertAppearance.textFieldBorderColor = .secondaryContent
+        
+        CustomAlertController.alertBackgroundColor = .background
+        CustomAlertController.transparentBackgroundColor = UIColor.neutral3.withAlphaComponent(0.5)
     }
     
     #if DEBUG
@@ -147,6 +200,7 @@ final public class Navigator: NSObject {
         
         let navigationDelegateViewController = NavigationDelegateViewController(navigationDelegatingViewControllers: viewControllers)
         navigationDelegateViewController.externalDelegate = self
+        navigationDelegateViewController.modalPresentationStyle = .fullScreen
         presentAtRoot(viewController: navigationDelegateViewController)
     }
     

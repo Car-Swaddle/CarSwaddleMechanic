@@ -148,6 +148,9 @@
 		99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */; };
 		99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */; };
 		99E66DC121E46B5F00C6E3E1 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */; };
+		99EC0A6F23B7EC8E00624DDF /* SemanticColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EC0A6E23B7EC8D00624DDF /* SemanticColor.swift */; };
+		99EC0A7123B7ED2E00624DDF /* SemanticFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EC0A7023B7ED2E00624DDF /* SemanticFont.swift */; };
+		99EC0A7223B7ED9F00624DDF /* SemanticColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99EC0A6D23B7EBC700624DDF /* SemanticColors.xcassets */; };
 		99F0277121844436005FEFC7 /* ServiceRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */; };
 		99F0277321844443005FEFC7 /* ServiceRegionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */; };
 		99F02792218663BB005FEFC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F02791218663BB005FEFC7 /* Location.swift */; };
@@ -410,6 +413,9 @@
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		99E66DC021E46B5F00C6E3E1 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		99EC0A6D23B7EBC700624DDF /* SemanticColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SemanticColors.xcassets; sourceTree = "<group>"; };
+		99EC0A6E23B7EC8D00624DDF /* SemanticColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticColor.swift; sourceTree = "<group>"; };
+		99EC0A7023B7ED2E00624DDF /* SemanticFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticFont.swift; sourceTree = "<group>"; };
 		99F0277021844436005FEFC7 /* ServiceRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRegionViewController.swift; sourceTree = "<group>"; };
 		99F0277221844443005FEFC7 /* ServiceRegionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceRegionViewController.storyboard; sourceTree = "<group>"; };
 		99F02791218663BB005FEFC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -785,7 +791,10 @@
 				99F02791218663BB005FEFC7 /* Location.swift */,
 				99D5DA6121FE87F200E6A511 /* Logout.swift */,
 				99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */,
+				99EC0A6D23B7EBC700624DDF /* SemanticColors.xcassets */,
 				99BC8D2E2245F7C200B732E7 /* Font.swift */,
+				99EC0A6E23B7EC8D00624DDF /* SemanticColor.swift */,
+				99EC0A7023B7ED2E00624DDF /* SemanticFont.swift */,
 				999F4A66223637C900C4A1D6 /* ActionButton.swift */,
 				999F4A6A22378E2600C4A1D6 /* ContentInsetAdjuster.swift */,
 				993C3E452233A75800BC5937 /* LabeledTextField.swift */,
@@ -1175,6 +1184,7 @@
 				99F7BC6D22169E5F00DD5401 /* MontserratAlternates-Italic.otf in Resources */,
 				99F7BC7022169E5F00DD5401 /* Montserrat-Regular.otf in Resources */,
 				99BC8CF92240A56100B732E7 /* in-progress.json in Resources */,
+				99EC0A7223B7ED9F00624DDF /* SemanticColors.xcassets in Resources */,
 				992A5FB122239DE300182FD6 /* NotesTableViewCell.xib in Resources */,
 				9992764C21673BCC0032D7F7 /* LaunchScreen.storyboard in Resources */,
 				99F7BC5A22169E5F00DD5401 /* MontserratAlternates-Medium.otf in Resources */,
@@ -1359,6 +1369,7 @@
 				99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
+				99EC0A7123B7ED2E00624DDF /* SemanticFont.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
 				9905FF59230E64ED00DFBCB9 /* MechanicPriceCell.swift in Sources */,
 				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
@@ -1388,6 +1399,7 @@
 				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
 				998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
+				99EC0A6F23B7EC8E00624DDF /* SemanticColor.swift in Sources */,
 				99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */,
 				99B3FA8D2202FEE900D9887F /* PersonalInformationStatusCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
@@ -1646,7 +1658,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1675,7 +1687,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

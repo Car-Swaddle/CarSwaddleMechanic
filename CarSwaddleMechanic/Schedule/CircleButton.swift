@@ -20,7 +20,7 @@ class CircleButton: UIButton {
 //        }
 //    }
     
-    @IBInspectable var buttonColor: UIColor = UIColor.gray4 {
+    @IBInspectable dynamic var buttonColor: UIColor = UIColor.gray4 {
         didSet {
             updateBorderColor()
             tintColor = buttonColor
