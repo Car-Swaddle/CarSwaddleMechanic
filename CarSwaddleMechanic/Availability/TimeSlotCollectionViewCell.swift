@@ -23,7 +23,7 @@ private var dateComponents: DateComponents = {
 
 private let calendar = Calendar.current
 
-final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
+final class TimeSlotCollectionViewCell: UICollectionViewCell, NibRegisterable {
     
     @IBOutlet private weak var pillView: UIView!
     @IBOutlet private weak var hourLabel: UILabel!
@@ -48,21 +48,21 @@ final class HourCollectionViewCell: UICollectionViewCell, NibRegisterable {
         pillView.layer.cornerRadius = pillView.frame.height/2
     }
     
-    func configure(with hour: Hour) {
-        dateComponents.hour = hour.value
+    func configure(with minute: Minute) {
+        dateComponents.minute = minute.value
         if let date = calendar.date(from: dateComponents) {
             hourLabel.text = hourDateFormatter.string(from: date).lowercased()
         }
-        pillView.backgroundColor = self.backgroundColor(for: hour)
-        hourLabel.textColor = self.textColor(for: hour)
+        pillView.backgroundColor = self.backgroundColor(for: minute)
+        hourLabel.textColor = self.textColor(for: minute)
     }
     
-    private func backgroundColor(for hour: Hour) -> UIColor {
-        return hour.isSelected ? .secondary : .white
+    private func backgroundColor(for minute: Minute) -> UIColor {
+        return minute.isSelected ? .secondary : .white
     }
     
-    private func textColor(for hour: Hour) -> UIColor {
-        return hour.isSelected ? .white : .black
+    private func textColor(for minute: Minute) -> UIColor {
+        return minute.isSelected ? .white : .black
     }
     
 }
