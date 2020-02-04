@@ -15,6 +15,18 @@ extension TimeInterval {
     static let day: TimeInterval = .hour*24
     static let week: TimeInterval = .day*7
     
+    public var days: TimeInterval {
+        return self.hours / 24
+    }
+    
+    public var minutes: TimeInterval {
+        return self / 60.0
+    }
+    
+    public var hours: TimeInterval {
+        return self.minutes / 60.0
+    }
+    
 }
 
 extension Date {
