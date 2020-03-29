@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DetailSwitchView" customModule="CarSwaddleMechanic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1XT-pR-3Ix">
+                    <rect key="frame" x="0.0" y="0.0" width="327" height="95"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZHQ-K1-Qev">
+                            <rect key="frame" x="0.0" y="25" width="270" height="45.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7C-lH-hhX">
+                                    <rect key="frame" x="0.0" y="0.0" width="270" height="20"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71L-O1-rjY">
+                                    <rect key="frame" x="0.0" y="28" width="270" height="17.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                    <color key="textColor" name="textColor3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="757" verticalHuggingPriority="750" horizontalCompressionResistancePriority="761" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vfv-N4-yJ6">
+                            <rect key="frame" x="278" y="32" width="51" height="31"/>
+                            <connections>
+                                <action selector="switchDidChange:" destination="iN0-l3-epB" eventType="valueChanged" id="pDu-Dx-194"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="1XT-pR-3Ix" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1C5-gO-5Lb"/>
+                <constraint firstAttribute="bottom" secondItem="1XT-pR-3Ix" secondAttribute="bottom" id="Ket-2n-Dux"/>
+                <constraint firstAttribute="trailing" secondItem="1XT-pR-3Ix" secondAttribute="trailing" id="PNL-aN-Rid"/>
+                <constraint firstItem="1XT-pR-3Ix" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fBi-br-VPM"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="detailLabel" destination="71L-O1-rjY" id="zRC-Nk-3cn"/>
+                <outlet property="titleLabel" destination="s7C-lH-hhX" id="WlL-Tr-DaU"/>
+                <outlet property="valueSwitch" destination="Vfv-N4-yJ6" id="Ssc-nG-SEd"/>
+            </connections>
+            <point key="canvasLocation" x="77.536231884057983" y="185.82589285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="textColor3">
+            <color white="0.68599998950958252" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

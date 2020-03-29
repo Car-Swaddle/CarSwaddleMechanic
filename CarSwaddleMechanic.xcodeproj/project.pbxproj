@@ -145,6 +145,10 @@
 		99A466D4243085E5008FF75E /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A466C82430849D008FF75E /* Lottie.framework */; };
 		99A466D524308A7C008FF75E /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F7BC7D22193CC400DD5401 /* FSCalendar.framework */; };
 		99A466D624308A81008FF75E /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D3AB621D755F0003DD717 /* Stripe.framework */; };
+		99A466D82430926F008FF75E /* DetailSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A466D72430926F008FF75E /* DetailSwitchView.swift */; };
+		99A466DA2430927E008FF75E /* DetailSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A466D92430927E008FF75E /* DetailSwitchView.xib */; };
+		99A466DD243097FC008FF75E /* ChargeForTravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */; };
+		99A466DE243097FC008FF75E /* ChargeForTravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */; };
 		99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */; };
 		99B3FA7C2202C97F00D9887F /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */; };
 		99B3FA7F2202CF3600D9887F /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA7D2202CF3600D9887F /* LogoutCell.swift */; };
@@ -539,6 +543,10 @@
 		99A466D124308552008FF75E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		99A466D224308561008FF75E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		99A466D32430856C008FF75E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		99A466D72430926F008FF75E /* DetailSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSwitchView.swift; sourceTree = "<group>"; };
+		99A466D92430927E008FF75E /* DetailSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSwitchView.xib; sourceTree = "<group>"; };
+		99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeForTravelCell.swift; sourceTree = "<group>"; };
+		99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeForTravelCell.xib; sourceTree = "<group>"; };
 		99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
 		99B3FA7D2202CF3600D9887F /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
@@ -1129,6 +1137,10 @@
 				997DBC5E2197B5160080F42C /* NameCell.xib */,
 				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
 				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
+				99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */,
+				99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */,
+				99A466D72430926F008FF75E /* DetailSwitchView.swift */,
+				99A466D92430927E008FF75E /* DetailSwitchView.xib */,
 				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
 				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
 				99B3FA7D2202CF3600D9887F /* LogoutCell.swift */,
@@ -1583,6 +1595,7 @@
 				99F7BC5622169E5F00DD5401 /* MontserratAlternates-LightItalic.otf in Resources */,
 				99F7BC5122169E5F00DD5401 /* Montserrat-Thin.otf in Resources */,
 				99F7BC6322169E5F00DD5401 /* MontserratAlternates-Light.otf in Resources */,
+				99A466DA2430927E008FF75E /* DetailSwitchView.xib in Resources */,
 				99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */,
 				99F69696220D46150021A719 /* ContactInformationViewController.storyboard in Resources */,
 				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
@@ -1628,6 +1641,7 @@
 				998984CD22967AD200E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */,
+				99A466DE243097FC008FF75E /* ChargeForTravelCell.xib in Resources */,
 				99B3FA802202CF3600D9887F /* LogoutCell.xib in Resources */,
 				990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
@@ -1739,6 +1753,7 @@
 				999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */,
 				99F6968C220BDAE60021A719 /* LottieValues.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
+				99A466DD243097FC008FF75E /* ChargeForTravelCell.swift in Sources */,
 				99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */,
 				992BFDD3220573BB006B64CC /* TransactionViewController.swift in Sources */,
 				99F69694220D460B0021A719 /* ContactInformationViewController.swift in Sources */,
@@ -1760,6 +1775,7 @@
 				99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */,
 				99B3FA8D2202FEE900D9887F /* PersonalInformationStatusCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
+				99A466D82430926F008FF75E /* DetailSwitchView.swift in Sources */,
 				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
 				990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,

@@ -16,6 +16,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private enum Row: CaseIterable {
         case mechanicActive
+        case chargeForTravel
         case serviceRegion
         case schedule
         case pricing
@@ -152,6 +153,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(PersonalInformationStatusCell.self)
         tableView.register(ContactInformationCell.self)
         tableView.register(TextCell.self)
+        tableView.register(ChargeForTravelCell.self)
         
         tableView.tableHeaderView = headerView
         
@@ -176,6 +178,7 @@ extension ProfileViewController: UITableViewDelegate {
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
         case .mechanicActive: break
+        case .chargeForTravel: break
         case .accountInformation:
             let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
@@ -251,6 +254,9 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()
+            return cell
+        case .chargeForTravel:
+            let cell: ChargeForTravelCell = tableView.dequeueCell()
             return cell
         case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
