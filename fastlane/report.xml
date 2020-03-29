@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: carthage update --platform iOS Cosmos stripe-ios FSCalendar FirebaseAnalyticsBinary" time="58.77934">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: carthage update --platform iOS --no-use-binaries lottie-ios" time="88.15853">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: carthage update --platform iOS --no-build carswaddleui carswaddledata" time="8.439196">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
