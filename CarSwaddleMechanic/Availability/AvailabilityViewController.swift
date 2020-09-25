@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CoreData
 import CarSwaddleData
 

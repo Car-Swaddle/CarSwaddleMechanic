@@ -8,9 +8,10 @@
 
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import CoreData
 import CoreLocation
+import UIKit
 
 
 let distanceNumberFormatter: NumberFormatter = {

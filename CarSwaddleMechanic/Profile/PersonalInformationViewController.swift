@@ -8,8 +8,9 @@
 
 import CarSwaddleUI
 import CoreData
-import Store
+import CarSwaddleStore
 import CarSwaddleData
+import UIKit
 
 final class PersonalInformationViewController: UIViewController, StoryboardInstantiating {
 

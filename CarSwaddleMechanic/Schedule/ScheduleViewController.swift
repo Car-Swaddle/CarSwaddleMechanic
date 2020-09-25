@@ -11,8 +11,7 @@ import CarSwaddleUI
 import CarSwaddleData
 import CoreData
 import CarSwaddleNetworkRequest
-import Store
-import FSCalendar
+import CarSwaddleStore
 
 let monthYearDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()

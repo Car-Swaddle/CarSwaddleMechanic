@@ -7,8 +7,9 @@
 //
 
 import CarSwaddleUI
-import Store
-
+import CarSwaddleStore
+import UIKit
+import Foundation
 
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()

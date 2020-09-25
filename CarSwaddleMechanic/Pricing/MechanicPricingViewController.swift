@@ -10,7 +10,7 @@ import UIKit
 import CarSwaddleUI
 import CarSwaddleData
 import CoreData
-import Store
+import CarSwaddleStore
 import CarSwaddleNetworkRequest
 
 private let cancelButtonTitle = NSLocalizedString("Cancel", comment: "Cancel button")
@@ -60,7 +60,7 @@ final class CurrentMechanicPricingViewController: MechanicPricingViewController 
                     defer {
                         completion()
                     }
-                    guard let objectID = objectID, let pricing = store.mainContext.object(with: objectID) as? Store.OilChangePricing else { return }
+                    guard let objectID = objectID, let pricing = store.mainContext.object(with: objectID) as? CarSwaddleStore.OilChangePricing else { return }
                     self?.oilChangePricing = pricing
                 }
             }
@@ -72,7 +72,7 @@ final class CurrentMechanicPricingViewController: MechanicPricingViewController 
 
 class MechanicPricingViewController: TableViewSchemaButtonViewController {
     
-    convenience public init(oilChangePricing: Store.OilChangePricing?) {
+    convenience public init(oilChangePricing: CarSwaddleStore.OilChangePricing?) {
         self.init()
         self.oilChangePricing = oilChangePricing
     }
@@ -86,7 +86,7 @@ class MechanicPricingViewController: TableViewSchemaButtonViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open var oilChangePricing: Store.OilChangePricing? {
+    open var oilChangePricing: CarSwaddleStore.OilChangePricing? {
         didSet {
             if let oilChangePricing = oilChangePricing {
                 updatePricing = OilChangePricingUpdate(oilChangePricing: oilChangePricing)
@@ -229,7 +229,7 @@ class MechanicPricingViewController: TableViewSchemaButtonViewController {
 
 extension OilChangePricingUpdate {
     
-    init(oilChangePricing: Store.OilChangePricing) {
+    init(oilChangePricing: CarSwaddleStore.OilChangePricing) {
         self.init(conventional: Int(oilChangePricing.conventional), blend: Int(oilChangePricing.blend), synthetic: Int(oilChangePricing.synthetic), highMileage: Int(oilChangePricing.highMileage))
     }
     

@@ -1,3 +1,0 @@
-git "git@bitbucket.org:kkendall33/authentication.git" "e7f9bd9c9f0e42471942fcd01567db9bd384db25"
-git "git@bitbucket.org:kkendall33/networkrequest.git" "4000709bb3b9349a8ecb89719299359800bea590"
-github "kishikawakatsumi/KeychainAccess" "v3.2.0"

@@ -9,7 +9,8 @@
 import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleNetworkRequest
-import Store
+import CarSwaddleStore
+import UIKit
 
 private let codeNumberOfDigits = 5
 

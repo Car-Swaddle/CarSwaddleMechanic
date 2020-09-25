@@ -7,7 +7,7 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import MessageUI
 
 protocol AutoServiceDetailsHeaderViewDelegate: AnyObject {

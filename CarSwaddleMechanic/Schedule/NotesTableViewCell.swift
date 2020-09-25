@@ -7,8 +7,9 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CarSwaddleData
+import UIKit
 
 
 final class NotesTableViewCell: UITableViewCell, NibRegisterable {

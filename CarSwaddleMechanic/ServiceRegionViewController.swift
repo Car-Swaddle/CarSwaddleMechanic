@@ -10,8 +10,9 @@ import UIKit
 import MapKit
 import CarSwaddleUI
 import CoreLocation
-import Store
+import CarSwaddleStore
 import CarSwaddleData
+import UIKit
 
 private let locationDistance: CLLocationDistance = 30 * .mile
 private let defaultRegionRadius: Double = 12.0

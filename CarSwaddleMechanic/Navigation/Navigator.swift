@@ -9,7 +9,7 @@
 import UIKit
 import Authentication
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 
 extension Navigator {

@@ -7,9 +7,10 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 import CarSwaddleNetworkRequest
+import UIKit
 
 final class TransactionReceiptCell: UITableViewCell, NibRegisterable {
 

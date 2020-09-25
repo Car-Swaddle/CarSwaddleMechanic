@@ -8,7 +8,8 @@
 
 import CarSwaddleUI
 import Lottie
-import Store
+import CarSwaddleStore
+import UIKit
 
 final class AutoServicesHeaderView: UIView, NibInstantiating {
     

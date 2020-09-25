@@ -8,8 +8,9 @@
 
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import CoreData
+import UIKit
 
 private let requestLimit = 30
 

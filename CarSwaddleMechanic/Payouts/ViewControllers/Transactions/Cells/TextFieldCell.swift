@@ -7,6 +7,7 @@
 //
 
 import CarSwaddleUI
+import UIKit
 
 protocol TextFieldCellDelegate: AnyObject {
     func didChangeText(text: String?, cell: TextFieldCell)

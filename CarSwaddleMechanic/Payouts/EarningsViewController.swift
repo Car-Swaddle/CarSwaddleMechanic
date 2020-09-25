@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 
 final class EarningsViewController: UIViewController, StoryboardInstantiating {
     

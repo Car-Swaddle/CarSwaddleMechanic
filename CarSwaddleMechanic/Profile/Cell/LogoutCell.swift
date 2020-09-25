@@ -7,6 +7,7 @@
 //
 
 import CarSwaddleUI
+import UIKit
 
 final class LogoutCell: UITableViewCell, NibRegisterable {
 

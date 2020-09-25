@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Store
+import CarSwaddleStore
 import CarSwaddleUI
 import Cosmos
 import CarSwaddleData

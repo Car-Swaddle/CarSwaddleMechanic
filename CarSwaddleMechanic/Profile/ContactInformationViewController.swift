@@ -7,7 +7,8 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
+import UIKit
 
 final class ContactInformationViewController: UIViewController, StoryboardInstantiating {
 

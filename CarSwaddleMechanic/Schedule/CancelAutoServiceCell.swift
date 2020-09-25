@@ -7,6 +7,7 @@
 //
 
 import CarSwaddleUI
+import UIKit
 
 final class CancelAutoServiceCell: UITableViewCell, NibRegisterable {
 

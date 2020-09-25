@@ -1,0 +1,106 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Authentication",
+        "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
+        "state": {
+          "branch": "master",
+          "revision": "12cdc44a572272cac00c490189ccffc07e08508c",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleData",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
+        "state": {
+          "branch": "master",
+          "revision": "431146775164d3d463301471a71ccb3479f51385",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleNetworkRequest",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest",
+        "state": {
+          "branch": "master",
+          "revision": "bb725021af2f061de0e4731a9f57f3e1cd756a36",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleStore",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
+        "state": {
+          "branch": "master",
+          "revision": "d4e1a670f6b829476b73513408d37d6bf4683d8d",
+          "version": null
+        }
+      },
+      {
+        "package": "CarSwaddleUI",
+        "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
+        "state": {
+          "branch": "master",
+          "revision": "1269ea6ebd34e0dbd0a68cf5ddda464ed3c3e0bc",
+          "version": null
+        }
+      },
+      {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "Disk",
+        "repositoryURL": "https://github.com/saoudrizwan/Disk.git",
+        "state": {
+          "branch": null,
+          "revision": "b0cb4fdf23e51849cc2460bdc6de795c3bcca99d",
+          "version": "0.6.4"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
+          "version": "4.2.1"
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
+          "version": "3.1.8"
+        }
+      },
+      {
+        "package": "NetworkRequest",
+        "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest",
+        "state": {
+          "branch": "master",
+          "revision": "00c42808c910b82c61709aad948af933c6434626",
+          "version": null
+        }
+      },
+      {
+        "package": "Stripe",
+        "repositoryURL": "https://github.com/stripe/stripe-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
+          "version": "20.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

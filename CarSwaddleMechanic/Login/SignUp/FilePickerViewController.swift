@@ -10,7 +10,7 @@ import UIKit
 import CarSwaddleUI
 import MobileCoreServices
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import CarSwaddleNetworkRequest
 
 final class FilePickerViewController: UIViewController, StoryboardInstantiating {

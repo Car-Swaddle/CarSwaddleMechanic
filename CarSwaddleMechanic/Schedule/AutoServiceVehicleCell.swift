@@ -7,7 +7,8 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
+import UIKit
 
 final class AutoServiceVehicleCell: UITableViewCell, NibRegisterable {
     

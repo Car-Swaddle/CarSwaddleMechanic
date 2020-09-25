@@ -10,7 +10,7 @@
 import UIKit
 import CarSwaddleUI
 import Lottie
-import Store
+import CarSwaddleStore
 
 final class ContactInformationCell: UITableViewCell, NibRegisterable {
 

@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import Stripe
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 
 final class BankAccountViewController: UIViewController, StoryboardInstantiating {

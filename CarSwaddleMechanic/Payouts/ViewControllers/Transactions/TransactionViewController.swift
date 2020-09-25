@@ -7,10 +7,11 @@
 //
 
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 import CoreData
 import CoreLocation
+import UIKit
 
 let costFormatter: NumberFormatter = {
     let numberFormatter = NumberFormatter()

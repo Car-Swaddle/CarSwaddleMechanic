@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 extension String {
     public static let blankText = NSLocalizedString("--", comment: "Represent an empty state")

@@ -8,8 +8,9 @@
 
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import Lottie
+import UIKit
 
 final class PersonalInformationStatusCell: UITableViewCell, NibRegisterable {
     

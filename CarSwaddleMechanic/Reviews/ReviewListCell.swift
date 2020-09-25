@@ -8,8 +8,9 @@
 
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import Cosmos
+import UIKit
 
 
 let monthDayDateFormatter: DateFormatter = {

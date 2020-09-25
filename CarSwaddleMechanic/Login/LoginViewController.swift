@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 
 private let unableToLoginErrorTitle = NSLocalizedString("Car Swaddle wasn't able to log you in", comment: "Error message")
 private let unableToLoginErrorMessage = NSLocalizedString("Your email or password was incorrect. Please verify your email and password and try again.", comment: "Error message")

@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import Stripe
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 
 // TODO: I don't think this is actually an option. Check if this counts as `external_account`.

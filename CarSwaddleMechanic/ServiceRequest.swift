@@ -12,7 +12,7 @@ import CarSwaddleUI
 
 import UIKit
 import Authentication
-import Store
+import CarSwaddleStore
 import CarSwaddleData
 
 

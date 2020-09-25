@@ -1,4 +1,0 @@
-framework module NetworkRequest {
-  header "NetworkRequest-Swift.h"
-  requires objc
-}

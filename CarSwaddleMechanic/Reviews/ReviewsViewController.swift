@@ -9,8 +9,9 @@
 import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleNetworkRequest
-import Store
+import CarSwaddleStore
 import CoreData
+import UIKit
 
 private let reviewPageLimit = 30
 

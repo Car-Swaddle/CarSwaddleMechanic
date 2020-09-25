@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -82,6 +82,27 @@
 		998984CF22967D5D00E4B25A /* EnterNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984CE22967D5D00E4B25A /* EnterNewPasswordViewController.swift */; };
 		998984D122967D6F00E4B25A /* EnterNewPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998984D022967D6F00E4B25A /* EnterNewPasswordViewController.storyboard */; };
 		998984D3229684B500E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D2229684B500E4B25A /* UserActivityHandler.swift */; };
+		998A6230251D08F300EB066C /* CarSwaddleUI in Frameworks */ = {isa = PBXBuildFile; productRef = 998A622F251D08F300EB066C /* CarSwaddleUI */; };
+		998A6237251D099200EB066C /* CarSwaddleData in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6236251D099200EB066C /* CarSwaddleData */; };
+		998A623E251D0A5100EB066C /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 998A623D251D0A5100EB066C /* Stripe */; };
+		998A623F251D0A5100EB066C /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 998A623D251D0A5100EB066C /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		998A6246251D0D0900EB066C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6245251D0D0900EB066C /* Cosmos */; };
+		998A626E251D0DA100EB066C /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A624C251D0D9A00EB066C /* FSCalendarCollectionViewLayout.m */; };
+		998A626F251D0DA100EB066C /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A624E251D0D9A00EB066C /* FSCalendarStickyHeader.m */; };
+		998A6270251D0DA100EB066C /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6250251D0D9B00EB066C /* FSCalendarExtensions.m */; };
+		998A6271251D0DA100EB066C /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6252251D0D9B00EB066C /* FSCalendarCollectionView.m */; };
+		998A6272251D0DA100EB066C /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6253251D0D9C00EB066C /* FSCalendarWeekdayView.m */; };
+		998A6273251D0DA100EB066C /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6254251D0D9C00EB066C /* FSCalendarAppearance.m */; };
+		998A6274251D0DA100EB066C /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6255251D0D9C00EB066C /* FSCalendarConstants.m */; };
+		998A6275251D0DA100EB066C /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6259251D0D9C00EB066C /* FSCalendar.m */; };
+		998A6276251D0DA100EB066C /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A625A251D0D9D00EB066C /* FSCalendarHeaderView.m */; };
+		998A6277251D0DA100EB066C /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A625B251D0D9D00EB066C /* FSCalendarDelegationFactory.m */; };
+		998A6278251D0DA100EB066C /* FSCalendarSeparatorDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6260251D0D9E00EB066C /* FSCalendarSeparatorDecorationView.m */; };
+		998A6279251D0DA100EB066C /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6261251D0D9E00EB066C /* FSCalendarCell.m */; };
+		998A627A251D0DA100EB066C /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6262251D0D9E00EB066C /* FSCalendarTransitionCoordinator.m */; };
+		998A627B251D0DA100EB066C /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A6264251D0D9F00EB066C /* FSCalendarCalculator.m */; };
+		998A627C251D0DA100EB066C /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A626D251D0DA100EB066C /* FSCalendarDelegationProxy.m */; };
+		998A6282251D0DBF00EB066C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6281251D0DBF00EB066C /* Lottie */; };
 		998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3AB921D75A8B003DD717 /* Stripe.swift */; };
 		998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */; };
 		998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */; };
@@ -127,14 +148,6 @@
 		99BC8CFD2241612F00B732E7 /* GripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BC8CFC2241612F00B732E7 /* GripView.xib */; };
 		99BC8CFF2241708400B732E7 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8CFE2241708400B732E7 /* CircleButton.swift */; };
 		99BC8D2F2245F7C200B732E7 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC8D2E2245F7C200B732E7 /* Font.swift */; };
-		99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03E121F42CDC00546C58 /* Cosmos.framework */; };
-		99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D03DD21F42BBB00546C58 /* Authentication.framework */; };
-		99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */; };
-		99D5D9FF21F648E400E6A511 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D3AB621D755F0003DD717 /* Stripe.framework */; };
-		99D5DA0021F648E400E6A511 /* CarSwaddleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FF1E4621787755006A4315 /* CarSwaddleData.framework */; };
-		99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */; };
-		99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9913759D2171BE1800F15BEC /* Store.framework */; };
-		99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */; };
 		99D5DA3D21F8371D00E6A511 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA3C21F8371D00E6A511 /* ReviewsViewController.swift */; };
 		99D5DA3F21F8373C00E6A511 /* ReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D5DA3E21F8373C00E6A511 /* ReviewsViewController.storyboard */; };
 		99D5DA4221F8431B00E6A511 /* ReviewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D5DA4021F8431B00E6A511 /* ReviewListCell.swift */; };
@@ -168,7 +181,6 @@
 		99F69682220AAE6D0021A719 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F69680220AAE6D0021A719 /* TextFieldCell.xib */; };
 		99F6968C220BDAE60021A719 /* LottieValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6968B220BDAE60021A719 /* LottieValues.swift */; };
 		99F6968E220BDBB30021A719 /* circle-pulse.json in Resources */ = {isa = PBXBuildFile; fileRef = 99F6968D220BDBB30021A719 /* circle-pulse.json */; };
-		99F69690220BDD720021A719 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F6968F220BDD720021A719 /* Lottie.framework */; };
 		99F69694220D460B0021A719 /* ContactInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F69693220D460B0021A719 /* ContactInformationViewController.swift */; };
 		99F69696220D46150021A719 /* ContactInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F69695220D46150021A719 /* ContactInformationViewController.storyboard */; };
 		99F69698220D46210021A719 /* TaxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F69697220D46210021A719 /* TaxesViewController.swift */; };
@@ -222,8 +234,6 @@
 		99F7BC762216A74300DD5401 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC752216A74300DD5401 /* UIColorExtension.swift */; };
 		99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC772216A78400DD5401 /* Colors.xcassets */; };
 		99F7BC7A22191F0000DD5401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC7922191F0000DD5401 /* Assets.xcassets */; };
-		99F7BC7C22193AAC00DD5401 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */; };
-		99F7BC7E22193CC400DD5401 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F7BC7D22193CC400DD5401 /* FSCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +272,17 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		998A6240251D0A5100EB066C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				998A623F251D0A5100EB066C /* Stripe in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -276,7 +297,6 @@
 		990ADFC8222A7B1400D1C109 /* NotificationModifier.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationModifier.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		990ADFCA222A7B1400D1C109 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		990ADFCC222A7B1400D1C109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		9912CD88216C6DEF0006FDDF /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9912CD8A216C6E590006FDDF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9912CD8C216C6EB50006FDDF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -294,8 +314,6 @@
 		9912CDED216DCB660006FDDF /* HourCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourCollectionViewCell.xib; sourceTree = "<group>"; };
 		9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleViewController.storyboard; sourceTree = "<group>"; };
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
-		9913759D2171BE1800F15BEC /* Store.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Store.framework; path = Carthage/Build/iOS/Store.framework; sourceTree = "<group>"; };
-		991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleNetworkRequest.framework; path = Carthage/Build/iOS/CarSwaddleNetworkRequest.framework; sourceTree = "<group>"; };
 		9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesViewController.swift; sourceTree = "<group>"; };
 		9923BFC7221A8F7100F83003 /* AutoServicesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AutoServicesViewController.storyboard; sourceTree = "<group>"; };
 		992A5FAE22239DE300182FD6 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
@@ -345,9 +363,38 @@
 		998984CE22967D5D00E4B25A /* EnterNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordViewController.swift; sourceTree = "<group>"; };
 		998984D022967D6F00E4B25A /* EnterNewPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnterNewPasswordViewController.storyboard; sourceTree = "<group>"; };
 		998984D2229684B500E4B25A /* UserActivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityHandler.swift; sourceTree = "<group>"; };
-		998D03DD21F42BBB00546C58 /* Authentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Authentication.framework; path = Carthage/Build/iOS/Authentication.framework; sourceTree = "<group>"; };
-		998D03E121F42CDC00546C58 /* Cosmos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cosmos.framework; sourceTree = "<group>"; };
-		998D3AB621D755F0003DD717 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		998A624B251D0D9900EB066C /* CarSwaddleMechanic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarSwaddleMechanic-Bridging-Header.h"; sourceTree = "<group>"; };
+		998A624C251D0D9A00EB066C /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		998A624D251D0D9A00EB066C /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		998A624E251D0D9A00EB066C /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		998A624F251D0D9B00EB066C /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		998A6250251D0D9B00EB066C /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		998A6251251D0D9B00EB066C /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		998A6252251D0D9B00EB066C /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		998A6253251D0D9C00EB066C /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		998A6254251D0D9C00EB066C /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		998A6255251D0D9C00EB066C /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		998A6259251D0D9C00EB066C /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		998A625A251D0D9D00EB066C /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		998A625B251D0D9D00EB066C /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		998A625C251D0D9D00EB066C /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		998A625D251D0D9D00EB066C /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		998A625E251D0D9E00EB066C /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		998A625F251D0D9E00EB066C /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		998A6260251D0D9E00EB066C /* FSCalendarSeparatorDecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarSeparatorDecorationView.m; sourceTree = "<group>"; };
+		998A6261251D0D9E00EB066C /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		998A6262251D0D9E00EB066C /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		998A6263251D0D9F00EB066C /* FSCalendarSeparatorDecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarSeparatorDecorationView.h; sourceTree = "<group>"; };
+		998A6264251D0D9F00EB066C /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		998A6265251D0D9F00EB066C /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		998A6266251D0D9F00EB066C /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		998A6267251D0DA000EB066C /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		998A6268251D0DA000EB066C /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		998A6269251D0DA000EB066C /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		998A626A251D0DA000EB066C /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		998A626B251D0DA100EB066C /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		998A626C251D0DA100EB066C /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		998A626D251D0DA100EB066C /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
 		998D3AB921D75A8B003DD717 /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
 		998D3ABB21D958C7003DD717 /* UIRefreshControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshControlExtension.swift; sourceTree = "<group>"; };
 		998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataCell.swift; sourceTree = "<group>"; };
@@ -408,7 +455,6 @@
 		99DCD328221BBA510040DABA /* AutoServicesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesHeaderView.swift; sourceTree = "<group>"; };
 		99DCD32A221BBA5A0040DABA /* AutoServicesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoServicesHeaderView.xib; sourceTree = "<group>"; };
 		99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
-		99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleUI.framework; path = Carthage/Build/iOS/CarSwaddleUI.framework; sourceTree = "<group>"; };
 		99E66DB721E469A000C6E3E1 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		99E66DBB21E469FB00C6E3E1 /* MechanicImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MechanicImageView.swift; sourceTree = "<group>"; };
 		99E66DBE21E46B5600C6E3E1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -433,7 +479,6 @@
 		99F69680220AAE6D0021A719 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		99F6968B220BDAE60021A719 /* LottieValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieValues.swift; sourceTree = "<group>"; };
 		99F6968D220BDBB30021A719 /* circle-pulse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "circle-pulse.json"; sourceTree = "<group>"; };
-		99F6968F220BDD720021A719 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		99F69693220D460B0021A719 /* ContactInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformationViewController.swift; sourceTree = "<group>"; };
 		99F69695220D46150021A719 /* ContactInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContactInformationViewController.storyboard; sourceTree = "<group>"; };
 		99F69697220D46210021A719 /* TaxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxesViewController.swift; sourceTree = "<group>"; };
@@ -487,9 +532,6 @@
 		99F7BC752216A74300DD5401 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		99F7BC772216A78400DD5401 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		99F7BC7922191F0000DD5401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTAppleCalendar.framework; path = Carthage/Build/iOS/JTAppleCalendar.framework; sourceTree = "<group>"; };
-		99F7BC7D22193CC400DD5401 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = Carthage/Build/iOS/FSCalendar.framework; sourceTree = "<group>"; };
-		99FF1E4621787755006A4315 /* CarSwaddleData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarSwaddleData.framework; path = Carthage/Build/iOS/CarSwaddleData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,17 +546,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99D5D9FC21F648E400E6A511 /* Cosmos.framework in Frameworks */,
-				99D5D9FD21F648E400E6A511 /* Authentication.framework in Frameworks */,
-				99D5D9FE21F648E400E6A511 /* CarSwaddleUI.framework in Frameworks */,
-				99D5D9FF21F648E400E6A511 /* Stripe.framework in Frameworks */,
-				99D5DA0021F648E400E6A511 /* CarSwaddleData.framework in Frameworks */,
-				99D5DA0121F648E400E6A511 /* CarSwaddleNetworkRequest.framework in Frameworks */,
-				99F69690220BDD720021A719 /* Lottie.framework in Frameworks */,
-				99D5DA0221F648E400E6A511 /* Store.framework in Frameworks */,
-				99F7BC7C22193AAC00DD5401 /* JTAppleCalendar.framework in Frameworks */,
-				99F7BC7E22193CC400DD5401 /* FSCalendar.framework in Frameworks */,
-				99D5DA0321F648E400E6A511 /* KeychainAccess.framework in Frameworks */,
+				998A6246251D0D0900EB066C /* Cosmos in Frameworks */,
+				998A6230251D08F300EB066C /* CarSwaddleUI in Frameworks */,
+				998A6282251D0DBF00EB066C /* Lottie in Frameworks */,
+				998A623E251D0A5100EB066C /* Stripe in Frameworks */,
+				998A6237251D099200EB066C /* CarSwaddleData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,17 +593,6 @@
 		9912CD75216C6AF00006FDDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99F7BC7D22193CC400DD5401 /* FSCalendar.framework */,
-				99F7BC7B22193AAB00DD5401 /* JTAppleCalendar.framework */,
-				99F6968F220BDD720021A719 /* Lottie.framework */,
-				998D03E121F42CDC00546C58 /* Cosmos.framework */,
-				998D03DD21F42BBB00546C58 /* Authentication.framework */,
-				99E66D2021DE082F00C6E3E1 /* CarSwaddleUI.framework */,
-				998D3AB621D755F0003DD717 /* Stripe.framework */,
-				99FF1E4621787755006A4315 /* CarSwaddleData.framework */,
-				991375A72171D80600F15BEC /* CarSwaddleNetworkRequest.framework */,
-				9913759D2171BE1800F15BEC /* Store.framework */,
-				9912CD80216C6AFA0006FDDF /* KeychainAccess.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -738,6 +763,45 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		998A624A251D0D8000EB066C /* JTCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				998A6265251D0D9F00EB066C /* FSCalendar.h */,
+				998A6259251D0D9C00EB066C /* FSCalendar.m */,
+				998A6268251D0DA000EB066C /* FSCalendarAppearance.h */,
+				998A6254251D0D9C00EB066C /* FSCalendarAppearance.m */,
+				998A625D251D0D9D00EB066C /* FSCalendarCalculator.h */,
+				998A6264251D0D9F00EB066C /* FSCalendarCalculator.m */,
+				998A625C251D0D9D00EB066C /* FSCalendarCell.h */,
+				998A6261251D0D9E00EB066C /* FSCalendarCell.m */,
+				998A626B251D0DA100EB066C /* FSCalendarCollectionView.h */,
+				998A6252251D0D9B00EB066C /* FSCalendarCollectionView.m */,
+				998A624D251D0D9A00EB066C /* FSCalendarCollectionViewLayout.h */,
+				998A624C251D0D9A00EB066C /* FSCalendarCollectionViewLayout.m */,
+				998A626A251D0DA000EB066C /* FSCalendarConstants.h */,
+				998A6255251D0D9C00EB066C /* FSCalendarConstants.m */,
+				998A625F251D0D9E00EB066C /* FSCalendarDelegationFactory.h */,
+				998A625B251D0D9D00EB066C /* FSCalendarDelegationFactory.m */,
+				998A625E251D0D9E00EB066C /* FSCalendarDelegationProxy.h */,
+				998A626D251D0DA100EB066C /* FSCalendarDelegationProxy.m */,
+				998A624F251D0D9B00EB066C /* FSCalendarDynamicHeader.h */,
+				998A626C251D0DA100EB066C /* FSCalendarExtensions.h */,
+				998A6250251D0D9B00EB066C /* FSCalendarExtensions.m */,
+				998A6267251D0DA000EB066C /* FSCalendarHeaderView.h */,
+				998A625A251D0D9D00EB066C /* FSCalendarHeaderView.m */,
+				998A6263251D0D9F00EB066C /* FSCalendarSeparatorDecorationView.h */,
+				998A6260251D0D9E00EB066C /* FSCalendarSeparatorDecorationView.m */,
+				998A6251251D0D9B00EB066C /* FSCalendarStickyHeader.h */,
+				998A624E251D0D9A00EB066C /* FSCalendarStickyHeader.m */,
+				998A6269251D0DA000EB066C /* FSCalendarTransitionCoordinator.h */,
+				998A6262251D0D9E00EB066C /* FSCalendarTransitionCoordinator.m */,
+				998A6266251D0D9F00EB066C /* FSCalendarWeekdayView.h */,
+				998A6253251D0D9C00EB066C /* FSCalendarWeekdayView.m */,
+				998A624B251D0D9900EB066C /* CarSwaddleMechanic-Bridging-Header.h */,
+			);
+			path = JTCalendar;
+			sourceTree = "<group>";
+		};
 		998D3AC521DA961A003DD717 /* Payouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +845,7 @@
 				9912CD9F216C7D720006FDDF /* Support */,
 				9912CDA1216C7E350006FDDF /* Launch */,
 				99F0279321866B49005FEFC7 /* Extensions */,
+				998A624A251D0D8000EB066C /* JTCalendar */,
 				9992771D216748910032D7F7 /* CarSwaddleMechanicStore.swift */,
 				9953AE0821BC6F5C002D099A /* PushNotificationController.swift */,
 				997BFC0822FD470C0023F445 /* RemoteNotification.swift */,
@@ -1033,8 +1098,8 @@
 				9992763721673BCA0032D7F7 /* Sources */,
 				9992763821673BCA0032D7F7 /* Frameworks */,
 				9992763921673BCA0032D7F7 /* Resources */,
-				991B4065216B4E5500D7644D /* ShellScript */,
 				990ADFD3222A7B1400D1C109 /* Embed App Extensions */,
+				998A6240251D0A5100EB066C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1042,6 +1107,13 @@
 				990ADFCE222A7B1400D1C109 /* PBXTargetDependency */,
 			);
 			name = CarSwaddleMechanic;
+			packageProductDependencies = (
+				998A622F251D08F300EB066C /* CarSwaddleUI */,
+				998A6236251D099200EB066C /* CarSwaddleData */,
+				998A623D251D0A5100EB066C /* Stripe */,
+				998A6245251D0D0900EB066C /* Cosmos */,
+				998A6281251D0DBF00EB066C /* Lottie */,
+			);
 			productName = CarSwaddleMechanic;
 			productReference = 9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */;
 			productType = "com.apple.product-type.application";
@@ -1094,9 +1166,11 @@
 				TargetAttributes = {
 					990ADFC7222A7B1400D1C109 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1200;
 					};
 					9992763A21673BCA0032D7F7 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1200;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1137,6 +1211,13 @@
 				Base,
 			);
 			mainGroup = 9992763221673BCA0032D7F7;
+			packageReferences = (
+				998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
+				998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
+				998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */,
+				998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */,
+				998A6280251D0DBF00EB066C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 9992763C21673BCA0032D7F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1286,52 +1367,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		991B4065216B4E5500D7644D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/NetworkRequest.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Authentication.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleNetworkRequest.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Store.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleUI.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CarSwaddleData.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FSCalendar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NetworkRequest.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Authentication.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleNetworkRequest.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Store.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleUI.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CarSwaddleData.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Lottie.framework",
-				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JTAppleCalendar.framework",
-				"$(DERIVED_FILE_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FSCalendar.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		990ADFC4222A7B1400D1C109 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1347,15 +1382,19 @@
 			files = (
 				99B3FA7F2202CF3600D9887F /* LogoutCell.swift in Sources */,
 				99E66DBC21E469FB00C6E3E1 /* MechanicImageView.swift in Sources */,
+				998A6275251D0DA100EB066C /* FSCalendar.m in Sources */,
+				998A627C251D0DA100EB066C /* FSCalendarDelegationProxy.m in Sources */,
 				99A1E3F62221177000470A5F /* CancelAutoServiceCell.swift in Sources */,
 				99675CBB21EB249D003C9D70 /* PayoutsViewController.swift in Sources */,
 				990ADFBF2228E38400D1C109 /* TransactionsSectionHeaderView.swift in Sources */,
 				99F69698220D46210021A719 /* TaxesViewController.swift in Sources */,
 				99F7BC7422169EFF00DD5401 /* UIFontExtension.swift in Sources */,
+				998A6271251D0DA100EB066C /* FSCalendarCollectionView.m in Sources */,
 				99A1E3ED221E7A1900470A5F /* AutoServiceDetailsHeaderView.swift in Sources */,
 				99675CAE21E9F175003C9D70 /* EarningsHeaderView.swift in Sources */,
 				99675CB321E9F2E6003C9D70 /* BalanceAmountView.swift in Sources */,
 				99F696C122112B5B0021A719 /* TaxYearCell.swift in Sources */,
+				998A6273251D0DA100EB066C /* FSCalendarAppearance.m in Sources */,
 				997DBC5F2197B5160080F42C /* NameCell.swift in Sources */,
 				99A3A87C21D56F1E009A1AD9 /* IdentificationInfoViewController.swift in Sources */,
 				99F0279E2188321D005FEFC7 /* ServiceRequest.swift in Sources */,
@@ -1365,20 +1404,26 @@
 				9953AE0C21BCE753002D099A /* MechanicActiveCell.swift in Sources */,
 				998984D3229684B500E4B25A /* UserActivityHandler.swift in Sources */,
 				9912CD8D216C6EB50006FDDF /* LoginViewController.swift in Sources */,
+				998A6277251D0DA100EB066C /* FSCalendarDelegationFactory.m in Sources */,
 				993C3E462233A75800BC5937 /* LabeledTextField.swift in Sources */,
+				998A6274251D0DA100EB066C /* FSCalendarConstants.m in Sources */,
 				99DCD329221BBA510040DABA /* AutoServicesHeaderView.swift in Sources */,
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
 				99EC0A7123B7ED2E00624DDF /* SemanticFont.swift in Sources */,
 				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
 				9905FF59230E64ED00DFBCB9 /* MechanicPriceCell.swift in Sources */,
+				998A6270251D0DA100EB066C /* FSCalendarExtensions.m in Sources */,
 				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
+				998A626F251D0DA100EB066C /* FSCalendarStickyHeader.m in Sources */,
 				99A3A88521D57BE8009A1AD9 /* NameViewController.swift in Sources */,
+				998A6272251D0DA100EB066C /* FSCalendarWeekdayView.m in Sources */,
 				99A3A88121D57ACB009A1AD9 /* BankAccountViewController.swift in Sources */,
 				9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */,
 				9905FF56230E644300DFBCB9 /* MechanicPricingViewController.swift in Sources */,
 				992A5FB022239DE300182FD6 /* NotesTableViewCell.swift in Sources */,
 				99D5DA5221FE689400E6A511 /* TweakValues.swift in Sources */,
+				998A6279251D0DA100EB066C /* FSCalendarCell.m in Sources */,
 				999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */,
 				99F6968C220BDAE60021A719 /* LottieValues.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
@@ -1390,6 +1435,7 @@
 				99A1E3F2221E845200470A5F /* AutoServiceVehicleCell.swift in Sources */,
 				99B3FA9322049C7600D9887F /* EmailVerificationCell.swift in Sources */,
 				9953AE0921BC6F5C002D099A /* PushNotificationController.swift in Sources */,
+				998A626E251D0DA100EB066C /* FSCalendarCollectionViewLayout.m in Sources */,
 				997714D921D0E85100E54F5B /* DateOfBirthCell.swift in Sources */,
 				9953AE2121C0FD64002D099A /* AutoServiceStatusCell.swift in Sources */,
 				997BFC0922FD470C0023F445 /* RemoteNotification.swift in Sources */,
@@ -1401,6 +1447,7 @@
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
 				99EC0A6F23B7EC8E00624DDF /* SemanticColor.swift in Sources */,
 				99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */,
+				998A627B251D0DA100EB066C /* FSCalendarCalculator.m in Sources */,
 				99B3FA8D2202FEE900D9887F /* PersonalInformationStatusCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
 				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
@@ -1426,12 +1473,15 @@
 				99BC8CFF2241708400B732E7 /* CircleButton.swift in Sources */,
 				99BC8CFB2241612700B732E7 /* GripView.swift in Sources */,
 				998984CF22967D5D00E4B25A /* EnterNewPasswordViewController.swift in Sources */,
+				998A6278251D0DA100EB066C /* FSCalendarSeparatorDecorationView.m in Sources */,
 				999F4A67223637C900C4A1D6 /* ActionButton.swift in Sources */,
 				99F696AE220FF2BB0021A719 /* PhoneNumberViewController.swift in Sources */,
+				998A6276251D0DA100EB066C /* FSCalendarHeaderView.m in Sources */,
 				99F696B2220FF5F30021A719 /* VerifyPhoneNumberViewController.swift in Sources */,
 				9992763F21673BCA0032D7F7 /* AppDelegate.swift in Sources */,
 				998D3ABC21D958C7003DD717 /* UIRefreshControlExtension.swift in Sources */,
 				9912CD91216C703D0006FDDF /* ProfileViewController.swift in Sources */,
+				998A627A251D0DA100EB066C /* FSCalendarTransitionCoordinator.m in Sources */,
 				99BC8D2F2245F7C200B732E7 /* Font.swift in Sources */,
 				998D3ABA21D75A8B003DD717 /* Stripe.swift in Sources */,
 				993C3E4322324CAD00BC5937 /* LabelValueCell.swift in Sources */,
@@ -1508,7 +1558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic.NotificationModifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1529,7 +1579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic.NotificationModifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1655,10 +1705,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1674,6 +1725,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddleMechanic/JTCalendar/CarSwaddleMechanic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1684,10 +1737,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1703,6 +1757,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.carswaddle.carswaddlemechanic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CarSwaddleMechanic/JTCalendar/CarSwaddleMechanic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1839,6 +1894,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
+		998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+		998A6280251D0DBF00EB066C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		998A622F251D08F300EB066C /* CarSwaddleUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */;
+			productName = CarSwaddleUI;
+		};
+		998A6236251D099200EB066C /* CarSwaddleData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */;
+			productName = CarSwaddleData;
+		};
+		998A623D251D0A5100EB066C /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
+		998A6245251D0D0900EB066C /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		998A6281251D0DBF00EB066C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 998A6280251D0DBF00EB066C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9992763321673BCA0032D7F7 /* Project object */;
 }

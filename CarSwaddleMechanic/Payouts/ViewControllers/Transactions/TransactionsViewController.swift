@@ -9,7 +9,7 @@
 import UIKit
 import CarSwaddleUI
 import CarSwaddleData
-import Store
+import CarSwaddleStore
 import CoreData
 
 private let transactionRequestLimit = 40

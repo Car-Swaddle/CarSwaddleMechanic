@@ -8,6 +8,7 @@
 
 import CarSwaddleData
 import CarSwaddleUI
+import UIKit
 
 final class MechanicImageView: UIImageView {
     

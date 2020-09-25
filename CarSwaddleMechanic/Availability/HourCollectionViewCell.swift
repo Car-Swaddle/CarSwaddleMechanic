@@ -8,7 +8,7 @@
 
 import UIKit
 import CarSwaddleUI
-import Store
+import CarSwaddleStore
 
 private let hourDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()

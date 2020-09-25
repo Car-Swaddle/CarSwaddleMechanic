@@ -8,8 +8,9 @@
 
 import CarSwaddleUI
 import CarSwaddleNetworkRequest
-import Store
+import CarSwaddleStore
 import Lottie
+import UIKit
 
 final class EmailVerificationCell: UITableViewCell, NibRegisterable {
     

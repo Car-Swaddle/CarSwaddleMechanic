@@ -6,8 +6,8 @@
 //  Copyright © 2019 CarSwaddle. All rights reserved.
 //
 
-import Store
-
+import CarSwaddleStore
+import UIKit
 
 extension AutoService.Status {
     
