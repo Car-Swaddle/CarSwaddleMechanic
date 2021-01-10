@@ -135,6 +135,11 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         actionController.addAction(logoutAction)
         actionController.addCancelAction()
         
+        let lCell = tableView.firstVisibleCell(of: LogoutCell.self)
+        actionController.popoverPresentationController?.sourceView = lCell
+//        let rectOfCellInSuperview = tableView.convert(lCell?.frame ?? .zero, to: view)
+        actionController.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: lCell?.frame.width ?? 0, height: lCell?.frame.height ?? 0) // CGRect(x: 0, y: 0, width: 40, height: 100)
+        
         present(actionController, animated: true, completion: nil)
     }
     
