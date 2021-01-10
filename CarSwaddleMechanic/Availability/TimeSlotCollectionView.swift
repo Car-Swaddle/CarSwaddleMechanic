@@ -10,13 +10,17 @@ import UIKit
 import CarSwaddleUI
 
 
-protocol HourCollectionViewDelegate: class {
-    func didSelectHour(hour: Hour, collectionView: HourCollectionView)
+protocol TimeSlotCollectionViewDelegate: class {
+    func didSelectMinute(minute: Minute, collectionView: TimeSlotCollectionView)
 }
 
-class Hour {
+class Minute {
     let value: Int
     var isSelected: Bool
+    
+    var secondOfDay: Int {
+        return value * 60
+    }
     
     init(value: Int, isSelected: Bool) {
         self.value = value
@@ -38,11 +42,11 @@ open class DynamicCollectionView: UICollectionView {
     }
 }
 
-final class HourCollectionView: DynamicCollectionView {
+final class TimeSlotCollectionView: DynamicCollectionView {
     
-    weak var hourDelegate: HourCollectionViewDelegate?
+    weak var timeSlotDelegate: TimeSlotCollectionViewDelegate?
     
-    var hours: [Hour] = [] {
+    var minutes: [Minute] = [] {
         didSet {
             reloadData()
         }
@@ -54,30 +58,30 @@ final class HourCollectionView: DynamicCollectionView {
         dataSource = self
         allowsMultipleSelection = true
         (collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        register(HourCollectionViewCell.self)
+        register(TimeSlotCollectionViewCell.self)
         clipsToBounds = false
     }
     
 }
 
-extension HourCollectionView: UICollectionViewDataSource {
+extension TimeSlotCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return hours.count
+        return minutes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: HourCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-        cell.configure(with: hours[indexPath.row])
+        let cell: TimeSlotCollectionViewCell = collectionView.dequeueCell(for: indexPath)
+        cell.configure(with: minutes[indexPath.row])
         return cell
     }
     
 }
 
-extension HourCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension TimeSlotCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let hour = hours[indexPath.row]
-        hourDelegate?.didSelectHour(hour: hour, collectionView: self)
+        let minue = minutes[indexPath.row]
+        timeSlotDelegate?.didSelectMinute(minute: minue, collectionView: self)
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

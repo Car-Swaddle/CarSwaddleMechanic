@@ -20,7 +20,7 @@ protocol DayCellDelegate: class {
 final class DayCell: UITableViewCell, NibRegisterable {
 
     @IBOutlet private weak var collectionViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var collectionView: HourCollectionView!
+    @IBOutlet private weak var collectionView: TimeSlotCollectionView!
     @IBOutlet private weak var button: UIButton!
     
     @IBOutlet private weak var weekDayView: UIView!
@@ -29,7 +29,7 @@ final class DayCell: UITableViewCell, NibRegisterable {
     weak var delegate: DayCellDelegate?
     
     private var weekday: Weekday?
-    private var timeSlots: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    private var timeSlots: [Int] = Array(stride(from: 0, to: 60*24, by: 15))
     private var timespans: [TemplateTimeSpan] = []
     
     override func awakeFromNib() {
@@ -43,22 +43,22 @@ final class DayCell: UITableViewCell, NibRegisterable {
     func configure(day: Weekday, timespans: [TemplateTimeSpan]) {
         self.weekday = day
         self.timespans = timespans
-        collectionView.hourDelegate = self
-        collectionView.hours = self.hours(from: timespans)
+        collectionView.timeSlotDelegate = self
+        collectionView.minutes = self.minutes(from: timespans)
         layoutIfNeeded()
         updateButtonCornerRadius()
         weekDayLabel.text = day.localizedString
         collectionViewHeightConstraint.constant = collectionView.contentSize.height
     }
         
-    private func hours(from timespans: [TemplateTimeSpan]) -> [Hour] {
-        var hours: [Hour] = []
+    private func minutes(from timespans: [TemplateTimeSpan]) -> [Minute] {
+        var hours: [Minute] = []
         for slot in timeSlots {
-            let isThere = timespans.contains { timespan -> Bool in
-                let hour = timespan.startTime / 3600
-                return hour == slot
+            let isTaken = timespans.contains { timespan -> Bool in
+                let minute = timespan.startTime / 60
+                return minute == slot
             }
-            let hour = Hour(value: slot, isSelected: isThere)
+            let hour = Minute(value: slot, isSelected: isTaken)
             hours.append(hour)
         }
         return hours
@@ -78,12 +78,12 @@ final class DayCell: UITableViewCell, NibRegisterable {
     
 }
 
-extension DayCell: HourCollectionViewDelegate {
+extension DayCell: TimeSlotCollectionViewDelegate {
     
-    func didSelectHour(hour: Hour, collectionView: HourCollectionView) {
+    func didSelectMinute(minute: Minute, collectionView: TimeSlotCollectionView) {
         guard let weekday = weekday, let mechanicID = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier else { return }
         
-        if let timespan = TemplateTimeSpan.fetch(from: hour, weekday: weekday, mechanicID: mechanicID) {
+        if let timespan = TemplateTimeSpan.fetch(from: minute, weekday: weekday, mechanicID: mechanicID) {
             timespans.removeAll { loopTimespan -> Bool in
                 return loopTimespan.identifier == timespan.identifier
             }
@@ -93,8 +93,8 @@ extension DayCell: HourCollectionViewDelegate {
         } else {
             let timespan = TemplateTimeSpan(context: store.mainContext)
             timespan.identifier = UUID().uuidString
-            timespan.duration = .hour
-            timespan.startTime = Int64(hour.value * 3600)
+            timespan.duration = 15.minutes
+            timespan.startTime = Int64(minute.secondOfDay)
             timespan.weekday = weekday
             if let mechanic = Mechanic.currentLoggedInMechanic(in: store.mainContext) {
                 timespan.mechanic = mechanic
@@ -103,7 +103,7 @@ extension DayCell: HourCollectionViewDelegate {
             store.mainContext.persist()
             delegate?.didAddTimeSpan(timespan, dayCell: self)
         }
-        collectionView.hours = self.hours(from: timespans)
+        collectionView.minutes = self.minutes(from: timespans)
     }
     
 }
@@ -112,8 +112,8 @@ extension DayCell: HourCollectionViewDelegate {
 
 extension TemplateTimeSpan {
     
-    static func fetch(from hour: Hour, weekday: Weekday, mechanicID: String) -> TemplateTimeSpan? {
-        let predicate = NSPredicate(format: "%K == %@ && weekday == %i && %K == %i", #keyPath(TemplateTimeSpan.mechanic.identifier), mechanicID, weekday.rawValue, #keyPath(TemplateTimeSpan.startTime), hour.value * 3600)
+    static func fetch(from minute: Minute, weekday: Weekday, mechanicID: String) -> TemplateTimeSpan? {
+        let predicate = NSPredicate(format: "%K == %@ && weekday == %i && %K == %i", #keyPath(TemplateTimeSpan.mechanic.identifier), mechanicID, weekday.rawValue, #keyPath(TemplateTimeSpan.startTime), minute.value * 60)
         let fetchRequest: NSFetchRequest<TemplateTimeSpan> = TemplateTimeSpan.fetchRequest()
         fetchRequest.predicate = predicate
         

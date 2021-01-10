@@ -16,6 +16,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
     
     private enum Row: CaseIterable {
         case mechanicActive
+        case chargeForTravel
         case serviceRegion
         case schedule
         case pricing
@@ -157,6 +158,7 @@ final class ProfileViewController: UIViewController, StoryboardInstantiating {
         tableView.register(PersonalInformationStatusCell.self)
         tableView.register(ContactInformationCell.self)
         tableView.register(TextCell.self)
+        tableView.register(ChargeForTravelCell.self)
         
         tableView.tableHeaderView = headerView
         
@@ -181,6 +183,7 @@ extension ProfileViewController: UITableViewDelegate {
             let serviceRegion = ServiceRegionViewController.viewControllerFromStoryboard()
             show(serviceRegion, sender: self)
         case .mechanicActive: break
+        case .chargeForTravel: break
         case .accountInformation:
             let viewController = PersonalInformationViewController.viewControllerFromStoryboard()
             show(viewController, sender: self)
@@ -256,6 +259,9 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .mechanicActive:
             let cell: MechanicActiveCell = tableView.dequeueCell()
+            return cell
+        case .chargeForTravel:
+            let cell: ChargeForTravelCell = tableView.dequeueCell()
             return cell
         case .schedule:
             let cell: ProfileDataCell = tableView.dequeueCell()
@@ -341,15 +347,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             picker.dismiss(animated: true, completion: nil)
         }
         guard let image = info[.originalImage] as? UIImage else { return }
-        let orientedImage = UIImage.imageWithCorrectedOrientation(image)
-        guard let imageData = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.jpegData(compressionQuality: 1.0) else {
+        guard let url = saveImage(image: image) else {
             return
-        }
-        guard let url = try? profileImageStore.storeFile(data: imageData, fileName: Mechanic.currentLoggedInMechanic(in: store.mainContext)?.identifier ?? "profileImage") else {
-            return
-        }
-        if let mechanic = user?.mechanic {
-            headerView.configure(with: mechanic)
         }
         store.privateContext { [weak self] privateContext in
             self?.mechanicNetwork.setProfileImage(fileURL: url, in: privateContext) { mechanicObjectID, error in
@@ -359,6 +358,22 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                     self?.headerView.configure(with: mechanic)
                 }
             }
+        }
+    }
+    
+    func saveImage(image: UIImage) -> URL? {
+        let orientedImage = UIImage.imageWithCorrectedOrientation(image)
+        guard let data = orientedImage.resized(toWidth: 300 * UIScreen.main.scale)?.jpegData(compressionQuality: 1.0) else { return nil }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return nil
+        }
+        guard let path = directory.appendingPathComponent("tempFile.png") else { return nil }
+        do {
+            try data.write(to: path)
+            return path
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
     

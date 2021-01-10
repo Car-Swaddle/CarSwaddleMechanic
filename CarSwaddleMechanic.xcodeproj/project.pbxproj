@@ -28,9 +28,9 @@
 		9912CDE4216DC6B20006FDDF /* AvailabilityViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9912CDE3216DC6B20006FDDF /* AvailabilityViewController.storyboard */; };
 		9912CDE8216DC9630006FDDF /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDE6216DC9630006FDDF /* DayCell.swift */; };
 		9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9912CDE7216DC9630006FDDF /* DayCell.xib */; };
-		9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDEA216DC9EE0006FDDF /* HourCollectionView.swift */; };
-		9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDEC216DCB650006FDDF /* HourCollectionViewCell.swift */; };
-		9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9912CDED216DCB660006FDDF /* HourCollectionViewCell.xib */; };
+		9912CDEB216DC9EE0006FDDF /* TimeSlotCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDEA216DC9EE0006FDDF /* TimeSlotCollectionView.swift */; };
+		9912CDEE216DCB660006FDDF /* TimeSlotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912CDEC216DCB650006FDDF /* TimeSlotCollectionViewCell.swift */; };
+		9912CDEF216DCB660006FDDF /* TimeSlotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9912CDED216DCB660006FDDF /* TimeSlotCollectionViewCell.xib */; };
 		9913756E21706C6D00F15BEC /* ScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */; };
 		9913757021706CC500F15BEC /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9913756F21706CC500F15BEC /* ProfileViewController.storyboard */; };
 		9923BFC6221A8F6600F83003 /* AutoServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */; };
@@ -135,6 +135,10 @@
 		99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */; };
 		99A3A89121D6BFF6009A1AD9 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */; };
 		99A3A89321D6C001009A1AD9 /* DateOfBirthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */; };
+		99A466D82430926F008FF75E /* DetailSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A466D72430926F008FF75E /* DetailSwitchView.swift */; };
+		99A466DA2430927E008FF75E /* DetailSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A466D92430927E008FF75E /* DetailSwitchView.xib */; };
+		99A466DD243097FC008FF75E /* ChargeForTravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */; };
+		99A466DE243097FC008FF75E /* ChargeForTravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */; };
 		99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */; };
 		99B3FA7C2202C97F00D9887F /* PersonalInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */; };
 		99B3FA7F2202CF3600D9887F /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3FA7D2202CF3600D9887F /* LogoutCell.swift */; };
@@ -309,9 +313,9 @@
 		9912CDE3216DC6B20006FDDF /* AvailabilityViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AvailabilityViewController.storyboard; sourceTree = "<group>"; };
 		9912CDE6216DC9630006FDDF /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		9912CDE7216DC9630006FDDF /* DayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCell.xib; sourceTree = "<group>"; };
-		9912CDEA216DC9EE0006FDDF /* HourCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionView.swift; sourceTree = "<group>"; };
-		9912CDEC216DCB650006FDDF /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
-		9912CDED216DCB660006FDDF /* HourCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourCollectionViewCell.xib; sourceTree = "<group>"; };
+		9912CDEA216DC9EE0006FDDF /* TimeSlotCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCollectionView.swift; sourceTree = "<group>"; };
+		9912CDEC216DCB650006FDDF /* TimeSlotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCollectionViewCell.swift; sourceTree = "<group>"; };
+		9912CDED216DCB660006FDDF /* TimeSlotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSlotCollectionViewCell.xib; sourceTree = "<group>"; };
 		9913756D21706C6D00F15BEC /* ScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleViewController.storyboard; sourceTree = "<group>"; };
 		9913756F21706CC500F15BEC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		9923BFC5221A8F6600F83003 /* AutoServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoServicesViewController.swift; sourceTree = "<group>"; };
@@ -433,6 +437,10 @@
 		99A3A88A21D583F9009A1AD9 /* FilePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilePickerViewController.storyboard; sourceTree = "<group>"; };
 		99A3A89021D6BFF6009A1AD9 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		99A3A89221D6C001009A1AD9 /* DateOfBirthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateOfBirthViewController.storyboard; sourceTree = "<group>"; };
+		99A466D72430926F008FF75E /* DetailSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSwitchView.swift; sourceTree = "<group>"; };
+		99A466D92430927E008FF75E /* DetailSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSwitchView.xib; sourceTree = "<group>"; };
+		99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeForTravelCell.swift; sourceTree = "<group>"; };
+		99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeForTravelCell.xib; sourceTree = "<group>"; };
 		99B3FA792202C97400D9887F /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		99B3FA7B2202C97F00D9887F /* PersonalInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInformationViewController.storyboard; sourceTree = "<group>"; };
 		99B3FA7D2202CF3600D9887F /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
@@ -672,9 +680,9 @@
 				9912CDE3216DC6B20006FDDF /* AvailabilityViewController.storyboard */,
 				9912CDE6216DC9630006FDDF /* DayCell.swift */,
 				9912CDE7216DC9630006FDDF /* DayCell.xib */,
-				9912CDEA216DC9EE0006FDDF /* HourCollectionView.swift */,
-				9912CDEC216DCB650006FDDF /* HourCollectionViewCell.swift */,
-				9912CDED216DCB660006FDDF /* HourCollectionViewCell.xib */,
+				9912CDEA216DC9EE0006FDDF /* TimeSlotCollectionView.swift */,
+				9912CDEC216DCB650006FDDF /* TimeSlotCollectionViewCell.swift */,
+				9912CDED216DCB660006FDDF /* TimeSlotCollectionViewCell.xib */,
 			);
 			path = Availability;
 			sourceTree = "<group>";
@@ -957,6 +965,10 @@
 				997DBC5E2197B5160080F42C /* NameCell.xib */,
 				9953AE0A21BCE753002D099A /* MechanicActiveCell.swift */,
 				9953AE0B21BCE753002D099A /* MechanicActiveCell.xib */,
+				99A466DB243097FC008FF75E /* ChargeForTravelCell.swift */,
+				99A466DC243097FC008FF75E /* ChargeForTravelCell.xib */,
+				99A466D72430926F008FF75E /* DetailSwitchView.swift */,
+				99A466D92430927E008FF75E /* DetailSwitchView.xib */,
 				998D3ABD21D959CF003DD717 /* ProfileDataCell.swift */,
 				998D3ABE21D959CF003DD717 /* ProfileDataCell.xib */,
 				99B3FA7D2202CF3600D9887F /* LogoutCell.swift */,
@@ -1243,7 +1255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99F7BC6022169E5F00DD5401 /* Montserrat-ExtraBold.otf in Resources */,
-				9912CDEF216DCB660006FDDF /* HourCollectionViewCell.xib in Resources */,
+				9912CDEF216DCB660006FDDF /* TimeSlotCollectionViewCell.xib in Resources */,
 				99F7BC7122169E5F00DD5401 /* MontserratAlternates-Regular.otf in Resources */,
 				99F7BC6722169E5F00DD5401 /* MontserratAlternates-ExtraBoldItalic.otf in Resources */,
 				99A3A88B21D583F9009A1AD9 /* FilePickerViewController.storyboard in Resources */,
@@ -1287,6 +1299,7 @@
 				99F7BC5622169E5F00DD5401 /* MontserratAlternates-LightItalic.otf in Resources */,
 				99F7BC5122169E5F00DD5401 /* Montserrat-Thin.otf in Resources */,
 				99F7BC6322169E5F00DD5401 /* MontserratAlternates-Light.otf in Resources */,
+				99A466DA2430927E008FF75E /* DetailSwitchView.xib in Resources */,
 				99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */,
 				99F69696220D46150021A719 /* ContactInformationViewController.storyboard in Resources */,
 				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
@@ -1332,6 +1345,7 @@
 				998984CD22967AD200E4B25A /* ForgotPasswordViewController.storyboard in Resources */,
 				9912CDDD216C8C610006FDDF /* LoginViewController.storyboard in Resources */,
 				99D5DA4321F8431B00E6A511 /* ReviewListCell.xib in Resources */,
+				99A466DE243097FC008FF75E /* ChargeForTravelCell.xib in Resources */,
 				99B3FA802202CF3600D9887F /* LogoutCell.xib in Resources */,
 				990ADFC12228E38B00D1C109 /* TransactionsSectionHeaderView.xib in Resources */,
 				9912CDE9216DC9630006FDDF /* DayCell.xib in Resources */,
@@ -1411,7 +1425,7 @@
 				998D3ABF21D959CF003DD717 /* ProfileDataCell.swift in Sources */,
 				99B3FA7A2202C97400D9887F /* PersonalInformationViewController.swift in Sources */,
 				99EC0A7123B7ED2E00624DDF /* SemanticFont.swift in Sources */,
-				9912CDEE216DCB660006FDDF /* HourCollectionViewCell.swift in Sources */,
+				9912CDEE216DCB660006FDDF /* TimeSlotCollectionViewCell.swift in Sources */,
 				9905FF59230E64ED00DFBCB9 /* MechanicPriceCell.swift in Sources */,
 				998A6270251D0DA100EB066C /* FSCalendarExtensions.m in Sources */,
 				99E66DBF21E46B5600C6E3E1 /* ProfileHeaderView.swift in Sources */,
@@ -1427,6 +1441,7 @@
 				999F4A6B22378E2600C4A1D6 /* ContentInsetAdjuster.swift in Sources */,
 				99F6968C220BDAE60021A719 /* LottieValues.swift in Sources */,
 				9912CD8B216C6E590006FDDF /* SignUpViewController.swift in Sources */,
+				99A466DD243097FC008FF75E /* ChargeForTravelCell.swift in Sources */,
 				99675CBF21EBB8DB003C9D70 /* TransactionsViewController.swift in Sources */,
 				992BFDD3220573BB006B64CC /* TransactionViewController.swift in Sources */,
 				99F69694220D460B0021A719 /* ContactInformationViewController.swift in Sources */,
@@ -1442,7 +1457,7 @@
 				99F696A1220D4DDD0021A719 /* PhoneNumberVerificationCell.swift in Sources */,
 				9953AE1D21C0F14D002D099A /* AutoServiceLocationCell.swift in Sources */,
 				9912CDE2216DC6A50006FDDF /* AvailabilityViewController.swift in Sources */,
-				9912CDEB216DC9EE0006FDDF /* HourCollectionView.swift in Sources */,
+				9912CDEB216DC9EE0006FDDF /* TimeSlotCollectionView.swift in Sources */,
 				998D3AC721DA963F003DD717 /* EarningsViewController.swift in Sources */,
 				99F02792218663BB005FEFC7 /* Location.swift in Sources */,
 				99EC0A6F23B7EC8E00624DDF /* SemanticColor.swift in Sources */,
@@ -1450,6 +1465,7 @@
 				998A627B251D0DA100EB066C /* FSCalendarCalculator.m in Sources */,
 				99B3FA8D2202FEE900D9887F /* PersonalInformationStatusCell.swift in Sources */,
 				998D3AC221DA07EB003DD717 /* CreateCardViewController.swift in Sources */,
+				99A466D82430926F008FF75E /* DetailSwitchView.swift in Sources */,
 				99E66DB821E469A000C6E3E1 /* UserImageView.swift in Sources */,
 				990ADFC3222A4DC000D1C109 /* HeaderView.swift in Sources */,
 				99F0279521866B55005FEFC7 /* TimeIntervalExtension.swift in Sources */,
@@ -1709,7 +1725,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1741,7 +1757,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
