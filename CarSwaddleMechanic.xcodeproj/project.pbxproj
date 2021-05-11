@@ -67,6 +67,7 @@
 		99675CC721EBBB36003C9D70 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC521EBBB36003C9D70 /* TransactionCell.xib */; };
 		99675CCA21EBBC7A003C9D70 /* PayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99675CC821EBBC7A003C9D70 /* PayoutCell.swift */; };
 		99675CCB21EBBC7A003C9D70 /* PayoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99675CC921EBBC7A003C9D70 /* PayoutCell.xib */; };
+		997700B7264B185800B47910 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 997700B6264B185800B47910 /* Stripe */; };
 		997714D021D0DADE00E54F5B /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714CF21D0DADE00E54F5B /* AddressViewController.swift */; };
 		997714D221D0DAE900E54F5B /* AddressViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 997714D121D0DAE900E54F5B /* AddressViewController.storyboard */; };
 		997714D521D0DE2C00E54F5B /* PersonalInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997714D321D0DE2C00E54F5B /* PersonalInformationCell.swift */; };
@@ -84,8 +85,6 @@
 		998984D3229684B500E4B25A /* UserActivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998984D2229684B500E4B25A /* UserActivityHandler.swift */; };
 		998A6230251D08F300EB066C /* CarSwaddleUI in Frameworks */ = {isa = PBXBuildFile; productRef = 998A622F251D08F300EB066C /* CarSwaddleUI */; };
 		998A6237251D099200EB066C /* CarSwaddleData in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6236251D099200EB066C /* CarSwaddleData */; };
-		998A623E251D0A5100EB066C /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 998A623D251D0A5100EB066C /* Stripe */; };
-		998A623F251D0A5100EB066C /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 998A623D251D0A5100EB066C /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		998A6246251D0D0900EB066C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 998A6245251D0D0900EB066C /* Cosmos */; };
 		998A626E251D0DA100EB066C /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A624C251D0D9A00EB066C /* FSCalendarCollectionViewLayout.m */; };
 		998A626F251D0DA100EB066C /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 998A624E251D0D9A00EB066C /* FSCalendarStickyHeader.m */; };
@@ -282,7 +281,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				998A623F251D0A5100EB066C /* Stripe in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,10 +552,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997700B7264B185800B47910 /* Stripe in Frameworks */,
 				998A6246251D0D0900EB066C /* Cosmos in Frameworks */,
 				998A6230251D08F300EB066C /* CarSwaddleUI in Frameworks */,
 				998A6282251D0DBF00EB066C /* Lottie in Frameworks */,
-				998A623E251D0A5100EB066C /* Stripe in Frameworks */,
 				998A6237251D099200EB066C /* CarSwaddleData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1122,9 +1120,9 @@
 			packageProductDependencies = (
 				998A622F251D08F300EB066C /* CarSwaddleUI */,
 				998A6236251D099200EB066C /* CarSwaddleData */,
-				998A623D251D0A5100EB066C /* Stripe */,
 				998A6245251D0D0900EB066C /* Cosmos */,
 				998A6281251D0DBF00EB066C /* Lottie */,
+				997700B6264B185800B47910 /* Stripe */,
 			);
 			productName = CarSwaddleMechanic;
 			productReference = 9992763B21673BCA0032D7F7 /* CarSwaddleMechanic.app */;
@@ -1226,9 +1224,9 @@
 			packageReferences = (
 				998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */,
 				998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */,
-				998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */,
 				998A6280251D0DBF00EB066C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				997700B5264B185800B47910 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 			);
 			productRefGroup = 9992763C21673BCA0032D7F7 /* Products */;
 			projectDirPath = "";
@@ -1725,7 +1723,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1757,7 +1755,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarSwaddleMechanic/Support/CarSwaddleMechanic.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 977533WLK8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1912,6 +1910,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		997700B5264B185800B47910 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 21.5.1;
+			};
+		};
 		998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI";
@@ -1926,14 +1932,6 @@
 			requirement = {
 				branch = master;
 				kind = branch;
-			};
-		};
-		998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stripe/stripe-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.0;
 			};
 		};
 		998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */ = {
@@ -1955,6 +1953,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		997700B6264B185800B47910 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 997700B5264B185800B47910 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
 		998A622F251D08F300EB066C /* CarSwaddleUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 998A622E251D08F300EB066C /* XCRemoteSwiftPackageReference "CarSwaddleUI" */;
@@ -1964,11 +1967,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */;
 			productName = CarSwaddleData;
-		};
-		998A623D251D0A5100EB066C /* Stripe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 998A623C251D0A5000EB066C /* XCRemoteSwiftPackageReference "stripe-ios" */;
-			productName = Stripe;
 		};
 		998A6245251D0D0900EB066C /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;

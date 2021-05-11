@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Stripe
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupLibraries() {
-        STPPaymentConfiguration.shared().publishableKey = stripePublishableKey
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = appleMerchantIdentifier
+        STPPaymentConfiguration.shared.publishableKey = stripePublishableKey
+        STPPaymentConfiguration.shared.appleMerchantIdentifier = appleMerchantIdentifier
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -10,6 +10,10 @@ import UIKit
 import CarSwaddleUI
 import CarSwaddleData
 import CarSwaddleStore
+import CoreData
+import Combine
+import SwiftUI
+
 
 final class EarningsViewController: UIViewController, StoryboardInstantiating {
     
@@ -41,7 +45,7 @@ final class EarningsViewController: UIViewController, StoryboardInstantiating {
             self?.refresh.endRefreshing()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

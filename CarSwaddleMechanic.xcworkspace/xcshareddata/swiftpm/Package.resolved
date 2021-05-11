@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
         "state": {
           "branch": "master",
-          "revision": "431146775164d3d463301471a71ccb3479f51385",
+          "revision": "b1a8ace5fa22843975b5f1074dc2e5c6aefff5b5",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest",
         "state": {
           "branch": "master",
-          "revision": "bb725021af2f061de0e4731a9f57f3e1cd756a36",
+          "revision": "53613b3c62c671bb042ea19639842c973d46bc2c",
           "version": null
         }
       },
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
           "branch": "master",
-          "revision": "d4e1a670f6b829476b73513408d37d6bf4683d8d",
+          "revision": "54fd207c5e641fa08655b8f7dbe7e75fd555b883",
           "version": null
         }
       },
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
-          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
-          "version": "4.2.1"
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
         }
       },
       {
@@ -87,7 +87,7 @@
         "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest",
         "state": {
           "branch": "master",
-          "revision": "00c42808c910b82c61709aad948af933c6434626",
+          "revision": "f146efcf6d0b6b877806b4cd8c04d58f53b3161b",
           "version": null
         }
       },
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios.git",
         "state": {
           "branch": null,
-          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
-          "version": "20.0.0"
+          "revision": "d52a5d00f941f2f26c52ea7c1848bdc6ceace64f",
+          "version": "21.5.1"
         }
       }
     ]

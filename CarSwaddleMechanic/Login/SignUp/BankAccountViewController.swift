@@ -149,7 +149,7 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         bankAccountParameters.routingNumber = routingNumber
         bankAccountParameters.accountNumber = bankAccountNumber
         
-        STPAPIClient.shared().createToken(withBankAccount: bankAccountParameters) { token, error in
+        STPAPIClient.shared.createToken(withBankAccount: bankAccountParameters) { token, error in
             #if DEBUG
             if let error = error {
                 print("error: \(error)")

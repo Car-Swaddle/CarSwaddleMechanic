@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ur9-bv-g6k">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ur9-bv-g6k">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="700" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LON-bx-Zr5">
-                                <rect key="frame" x="16" y="341" width="343" height="81.5"/>
+                                <rect key="frame" x="16" y="321" width="343" height="81.5"/>
                                 <string key="text">To correctly identify you for security and for tax reasons an identity document may be required. Please provide one of the following documents:</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.4525964921002561" green="0.4525964921002561" blue="0.4525964921002561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-GO-cMP">
-                                <rect key="frame" x="16" y="80" width="343" height="245"/>
+                                <rect key="frame" x="16" y="60" width="343" height="245"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-1C-POf">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="245"/>
@@ -38,7 +37,7 @@
                                                     <constraint firstAttribute="height" constant="199" id="PlX-3s-LMd"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-YI-iBS" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my0-YI-iBS" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
                                                 <rect key="frame" x="42" y="215" width="84" height="30"/>
                                                 <state key="normal" title="Select Front">
                                                     <color key="titleColor" name="secondary"/>
@@ -63,7 +62,7 @@
                                                     <constraint firstAttribute="height" constant="199" id="IcD-9n-j46"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft9-F8-SMX" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft9-F8-SMX" customClass="LoadingButton" customModule="CarSwaddleMechanic" customModuleProvider="target">
                                                 <rect key="frame" x="43.5" y="215" width="81" height="30"/>
                                                 <state key="normal" title="Select Back">
                                                     <color key="titleColor" name="secondary"/>
@@ -83,7 +82,7 @@
                                     <constraint firstItem="KNQ-TD-awD" firstAttribute="height" secondItem="d6V-J0-yyx" secondAttribute="height" id="ZWn-6I-b3F"/>
                                 </constraints>
                             </stackView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY8-os-p9p" customClass="ActionButton" customModule="CarSwaddleUI">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY8-os-p9p" customClass="ActionButton" customModule="CarSwaddleUI">
                                 <rect key="frame" x="170" y="617" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
@@ -92,6 +91,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="j57-lt-HAE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LON-bx-Zr5" firstAttribute="leading" secondItem="j57-lt-HAE" secondAttribute="leading" constant="16" id="EJ2-wX-bMm"/>
@@ -102,7 +102,6 @@
                             <constraint firstItem="VIk-GO-cMP" firstAttribute="top" secondItem="j57-lt-HAE" secondAttribute="top" constant="16" id="r3s-ec-W0i"/>
                             <constraint firstItem="j57-lt-HAE" firstAttribute="trailing" secondItem="LON-bx-Zr5" secondAttribute="trailing" constant="16" id="sxu-O6-ci9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="j57-lt-HAE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Identification Document" id="qri-Fd-Rhi"/>
                     <connections>
@@ -124,7 +123,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uUQ-SR-99C" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4kJ-iY-lwP">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

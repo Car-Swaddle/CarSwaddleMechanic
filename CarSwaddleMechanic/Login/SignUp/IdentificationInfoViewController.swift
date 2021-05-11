@@ -143,7 +143,7 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
     }
     
     private func createPersonalIDNumberToken(personalID: String, completion: @escaping (_ token: STPToken?) -> Void) {
-        STPAPIClient.shared().createToken(withPersonalIDNumber: personalID) { token, error in
+        STPAPIClient.shared.createToken(withPersonalIDNumber: personalID) { token, error in
             completion(token)
         }
     }

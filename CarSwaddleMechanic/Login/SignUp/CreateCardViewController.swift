@@ -87,7 +87,7 @@ final class CreateCardViewController: UIViewController, StoryboardInstantiating 
 //        bankAccountParameters.routingNumber = routingNumber
 //        bankAccountParameters.accountNumber = bankAccountNumber
         
-        STPAPIClient.shared().createToken(withCard: params) { token, error in
+        STPAPIClient.shared.createToken(withCard: params) { token, error in
             completion(token)
         }
     }
