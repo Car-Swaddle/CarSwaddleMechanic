@@ -1922,16 +1922,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleUI";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		998A6235251D099200EB066C /* XCRemoteSwiftPackageReference "CarSwaddleData" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */ = {

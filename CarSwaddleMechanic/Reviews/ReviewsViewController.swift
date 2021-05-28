@@ -49,10 +49,10 @@ final class ReviewsViewController: UIViewController, StoryboardInstantiating {
         tableView.refreshControl = refreshControl
     }
 
-    private lazy var fetchedResultsController: NSFetchedResultsController<Review> = createFetchedResultsController()
+    private lazy var fetchedResultsController: NSFetchedResultsController<CarSwaddleStore.Review> = createFetchedResultsController()
     
-    private func createFetchedResultsController() -> NSFetchedResultsController<Review> {
-        let fetchRequest: NSFetchRequest<Review> = Review.fetchRequest()
+    private func createFetchedResultsController() -> NSFetchedResultsController<CarSwaddleStore.Review> {
+        let fetchRequest: NSFetchRequest<CarSwaddleStore.Review> = Review.fetchRequest()
         fetchRequest.sortDescriptors = [Review.creationDateSortDescriptor]
         fetchRequest.predicate = Review.predicateForCurrentMechanic()
         

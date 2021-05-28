@@ -67,7 +67,7 @@ final class NameViewController: UIViewController, StoryboardInstantiating, Navig
         
         actionButton.isLoading = true
         store.privateContext { [weak self] privateContext in
-            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, in: privateContext) { userObjectID, error in
+            self?.userNetwork.update(firstName: firstName, lastName: lastName, phoneNumber: nil, token: nil, timeZone: nil, referrerID: nil, in: privateContext) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     

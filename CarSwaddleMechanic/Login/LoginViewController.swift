@@ -145,7 +145,7 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     private func login(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
         store.privateContext { [weak self] context in
             self?.task = self?.auth.mechanicLogin(email: email, password: password, context: context) { [weak self] error in
-                self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, in: context) { userObjectID, userError in
+                self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: nil, token: nil, timeZone: TimeZone.current.identifier, referrerID: nil, in: context) { userObjectID, userError in
                     completion(error)
                 }
             }

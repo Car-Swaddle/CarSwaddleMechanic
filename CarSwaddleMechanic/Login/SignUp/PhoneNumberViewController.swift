@@ -48,7 +48,7 @@ final class PhoneNumberViewController: UIViewController, StoryboardInstantiating
         
         actionButton.isLoading = true
         store.privateContext { [weak self] context in
-            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, in: context) { userObjectID, error in
+            self?.userNetwork.update(firstName: nil, lastName: nil, phoneNumber: phoneNumber, token: nil, timeZone: nil, referrerID: nil, in: context) { userObjectID, error in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     self.actionButton.isLoading = false

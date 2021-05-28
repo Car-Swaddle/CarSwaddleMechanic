@@ -25,7 +25,7 @@ final class TransactionReceiptCell: UITableViewCell, NibRegisterable {
         accessoryType = .disclosureIndicator
     }
     
-    func configure(with transactionReceipt: TransactionReceipt) {
+    func configure(with transactionReceipt: CarSwaddleStore.TransactionReceipt) {
         let photoID = transactionReceipt.receiptPhotoID
         guard (try? profileImageStore.getFile(name: photoID)) == nil else { return }
         

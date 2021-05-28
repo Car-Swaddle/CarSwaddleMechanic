@@ -23,7 +23,7 @@ final class EmailVerificationCell: UITableViewCell, NibRegisterable {
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var animationView: AnimationView!
     
-    private lazy var currentUser: User? = {
+    private lazy var currentUser: CarSwaddleStore.User? = {
         return User.currentUser(context: store.mainContext)
     }()
     

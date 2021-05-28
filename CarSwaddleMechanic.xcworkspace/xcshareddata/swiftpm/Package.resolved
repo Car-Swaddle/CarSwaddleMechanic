@@ -5,45 +5,45 @@
         "package": "Authentication",
         "repositoryURL": "https://github.com/Car-Swaddle/Authentication",
         "state": {
-          "branch": "master",
-          "revision": "12cdc44a572272cac00c490189ccffc07e08508c",
-          "version": null
+          "branch": null,
+          "revision": "97d02cf8334ae4d3a61c717d2acd802cc5df8cdf",
+          "version": "2.0.0"
         }
       },
       {
         "package": "CarSwaddleData",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
         "state": {
-          "branch": "master",
-          "revision": "b1a8ace5fa22843975b5f1074dc2e5c6aefff5b5",
-          "version": null
+          "branch": null,
+          "revision": "f23db2ec907ffb86e1092ad650ba97aad388eaeb",
+          "version": "2.0.0"
         }
       },
       {
         "package": "CarSwaddleNetworkRequest",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest",
         "state": {
-          "branch": "master",
-          "revision": "53613b3c62c671bb042ea19639842c973d46bc2c",
-          "version": null
+          "branch": null,
+          "revision": "bd844aec15be45850bae753df439f3cb738d0cc5",
+          "version": "2.0.2"
         }
       },
       {
         "package": "CarSwaddleStore",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleStore",
         "state": {
-          "branch": "master",
-          "revision": "54fd207c5e641fa08655b8f7dbe7e75fd555b883",
-          "version": null
+          "branch": null,
+          "revision": "2c2882e23a19852a7a2363ead18cd3679afadc82",
+          "version": "2.0.0"
         }
       },
       {
         "package": "CarSwaddleUI",
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleUI",
         "state": {
-          "branch": "master",
+          "branch": null,
           "revision": "1269ea6ebd34e0dbd0a68cf5ddda464ed3c3e0bc",
-          "version": null
+          "version": "2.0.0"
         }
       },
       {
@@ -86,9 +86,9 @@
         "package": "NetworkRequest",
         "repositoryURL": "https://github.com/Car-Swaddle/NetworkRequest",
         "state": {
-          "branch": "master",
+          "branch": null,
           "revision": "f146efcf6d0b6b877806b4cd8c04d58f53b3161b",
-          "version": null
+          "version": "2.0.0"
         }
       },
       {
