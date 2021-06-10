@@ -8,11 +8,15 @@
 
 import UIKit
 
-extension UIFont.FontType {
-    
-}
-
 extension UIFont {
+    
+    public static let textSize: CGFloat = 15
+    public static let textType: FontType = .semiBold
+    public static let text: UIFont = UIFont.appFont(type: textType, size: textSize)
+    
+    public static let textEmphasizedSize: CGFloat = 15
+    public static let textEmphasizedType: FontType = .semiBold
+    public static let textEmphasized: UIFont = UIFont.appFont(type: textEmphasizedType, size: textEmphasizedSize)
     
     public static let detailFontSize: CGFloat = 14
     public static let titleFontSize: CGFloat = 17
@@ -37,41 +41,45 @@ extension UIFont {
     
 }
 
-extension UIColor {
-    
-    // If any of these colors change, also change largeTextColor in the color assets
-    
-    
-    public static var largeTextColor: UIColor = UIColor(named: "largeTextColor")! // gray 6
-    public static let titleTextColor: UIColor = UIColor(named: "titleTextColor")! // gray 6
-    public static let detailTextColor: UIColor = UIColor(named: "detailTextColor")! // gray 4
-    public static let errorTextColor: UIColor = UIColor(named: "errorTextColor")!
-    
-    public static let selectionColor: UIColor = .appBlue
-    
-}
-
 
 extension UILabel {
     
+    public func textEmphasizedStyled() {
+        font = .textEmphasized
+        textColor = .text
+    }
+    
+    public func textStyled() {
+        font = .text
+        textColor = .text
+    }
+    
     public func detailStyled() {
         font = .detail
-        textColor = .detailTextColor
+        textColor = .text
     }
     
     public func titleStyled() {
         font = .title
-        textColor = .titleTextColor
+        textColor = .text
     }
     
     public func largeStyled() {
         font = .large
-        textColor = .largeTextColor
+        textColor = .text
     }
     
 }
 
 extension UIButton {
+    
+    public func textEmphasizedStyled() {
+        titleLabel?.textEmphasizedStyled()
+    }
+    
+    public func textStyled() {
+        titleLabel?.textStyled()
+    }
     
     public func detailStyled() {
         titleLabel?.detailStyled()
@@ -90,19 +98,29 @@ extension UIButton {
 
 extension UITextField {
     
+    public func textStyled() {
+        font = .text
+        textColor = .text
+    }
+    
+    public func textEmphasizedStyled() {
+        font = .textEmphasized
+        textColor = .text
+    }
+    
     public func detailStyled() {
         font = .detail
-        textColor = .detailTextColor
+        textColor = .text
     }
     
     public func titleStyled() {
         font = .title
-        textColor = .titleTextColor
+        textColor = .text
     }
     
     public func largeStyled() {
         font = .large
-        textColor = .largeTextColor
+        textColor = .text
     }
     
 }

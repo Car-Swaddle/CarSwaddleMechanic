@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleData",
         "state": {
           "branch": null,
-          "revision": "f23db2ec907ffb86e1092ad650ba97aad388eaeb",
-          "version": "2.0.0"
+          "revision": "1a9a726a8b1e197e5326af3f70672dd87e1d1de2",
+          "version": "3.0.1"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/Car-Swaddle/CarSwaddleNetworkRequest",
         "state": {
           "branch": null,
-          "revision": "bd844aec15be45850bae753df439f3cb738d0cc5",
-          "version": "2.0.2"
+          "revision": "3c5bf9835d71a2eb420b4df08dc860c240f579a3",
+          "version": "3.0.0"
         }
       },
       {

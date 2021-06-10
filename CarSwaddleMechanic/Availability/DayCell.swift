@@ -12,7 +12,7 @@ import CarSwaddleStore
 import CoreData
 
 
-protocol DayCellDelegate: class {
+protocol DayCellDelegate: AnyObject {
     func didDeleteTemplateTimeSpan(_ timespan: TemplateTimeSpan, dayCell: DayCell)
     func didAddTimeSpan(_ timespan: TemplateTimeSpan, dayCell: DayCell)
 }

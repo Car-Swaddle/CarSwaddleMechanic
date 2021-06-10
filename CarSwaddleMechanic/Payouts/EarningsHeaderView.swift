@@ -25,7 +25,7 @@ final class EarningsHeaderView: UIView, NibInstantiating {
         if let balance = Mechanic.currentLoggedInMechanic(in: store.mainContext)?.balance {
             configure(with: balance)
         }
-        addHairlineView(toSide: .bottom, color: UIColor.gray3)
+        addHairlineView(toSide: .bottom, color: .separator)
     }
     
     private func configure(with balance: Balance) {

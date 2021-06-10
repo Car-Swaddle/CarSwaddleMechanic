@@ -186,8 +186,8 @@ final class AutoServiceCell: UITableViewCell, NibRegisterable {
         
 //        let vehicleFormatString = NSLocalizedString("%@ • %@", comment: "Vehicle format string: 'vehicle name' • 'license plate number'")
         
-        let vehicleName = autoService.vehicle?.name ?? ""
-        let licensePlateNumber = autoService.vehicle?.licensePlate ?? ""
+//        let vehicleName = autoService.vehicle?.name ?? ""
+//        let licensePlateNumber = autoService.vehicle?.licensePlate ?? ""
         
         vehicleLabel.text = autoService.vehicle?.localizedDescription
         userLabel.text = autoService.creator?.displayName

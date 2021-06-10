@@ -14,29 +14,40 @@ extension UIColor {
     // MARK: - Action
     
     static let action = UIColor(named: "action")!
-    static let secondaryAction = UIColor(named: "secondaryAction")!
+    static let action2 = UIColor(named: "action2")!
+    static let actionContrast = UIColor(named: "actionContrast")!
+    static let action2Contrast = UIColor(named: "action2Contrast")!
     
     // MARK: - Background
     
     static let background = UIColor(named: "background")!
-    static let secondaryBackground = UIColor(named: "secondaryBackground")!
-    static let tertiaryBackground = UIColor(named: "tertiaryBackground")!
+    static let background2 = UIColor(named: "background2")!
+    static let background3 = UIColor(named: "background3")!
     
     // MARK: - Content
     
     static let content = UIColor(named: "content")!
-    static let secondaryContent = UIColor(named: "secondaryContent")!
-    static let tertiaryContent = UIColor(named: "tertiaryContent")!
+    static let content2 = UIColor(named: "content2")!
+    static let content3 = UIColor(named: "content3")!
     
     static let contentBehindContent = UIColor(named: "contentBehindContent")!
     
     static let brand = UIColor(named: "brand")!
-    static let secondaryBrand = UIColor(named: "secondaryBrand")!
-    static let tertiaryBrand = UIColor(named: "tertiaryBrand")!
+    static let brand2 = UIColor(named: "brand2")!
+    static let brand3 = UIColor(named: "brand3")!
     static let alternateBrand = UIColor(named: "alternateBrand")!
     static let danger = UIColor(named: "danger")!
     static let success = UIColor(named: "success")!
     static let warning = UIColor(named: "warning")!
+    
+    static let brandContrast = UIColor(named: "brandContrast")!
+    static let alternateBrandContrast = UIColor(named: "alternateBrandContrast")!
+    
+    static let separator = UIColor(named: "separator")!
+    
+    static let shadow = UIColor(named: "shadow")!
+    
+    static let icon = UIColor(named: "icon")!
     
     // MARK: - Neutral
     
@@ -51,10 +62,8 @@ extension UIColor {
     // MARK: - Text
     
     static let disabledText = UIColor(named: "disabledText")!
-    static let secondaryText = UIColor(named: "secondaryText")!
-    static let tertiaryText = UIColor(named: "tertiaryText")!
+    static let text2 = UIColor(named: "text2")!
+    static let text3 = UIColor(named: "text3")!
     static let text = UIColor(named: "text")!
-    static let inverseText = UIColor(named: "inverseText")!
-    static let inverseTextSecondary = UIColor(named: "inverseTextSecondary")!
     
 }

@@ -235,7 +235,6 @@
 		99F7BC7222169E5F00DD5401 /* MontserratAlternates-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC4E22169E5F00DD5401 /* MontserratAlternates-SemiBold.otf */; };
 		99F7BC7422169EFF00DD5401 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */; };
 		99F7BC762216A74300DD5401 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F7BC752216A74300DD5401 /* UIColorExtension.swift */; };
-		99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC772216A78400DD5401 /* Colors.xcassets */; };
 		99F7BC7A22191F0000DD5401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F7BC7922191F0000DD5401 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -536,7 +535,6 @@
 		99F7BC4E22169E5F00DD5401 /* MontserratAlternates-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.otf"; sourceTree = "<group>"; };
 		99F7BC7322169EFF00DD5401 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		99F7BC752216A74300DD5401 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		99F7BC772216A78400DD5401 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		99F7BC7922191F0000DD5401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -872,7 +870,6 @@
 				999F4A682237764400C4A1D6 /* AutoService+UI.swift */,
 				99F7BC752216A74300DD5401 /* UIColorExtension.swift */,
 				99DCD32C221BD9DF0040DABA /* UIKitExtensions.swift */,
-				99F7BC772216A78400DD5401 /* Colors.xcassets */,
 				99D5DA4A21FE660600E6A511 /* Tweaks */,
 				99675C9E21E717C3003C9D70 /* Navigation */,
 				99E66DB621E4698A00C6E3E1 /* Reuseable UI */,
@@ -1298,7 +1295,6 @@
 				99F7BC5122169E5F00DD5401 /* Montserrat-Thin.otf in Resources */,
 				99F7BC6322169E5F00DD5401 /* MontserratAlternates-Light.otf in Resources */,
 				99A466DA2430927E008FF75E /* DetailSwitchView.xib in Resources */,
-				99F7BC782216A78400DD5401 /* Colors.xcassets in Resources */,
 				99F69696220D46150021A719 /* ContactInformationViewController.storyboard in Resources */,
 				998D3AC921DA9648003DD717 /* EarningsViewController.storyboard in Resources */,
 				99F69675220A8CA80021A719 /* TransactionViewController.storyboard in Resources */,
@@ -1931,7 +1927,7 @@
 			repositoryURL = "https://github.com/Car-Swaddle/CarSwaddleData";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		998A6244251D0D0900EB066C /* XCRemoteSwiftPackageReference "Cosmos" */ = {

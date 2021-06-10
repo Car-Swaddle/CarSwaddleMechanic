@@ -58,13 +58,13 @@ final class IdentificationInfoViewController: UIViewController, StoryboardInstan
         updateNumberOfDigits()
         entryView.textFieldCornerRadius = 6
         entryView.textFieldWidth = 29
-        entryView.textFieldBackgroundColor = UIColor(white255: 244)
+        entryView.textFieldBackgroundColor = .content3
         entryView.spacing = 4
         entryView.textFieldFont = UIFont.appFont(type: .semiBold, size: 17)
         entryView.spacerFont = UIFont.appFont(type: .regular, size: 20)
         entryView.isSecureTextEntry = false
-        entryView.textFieldTintColor = .secondary
-        entryView.underlineColor = .secondary
+        entryView.textFieldTintColor = .brand
+        entryView.underlineColor = .brand
         _ = entryView.becomeFirstResponder()
         
         updateExplanationText()
@@ -197,12 +197,12 @@ extension OneTimeCodeEntryView {
     func styleDefault() {
         textFieldCornerRadius = 6
         textFieldWidth = 29
-        textFieldBackgroundColor = UIColor(white255: 244)
+        textFieldBackgroundColor = .content
         spacing = 4
         textFieldFont = UIFont.appFont(type: .semiBold, size: 17)
         spacerFont = UIFont.appFont(type: .regular, size: 20)
-        textFieldTintColor = .viewBackgroundColor1
-        underlineColor = .viewBackgroundColor1
+        textFieldTintColor = .brand
+        underlineColor = .brand
     }
     
 }

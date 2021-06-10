@@ -36,7 +36,7 @@ final class ServiceRegionViewController: UIViewController, StoryboardInstantiati
         let view = CircleView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = 0.56
-        view.backgroundColor = .secondary
+        view.backgroundColor = .brand
         return view
     }()
     

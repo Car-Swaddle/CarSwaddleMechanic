@@ -66,6 +66,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         
         pageViewController.delegate = self
         pageViewController.dataSource = self
+        pageViewController.view.backgroundColor = .content
         
         return pageViewController
     }()
@@ -83,13 +84,21 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
             weekView.select(dayDate)
         }
         
-        weekView.addHairlineView(toSide: .bottom, color: UIColor(white: 0.6, alpha: 1.0), size: 1.0 / UIScreen.main.scale)
+        weekView.addHairlineView(toSide: .bottom, color: .separator, size: UIView.hairlineLength)
         
 //        navigationController?.navigationBar.shadowImage = UIImage()
         
         let autoServicesViewController = AutoServicesViewController.create(date: Date())
         
         pageViewController.setViewControllers([autoServicesViewController], direction: .forward, animated: false, completion: nil)
+        
+        
+        let app = UINavigationBarAppearance()
+        app.configureWithOpaqueBackground()
+        app.shadowImage = UIImage()
+        app.backgroundColor = .background
+        
+        navigationController?.navigationBar.standardAppearance = app
         
         addChild(pageViewController)
         viewControllerContentView.addSubview(pageViewController.view)
@@ -103,13 +112,13 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.navigationBar.shadowImage = UIImage.from(color: .gray2)
+//        self.navigationController?.navigationBar.shadowImage = UIImage.frohbom(color: .gray2)
     }
     
     override func viewDidLayoutSubviews() {
@@ -192,14 +201,14 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if Calendar.current.isDateInToday(date) {
-            return .appRed
+            return .alternateBrand
         } else {
-            return .black
+            return .text
         }
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
-        return .textColor1
+        return .text
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

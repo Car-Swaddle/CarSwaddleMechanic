@@ -78,26 +78,26 @@ final public class Navigator: NSObject {
     private func setupAppearance() {
         let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 20) as Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
-        UINavigationBar.appearance().barTintColor = .veryLightGray
+        UINavigationBar.appearance().barTintColor = .neutral2
         UINavigationBar.appearance().isTranslucent = false
-        UITextField.appearance().tintColor = .secondary
+        UITextField.appearance().tintColor = .brand
         
         let selectedTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .semiBold, size: 10) as Any,
-            .foregroundColor: UIColor.secondary
+            .foregroundColor: UIColor.brand
         ]
         UITabBarItem.appearance().setTitleTextAttributes(selectedTabBarAttributes, for: .selected)
         
         let normalTabBarAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.appFont(type: .regular, size: 10) as Any,
-            .foregroundColor: UIColor.lightGray
+            .foregroundColor: UIColor.icon
         ]
         UITabBarItem.appearance().setTitleTextAttributes(normalTabBarAttributes, for: .normal)
-        UITabBar.appearance().tintColor = .secondary
+        UITabBar.appearance().tintColor = .brand
         
-        UISwitch.appearance().tintColor = .secondary
-        UISwitch.appearance().onTintColor = .secondary
-        UINavigationBar.appearance().tintColor = .secondary
+        UISwitch.appearance().tintColor = .brand
+        UISwitch.appearance().onTintColor = .brand
+        UINavigationBar.appearance().tintColor = .brand
         
         let barButtonTextAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(type: .semiBold, size: 17) as Any]
         
@@ -109,15 +109,15 @@ final public class Navigator: NSObject {
         
         let actionButton = ActionButton.appearance()
         actionButton.defaultTitleFont = UIFont.appFont(type: .semiBold, size: 20)
-        actionButton.defaultBackgroundColor = .secondary
+        actionButton.defaultBackgroundColor = .brand
         
         CarSwaddleUI.ContentInsetAdjuster.defaultBottomOffset = navigator.tabBarController.tabBar.bounds.height
         
         CustomAlertAction.cancelTitle = NSLocalizedString("Cancel", comment: "Cancel button title")
         
-        defaultLabeledTextFieldTextFieldFont = UIFont.appFont(type: .regular, size: 15)
-        defaultLabeledTextFieldLabelNotExistsFont = UIFont.appFont(type: .semiBold, size: 15)
-        defaultLabeledTextFieldLabelFont = UIFont.appFont(type: .regular, size: 15)
+        defaultLabeledTextFieldTextFieldFont = .text
+        defaultLabeledTextFieldLabelNotExistsFont = .textEmphasized
+        defaultLabeledTextFieldLabelFont = .text
         
 //        let labeledTextFieldAppearance = LabeledTextField.appearance()
 //        labeledTextFieldAppearance.underlineColor = .secondary
@@ -126,8 +126,8 @@ final public class Navigator: NSObject {
         
         let labeledTextFieldAppearance = LabeledTextField.appearance()
         labeledTextFieldAppearance.underlineColor = .action
-        labeledTextFieldAppearance.textFieldBackgroundColor = .secondaryBackground
-        labeledTextFieldAppearance.labelTextColor = .detailTextColor
+        labeledTextFieldAppearance.textFieldBackgroundColor = .background2
+        labeledTextFieldAppearance.labelTextColor = .text
         labeledTextFieldAppearance.textFieldTextColor = .text
         
         CircleButton.appearance().buttonColor = .text
@@ -148,14 +148,14 @@ final public class Navigator: NSObject {
         let alertAppearance = CustomAlertContentView.appearance()
         alertAppearance.backgroundColor = .background
         alertAppearance.titleTextColor = .text
-        alertAppearance.messageTextColor = .secondaryText
+        alertAppearance.messageTextColor = .text2
         
-        alertAppearance.normalButtonColor = .secondaryBackground
+        alertAppearance.normalButtonColor = .background2
         alertAppearance.normalButtonTitleColor = .text
         alertAppearance.buttonBorderColor = .clear
         
         alertAppearance.preferredButtonColor = .action
-        alertAppearance.preferredButtonTitleColor = .inverseText
+        alertAppearance.preferredButtonTitleColor = .actionContrast
         
         //        alertAppearance.textFieldUnderlineColor = .purple
         
@@ -170,7 +170,7 @@ final public class Navigator: NSObject {
         alertAppearance.switchLabelFont = .detail
         alertAppearance.switchLabelTextColor = .text
         
-        alertAppearance.textFieldBorderColor = .secondaryContent
+        alertAppearance.textFieldBorderColor = .content2
         
         CustomAlertController.alertBackgroundColor = .background
         CustomAlertController.transparentBackgroundColor = UIColor.neutral3.withAlphaComponent(0.5)
@@ -372,7 +372,7 @@ final public class Navigator: NSObject {
 //        tabController.tabBar.tintColor = .black
 //        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 9)]
 //        tabController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
-        tabController.view.backgroundColor = .white
+        tabController.view.backgroundColor = .background
         
         store.privateContext { [weak self] privateContext in
             self?.stripeNetwork.updateCurrentUserVerification(in: privateContext) { objectID, error in
