@@ -84,7 +84,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
             weekView.select(dayDate)
         }
         
-        weekView.addHairlineView(toSide: .bottom, color: .separator, size: UIView.hairlineLength)
+        weekView.addHairlineView(toSide: .bottom, color: .separator, size: 1)
         
 //        navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -95,7 +95,7 @@ final class ScheduleViewController: UIViewController, StoryboardInstantiating {
         
         let app = UINavigationBarAppearance()
         app.configureWithOpaqueBackground()
-        app.shadowImage = UIImage()
+        app.shadowImage = UIImage.from(color: .clear)
         app.backgroundColor = .background
         
         navigationController?.navigationBar.standardAppearance = app
@@ -208,7 +208,7 @@ extension ScheduleViewController: FSCalendarDelegateAppearance {
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
-        return .text
+        return .brandContrast
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
