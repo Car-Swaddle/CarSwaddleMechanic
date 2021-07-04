@@ -43,6 +43,16 @@ final class VerifyPhoneNumberViewController: UIViewController, NavigationDelegat
         
         oneTimeViewController.verifyPhoneNumberTitleLabel.font = UIFont.appFont(type: .semiBold, size: 17)
         oneTimeViewController.verifyPhoneNumberDescriptionLabel.font = UIFont.appFont(type: .regular, size: 15)
+        oneTimeViewController.verifyPhoneNumberTitleLabel.textColor = .text
+        oneTimeViewController.verifyPhoneNumberDescriptionLabel.textColor = .text
+        oneTimeViewController.oneTimeCodeEntryView.underlineColor = .brand
+        oneTimeViewController.oneTimeCodeEntryView.textFieldBackgroundColor = .content2
+        oneTimeViewController.oneTimeCodeEntryView.textFieldTintColor = .brand
+        
+        oneTimeViewController.resendCodeButton.tintColor = .brand
+        oneTimeViewController.updatePhoneNumberButton.tintColor = .brand
+        oneTimeViewController.view.backgroundColor = .background
+        view.backgroundColor = .background
     }
     
     private func shakeEntryView(completion: @escaping () -> Void) {
