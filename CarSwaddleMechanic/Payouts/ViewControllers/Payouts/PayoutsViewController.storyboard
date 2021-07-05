@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="COF-jh-1Qg">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="COF-jh-1Qg">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,22 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kow-cO-L0h">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" name="background"/>
                                 <connections>
                                     <outlet property="dataSource" destination="COF-jh-1Qg" id="01e-3q-Luu"/>
                                     <outlet property="delegate" destination="COF-jh-1Qg" id="W9E-a1-xQV"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3Kp-C6-TT5"/>
+                        <color key="backgroundColor" name="shadow"/>
                         <constraints>
                             <constraint firstItem="kow-cO-L0h" firstAttribute="top" secondItem="3Kp-C6-TT5" secondAttribute="top" id="C4K-4A-aL5"/>
                             <constraint firstItem="kow-cO-L0h" firstAttribute="bottom" secondItem="3Kp-C6-TT5" secondAttribute="bottom" id="I5R-Dz-5ZG"/>
                             <constraint firstItem="3Kp-C6-TT5" firstAttribute="trailing" secondItem="kow-cO-L0h" secondAttribute="trailing" id="JdA-jI-nmx"/>
                             <constraint firstItem="kow-cO-L0h" firstAttribute="leading" secondItem="3Kp-C6-TT5" secondAttribute="leading" id="hf5-wH-PnS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3Kp-C6-TT5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Deposits" id="wGd-bd-cPl">
                         <barButtonItem key="backBarButtonItem" title="Deposits" id="i7d-Ef-ho5"/>
@@ -52,7 +52,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IAP-Ol-rre" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7fy-6v-0s4">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -65,4 +65,12 @@
             <point key="canvasLocation" x="37.600000000000001" y="180.35982008995504"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="background">
+            <color white="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="shadow">
+            <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

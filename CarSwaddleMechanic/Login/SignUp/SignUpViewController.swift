@@ -49,7 +49,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         spinner.isHiddenInStackView = true
         updateSignUpEnabledness()
         
-        let tintColor = UIColor.textColor2
+        let tintColor: UIColor = .text2
         
         let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15) as Any]
         emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
@@ -59,8 +59,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         
         signUpButton.setTitleColor(tintColor, for: .normal)
         
-        emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
-        passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        emailTextField.addHairlineView(toSide: .bottom, color: .text)
+        passwordTextField.addHairlineView(toSide: .bottom, color: .text)
         
         setupAgreementTextView()
         
@@ -74,7 +74,7 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     private func setupAgreementTextView() {
-        let tintColor = UIColor.textColor2
+        let tintColor: UIColor = .text2
         
         let termsOfUseText = "Car Swaddle Terms of Use Agreement"
         let privacyPolicyText = "Car Swaddle Privacy Policy"
@@ -93,8 +93,8 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
         attributedText.addAttributes(linkAttributes(with: SignUpViewController.carSwaddlePrivacyURL), range: privacyPolicyRange)
         
         let textViewLinkAttributes: [NSAttributedString.Key : Any] = [
-            .foregroundColor: UIColor.textColor2,
-            .underlineColor: UIColor.textColor2,
+            .foregroundColor: UIColor.text2,
+            .underlineColor: UIColor.text2,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .font: UIFont.appFont(type: .regular, size: 13) as Any
         ]
@@ -213,9 +213,9 @@ final class SignUpViewController: UIViewController, StoryboardInstantiating {
     }
     
     private var backgroundImage: UIImage? {
-        let top = GradientPoint(location: 1.0, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: 15))
-        let middle = GradientPoint(location: 0.6, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: 0))
-        let bottom = GradientPoint(location: 0.0, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: -15))
+        let top = GradientPoint(location: 1.0, color: UIColor.background.color(adjustedBy255Points: 15))
+        let middle = GradientPoint(location: 0.6, color: UIColor.background.color(adjustedBy255Points: 0))
+        let bottom = GradientPoint(location: 0.0, color: UIColor.background.color(adjustedBy255Points: -15))
         return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
     }
     

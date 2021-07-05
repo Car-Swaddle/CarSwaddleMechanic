@@ -224,7 +224,7 @@ public extension CAShapeLayer {
 final class TimelineUIBuilder {
     
     static let labelOffset: CGFloat = 24
-    static let timelineViewBackgroundColor: UIColor = .gray3
+    static let timelineViewBackgroundColor: UIColor = .background
     
     @discardableResult
     func addTimelineHairline(to superView: UIView) -> UIView {

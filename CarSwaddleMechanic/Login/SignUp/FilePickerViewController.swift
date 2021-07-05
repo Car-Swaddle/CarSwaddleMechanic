@@ -63,6 +63,7 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
         frontImageLabel.text = NSLocalizedString("front of document", comment: "front of document")
         frontImageView.addSubview(frontImageLabel)
         frontImageLabel.constrainToCenter()
+        frontImageLabel.textColor = .text
         frontImageLabel.constrainWithinEdges(insets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
         self.frontImageLabel = frontImageLabel
         
@@ -71,6 +72,7 @@ final class FilePickerViewController: UIViewController, StoryboardInstantiating 
         backImageView.addSubview(backImageLabel)
         backImageLabel.constrainToCenter()
         backImageLabel.constrainWithinEdges(insets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
+        backImageLabel.textColor = .text
         self.backImageLabel = backImageLabel
         
         insetAdjuster.positionActionButton()

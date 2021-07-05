@@ -32,7 +32,7 @@ final class HeaderView: UIView {
     private lazy var labeledBanner: LabeledBannerView = {
         let labeledBanner = LabeledBannerView()
         labeledBanner.translatesAutoresizingMaskIntoConstraints = false
-        labeledBanner.backgroundColor = .secondary
+        labeledBanner.backgroundColor = .alternateBrand
         return labeledBanner
     }()
     
@@ -55,7 +55,7 @@ final class HeaderView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .white
+        backgroundColor = .clear
         
 //        addHairlineView(toSide: .bottom, color: .gray3)
         

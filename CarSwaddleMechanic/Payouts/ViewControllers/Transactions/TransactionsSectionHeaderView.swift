@@ -35,8 +35,8 @@ final class TransactionsSectionHeaderView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        addHairlineView(toSide: .top, color: .gray3)
-        addHairlineView(toSide: .bottom, color: .gray3)
+        addHairlineView(toSide: .top, color: .separator)
+        addHairlineView(toSide: .bottom, color: .separator)
         
 //        layer.shadowColor = UIColor.gray3.cgColor
         layer.shadowOpacity = 0.05

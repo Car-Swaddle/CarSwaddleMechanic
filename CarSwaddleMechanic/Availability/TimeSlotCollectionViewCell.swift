@@ -35,8 +35,8 @@ final class TimeSlotCollectionViewCell: UICollectionViewCell, NibRegisterable {
         
         hourLabel.font = UIFont.appFont(type: .semiBold, size: 14)
         
-        pillView.backgroundColor = .white
-        hourLabel.textColor = .black
+        pillView.backgroundColor = .content
+        hourLabel.textColor = .text
         pillView.clipsToBounds = false
         
         pillView.layer.shadowOpacity = 0.2
@@ -58,11 +58,11 @@ final class TimeSlotCollectionViewCell: UICollectionViewCell, NibRegisterable {
     }
     
     private func backgroundColor(for minute: Minute) -> UIColor {
-        return minute.isSelected ? .secondary : .white
+        return minute.isSelected ? .brand : .content3
     }
     
     private func textColor(for minute: Minute) -> UIColor {
-        return minute.isSelected ? .white : .black
+        return minute.isSelected ? .brandContrast : .text
     }
     
 }

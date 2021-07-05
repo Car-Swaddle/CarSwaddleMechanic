@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJq-bT-Byo">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJq-bT-Byo">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,25 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jtl-oX-4fF">
-                                <rect key="frame" x="0.0" y="118" width="375" height="175"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Jtl-oX-4fF">
+                                <rect key="frame" x="0.0" y="98" width="375" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="vui-3X-z1w"/>
                                 </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="567722216.228423">
-                                    <!--2018-12-28 20:36:56 +0000-->
-                                </date>
                                 <connections>
                                     <action selector="dateDidChange:" destination="IJq-bT-Byo" eventType="valueChanged" id="NF6-aT-o93"/>
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c95-lX-jxn">
-                                <rect key="frame" x="16" y="85" width="343" height="21"/>
+                                <rect key="frame" x="16" y="65" width="343" height="21"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df8-XL-2ny" customClass="ActionButton" customModule="CarSwaddleUI">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df8-XL-2ny" customClass="ActionButton" customModule="CarSwaddleUI">
                                 <rect key="frame" x="170" y="617" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
@@ -49,7 +46,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wxj-z9-eTp"/>
+                        <color key="backgroundColor" name="content"/>
                         <constraints>
                             <constraint firstItem="Jtl-oX-4fF" firstAttribute="top" secondItem="c95-lX-jxn" secondAttribute="bottom" constant="12" id="6rR-wR-lZC"/>
                             <constraint firstItem="c95-lX-jxn" firstAttribute="top" secondItem="wxj-z9-eTp" secondAttribute="top" constant="21" id="8vr-a4-y3H"/>
@@ -58,7 +56,6 @@
                             <constraint firstItem="wxj-z9-eTp" firstAttribute="trailing" secondItem="c95-lX-jxn" secondAttribute="trailing" constant="16" id="a4A-KQ-q6r"/>
                             <constraint firstItem="Jtl-oX-4fF" firstAttribute="trailing" secondItem="wxj-z9-eTp" secondAttribute="trailing" id="vvK-1y-uDo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wxj-z9-eTp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Date of Birth" id="vfY-zw-FWf"/>
                     <connections>
@@ -77,7 +74,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zOg-gt-n6m" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cUk-Fp-VtZ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -90,4 +87,12 @@
             <point key="canvasLocation" x="-106.40000000000001" y="128.18590704647679"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="content">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="text">
+            <color white="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

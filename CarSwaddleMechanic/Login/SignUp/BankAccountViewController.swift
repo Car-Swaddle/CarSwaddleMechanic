@@ -43,8 +43,9 @@ final class BankAccountViewController: UIViewController, StoryboardInstantiating
         routingNumberDigitEntryView.textFieldWidth = 27
         routingNumberDigitEntryView.styleDefault()
         routingNumberDigitEntryView.textFieldFont = UIFont.appFont(type: .regular, size: 17)
-        routingNumberDigitEntryView.underlineColor = .secondary
-        routingNumberDigitEntryView.tintColor = .secondary
+        routingNumberDigitEntryView.underlineColor = .brand
+        routingNumberDigitEntryView.tintColor = .brand
+        routingNumberDigitEntryView.textFieldBackgroundColor = .content3
         
         routingNumberDigitEntryView.delegate = self
         

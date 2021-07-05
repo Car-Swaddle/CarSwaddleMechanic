@@ -82,14 +82,14 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        editImageButton.backgroundColor = .white
+        editImageButton.backgroundColor = .content2
         editImageButton.layer.cornerRadius = 11
         editImageButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         editImageButton.titleLabel?.font = UIFont.appFont(type: .semiBold, size: 17)
         
         editImageButton.layer.shadowOpacity = 0.2
         editImageButton.layer.shadowRadius = 2
-        editImageButton.layer.shadowColor = UIColor.black.cgColor
+        editImageButton.layer.shadowColor = UIColor.shadow.cgColor
         editImageButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         
         starRatingView.settings.fillMode = .precise
@@ -164,7 +164,7 @@ final class ProfileHeaderView: UIView, NibInstantiating {
     
     private var highlightAttributes: [NSAttributedString.Key: Any] {
         let font = UIFont.appFont(type: .semiBold, size: 17)!
-        return [.font: font, .foregroundColor: UIColor.black]
+        return [.font: font, .foregroundColor: UIColor.text]
     }
     
     private func attributedString(forNumberOfServices numberOfServices: Int) -> NSAttributedString {

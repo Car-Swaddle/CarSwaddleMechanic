@@ -39,14 +39,14 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
         emailTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(LoginViewController.didChangeTextField(_:)), for: .editingChanged)
         
-        let tintColor = UIColor.textColor2
+        let tintColor: UIColor = .text2
         
         let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: tintColor, .font: UIFont.appFont(type: .semiBold, size: 15) as Any]
         emailTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Email", comment: "placeholder text"), attributes: placeholderAttributes)
         passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "placeholder text"), attributes: placeholderAttributes)
         
-        emailTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
-        passwordTextField.addHairlineView(toSide: .bottom, color: UIColor.textColor1, size: 1.0)
+        emailTextField.addHairlineView(toSide: .bottom, color: .separator)
+        passwordTextField.addHairlineView(toSide: .bottom, color: .separator)
         
         spinner.isHiddenInStackView = true
         updateLoginEnabledness()
@@ -161,9 +161,9 @@ final class LoginViewController: UIViewController, StoryboardInstantiating {
     
     
     private var backgroundImage: UIImage? {
-        let top = GradientPoint(location: 1.0, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: 15))
-        let middle = GradientPoint(location: 0.6, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: 0))
-        let bottom = GradientPoint(location: 0.0, color: UIColor.viewBackgroundColor1.color(adjustedBy255Points: -15))
+        let top = GradientPoint(location: 1.0, color: UIColor.background.color(adjustedBy255Points: 15))
+        let middle = GradientPoint(location: 0.6, color: UIColor.background.color(adjustedBy255Points: 0))
+        let bottom = GradientPoint(location: 0.0, color: UIColor.background.color(adjustedBy255Points: -15))
         return UIImage(size: view.bounds.size, gradientPoints: [top, middle, bottom])
     }
     
